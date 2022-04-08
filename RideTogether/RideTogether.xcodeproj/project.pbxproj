@@ -43,6 +43,7 @@
 		23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7872800637A000EDA70 /* RecordManager.swift */; };
 		23D1B78A28006396000EDA70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78928006396000EDA70 /* UserManager.swift */; };
 		23D1B78C28006663000EDA70 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* Constant.swift */; };
+		23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B78F2800AD0C000EDA70 /* Journey.storyboard */; };
 		C295EE0BEB63933F4AD355DE /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		23D1B7872800637A000EDA70 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		23D1B78928006396000EDA70 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		23D1B78B28006663000EDA70 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		23D1B78F2800AD0C000EDA70 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				23D1B767280060E0000EDA70 /* View */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
+				23D1B78F2800AD0C000EDA70 /* Journey.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
@@ -300,6 +303,7 @@
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
+				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +542,7 @@
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -567,6 +572,7 @@
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
