@@ -37,10 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: screen rotation
     
-    func application(_ application: UIApplication,
-                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-            return .portrait
+    var shouldAutorotate = false
+      func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if shouldAutorotate {
+          return .allButUpsideDown
+        } else {
+          return .portrait
         }
+    }
 
 
 }
