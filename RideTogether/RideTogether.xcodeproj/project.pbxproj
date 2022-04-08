@@ -13,6 +13,37 @@
 		23D1B736280033FB000EDA70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B734280033FB000EDA70 /* Main.storyboard */; };
 		23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B737280033FC000EDA70 /* Assets.xcassets */; };
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
+		23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74228004694000EDA70 /* JourneyViewController.swift */; };
+		23D1B74528004768000EDA70 /* GPXMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74428004768000EDA70 /* GPXMap.swift */; };
+		23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B746280059E8000EDA70 /* GoogleService-Info.plist */; };
+		23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74828005C16000EDA70 /* BaseViewController.swift */; };
+		23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74F28005E16000EDA70 /* GPXSession.swift */; };
+		23D1B75228005F2D000EDA70 /* GPXFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */; };
+		23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75328005F45000EDA70 /* GPXExtentCoordinates.swift */; };
+		23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75528005F62000EDA70 /* GPXRoot+length.swift */; };
+		23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75728005F8C000EDA70 /* GPXTrackPoint+MapKit.swift */; };
+		23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75928005FB0000EDA70 /* GPXTrack+length.swift */; };
+		23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75B28005FC9000EDA70 /* StopWatch.swift */; };
+		23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75D28005FE1000EDA70 /* StopWatchDelegate.swift */; };
+		23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75F28006009000EDA70 /* GPXTrackSegment+MapKit.swift */; };
+		23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7612800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift */; };
+		23D1B76428006092000EDA70 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B76328006092000EDA70 /* UserInfo.swift */; };
+		23D1B766280060A6000EDA70 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B765280060A6000EDA70 /* Record.swift */; };
+		23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B768280060EC000EDA70 /* DistanceLabel.swift */; };
+		23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B76B28006127000EDA70 /* PreviousPageButton.swift */; };
+		23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */; };
+		23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B772280061D5000EDA70 /* Double+Measures.swift */; };
+		23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B774280061F2000EDA70 /* UIButtonExtension.swift */; };
+		23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77628006212000EDA70 /* UIFontExtension.swift */; };
+		23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77828006229000EDA70 /* UIViewExtension.swift */; };
+		23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77A28006243000EDA70 /* UIColor+Extension.swift */; };
+		23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77C28006259000EDA70 /* TimeFormater.swift */; };
+		23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B782280062E9000EDA70 /* MapViewDelegate.swift */; };
+		23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78528006346000EDA70 /* GPXFileManager.swift */; };
+		23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7872800637A000EDA70 /* RecordManager.swift */; };
+		23D1B78A28006396000EDA70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78928006396000EDA70 /* UserManager.swift */; };
+		23D1B78C28006663000EDA70 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* Constant.swift */; };
+		C295EE0BEB63933F4AD355DE /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +55,39 @@
 		23D1B737280033FC000EDA70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23D1B73A280033FC000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D1B73C280033FC000EDA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23D1B74228004694000EDA70 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
+		23D1B74428004768000EDA70 /* GPXMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXMap.swift; sourceTree = "<group>"; };
+		23D1B746280059E8000EDA70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23D1B74828005C16000EDA70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		23D1B74F28005E16000EDA70 /* GPXSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSession.swift; sourceTree = "<group>"; };
+		23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFileInfo.swift; sourceTree = "<group>"; };
+		23D1B75328005F45000EDA70 /* GPXExtentCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXExtentCoordinates.swift; sourceTree = "<group>"; };
+		23D1B75528005F62000EDA70 /* GPXRoot+length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXRoot+length.swift"; sourceTree = "<group>"; };
+		23D1B75728005F8C000EDA70 /* GPXTrackPoint+MapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXTrackPoint+MapKit.swift"; sourceTree = "<group>"; };
+		23D1B75928005FB0000EDA70 /* GPXTrack+length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXTrack+length.swift"; sourceTree = "<group>"; };
+		23D1B75B28005FC9000EDA70 /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		23D1B75D28005FE1000EDA70 /* StopWatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchDelegate.swift; sourceTree = "<group>"; };
+		23D1B75F28006009000EDA70 /* GPXTrackSegment+MapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXTrackSegment+MapKit.swift"; sourceTree = "<group>"; };
+		23D1B7612800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXWaypoint+MKAnnotation.swift"; sourceTree = "<group>"; };
+		23D1B76328006092000EDA70 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		23D1B765280060A6000EDA70 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		23D1B768280060EC000EDA70 /* DistanceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceLabel.swift; sourceTree = "<group>"; };
+		23D1B76B28006127000EDA70 /* PreviousPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPageButton.swift; sourceTree = "<group>"; };
+		23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
+		23D1B772280061D5000EDA70 /* Double+Measures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Measures.swift"; sourceTree = "<group>"; };
+		23D1B774280061F2000EDA70 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		23D1B77628006212000EDA70 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		23D1B77828006229000EDA70 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		23D1B77A28006243000EDA70 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		23D1B77C28006259000EDA70 /* TimeFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormater.swift; sourceTree = "<group>"; };
+		23D1B782280062E9000EDA70 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
+		23D1B78528006346000EDA70 /* GPXFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFileManager.swift; sourceTree = "<group>"; };
+		23D1B7872800637A000EDA70 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
+		23D1B78928006396000EDA70 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		23D1B78B28006663000EDA70 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
+		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
+		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C295EE0BEB63933F4AD355DE /* Pods_RideTogether.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +107,8 @@
 			children = (
 				23D1B72D280033FB000EDA70 /* RideTogether */,
 				23D1B72C280033FB000EDA70 /* Products */,
+				B8861B4BB71FEA4F16110C05 /* Pods */,
+				280213B7E321F791376F648A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +125,116 @@
 			children = (
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
-				23D1B732280033FB000EDA70 /* ViewController.swift */,
+				23D1B782280062E9000EDA70 /* MapViewDelegate.swift */,
+				23D1B7842800632F000EDA70 /* Manager */,
+				23D1B76D28006187000EDA70 /* Extension */,
+				23D1B74A28005CF1000EDA70 /* ViewController */,
+				23D1B767280060E0000EDA70 /* View */,
+				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
+				23D1B746280059E8000EDA70 /* GoogleService-Info.plist */,
+				23D1B78B28006663000EDA70 /* Constant.swift */,
 			);
 			path = RideTogether;
+			sourceTree = "<group>";
+		};
+		23D1B74A28005CF1000EDA70 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B732280033FB000EDA70 /* ViewController.swift */,
+				23D1B74828005C16000EDA70 /* BaseViewController.swift */,
+				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		23D1B74B28005D9B000EDA70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B74E28005DE1000EDA70 /* GPX */,
+				23D1B76328006092000EDA70 /* UserInfo.swift */,
+				23D1B765280060A6000EDA70 /* Record.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		23D1B74E28005DE1000EDA70 /* GPX */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B74F28005E16000EDA70 /* GPXSession.swift */,
+				23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */,
+				23D1B75328005F45000EDA70 /* GPXExtentCoordinates.swift */,
+				23D1B75528005F62000EDA70 /* GPXRoot+length.swift */,
+				23D1B75F28006009000EDA70 /* GPXTrackSegment+MapKit.swift */,
+				23D1B7612800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift */,
+				23D1B75728005F8C000EDA70 /* GPXTrackPoint+MapKit.swift */,
+				23D1B75928005FB0000EDA70 /* GPXTrack+length.swift */,
+				23D1B75B28005FC9000EDA70 /* StopWatch.swift */,
+				23D1B75D28005FE1000EDA70 /* StopWatchDelegate.swift */,
+			);
+			path = GPX;
+			sourceTree = "<group>";
+		};
+		23D1B767280060E0000EDA70 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
+				23D1B76A28006116000EDA70 /* Journey */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		23D1B76A28006116000EDA70 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B74428004768000EDA70 /* GPXMap.swift */,
+				23D1B768280060EC000EDA70 /* DistanceLabel.swift */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
+		23D1B76D28006187000EDA70 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */,
+				23D1B772280061D5000EDA70 /* Double+Measures.swift */,
+				23D1B774280061F2000EDA70 /* UIButtonExtension.swift */,
+				23D1B77628006212000EDA70 /* UIFontExtension.swift */,
+				23D1B77828006229000EDA70 /* UIViewExtension.swift */,
+				23D1B77A28006243000EDA70 /* UIColor+Extension.swift */,
+				23D1B77C28006259000EDA70 /* TimeFormater.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		23D1B7842800632F000EDA70 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B78528006346000EDA70 /* GPXFileManager.swift */,
+				23D1B7872800637A000EDA70 /* RecordManager.swift */,
+				23D1B78928006396000EDA70 /* UserManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		280213B7E321F791376F648A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8861B4BB71FEA4F16110C05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */,
+				406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23D1B73F280033FC000EDA70 /* Build configuration list for PBXNativeTarget "RideTogether" */;
 			buildPhases = (
+				F574E762906D9DDDD3A80B66 /* [CP] Check Pods Manifest.lock */,
 				23D1B727280033FB000EDA70 /* Sources */,
 				23D1B728280033FB000EDA70 /* Frameworks */,
 				23D1B729280033FB000EDA70 /* Resources */,
+				A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
+				23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 			);
@@ -133,14 +306,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F574E762906D9DDDD3A80B66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RideTogether-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		23D1B727280033FB000EDA70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
+				23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */,
+				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
+				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
+				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
+				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				23D1B733280033FB000EDA70 /* ViewController.swift in Sources */,
+				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
+				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
+				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
+				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
+				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
+				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
+				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
+				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
+				23D1B74528004768000EDA70 /* GPXMap.swift in Sources */,
+				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
+				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
+				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
+				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
+				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
+				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
+				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
+				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
+				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
+				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
+				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
+				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
+				23D1B75228005F2D000EDA70 /* GPXFileInfo.swift in Sources */,
+				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +447,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -284,6 +529,7 @@
 		};
 		23D1B740280033FC000EDA70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +558,7 @@
 		};
 		23D1B741280033FC000EDA70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
