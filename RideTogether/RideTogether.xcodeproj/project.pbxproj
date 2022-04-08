@@ -14,6 +14,9 @@
 		23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B737280033FC000EDA70 /* Assets.xcassets */; };
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
 		23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74228004694000EDA70 /* JourneyViewController.swift */; };
+		23D1B74528004768000EDA70 /* GPXMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74428004768000EDA70 /* GPXMap.swift */; };
+		23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B746280059E8000EDA70 /* GoogleService-Info.plist */; };
+		23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74828005C16000EDA70 /* BaseViewController.swift */; };
 		C295EE0BEB63933F4AD355DE /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		23D1B73A280033FC000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D1B73C280033FC000EDA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D1B74228004694000EDA70 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
+		23D1B74428004768000EDA70 /* GPXMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXMap.swift; sourceTree = "<group>"; };
+		23D1B746280059E8000EDA70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23D1B74828005C16000EDA70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,11 +74,14 @@
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B732280033FB000EDA70 /* ViewController.swift */,
+				23D1B74828005C16000EDA70 /* BaseViewController.swift */,
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
+				23D1B74428004768000EDA70 /* GPXMap.swift */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
+				23D1B746280059E8000EDA70 /* GoogleService-Info.plist */,
 			);
 			path = RideTogether;
 			sourceTree = "<group>";
@@ -155,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
+				23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 			);
@@ -212,7 +222,9 @@
 				23D1B733280033FB000EDA70 /* ViewController.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
+				23D1B74528004768000EDA70 /* GPXMap.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
+				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
