@@ -47,7 +47,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tcz-Sx-2xN"/>
                     <connections>
-                        <outlet property="map" destination="QuQ-1f-19Z" id="tev-Qd-wAp"/>
+                        <outlet property="map" destination="QuQ-1f-19Z" id="voe-FD-KMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
