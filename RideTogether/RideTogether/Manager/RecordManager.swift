@@ -37,7 +37,19 @@ class RecordManager {
             
             let spaceRef = recordRef.child(fileName)
             
-            
+            spaceRef.putData(data, metadata: nil) { result, error in
+                
+                if result != nil {
+                    spaceRef.downloadURL { result, error in
+                        guard let url = result else { return }
+                        completion(.success(url))
+                        self.uploadRecordToDb(fileName: fileName, fileURL: url)
+                        GPXFileManager.uploadTrackLengthToDb(fileURL: url)
+                        
+                        print ("url:\(url)")
+                    }
+                }
+            }
 //            spaceRef.putData(data, metadata: nil) { result in
 //
 //                switch result {
