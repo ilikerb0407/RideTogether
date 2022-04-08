@@ -20,7 +20,6 @@ class JourneyViewController: BaseViewController {
     
     @IBOutlet weak var map: GPXMap!
     
-    
     private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
