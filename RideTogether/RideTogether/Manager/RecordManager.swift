@@ -37,7 +37,6 @@ class RecordManager {
             
             let spaceRef = recordRef.child(fileName)
             
-            spaceRef.p
             
 //            spaceRef.putData(data, metadata: nil) { result in
 //
