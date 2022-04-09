@@ -9,6 +9,7 @@ import Foundation
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import FirebaseStorageSwift
 
 class RecordManager {
     
@@ -37,48 +38,35 @@ class RecordManager {
             
             let spaceRef = recordRef.child(fileName)
             
-            spaceRef.putData(data, metadata: nil) { result, error in
-                
-                if result != nil {
-                    spaceRef.downloadURL { result, error in
-                        guard let url = result else { return }
-                        completion(.success(url))
-                        self.uploadRecordToDb(fileName: fileName, fileURL: url)
-                        GPXFileManager.uploadTrackLengthToDb(fileURL: url)
-                        
-                        print ("url:\(url)")
+            spaceRef.putData(data, metadata: nil) { result in
+
+                switch result {
+
+                case .success(_):
+
+                    spaceRef.downloadURL { result in
+
+                        switch result {
+
+                        case .success(let url):
+
+                            completion(.success(url))
+
+                            self.uploadRecordToDb(fileName: fileName, fileURL: url)
+
+                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
+
+                        case .failure(let error):
+
+                            completion(.failure(error))
+                        }
                     }
+
+                case .failure(let error):
+
+                    completion(.failure(error))
                 }
             }
-//            spaceRef.putData(data, metadata: nil) { result in
-//
-//                switch result {
-//
-//                case .success(_):
-//
-//                    spaceRef.downloadURL { result in
-//
-//                        switch result {
-//
-//                        case .success(let url):
-//
-//                            completion(.success(url))
-//
-//                            self.uploadRecordToDb(fileName: fileName, fileURL: url)
-//
-//                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
-//
-//                        case .failure(let error):
-//
-//                            completion(.failure(error))
-//                        }
-//                    }
-//
-//                case .failure(let error):
-//
-//                    completion(.failure(error))
-//                }
-//            }
             
         } catch {
             
