@@ -33,9 +33,9 @@ enum ProfileSegue: String, CaseIterable {
 
 enum Collection: String {
     
-    case groups = "Groups"
+//    case groups = "Groups"
     
-    case messages = "Messages"
+//    case messages = "Messages"
     
     case records = "Records"
     
@@ -43,5 +43,5 @@ enum Collection: String {
     
     case users = "Users"
     
-    case trails = "Trails"
+//    case trails = "Trails"
 }

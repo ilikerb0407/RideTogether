@@ -102,7 +102,7 @@ class JourneyViewController: BaseViewController {
         didSet {
             
             if followUser {
-                
+                // MARK: 定位的符號
                 let image = UIImage(systemName: "location.fill",
                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
                 
@@ -158,6 +158,36 @@ class JourneyViewController: BaseViewController {
         return button
     }()
     
+//    private lazy var pinButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setTitle("Locate", for: .normal)
+//        button.titleLabel?.font = UIFont.regular(size: 16)
+//        button.titleLabel?.textAlignment = .center
+//        button.alpha = 0.5
+//        return button
+//    }()
+    
+    @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
+        if  gesture.state == UIGestureRecognizer.State.began {
+            print("Adding Pin map Long Press Gesture")
+            let point: CGPoint = gesture.location(in: self.map)
+            map.addWaypointAtViewPoint(point)
+            //Allows save and reset
+            self.hasWaypoints = true
+        }
+    }
+    /// Has the map any waypoint?
+    var hasWaypoints: Bool = false {
+        /// Whenever it is updated, if it has waypoints it sets the save and reset button
+        didSet {
+            if hasWaypoints {
+                saveButton.backgroundColor = .blue
+                resetButton.backgroundColor = .red
+            }
+        }
+    }
+    
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "wave")
         view.loopMode = .loop
@@ -180,6 +210,8 @@ class JourneyViewController: BaseViewController {
         view.alignment = .bottom
         return view
     }()
+    
+    // MARK: 之後再改字體
     
      var coordsLabel: UILabel = {
         let label = UILabel()
@@ -253,8 +285,7 @@ class JourneyViewController: BaseViewController {
         resetButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),
-                     .B1],
+            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
             direction: .leftSkewed)
         
         saveButton.applyButtonGradient(
@@ -496,6 +527,8 @@ class JourneyViewController: BaseViewController {
         
         buttonStackView.addArrangedSubview(resetButton)
         
+        // MARK: button constraint
+        
         NSLayoutConstraint.activate([
             
             followUserButton.heightAnchor.constraint(equalToConstant: 50),
@@ -613,6 +646,4 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
 }
-
-
 
