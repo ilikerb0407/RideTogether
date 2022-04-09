@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybridFlyover" rotateEnabled="NO" showsUserLocation="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMap" customModule="RideTogether" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybridFlyover" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMap" customModule="RideTogether" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </mapView>
                         </subviews>
@@ -38,11 +38,11 @@
             </objects>
             <point key="canvasLocation" x="16" y="46"/>
         </scene>
-        <!--Journey-->
+        <!--Explore-->
         <scene sceneID="zlK-77-4cA">
             <objects>
                 <navigationController id="2v5-cM-9tM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Journey" image="sunrise.fill" catalog="system" id="1oW-XG-2nx"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="sunrise.fill" catalog="system" id="1oW-XG-2nx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ub-cz-m99">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

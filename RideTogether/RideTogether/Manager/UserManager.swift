@@ -10,6 +10,7 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorageSwift
 
 class UserManager {
     
@@ -73,40 +74,40 @@ class UserManager {
         }
     }
     
-//    func uploadUserPicture(imageData: Data, completion: @escaping (Result<URL, Error>) -> Void) {
-//
-//        let userId = userInfo.uid
-//
-//        let spaceRef = storageRef.child("pictures").child(userId)
-//
-//        spaceRef.putData(imageData, metadata: nil) { result in
-//
-//            switch result {
-//
-//            case .success(_):
-//
-//                spaceRef.downloadURL { result in
-//
-//                    switch result {
-//
-//                    case .success(let url):
-//
-//                        completion(.success(url))
-//
-//                        self.updateImageToDb(fileURL: url)
-//
-//                    case .failure(let error):
-//
-//                        completion(.failure(error))
-//                    }
-//                }
-//
-//            case .failure(let error):
-//
-//                completion(.failure(error))
-//            }
-//        }
-//    }
+    func uploadUserPicture(imageData: Data, completion: @escaping (Result<URL, Error>) -> Void) {
+
+        let userId = userInfo.uid
+
+        let spaceRef = storageRef.child("pictures").child(userId)
+
+        spaceRef.putData(imageData, metadata: nil) { result in
+
+            switch result {
+
+            case .success(_):
+
+                spaceRef.downloadURL { result in
+
+                    switch result {
+
+                    case .success(let url):
+
+                        completion(.success(url))
+
+                        self.updateImageToDb(fileURL: url)
+
+                    case .failure(let error):
+
+                        completion(.failure(error))
+                    }
+                }
+
+            case .failure(let error):
+
+                completion(.failure(error))
+            }
+        }
+    }
     
     func updateImageToDb(fileURL: URL) {
         
