@@ -186,7 +186,7 @@ class JourneyViewController: BaseViewController {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 14)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -194,7 +194,7 @@ class JourneyViewController: BaseViewController {
         let label = UILabel()
         label.textAlignment = .right
         label.font = UIFont.regular(size: 26)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.text = "00:00"
         return label
     }()
@@ -203,7 +203,7 @@ class JourneyViewController: BaseViewController {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 26)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.textColor = UIColor.white
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -212,7 +212,7 @@ class JourneyViewController: BaseViewController {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 18)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.textColor = UIColor.white
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
