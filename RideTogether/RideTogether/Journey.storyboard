@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMap" customModule="RideTogether" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybridFlyover" rotateEnabled="NO" showsUserLocation="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMap" customModule="RideTogether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -31,17 +31,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="vOJ-58-azY"/>
                     <connections>
-                        <outlet property="map" destination="jJ6-sy-owc" id="UfH-Rd-X6P"/>
+                        <outlet property="map" destination="jJ6-sy-owc" id="vQz-qg-IUf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16" y="46"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Journey-->
         <scene sceneID="zlK-77-4cA">
             <objects>
                 <navigationController id="2v5-cM-9tM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Journey" image="sunrise.fill" catalog="system" id="1oW-XG-2nx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ub-cz-m99">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -56,6 +58,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="sunrise.fill" catalog="system" width="128" height="97"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
