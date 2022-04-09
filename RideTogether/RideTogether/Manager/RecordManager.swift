@@ -27,7 +27,6 @@ class RecordManager {
     
     private let recordsCollection = Collection.records.rawValue
     
-    
     func uploadRecord(fileName: String, fileURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
         
         do {
@@ -43,7 +42,7 @@ class RecordManager {
                 switch result {
 
                 case .success(_):
-
+                    
                     spaceRef.downloadURL { result in
 
                         switch result {
@@ -212,4 +211,3 @@ class RecordManager {
         }
     }
 }
-
