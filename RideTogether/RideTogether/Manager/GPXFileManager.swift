@@ -76,7 +76,7 @@ class GPXFileManager {
             case .success:
                 
                 uploadTrackLengthToDb(fileURL: fileURL)
-                
+               // _url : //file:///var/mobile/Containers/Data/Application/16976C4B-1C87-4E0D-B5A6-E5077D978007/D//ocuments/2022-04-10_04-21.gpx
                 print("save to Firebase successfully")
                 
                 GPXFileManager.removeFileFromURL(fileURL)
