@@ -9,6 +9,7 @@ import Foundation
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+//import FirebaseStorageSwift
 
 class RecordManager {
     
@@ -26,53 +27,53 @@ class RecordManager {
     
     private let recordsCollection = Collection.records.rawValue
     
-    
     func uploadRecord(fileName: String, fileURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
-        
+
         do {
-            
+
             let data: Data = try Data(contentsOf: fileURL)
-            
+            //▿ 302 bytes
+            //- count : 302
+            //▿ pointer : 0x000000013510ace0
+            //  - pointerValue : 5185252576
             let recordRef = storageRef.child("records").child(userId)
-            
+            // gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(fileName)
-            
-            spaceRef.p
-            
-//            spaceRef.putData(data, metadata: nil) { result in
-//
-//                switch result {
-//
-//                case .success(_):
-//
-//                    spaceRef.downloadURL { result in
-//
-//                        switch result {
-//
-//                        case .success(let url):
-//
-//                            completion(.success(url))
-//
-//                            self.uploadRecordToDb(fileName: fileName, fileURL: url)
-//
-//                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
-//
-//                        case .failure(let error):
-//
-//                            completion(.failure(error))
-//                        }
-//                    }
-//
-//                case .failure(let error):
-//
-//                    completion(.failure(error))
-//                }
-//            }
-            
+
+            spaceRef.putData(data, metadata: nil) { result in
+
+                switch result {
+
+                case .success(_):
+
+                    spaceRef.downloadURL { result in
+
+                        switch result {
+
+                        case .success(let url):
+
+                            completion(.success(url))
+
+                            self.uploadRecordToDb(fileName: fileName, fileURL: url)
+
+                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
+
+                        case .failure(let error):
+
+                            completion(.failure(error))
+                        }
+                    }
+
+                case .failure(let error):
+
+                    completion(.failure(error))
+                }
+            }
+
         } catch {
-            
+
             print("Unable to upload data")
-            
+
         }
     }
     
@@ -185,27 +186,27 @@ class RecordManager {
     }
     
     func detectDeviceAndUpload() {
-        
+
         let files = GPXFileManager.gpxFilesInDevice
-        
+
         if files.count != 0 {
-            
+
             for file in files {
-                
+
                 let fileName = (file.absoluteString as NSString).lastPathComponent.removeFileSuffix()
-                
+
                 uploadRecord(fileName: fileName, fileURL: file) { result in
-                    
+
                     switch result {
-                        
+
                     case .success:
-                        
+
                         print("save to Firebase successfully")
-                        
+
                         GPXFileManager.removeFileFromURL(file)
-                        
+
                     case .failure(let error):
-                        
+
                         print("save to Firebase failure: \(error)")
                     }
                 }
@@ -213,4 +214,3 @@ class RecordManager {
         }
     }
 }
-

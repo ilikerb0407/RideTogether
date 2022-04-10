@@ -14,6 +14,8 @@ import CoreGPX
 class GPXMap: MKMapView {
 
     let session = GPXSession()
+    
+    var waypoints: [GPXWaypoint] = []
 
     var currentSegmentOverlay: MKPolyline
     
@@ -100,6 +102,18 @@ class GPXMap: MKMapView {
             }
         }
     }
+    func addWaypointAtViewPoint(_ point: CGPoint) {
+        let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
+        let waypoint = GPXWaypoint(coordinate: coords)
+        addWaypoint(waypoint)
+        
+    }
+    /// - Parameters: The waypoint to add to the map.
+    ///
+    func addWaypoint(_ waypoint: GPXWaypoint) {
+        session.addWaypoint(waypoint)
+        addAnnotation(waypoint)
+        extent.extendAreaToIncludeLocation(waypoint.coordinate)
+    }
     
-
 }
