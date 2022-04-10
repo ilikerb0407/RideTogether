@@ -26,7 +26,7 @@ class UserManager {
     
     lazy var dataBase = Firestore.firestore()
     
-    private let usersCollection = Collection.users.rawValue
+    let usersCollection = Collection.users.rawValue
     
     func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
         
@@ -78,7 +78,7 @@ class UserManager {
 
         let userId = userInfo.uid
 
-        let spaceRef = storageRef.child("pictures").child(userId)
+        let spaceRef = storageRef.child("pictures").child(userId )
 
         spaceRef.putData(imageData, metadata: nil) { result in
 

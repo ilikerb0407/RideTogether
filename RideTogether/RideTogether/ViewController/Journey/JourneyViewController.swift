@@ -256,7 +256,7 @@ class JourneyViewController: BaseViewController {
         
         stopWatch.delegate = self
         
-        RecordManager.shared.detectDeviceAndUpload()
+//        RecordManager.shared.detectDeviceAndUpload()
         
         setUpMap()
         
@@ -376,7 +376,7 @@ class JourneyViewController: BaseViewController {
             let gpxString = self.map.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text
-            
+            // "2022-04-10_04-21"
             if let fileName = fileName {
                 GPXFileManager.save(filename: fileName, gpxContents: gpxString)
             }
