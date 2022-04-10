@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>443600024033-tgmp1v8u6r7s2l2sottjp6u3jf49c464.apps.googleusercontent.com</string>
+	<string>90965039479-scv20q6vfb89vudgi7rb8k7ecqgnetke.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.443600024033-tgmp1v8u6r7s2l2sottjp6u3jf49c464</string>
+	<string>com.googleusercontent.apps.90965039479-scv20q6vfb89vudgi7rb8k7ecqgnetke</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCtWKkeXUuYCxCKoXA0ZKvBHGRYAjgv1tE</string>
+	<string>AIzaSyDfMKr-m98ZiAHuj75yCbiY7FaRsd4DylA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>443600024033</string>
+	<string>90965039479</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>KaiFu.RideTogether</string>
+	<string>com.KaiFu.RideTogether</string>
 	<key>PROJECT_ID</key>
-	<string>bikeproject-d659c</string>
+	<string>bikeproject-59c89</string>
 	<key>STORAGE_BUCKET</key>
-	<string>bikeproject-d659c.appspot.com</string>
+	<string>bikeproject-59c89.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:443600024033:ios:19332f68f6da52195362a0</string>
+	<string>1:90965039479:ios:595f6c3342f44c0c9d6972</string>
 </dict>
 </plist>

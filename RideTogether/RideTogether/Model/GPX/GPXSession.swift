@@ -77,7 +77,7 @@ class GPXSession {
     
     func exportToGPXString() -> String {
 
-        let gpx = GPXRoot(creator: "ChooseSomeone")
+        let gpx = GPXRoot(creator: "RideTogether")
         
         gpx.add(waypoints: self.waypoints)
         
@@ -109,6 +109,8 @@ class GPXSession {
         
         self.tracks.removeLast()
     }
+    
+    func addWaypoint(_ waypoint: GPXWaypoint) {
+        self.waypoints.append(waypoint)
+    }
 }
-
-
