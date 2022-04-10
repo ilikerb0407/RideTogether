@@ -15,7 +15,6 @@
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
 		23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74228004694000EDA70 /* JourneyViewController.swift */; };
 		23D1B74528004768000EDA70 /* GPXMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74428004768000EDA70 /* GPXMap.swift */; };
-		23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B746280059E8000EDA70 /* GoogleService-Info.plist */; };
 		23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74828005C16000EDA70 /* BaseViewController.swift */; };
 		23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74F28005E16000EDA70 /* GPXSession.swift */; };
 		23D1B75228005F2D000EDA70 /* GPXFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */; };
@@ -43,7 +42,11 @@
 		23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7872800637A000EDA70 /* RecordManager.swift */; };
 		23D1B78A28006396000EDA70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78928006396000EDA70 /* UserManager.swift */; };
 		23D1B78C28006663000EDA70 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* Constant.swift */; };
-		C295EE0BEB63933F4AD355DE /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
+		23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B78F2800AD0C000EDA70 /* Journey.storyboard */; };
+		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
+		23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7942800B0FD000EDA70 /* Profile.storyboard */; };
+		23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */; };
+		23D1B7A12802147C000EDA70 /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +60,6 @@
 		23D1B73C280033FC000EDA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D1B74228004694000EDA70 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
 		23D1B74428004768000EDA70 /* GPXMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXMap.swift; sourceTree = "<group>"; };
-		23D1B746280059E8000EDA70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23D1B74828005C16000EDA70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		23D1B74F28005E16000EDA70 /* GPXSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSession.swift; sourceTree = "<group>"; };
 		23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFileInfo.swift; sourceTree = "<group>"; };
@@ -85,6 +87,10 @@
 		23D1B7872800637A000EDA70 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		23D1B78928006396000EDA70 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		23D1B78B28006663000EDA70 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		23D1B78F2800AD0C000EDA70 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
+		23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		23D1B7942800B0FD000EDA70 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C295EE0BEB63933F4AD355DE /* Pods_RideTogether.framework in Frameworks */,
+				23D1B7A12802147C000EDA70 /* Pods_RideTogether.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +138,11 @@
 				23D1B767280060E0000EDA70 /* View */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
+				23D1B78F2800AD0C000EDA70 /* Journey.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
-				23D1B746280059E8000EDA70 /* GoogleService-Info.plist */,
+				23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */,
 				23D1B78B28006663000EDA70 /* Constant.swift */,
 			);
 			path = RideTogether;
@@ -145,8 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				23D1B732280033FB000EDA70 /* ViewController.swift */,
+				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B74828005C16000EDA70 /* BaseViewController.swift */,
-				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
+				23D1B7912800B08D000EDA70 /* Journey */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -183,6 +191,7 @@
 			children = (
 				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
 				23D1B76A28006116000EDA70 /* Journey */,
+				23D1B7942800B0FD000EDA70 /* Profile.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +229,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		23D1B7912800B08D000EDA70 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
 		280213B7E321F791376F648A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +266,7 @@
 				23D1B728280033FB000EDA70 /* Frameworks */,
 				23D1B729280033FB000EDA70 /* Resources */,
 				A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */,
+				23D1B79D280195E3000EDA70 /* swift lint */,
 			);
 			buildRules = (
 			);
@@ -297,27 +315,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
-				23D1B747280059E8000EDA70 /* GoogleService-Info.plist in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
+				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
+				23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		23D1B79D280195E3000EDA70 /* swift lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "swift lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -359,6 +397,7 @@
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
+				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				23D1B733280033FB000EDA70 /* ViewController.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
@@ -538,6 +577,7 @@
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -548,7 +588,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KaiFu.RideTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -567,6 +607,7 @@
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -577,7 +618,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KaiFu.RideTogether;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
