@@ -18,8 +18,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
             
             polyLineRenderer.alpha = 0.8
-            
-            polyLineRenderer.strokeColor = .B1
+            // MARK: routeLine color
+            polyLineRenderer.strokeColor = .systemOrange
             
             polyLineRenderer.lineWidth = 2
             

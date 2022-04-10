@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2v5-cM-9tM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Journey View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="JourneyViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybridFlyover" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMap" customModule="RideTogether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jJ6-sy-owc" secondAttribute="trailing" id="4i9-9n-oWS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jJ6-sy-owc" secondAttribute="bottom" id="CoZ-o4-rR9"/>
+                            <constraint firstItem="jJ6-sy-owc" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TUM-x3-BQB"/>
+                            <constraint firstItem="jJ6-sy-owc" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="gEN-Dw-vjh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vOJ-58-azY"/>
+                    <connections>
+                        <outlet property="map" destination="jJ6-sy-owc" id="vQz-qg-IUf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="46"/>
+        </scene>
+        <!--Explore-->
+        <scene sceneID="zlK-77-4cA">
+            <objects>
+                <navigationController id="2v5-cM-9tM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Explore" image="sunrise.fill" catalog="system" id="1oW-XG-2nx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ub-cz-m99">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="77F-SP-hND"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVb-wh-CEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839" y="46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sunrise.fill" catalog="system" width="128" height="97"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
