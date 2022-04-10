@@ -20,7 +20,6 @@ class JourneyViewController: BaseViewController {
     
     @IBOutlet weak var map: GPXMap!
     
-    
     private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
@@ -103,7 +102,7 @@ class JourneyViewController: BaseViewController {
         didSet {
             
             if followUser {
-                
+                // MARK: 定位的符號
                 let image = UIImage(systemName: "location.fill",
                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
                 
@@ -159,6 +158,36 @@ class JourneyViewController: BaseViewController {
         return button
     }()
     
+//    private lazy var pinButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setTitle("Locate", for: .normal)
+//        button.titleLabel?.font = UIFont.regular(size: 16)
+//        button.titleLabel?.textAlignment = .center
+//        button.alpha = 0.5
+//        return button
+//    }()
+    
+    @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
+        if  gesture.state == UIGestureRecognizer.State.began {
+            print("Adding Pin map Long Press Gesture")
+            let point: CGPoint = gesture.location(in: self.map)
+            map.addWaypointAtViewPoint(point)
+            //Allows save and reset
+            self.hasWaypoints = true
+        }
+    }
+    /// Has the map any waypoint?
+    var hasWaypoints: Bool = false {
+        /// Whenever it is updated, if it has waypoints it sets the save and reset button
+        didSet {
+            if hasWaypoints {
+                saveButton.backgroundColor = .blue
+                resetButton.backgroundColor = .red
+            }
+        }
+    }
+    
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "wave")
         view.loopMode = .loop
@@ -182,12 +211,14 @@ class JourneyViewController: BaseViewController {
         return view
     }()
     
+    // MARK: 之後再改字體
+    
      var coordsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 14)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -195,7 +226,7 @@ class JourneyViewController: BaseViewController {
         let label = UILabel()
         label.textAlignment = .right
         label.font = UIFont.regular(size: 26)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.text = "00:00"
         return label
     }()
@@ -204,7 +235,7 @@ class JourneyViewController: BaseViewController {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 26)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.textColor = UIColor.white
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -213,7 +244,7 @@ class JourneyViewController: BaseViewController {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 18)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.textColor = UIColor.white
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -225,7 +256,7 @@ class JourneyViewController: BaseViewController {
         
         stopWatch.delegate = self
         
-        RecordManager.shared.detectDeviceAndUpload()
+//        RecordManager.shared.detectDeviceAndUpload()
         
         setUpMap()
         
@@ -254,8 +285,7 @@ class JourneyViewController: BaseViewController {
         resetButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),
-                     .B1],
+            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
             direction: .leftSkewed)
         
         saveButton.applyButtonGradient(
@@ -346,7 +376,7 @@ class JourneyViewController: BaseViewController {
             let gpxString = self.map.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text
-            
+            // "2022-04-10_04-21"
             if let fileName = fileName {
                 GPXFileManager.save(filename: fileName, gpxContents: gpxString)
             }
@@ -497,6 +527,8 @@ class JourneyViewController: BaseViewController {
         
         buttonStackView.addArrangedSubview(resetButton)
         
+        // MARK: button constraint
+        
         NSLayoutConstraint.activate([
             
             followUserButton.heightAnchor.constraint(equalToConstant: 50),
@@ -614,6 +646,4 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
 }
-
-
 
