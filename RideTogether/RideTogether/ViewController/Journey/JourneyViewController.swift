@@ -32,11 +32,14 @@ class JourneyViewController: BaseViewController {
         
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
-        manager.distanceFilter = 2 // meters
+//        manager.distanceFilter = kCLDistanceFilterNone
+        manager.distanceFilter = 2
         
         manager.pausesLocationUpdatesAutomatically = false
-        
-        manager.allowsBackgroundLocationUpdates = true
+
+//        manager.allowsBackgroundLocationUpdates = true
+//
+//        manager.startUpdatingLocation()
         
         return manager
     }()
@@ -64,7 +67,7 @@ class JourneyViewController: BaseViewController {
                 
                 stopWatch.reset()
                 
-                waveLottieView.isHidden = true
+//                waveLottieView.isHidden = true
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
@@ -80,9 +83,10 @@ class JourneyViewController: BaseViewController {
                 
                 self.stopWatch.start()
                 
-                waveLottieView.isHidden = false
+//                waveLottieView.isHidden = false
                 
-                waveLottieView.play()
+//                waveLottieView.play()
+                
                 
             case .paused:
                 
@@ -90,7 +94,7 @@ class JourneyViewController: BaseViewController {
                 
                 self.stopWatch.stop()
                 
-                waveLottieView.isHidden = true
+//                waveLottieView.isHidden = true
                 
                 self.map.startNewTrackSegment()
             }
@@ -158,15 +162,25 @@ class JourneyViewController: BaseViewController {
         return button
     }()
     
-//    private lazy var pinButton: UIButton = {
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle("Locate", for: .normal)
-//        button.titleLabel?.font = UIFont.regular(size: 16)
-//        button.titleLabel?.textAlignment = .center
-//        button.alpha = 0.5
-//        return button
-//    }()
+    private lazy var pinButton: UIButton = {
+//        // Pin Button (on the left of start)
+        let button = UIButton()
+        button.layer.cornerRadius = 24.0
+        button.backgroundColor = UIColor(red: 254.0/255.0, green: 254.0/255.0, blue: 254.0/255.0, alpha: 0.90)
+        button.setImage(UIImage(named: "mappin"), for: UIControl.State())
+        button.setImage(UIImage(named: "mappin.circle.fill"), for: .highlighted)
+        button.addTarget(self, action: #selector(JourneyViewController.addPinAtMyLocation), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func addPinAtMyLocation() {
+        print("Adding Pin at my location")
+        let altitude = locationManager.location?.altitude
+        let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
+        map.addWaypoint(waypoint)
+//        map.coreDataHelper.add(toCoreData: waypoint)
+        self.hasWaypoints = true
+    }
     
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if  gesture.state == UIGestureRecognizer.State.began {
@@ -202,7 +216,7 @@ class JourneyViewController: BaseViewController {
     
     private lazy var buttonStackView: UIStackView = {
         
-        let view = UIStackView(arrangedSubviews: [followUserButton, trackerButton, saveButton, resetButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton , trackerButton, saveButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -284,6 +298,8 @@ class JourneyViewController: BaseViewController {
         
         resetButton.roundCorners(cornerRadius: otherRadius)
         
+        pinButton.roundCorners(cornerRadius: otherRadius)
+        
         trackerButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
             direction: .leftSkewed)
@@ -297,6 +313,7 @@ class JourneyViewController: BaseViewController {
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
                      UIColor.hexStringToUIColor(hex: "#f05053")],
             direction: .leftSkewed)
+        
     }
     
     // MARK: - Action
@@ -321,8 +338,14 @@ class JourneyViewController: BaseViewController {
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: center, span: span)
-
+        
         map.setRegion(region, animated: true)
+        
+        //If user long presses the map, it will add a Pin (waypoint) at that point
+        map.addGestureRecognizer(
+            UILongPressGestureRecognizer(target: self, action: #selector(JourneyViewController.addPinAtTappedLocation(_:)))
+        )
+        
         self.view.addSubview(map)
     }
     
@@ -335,6 +358,7 @@ class JourneyViewController: BaseViewController {
             UIView.animate(withDuration: 0.3) {
                 self.saveButton.alpha = 1.0
                 self.resetButton.alpha = 1.0
+                self.pinButton.alpha = 1.0
             }
             
             gpxTrackingStatus = .tracking
@@ -515,11 +539,11 @@ class JourneyViewController: BaseViewController {
             buttonStackView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
-        let button = UIButton()
+//        let button = UIButton()
         
         buttonStackView.addArrangedSubview(followUserButton)
         
-        buttonStackView.addArrangedSubview(button)
+        buttonStackView.addArrangedSubview(pinButton)
         
         buttonStackView.addArrangedSubview(trackerButton)
         
@@ -535,9 +559,9 @@ class JourneyViewController: BaseViewController {
             
             followUserButton.widthAnchor.constraint(equalToConstant: 50),
             
-            button.heightAnchor.constraint(equalToConstant: 50),
+            pinButton.heightAnchor.constraint(equalToConstant: 50),
             
-            button.widthAnchor.constraint(equalToConstant: 50),
+            pinButton.widthAnchor.constraint(equalToConstant: 50),
             
             trackerButton.heightAnchor.constraint(equalToConstant: 80),
             
@@ -553,6 +577,8 @@ class JourneyViewController: BaseViewController {
         ])
         
         trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
+        
+//        pinButton.addTarget(self, action:  #selector(addPinAtTappedLocation), for: .touchUpInside)
         
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         
@@ -646,4 +672,3 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
 }
-
