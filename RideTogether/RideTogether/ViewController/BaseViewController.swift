@@ -87,9 +87,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
             
-            UserManager.shared.blockUser(blockUserId: uid)
+//            UserManager.shared.blockUser(blockUserId: uid)
             
-            UserManager.shared.userInfo.blockList?.append(uid)
+//            UserManager.shared.userInfo.blockList?.append(uid)
         }
         
         controller.addAction(cancelAction)
@@ -114,6 +114,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.present(controller, animated: true, completion: nil)
     }
     
+    // 前一頁的button
     func setNavigationBar(title: String) {
         
         self.title = "\(title)"
