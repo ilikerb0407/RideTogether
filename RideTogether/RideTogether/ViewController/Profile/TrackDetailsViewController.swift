@@ -30,13 +30,13 @@ class TrackDetailsViewController: UIViewController {
         
         map.delegate = mapViewDelegate
         
-        view.addSubview(map)
+        self.view.addSubview(map)
         
         tabBarController?.tabBar.isHidden = true
         
         backButton()
         
-//        praseGPXFile()
+        praseGPXFile()
         
     }
     
@@ -51,9 +51,37 @@ class TrackDetailsViewController: UIViewController {
     }
     
     func praseGPXFile() {
-        let url = URL(string: record.recordRef)
         
+        if let inputUrl = URL(string: record.recordRef) {
+            
+            guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
+            
+            didLoadGPXFile(gpxRoot: gpx)
+        }
+    }
+    
+    func didLoadGPXFile(gpxRoot: GPXRoot) {
         
+        map.importFromGPXRoot(gpxRoot)
+        
+        map.regionToGPXExtent()
+    }
+    
+    // MARK: - Polyline -
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        
+        updatePolylineColor()
+    }
+    
+    func updatePolylineColor() {
+        
+        for overlay in map.overlays where overlay is MKPolyline {
+            
+            map.removeOverlay(overlay)
+            
+            map.addOverlay(overlay)
+        }
     }
     
     override func viewDidLoad() {
@@ -62,6 +90,5 @@ class TrackDetailsViewController: UIViewController {
         setUp()
     }
     
-
 
 }
