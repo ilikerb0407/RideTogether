@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0R-Kw-EOx">
-                        <rect key="frame" x="16" y="16" width="248" height="51"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="83"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mz8-SP-Q0X">
-                                <rect key="frame" x="17" y="8" width="53" height="35"/>
+                                <rect key="frame" x="17" y="8" width="85" height="67"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1O-fc-vIk">
-                                <rect key="frame" x="106.5" y="8" width="41.5" height="35"/>
+                                <rect key="frame" x="138.5" y="8" width="41.5" height="67"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -43,10 +43,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="W0R-Kw-EOx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6yr-Fq-UAc"/>
-                    <constraint firstItem="W0R-Kw-EOx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CZz-Uv-ZJC"/>
-                    <constraint firstAttribute="trailing" secondItem="W0R-Kw-EOx" secondAttribute="trailing" constant="16" id="Jzu-Qx-rw6"/>
-                    <constraint firstAttribute="bottom" secondItem="W0R-Kw-EOx" secondAttribute="bottom" constant="16" id="nfJ-AM-8Kr"/>
+                    <constraint firstItem="W0R-Kw-EOx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kf6-qh-R73"/>
+                    <constraint firstAttribute="trailing" secondItem="W0R-Kw-EOx" secondAttribute="trailing" id="dYf-4k-BsW"/>
+                    <constraint firstItem="W0R-Kw-EOx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fNY-Ps-af3"/>
+                    <constraint firstAttribute="bottom" secondItem="W0R-Kw-EOx" secondAttribute="bottom" id="wpJ-9P-4Md"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

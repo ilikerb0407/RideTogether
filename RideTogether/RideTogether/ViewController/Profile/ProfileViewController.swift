@@ -27,15 +27,13 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBar(title: "Profile")
-        
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
     }
     
 }

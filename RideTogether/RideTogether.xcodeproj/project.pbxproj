@@ -53,6 +53,8 @@
 		23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */; };
 		23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */; };
 		23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7ED2804347B000EDA70 /* UITableView.swift */; };
+		23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7F028045A72000EDA70 /* TrackTableViewCell.swift */; };
+		23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,8 @@
 		23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		23D1B7ED2804347B000EDA70 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		23D1B7F028045A72000EDA70 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +209,7 @@
 				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
+				23D1B7EF28045A42000EDA70 /* Track */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +274,15 @@
 				23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		23D1B7EF28045A42000EDA70 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B7F028045A72000EDA70 /* TrackTableViewCell.swift */,
+				23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		280213B7E321F791376F648A /* Frameworks */ = {
@@ -356,6 +370,7 @@
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */,
+				23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +472,7 @@
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
+				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
