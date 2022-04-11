@@ -20,13 +20,22 @@ class ProfileViewController: BaseViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.backgroundColor = .clear
-            tableView.isScrollEnabled = false
+            tableView.isScrollEnabled = true
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setNavigationBar(title: "Profile")
+        
+        tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
 }
@@ -36,6 +45,22 @@ extension ProfileViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0 :
+            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
+            performSegue(withIdentifier: segueId, sender: nil)
+            
+        default :
+            return
+        }
+    }
+    
     
 }
 
