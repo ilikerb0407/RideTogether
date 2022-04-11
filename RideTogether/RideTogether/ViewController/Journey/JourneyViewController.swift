@@ -184,7 +184,7 @@ class JourneyViewController: BaseViewController {
         let altitude = locationManager.location?.altitude
         let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
         map.addWaypoint(waypoint)
-//        map.coreDataHelper.add(toCoreData: waypoint)
+        
         self.hasWaypoints = true
     }
     
@@ -238,7 +238,16 @@ class JourneyViewController: BaseViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.regular(size: 14)
+        label.font = UIFont.regular(size: 20)
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    var speedLabel: UILabel = {
+       let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.regular(size: 30)
         label.textColor = UIColor.white
         return label
     }()
@@ -606,15 +615,18 @@ class JourneyViewController: BaseViewController {
     func setUpLabels() {
         
         map.addSubview(coordsLabel)
-        
+        // 座標 - 改成時速
         coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
         
-        map.addSubview(timeLabel)
+        map.addSubview(speedLabel)
+        speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
+        map.addSubview(timeLabel)
+        // 時間
         timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 30)
         
         map.addSubview(totalTrackedDistanceLabel)
-        
+        // 距離
         totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 70, width: 80, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
@@ -664,15 +676,19 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let newLocation = locations.first!
         
-        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
+//        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
+//        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
+//        let altitude = newLocation.altitude.toAltitude()
         
-        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
+        /// Text to display unknown speed.
+        let kUnknownSpeedText = "·.··"
         
-        let altitude = newLocation.altitude.toAltitude()
-        
-        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
-        
-        coordsLabel.text = text
+       
+//        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
+//        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
+        let speedText = "Speed: \(kUnknownSpeedText)"
+//        coordsLabel.text = text
+        speedLabel.text = speedText
         
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)
