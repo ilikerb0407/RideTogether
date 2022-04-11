@@ -7,6 +7,8 @@
 
 import UIKit
 
+// 前一頁的button
+
 class PreviousPageButton: UIButton {
     
     override init(frame: CGRect) {

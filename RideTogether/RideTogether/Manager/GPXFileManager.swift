@@ -96,7 +96,7 @@ class GPXFileManager {
         
         let length = gpx.tracksLength
         
-        UserManager.shared.updateUserTrackLength(length: length)
+//        UserManager.shared.updateUserTrackLength(length: length)
     }
     
     class func removeFileFromURL(_ fileURL: URL) {
