@@ -85,17 +85,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CY4-04-0aW" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="425"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satelliteFlyover" translatesAutoresizingMaskIntoConstraints="NO" id="CY4-04-0aW" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="575"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9cA-FX-fdz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9cA-FX-fdz" firstAttribute="bottom" secondItem="CY4-04-0aW" secondAttribute="bottom" constant="150" id="Rkr-iT-Hw7"/>
                             <constraint firstItem="CY4-04-0aW" firstAttribute="leading" secondItem="9cA-FX-fdz" secondAttribute="leading" id="W6l-un-ANn"/>
                             <constraint firstItem="CY4-04-0aW" firstAttribute="trailing" secondItem="9cA-FX-fdz" secondAttribute="trailing" id="gGK-AL-wXg"/>
                             <constraint firstItem="CY4-04-0aW" firstAttribute="top" secondItem="9cA-FX-fdz" secondAttribute="top" id="oyA-Rs-Maw"/>
-                            <constraint firstItem="9cA-FX-fdz" firstAttribute="bottom" secondItem="CY4-04-0aW" secondAttribute="bottom" constant="300" id="suP-hX-xf6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x4P-5t-ada"/>
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgh-Iv-h1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2059" y="98"/>
+            <point key="canvasLocation" x="2057.971014492754" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>
