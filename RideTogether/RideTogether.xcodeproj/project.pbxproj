@@ -14,7 +14,7 @@
 		23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B737280033FC000EDA70 /* Assets.xcassets */; };
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
 		23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74228004694000EDA70 /* JourneyViewController.swift */; };
-		23D1B74528004768000EDA70 /* GPXMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74428004768000EDA70 /* GPXMap.swift */; };
+		23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74428004768000EDA70 /* GPXMapView.swift */; };
 		23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74828005C16000EDA70 /* BaseViewController.swift */; };
 		23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74F28005E16000EDA70 /* GPXSession.swift */; };
 		23D1B75228005F2D000EDA70 /* GPXFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */; };
@@ -59,7 +59,7 @@
 		23D1B73A280033FC000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D1B73C280033FC000EDA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D1B74228004694000EDA70 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
-		23D1B74428004768000EDA70 /* GPXMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXMap.swift; sourceTree = "<group>"; };
+		23D1B74428004768000EDA70 /* GPXMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXMapView.swift; sourceTree = "<group>"; };
 		23D1B74828005C16000EDA70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		23D1B74F28005E16000EDA70 /* GPXSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSession.swift; sourceTree = "<group>"; };
 		23D1B75128005F2D000EDA70 /* GPXFileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFileInfo.swift; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				23D1B732280033FB000EDA70 /* ViewController.swift */,
-				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B74828005C16000EDA70 /* BaseViewController.swift */,
+				23D1B7E12803C21E000EDA70 /* Profile */,
 				23D1B7912800B08D000EDA70 /* Journey */,
 			);
 			path = ViewController;
@@ -199,7 +199,7 @@
 		23D1B76A28006116000EDA70 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B74428004768000EDA70 /* GPXMap.swift */,
+				23D1B74428004768000EDA70 /* GPXMapView.swift */,
 				23D1B768280060EC000EDA70 /* DistanceLabel.swift */,
 			);
 			path = Journey;
@@ -235,6 +235,14 @@
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
 			);
 			path = Journey;
+			sourceTree = "<group>";
+		};
+		23D1B7E12803C21E000EDA70 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		280213B7E321F791376F648A /* Frameworks */ = {
@@ -408,7 +416,7 @@
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
-				23D1B74528004768000EDA70 /* GPXMap.swift in Sources */,
+				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,

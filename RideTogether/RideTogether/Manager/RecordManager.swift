@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 class RecordManager {
     
-    var userId: String { UserManager.shared.userInfo.uid }
+//    var userId: String { UserManager.shared.userInfo.uid }
     
     lazy var storage = Storage.storage()
     
@@ -36,7 +36,8 @@ class RecordManager {
             //- count : 302
             //▿ pointer : 0x000000013510ace0
             //  - pointerValue : 5185252576
-            let recordRef = storageRef.child("records").child(userId)
+//            let recordRef = storageRef.child("records").child(userId)
+            let recordRef = storageRef.child("records")
             // gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(fileName)
 
@@ -83,7 +84,7 @@ class RecordManager {
         
         var record = Record()
         
-        record.uid = userId
+//        record.uid = userId
         
         record.recordId = document.documentID
         
@@ -103,87 +104,88 @@ class RecordManager {
         print("sucessfully")
     }
     
-    func fetchRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
-        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
-        collection.getDocuments { (querySnapshot, error) in
-            
-            guard let querySnapshot = querySnapshot else { return }
-            
-            if let error = error {
-                
-                completion(.failure(error))
-                
-            } else {
-                
-                var records = [Record]()
-                
-                for document in querySnapshot.documents {
-                    
-                    do {
-                        
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
-                            
-                            records.append(record)
-                            
-                        }
-                        
-                    } catch {
-                        
-                        completion(.failure(error))
-                    }
-                }
-                
-                records.sort { $0.createdTime.seconds < $1.createdTime.seconds }
-                
-                completion(.success(records))
-            }
-        }
-    }
-    
-    func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        let recordRef = storageRef.child("records").child(userId)
-        
-        let spaceRef = recordRef.child(fileName)
-        
-        spaceRef.delete { error in
-            
-            if let error = error {
-                
-                print("\(error)")
-                
-                completion(.failure(error))
-                
-            } else {
-                
-                self.deleteDbRecords(fileName: fileName)
-                
-                completion(.success("Success"))
-            }
-        }
-    }
-    
-    func deleteDbRecords(fileName: String) {
-        
-        let collection = dataBase.collection(recordsCollection).whereField("record_name", isEqualTo: fileName)
-        
-        collection.getDocuments { (querySnapshot, error) in
-            
-            guard let querySnapshot = querySnapshot else { return }
-            
-            if let error = error {
-                
-                print("\(error)")
-                
-            } else {
-                
-                for document in querySnapshot.documents {
-                    
-                    document.reference.delete()
-                }
-            }
-        }
-    }
+//    func fetchRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
+//
+//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
+//        collection.getDocuments { (querySnapshot, error) in
+//
+//            guard let querySnapshot = querySnapshot else { return }
+//
+//            if let error = error {
+//
+//                completion(.failure(error))
+//
+//            } else {
+//
+//                var records = [Record]()
+//
+//                for document in querySnapshot.documents {
+//
+//                    do {
+//
+//                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+//
+//                            records.append(record)
+//
+//                        }
+//
+//                    } catch {
+//
+//                        completion(.failure(error))
+//                    }
+//                }
+//
+//                records.sort { $0.createdTime.seconds < $1.createdTime.seconds }
+//
+//                completion(.success(records))
+//            }
+//        }
+//    }
+//
+//    func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
+//        
+//        let recordRef = storageRef.child("records").child(userId)
+//        
+//        let spaceRef = recordRef.child(fileName)
+//        
+//        spaceRef.delete { error in
+//            
+//            if let error = error {
+//                
+//                print("\(error)")
+//                
+//                completion(.failure(error))
+//                
+//            } else {
+//                
+//                self.deleteDbRecords(fileName: fileName)
+//                
+//                completion(.success("Success"))
+//            }
+//        }
+//    }
+//    
+//    func deleteDbRecords(fileName: String) {
+//        
+//        let collection = dataBase.collection(recordsCollection).whereField("record_name", isEqualTo: fileName)
+//        
+//        collection.getDocuments { (querySnapshot, error) in
+//            
+//            guard let querySnapshot = querySnapshot else { return }
+//            
+//            if let error = error {
+//                
+//                print("\(error)")
+//                
+//            } else {
+//                
+//                for document in querySnapshot.documents {
+//                    
+//                    document.reference.delete()
+//                }
+//            }
+//        }
+//    }
     
     func detectDeviceAndUpload() {
 
