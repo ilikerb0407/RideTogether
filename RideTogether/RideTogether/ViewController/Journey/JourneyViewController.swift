@@ -14,11 +14,11 @@ import Lottie
 
 class JourneyViewController: BaseViewController {
     
-    let userId = { UserManager.shared.userInfo }
+//    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
-    @IBOutlet weak var map: GPXMap!
+    @IBOutlet weak var map: GPXMapView!
     
     private var stopWatch = StopWatch()
     
@@ -37,9 +37,9 @@ class JourneyViewController: BaseViewController {
         
         manager.pausesLocationUpdatesAutomatically = false
 
-//        manager.allowsBackgroundLocationUpdates = true
+        manager.allowsBackgroundLocationUpdates = true
 //
-//        manager.startUpdatingLocation()
+        manager.startUpdatingLocation()
         
         return manager
     }()
@@ -166,9 +166,15 @@ class JourneyViewController: BaseViewController {
 //        // Pin Button (on the left of start)
         let button = UIButton()
         button.layer.cornerRadius = 24.0
-        button.backgroundColor = UIColor(red: 254.0/255.0, green: 254.0/255.0, blue: 254.0/255.0, alpha: 0.90)
-        button.setImage(UIImage(named: "mappin"), for: UIControl.State())
-        button.setImage(UIImage(named: "mappin.circle.fill"), for: .highlighted)
+        button.backgroundColor = .clear
+        let mappin = UIImage(systemName: "mappin",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
+        let mappinHighlighted = UIImage(systemName: "mappin.circle.fill",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
+        button.setImage(mappin, for: UIControl.State())
+        button.setImage(mappinHighlighted, for: .highlighted)
+//        button.setImage(UIImage(named: "mappin"), for: UIControl.State())
+//        button.setImage(UIImage(named: "mappin.circle.fill"), for: .highlighted)
         button.addTarget(self, action: #selector(JourneyViewController.addPinAtMyLocation), for: .touchUpInside)
         return button
     }()
@@ -182,8 +188,9 @@ class JourneyViewController: BaseViewController {
         self.hasWaypoints = true
     }
     
+    // MARK: 長按功能_ UILongPressGestureRecognizer
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
-        if  gesture.state == UIGestureRecognizer.State.began {
+        if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
             let point: CGPoint = gesture.location(in: self.map)
             map.addWaypointAtViewPoint(point)
@@ -270,7 +277,7 @@ class JourneyViewController: BaseViewController {
         
         stopWatch.delegate = self
         
-//        RecordManager.shared.detectDeviceAndUpload()
+        RecordManager.shared.detectDeviceAndUpload()
         
         setUpMap()
         
@@ -282,6 +289,8 @@ class JourneyViewController: BaseViewController {
         
         self.locationManager.requestAlwaysAuthorization()
     }
+    
+    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -320,11 +329,15 @@ class JourneyViewController: BaseViewController {
     
     func setUpMap() {
         
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+        
         map.delegate = mapViewDelegate
         
         map.showsUserLocation = true
         
-        locationManager.delegate = self
+        // 移動 map 的方式
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
         
@@ -332,7 +345,7 @@ class JourneyViewController: BaseViewController {
         
         map.addGestureRecognizer(panGesture)
         
-        locationManager.startUpdatingLocation()
+        map.rotationGesture.delegate = self
         
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
@@ -347,7 +360,10 @@ class JourneyViewController: BaseViewController {
         )
         
         self.view.addSubview(map)
+        
     }
+    
+    
     
     @objc func trackerButtonTapped() {
         
@@ -355,7 +371,7 @@ class JourneyViewController: BaseViewController {
             
         case .notStarted:
             
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.2) {
                 self.saveButton.alpha = 1.0
                 self.resetButton.alpha = 1.0
                 self.pinButton.alpha = 1.0
@@ -648,13 +664,13 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let newLocation = locations.first!
         
-        let latFormat = String(format: "%.5f", newLocation.coordinate.latitude)
+        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
         
-        let lonFormat = String(format: "%.5f", newLocation.coordinate.longitude)
+        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
         
         let altitude = newLocation.altitude.toAltitude()
         
-        let text = "latitude: \(latFormat) \rlontitude: \(lonFormat) \raltitude: \(altitude)"
+        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
         
         coordsLabel.text = text
         
@@ -670,5 +686,15 @@ extension JourneyViewController: CLLocationManagerDelegate {
             
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
+    }
+    
+    /// When there is a change on the heading (direction in which the device oriented) it makes a request to the map
+    /// to updathe the heading indicator (a small arrow next to user location point)
+    ///
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
+        print("mkMapcamera heading=\(map.camera.heading)")
+        map.heading = newHeading // updates heading variable
+        map.updateHeading() // updates heading view's rotation
     }
 }
