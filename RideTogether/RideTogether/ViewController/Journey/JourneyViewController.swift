@@ -184,7 +184,6 @@ class JourneyViewController: BaseViewController {
         let altitude = locationManager.location?.altitude
         let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
         map.addWaypoint(waypoint)
-        
         self.hasWaypoints = true
     }
     
@@ -199,15 +198,7 @@ class JourneyViewController: BaseViewController {
         }
     }
     /// Has the map any waypoint?
-    var hasWaypoints: Bool = false {
-        /// Whenever it is updated, if it has waypoints it sets the save and reset button
-        didSet {
-            if hasWaypoints {
-                saveButton.backgroundColor = .blue
-                resetButton.backgroundColor = .red
-            }
-        }
-    }
+    var hasWaypoints: Bool = false
     
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "wave")
@@ -297,6 +288,7 @@ class JourneyViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = true
         
         self.locationManager.requestAlwaysAuthorization()
+        
     }
     
     
@@ -321,15 +313,15 @@ class JourneyViewController: BaseViewController {
         trackerButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
             direction: .leftSkewed)
-        
+
         saveButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
-                     UIColor.hexStringToUIColor(hex: "#45B649")],
+                     UIColor.hexStringToUIColor(hex: "#1273DE")],
             direction: .leftSkewed)
-        
+
         resetButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
-                     UIColor.hexStringToUIColor(hex: "#f05053")],
+                     UIColor.hexStringToUIColor(hex: "#FCCB00")],
             direction: .leftSkewed)
         
     }
@@ -364,15 +356,12 @@ class JourneyViewController: BaseViewController {
         map.setRegion(region, animated: true)
         
         //If user long presses the map, it will add a Pin (waypoint) at that point
-        map.addGestureRecognizer(
-            UILongPressGestureRecognizer(target: self, action: #selector(JourneyViewController.addPinAtTappedLocation(_:)))
+        map.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(JourneyViewController.addPinAtTappedLocation(_:)))
         )
         
         self.view.addSubview(map)
         
     }
-    
-    
     
     @objc func trackerButtonTapped() {
         
@@ -381,9 +370,9 @@ class JourneyViewController: BaseViewController {
         case .notStarted:
             
             UIView.animate(withDuration: 0.2) {
+                self.trackerButton.alpha = 1.0
                 self.saveButton.alpha = 1.0
                 self.resetButton.alpha = 1.0
-                self.pinButton.alpha = 1.0
             }
             
             gpxTrackingStatus = .tracking
@@ -400,7 +389,7 @@ class JourneyViewController: BaseViewController {
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
-        if gpxTrackingStatus == .notStarted { return }
+        if gpxTrackingStatus == .notStarted && !self.hasWaypoints { return }
         
         let date = Date()
         
@@ -603,8 +592,6 @@ class JourneyViewController: BaseViewController {
         
         trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
         
-//        pinButton.addTarget(self, action:  #selector(addPinAtTappedLocation), for: .touchUpInside)
-        
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
@@ -643,7 +630,6 @@ extension JourneyViewController: StopWatchDelegate {
         timeLabel.text = elapsedTimeString
     }
 }
-
 // MARK: - CLLocationManager Delegate -
 
 extension JourneyViewController: CLLocationManagerDelegate {
@@ -683,8 +669,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
 //        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
 //        coordsLabel.text = text
         
-        
-        
         let kUnknownSpeedText = "0.00"
 
         let speedText = "Speed: \(kUnknownSpeedText)"
@@ -715,6 +699,39 @@ extension JourneyViewController: CLLocationManagerDelegate {
         map.updateHeading() // updates heading view's rotation
     }
     
-    
-    
+    // MARK: 選擇路線後導航 (有時間在做)
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let origin = GPXWaypoint(coordinate: CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 0.00, longitude: locationManager.location?.coordinate.longitude ?? 0.00))
+        
+        let destionation = GPXWaypoint(coordinate: CLLocationCoordinate2D(latitude:  lastLocation?.coordinate.latitude ?? 0.00, longitude: lastLocation?.coordinate.longitude ?? 0.00))
+        
+        // Set options
+//        let routeOptions = NavigationRouteOptions(waypoints: [origin, destination])
+        guard let annotation = view.annotation else {
+                        return
+                    }
+                    let directionRequest = MKDirections.Request()
+//                    directionRequest.source = MKMapItem.forCurrentLocation()
+        directionRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: origin.coordinate))
+        directionRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: destionation.coordinate))
+                    directionRequest.transportType = .automobile
+                    let directions = MKDirections(request: directionRequest)
+        directions.calculate {
+            (response, error) -> Void in
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+                return
+            }
+
+            if !response.routes.isEmpty {
+                let route = response.routes[0]
+                DispatchQueue.main.async { [weak self] in
+                    self?.map.addOverlay(route.polyline)
+                }
+            }
+        }
+    }
 }
