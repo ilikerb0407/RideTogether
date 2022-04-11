@@ -8,12 +8,14 @@
 import UIKit
 import CoreGPX
 import MapKit
+//import CoreLocation
 
 class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-        if overlay is MKPolyline {
+        // MARK: change if to guard in case it will crash
+        guard overlay is MKPolyline else {
             
             let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
             
@@ -30,6 +32,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     }
     
     /// Adds the pin to the map with an animation (comes from the top of the screen)
+    ///
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         var num = 0
         // swiftlint:disable force_cast
@@ -82,6 +85,35 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                     }
             })
         }
+    }
+    // MARK: 選擇路線後導航
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation else {
+                return
+            }
+
+            let directionRequest = MKDirections.Request()
+            directionRequest.source = MKMapItem.forCurrentLocation()
+            directionRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate))
+            directionRequest.transportType = .automobile
+            let directions = MKDirections(request: directionRequest)
+
+            directions.calculate {
+                (response, error) -> Void in
+                guard let response = response else {
+                    if let error = error {
+                        print("Error: \(error)")
+                    }
+                    return
+                }
+
+                if !response.routes.isEmpty {
+                    let route = response.routes[0]
+                    DispatchQueue.main.async { [weak self] in
+//                        self?.mapView.add(route.polyline)
+                    }
+                }
+            }
     }
     
 }
