@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import CoreGPX
 
-class GPXMap: MKMapView {
+class GPXMapView: MKMapView {
 
     let session = GPXSession()
     
@@ -23,6 +23,14 @@ class GPXMap: MKMapView {
 
     var headingOffset: CGFloat?
     
+    /// Heading of device
+    var heading: CLHeading?
+    
+    /// Arrow image to display heading (orientation of the device)
+    /// initialized on MapViewDelegate
+    var headingImageView: UIImageView?
+    
+    /// Gesture for heading arrow to be updated in realtime during user's map interactions
     var rotationGesture = UIRotationGestureRecognizer()
     
     required init?(coder aDecoder: NSCoder) {
@@ -116,4 +124,22 @@ class GPXMap: MKMapView {
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
     }
     
+    /// Updates the heading arrow based on the heading information
+    ///
+    func updateHeading() {
+        guard let heading = heading else { return }
+        
+        headingImageView?.isHidden = false
+        let rotation = CGFloat((heading.trueHeading - camera.heading)/180 * Double.pi)
+        
+        var newRotation = rotation
+        
+        if let headingOffset = headingOffset {
+            newRotation = rotation + headingOffset
+        }
+ 
+        UIView.animate(withDuration: 0.15) {
+            self.headingImageView?.transform = CGAffineTransform(rotationAngle: newRotation)
+        }
+    }
 }

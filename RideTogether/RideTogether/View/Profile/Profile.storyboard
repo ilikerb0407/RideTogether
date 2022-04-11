@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n51-zw-YOs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="73Q-Fc-XQZ">
+            <objects>
+                <navigationController id="n51-zw-YOs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="doc" catalog="system" id="21E-u3-Loe"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4i8-lg-dXH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3J9-PV-Y8M" kind="relationship" relationship="rootViewController" id="6ZA-ec-VQT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBz-kQ-S8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1299" y="50"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="qYq-dE-Oou">
+            <objects>
+                <viewController id="3J9-PV-Y8M" customClass="ProfileViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C1b-Qo-W94">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9ua-7n-7mB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qxy-Gs-kTX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qxy-Gs-kTX" firstAttribute="trailing" secondItem="9ua-7n-7mB" secondAttribute="trailing" id="0XH-Km-tQj"/>
+                            <constraint firstItem="qxy-Gs-kTX" firstAttribute="bottom" secondItem="9ua-7n-7mB" secondAttribute="bottom" id="11G-UW-CYG"/>
+                            <constraint firstItem="9ua-7n-7mB" firstAttribute="top" secondItem="qxy-Gs-kTX" secondAttribute="top" id="kCc-Nz-kTu"/>
+                            <constraint firstItem="9ua-7n-7mB" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="sWV-78-8zo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0aj-GT-TF9"/>
+                    <connections>
+                        <outlet property="tableView" destination="9ua-7n-7mB" id="Xk1-A9-tvJ"/>
+                        <segue destination="Y0Y-w7-fwb" kind="show" identifier="toRecord" id="YZm-ih-Pyd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nrk-gs-Yjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-91" y="98"/>
+        </scene>
+        <!--Tracks View Controller-->
+        <scene sceneID="TC8-NO-X9b">
+            <objects>
+                <viewController id="Y0Y-w7-fwb" customClass="TracksViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ttQ-6p-dhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="d2B-FO-ic1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dh3-JU-7Ld"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pZV-P3-N87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1130" y="98"/>
+        </scene>
+        <!--Track Details View Controller-->
+        <scene sceneID="Jxf-As-eKa">
+            <objects>
+                <viewController id="HPt-2x-2Pf" customClass="TrackDetailsViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GMh-Zn-lc6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9cA-FX-fdz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="x4P-5t-ada"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lgh-Iv-h1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3141" y="-14"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="doc" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
