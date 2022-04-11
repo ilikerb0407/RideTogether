@@ -69,10 +69,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="dh3-JU-7Ld"/>
+                    <connections>
+                        <segue destination="HPt-2x-2Pf" kind="show" identifier="toUserRecord" id="1xl-BP-Erv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZV-P3-N87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1130" y="98"/>
+            <point key="canvasLocation" x="945" y="98"/>
         </scene>
         <!--Track Details View Controller-->
         <scene sceneID="Jxf-As-eKa">
@@ -81,14 +84,28 @@
                     <view key="view" contentMode="scaleToFill" id="GMh-Zn-lc6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CY4-04-0aW" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="425"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="9cA-FX-fdz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CY4-04-0aW" firstAttribute="leading" secondItem="9cA-FX-fdz" secondAttribute="leading" id="W6l-un-ANn"/>
+                            <constraint firstItem="CY4-04-0aW" firstAttribute="trailing" secondItem="9cA-FX-fdz" secondAttribute="trailing" id="gGK-AL-wXg"/>
+                            <constraint firstItem="CY4-04-0aW" firstAttribute="top" secondItem="9cA-FX-fdz" secondAttribute="top" id="oyA-Rs-Maw"/>
+                            <constraint firstItem="9cA-FX-fdz" firstAttribute="bottom" secondItem="CY4-04-0aW" secondAttribute="bottom" constant="300" id="suP-hX-xf6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x4P-5t-ada"/>
+                    <connections>
+                        <outlet property="map" destination="CY4-04-0aW" id="9fB-no-Grz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgh-Iv-h1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3141" y="-14"/>
+            <point key="canvasLocation" x="2059" y="98"/>
         </scene>
     </scenes>
     <resources>

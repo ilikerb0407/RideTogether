@@ -78,6 +78,25 @@ extension TracksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.userRecord.rawValue {
+            if let nextVC = segue.destination as? TrackDetailsViewController {
+                if let record = sender as? Record {
+                    nextVC.record = record
+                }
+            }
+        }
+    }
+    
 }
 
 extension TracksViewController: UITableViewDataSource {
