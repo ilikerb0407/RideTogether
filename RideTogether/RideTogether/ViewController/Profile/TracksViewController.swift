@@ -19,6 +19,7 @@ class TracksViewController: BaseViewController {
         super.viewDidLoad()
         
         
+        setNavigationBar(title: "My_ record")
 
         
     }
