@@ -14,11 +14,11 @@ import Lottie
 
 class JourneyViewController: BaseViewController {
     
-    let userId = { UserManager.shared.userInfo }
+//    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
-    @IBOutlet weak var map: GPXMap!
+    @IBOutlet weak var map: GPXMapView!
     
     private var stopWatch = StopWatch()
     
@@ -32,11 +32,14 @@ class JourneyViewController: BaseViewController {
         
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
-        manager.distanceFilter = 2 // meters
+//        manager.distanceFilter = kCLDistanceFilterNone
+        manager.distanceFilter = 2
         
         manager.pausesLocationUpdatesAutomatically = false
-        
+
         manager.allowsBackgroundLocationUpdates = true
+//
+        manager.startUpdatingLocation()
         
         return manager
     }()
@@ -64,7 +67,7 @@ class JourneyViewController: BaseViewController {
                 
                 stopWatch.reset()
                 
-                waveLottieView.isHidden = true
+//                waveLottieView.isHidden = true
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
@@ -80,9 +83,10 @@ class JourneyViewController: BaseViewController {
                 
                 self.stopWatch.start()
                 
-                waveLottieView.isHidden = false
+//                waveLottieView.isHidden = false
                 
-                waveLottieView.play()
+//                waveLottieView.play()
+                
                 
             case .paused:
                 
@@ -90,7 +94,7 @@ class JourneyViewController: BaseViewController {
                 
                 self.stopWatch.stop()
                 
-                waveLottieView.isHidden = true
+//                waveLottieView.isHidden = true
                 
                 self.map.startNewTrackSegment()
             }
@@ -158,18 +162,34 @@ class JourneyViewController: BaseViewController {
         return button
     }()
     
-//    private lazy var pinButton: UIButton = {
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle("Locate", for: .normal)
-//        button.titleLabel?.font = UIFont.regular(size: 16)
-//        button.titleLabel?.textAlignment = .center
-//        button.alpha = 0.5
-//        return button
-//    }()
+    private lazy var pinButton: UIButton = {
+//        // Pin Button (on the left of start)
+        let button = UIButton()
+        button.layer.cornerRadius = 24.0
+        button.backgroundColor = .clear
+        let mappin = UIImage(systemName: "mappin",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
+        let mappinHighlighted = UIImage(systemName: "mappin.circle.fill",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
+        button.setImage(mappin, for: UIControl.State())
+        button.setImage(mappinHighlighted, for: .highlighted)
+//        button.setImage(UIImage(named: "mappin"), for: UIControl.State())
+//        button.setImage(UIImage(named: "mappin.circle.fill"), for: .highlighted)
+        button.addTarget(self, action: #selector(JourneyViewController.addPinAtMyLocation), for: .touchUpInside)
+        return button
+    }()
     
+    @objc func addPinAtMyLocation() {
+        print("Adding Pin at my location")
+        let altitude = locationManager.location?.altitude
+        let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
+        map.addWaypoint(waypoint)
+        self.hasWaypoints = true
+    }
+    
+    // MARK: 長按功能_ UILongPressGestureRecognizer
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
-        if  gesture.state == UIGestureRecognizer.State.began {
+        if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
             let point: CGPoint = gesture.location(in: self.map)
             map.addWaypointAtViewPoint(point)
@@ -178,15 +198,7 @@ class JourneyViewController: BaseViewController {
         }
     }
     /// Has the map any waypoint?
-    var hasWaypoints: Bool = false {
-        /// Whenever it is updated, if it has waypoints it sets the save and reset button
-        didSet {
-            if hasWaypoints {
-                saveButton.backgroundColor = .blue
-                resetButton.backgroundColor = .red
-            }
-        }
-    }
+    var hasWaypoints: Bool = false
     
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "wave")
@@ -202,7 +214,7 @@ class JourneyViewController: BaseViewController {
     
     private lazy var buttonStackView: UIStackView = {
         
-        let view = UIStackView(arrangedSubviews: [followUserButton, trackerButton, saveButton, resetButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton , trackerButton, saveButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -217,7 +229,16 @@ class JourneyViewController: BaseViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.regular(size: 14)
+        label.font = UIFont.regular(size: 20)
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    var speedLabel: UILabel = {
+       let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.regular(size: 30)
         label.textColor = UIColor.white
         return label
     }()
@@ -256,7 +277,7 @@ class JourneyViewController: BaseViewController {
         
         stopWatch.delegate = self
         
-//        RecordManager.shared.detectDeviceAndUpload()
+        RecordManager.shared.detectDeviceAndUpload()
         
         setUpMap()
         
@@ -267,7 +288,10 @@ class JourneyViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = true
         
         self.locationManager.requestAlwaysAuthorization()
+        
     }
+    
+    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -284,30 +308,37 @@ class JourneyViewController: BaseViewController {
         
         resetButton.roundCorners(cornerRadius: otherRadius)
         
+        pinButton.roundCorners(cornerRadius: otherRadius)
+        
         trackerButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
             direction: .leftSkewed)
-        
+
         saveButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
-                     UIColor.hexStringToUIColor(hex: "#45B649")],
+                     UIColor.hexStringToUIColor(hex: "#1273DE")],
             direction: .leftSkewed)
-        
+
         resetButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
-                     UIColor.hexStringToUIColor(hex: "#f05053")],
+                     UIColor.hexStringToUIColor(hex: "#FCCB00")],
             direction: .leftSkewed)
+        
     }
     
     // MARK: - Action
     
     func setUpMap() {
         
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+        
         map.delegate = mapViewDelegate
         
         map.showsUserLocation = true
         
-        locationManager.delegate = self
+        // 移動 map 的方式
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
         
@@ -315,15 +346,21 @@ class JourneyViewController: BaseViewController {
         
         map.addGestureRecognizer(panGesture)
         
-        locationManager.startUpdatingLocation()
+        map.rotationGesture.delegate = self
         
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: center, span: span)
-
+        
         map.setRegion(region, animated: true)
+        
+        //If user long presses the map, it will add a Pin (waypoint) at that point
+        map.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(JourneyViewController.addPinAtTappedLocation(_:)))
+        )
+        
         self.view.addSubview(map)
+        
     }
     
     @objc func trackerButtonTapped() {
@@ -332,7 +369,8 @@ class JourneyViewController: BaseViewController {
             
         case .notStarted:
             
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.2) {
+                self.trackerButton.alpha = 1.0
                 self.saveButton.alpha = 1.0
                 self.resetButton.alpha = 1.0
             }
@@ -351,7 +389,7 @@ class JourneyViewController: BaseViewController {
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
-        if gpxTrackingStatus == .notStarted { return }
+        if gpxTrackingStatus == .notStarted && !self.hasWaypoints { return }
         
         let date = Date()
         
@@ -515,11 +553,11 @@ class JourneyViewController: BaseViewController {
             buttonStackView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
-        let button = UIButton()
+//        let button = UIButton()
         
         buttonStackView.addArrangedSubview(followUserButton)
         
-        buttonStackView.addArrangedSubview(button)
+        buttonStackView.addArrangedSubview(pinButton)
         
         buttonStackView.addArrangedSubview(trackerButton)
         
@@ -535,9 +573,9 @@ class JourneyViewController: BaseViewController {
             
             followUserButton.widthAnchor.constraint(equalToConstant: 50),
             
-            button.heightAnchor.constraint(equalToConstant: 50),
+            pinButton.heightAnchor.constraint(equalToConstant: 50),
             
-            button.widthAnchor.constraint(equalToConstant: 50),
+            pinButton.widthAnchor.constraint(equalToConstant: 50),
             
             trackerButton.heightAnchor.constraint(equalToConstant: 80),
             
@@ -564,15 +602,18 @@ class JourneyViewController: BaseViewController {
     func setUpLabels() {
         
         map.addSubview(coordsLabel)
-        
+        // 座標 - 改成時速
         coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
         
-        map.addSubview(timeLabel)
+        map.addSubview(speedLabel)
+        speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
+        map.addSubview(timeLabel)
+        // 時間
         timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 30)
         
         map.addSubview(totalTrackedDistanceLabel)
-        
+        // 距離
         totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 70, width: 80, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
@@ -589,7 +630,6 @@ extension JourneyViewController: StopWatchDelegate {
         timeLabel.text = elapsedTimeString
     }
 }
-
 // MARK: - CLLocationManager Delegate -
 
 extension JourneyViewController: CLLocationManagerDelegate {
@@ -622,15 +662,20 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let newLocation = locations.first!
         
-        let latFormat = String(format: "%.5f", newLocation.coordinate.latitude)
+//        altitude info if needed
+//        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
+//        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
+//        let altitude = newLocation.altitude.toAltitude()
+//        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
+//        coordsLabel.text = text
         
-        let lonFormat = String(format: "%.5f", newLocation.coordinate.longitude)
+        let kUnknownSpeedText = "0.00"
+
+        let speedText = "Speed: \(kUnknownSpeedText)"
         
-        let altitude = newLocation.altitude.toAltitude()
-        
-        let text = "latitude: \(latFormat) \rlontitude: \(lonFormat) \raltitude: \(altitude)"
-        
-        coordsLabel.text = text
+        //Update speed
+        speedLabel.text = (newLocation.speed < 0) ? kUnknownSpeedText : newLocation.speed.toSpeed()
+
         
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)
@@ -645,5 +690,14 @@ extension JourneyViewController: CLLocationManagerDelegate {
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
     }
-}
+    
+    //   Pin direction
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
+        print("mkMapcamera heading=\(map.camera.heading)")
+        map.heading = newHeading // updates heading variable
+        map.updateHeading() // updates heading view's rotation
+    }
+    // MARK: 選擇路線後導航 (有時間在做)
 
+}
