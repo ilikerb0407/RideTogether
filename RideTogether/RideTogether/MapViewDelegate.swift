@@ -23,7 +23,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             // MARK: routeLine color
             polyLineRenderer.strokeColor = .systemOrange
             
-            polyLineRenderer.lineWidth = 2
+            polyLineRenderer.lineWidth = 3
+            
+            polyLineRenderer.lineCap = .round
             
             return polyLineRenderer
         }

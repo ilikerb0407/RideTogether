@@ -48,6 +48,11 @@
 		23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */; };
 		23D1B7A12802147C000EDA70 /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 		23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E228041F67000EDA70 /* TracksViewController.swift */; };
+		23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */; };
+		23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E6280428B3000EDA70 /* ProfileItem.swift */; };
+		23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */; };
+		23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */; };
+		23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7ED2804347B000EDA70 /* UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +98,11 @@
 		23D1B7942800B0FD000EDA70 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23D1B7E228041F67000EDA70 /* TracksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
+		23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
+		23D1B7E6280428B3000EDA70 /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
+		23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		23D1B7ED2804347B000EDA70 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +177,7 @@
 				23D1B74E28005DE1000EDA70 /* GPX */,
 				23D1B76328006092000EDA70 /* UserInfo.swift */,
 				23D1B765280060A6000EDA70 /* Record.swift */,
+				23D1B7E6280428B3000EDA70 /* ProfileItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,7 +204,7 @@
 			children = (
 				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
 				23D1B76A28006116000EDA70 /* Journey */,
-				23D1B7942800B0FD000EDA70 /* Profile.storyboard */,
+				23D1B7E828042C88000EDA70 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 				23D1B77828006229000EDA70 /* UIViewExtension.swift */,
 				23D1B77A28006243000EDA70 /* UIColor+Extension.swift */,
 				23D1B77C28006259000EDA70 /* TimeFormater.swift */,
+				23D1B7ED2804347B000EDA70 /* UITableView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -244,6 +256,17 @@
 			children = (
 				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
+				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		23D1B7E828042C88000EDA70 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B7942800B0FD000EDA70 /* Profile.storyboard */,
+				23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */,
+				23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -329,6 +352,7 @@
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
+				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */,
@@ -413,12 +437,15 @@
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
+				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
+				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
+				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
 				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
@@ -428,6 +455,7 @@
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
+				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,

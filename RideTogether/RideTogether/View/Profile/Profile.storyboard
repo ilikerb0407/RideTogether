@@ -34,40 +34,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7i6-aU-asl">
-                                <rect key="frame" x="0.0" y="381" width="414" height="432"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dle-rM-WC9">
+                                <rect key="frame" x="0.0" y="188" width="414" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7i6-aU-asl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="293" id="0j4-cl-VF3"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="7i6-aU-asl" secondAttribute="bottom" id="WQy-qR-gTy"/>
-                            <constraint firstItem="7i6-aU-asl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aD2-LO-m2y"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7i6-aU-asl" secondAttribute="trailing" id="bPR-xa-cQk"/>
+                            <constraint firstItem="dle-rM-WC9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="Fj4-fy-ffL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dle-rM-WC9" secondAttribute="bottom" id="Ohb-e0-Mif"/>
+                            <constraint firstItem="dle-rM-WC9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Y2i-Ps-wgQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dle-rM-WC9" secondAttribute="trailing" id="oXP-Lu-BV2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1bW-XU-4LI"/>
+                    <connections>
+                        <segue destination="Y0Y-w7-fwb" kind="show" id="Swu-4h-mP1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474" y="50"/>
+            <point key="canvasLocation" x="-475.36231884057975" y="49.553571428571423"/>
         </scene>
-        <!--View Controller-->
+        <!--Tracks View Controller-->
         <scene sceneID="TC8-NO-X9b">
             <objects>
-                <viewController id="Y0Y-w7-fwb" sceneMemberID="viewController">
+                <viewController id="Y0Y-w7-fwb" customClass="TracksViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ttQ-6p-dhQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="d2B-FO-ic1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dh3-JU-7Ld"/>
+                    <connections>
+                        <segue destination="HPt-2x-2Pf" kind="show" id="f5E-ZX-BZo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZV-P3-N87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276.81159420289856" y="49.553571428571423"/>
+            <point key="canvasLocation" x="389.85507246376812" y="49.553571428571423"/>
+        </scene>
+        <!--Track Details View Controller-->
+        <scene sceneID="Jxf-As-eKa">
+            <objects>
+                <viewController id="HPt-2x-2Pf" customClass="TrackDetailsViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GMh-Zn-lc6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9cA-FX-fdz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="x4P-5t-ada"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lgh-Iv-h1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1279.7101449275362" y="49.553571428571423"/>
         </scene>
     </scenes>
     <resources>
