@@ -113,6 +113,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.present(controller, animated: true, completion: nil)
     }
+    
     // 前一頁的button
     func setNavigationBar(title: String) {
         

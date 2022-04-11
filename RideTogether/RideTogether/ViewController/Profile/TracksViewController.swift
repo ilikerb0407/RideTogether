@@ -7,14 +7,25 @@
 
 import UIKit
 
-class TracksViewController: UIViewController {
+class TracksViewController: BaseViewController {
 
+    
+    var record = [Record]()
+    
+    var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
+        
     }
     
 
+    
+    
   
 
 }
