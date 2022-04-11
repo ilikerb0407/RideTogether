@@ -16,16 +16,22 @@ class ProfileTableViewCell: UITableViewCell {
     
     @IBOutlet weak var itemBackground : UIView!
     
-  
     func setUpCell(indexPath: IndexPath) {
         
         itemTitle.text = ProfileItemType.allCases[indexPath.item].title
+        
+        itemImage.contentMode = .scaleToFill
+        
+        itemImage.image = ProfileItemType.allCases[indexPath.item].image
+    
         
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        
+        contentView.backgroundColor = .clear
     }
     
     override func layoutSubviews() {
