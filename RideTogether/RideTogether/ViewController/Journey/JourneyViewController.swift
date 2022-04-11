@@ -698,40 +698,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
-    
     // MARK: 選擇路線後導航 (有時間在做)
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        let origin = GPXWaypoint(coordinate: CLLocationCoordinate2D(latitude: locationManager.location?.coordinate.latitude ?? 0.00, longitude: locationManager.location?.coordinate.longitude ?? 0.00))
-        
-        let destionation = GPXWaypoint(coordinate: CLLocationCoordinate2D(latitude:  lastLocation?.coordinate.latitude ?? 0.00, longitude: lastLocation?.coordinate.longitude ?? 0.00))
-        
-        // Set options
-//        let routeOptions = NavigationRouteOptions(waypoints: [origin, destination])
-        guard let annotation = view.annotation else {
-                        return
-                    }
-                    let directionRequest = MKDirections.Request()
-//                    directionRequest.source = MKMapItem.forCurrentLocation()
-        directionRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: origin.coordinate))
-        directionRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: destionation.coordinate))
-                    directionRequest.transportType = .automobile
-                    let directions = MKDirections(request: directionRequest)
-        directions.calculate {
-            (response, error) -> Void in
-            guard let response = response else {
-                if let error = error {
-                    print("Error: \(error)")
-                }
-                return
-            }
 
-            if !response.routes.isEmpty {
-                let route = response.routes[0]
-                DispatchQueue.main.async { [weak self] in
-                    self?.map.addOverlay(route.polyline)
-                }
-            }
-        }
-    }
 }
