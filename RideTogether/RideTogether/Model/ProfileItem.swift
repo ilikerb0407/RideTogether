@@ -14,6 +14,8 @@ protocol ProfileItemContent {
     var title: String { get }
     
     var backgroundColor: UIColor? { get }
+    
+    var image: UIImage? { get }
 
 }
 
@@ -32,6 +34,13 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         switch self {
         case .routeRecord:
             return UIColor.orange
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .routeRecord:
+            return UIImage.init(systemName: "bicycle")
         }
     }
 }
