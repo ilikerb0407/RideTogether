@@ -105,6 +105,9 @@ class RecordManager {
     }
     
     func fetchRecords(completion: @escaping (Result<[Record],Error>) -> Void) {
+        
+//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
+        
         let collection = dataBase.collection(recordsCollection)
         collection.getDocuments { (querySnapshot, error) in
             
@@ -131,46 +134,7 @@ class RecordManager {
             }
         }
         
-        
-        
     }
-//    func fetchRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
-//
-//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
-//        collection.getDocuments { (querySnapshot, error) in
-//
-//            guard let querySnapshot = querySnapshot else { return }
-//
-//            if let error = error {
-//
-//                completion(.failure(error))
-//
-//            } else {
-//
-//                var records = [Record]()
-//
-//                for document in querySnapshot.documents {
-//
-//                    do {
-//
-//                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
-//
-//                            records.append(record)
-//
-//                        }
-//
-//                    } catch {
-//
-//                        completion(.failure(error))
-//                    }
-//                }
-//
-//                records.sort { $0.createdTime.seconds < $1.createdTime.seconds }
-//
-//                completion(.success(records))
-//            }
-//        }
-//    }
 //
 //    func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
 //        
