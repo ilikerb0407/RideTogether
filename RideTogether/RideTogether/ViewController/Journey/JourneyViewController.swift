@@ -676,19 +676,22 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let newLocation = locations.first!
         
+//        altitude info if needed
 //        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
 //        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
 //        let altitude = newLocation.altitude.toAltitude()
-        
-        /// Text to display unknown speed.
-        let kUnknownSpeedText = "·.··"
-        
-       
 //        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
-//        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
-        let speedText = "Speed: \(kUnknownSpeedText)"
 //        coordsLabel.text = text
-        speedLabel.text = speedText
+        
+        
+        
+        let kUnknownSpeedText = "0.00"
+
+        let speedText = "Speed: \(kUnknownSpeedText)"
+        
+        //Update speed
+        speedLabel.text = (newLocation.speed < 0) ? kUnknownSpeedText : newLocation.speed.toSpeed()
+
         
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)
@@ -704,13 +707,14 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
     
-    /// When there is a change on the heading (direction in which the device oriented) it makes a request to the map
-    /// to updathe the heading indicator (a small arrow next to user location point)
-    ///
+    //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
         print("mkMapcamera heading=\(map.camera.heading)")
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
+    
+    
+    
 }
