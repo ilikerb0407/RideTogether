@@ -50,6 +50,19 @@ class TracksViewController: BaseViewController {
         }
     }
     
+    
+    @objc func headerRefresh() {
+        
+        fetchRecords()
+        
+        tableView.reloadData()
+        
+        self.tableView.mj_header?.endRefreshing()
+        
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +70,11 @@ class TracksViewController: BaseViewController {
         
         fetchRecords()
         
+        tableView.beginHeaderRefreshing()
         
+        tableView.endHeaderRefreshing()
+        
+        tableView.reloadData()
 
     }
     
@@ -67,8 +84,6 @@ class TracksViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
     }
-    
-    
     
 }
 
@@ -81,6 +96,22 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
+                switch result {
+                case .success(_):
+                    self.records.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .left)
+                    
+                case .failure(let error):
+                    print ("delete error: \(error)")
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
