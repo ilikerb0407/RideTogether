@@ -35,6 +35,7 @@ extension Double {
         return self * kilometersPerHourInOneMeterPerSecond
     }
     
+    
     func toKilometersPerHour() -> String {
         return String(format: "%.3fkm/h", toKilometersPerHour() as Double)
     }

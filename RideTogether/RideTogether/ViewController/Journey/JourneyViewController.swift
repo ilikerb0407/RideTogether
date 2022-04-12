@@ -12,7 +12,28 @@ import CoreLocation
 import Firebase
 import Lottie
 
-class JourneyViewController: BaseViewController {
+class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
+    
+    func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
+        //emulate a reset button tap
+        self.resetButtonTapped()
+        //println("Loaded GPX file", gpx.gpx())
+//        lastGpxFilename = gpxFilename
+        // adds last file name to core data as well
+//        self.map.coreDataHelper.add(toCoreData: gpxFilename, willContinueAfterSave: false)
+        //force reset timer just in case reset does not do it
+        self.stopWatch.reset()
+        //load data
+        self.map.importFromGPXRoot(gpxRoot)
+        //stop following user
+        self.followUser = false
+        //center map in GPX data
+        self.map.regionToGPXExtent()
+        
+        self.gpxTrackingStatus = .paused
+        
+        self.totalTrackedDistanceLabel.distance = self.map.session.totalTrackedDistance
+    }
     
 //    let userId = { UserManager.shared.userInfo }
     
@@ -121,12 +142,14 @@ class JourneyViewController: BaseViewController {
         }
     }
     private lazy var folderButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
         let image = UIImage(systemName: "folder",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
         return button
     }()
     
@@ -221,12 +244,22 @@ class JourneyViewController: BaseViewController {
     
     private lazy var buttonStackView: UIStackView = {
         
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton , trackerButton, saveButton, resetButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
         view.distribution = .equalSpacing
         view.alignment = .bottom
+        return view
+    }()
+    
+    private lazy var leftStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [folderButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = 8
+        view.distribution = .equalSpacing
+        view.alignment = .leading
         return view
     }()
     
@@ -311,6 +344,8 @@ class JourneyViewController: BaseViewController {
         
         let otherRadius = saveButton.frame.height / 2
         
+        folderButton.roundCorners(cornerRadius: otherRadius)
+        
         followUserButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.roundCorners(cornerRadius: trakerRadius)
@@ -366,12 +401,12 @@ class JourneyViewController: BaseViewController {
         
         map.setRegion(region, animated: true)
         
-        //If user long presses the map, it will add a Pin (waypoint) at that point
-        map.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(JourneyViewController.addPinAtTappedLocation(_:)))
-        )
+//   If user long presses the map, it will add a Pin (waypoint) at that point
+        
+        map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
+                                                            action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map)
-        
     }
     
     @objc func trackerButtonTapped() {
@@ -467,10 +502,13 @@ class JourneyViewController: BaseViewController {
         self.followUser = !self.followUser
     }
     
-    @objc func folderButtonTapped() {
-        
+    @objc func openFolderViewController() {
+        print("openFolderViewController")
+        let vc = GPXFilesTableViewController(nibName: nil, bundle: nil)
+        vc.delegate = self
+        let navController = UINavigationController(rootViewController: vc)
+        self.present(navController, animated: true) { () -> Void in }
     }
-    
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -557,6 +595,7 @@ class JourneyViewController: BaseViewController {
     func setUpButtonsStackView() {
         
         view.addSubview(buttonStackView)
+        view.addSubview(leftStackView)
         
         
         NSLayoutConstraint.activate([
@@ -567,8 +606,16 @@ class JourneyViewController: BaseViewController {
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
-            buttonStackView.heightAnchor.constraint(equalToConstant: 80)
-        ])
+            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
+            
+            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            
+            leftStackView.widthAnchor.constraint(equalToConstant: 50),
+            
+            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
+            
+            leftStackView.heightAnchor.constraint(equalToConstant: 50)
+        ] )
         
 //        let button = UIButton()
         
@@ -581,6 +628,8 @@ class JourneyViewController: BaseViewController {
         buttonStackView.addArrangedSubview(saveButton)
         
         buttonStackView.addArrangedSubview(resetButton)
+        
+        leftStackView.addArrangedSubview(folderButton)
         
         // MARK: button constraint
         
@@ -604,7 +653,11 @@ class JourneyViewController: BaseViewController {
             
             resetButton.heightAnchor.constraint(equalToConstant: 50),
             
-            resetButton.widthAnchor.constraint(equalToConstant: 50)
+            resetButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            folderButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            folderButton.widthAnchor.constraint(equalToConstant: 50)
         ])
         
         trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
@@ -614,20 +667,21 @@ class JourneyViewController: BaseViewController {
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
         followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        
+        folderButton.addTarget(self, action: #selector(openFolderViewController), for: .touchUpInside)
     }
     
     func setUpLabels() {
         
-        map.addSubview(coordsLabel)
-        // 座標 - 改成時速
-        coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
+//        map.addSubview(coordsLabel)
+////         座標 - 改成時速
+//        coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
         
         map.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
-        map.addSubview(folderButton)
-        folderButton.frame = CGRect(x: 10, y: 60, width: 100, height: 100)
-        folderButton.addTarget(self, action: #selector(folderButtonTapped), for: .touchUpInside)
+//        map.addSubview(folderButton)
+//        speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
         map.addSubview(timeLabel)
         // 時間
