@@ -12,6 +12,7 @@ class TracksViewController: BaseViewController {
 
     
     var records = [Record]()
+    
     private let header = MJRefreshNormalHeader()
     
     private var tableView: UITableView! {
@@ -26,19 +27,33 @@ class TracksViewController: BaseViewController {
         
         setNavigationBar(title: "TrackTableView")
         
-        tableView = UITableView(frame: .zero, style: .plain)
+        tableView = UITableView()
         
         tableView.registerCellWithNib(identifier: TrackTableViewCell.identifier, bundle: nil)
         
-        view.stickSubView(tableView)
+        view.addSubview(tableView)
         
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
     }
     
     func fetchRecords() {
+        
         RecordManager.shared.fetchRecords { [weak self] result in
             switch result {
             case .success(let records):
@@ -50,18 +65,17 @@ class TracksViewController: BaseViewController {
         }
     }
     
-    
-    @objc func headerRefresh() {
+     @objc func headerRefresh() {
         
         fetchRecords()
         
         tableView.reloadData()
         
         self.tableView.mj_header?.endRefreshing()
-        
-        
-        
     }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,11 +84,9 @@ class TracksViewController: BaseViewController {
         
         fetchRecords()
         
-        tableView.beginHeaderRefreshing()
+        tableView.mj_header = header
         
-        tableView.endHeaderRefreshing()
-        
-        tableView.reloadData()
+        header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
 
     }
     
@@ -82,6 +94,7 @@ class TracksViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
+        
         self.tabBarController?.tabBar.isHidden = false
     }
     

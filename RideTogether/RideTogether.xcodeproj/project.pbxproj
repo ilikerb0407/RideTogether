@@ -55,7 +55,6 @@
 		23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7ED2804347B000EDA70 /* UITableView.swift */; };
 		23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7F028045A72000EDA70 /* TrackTableViewCell.swift */; };
 		23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */; };
-		23D1B7F628053461000EDA70 /* MJRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7F528053460000EDA70 /* MJRefresher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,7 +107,7 @@
 		23D1B7ED2804347B000EDA70 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		23D1B7F028045A72000EDA70 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
-		23D1B7F528053460000EDA70 /* MJRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresher.swift; sourceTree = "<group>"; };
+		23D1B7F8280561D3000EDA70 /* MJRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresher.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +128,7 @@
 		23D1B722280033FB000EDA70 = {
 			isa = PBXGroup;
 			children = (
+				23D1B7F7280561D3000EDA70 /* Third Party Wrapper */,
 				23D1B72D280033FB000EDA70 /* RideTogether */,
 				23D1B72C280033FB000EDA70 /* Products */,
 				B8861B4BB71FEA4F16110C05 /* Pods */,
@@ -148,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
-				23D1B7F428053424000EDA70 /* Third Party Wrapper */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B782280062E9000EDA70 /* MapViewDelegate.swift */,
 				23D1B7842800632F000EDA70 /* Manager */,
@@ -288,10 +287,10 @@
 			path = Track;
 			sourceTree = "<group>";
 		};
-		23D1B7F428053424000EDA70 /* Third Party Wrapper */ = {
+		23D1B7F7280561D3000EDA70 /* Third Party Wrapper */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B7F528053460000EDA70 /* MJRefresher.swift */,
+				23D1B7F8280561D3000EDA70 /* MJRefresher.swift */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
@@ -477,7 +476,6 @@
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
-				23D1B7F628053461000EDA70 /* MJRefresher.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
