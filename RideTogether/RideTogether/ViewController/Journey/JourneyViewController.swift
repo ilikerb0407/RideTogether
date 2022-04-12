@@ -120,6 +120,16 @@ class JourneyViewController: BaseViewController {
             }
         }
     }
+    private lazy var folderButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        let image = UIImage(systemName: "folder",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        return button
+    }()
+    
     
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
@@ -220,6 +230,7 @@ class JourneyViewController: BaseViewController {
         return view
     }()
     
+    
     // MARK: 之後再改字體
     
      var coordsLabel: UILabel = {
@@ -239,6 +250,7 @@ class JourneyViewController: BaseViewController {
         label.textColor = UIColor.white
         return label
     }()
+
     
      var timeLabel: UILabel = {
         let label = UILabel()
@@ -455,6 +467,11 @@ class JourneyViewController: BaseViewController {
         self.followUser = !self.followUser
     }
     
+    @objc func folderButtonTapped() {
+        
+    }
+    
+    
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
         if self.followUser {
@@ -541,6 +558,7 @@ class JourneyViewController: BaseViewController {
         
         view.addSubview(buttonStackView)
         
+        
         NSLayoutConstraint.activate([
             
             buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -606,6 +624,10 @@ class JourneyViewController: BaseViewController {
         
         map.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
+        
+        map.addSubview(folderButton)
+        folderButton.frame = CGRect(x: 10, y: 60, width: 100, height: 100)
+        folderButton.addTarget(self, action: #selector(folderButtonTapped), for: .touchUpInside)
         
         map.addSubview(timeLabel)
         // 時間
