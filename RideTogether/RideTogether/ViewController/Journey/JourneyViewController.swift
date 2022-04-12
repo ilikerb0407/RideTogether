@@ -32,14 +32,11 @@ class JourneyViewController: BaseViewController {
         
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
-//        manager.distanceFilter = kCLDistanceFilterNone
-        manager.distanceFilter = 2
+        manager.distanceFilter = 2 // meters
         
         manager.pausesLocationUpdatesAutomatically = false
-
+        
         manager.allowsBackgroundLocationUpdates = true
-//
-        manager.startUpdatingLocation()
         
         return manager
     }()
@@ -274,6 +271,8 @@ class JourneyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
         
         stopWatch.delegate = self
         
