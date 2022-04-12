@@ -36,9 +36,10 @@ class RecordManager {
             //- count : 302
             //▿ pointer : 0x000000013510ace0
             //  - pointerValue : 5185252576
-//            let recordRef = storageRef.child("records").child(userId)
+            // 還未辨識userId
+            //  let recordRef = storageRef.child("records").child(userId)
             let recordRef = storageRef.child("records")
-            // gs://bikeproject-59c89.appspot.com/records
+            //  gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(fileName)
 
             spaceRef.putData(data, metadata: nil) { result in
@@ -54,7 +55,7 @@ class RecordManager {
                         case .success(let url):
 
                             completion(.success(url))
-
+                            // 上傳到FireBase DataBase
                             self.uploadRecordToDb(fileName: fileName, fileURL: url)
 
                             GPXFileManager.uploadTrackLengthToDb(fileURL: url)
@@ -135,51 +136,53 @@ class RecordManager {
         }
         
     }
-//
-//    func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
-//        
+
+    func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
 //        let recordRef = storageRef.child("records").child(userId)
-//        
-//        let spaceRef = recordRef.child(fileName)
-//        
-//        spaceRef.delete { error in
-//            
-//            if let error = error {
-//                
-//                print("\(error)")
-//                
-//                completion(.failure(error))
-//                
-//            } else {
-//                
-//                self.deleteDbRecords(fileName: fileName)
-//                
-//                completion(.success("Success"))
-//            }
-//        }
-//    }
-//    
-//    func deleteDbRecords(fileName: String) {
-//        
-//        let collection = dataBase.collection(recordsCollection).whereField("record_name", isEqualTo: fileName)
-//        
-//        collection.getDocuments { (querySnapshot, error) in
-//            
-//            guard let querySnapshot = querySnapshot else { return }
-//            
-//            if let error = error {
-//                
-//                print("\(error)")
-//                
-//            } else {
-//                
-//                for document in querySnapshot.documents {
-//                    
-//                    document.reference.delete()
-//                }
-//            }
-//        }
-//    }
+        
+        let recordRef = storageRef.child("records")
+        
+        let spaceRef = recordRef.child(fileName)
+        
+        spaceRef.delete { error in
+            
+            if let error = error {
+                
+                print("\(error)")
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                self.deleteDbRecords(fileName: fileName)
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func deleteDbRecords(fileName: String) {
+        
+        let collection = dataBase.collection(recordsCollection).whereField("record_name", isEqualTo: fileName)
+        
+        collection.getDocuments { (querySnapshot, error) in
+            
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                
+                print("\(error)")
+                
+            } else {
+                
+                for document in querySnapshot.documents {
+                    
+                    document.reference.delete()
+                }
+            }
+        }
+    }
     
     func detectDeviceAndUpload() {
 

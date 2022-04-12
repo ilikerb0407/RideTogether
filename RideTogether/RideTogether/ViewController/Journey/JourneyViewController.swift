@@ -669,14 +669,14 @@ extension JourneyViewController: CLLocationManagerDelegate {
 //        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
 //        coordsLabel.text = text
         
-        let kUnknownSpeedText = "0.00"
+        let rUnknownSpeedText = "0.00"
 
-        let speedText = "Speed: \(kUnknownSpeedText)"
+        let speedText = "Speed: \(rUnknownSpeedText)"
         
         //Update speed
-        speedLabel.text = (newLocation.speed < 0) ? kUnknownSpeedText : newLocation.speed.toSpeed()
-
+        speedLabel.text = (newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed()
         
+
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)
         }

@@ -44,4 +44,5 @@ enum Collection: String {
     case users = "Users"
     
     case trails = "Trails"
+    
 }
