@@ -48,3 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
+
+/// Notifications for file receival from external source.
+extension Notification.Name {
+    
+    /// Use when a file is received from external source.
+    static let didReceiveFileFromURL = Notification.Name("didReceiveFileFromURL")
+    
+    /// Use when a file is received from Apple Watch.
+//    static let didReceiveFileFromAppleWatch = Notification.Name("didReceiveFileFromAppleWatch")
+}
