@@ -1,8 +1,8 @@
 //
-//  TrackDetailsViewController.swift
+//  RecommendDetailViewController.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/11.
+//  Created by Kai Fu Jhuang on 2022/4/13.
 //
 
 import UIKit
@@ -12,15 +12,16 @@ import Firebase
 import CoreGPX
 import CoreLocation
 
-class TrackDetailsViewController: UIViewController {
-
+class RecommendDetailViewController: UIViewController {
+    
     
     @IBOutlet weak var map: GPXMapView!
+    
     
     private let mapViewDelegate = MapViewDelegate()
     
     // 只會有一筆
-    var record = Record()
+    var record = RecommendMap()
     
     func setUp() {
         
@@ -64,7 +65,7 @@ class TrackDetailsViewController: UIViewController {
         
         map.regionToGPXExtent()
     }
-    
+
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -88,5 +89,5 @@ class TrackDetailsViewController: UIViewController {
         setUp()
     }
     
-
+    
 }

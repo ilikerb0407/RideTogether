@@ -745,13 +745,11 @@ extension JourneyViewController: CLLocationManagerDelegate {
 //        coordsLabel.text = text
         
         let rUnknownSpeedText = "0.00"
-
-        let speedText = "Speed: \(rUnknownSpeedText)"
         
-        //Update speed
-        speedLabel.text = (newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed()
+//        Update_speed
         
-
+        speedLabel.text = "speed: \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+        
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)
         }
