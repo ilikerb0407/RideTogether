@@ -217,6 +217,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let altitude = locationManager.location?.altitude
         let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
         map.addWaypoint(waypoint)
+        map.coreDataHelper.add(toCoreData: waypoint)
         self.hasWaypoints = true
     }
     
@@ -435,6 +436,16 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             gpxTrackingStatus = .tracking
         }
     }
+//    /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
+//    ///
+//    func defaultFilename() -> String {
+//        let defaultDate = DefaultDateFormat()
+//        //let dateFormatter = DateFormatter()
+//        //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
+//        let dateStr = defaultDate.getDateFromPrefs()
+//        print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
+//        return dateStr//dateFormatter.string(from: Date())
+//    }
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
@@ -464,14 +475,19 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             let fileName = alertController.textFields?[0].text
             // "2022-04-10_04-21"
-            if let fileName = fileName {
-                GPXFileManager.save(filename: fileName, gpxContents: gpxString)
-            }
+            print ("1\(fileName)1")
             
             self.lastGpxFilename = fileName!
-            self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)//deleteCDRootFromCoreData()
-            self.map.coreDataHelper.clearAllExceptWaypoints()
-            self.map.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
+            
+//            if let fileName = fileName {
+                GPXFileManager.save( fileName!, gpxContents: gpxString)
+                
+                self.lastGpxFilename = fileName!
+                self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)//deleteCDRootFromCoreData()
+                self.map.coreDataHelper.clearAllExceptWaypoints()
+                self.map.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
+                print ("2\(fileName)2")
+//            }
             
             if withReset {
                 self.gpxTrackingStatus = .notStarted
@@ -781,6 +797,10 @@ extension JourneyViewController: CLLocationManagerDelegate {
     }
     // MARK: 選擇路線後導航 (有時間在做)
     
-    
+}
 
+extension Notification.Name {
+    static let loadRecoveredFile = Notification.Name("loadRecoveredFile")
+    static let updateAppearance = Notification.Name("updateAppearance")
+    // swiftlint:disable file_length
 }

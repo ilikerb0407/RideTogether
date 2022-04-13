@@ -12,6 +12,9 @@ import MapKit
 
 class MapViewDelegate: NSObject, MKMapViewDelegate {
     
+    /// Current session of GPX location logging. Handles all background tasks and recording.
+    let session = GPXSession()
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is MKPolyline {
@@ -30,9 +33,64 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
+//    / Displays a pin with whose annotation (bubble) will include delete and edit buttons.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKind(of: MKUserLocation.self) {
+            return nil
+        }
+        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "heading")
+        annotationView.canShowCallout = true
+        annotationView.isDraggable = true
+        
+        
+        let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        deleteButton.setImage(UIImage(named: "delete"), for: UIControl.State())
+        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
+        deleteButton.tag = kDeleteWaypointAccesoryButtonTag
+        annotationView.rightCalloutAccessoryView = deleteButton
+        
+        return annotationView
+    }
+    
+    
+    /// Delete Waypoint Button tag. Used in a waypoint bubble
+    let kDeleteWaypointAccesoryButtonTag = 666
+    
+    /// Handles the actions of delete and edit button
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        print("calloutAccesoryControlTapped ")
+        guard let waypoint = view.annotation as? GPXWaypoint else {
+            return
+        }
+
+        guard let button = control as? UIButton else {
+            return
+        }
+
+        guard let map = mapView as? GPXMapView else {
+            return
+        }
+
+        switch button.tag {
+            
+        case kDeleteWaypointAccesoryButtonTag:
+
+            print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
+            map.removeWaypoint(waypoint)
+
+
+
+        default:
+            print("[calloutAccesoryControlTapped ERROR] unknown control")
+        }
+    }
+   
+    
     /// Adds the pin to the map with an animation (comes from the top of the screen)
     ///
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        
         var num = 0
         // swiftlint:disable force_cast
         let gpxMapView = mapView as! GPXMapView
@@ -76,10 +134,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                                 UIView.animate(withDuration: 0.1, animations: { () -> Void in
                                     annotationView.transform = CGAffineTransform.identity
                                 })
-                                if #available(iOS 10.0, *), !hasImpacted {
-                                    hasImpacted = true
-                                    UIImpactFeedbackGenerator(style: num > 2 ? .heavy : .medium).impactOccurred()
-                                }
+                            
                         })
                     }
             })
