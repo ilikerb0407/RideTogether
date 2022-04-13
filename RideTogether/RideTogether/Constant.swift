@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum SegueIdentifier: String {
 
@@ -20,11 +21,15 @@ enum SegueIdentifier: String {
     case buildTeam = "toBuildTeam"
     
     case userRecord = "toUserRecord"
+    
+    case recommendMaps = "toRecommendMaps"
 }
 
 enum ProfileSegue: String, CaseIterable {
     
     case record = "toRecord"
+    
+    case recommendMap = "toRecommend"
     
     case account = "toAccount"
     
@@ -44,5 +49,9 @@ enum Collection: String {
     case users = "Users"
     
     case trails = "Trails"
+    
+    //trails-maps
+    
+    case maps = "RecommendMap"
     
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* RecommenMap.swift */; };
+		231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2F280671DE00DE2343 /* RecommendViewController.swift */; };
+		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
+		231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */; };
+		231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */; };
+		231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3828067DBD00DE2343 /* MapsManager.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B733280033FB000EDA70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B732280033FB000EDA70 /* ViewController.swift */; };
@@ -61,6 +67,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		231BCB2D28066C3B00DE2343 /* RecommenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenMap.swift; sourceTree = "<group>"; };
+		231BCB2F280671DE00DE2343 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
+		231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = "<group>"; };
+		231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
+		231BCB3828067DBD00DE2343 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +143,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		231BCB352806724F00DE2343 /* RecommendMap */ = {
+			isa = PBXGroup;
+			children = (
+				231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */,
+				231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */,
+			);
+			path = RecommendMap;
+			sourceTree = "<group>";
+		};
 		23D1B722280033FB000EDA70 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +211,7 @@
 				23D1B74E28005DE1000EDA70 /* GPX */,
 				23D1B76328006092000EDA70 /* UserInfo.swift */,
 				23D1B765280060A6000EDA70 /* Record.swift */,
+				231BCB2D28066C3B00DE2343 /* RecommenMap.swift */,
 				23D1B7E6280428B3000EDA70 /* ProfileItem.swift */,
 			);
 			path = Model;
@@ -217,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
+				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
 				23D1B7EF28045A42000EDA70 /* Track */,
@@ -253,6 +276,7 @@
 			children = (
 				23D1B78528006346000EDA70 /* GPXFileManager.swift */,
 				23D1B7872800637A000EDA70 /* RecordManager.swift */,
+				231BCB3828067DBD00DE2343 /* MapsManager.swift */,
 				23D1B78928006396000EDA70 /* UserManager.swift */,
 			);
 			path = Manager;
@@ -273,6 +297,8 @@
 				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
+				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
+				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -384,6 +410,7 @@
 			files = (
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
+				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
@@ -467,14 +494,17 @@
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
+				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				23D1B733280033FB000EDA70 /* ViewController.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
+				231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
 				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
+				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
@@ -482,6 +512,7 @@
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
+				231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */,
 				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
@@ -495,6 +526,7 @@
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
+				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
