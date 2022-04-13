@@ -18,7 +18,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         //emulate a reset button tap
         self.resetButtonTapped()
         //println("Loaded GPX file", gpx.gpx())
-//        lastGpxFilename = gpxFilename
+        lastGpxFilename = gpxFilename
         // adds last file name to core data as well
 //        self.map.coreDataHelper.add(toCoreData: gpxFilename, willContinueAfterSave: false)
         //force reset timer just in case reset does not do it
@@ -40,6 +40,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     private var isDisplayingLocationServicesDenied: Bool = false
     
     @IBOutlet weak var map: GPXMapView!
+    
+    /// Name of the last file that was saved (without extension)
+    var lastGpxFilename: String = ""
     
     private var stopWatch = StopWatch()
     
@@ -465,6 +468,11 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 GPXFileManager.save(filename: fileName, gpxContents: gpxString)
             }
             
+            self.lastGpxFilename = fileName!
+            self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)//deleteCDRootFromCoreData()
+            self.map.coreDataHelper.clearAllExceptWaypoints()
+            self.map.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
+            
             if withReset {
                 self.gpxTrackingStatus = .notStarted
             }
@@ -772,5 +780,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
         map.updateHeading() // updates heading view's rotation
     }
     // MARK: 選擇路線後導航 (有時間在做)
+    
+    
 
 }
