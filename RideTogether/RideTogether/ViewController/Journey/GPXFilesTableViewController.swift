@@ -36,8 +36,8 @@ let kNoFiles = NSLocalizedString("NO_FILES", comment: "no comment")
 class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegate {
 
     /// List of strings with the filenames.
-    var fileList: NSMutableArray = [kNoFiles]
-    
+    var fileList: NSMutableArray = [kNoFiles] 
+     
     /// Is there any GPX file in the directory?
     var gpxFilesFound = false
     
