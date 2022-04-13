@@ -376,6 +376,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
     }
     
+    
+    
     // MARK: - Action
     
     func setUpMap() {
@@ -526,13 +528,41 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.followUser = !self.followUser
     }
     
+//    print("openFolderViewController")
+//    let vc = GPXFilesTableViewController(nibName: nil, bundle: nil)
+//    vc.delegate = self
+//    let navController = UINavigationController(rootViewController: vc)
+//    self.present(navController, animated: true) { () -> Void in }
+    //原本放在folder button 裡面
+    
     @objc func openFolderViewController() {
-        print("openFolderViewController")
-        let vc = GPXFilesTableViewController(nibName: nil, bundle: nil)
-        vc.delegate = self
-        let navController = UINavigationController(rootViewController: vc)
-        self.present(navController, animated: true) { () -> Void in }
+        
+        addRoute()
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+      
+        if overlay is MKPolyline {
+        let lineView = MKPolylineRenderer(overlay: overlay)
+        lineView.strokeColor = .green
+        return lineView
+    
+        }
+      return MKOverlayRenderer()
+    }
+    
+      func addRoute() {
+        guard let points = Park.plist("Taipei1") as? [String] else { return }
+        
+          let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
+        let coords = cgPoints.map { CLLocationCoordinate2D(
+          latitude: CLLocationDegrees($0.x),
+          longitude: CLLocationDegrees($0.y))
+        }
+        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+          print ("===========Pleaseprint")
+        map.addOverlay(myPolyline)
+      }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -703,9 +733,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         map.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
-        
-//        map.addSubview(folderButton)
-//        speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
         map.addSubview(timeLabel)
         // 時間
