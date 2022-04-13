@@ -54,11 +54,14 @@ extension ProfileViewController : UITableViewDelegate {
             let segueId = ProfileSegue.allCases[indexPath.row].rawValue
             performSegue(withIdentifier: segueId, sender: nil)
             
+        case 1 :
+            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
+            performSegue(withIdentifier: segueId, sender: nil)
+            
         default :
             return
         }
     }
-    
     
 }
 

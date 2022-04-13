@@ -22,18 +22,24 @@ protocol ProfileItemContent {
 enum ProfileItemType : ProfileItemContent, CaseIterable {
     
     case routeRecord
+    case offlineMap
     
     var title: String {
         switch self {
         case .routeRecord:
             return " My_Record "
+        case .offlineMap:
+            return "Offline_Map"
         }
+        
     }
     
     var backgroundColor: UIColor? {
         switch self {
         case .routeRecord:
             return UIColor.orange
+        case .offlineMap:
+            return UIColor.blue
         }
     }
     
@@ -41,6 +47,8 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         switch self {
         case .routeRecord:
             return UIImage.init(systemName: "bicycle")
+        case .offlineMap:
+            return UIImage.init(systemName: "map")
         }
     }
 }

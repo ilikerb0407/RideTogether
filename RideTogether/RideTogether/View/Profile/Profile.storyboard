@@ -52,6 +52,7 @@
                     <connections>
                         <outlet property="tableView" destination="9ua-7n-7mB" id="Xk1-A9-tvJ"/>
                         <segue destination="Y0Y-w7-fwb" kind="show" identifier="toRecord" id="YZm-ih-Pyd"/>
+                        <segue destination="EvG-dz-GLE" kind="show" identifier="toRecommend" id="buf-Ie-alL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrk-gs-Yjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -76,6 +77,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZV-P3-N87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="945" y="98"/>
+        </scene>
+        <!--Recommend View Controller-->
+        <scene sceneID="e5h-tH-EFb">
+            <objects>
+                <viewController id="EvG-dz-GLE" customClass="RecommendViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l8w-Bg-qgN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8P0-MG-KnZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bzs-lw-HWW"/>
+                    <connections>
+                        <segue destination="GIu-lS-Y9v" kind="show" identifier="toRecommendMaps" id="2J0-ce-mKA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGO-Va-RcW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="933"/>
         </scene>
         <!--Track Details View Controller-->
         <scene sceneID="Jxf-As-eKa">
@@ -106,6 +126,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgh-Iv-h1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2057.971014492754" y="97.767857142857139"/>
+        </scene>
+        <!--Recommend Detail View Controller-->
+        <scene sceneID="kqZ-oL-zux">
+            <objects>
+                <viewController id="GIu-lS-Y9v" customClass="RecommendDetailViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aze-2k-hs2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yWp-E3-Taw" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="525"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="txR-yI-SD6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="txR-yI-SD6" firstAttribute="bottom" secondItem="yWp-E3-Taw" secondAttribute="bottom" constant="200" id="Go5-IV-mm9"/>
+                            <constraint firstItem="yWp-E3-Taw" firstAttribute="top" secondItem="txR-yI-SD6" secondAttribute="top" id="PSu-Pa-k2d"/>
+                            <constraint firstItem="yWp-E3-Taw" firstAttribute="leading" secondItem="txR-yI-SD6" secondAttribute="leading" id="j3U-aU-j8p"/>
+                            <constraint firstItem="txR-yI-SD6" firstAttribute="trailing" secondItem="yWp-E3-Taw" secondAttribute="trailing" id="mlx-wR-pi9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NHL-p4-etz"/>
+                    <connections>
+                        <outlet property="map" destination="yWp-E3-Taw" id="F0N-LN-WAW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GdO-gD-69j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2058" y="933"/>
         </scene>
     </scenes>
     <resources>
