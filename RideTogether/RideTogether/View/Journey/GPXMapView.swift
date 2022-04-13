@@ -13,6 +13,9 @@ import CoreGPX
 
 
 class GPXMapView: MKMapView {
+    
+    ///
+    let coreDataHelper = CoreDataHelper()
 
     let session = GPXSession()
     
