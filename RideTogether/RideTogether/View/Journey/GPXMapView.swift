@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import CoreGPX
 
+
 class GPXMapView: MKMapView {
 
     let session = GPXSession()

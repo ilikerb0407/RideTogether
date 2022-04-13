@@ -27,6 +27,8 @@ class RecordManager {
     
     private let recordsCollection = Collection.records.rawValue
     
+    // 傳資料到Storage
+    
     func uploadRecord(fileName: String, fileURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
 
         do {
@@ -78,6 +80,8 @@ class RecordManager {
 
         }
     }
+    
+    // 上傳到FireBase DataBase
     
     func uploadRecordToDb(fileName: String, fileURL: URL) {
         
