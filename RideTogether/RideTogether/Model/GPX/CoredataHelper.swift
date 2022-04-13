@@ -330,12 +330,12 @@ class CoreDataHelper {
     func coreDataDeleteAll<T: NSManagedObject>(of type: T.Type) {
         
         print("Core Data Helper: Batch Delete \(T.self) from Core Data")
-
-        if #available(iOS 10.0, *) {
-            modernBatchDelete(of: T.self)
-        } else { // for pre iOS 9 (less efficient, load in memory before removal)
-            legacyBatchDelete(of: T.self)
-        }
+//
+//        if #available(iOS 10.0, *) {
+//            modernBatchDelete(of: T.self)
+//        } else { // for pre iOS 9 (less efficient, load in memory before removal)
+//            legacyBatchDelete(of: T.self)
+//        }
     }
     
     // MARK: Handles recovered data
@@ -376,8 +376,8 @@ class CoreDataHelper {
                     root.tracks.last?.tracksegments[Int(self.lastTracksegmentId)].add(trackpoints: self.tracksegments.first!.trackpoints)
                     self.tracksegments.remove(at: 0)
                 } else {
-                    track.tracksegments = self.tracksegments
-                    root.add(track: track)
+//                    track.tracksegments = self.tracksegments
+//                    root.add(track: track)
                 }
                 root.waypoints = self.waypoints
                 // asks user on what to do with recovered data
@@ -408,7 +408,7 @@ class CoreDataHelper {
                     alertController.addAction(cancelAction)
                     alertController.addAction(continueAction)
                     alertController.addAction(saveAction)
-                    CoreDataAlertView().showActionSheet(alertController)
+//                    CoreDataAlertView().showActionSheet(alertController)
                 }
             } else {
                 // no recovery file will be generated if nothing is recovered (or did not crash).

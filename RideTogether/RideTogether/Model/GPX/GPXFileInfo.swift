@@ -57,7 +57,6 @@ class GPXFileInfo: NSObject {
     
 }
 
-
 /// Extension to display humanized filesizes
 extension Int {
     

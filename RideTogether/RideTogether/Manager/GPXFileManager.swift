@@ -67,7 +67,7 @@ class GPXFileManager {
         return files
     }
     
-    class func save(filename: String, gpxContents: String) {
+    class func save(_ filename: String, gpxContents: String) {
         
         let fileURL: URL = self.URLForFilename(filename)
         
@@ -84,6 +84,7 @@ class GPXFileManager {
                 print("save to Firebase successfully")
                 
                 GPXFileManager.removeFileFromURL(fileURL)
+                
                 
             case .failure(let error):
                 
