@@ -145,6 +145,7 @@ extension TracksViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell: TrackTableViewCell = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(model: self.records[indexPath.row])
