@@ -126,6 +126,7 @@ class GPXMapView: MKMapView {
         session.addWaypoint(waypoint)
         addAnnotation(waypoint)
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
+        print("\(waypoint)")
     }
     
     /// Updates the heading arrow based on the heading information
@@ -145,5 +146,20 @@ class GPXMapView: MKMapView {
         UIView.animate(withDuration: 0.15) {
             self.headingImageView?.transform = CGAffineTransform(rotationAngle: newRotation)
         }
+    }
+    
+    /// - Parameters: The waypoint to remove from the map.
+    ///
+    func removeWaypoint(_ waypoint: GPXWaypoint) {
+        
+        let index = session.waypoints.firstIndex(of: waypoint)
+        
+        if index == nil {
+            print("Waypoint not found")
+            return
+        }
+        removeAnnotation(waypoint)
+        session.waypoints.remove(at: index!)
+        
     }
 }
