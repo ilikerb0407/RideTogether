@@ -112,9 +112,9 @@ import FirebaseStorageSwift
 //    
 //    func updateImageToDb(fileURL: URL) {
 //        
-////        let userId = userInfo.uid
+//        let userId = userInfo.uid
 //        
-////        let docRef = dataBase.collection(usersCollection).document(userId)
+//        let docRef = dataBase.collection(usersCollection).document(userId)
 //        let docRef = dataBase.collection(usersCollection).document()
 //        
 //        userInfo.pictureRef = fileURL.absoluteString

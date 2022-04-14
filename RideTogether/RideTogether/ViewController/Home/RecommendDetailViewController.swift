@@ -1,8 +1,8 @@
 //
-//  TrackDetailsViewController.swift
+//  RecommendDetailViewController.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/11.
+//  Created by Kai Fu Jhuang on 2022/4/13.
 //
 
 import UIKit
@@ -12,15 +12,18 @@ import Firebase
 import CoreGPX
 import CoreLocation
 
-class TrackDetailsViewController: UIViewController {
+// MARK: RecommendRoute
 
+class RecommendDetailViewController: UIViewController {
     
+
     @IBOutlet weak var map: GPXMapView!
+    
     
     private let mapViewDelegate = MapViewDelegate()
     
     // 只會有一筆
-    var record = Record()
+    var record = RecommendMap()
     
     func setUp() {
         
@@ -36,33 +39,17 @@ class TrackDetailsViewController: UIViewController {
         
         praseGPXFile()
         
-        // 分享到塗鴉牆button
-        backToJourneyButton()
+//        rideButton()
         
     }
-    
-    func backToJourneyButton(){
-        let button = NextPageButton(frame: CGRect(x: 200, y: 200, width: 50, height: 50))
-        button.addTarget(self, action: #selector(push), for: .touchUpInside)
-        view.addSubview(button)
-        print ("backtoJOur")
-        
-    }
-    
-    @objc func push(_ sender: UIButton) {
-        
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
-            navigationController?.pushViewController(journeyViewController, animated: true)
-        }
-        print ("push")
-    }
-    
     
     func backButton() {
         let button = PreviousPageButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
+    
+    
     
     @objc func popToPreviosPage(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -84,7 +71,7 @@ class TrackDetailsViewController: UIViewController {
         
         map.regionToGPXExtent()
     }
-    
+
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -108,15 +95,5 @@ class TrackDetailsViewController: UIViewController {
         setUp()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.userRecord.rawValue {
-            if let nextVC = segue.destination as? FollowJourneyViewController {
-                if let record = sender as? Record {
-                    nextVC.record = record
-                }
-            }
-        }
-    }
     
-
 }
