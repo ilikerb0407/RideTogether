@@ -33,6 +33,7 @@ protocol GPXFilesTableViewControllerDelegate: class {
 /// Text displayed when there are no GPX files in the folder.
 let kNoFiles = NSLocalizedString("NO_FILES", comment: "no comment")
 
+// MARK: CoreData會用到的TableViewController
 class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegate {
     
     var records = [Record]()

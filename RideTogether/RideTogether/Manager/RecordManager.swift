@@ -143,6 +143,38 @@ class RecordManager {
         }
         
     }
+    
+    func fetchOneRecord(completion: @escaping (Result<Record,Error>) -> Void) {
+        
+//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
+        
+        let collection = dataBase.collection(recordsCollection)
+        collection.getDocuments { (querySnapshot, error) in
+            
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                
+                var records = Record()
+                
+                for document in querySnapshot.documents {
+                    do {
+                        if let record = try document.data(as: Record.self , decoder: Firestore.Decoder()) {
+                            records.recordRef.append(record.recordRef)
+                        }
+                    }
+                    catch {
+                        completion(.failure(error))
+                    }
+                }
+                
+                completion(.success(records))
+            }
+        }
+        
+    }
 
     func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
         
