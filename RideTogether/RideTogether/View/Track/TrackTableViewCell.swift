@@ -29,6 +29,7 @@ class TrackTableViewCell: UITableViewCell {
     }
     
     func setUpCell(model : Record) {
+        
         trackTitle.text = model.recordName
         trackTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }

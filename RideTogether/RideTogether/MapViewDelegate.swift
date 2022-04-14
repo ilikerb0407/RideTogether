@@ -33,8 +33,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
-//    / Displays a pin with whose annotation (bubble) will include delete and edit buttons.
+//MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
@@ -87,8 +89,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     }
    
     
-    /// Adds the pin to the map with an animation (comes from the top of the screen)
-    ///
+    //MARK:  Adds the pin to the map with an animation (comes from the top of the screen)
+
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         
         var num = 0
