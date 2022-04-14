@@ -1,22 +1,18 @@
 //
-//  TracksViewController.swift
+//  RecommendViewController.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/11.
+//  Created by Kai Fu Jhuang on 2022/4/13.
 //
 
 import UIKit
 import MJRefresh
 
-
-//MARK: User Record
-
-class TracksViewController: BaseViewController {
+// MARK: Recommend-Route
+class RecommendViewController: BaseViewController {
 
     
-    var indexOfRoute:Int = 0
-    
-    var records = [Record]()
+    var maps = [RecommendMap]()
     
     private let header = MJRefreshNormalHeader()
     
@@ -27,14 +23,13 @@ class TracksViewController: BaseViewController {
             tableView.dataSource = self
         }
     }
-    
     func setUpTableView() {
         
-        setNavigationBar(title: "TrackTableView")
+        setNavigationBar(title: "RecommendTableViewController")
         
         tableView = UITableView()
         
-        tableView.registerCellWithNib(identifier: TrackTableViewCell.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: RecommendTableViewCell.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
@@ -59,24 +54,25 @@ class TracksViewController: BaseViewController {
     
     func fetchRecords() {
         
-        RecordManager.shared.fetchRecords { [weak self] result in
+        MapsManager.shared.fetchRecords { [weak self] result in
             switch result {
             case .success(let records):
-                self?.records = records
+                self?.maps = records
                 self?.tableView.reloadData()
             case .failure(let error): print ("fetchData Failure: \(error)")
             }
         }
     }
     
-     @objc func headerRefresh() {
-        
-        fetchRecords()
-        
-        tableView.reloadData()
-        
-        self.tableView.mj_header?.endRefreshing()
-    }
+    @objc func headerRefresh() {
+       
+       fetchRecords()
+       
+       tableView.reloadData()
+       
+       self.tableView.mj_header?.endRefreshing()
+   }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +88,6 @@ class TracksViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
@@ -100,66 +95,43 @@ class TracksViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+
 }
 
-extension TracksViewController: UITableViewDelegate {
+extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
-    }
-    
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
-                switch result {
-                case .success(_):
-                    self.records.remove(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .left)
-                    
-                case .failure(let error):
-                    print ("delete error: \(error)")
-                }
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
-        indexOfRoute = indexPath.row
-        print ("indexOfRoute= \(indexOfRoute)")
+        performSegue(withIdentifier: SegueIdentifier.recommendMaps.rawValue, sender: maps[indexPath.row])
     }
     
-    
-    // MARK: 傳到Detail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.userRecord.rawValue {
-            if let nextVC = segue.destination as? TrackDetailsViewController {
-                if let record = sender as? Record {
+        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
+            if let nextVC = segue.destination as? RecommendDetailViewController {
+                if let record = sender as? RecommendMap {
                     nextVC.record = record
                 }
             }
         }
     }
-    
 }
 
-extension TracksViewController: UITableViewDataSource {
+extension RecommendViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        records.count
+        maps.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: TrackTableViewCell = tableView.dequeueCell(for: indexPath)
+        let cell: RecommendTableViewCell = tableView.dequeueCell(for: indexPath)
         
-        cell.setUpCell(model: self.records[indexPath.row])
+        cell.setUpCell(model: self.maps[indexPath.row])
         
         return cell
     }
 }
+
