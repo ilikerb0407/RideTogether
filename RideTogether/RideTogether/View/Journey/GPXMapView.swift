@@ -11,7 +11,11 @@ import MapKit
 import CoreLocation
 import CoreGPX
 
+
 class GPXMapView: MKMapView {
+    
+    ///
+    let coreDataHelper = CoreDataHelper()
 
     let session = GPXSession()
     
@@ -91,41 +95,54 @@ class GPXMapView: MKMapView {
     }
     
     func importFromGPXRoot(_ gpx: GPXRoot) {
-        clearMap()
+//        clearMap()
         addTrackSegments(for: gpx)
     }
 
     private func addTrackSegments(for gpx: GPXRoot) {
         session.tracks = gpx.tracks
+        
+        
+        session.waypoints = gpx.waypoints
+        for pin in session.waypoints {
+            addWaypoint(pin)
+        }
+        
         for oneTrack in session.tracks {
             session.totalTrackedDistance += oneTrack.length
 
             for segment in oneTrack.segments {
                 let overlay = segment.overlay
                 addOverlay(overlay)
+                
                 let segmentTrackpoints = segment.points
+                
                 for waypoint in segmentTrackpoints {
                     extent.extendAreaToIncludeLocation(waypoint.coordinate)
                 }
             }
         }
     }
+    
+    // MARK: 長按建立座標的 method
     func addWaypointAtViewPoint(_ point: CGPoint) {
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         let waypoint = GPXWaypoint(coordinate: coords)
         addWaypoint(waypoint)
         
     }
-    /// - Parameters: The waypoint to add to the map.
-    ///
+    
+  //MARK: Parameters: The waypoint to add to the map.
+    
+    
     func addWaypoint(_ waypoint: GPXWaypoint) {
         session.addWaypoint(waypoint)
         addAnnotation(waypoint)
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
+        print("\(waypoint)")
     }
     
-    /// Updates the heading arrow based on the heading information
-    ///
+ //MARK: 磁鐵
     func updateHeading() {
         guard let heading = heading else { return }
         
@@ -141,5 +158,20 @@ class GPXMapView: MKMapView {
         UIView.animate(withDuration: 0.15) {
             self.headingImageView?.transform = CGAffineTransform(rotationAngle: newRotation)
         }
+    }
+    
+    //MARK:  移除座標
+    
+    func removeWaypoint(_ waypoint: GPXWaypoint) {
+        
+        let index = session.waypoints.firstIndex(of: waypoint)
+        
+        if index == nil {
+            print("Waypoint not found")
+            return
+        }
+        removeAnnotation(waypoint)
+        session.waypoints.remove(at: index!)
+        
     }
 }
