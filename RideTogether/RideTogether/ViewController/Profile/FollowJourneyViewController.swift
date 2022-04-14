@@ -1,8 +1,8 @@
 //
-//  JourneyViewController.swift
+//  FollowJourneyViewController.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/8.
+//  Created by Kai Fu Jhuang on 2022/4/15.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import CoreLocation
 import Firebase
 import Lottie
 
-class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
+class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
     
     func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
         //emulate a reset button tap
@@ -24,26 +24,113 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         //force reset timer just in case reset does not do it
         self.stopWatch.reset()
         //load data
-        self.map.importFromGPXRoot(gpxRoot)
+        self.map2.importFromGPXRoot(gpxRoot)
         //stop following user
         self.followUser = false
         //center map in GPX data
-        self.map.regionToGPXExtent()
+        self.map2.regionToGPXExtent()
         
         self.gpxTrackingStatus = .paused
         
-        self.totalTrackedDistanceLabel.distance = self.map.session.totalTrackedDistance
+        self.totalTrackedDistanceLabel.distance = self.map2.session.totalTrackedDistance
     }
     
     //    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
-    @IBOutlet weak var map: GPXMapView!
+    
+    @IBOutlet weak var map2: GPXMapView!
     
     /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
+    
+    //MARK: =========
+    
+    
+    var record = Record()
+    // 不同
+//    var record2 = Record()
+    
+    func fetchRecords() {
+        
+        RecordManager.shared.fetchOneRecord { [weak self] result in
+            switch result {
+            case .success(let records):
+                self?.record = records
+                
+//                self?.tableView.reloadData()
+            case .failure(let error): print ("fetchData Failure: \(error)")
+            }
+        }
+    }
+    
+    func showMap() {
+        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+        button.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func addRoute() {
+        guard let points = Park.plist("Taipei1") as? [String] else { return }
+        
+        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
+        let coords = cgPoints.map { CLLocationCoordinate2D(
+            latitude: CLLocationDegrees($0.x),
+            longitude: CLLocationDegrees($0.y))
+        }
+        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+        print ("===========Pleaseprint")
+        map2.addOverlay(myPolyline)
+    }
+    
+    func backButton() {
+        let button = PreviousPageButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    
+    
+    @objc func popToPreviosPage(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func praseGPXFile() {
+    
+        if let inputUrl = URL(string: record.recordRef) {
+            
+            guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
+            
+            didLoadGPXFile(gpxRoot: gpx)
+        }
+    }
+    
+    func didLoadGPXFile(gpxRoot: GPXRoot) {
+        
+        map2.importFromGPXRoot(gpxRoot)
+        
+        map2.regionToGPXExtent()
+    }
+
+    // MARK: - Polyline -
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        
+        updatePolylineColor()
+    }
+    
+    func updatePolylineColor() {
+        
+        for overlay in map2.overlays where overlay is MKPolyline {
+            
+            map2.removeOverlay(overlay)
+            
+            map2.addOverlay(overlay)
+        }
+    }
+    //MARK: =========
     private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
@@ -92,11 +179,12 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
-                map.clearMap()
+                //MARK: 怕把線清掉
+//                map2.clearMap()
                 
-                totalTrackedDistanceLabel.distance = (map.session.totalTrackedDistance)
+                totalTrackedDistanceLabel.distance = (map2.session.totalTrackedDistance)
                 
-                currentSegmentDistanceLabel.distance = (map.session.currentSegmentDistance)
+                currentSegmentDistanceLabel.distance = (map2.session.currentSegmentDistance)
                 
             case .tracking:
                 
@@ -117,7 +205,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 //                waveLottieView.isHidden = true
                 
-                self.map.startNewTrackSegment()
+                self.map2.startNewTrackSegment()
             }
         }
     }
@@ -133,7 +221,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 followUserButton.setImage(image, for: .normal)
                 
-                map.setCenter((map.userLocation.coordinate), animated: true)
+                map2.setCenter((map2.userLocation.coordinate), animated: true)
                 
             } else {
                 
@@ -144,27 +232,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             }
         }
     }
-    private lazy var offlineMapButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        let image = UIImage(systemName: "map",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        return button
-    }()
-    
-    private lazy var loadMapButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        let image = UIImage(systemName: "folder",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        return button
-    }()
     
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
@@ -217,16 +284,16 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         button.setImage(mappinHighlighted, for: .highlighted)
         //        button.setImage(UIImage(named: "mappin"), for: UIControl.State())
         //        button.setImage(UIImage(named: "mappin.circle.fill"), for: .highlighted)
-        button.addTarget(self, action: #selector(JourneyViewController.addPinAtMyLocation), for: .touchUpInside)
+        button.addTarget(self, action: #selector(FollowJourneyViewController.addPinAtMyLocation), for: .touchUpInside)
         return button
     }()
     
     @objc func addPinAtMyLocation() {
         print("Adding Pin at my location")
         let altitude = locationManager.location?.altitude
-        let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
-        map.addWaypoint(waypoint)
-        map.coreDataHelper.add(toCoreData: waypoint)
+        let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map2.userLocation.coordinate, altitude: altitude)
+        map2.addWaypoint(waypoint)
+        map2.coreDataHelper.add(toCoreData: waypoint)
         self.hasWaypoints = true
     }
     
@@ -234,8 +301,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
-            let point: CGPoint = gesture.location(in: self.map)
-            map.addWaypointAtViewPoint(point)
+            let point: CGPoint = gesture.location(in: self.map2)
+            map2.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
         }
@@ -266,27 +333,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return view
     }()
     
-    private lazy var leftStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .vertical
-        view.spacing = 8
-        view.distribution = .equalSpacing
-        view.alignment = .leading
-        return view
-    }()
-    
     
     // MARK: 之後再改字體
     
-    var coordsLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        label.font = UIFont.regular(size: 20)
-        label.textColor = UIColor.white
-        return label
-    }()
     
     var speedLabel: UILabel = {
         let label = UILabel()
@@ -342,11 +391,22 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         setUpLabels()
         
+        praseGPXFile()
+        
+        fetchRecords()
+        
+        backButton()
+        
+        showMap()
         
         navigationController?.isNavigationBarHidden = true
         
         self.locationManager.requestAlwaysAuthorization()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // 畫畫
     }
     
     
@@ -357,10 +417,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let trakerRadius = trackerButton.frame.height / 2
         
         let otherRadius = saveButton.frame.height / 2
-        
-        offlineMapButton.roundCorners(cornerRadius: otherRadius)
-        
-        loadMapButton.roundCorners(cornerRadius: otherRadius)
         
         followUserButton.roundCorners(cornerRadius: otherRadius)
         
@@ -398,9 +454,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         
-        map.delegate = mapViewDelegate
+        map2.delegate = mapViewDelegate
         
-        map.showsUserLocation = true
+        map2.showsUserLocation = true
         
         // 移動 map 的方式
         
@@ -408,23 +464,23 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         panGesture.delegate = self
         
-        map.addGestureRecognizer(panGesture)
+        map2.addGestureRecognizer(panGesture)
         
-        map.rotationGesture.delegate = self
+        map2.rotationGesture.delegate = self
         
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: center, span: span)
         
-        map.setRegion(region, animated: true)
+        map2.setRegion(region, animated: true)
         
         //   If user long presses the map, it will add a Pin (waypoint) at that point
         
-        map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
+        map2.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
-        self.view.addSubview(map)
+        self.view.addSubview(map2)
     }
     
     @objc func trackerButtonTapped() {
@@ -450,16 +506,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             gpxTrackingStatus = .tracking
         }
     }
-    //    /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
-    //    ///
-    //    func defaultFilename() -> String {
-    //        let defaultDate = DefaultDateFormat()
-    //        //let dateFormatter = DateFormatter()
-    //        //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
-    //        let dateStr = defaultDate.getDateFromPrefs()
-    //        print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
-    //        return dateStr//dateFormatter.string(from: Date())
-    //    }
+
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
@@ -485,7 +532,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let saveAction = UIAlertAction(title: "儲存",
                                        style: .default) { _ in
             
-            let gpxString = self.map.exportToGPXString()
+            let gpxString = self.map2.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text
             // "2022-04-10_04-21"
@@ -497,10 +544,10 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             GPXFileManager.save( fileName!, gpxContents: gpxString)
             self.lastGpxFilename = fileName!
             
-            self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)
+            self.map2.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)
             //deleteCDRootFromCoreData()
-            self.map.coreDataHelper.clearAllExceptWaypoints()
-            self.map.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
+            self.map2.coreDataHelper.clearAllExceptWaypoints()
+            self.map2.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
             print ("2\(fileName)2")
             //            }
             
@@ -542,22 +589,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }
     
     
-    //原本放在folder button 裡面
-    
-    @objc func openOfflineMap() {
-        addRoute()
-    }
-    
-    @objc func openFolderViewController() {
-        print("openFolderViewController")
-        let vc = GPXFilesTableViewController(nibName: nil, bundle: nil)
-        vc.delegate = self
-        let navController = UINavigationController(rootViewController: vc)
-        self.present(navController, animated: true) { () -> Void in }
-    }
-    
-    
-    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
@@ -570,19 +601,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return MKOverlayRenderer()
     }
     
-    // MARK: 離線地圖
-    func addRoute() {
-        guard let points = Park.plist("Taipei1") as? [String] else { return }
-        
-        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
-        let coords = cgPoints.map { CLLocationCoordinate2D(
-            latitude: CLLocationDegrees($0.x),
-            longitude: CLLocationDegrees($0.y))
-        }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        print ("===========Pleaseprint")
-        map.addOverlay(myPolyline)
-    }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -647,30 +665,12 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         isDisplayingLocationServicesDenied = false
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        
-        updatePolylineColor()
-    }
-    
-    // MARK: - Polyline -
-    
-    func updatePolylineColor() {
-        
-        for overlay in map.overlays where overlay is MKPolyline {
-            
-            map.removeOverlay(overlay)
-            
-            map.addOverlay(overlay)
-        }
-    }
-    
+
     // MARK: - UI Settings -
     
     func setUpButtonsStackView() {
         
         view.addSubview(buttonStackView)
-        view.addSubview(leftStackView)
-        
         
         NSLayoutConstraint.activate([
             
@@ -680,19 +680,10 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
-            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
-            
-            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            
-            leftStackView.widthAnchor.constraint(equalToConstant: 50),
-            
-            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
-            
-            leftStackView.heightAnchor.constraint(equalToConstant: 100)
+            buttonStackView.heightAnchor.constraint(equalToConstant: 80)
         ] )
         
-        //        let button = UIButton()
-        
+   
         buttonStackView.addArrangedSubview(followUserButton)
         
         buttonStackView.addArrangedSubview(pinButton)
@@ -703,9 +694,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         buttonStackView.addArrangedSubview(resetButton)
         
-        leftStackView.addArrangedSubview(offlineMapButton)
-        
-        leftStackView.addArrangedSubview(loadMapButton)
         
         // MARK: button constraint
         
@@ -729,15 +717,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             resetButton.heightAnchor.constraint(equalToConstant: 50),
             
-            resetButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            offlineMapButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            offlineMapButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            loadMapButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            loadMapButton.widthAnchor.constraint(equalToConstant: 50)
+            resetButton.widthAnchor.constraint(equalToConstant: 50)
         ])
         
         trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
@@ -748,30 +728,22 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
         
-        offlineMapButton.addTarget(self, action: #selector(openOfflineMap), for: .touchUpInside)
-        
-        loadMapButton.addTarget(self, action: #selector(openFolderViewController), for: .touchUpInside)
     }
     
     func setUpLabels() {
-        
-        //        map.addSubview(coordsLabel)
-        ////         座標 - 改成時速
-        //        coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
-        
-        
-        map.addSubview(speedLabel)
+
+        map2.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
-        map.addSubview(timeLabel)
+        map2.addSubview(timeLabel)
         // 時間
         timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 30)
         
-        map.addSubview(totalTrackedDistanceLabel)
+        map2.addSubview(totalTrackedDistanceLabel)
         // 距離
         totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 70, width: 80, height: 30)
         
-        map.addSubview(currentSegmentDistanceLabel)
+        map2.addSubview(currentSegmentDistanceLabel)
         
         currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 100, width: 80, height: 30)
     }
@@ -780,7 +752,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
 
 // MARK: - StopWatchDelegate methods
 
-extension JourneyViewController: StopWatchDelegate {
+extension FollowJourneyViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
         timeLabel.text = elapsedTimeString
@@ -788,42 +760,13 @@ extension JourneyViewController: StopWatchDelegate {
 }
 // MARK: - CLLocationManager Delegate -
 
-extension JourneyViewController: CLLocationManagerDelegate {
+extension FollowJourneyViewController: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
-        print("didFailWithError \(error)")
-        
-        let locationError = error as? CLError
-        
-        switch locationError?.code {
-            
-        case CLError.locationUnknown:
-            
-            print("Location Unknown")
-            
-        case CLError.denied:
-            
-            print("Access to location services denied. Display message")
-            
-            checkLocationServicesStatus()
-            
-        default:
-            
-            print("Default error")
-        }
-    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
         
-        //        altitude info if needed
-        //        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
-        //        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
-        //        let altitude = newLocation.altitude.toAltitude()
-        //        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
-        //        coordsLabel.text = text
         
         let rUnknownSpeedText = "0.00"
         
@@ -832,32 +775,25 @@ extension JourneyViewController: CLLocationManagerDelegate {
         speedLabel.text = "speed: \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
         if followUser {
-            map.setCenter(newLocation.coordinate, animated: true)
+            map2.setCenter(newLocation.coordinate, animated: true)
         }
         
         if gpxTrackingStatus == .tracking {
             
-            map.addPointToCurrentTrackSegmentAtLocation(newLocation)
+            map2.addPointToCurrentTrackSegmentAtLocation(newLocation)
             
-            totalTrackedDistanceLabel.distance = map.session.totalTrackedDistance
+            totalTrackedDistanceLabel.distance = map2.session.totalTrackedDistance
             
-            currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
+            currentSegmentDistanceLabel.distance = map2.session.currentSegmentDistance
         }
     }
     
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
-        print("mkMapcamera heading=\(map.camera.heading)")
-        map.heading = newHeading // updates heading variable
-        map.updateHeading() // updates heading view's rotation
+        print("mkMapcamera heading=\(map2.camera.heading)")
+        map2.heading = newHeading // updates heading variable
+        map2.updateHeading() // updates heading view's rotation
     }
     // MARK: 選擇路線後導航 (有時間在做)
-    
-}
-
-extension Notification.Name {
-    static let loadRecoveredFile = Notification.Name("loadRecoveredFile")
-    static let updateAppearance = Notification.Name("updateAppearance")
-    // swiftlint:disable file_length
 }

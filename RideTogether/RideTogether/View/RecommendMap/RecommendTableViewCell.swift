@@ -1,18 +1,20 @@
 //
-//  TrackTableViewCell.swift
+//  RecommendTableViewCell.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/11.
+//  Created by Kai Fu Jhuang on 2022/4/13.
 //
 
 import UIKit
-import FirebaseStorage
+import SwiftUI
 
-class TrackTableViewCell: UITableViewCell {
+class RecommendTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var trackTitle: UILabel!
     
-    @IBOutlet weak var trackTime: UILabel!
+    @IBOutlet weak var mapTitle: UILabel!
+    
+    @IBOutlet weak var mapTime: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,11 +29,9 @@ class TrackTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func setUpCell(model : Record) {
-        
-        trackTitle.text = model.recordName
-        trackTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
+    func setUpCell(model : RecommendMap) {
+        mapTitle.text = model.recordName
+        mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }
     
 }
