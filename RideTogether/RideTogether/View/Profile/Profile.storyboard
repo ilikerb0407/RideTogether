@@ -33,24 +33,11 @@
                     <view key="view" contentMode="scaleToFill" id="C1b-Qo-W94">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9ua-7n-7mB">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qxy-Gs-kTX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qxy-Gs-kTX" firstAttribute="trailing" secondItem="9ua-7n-7mB" secondAttribute="trailing" id="0XH-Km-tQj"/>
-                            <constraint firstItem="qxy-Gs-kTX" firstAttribute="bottom" secondItem="9ua-7n-7mB" secondAttribute="bottom" id="11G-UW-CYG"/>
-                            <constraint firstItem="9ua-7n-7mB" firstAttribute="top" secondItem="qxy-Gs-kTX" secondAttribute="top" id="kCc-Nz-kTu"/>
-                            <constraint firstItem="9ua-7n-7mB" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="sWV-78-8zo"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0aj-GT-TF9"/>
                     <connections>
-                        <outlet property="tableView" destination="9ua-7n-7mB" id="Xk1-A9-tvJ"/>
                         <segue destination="Y0Y-w7-fwb" kind="show" identifier="toRecord" id="YZm-ih-Pyd"/>
                     </connections>
                 </viewController>
