@@ -14,6 +14,8 @@ import MJRefresh
 class TracksViewController: BaseViewController {
 
     
+    var indexOfRoute:Int = 0
+    
     var records = [Record]()
     
     private let header = MJRefreshNormalHeader()
@@ -128,7 +130,10 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
+        indexOfRoute = indexPath.row
+        print ("indexOfRoute= \(indexOfRoute)")
     }
+    
     
     // MARK: 傳到Detail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
