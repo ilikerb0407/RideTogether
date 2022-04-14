@@ -18,21 +18,33 @@
                     <connections>
                         <segue destination="nHq-GY-WOa" kind="relationship" relationship="viewControllers" id="cek-j0-Rjc"/>
                         <segue destination="jhj-dE-SWj" kind="relationship" relationship="viewControllers" id="767-3E-RrL"/>
+                        <segue destination="Bqn-sp-RjM" kind="relationship" relationship="viewControllers" id="CCF-jC-JGY"/>
+                        <segue destination="TtZ-XF-IdN" kind="relationship" relationship="viewControllers" id="4J9-ck-wFF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZx-6j-gvw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1546" y="70"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="uax-hh-GEz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="TtZ-XF-IdN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="u3p-jl-nwn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q8T-p9-HRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-730" y="-222"/>
+        </scene>
         <!--Journey-->
         <scene sceneID="j8x-Ig-LMc">
             <objects>
-                <viewControllerPlaceholder storyboardName="Journey" id="nHq-GY-WOa" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="JourneyViewController" storyboardName="Journey" id="nHq-GY-WOa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="wXK-3S-8et"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Las-dN-VnW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="-166"/>
+            <point key="canvasLocation" x="-730" y="-111"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hcL-g5-q7M">
@@ -42,7 +54,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGn-j0-ysd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-753" y="150"/>
+            <point key="canvasLocation" x="-723" y="-31"/>
+        </scene>
+        <!--Group-->
+        <scene sceneID="WYG-2i-YXX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Group" id="Bqn-sp-RjM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="sBi-Qm-idH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HzI-fI-zup" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-702" y="150"/>
         </scene>
     </scenes>
 </document>
