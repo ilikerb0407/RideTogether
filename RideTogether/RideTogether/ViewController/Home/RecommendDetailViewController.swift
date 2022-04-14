@@ -37,6 +37,8 @@ class RecommendDetailViewController: UIViewController {
         
         praseGPXFile()
         
+//        rideButton()
+        
     }
     
     func backButton() {
@@ -44,6 +46,8 @@ class RecommendDetailViewController: UIViewController {
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
+    
+    
     
     @objc func popToPreviosPage(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

@@ -24,7 +24,7 @@ class RecommendViewController: BaseViewController {
     }
     func setUpTableView() {
         
-        setNavigationBar(title: "RecommendTableView")
+        setNavigationBar(title: "RecommendTableViewController")
         
         tableView = UITableView()
         

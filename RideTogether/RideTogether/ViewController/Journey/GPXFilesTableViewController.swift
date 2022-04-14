@@ -58,8 +58,6 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
     /// Temporary variable to manage.
     var selectedRowIndex = -1
     
-    ///
-    ///
     weak var delegate: GPXFilesTableViewControllerDelegate?
     
     ///
