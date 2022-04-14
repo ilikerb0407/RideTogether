@@ -34,6 +34,20 @@ protocol GPXFilesTableViewControllerDelegate: class {
 let kNoFiles = NSLocalizedString("NO_FILES", comment: "no comment")
 
 class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegate {
+    
+    var records = [Record]()
+    
+    func fetchRecords() {
+        
+        RecordManager.shared.fetchRecords { [weak self] result in
+            switch result {
+            case .success(let records):
+                self?.records = records
+                self?.tableView.reloadData()
+            case .failure(let error): print ("fetchData Failure: \(error)")
+            }
+        }
+    }
 
     /// List of strings with the filenames.
     var fileList: NSMutableArray = [kNoFiles] 
@@ -57,6 +71,10 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
     ///
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchRecords()
+        
+        
         let navBarFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64)
         self.tableView.frame = CGRect(x: navBarFrame.width + 1, y: 0, width: self.view.frame.width, height:
             self.view.frame.height - navBarFrame.height)
@@ -116,23 +134,25 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
 
     /// Returns the number of files in the section.
     override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        return fileList.count
+        return records.count
     }
 
     /// Allow edit rows? Returns true only if there are files.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return gpxFilesFound
+        return false
+        // true
     }
 
     /// Displays the delete button.
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
-        
+
         if editingStyle == UITableViewCell.EditingStyle.delete {
             actionDeleteFileAtIndex((indexPath as NSIndexPath).row)
         }
     }
+    
 
     /// Displays the name of the cell.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,10 +162,11 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
             //cell.accessoryType = UITableViewCellAccessoryType.DetailDisclosureButton
             //cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"Something" ]];
             // swiftlint:disable force_cast
-            let gpxFileInfo = fileList.object(at: (indexPath as NSIndexPath).row) as! GPXFileInfo
-            let lastSaved = NSLocalizedString("LAST_SAVED", comment: "no comment")
-            cell.textLabel?.text = gpxFileInfo.fileName
-            cell.detailTextLabel?.text = String(format: lastSaved, gpxFileInfo.modifiedDatetimeAgo, gpxFileInfo.fileSizeHumanised)
+            
+//            let gpxFileInfo = fileList.object(at: (indexPath as NSIndexPath).row) as! GPXFileInfo
+//            let lastSaved = NSLocalizedString("LAST_SAVED", comment: "no comment")
+//            cell.textLabel?.text = gpxFileInfo.fileName
+//            cell.detailTextLabel?.text = String(format: lastSaved, gpxFileInfo.modifiedDatetimeAgo, gpxFileInfo.fileSizeHumanised)
             if #available(iOS 13, *) {
                 cell.detailTextLabel?.textColor = UIColor.secondaryLabel
             } else {
@@ -154,13 +175,20 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
             return cell
         } else {
             let cell: UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
-            cell.textLabel?.text = fileList.object(at: (indexPath as NSIndexPath).row) as? NSString as String? ?? ""
+            // fileList
+//            cell.textLabel?.text = fileList.object(at: (indexPath as NSIndexPath).row) as? NSString as String? ?? ""
+            
+            cell.textLabel?.text = records[indexPath.row].recordName
+            
+            cell.detailTextLabel?.text = "\(records[indexPath.row].createdTime.seconds)"
+            
             return cell
         }
     }
 
     /// Displays an action sheet with the actions for that file (Send it by email, Load in map and Delete).
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
 
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
         let mapOption = UIAlertAction(title: NSLocalizedString("LOAD_IN_MAP", comment: "no comment"), style: .default) { _ in
