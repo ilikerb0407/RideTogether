@@ -95,25 +95,37 @@ class GPXMapView: MKMapView {
     }
     
     func importFromGPXRoot(_ gpx: GPXRoot) {
-        clearMap()
+//        clearMap()
         addTrackSegments(for: gpx)
     }
 
     private func addTrackSegments(for gpx: GPXRoot) {
         session.tracks = gpx.tracks
+        session.waypoints = gpx.waypoints
+        
+        for pin in session.waypoints {
+            
+            addWaypoint(pin)
+        }
         for oneTrack in session.tracks {
             session.totalTrackedDistance += oneTrack.length
 
             for segment in oneTrack.segments {
                 let overlay = segment.overlay
                 addOverlay(overlay)
+                
                 let segmentTrackpoints = segment.points
+                
                 for waypoint in segmentTrackpoints {
+//                    addWaypoint(waypoint)
+//                    addAnnotation(waypoint)
                     extent.extendAreaToIncludeLocation(waypoint.coordinate)
                 }
             }
         }
     }
+    
+    
     func addWaypointAtViewPoint(_ point: CGPoint) {
         
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
