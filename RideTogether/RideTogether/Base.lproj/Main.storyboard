@@ -19,11 +19,22 @@
                         <segue destination="nHq-GY-WOa" kind="relationship" relationship="viewControllers" id="cek-j0-Rjc"/>
                         <segue destination="jhj-dE-SWj" kind="relationship" relationship="viewControllers" id="767-3E-RrL"/>
                         <segue destination="Bqn-sp-RjM" kind="relationship" relationship="viewControllers" id="CCF-jC-JGY"/>
+                        <segue destination="TtZ-XF-IdN" kind="relationship" relationship="viewControllers" id="4J9-ck-wFF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZx-6j-gvw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1546" y="70"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="uax-hh-GEz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="TtZ-XF-IdN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="u3p-jl-nwn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q8T-p9-HRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-730" y="-222"/>
         </scene>
         <!--Journey-->
         <scene sceneID="j8x-Ig-LMc">

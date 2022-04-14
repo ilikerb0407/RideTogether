@@ -101,12 +101,13 @@ class GPXMapView: MKMapView {
 
     private func addTrackSegments(for gpx: GPXRoot) {
         session.tracks = gpx.tracks
-        session.waypoints = gpx.waypoints
         
+        
+        session.waypoints = gpx.waypoints
         for pin in session.waypoints {
-            
             addWaypoint(pin)
         }
+        
         for oneTrack in session.tracks {
             session.totalTrackedDistance += oneTrack.length
 
@@ -117,17 +118,14 @@ class GPXMapView: MKMapView {
                 let segmentTrackpoints = segment.points
                 
                 for waypoint in segmentTrackpoints {
-//                    addWaypoint(waypoint)
-//                    addAnnotation(waypoint)
                     extent.extendAreaToIncludeLocation(waypoint.coordinate)
                 }
             }
         }
     }
     
-    
+    // MARK: 長按建立座標的 method
     func addWaypointAtViewPoint(_ point: CGPoint) {
-        
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         let waypoint = GPXWaypoint(coordinate: coords)
         addWaypoint(waypoint)
