@@ -39,12 +39,12 @@
         <!--Journey-->
         <scene sceneID="j8x-Ig-LMc">
             <objects>
-                <viewControllerPlaceholder storyboardName="Journey" id="nHq-GY-WOa" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="JourneyViewController" storyboardName="Journey" id="nHq-GY-WOa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="wXK-3S-8et"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Las-dN-VnW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="-166"/>
+            <point key="canvasLocation" x="-730" y="-111"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hcL-g5-q7M">

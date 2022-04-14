@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2304FF4A280891AF00C6B1BF /* NextPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF49280891AF00C6B1BF /* NextPageButton.swift */; };
+		2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */; };
+		2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */; };
 		231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* RecommenMap.swift */; };
 		231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2F280671DE00DE2343 /* RecommendViewController.swift */; };
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
@@ -75,6 +78,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2304FF49280891AF00C6B1BF /* NextPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPageButton.swift; sourceTree = "<group>"; };
+		2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowJourneyViewController.swift; sourceTree = "<group>"; };
+		2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffLineMapButton.swift; sourceTree = "<group>"; };
 		231BCB2D28066C3B00DE2343 /* RecommenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenMap.swift; sourceTree = "<group>"; };
 		231BCB2F280671DE00DE2343 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
@@ -288,6 +294,8 @@
 				231BCB6528084B3300DE2343 /* Home.storyboard */,
 				23D1B8092805BED3000EDA70 /* Group.storyboard */,
 				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
+				2304FF49280891AF00C6B1BF /* NextPageButton.swift */,
+				2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */,
 				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
@@ -347,6 +355,7 @@
 				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
+				2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -576,8 +585,10 @@
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
+				2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */,
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
+				2304FF4A280891AF00C6B1BF /* NextPageButton.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
@@ -585,6 +596,7 @@
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
+				2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */,
 				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,

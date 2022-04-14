@@ -37,8 +37,26 @@ class TrackDetailsViewController: UIViewController {
         praseGPXFile()
         
         // 分享到塗鴉牆button
+        backToJourneyButton()
         
     }
+    
+    func backToJourneyButton(){
+        let button = NextPageButton(frame: CGRect(x: 200, y: 200, width: 50, height: 50))
+        button.addTarget(self, action: #selector(push), for: .touchUpInside)
+        view.addSubview(button)
+        print ("backtoJOur")
+        
+    }
+    
+    @objc func push(_ sender: UIButton) {
+        
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+            navigationController?.pushViewController(journeyViewController, animated: true)
+        }
+        print ("push")
+    }
+    
     
     func backButton() {
         let button = PreviousPageButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
@@ -88,6 +106,16 @@ class TrackDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setUp()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.userRecord.rawValue {
+            if let nextVC = segue.destination as? FollowJourneyViewController {
+                if let record = sender as? Record {
+                    nextVC.record = record
+                }
+            }
+        }
     }
     
 
