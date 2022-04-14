@@ -87,6 +87,7 @@ class TracksViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
@@ -126,6 +127,7 @@ extension TracksViewController: UITableViewDelegate {
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
     }
     
+    // MARK: 傳到Detail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
             if let nextVC = segue.destination as? TrackDetailsViewController {

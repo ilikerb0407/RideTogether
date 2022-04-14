@@ -115,13 +115,16 @@ class GPXMapView: MKMapView {
         }
     }
     func addWaypointAtViewPoint(_ point: CGPoint) {
+        
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         let waypoint = GPXWaypoint(coordinate: coords)
         addWaypoint(waypoint)
         
     }
-    /// - Parameters: The waypoint to add to the map.
-    ///
+    
+  //MARK: Parameters: The waypoint to add to the map.
+    
+    
     func addWaypoint(_ waypoint: GPXWaypoint) {
         session.addWaypoint(waypoint)
         addAnnotation(waypoint)
@@ -129,8 +132,7 @@ class GPXMapView: MKMapView {
         print("\(waypoint)")
     }
     
-    /// Updates the heading arrow based on the heading information
-    ///
+ //MARK: 磁鐵
     func updateHeading() {
         guard let heading = heading else { return }
         
@@ -148,8 +150,8 @@ class GPXMapView: MKMapView {
         }
     }
     
-    /// - Parameters: The waypoint to remove from the map.
-    ///
+    //MARK:  移除座標
+    
     func removeWaypoint(_ waypoint: GPXWaypoint) {
         
         let index = session.waypoints.firstIndex(of: waypoint)
