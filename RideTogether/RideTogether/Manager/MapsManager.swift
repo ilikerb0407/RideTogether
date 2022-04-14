@@ -56,8 +56,5 @@ class MapsManager {
                 completion(.success(records))
             }
         }
-        
     }
-    
-    
 }

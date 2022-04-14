@@ -40,17 +40,15 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
-        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "heading")
+        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
-        
         
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         deleteButton.setImage(UIImage(named: "delete"), for: UIControl.State())
         deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
         deleteButton.tag = kDeleteWaypointAccesoryButtonTag
         annotationView.rightCalloutAccessoryView = deleteButton
-        
         return annotationView
     }
     
@@ -58,36 +56,22 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     /// Delete Waypoint Button tag. Used in a waypoint bubble
     let kDeleteWaypointAccesoryButtonTag = 666
     
-    /// Handles the actions of delete and edit button
+    // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         print("calloutAccesoryControlTapped ")
-        guard let waypoint = view.annotation as? GPXWaypoint else {
-            return
-        }
-
-        guard let button = control as? UIButton else {
-            return
-        }
-
-        guard let map = mapView as? GPXMapView else {
-            return
-        }
-
+        guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        guard let button = control as? UIButton else { return }
+        guard let map = mapView as? GPXMapView else { return }
         switch button.tag {
             
         case kDeleteWaypointAccesoryButtonTag:
-
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
             map.removeWaypoint(waypoint)
-
-
-
         default:
             print("[calloutAccesoryControlTapped ERROR] unknown control")
         }
     }
-   
     
     //MARK:  Adds the pin to the map with an animation (comes from the top of the screen)
 
