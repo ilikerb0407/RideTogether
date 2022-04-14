@@ -36,6 +36,8 @@ class TrackDetailsViewController: UIViewController {
         
         praseGPXFile()
         
+        // 分享到塗鴉牆button
+        
     }
     
     func backButton() {
