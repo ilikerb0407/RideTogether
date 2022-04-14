@@ -12,9 +12,11 @@ import Firebase
 import CoreGPX
 import CoreLocation
 
+// MARK: RecommendRoute
+
 class RecommendDetailViewController: UIViewController {
     
-    
+
     @IBOutlet weak var map: GPXMapView!
     
     
