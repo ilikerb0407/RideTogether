@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="k8x-Yh-UBW"/>
+                        <segue destination="KVA-rd-0FB" kind="relationship" relationship="rootViewController" id="283-Xt-pyA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APU-zm-mMU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -27,102 +27,72 @@
             <point key="canvasLocation" x="-690" y="53"/>
         </scene>
         <!--Home View Controller-->
-        <scene sceneID="s0d-6b-0kx">
+        <scene sceneID="HKH-gK-KXV">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="HomeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                <viewController id="KVA-rd-0FB" customClass="HomeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IAK-Bd-XOV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <viewLayoutGuide key="safeArea" id="Kbn-7X-lik"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FLr-6Q-Dfu"/>
+                    <navigationItem key="navigationItem" id="BNr-ng-n9j"/>
                     <connections>
-                        <segue destination="XWg-ZG-moB" kind="show" identifier="toRecommend" id="lJU-qO-adm"/>
+                        <segue destination="knR-NX-bGF" kind="show" identifier="toRecommend" id="d5K-Jz-wKz"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUj-yN-o8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197" y="53"/>
+            <point key="canvasLocation" x="209" y="68"/>
         </scene>
         <!--Recommend View Controller-->
-        <scene sceneID="8SP-Ef-agb">
+        <scene sceneID="NRA-Rl-2SB">
             <objects>
-                <viewController id="XWg-ZG-moB" customClass="RecommendViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fs4-0i-XcZ">
+                <viewController id="knR-NX-bGF" customClass="RecommendViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wPM-z1-1bK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="F4O-xX-vry"/>
+                        <viewLayoutGuide key="safeArea" id="Kg9-uU-XDh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TIp-xi-8W7"/>
+                    <navigationItem key="navigationItem" id="JUr-op-rDm"/>
                     <connections>
-                        <segue destination="V63-KN-cLK" kind="presentation" identifier="toRecommendMaps" id="U6m-PU-601"/>
+                        <segue destination="t3h-Rr-bGA" kind="show" identifier="toRecommendMaps" id="kzg-TM-fHt"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qpZ-yl-eUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLR-pT-uzG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="53"/>
+            <point key="canvasLocation" x="1122" y="53"/>
         </scene>
         <!--Recommend Detail View Controller-->
-        <scene sceneID="yFq-eB-gwi">
+        <scene sceneID="9fc-o3-6LI">
             <objects>
-                <viewController id="V63-KN-cLK" customClass="RecommendDetailViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BDo-hB-EwP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                <viewController id="t3h-Rr-bGA" customClass="RecommendDetailViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eDZ-Rh-7zz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-Cu-5fc">
-                                <rect key="frame" x="20" y="20" width="374" height="748"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELv-GW-mUK">
-                                        <rect key="frame" x="8" y="18" width="342" height="1094"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="o0w-uN-Mw1">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="521"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </mapView>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DH7-jZ-ci8">
-                                                <rect key="frame" x="0.0" y="529" width="342" height="476"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                        </subviews>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="A9J-Id-ecH"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="n2J-0g-Ozb"/>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Gox-p6-LV7"/>
+                        <viewLayoutGuide key="safeArea" id="yFH-Tg-mg9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hoT-Cu-5fc" firstAttribute="leading" secondItem="Gox-p6-LV7" secondAttribute="leading" constant="20" id="9Aw-Z1-CkY"/>
-                            <constraint firstItem="Gox-p6-LV7" firstAttribute="trailing" secondItem="hoT-Cu-5fc" secondAttribute="trailing" constant="20" id="COk-H2-wea"/>
-                            <constraint firstItem="Gox-p6-LV7" firstAttribute="bottom" secondItem="hoT-Cu-5fc" secondAttribute="bottom" constant="40" id="PgJ-9e-wqX"/>
-                            <constraint firstItem="hoT-Cu-5fc" firstAttribute="top" secondItem="Gox-p6-LV7" secondAttribute="top" constant="20" id="uhU-Xf-ohI"/>
-                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IhZ-cb-Mr9"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lsM-GM-99f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1li-1q-9D3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2273.913043478261" y="52.901785714285715"/>
+            <point key="canvasLocation" x="2138" y="68"/>
         </scene>
         <!--Journey-->
         <scene sceneID="R5B-ob-qzC">
             <objects>
-                <viewControllerPlaceholder storyboardName="Journey" id="a5D-R9-owi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVQ-kz-Iv9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Journey" id="a5D-R9-owi" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="3014" y="-19"/>
         </scene>
         <!--Group-->
         <scene sceneID="3CQ-h5-hIp">
             <objects>
-                <viewControllerPlaceholder storyboardName="Group" id="NMc-Bl-QNx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZmM-H7-Guc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Group" id="NMc-Bl-QNx" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="3053" y="76"/>
         </scene>
