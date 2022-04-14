@@ -180,8 +180,6 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
             
             cell.textLabel?.text = records[indexPath.row].recordName
             
-            cell.detailTextLabel?.text = "\(records[indexPath.row].createdTime.seconds)"
-            
             return cell
         }
     }

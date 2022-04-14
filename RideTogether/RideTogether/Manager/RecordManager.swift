@@ -11,6 +11,9 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 //import FirebaseStorageSwift
 
+
+// FireBase
+
 class RecordManager {
     
 //    var userId: String { UserManager.shared.userInfo.uid }

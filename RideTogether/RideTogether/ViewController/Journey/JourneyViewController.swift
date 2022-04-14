@@ -495,9 +495,10 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             //            if let fileName = fileName {
             GPXFileManager.save( fileName!, gpxContents: gpxString)
-            
             self.lastGpxFilename = fileName!
-            self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)//deleteCDRootFromCoreData()
+            
+            self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)
+            //deleteCDRootFromCoreData()
             self.map.coreDataHelper.clearAllExceptWaypoints()
             self.map.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
             print ("2\(fileName)2")
@@ -569,6 +570,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return MKOverlayRenderer()
     }
     
+    // MARK: 離線地圖
     func addRoute() {
         guard let points = Park.plist("Taipei1") as? [String] else { return }
         
