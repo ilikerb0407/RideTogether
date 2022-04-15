@@ -18,7 +18,7 @@ class TrackTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        self.backgroundColor = .orange
+        self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
     }
 

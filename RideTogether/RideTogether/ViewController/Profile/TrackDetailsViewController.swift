@@ -12,10 +12,6 @@ import Firebase
 import CoreGPX
 import CoreLocation
 
-//protocol sendDataToNextVc {
-//    func sendData(_ inputUrl: URL)
-//}
-
 class TrackDetailsViewController: BaseViewController {
 
     @IBOutlet weak var map: GPXMapView!
@@ -25,7 +21,6 @@ class TrackDetailsViewController: BaseViewController {
     
     // 只會有一筆
     var record = Record()
-    
     
     func setUp() {
         
@@ -41,17 +36,15 @@ class TrackDetailsViewController: BaseViewController {
         
         praseGPXFile()
         
-        // 分享到塗鴉牆button
+        // 分享到塗鴉牆 Button
         backToJourneyButton()
         
     }
     
-    func backToJourneyButton(){
-        let button = NextPageButton(frame: CGRect(x: 200, y: 200, width: 50, height: 50))
+    func backToJourneyButton() {
+        let button = NextPageButton(frame: CGRect(x: 300 , y: 500, width: 50, height: 50))
         button.addTarget(self, action: #selector(push), for: .touchUpInside)
         view.addSubview(button)
-        print ("backtoJOur")
-        
     }
     
     @objc func push(_ sender: UIButton) {
@@ -59,14 +52,13 @@ class TrackDetailsViewController: BaseViewController {
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)
             journeyViewController.record = record
-            // 這一頁宣告的變數, 是下一頁的變數
+            // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
         }
         print ("push")
     }
     
-    
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 50, width: 50, height: 50))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
