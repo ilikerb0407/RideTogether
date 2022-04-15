@@ -62,7 +62,6 @@
 		23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B78F2800AD0C000EDA70 /* Journey.storyboard */; };
 		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
 		23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7942800B0FD000EDA70 /* Profile.storyboard */; };
-		23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */; };
 		23D1B7A12802147C000EDA70 /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 		23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E228041F67000EDA70 /* TracksViewController.swift */; };
 		23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */; };
@@ -135,7 +134,6 @@
 		23D1B78F2800AD0C000EDA70 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
 		23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		23D1B7942800B0FD000EDA70 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23D1B7E228041F67000EDA70 /* TracksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
 		23D1B7E6280428B3000EDA70 /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
-				23D1B79A28018F94000EDA70 /* GoogleService-Info.plist */,
 				23D1B78B28006663000EDA70 /* Constant.swift */,
 			);
 			path = RideTogether;
@@ -475,7 +472,6 @@
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
 				231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */,
-				23D1B79B28018F94000EDA70 /* GoogleService-Info.plist in Resources */,
 				23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
