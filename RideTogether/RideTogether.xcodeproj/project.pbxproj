@@ -74,6 +74,8 @@
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
+		23FC489E2809A15100EAD314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23FC489D2809A15100EAD314 /* GoogleService-Info.plist */; };
+		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +148,8 @@
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFilesTableViewController.swift; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
+		23FC489D2809A15100EAD314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +239,7 @@
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
+				23FC489D2809A15100EAD314 /* GoogleService-Info.plist */,
 				23D1B78B28006663000EDA70 /* Constant.swift */,
 			);
 			path = RideTogether;
@@ -257,6 +262,7 @@
 			children = (
 				231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */,
 				231BCB5028070BF500DE2343 /* Park.swift */,
+				23FC489F2809B46400EAD314 /* Route.swift */,
 				231BCB5228070C0200DE2343 /* ParkMapOverlay.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23D1B74E28005DE1000EDA70 /* GPX */,
@@ -296,7 +302,6 @@
 				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
-				23D1B7EF28045A42000EDA70 /* Track */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				23D1B7942800B0FD000EDA70 /* Profile.storyboard */,
 				23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */,
 				23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */,
+				23D1B7EF28045A42000EDA70 /* Track */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
+				23FC489E2809A15100EAD314 /* GoogleService-Info.plist in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
@@ -548,6 +555,7 @@
 				231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */,
 				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
+				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
