@@ -12,15 +12,20 @@ import Firebase
 import CoreGPX
 import CoreLocation
 
-class TrackDetailsViewController: UIViewController {
+//protocol sendDataToNextVc {
+//    func sendData(_ inputUrl: URL)
+//}
 
-    
+class TrackDetailsViewController: BaseViewController {
+
     @IBOutlet weak var map: GPXMapView!
+    
     
     private let mapViewDelegate = MapViewDelegate()
     
     // 只會有一筆
     var record = Record()
+    
     
     func setUp() {
         
@@ -53,6 +58,8 @@ class TrackDetailsViewController: UIViewController {
         
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)
+            journeyViewController.record = record
+            // 這一頁宣告的變數, 是下一頁的變數
         }
         print ("push")
     }
@@ -72,6 +79,10 @@ class TrackDetailsViewController: UIViewController {
         
         if let inputUrl = URL(string: record.recordRef) {
             
+            print("TrackDetail:\(inputUrl)")
+            // 送過去 follow!!
+//            delegate?.sendData(record.recordRef)
+            delegate?.sendData(record)
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)
@@ -84,7 +95,6 @@ class TrackDetailsViewController: UIViewController {
         
         map.regionToGPXExtent()
     }
-    
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -113,6 +123,7 @@ class TrackDetailsViewController: UIViewController {
             if let nextVC = segue.destination as? FollowJourneyViewController {
                 if let record = sender as? Record {
                     nextVC.record = record
+                    
                 }
             }
         }
