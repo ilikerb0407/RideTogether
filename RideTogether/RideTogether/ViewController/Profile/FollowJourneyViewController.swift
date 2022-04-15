@@ -14,6 +14,13 @@ import Lottie
 
 class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
     
+//    func sendData(_ inputRecord: Record) {
+//        self.record = inputRecord
+//    }
+    
+    var record = Record()
+    
+
     func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
         //emulate a reset button tap
         self.resetButtonTapped()
@@ -49,22 +56,21 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     //MARK: =========
     
     
-    var record = Record()
+
     // 不同
 //    var record2 = Record()
     
-    func fetchRecords() {
-        
-        RecordManager.shared.fetchOneRecord { [weak self] result in
-            switch result {
-            case .success(let records):
-                self?.record = records
-                
-//                self?.tableView.reloadData()
-            case .failure(let error): print ("fetchData Failure: \(error)")
-            }
-        }
-    }
+//    func fetchRecords() {
+//
+//        RecordManager.shared.fetchOneRecord { [weak self] result in
+//            switch result {
+//            case .success(let records):
+//                self?.record = records
+////                self?.tableView.reloadData()
+//            case .failure(let error): print ("fetchData Failure: \(error)")
+//            }
+//        }
+//    }
     
     func showMap() {
         let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
@@ -86,21 +92,21 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+        let button = PreviousPageButton(frame: CGRect(x: 80, y: 80, width: 50, height: 50))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
     
-    
-    
+
     @objc func popToPreviosPage(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     func praseGPXFile() {
-    
+//       if let inputUrl = URL(string: inputUrlString)
         if let inputUrl = URL(string: record.recordRef) {
             
+            print("FollowDetail=======:\(inputUrl)======")
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)
@@ -175,7 +181,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
                 
                 stopWatch.reset()
                 
-                //                waveLottieView.isHidden = true
+                //   waveLottieView.isHidden = true
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
@@ -193,7 +199,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
                 self.stopWatch.start()
                 
                 //                waveLottieView.isHidden = false
-                
                 //                waveLottieView.play()
                 
                 
@@ -333,9 +338,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         return view
     }()
     
-    
     // MARK: 之後再改字體
-    
     
     var speedLabel: UILabel = {
         let label = UILabel()
@@ -393,11 +396,11 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         
         praseGPXFile()
         
-        fetchRecords()
+//        fetchRecords()
         
         backButton()
         
-        showMap()
+//        showMap()
         
         navigationController?.isNavigationBarHidden = true
         
@@ -406,10 +409,12 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // 畫畫
+        praseGPXFile()
+        
+//        fetchRecords()
+        
+        showMap()
     }
-    
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -481,6 +486,9 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map2)
+        
+        praseGPXFile()
+        
     }
     
     @objc func trackerButtonTapped() {
@@ -506,8 +514,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
             gpxTrackingStatus = .tracking
         }
     }
-
-    
     @objc func saveButtonTapped(withReset: Bool = false) {
         
         if gpxTrackingStatus == .notStarted && !self.hasWaypoints { return }
@@ -588,8 +594,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         self.followUser = !self.followUser
     }
     
-    
-    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is MKPolyline {
@@ -600,7 +604,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         }
         return MKOverlayRenderer()
     }
-    
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -683,7 +686,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
             buttonStackView.heightAnchor.constraint(equalToConstant: 80)
         ] )
         
-   
         buttonStackView.addArrangedSubview(followUserButton)
         
         buttonStackView.addArrangedSubview(pinButton)
@@ -693,7 +695,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         buttonStackView.addArrangedSubview(saveButton)
         
         buttonStackView.addArrangedSubview(resetButton)
-        
         
         // MARK: button constraint
         
@@ -749,7 +750,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     }
     
 }
-
 // MARK: - StopWatchDelegate methods
 
 extension FollowJourneyViewController: StopWatchDelegate {
@@ -762,11 +762,9 @@ extension FollowJourneyViewController: StopWatchDelegate {
 
 extension FollowJourneyViewController: CLLocationManagerDelegate {
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
-        
         
         let rUnknownSpeedText = "0.00"
         
@@ -787,7 +785,6 @@ extension FollowJourneyViewController: CLLocationManagerDelegate {
             currentSegmentDistanceLabel.distance = map2.session.currentSegmentDistance
         }
     }
-    
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
