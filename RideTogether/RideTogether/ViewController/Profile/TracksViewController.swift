@@ -141,6 +141,7 @@ extension TracksViewController: UITableViewDelegate {
             if let nextVC = segue.destination as? TrackDetailsViewController {
                 if let record = sender as? Record {
                     nextVC.record = record
+//                    delegate?.sendData(record)
                 }
             }
         }
