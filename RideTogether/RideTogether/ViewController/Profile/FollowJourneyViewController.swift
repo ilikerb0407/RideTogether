@@ -83,10 +83,11 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
 
     @objc func popToPreviosPage(_ sender: UIButton) {
         let count = self.navigationController!.viewControllers.count
-        if let preController = self.navigationController?.viewControllers[count-1] {
+        if let preController = self.navigationController?.viewControllers[count-2] {
             self.navigationController?.popToViewController(preController, animated: true)
         }
         navigationController?.popViewController(animated: true)
+        
     }
     
     func praseGPXFile() {
