@@ -144,6 +144,13 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             }
         }
     }
+    private lazy var sendSMSButton: UIButton = {
+        let button = SendSMSButton(frame: CGRect(x: 190, y: 190, width: 40, height: 40))
+        sendSMS()
+        return button
+    }()
+    
+  
     
     private lazy var offlineMapButton: UIButton = {
         let button = UIButton()
@@ -269,7 +276,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     private lazy var leftStackView: UIStackView = {
         //        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
-        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton])
+        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton, sendSMSButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = 8
