@@ -42,7 +42,7 @@ class TrackDetailsViewController: BaseViewController {
     }
     
     func backToJourneyButton() {
-        let button = NextPageButton(frame: CGRect(x: 300 , y: 500, width: 50, height: 50))
+        let button = NextPageButton(frame: CGRect(x: 300 , y: 500, width: 80, height: 80))
         button.addTarget(self, action: #selector(push), for: .touchUpInside)
         view.addSubview(button)
     }

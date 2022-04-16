@@ -189,6 +189,7 @@
 		231BCB6A280858D700DE2343 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				23FC489F2809B46400EAD314 /* Route.swift */,
 				231BCB2D28066C3B00DE2343 /* RecommenMap.swift */,
 			);
 			path = Home;
@@ -262,7 +263,6 @@
 			children = (
 				231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */,
 				231BCB5028070BF500DE2343 /* Park.swift */,
-				23FC489F2809B46400EAD314 /* Route.swift */,
 				231BCB5228070C0200DE2343 /* ParkMapOverlay.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23D1B74E28005DE1000EDA70 /* GPX */,
