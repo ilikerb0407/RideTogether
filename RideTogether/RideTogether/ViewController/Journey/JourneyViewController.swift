@@ -353,17 +353,17 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }
     
     func addSegment() {
-        let segmentControl = UISegmentedControl(items: ["standard", "hybridFlyover"])
+        let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
         segmentControl.tintColor = UIColor.black
         segmentControl.backgroundColor =
         UIColor.lightGray
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
         segmentControl.frame.size = CGSize(
-            width: 200, height: 30)
+            width: 150, height: 30)
         segmentControl.center = CGPoint(
-          x: 50,
-          y: 500)
+          x: 80,
+          y: 65)
         self.view.addSubview(segmentControl)
     }
     
@@ -372,9 +372,21 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0 :
-            map.mapType = .standard
-        case 1 :
             map.mapType = .hybridFlyover
+            map.showsTraffic = true
+            speedLabel.textColor = .white
+            timeLabel.textColor = .white
+            coordsLabel.textColor = .white
+            currentSegmentDistanceLabel.textColor = .white
+            totalTrackedDistanceLabel.textColor = .white
+        case 1 :
+            map.mapType = .standard
+            map.showsTraffic = true
+            speedLabel.textColor = .black
+            timeLabel.textColor = .black
+            coordsLabel.textColor = .black
+            currentSegmentDistanceLabel.textColor = .black
+            totalTrackedDistanceLabel.textColor = .black
         default :
             map.mapType = .standard
         }
@@ -390,9 +402,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let otherRadius = saveButton.frame.height / 2
 
         
-        offlineMapButton.roundCorners(cornerRadius: otherRadius)
-        
-        loadMapButton.roundCorners(cornerRadius: otherRadius)
+//        offlineMapButton.roundCorners(cornerRadius: otherRadius)
+//
+//        loadMapButton.roundCorners(cornerRadius: otherRadius)
         
         followUserButton.roundCorners(cornerRadius: otherRadius)
         
@@ -589,19 +601,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.present(navController, animated: true) { () -> Void in }
     }
     
-    
-    
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
-        if overlay is MKPolyline {
-            let lineView = MKPolylineRenderer(overlay: overlay)
-            lineView.strokeColor = .green
-            return lineView
-            
-        }
-        return MKOverlayRenderer()
-    }
     
     // MARK: 離線地圖
     func addRoute() {
