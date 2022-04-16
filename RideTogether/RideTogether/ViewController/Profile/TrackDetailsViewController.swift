@@ -83,7 +83,7 @@ class TrackDetailsViewController: BaseViewController {
             print("TrackDetail:\(inputUrl)")
             // 送過去 follow!!
 //            delegate?.sendData(record.recordRef)
-            delegate?.sendData(record)
+//            delegate?.sendData(record)
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)

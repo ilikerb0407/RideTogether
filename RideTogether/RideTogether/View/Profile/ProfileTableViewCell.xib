@@ -20,28 +20,35 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-XH-DJz">
                         <rect key="frame" x="12" y="8" width="334" height="89"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="騎乘紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-OS-FqU">
-                                <rect key="frame" x="103" y="15" width="198" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-OS-FqU">
+                                <rect key="frame" x="103" y="0.0" width="198" height="89"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-MR-yTP">
-                                <rect key="frame" x="8" y="0.0" width="85" height="89"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bicycle.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-MR-yTP">
+                                <rect key="frame" x="8" y="8" width="82" height="73"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="CYs-bK-hef"/>
+                                    <constraint firstAttribute="width" constant="82" id="CYs-bK-hef"/>
+                                    <constraint firstAttribute="width" secondItem="dIq-MR-yTP" secondAttribute="height" multiplier="41:37" id="IdS-BK-afu"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Uwr-OS-FqU" secondAttribute="trailing" constant="33" id="073-A6-OJx"/>
-                            <constraint firstItem="Uwr-OS-FqU" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" constant="15" id="EWX-b5-hTl"/>
+                            <constraint firstItem="Uwr-OS-FqU" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" id="EWX-b5-hTl"/>
                             <constraint firstItem="dIq-MR-yTP" firstAttribute="leading" secondItem="oHW-XH-DJz" secondAttribute="leading" constant="8" id="GXE-sr-yLn"/>
-                            <constraint firstItem="dIq-MR-yTP" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" id="LHw-LS-ORB"/>
-                            <constraint firstAttribute="bottom" secondItem="dIq-MR-yTP" secondAttribute="bottom" id="YEo-hb-rQ3"/>
-                            <constraint firstAttribute="bottom" secondItem="Uwr-OS-FqU" secondAttribute="bottom" constant="8" id="YhA-KZ-ibA"/>
-                            <constraint firstItem="Uwr-OS-FqU" firstAttribute="leading" secondItem="dIq-MR-yTP" secondAttribute="trailing" constant="10" id="naI-t5-HzE"/>
+                            <constraint firstItem="dIq-MR-yTP" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" constant="7.5" id="LHw-LS-ORB"/>
+                            <constraint firstAttribute="bottom" secondItem="dIq-MR-yTP" secondAttribute="bottom" constant="7.5" id="YEo-hb-rQ3"/>
+                            <constraint firstAttribute="bottom" secondItem="Uwr-OS-FqU" secondAttribute="bottom" id="YhA-KZ-ibA"/>
+                            <constraint firstItem="Uwr-OS-FqU" firstAttribute="leading" secondItem="dIq-MR-yTP" secondAttribute="trailing" constant="13" id="naI-t5-HzE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -62,8 +69,12 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="bicycle.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
