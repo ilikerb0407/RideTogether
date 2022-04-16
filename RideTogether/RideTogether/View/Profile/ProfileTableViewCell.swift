@@ -22,6 +22,8 @@ class ProfileTableViewCell: UITableViewCell {
         
         itemImage.contentMode = .scaleToFill
         
+        itemBackground.backgroundColor = .orange
+        
         itemImage.image = ProfileItemType.allCases[indexPath.item].image
     
         
@@ -35,6 +37,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         itemBackground.layer.cornerRadius = itemBackground.frame.height / 2
     }
 }

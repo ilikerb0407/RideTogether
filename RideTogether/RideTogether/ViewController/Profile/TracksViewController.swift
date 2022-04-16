@@ -7,6 +7,7 @@
 
 import UIKit
 import MJRefresh
+import SwiftUI
 
 
 //MARK: User Record
@@ -28,9 +29,20 @@ class TracksViewController: BaseViewController {
         }
     }
     
+    
+//    @objc func backButton() {
+//        let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
+//        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+//        view.addSubview(button)
+//    }
+    
+    @objc func popToPreviosPage(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func setUpTableView() {
         
-        setNavigationBar(title: "TrackTableView")
+        setNavigationBar(title: "Records")
         
         tableView = UITableView()
         
@@ -38,7 +50,7 @@ class TracksViewController: BaseViewController {
         
         view.addSubview(tableView)
         
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .B4
         
         tableView.separatorStyle = .none
         
@@ -88,6 +100,7 @@ class TracksViewController: BaseViewController {
         tableView.mj_header = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
+        
 
     }
     
@@ -97,7 +110,19 @@ class TracksViewController: BaseViewController {
         
         navigationController?.isNavigationBarHidden = false
         
+        let button = UIButton.init(type: .custom)
+        //set image for button
+        button.setImage(UIImage(named: "hat"), for: .normal)
+        //add function for button
+        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+        button.layer.cornerRadius = button.borderWidth / 2
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+        //set frame
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
+        
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     
 }
