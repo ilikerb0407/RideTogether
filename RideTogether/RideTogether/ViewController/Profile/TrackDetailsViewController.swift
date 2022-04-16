@@ -12,6 +12,9 @@ import Firebase
 import CoreGPX
 import CoreLocation
 
+//MARK: User Record detail
+
+
 class TrackDetailsViewController: BaseViewController {
 
     @IBOutlet weak var map: GPXMapView!
@@ -42,7 +45,7 @@ class TrackDetailsViewController: BaseViewController {
     }
     
     func backToJourneyButton() {
-        let button = NextPageButton(frame: CGRect(x: 300 , y: 500, width: 80, height: 80))
+        let button = NextPageButton(frame: CGRect(x: 270 , y: 500, width: 80, height: 80))
         button.addTarget(self, action: #selector(push), for: .touchUpInside)
         view.addSubview(button)
     }

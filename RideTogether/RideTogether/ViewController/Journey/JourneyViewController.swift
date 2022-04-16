@@ -266,15 +266,15 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return view
     }()
     
-    private lazy var leftStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .vertical
-        view.spacing = 8
-        view.distribution = .equalSpacing
-        view.alignment = .leading
-        return view
-    }()
+//    private lazy var leftStackView: UIStackView = {
+//        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.axis = .vertical
+//        view.spacing = 8
+//        view.distribution = .equalSpacing
+//        view.alignment = .leading
+//        return view
+//    }()
     
     
     // MARK: 之後再改字體
@@ -301,9 +301,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont.regular(size: 26)
+        label.font = UIFont.regular(size: 40)
         label.textColor = UIColor.white
-        label.text = "00:00"
+        label.text = "Timer"
         return label
     }()
     
@@ -669,7 +669,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     func setUpButtonsStackView() {
         
         view.addSubview(buttonStackView)
-        view.addSubview(leftStackView)
+//        view.addSubview(leftStackView)
         
         
         NSLayoutConstraint.activate([
@@ -680,15 +680,15 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
-            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 80)
             
-            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            
-            leftStackView.widthAnchor.constraint(equalToConstant: 50),
-            
-            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
-            
-            leftStackView.heightAnchor.constraint(equalToConstant: 100)
+//            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+//
+//            leftStackView.widthAnchor.constraint(equalToConstant: 50),
+//
+//            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
+//
+//            leftStackView.heightAnchor.constraint(equalToConstant: 100)
         ] )
         
         //        let button = UIButton()
@@ -703,9 +703,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         buttonStackView.addArrangedSubview(resetButton)
         
-        leftStackView.addArrangedSubview(offlineMapButton)
+//        leftStackView.addArrangedSubview(offlineMapButton)
         
-        leftStackView.addArrangedSubview(loadMapButton)
+//        leftStackView.addArrangedSubview(loadMapButton)
         
         // MARK: button constraint
         
@@ -755,9 +755,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     func setUpLabels() {
         
-        //        map.addSubview(coordsLabel)
+        map.addSubview(coordsLabel)
         ////         座標 - 改成時速
-        //        coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
+        coordsLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
         
         
         map.addSubview(speedLabel)
@@ -814,22 +814,21 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
     
+    //MARK: 桌面更新資料
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
         
-        //        altitude info if needed
-        //        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
-        //        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
-        //        let altitude = newLocation.altitude.toAltitude()
-        //        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
-        //        coordsLabel.text = text
+     
+        let altitude = newLocation.altitude.toAltitude()
+        let text = "Height : \(altitude)"
+        coordsLabel.text = text
         
         let rUnknownSpeedText = "0.00"
         
-        //        Update_speed
+        //  MARK: Update_speed
         
-        speedLabel.text = "speed: \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+        speedLabel.text = "speed : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)

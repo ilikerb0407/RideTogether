@@ -12,13 +12,21 @@ class ProfileViewController: BaseViewController {
     
     let items = ProfileItemType.allCases
     
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.B2, .C4],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.backgroundColor = .white
-            tableView.isScrollEnabled = true
+            tableView.isScrollEnabled = false
         }
     }
     

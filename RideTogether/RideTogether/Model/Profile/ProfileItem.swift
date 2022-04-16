@@ -27,7 +27,7 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
     var title: String {
         switch self {
         case .routeRecord:
-            return " My_Record "
+            return " 騎乘紀錄 "
 //        case .recommendMap:
 //            return "Recommend_Map"
         }
