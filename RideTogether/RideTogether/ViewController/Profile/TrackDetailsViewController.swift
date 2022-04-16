@@ -11,6 +11,7 @@ import MapKit
 import Firebase
 import CoreGPX
 import CoreLocation
+import Charts
 
 //MARK: User Record detail
 
@@ -18,6 +19,11 @@ import CoreLocation
 class TrackDetailsViewController: BaseViewController {
 
     @IBOutlet weak var map: GPXMapView!
+    
+    // MARK: recordInfoView
+    
+    @IBOutlet weak var recordInfo: RecordInfoView!
+    
     
     
     private let mapViewDelegate = MapViewDelegate()

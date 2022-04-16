@@ -9,13 +9,10 @@ import UIKit
 import IQKeyboardManagerSwift
 import Kingfisher
 
-protocol sendDataToNextVc {
-    func sendData(_ inputRecord: Record)
-}
+
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var delegate: sendDataToNextVc?
 
     static var identifier: String {
         

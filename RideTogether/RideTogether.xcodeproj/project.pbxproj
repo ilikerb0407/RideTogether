@@ -76,6 +76,8 @@
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
 		23FC489E2809A15100EAD314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23FC489D2809A15100EAD314 /* GoogleService-Info.plist */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
+		23FC48A2280AB7D900EAD314 /* RecordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A1280AB7D800EAD314 /* RecordInfo.swift */; };
+		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,8 @@
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
 		23FC489D2809A15100EAD314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		23FC48A1280AB7D800EAD314 /* RecordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInfo.swift; sourceTree = "<group>"; };
+		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +186,7 @@
 				23D1B76328006092000EDA70 /* UserInfo.swift */,
 				23D1B765280060A6000EDA70 /* Record.swift */,
 				23D1B7E6280428B3000EDA70 /* ProfileItem.swift */,
+				23FC48A3280AB8C200EAD314 /* TrackInfo.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			children = (
 				23D1B7F028045A72000EDA70 /* TrackTableViewCell.swift */,
 				23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */,
+				23FC48A1280AB7D800EAD314 /* RecordInfo.swift */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FC48A2280AB7D900EAD314 /* RecordInfo.swift in Sources */,
 				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
 				23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */,
 				231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */,
@@ -570,6 +577,7 @@
 				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
+				23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
 				231BCB432806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,

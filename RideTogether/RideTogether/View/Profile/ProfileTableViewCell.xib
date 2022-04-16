@@ -7,11 +7,6 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="NotoSansTC-Regular.otf">
-            <string>NotoSansTC-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,38 +20,28 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-XH-DJz">
                         <rect key="frame" x="12" y="8" width="334" height="89"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LE-mA-4dV">
-                                <rect key="frame" x="64" y="21" width="67" height="56"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_edit" translatesAutoresizingMaskIntoConstraints="NO" id="dOK-oY-LLx">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="56"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="dOK-oY-LLx" firstAttribute="leading" secondItem="8LE-mA-4dV" secondAttribute="leading" id="JgC-fX-qdZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="dOK-oY-LLx" secondAttribute="trailing" id="fAO-YO-fRe"/>
-                                    <constraint firstAttribute="width" secondItem="8LE-mA-4dV" secondAttribute="height" multiplier="1.2:1" id="oQj-bc-IBl"/>
-                                    <constraint firstAttribute="bottom" secondItem="dOK-oY-LLx" secondAttribute="bottom" id="rUZ-Nk-kur"/>
-                                    <constraint firstItem="dOK-oY-LLx" firstAttribute="top" secondItem="8LE-mA-4dV" secondAttribute="top" id="zHU-hO-DPL"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afe-3d-vQ7">
-                                <rect key="frame" x="151" y="35" width="154.5" height="28"/>
-                                <fontDescription key="fontDescription" name="NotoSansTC-Regular" family="Noto Sans TC" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="騎乘紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-OS-FqU">
+                                <rect key="frame" x="103" y="15" width="198" height="66"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-MR-yTP">
+                                <rect key="frame" x="8" y="0.0" width="85" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="CYs-bK-hef"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Afe-3d-vQ7" firstAttribute="centerY" secondItem="8LE-mA-4dV" secondAttribute="centerY" id="1sb-fT-gWJ"/>
-                            <constraint firstItem="Afe-3d-vQ7" firstAttribute="leading" secondItem="8LE-mA-4dV" secondAttribute="trailing" constant="20" id="Lp0-Gw-2Vj"/>
-                            <constraint firstItem="8LE-mA-4dV" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" constant="21" id="NHc-pc-DBy"/>
-                            <constraint firstAttribute="trailing" secondItem="Afe-3d-vQ7" secondAttribute="trailing" constant="28.5" id="XpL-0i-9bT"/>
-                            <constraint firstItem="8LE-mA-4dV" firstAttribute="width" secondItem="8LE-mA-4dV" secondAttribute="height" multiplier="1.2:1" id="eVu-Ee-x2J"/>
-                            <constraint firstItem="Afe-3d-vQ7" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" constant="35" id="jmj-Qs-uny"/>
-                            <constraint firstItem="8LE-mA-4dV" firstAttribute="leading" secondItem="oHW-XH-DJz" secondAttribute="leading" constant="64" id="syt-iT-gce"/>
-                            <constraint firstAttribute="bottom" secondItem="8LE-mA-4dV" secondAttribute="bottom" constant="12" id="unX-hm-t66"/>
+                            <constraint firstAttribute="trailing" secondItem="Uwr-OS-FqU" secondAttribute="trailing" constant="33" id="073-A6-OJx"/>
+                            <constraint firstItem="Uwr-OS-FqU" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" constant="15" id="EWX-b5-hTl"/>
+                            <constraint firstItem="dIq-MR-yTP" firstAttribute="leading" secondItem="oHW-XH-DJz" secondAttribute="leading" constant="8" id="GXE-sr-yLn"/>
+                            <constraint firstItem="dIq-MR-yTP" firstAttribute="top" secondItem="oHW-XH-DJz" secondAttribute="top" id="LHw-LS-ORB"/>
+                            <constraint firstAttribute="bottom" secondItem="dIq-MR-yTP" secondAttribute="bottom" id="YEo-hb-rQ3"/>
+                            <constraint firstAttribute="bottom" secondItem="Uwr-OS-FqU" secondAttribute="bottom" constant="8" id="YhA-KZ-ibA"/>
+                            <constraint firstItem="Uwr-OS-FqU" firstAttribute="leading" secondItem="dIq-MR-yTP" secondAttribute="trailing" constant="10" id="naI-t5-HzE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -70,14 +55,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="itemBackground" destination="oHW-XH-DJz" id="w2o-VJ-8cp"/>
-                <outlet property="itemImage" destination="dOK-oY-LLx" id="3yS-us-7G1"/>
-                <outlet property="itemTitle" destination="Afe-3d-vQ7" id="P2K-Tr-9Yr"/>
+                <outlet property="itemImage" destination="dIq-MR-yTP" id="ZTk-av-ejV"/>
+                <outlet property="itemTitle" destination="Uwr-OS-FqU" id="lll-cd-PSt"/>
             </connections>
             <point key="canvasLocation" x="317.39130434782612" y="82.03125"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Icon_edit" width="206.66999816894531" height="172.58999633789062"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
