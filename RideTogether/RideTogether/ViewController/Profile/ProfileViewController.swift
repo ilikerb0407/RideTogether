@@ -12,8 +12,6 @@ class ProfileViewController: BaseViewController {
     
     let items = ProfileItemType.allCases
     
-    
-    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
