@@ -12,7 +12,7 @@
         <scene sceneID="73Q-Fc-XQZ">
             <objects>
                 <navigationController id="n51-zw-YOs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="doc" catalog="system" id="21E-u3-Loe"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="doc.circle" catalog="system" id="21E-u3-Loe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4i8-lg-dXH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -318,7 +318,7 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <image name="doc" catalog="system" width="115" height="128"/>
+        <image name="doc.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">

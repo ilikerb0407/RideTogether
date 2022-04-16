@@ -144,6 +144,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             }
         }
     }
+    
     private lazy var offlineMapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -209,9 +210,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let button = UIButton()
         button.layer.cornerRadius = 24.0
         button.backgroundColor = .clear
-        let mappin = UIImage(systemName: "mappin",
+        let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
-        let mappinHighlighted = UIImage(systemName: "mappin.circle.fill",
+        let mappinHighlighted = UIImage(systemName: "mappin.and.ellipse",
                                         withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         button.setImage(mappin, for: UIControl.State())
         button.setImage(mappinHighlighted, for: .highlighted)
@@ -267,7 +268,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }()
     
     private lazy var leftStackView: UIStackView = {
-//        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
+        //        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
         let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
@@ -347,6 +348,36 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         self.locationManager.requestAlwaysAuthorization()
         
+        addSegment()
+        
+    }
+    
+    func addSegment() {
+        let segmentControl = UISegmentedControl(items: ["standard", "hybridFlyover"])
+        segmentControl.tintColor = UIColor.black
+        segmentControl.backgroundColor =
+        UIColor.lightGray
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
+        segmentControl.frame.size = CGSize(
+            width: 200, height: 30)
+        segmentControl.center = CGPoint(
+          x: 50,
+          y: 500)
+        self.view.addSubview(segmentControl)
+    }
+    
+    
+    // 切換選項時執行動作的方法
+    @objc func onChange(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0 :
+            map.mapType = .standard
+        case 1 :
+            map.mapType = .hybridFlyover
+        default :
+            map.mapType = .standard
+        }
     }
     
     
@@ -357,6 +388,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let trakerRadius = trackerButton.frame.height / 2
         
         let otherRadius = saveButton.frame.height / 2
+
         
         offlineMapButton.roundCorners(cornerRadius: otherRadius)
         
@@ -427,6 +459,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.view.addSubview(map)
     }
     
+    
     @objc func trackerButtonTapped() {
         
         switch gpxTrackingStatus {
@@ -450,16 +483,16 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             gpxTrackingStatus = .tracking
         }
     }
-//        /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
-//        ///
-//        func defaultFilename() -> String {
-//            let defaultDate = DefaultDateFormat()
-//            //let dateFormatter = DateFormatter()
-//            //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
-//            let dateStr = defaultDate.getDateFromPrefs()
-//            print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
-//            return dateStr//dateFormatter.string(from: Date())
-//        }
+    //        /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
+    //        ///
+    //        func defaultFilename() -> String {
+    //            let defaultDate = DefaultDateFormat()
+    //            //let dateFormatter = DateFormatter()
+    //            //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
+    //            let dateStr = defaultDate.getDateFromPrefs()
+    //            print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
+    //            return dateStr//dateFormatter.string(from: Date())
+    //        }
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
@@ -683,11 +716,11 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             buttonStackView.heightAnchor.constraint(equalToConstant: 80),
             
             leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-
+            
             leftStackView.widthAnchor.constraint(equalToConstant: 100),
-
+            
             leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
-
+            
             leftStackView.heightAnchor.constraint(equalToConstant: 200)
         ] )
         
@@ -697,15 +730,15 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         buttonStackView.addArrangedSubview(pinButton)
         
-//        buttonStackView.addArrangedSubview(trackerButton)
+        //        buttonStackView.addArrangedSubview(trackerButton)
         
-//        buttonStackView.addArrangedSubview(saveButton)
+        //        buttonStackView.addArrangedSubview(saveButton)
         
-//        buttonStackView.addArrangedSubview(resetButton)
+        //        buttonStackView.addArrangedSubview(resetButton)
         
-//        leftStackView.addArrangedSubview(offlineMapButton)
+        //        leftStackView.addArrangedSubview(offlineMapButton)
         
-//        leftStackView.addArrangedSubview(loadMapButton)
+        //        leftStackView.addArrangedSubview(loadMapButton)
         leftStackView.addArrangedSubview(trackerButton)
         leftStackView.addArrangedSubview(saveButton)
         leftStackView.addArrangedSubview(resetButton)
@@ -821,7 +854,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let newLocation = locations.first!
         
-     
+        
         let altitude = newLocation.altitude.toAltitude()
         let text = "Height : \(altitude)"
         coordsLabel.text = text

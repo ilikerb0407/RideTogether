@@ -77,7 +77,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         totalTime.text = data.spentTime.tohmsTimeFormat()
         
-        totalDistance.text = data.distance.toKilometers()
+        totalDistance.text = data.distance.toDistance()
         
         let speed = data.distance / data.spentTime
         
