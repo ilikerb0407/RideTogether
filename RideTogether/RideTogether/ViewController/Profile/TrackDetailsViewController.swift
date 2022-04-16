@@ -16,7 +16,7 @@ import Charts
 //MARK: User Record detail
 
 
-class TrackDetailsViewController: BaseViewController {
+class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
 
     @IBOutlet weak var map: GPXMapView!
     
@@ -24,6 +24,13 @@ class TrackDetailsViewController: BaseViewController {
     
     @IBOutlet weak var recordInfo: RecordInfoView!
     
+    @IBOutlet weak var chartView: LineChartView! {
+        
+        didSet {
+            chartView.delegate = self
+        }
+        
+    }
     
     
     private let mapViewDelegate = MapViewDelegate()

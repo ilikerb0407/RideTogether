@@ -60,6 +60,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="itemBackground" destination="oHW-XH-DJz" id="w2o-VJ-8cp"/>
                 <outlet property="itemImage" destination="dIq-MR-yTP" id="ZTk-av-ejV"/>
