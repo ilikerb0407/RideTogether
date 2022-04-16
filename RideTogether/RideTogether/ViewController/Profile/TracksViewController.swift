@@ -109,19 +109,21 @@ class TracksViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
-        
+        navigationController?.navigationBar.backgroundColor = .B4
+        // MARK: customize tarbar button
         let button = UIButton.init(type: .custom)
         //set image for button
         button.setImage(UIImage(named: "hat"), for: .normal)
         //add function for button
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-        button.layer.cornerRadius = button.borderWidth / 2
+        button.layer.cornerRadius = button.frame.width / 2
         button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
         //set frame
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
         
         self.tabBarController?.tabBar.isHidden = false
+        
         
     }
     
@@ -153,10 +155,8 @@ extension TracksViewController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath, sender: Any?) {
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
-        indexOfRoute = indexPath.row
-        print ("indexOfRoute= \(indexOfRoute)")
     }
     
     
@@ -166,7 +166,6 @@ extension TracksViewController: UITableViewDelegate {
             if let nextVC = segue.destination as? TrackDetailsViewController {
                 if let record = sender as? Record {
                     nextVC.record = record
-//                    delegate?.sendData(record)
                 }
             }
         }
