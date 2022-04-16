@@ -27,14 +27,14 @@ extension Double {
     }
     
     func toDistance() -> String {
-        return self > metersPerKilometer ? toKilometers() as String : toMeters() as String
+        return self > metersPerKilometer ? toMeters() as String : toMeters() as String
+//        return toMeters() as String
     }
     
     // MARK: transfer m/s to km/h
     func toKilometersPerHour() -> Double {
         return self * kilometersPerHourInOneMeterPerSecond
     }
-    
     
     func toKilometersPerHour() -> String {
         return String(format: "%.3fkm/h", toKilometersPerHour() as Double)

@@ -266,15 +266,16 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return view
     }()
     
-//    private lazy var leftStackView: UIStackView = {
+    private lazy var leftStackView: UIStackView = {
 //        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.axis = .vertical
-//        view.spacing = 8
-//        view.distribution = .equalSpacing
-//        view.alignment = .leading
-//        return view
-//    }()
+        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = 8
+        view.distribution = .equalSpacing
+        view.alignment = .leading
+        return view
+    }()
     
     
     // MARK: 之後再改字體
@@ -341,7 +342,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         setUpButtonsStackView()
         
         setUpLabels()
-        
         
         navigationController?.isNavigationBarHidden = true
         
@@ -414,7 +414,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         let region = MKCoordinateRegion(center: center, span: span)
         
         map.setRegion(region, animated: true)
@@ -450,16 +450,16 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             gpxTrackingStatus = .tracking
         }
     }
-    //    /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
-    //    ///
-    //    func defaultFilename() -> String {
-    //        let defaultDate = DefaultDateFormat()
-    //        //let dateFormatter = DateFormatter()
-    //        //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
-    //        let dateStr = defaultDate.getDateFromPrefs()
-    //        print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
-    //        return dateStr//dateFormatter.string(from: Date())
-    //    }
+//        /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
+//        ///
+//        func defaultFilename() -> String {
+//            let defaultDate = DefaultDateFormat()
+//            //let dateFormatter = DateFormatter()
+//            //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
+//            let dateStr = defaultDate.getDateFromPrefs()
+//            print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
+//            return dateStr//dateFormatter.string(from: Date())
+//        }
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
@@ -669,26 +669,26 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     func setUpButtonsStackView() {
         
         view.addSubview(buttonStackView)
-//        view.addSubview(leftStackView)
+        view.addSubview(leftStackView)
         
         
         NSLayoutConstraint.activate([
             
-            buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            buttonStackView.widthAnchor.constraint(equalToConstant: UIScreen.width * 0.85),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            // widthAnchor.constraint = UIScreen.width * 0.85
+            buttonStackView.widthAnchor.constraint(equalToConstant: 100),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
-            buttonStackView.heightAnchor.constraint(equalToConstant: 80)
+            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
             
-//            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-//
-//            leftStackView.widthAnchor.constraint(equalToConstant: 50),
-//
-//            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
-//
-//            leftStackView.heightAnchor.constraint(equalToConstant: 100)
+            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+
+            leftStackView.widthAnchor.constraint(equalToConstant: 100),
+
+            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
+
+            leftStackView.heightAnchor.constraint(equalToConstant: 200)
         ] )
         
         //        let button = UIButton()
@@ -697,15 +697,18 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         buttonStackView.addArrangedSubview(pinButton)
         
-        buttonStackView.addArrangedSubview(trackerButton)
+//        buttonStackView.addArrangedSubview(trackerButton)
         
-        buttonStackView.addArrangedSubview(saveButton)
+//        buttonStackView.addArrangedSubview(saveButton)
         
-        buttonStackView.addArrangedSubview(resetButton)
+//        buttonStackView.addArrangedSubview(resetButton)
         
 //        leftStackView.addArrangedSubview(offlineMapButton)
         
 //        leftStackView.addArrangedSubview(loadMapButton)
+        leftStackView.addArrangedSubview(trackerButton)
+        leftStackView.addArrangedSubview(saveButton)
+        leftStackView.addArrangedSubview(resetButton)
         
         // MARK: button constraint
         
@@ -719,9 +722,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             pinButton.widthAnchor.constraint(equalToConstant: 50),
             
-            trackerButton.heightAnchor.constraint(equalToConstant: 80),
+            trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
-            trackerButton.widthAnchor.constraint(equalToConstant: 80),
+            trackerButton.widthAnchor.constraint(equalToConstant: 70),
             
             saveButton.heightAnchor.constraint(equalToConstant: 50),
             
@@ -758,7 +761,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         map.addSubview(coordsLabel)
         ////         座標 - 改成時速
         coordsLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
-        
         
         map.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)

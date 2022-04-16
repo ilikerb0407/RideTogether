@@ -15,8 +15,8 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.B2, .C4],
-                locations: [0.0, 1.0], direction: .leftSkewed)
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
         }
     }
     
@@ -25,7 +25,7 @@ class ProfileViewController: BaseViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
-            tableView.backgroundColor = .white
+            tableView.backgroundColor = .clear
             tableView.isScrollEnabled = false
         }
     }

@@ -12,21 +12,21 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorageSwift
 
-//class UserManager {
+class UserManager {
 //    
-//    let userId = Auth.auth().currentUser?.uid
+    let userId = Auth.auth().currentUser?.uid
 //    
-//    var userInfo = UserInfo()
+    var userInfo = UserInfo()
 //    
-//    static let shared = UserManager()
+    static let shared = UserManager()
 //    
-//    private init() { }
+    private init() { }
 //    
-//    lazy var storageRef = Storage.storage().reference()
+    lazy var storageRef = Storage.storage().reference()
 //    
-//    lazy var dataBase = Firestore.firestore()
+    lazy var dataBase = Firestore.firestore()
 //    
-//    let usersCollection = Collection.users.rawValue
+    let usersCollection = Collection.users.rawValue
 //    
 //    func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
 //        
@@ -180,29 +180,30 @@ import FirebaseStorageSwift
 //        }
 //    }
 //    
-//    func updateUserTrackLength(length: Double) {
-//        
-//        userInfo.totalLength += length
-//        
+    func updateUserTrackLength(length: Double) {
+        
+        userInfo.totalLength += length
+        
 //        let userId = userInfo.uid
-//        
-//        let post = [UserInfo.CodingKeys.totalLength.rawValue: userInfo.totalLength]
-//        
-//        let docRef = dataBase.collection(usersCollection).document(userId)
-//        
-//        docRef.updateData(post) { error in
-//            
-//            if let error = error {
-//                
-//                print("Error updating document: \(error)")
-//                
-//            } else {
-//                
-//                print("User name successfully updated")
-//            }
-//        }
-//    }
-//    
+        
+        let post = [UserInfo.CodingKeys.totalLength.rawValue: userInfo.totalLength]
+        
+//       let docRef = dataBase.collection(usersCollection).document(userId)
+        let docRef = dataBase.collection(usersCollection).document()
+        
+        docRef.updateData(post) { error in
+            
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+            } else {
+                
+                print("User name successfully updated")
+            }
+        }
+    }
+    
 //    func blockUser(blockUserId: String) {
 //        
 //        userInfo.blockList?.append(blockUserId)
@@ -225,4 +226,4 @@ import FirebaseStorageSwift
 //            }
 //        }
 //    }
-//}
+}

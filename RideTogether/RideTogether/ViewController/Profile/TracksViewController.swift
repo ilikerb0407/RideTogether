@@ -13,7 +13,7 @@ import SwiftUI
 //MARK: User Record
 
 class TracksViewController: BaseViewController {
-
+    
     
     var indexOfRoute:Int = 0
     
@@ -30,14 +30,20 @@ class TracksViewController: BaseViewController {
     }
     
     
-//    @objc func backButton() {
-//        let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
-//        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-//        view.addSubview(button)
-//    }
+      func backButton() {
+            let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
+            view.addSubview(button)
+        }
     
-    @objc func popToPreviosPage(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+//            gView.alpha = 0.85
+            // 不會把資料覆蓋住
+        }
+        
     }
     
     func setUpTableView() {
@@ -50,9 +56,9 @@ class TracksViewController: BaseViewController {
         
         view.addSubview(tableView)
         
-        tableView.backgroundColor = .B4
-        
         tableView.separatorStyle = .none
+        
+        tableView.backgroundColor = .clear
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -81,7 +87,7 @@ class TracksViewController: BaseViewController {
         }
     }
     
-     @objc func headerRefresh() {
+    @objc func headerRefresh() {
         
         fetchRecords()
         
@@ -89,6 +95,7 @@ class TracksViewController: BaseViewController {
         
         self.tableView.mj_header?.endRefreshing()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,28 +108,17 @@ class TracksViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
-
+//        backButton()
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.backgroundColor = .B4
-        // MARK: customize tarbar button
-        let button = UIButton.init(type: .custom)
-        //set image for button
-        button.setImage(UIImage(named: "hat"), for: .normal)
-        //add function for button
-        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-        button.layer.cornerRadius = button.frame.width / 2
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
-        //set frame
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-        
-        self.tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
         
         
     }
@@ -157,7 +153,7 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
-
+        
     }
     
     
