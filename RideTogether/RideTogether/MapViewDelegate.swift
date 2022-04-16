@@ -36,14 +36,15 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
 //MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+//
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
-        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
+        let annotationView = MKPinAnnotationView()
+//        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
-        
+//
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         deleteButton.setImage(UIImage(named: "delete"), for: UIControl.State())
         deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
