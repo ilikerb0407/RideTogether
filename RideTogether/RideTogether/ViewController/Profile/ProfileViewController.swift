@@ -79,10 +79,19 @@ extension ProfileViewController: UITableViewDataSource {
         
         let cell : ProfileTableViewCell = tableView.dequeueCell(for: indexPath)
         
+        cell.backgroundColor = .clear
+//        cell.backgroundView = UIView()
+//        cell.selectedBackgroundView = UIView()
         cell.setUpCell(indexPath: indexPath)
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+        cell.backgroundColor = .clear
+  
     }
     
 }
