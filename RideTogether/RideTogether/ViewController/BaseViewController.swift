@@ -125,9 +125,10 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
-        let image = UIImage(systemName: "chevron.left")
+        let image = UIImage(named: "hat")
+        // 改圖片
         
         leftButton.setImage(image, for: .normal)
         
@@ -135,5 +136,17 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
+    
+    // MARK: customize tarbar button
+//        let button = UIButton.init(type: .custom)
+//        //set image for button
+//        button.setImage(UIImage(named: "hat"), for: .normal)
+//        //add function for button
+//        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+//        button.layer.cornerRadius = button.frame.width / 2
+//        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+//        //set frame
+//        let barButton = UIBarButtonItem(customView: button)
+//        self.navigationItem.leftBarButtonItem = barButton
 }
     
