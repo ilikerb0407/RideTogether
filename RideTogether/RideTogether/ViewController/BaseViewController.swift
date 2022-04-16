@@ -8,10 +8,16 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Kingfisher
+import MessageUI
 
 
 
-class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     static var identifier: String {
@@ -136,6 +142,24 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
+    
+    func sendSMS() {
+        
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self
+
+        // Configure the fields of the interface.
+        composeVC.recipients = ["請輸入收件人"]
+        composeVC.body = "分享我的位置"
+
+        // Present the view controller modally.
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        }
+
+    }
+    
+    
     
     
     
