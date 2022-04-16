@@ -54,45 +54,28 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     
     //MARK: =========
-    
-    
 
-    // 不同
-//    var record2 = Record()
-    
-//    func fetchRecords() {
+//    func showMap() {
+//        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+//        button.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
+//        view.addSubview(button)
+//    }
 //
-//        RecordManager.shared.fetchOneRecord { [weak self] result in
-//            switch result {
-//            case .success(let records):
-//                self?.record = records
-////                self?.tableView.reloadData()
-//            case .failure(let error): print ("fetchData Failure: \(error)")
-//            }
+//    @objc func addRoute() {
+//        guard let points = Park.plist("Taipei1") as? [String] else { return }
+//
+//        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
+//        let coords = cgPoints.map { CLLocationCoordinate2D(
+//            latitude: CLLocationDegrees($0.x),
+//            longitude: CLLocationDegrees($0.y))
 //        }
+//        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+//        print ("===========Pleaseprint")
+//        map2.addOverlay(myPolyline)
 //    }
     
-    func showMap() {
-        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
-        button.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func addRoute() {
-        guard let points = Park.plist("Taipei1") as? [String] else { return }
-        
-        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
-        let coords = cgPoints.map { CLLocationCoordinate2D(
-            latitude: CLLocationDegrees($0.x),
-            longitude: CLLocationDegrees($0.y))
-        }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        print ("===========Pleaseprint")
-        map2.addOverlay(myPolyline)
-    }
-    
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 80, y: 80, width: 50, height: 50))
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 100, width: 50, height: 50))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -396,12 +379,8 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         
         praseGPXFile()
         
-//        fetchRecords()
-        
         backButton()
-        
-//        showMap()
-        
+
         navigationController?.isNavigationBarHidden = true
         
         self.locationManager.requestAlwaysAuthorization()
@@ -410,10 +389,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     override func viewDidAppear(_ animated: Bool) {
         praseGPXFile()
-        
-//        fetchRecords()
-        
-        showMap()
     }
     
     override func viewWillLayoutSubviews() {

@@ -16,8 +16,9 @@ class PreviousPageButton: UIButton {
         
         self.backgroundColor = .white
         
-        let image = UIImage(systemName: "chevron.left",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        let image = UIImage(named: "hat", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+//        let image = UIImage(systemName: "hat",
+//                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
         
         self.setImage(image, for: .normal)
         
