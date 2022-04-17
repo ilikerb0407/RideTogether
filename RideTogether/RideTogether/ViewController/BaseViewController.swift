@@ -143,21 +143,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
     
-    func sendSMS() {
-        
-        let composeVC = MFMessageComposeViewController()
-        composeVC.messageComposeDelegate = self
-
-        // Configure the fields of the interface.
-        composeVC.recipients = ["請輸入收件人"]
-        composeVC.body = "分享我的位置"
-
-        // Present the view controller modally.
-        if MFMessageComposeViewController.canSendText() {
-            self.present(composeVC, animated: true, completion: nil)
-        }
-
-    }
     
     
     
