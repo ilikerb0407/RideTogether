@@ -52,6 +52,6 @@ enum Collection: String {
     
     //trails-maps
     
-    case maps = "RecommendMap"
+    case maps = "Maps"
     
 }

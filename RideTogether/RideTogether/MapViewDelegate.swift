@@ -15,6 +15,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     /// Current session of GPX location logging. Handles all background tasks and recording.
     let session = GPXSession()
     
+    /// The Waypoint is being edited (if there is any)
+    var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is MKPolyline {
@@ -36,25 +39,34 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
 //MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+//
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
-        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
+        let annotationView = MKPinAnnotationView()
+//        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
-        
+//
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        deleteButton.setImage(UIImage(named: "delete"), for: UIControl.State())
-        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
+        deleteButton.setImage(UIImage(named: "delete1"), for: UIControl.State())
+//        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
         deleteButton.tag = kDeleteWaypointAccesoryButtonTag
         annotationView.rightCalloutAccessoryView = deleteButton
+//        annotationView.pinTintColor = .red
+        
+        let editButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        editButton.setImage(UIImage(named: "edit"), for: UIControl.State())
+//        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
+        editButton.tag = kEditWaypointAccesoryButtonTag
+        annotationView.leftCalloutAccessoryView = editButton
+        
         return annotationView
     }
     
-    
     /// Delete Waypoint Button tag. Used in a waypoint bubble
     let kDeleteWaypointAccesoryButtonTag = 666
+    let kEditWaypointAccesoryButtonTag = 333
     
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -68,6 +80,32 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         case kDeleteWaypointAccesoryButtonTag:
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
             map.removeWaypoint(waypoint)
+        case kEditWaypointAccesoryButtonTag:
+            print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
+            
+            let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
+            
+            let alertController = UIAlertController(title: NSLocalizedString("EDIT_WAYPOINT_NAME_TITLE", comment: "no comment"),
+                                                    message: NSLocalizedString("EDIT_WAYPOINT_NAME_MESSAGE", comment: "no comment"),
+                                                    preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.text = waypoint.title
+                textField.clearButtonMode = .always
+            }
+            let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
+                print("Edit waypoint alert view")
+                self.waypointBeingEdited.title = alertController.textFields?[0].text
+                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
+            }
+            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+            
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            
+            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
+            
+            self.waypointBeingEdited = waypoint
+            
         default:
             print("[calloutAccesoryControlTapped ERROR] unknown control")
         }

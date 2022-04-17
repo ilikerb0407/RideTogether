@@ -27,7 +27,7 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
     var title: String {
         switch self {
         case .routeRecord:
-            return " My_Record "
+            return " 騎乘紀錄 "
 //        case .recommendMap:
 //            return "Recommend_Map"
         }
@@ -46,7 +46,7 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
     var image: UIImage? {
         switch self {
         case .routeRecord:
-            return UIImage.init(systemName: "bicycle")
+            return UIImage.init(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
 //        case .recommendMap:
 //            return UIImage.init(systemName: "map")
         }

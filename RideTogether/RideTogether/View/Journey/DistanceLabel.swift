@@ -20,6 +20,7 @@ open class DistanceLabel: UILabel {
         set {
             _distance = newValue
             text = newValue.toDistance()
+            
         }
     }
 }

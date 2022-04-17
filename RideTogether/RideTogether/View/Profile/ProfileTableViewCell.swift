@@ -22,19 +22,28 @@ class ProfileTableViewCell: UITableViewCell {
         
         itemImage.contentMode = .scaleToFill
         
+        itemBackground.backgroundColor = ProfileItemType.allCases[indexPath.row].backgroundColor
+        
         itemImage.image = ProfileItemType.allCases[indexPath.item].image
     
         
     }
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
         selectionStyle = .none
+        
         contentView.backgroundColor = .clear
+        
+        self.backgroundColor = .clear
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        itemBackground.layer.cornerRadius = itemBackground.frame.height / 2
+        
+        itemBackground.layer.cornerRadius = 30
     }
 }
