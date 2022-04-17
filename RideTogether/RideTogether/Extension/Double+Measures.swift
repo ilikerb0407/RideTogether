@@ -18,8 +18,7 @@ extension Double {
     }
     
     func toKilometers() -> String {
-        
-        return String(format: "%.1fkm", self as Double)
+        return String(format: "%.2fkm", toKilometers() as Double)
     }
     
     func toMeters() -> String {

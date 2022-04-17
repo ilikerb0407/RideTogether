@@ -11,6 +11,7 @@ import CoreGPX
 import CoreLocation
 import Firebase
 import Lottie
+import MessageUI
 
 class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
     
@@ -145,8 +146,13 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         }
     }
     private lazy var sendSMSButton: UIButton = {
-        let button = SendSMSButton(frame: CGRect(x: 190, y: 190, width: 40, height: 40))
-        sendSMS()
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        let image = UIImage(systemName: "message",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
         return button
     }()
     
@@ -264,8 +270,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }()
     
     private lazy var buttonStackView: UIStackView = {
-        
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
+//        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -276,7 +282,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     private lazy var leftStackView: UIStackView = {
         //        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
-        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton, sendSMSButton])
+        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = 8
@@ -415,6 +421,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         followUserButton.roundCorners(cornerRadius: otherRadius)
         
+        sendSMSButton.roundCorners(cornerRadius: otherRadius)
+        
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
         saveButton.roundCorners(cornerRadius: otherRadius)
@@ -436,10 +444,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
                      UIColor.hexStringToUIColor(hex: "#FCCB00")],
             direction: .leftSkewed)
-        
     }
-    
-    
     
     // MARK: - Action
     
@@ -478,6 +483,22 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.view.addSubview(map)
     }
     
+    @objc func sendSMS() {
+        
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self
+
+        // Configure the fields of the interface.
+        composeVC.recipients = ["請輸入收件人"]
+        composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+
+        // Present the view controller modally.
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        }
+
+    }
+    
     
     @objc func trackerButtonTapped() {
         
@@ -502,16 +523,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             gpxTrackingStatus = .tracking
         }
     }
-    //        /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
-    //        ///
-    //        func defaultFilename() -> String {
-    //            let defaultDate = DefaultDateFormat()
-    //            //let dateFormatter = DateFormatter()
-    //            //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
-    //            let dateStr = defaultDate.getDateFromPrefs()
-    //            print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
-    //            return dateStr//dateFormatter.string(from: Date())
-    //        }
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
@@ -710,12 +721,11 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         view.addSubview(buttonStackView)
         view.addSubview(leftStackView)
         
-        
         NSLayoutConstraint.activate([
             
-            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
             // widthAnchor.constraint = UIScreen.width * 0.85
-            buttonStackView.widthAnchor.constraint(equalToConstant: 100),
+            buttonStackView.widthAnchor.constraint(equalToConstant: 150),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
@@ -735,6 +745,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         buttonStackView.addArrangedSubview(followUserButton)
         
         buttonStackView.addArrangedSubview(pinButton)
+        
+        buttonStackView.addArrangedSubview(sendSMSButton)
         
         //        buttonStackView.addArrangedSubview(trackerButton)
         
@@ -793,6 +805,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         offlineMapButton.addTarget(self, action: #selector(openOfflineMap), for: .touchUpInside)
         
         loadMapButton.addTarget(self, action: #selector(openFolderViewController), for: .touchUpInside)
+        
+        sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
     }
     
     func setUpLabels() {

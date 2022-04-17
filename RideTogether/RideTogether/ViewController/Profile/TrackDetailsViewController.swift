@@ -32,14 +32,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             chartView.delegate = self
         }
     }
-    
-    //    @IBOutlet weak var chartView: LineChartView! {
-    //
-    //            didSet {
-    //                chartView.delegate = self
-    //            }
-    //        }
-    
+
     
     private let mapViewDelegate = MapViewDelegate()
     
@@ -67,8 +60,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         backToJourneyButton()
         
         updateInfo(data: trackInfo)
-        
-//        chartView.delegate = self
         
         setChart(xValues: trackChartData.distance, yValues: trackChartData.elevation)
     }
