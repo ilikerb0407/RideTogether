@@ -8,15 +8,18 @@
 import UIKit
 import IQKeyboardManagerSwift
 import Kingfisher
+import MessageUI
 
-protocol sendDataToNextVc {
-    func sendData(_ inputRecord: Record)
-}
 
-class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
     
-    var delegate: sendDataToNextVc?
-
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     static var identifier: String {
         
         return String(describing: self)
@@ -94,9 +97,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
             
-//            UserManager.shared.blockUser(blockUserId: uid)
+            //            UserManager.shared.blockUser(blockUserId: uid)
             
-//            UserManager.shared.userInfo.blockList?.append(uid)
+            //            UserManager.shared.userInfo.blockList?.append(uid)
         }
         
         controller.addAction(cancelAction)
@@ -105,21 +108,21 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.present(controller, animated: true, completion: nil)
     }
-
+    
     func showAlertAction(
         title: String?,
         message: String? = "",
         preferredStyle: UIAlertController.Style = .alert,
         actions: [UIAlertAction] = [UIAlertAction(title: "Ok", style: .cancel)] ) {
-        
-        let controller = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
             
-        for action in actions {
-            controller.addAction(action)
+            let controller = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+            
+            for action in actions {
+                controller.addAction(action)
+            }
+            
+            self.present(controller, animated: true, completion: nil)
         }
-        
-        self.present(controller, animated: true, completion: nil)
-    }
     
     // 前一頁的button
     func setNavigationBar(title: String) {
@@ -128,9 +131,10 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
-        let image = UIImage(systemName: "chevron.left")
+        let image = UIImage(named: "hat")
+        // 改圖片
         
         leftButton.setImage(image, for: .normal)
         
@@ -138,5 +142,22 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
-}
     
+    
+    
+    
+    
+    
+    // MARK: customize tarbar button
+    //        let button = UIButton.init(type: .custom)
+    //        //set image for button
+    //        button.setImage(UIImage(named: "hat"), for: .normal)
+    //        //add function for button
+    //        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+    //        button.layer.cornerRadius = button.frame.width / 2
+    //        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+    //        //set frame
+    //        let barButton = UIBarButtonItem(customView: button)
+    //        self.navigationItem.leftBarButtonItem = barButton
+}
+

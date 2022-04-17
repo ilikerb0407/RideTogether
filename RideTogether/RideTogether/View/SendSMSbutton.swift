@@ -1,8 +1,8 @@
 //
-//  NextPageButton.swift
+//  SendSMSbutton.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/15.
+//  Created by Kai Fu Jhuang on 2022/4/17.
 //
 
 import UIKit
@@ -10,14 +10,15 @@ import SwiftUI
 
 // 下一頁的button
 
-class NextPageButton: UIButton {
+class SendSMSButton: UIButton {
     
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
         
-        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        let image = UIImage(named: "map", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
 //        let image = UIImage(systemName: "bike",
 //                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))
         
@@ -39,3 +40,4 @@ class NextPageButton: UIButton {
         self.layer.masksToBounds = true
     }
 }
+

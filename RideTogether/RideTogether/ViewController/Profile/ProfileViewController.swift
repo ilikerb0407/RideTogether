@@ -12,15 +12,21 @@ class ProfileViewController: BaseViewController {
     
     let items = ProfileItemType.allCases
     
-    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
-            tableView.backgroundColor = .white
-            tableView.isScrollEnabled = true
+            tableView.backgroundColor = .clear
+            tableView.isScrollEnabled = false
         }
     }
     
@@ -45,7 +51,7 @@ extension ProfileViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -54,9 +60,7 @@ extension ProfileViewController : UITableViewDelegate {
             let segueId = ProfileSegue.allCases[indexPath.row].rawValue
             performSegue(withIdentifier: segueId, sender: nil)
             
-//        case 1 :
-//            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
-//            performSegue(withIdentifier: segueId, sender: nil)
+            
             
         default :
             return
@@ -75,10 +79,19 @@ extension ProfileViewController: UITableViewDataSource {
         
         let cell : ProfileTableViewCell = tableView.dequeueCell(for: indexPath)
         
+        cell.backgroundColor = .clear
+//        cell.backgroundView = UIView()
+//        cell.selectedBackgroundView = UIView()
         cell.setUpCell(indexPath: indexPath)
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    
+        cell.backgroundColor = .clear
+  
     }
     
 }

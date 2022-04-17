@@ -14,10 +14,14 @@ class PreviousPageButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
+//        self.applyButtonGradient(
+//            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
+//            direction: .leftSkewed)
         
-        let image = UIImage(systemName: "chevron.left",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        let image = UIImage(named: "hat", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+//        let image = UIImage(systemName: "hat",
+//                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
         
         self.setImage(image, for: .normal)
         
@@ -35,5 +39,6 @@ class PreviousPageButton: UIButton {
         layer.cornerRadius = self.frame.height / 2
         
         self.layer.masksToBounds = true
+        
     }
 }

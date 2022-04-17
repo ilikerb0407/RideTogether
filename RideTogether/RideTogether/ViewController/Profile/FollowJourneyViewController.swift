@@ -54,52 +54,40 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     
     //MARK: =========
-    
-    
 
-    // 不同
-//    var record2 = Record()
-    
-//    func fetchRecords() {
+//    func showMap() {
+//        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+//        button.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
+//        view.addSubview(button)
+//    }
 //
-//        RecordManager.shared.fetchOneRecord { [weak self] result in
-//            switch result {
-//            case .success(let records):
-//                self?.record = records
-////                self?.tableView.reloadData()
-//            case .failure(let error): print ("fetchData Failure: \(error)")
-//            }
+//    @objc func addRoute() {
+//        guard let points = Park.plist("Taipei1") as? [String] else { return }
+//
+//        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
+//        let coords = cgPoints.map { CLLocationCoordinate2D(
+//            latitude: CLLocationDegrees($0.x),
+//            longitude: CLLocationDegrees($0.y))
 //        }
+//        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+//        print ("===========Pleaseprint")
+//        map2.addOverlay(myPolyline)
 //    }
     
-    func showMap() {
-        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
-        button.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func addRoute() {
-        guard let points = Park.plist("Taipei1") as? [String] else { return }
-        
-        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
-        let coords = cgPoints.map { CLLocationCoordinate2D(
-            latitude: CLLocationDegrees($0.x),
-            longitude: CLLocationDegrees($0.y))
-        }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        print ("===========Pleaseprint")
-        map2.addOverlay(myPolyline)
-    }
-    
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 80, y: 80, width: 50, height: 50))
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 150, width: 50, height: 50))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
     
 
     @objc func popToPreviosPage(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        let count = self.navigationController!.viewControllers.count
+        if let preController = self.navigationController?.viewControllers[count-2] {
+            self.navigationController?.popToViewController(preController, animated: true)
+        }
+        navigationController?.popViewController(animated: true)
+        
     }
     
     func praseGPXFile() {
@@ -340,6 +328,15 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     // MARK: 之後再改字體
     
+    var coordsLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.regular(size: 20)
+        label.textColor = UIColor.white
+        return label
+    }()
+    
     var speedLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -396,12 +393,8 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         
         praseGPXFile()
         
-//        fetchRecords()
-        
         backButton()
-        
-//        showMap()
-        
+
         navigationController?.isNavigationBarHidden = true
         
         self.locationManager.requestAlwaysAuthorization()
@@ -410,10 +403,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     override func viewDidAppear(_ animated: Bool) {
         praseGPXFile()
-        
-//        fetchRecords()
-        
-        showMap()
     }
     
     override func viewWillLayoutSubviews() {
@@ -434,7 +423,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         pinButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
+            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),  .orange],
             direction: .leftSkewed)
         
         saveButton.applyButtonGradient(
@@ -448,7 +437,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
             direction: .leftSkewed)
         
     }
-    
     
     
     // MARK: - Action
@@ -736,6 +724,10 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         map2.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
         
+        map2.addSubview(coordsLabel)
+        ////         座標 - 改成時速
+        coordsLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
+        
         map2.addSubview(timeLabel)
         // 時間
         timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 30)
@@ -765,12 +757,13 @@ extension FollowJourneyViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
+        let altitude = newLocation.altitude.toAltitude()
+        let text = "Height : \(altitude)"
+        coordsLabel.text = text
         
         let rUnknownSpeedText = "0.00"
-        
-        //        Update_speed
-        
-        speedLabel.text = "speed: \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+    
+        speedLabel.text = "speed : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
         if followUser {
             map2.setCenter(newLocation.coordinate, animated: true)
