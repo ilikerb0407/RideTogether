@@ -36,6 +36,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
+
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
                 let annotationView = MKPinAnnotationView()
@@ -64,14 +65,16 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
     }
     
-    //MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
+        //
+//MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        //
+
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
         let annotationView = MKPinAnnotationView()
+
         //        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
@@ -87,12 +90,12 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         let editButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         editButton.setImage(UIImage(named: "edit"), for: UIControl.State())
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
+
         editButton.tag = kEditWaypointAccesoryButtonTag
         annotationView.leftCalloutAccessoryView = editButton
         
         return annotationView
     }
-    
     
     /// Delete Waypoint Button tag. Used in a waypoint bubble
     let kDeleteWaypointAccesoryButtonTag = 666
@@ -142,7 +145,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     }
     
     //MARK:  Adds the pin to the map with an animation (comes from the top of the screen)
-    
+  
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         
         var num = 0
@@ -168,30 +171,33 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 continue
             }
             let point: MKMapPoint = MKMapPoint.init(annotationView.annotation!.coordinate)
-            
+
             if !mapView.visibleMapRect.contains(point) { continue }
             
             let endFrame: CGRect = annotationView.frame
             
             annotationView.frame = CGRect(x: annotationView.frame.origin.x, y: annotationView.frame.origin.y - mapView.superview!.frame.size.height,
+
                                           width: annotationView.frame.size.width, height: annotationView.frame.size.height)
+
             let interval: TimeInterval = 0.04 * 1.1
             
             UIView.animate(withDuration: 0.5, delay: interval, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
                 annotationView.frame = endFrame
-            }, completion: { (finished) -> Void in
-                if finished {
-                    UIView.animate(withDuration: 0.05, animations: { () -> Void in
-                        
-                        annotationView.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 0.8, tx: 0, ty: annotationView.frame.size.height*0.1)
-                        
-                    }, completion: { _ -> Void in
-                        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-                            annotationView.transform = CGAffineTransform.identity
+
+                }, completion: { (finished) -> Void in
+                    if finished {
+                        UIView.animate(withDuration: 0.05, animations: { () -> Void in
+                            
+                            annotationView.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 0.8, tx: 0, ty: annotationView.frame.size.height*0.1)
+                            
+                            }, completion: { _ -> Void in
+                                UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                                    annotationView.transform = CGAffineTransform.identity
+                                })
+                            
                         })
-                        
-                    })
-                }
+                    }
             })
         }
     }
