@@ -47,6 +47,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
 //        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
+        
 //
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         deleteButton.setImage(UIImage(named: "delete1"), for: UIControl.State())
@@ -60,9 +61,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
 //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
         editButton.tag = kEditWaypointAccesoryButtonTag
         annotationView.leftCalloutAccessoryView = editButton
+    
         
         return annotationView
     }
+    
     
     /// Delete Waypoint Button tag. Used in a waypoint bubble
     let kDeleteWaypointAccesoryButtonTag = 666
@@ -138,6 +141,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 continue
             }
             let point: MKMapPoint = MKMapPoint.init(annotationView.annotation!.coordinate)
+            
             if !mapView.visibleMapRect.contains(point) { continue }
             
             let endFrame: CGRect = annotationView.frame
