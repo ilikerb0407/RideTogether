@@ -11,6 +11,7 @@ import CoreGPX
 import CoreLocation
 import Firebase
 import Lottie
+import MessageUI
 
 class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
     
@@ -144,6 +145,19 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             }
         }
     }
+    private lazy var sendSMSButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        let image = UIImage(systemName: "message",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
+    
+  
+    
     private lazy var offlineMapButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -209,9 +223,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let button = UIButton()
         button.layer.cornerRadius = 24.0
         button.backgroundColor = .clear
-        let mappin = UIImage(systemName: "mappin",
+        let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
-        let mappinHighlighted = UIImage(systemName: "mappin.circle.fill",
+        let mappinHighlighted = UIImage(systemName: "mappin.and.ellipse",
                                         withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         button.setImage(mappin, for: UIControl.State())
         button.setImage(mappinHighlighted, for: .highlighted)
@@ -238,8 +252,22 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             map.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
+
+//            // 終點座標 成功把 cgpoint轉成 coordinateForm
+//            let targetCoordinate = self.map.convert(point, toCoordinateFrom: map)
+//            // 初始化 MKPlacemark
+//            let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
+//            // 透過 targetPlacemark 初始化一個 MKMapItem
+//            let targetItem = MKMapItem(placemark: targetPlacemark)
+//            // 使用當前使用者當前座標初始化 MKMapItem
+//            let userMapItem = MKMapItem.forCurrentLocation()
+//            // 建立導航路線的起點及終點 MKMapItem
+//            let routes = [userMapItem,targetItem]
+//            // 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
+//            MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
         }
     }
+    
     /// Has the map any waypoint?
     var hasWaypoints: Bool = false
     
@@ -256,8 +284,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }()
     
     private lazy var buttonStackView: UIStackView = {
-        
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
+//        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -267,7 +295,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }()
     
     private lazy var leftStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
+        //        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
+        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = 8
@@ -301,9 +330,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont.regular(size: 26)
+        label.font = UIFont.regular(size: 40)
         label.textColor = UIColor.white
-        label.text = "00:00"
+        label.text = "Timer"
         return label
     }()
     
@@ -342,11 +371,52 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         setUpLabels()
         
-        
         navigationController?.isNavigationBarHidden = true
         
         self.locationManager.requestAlwaysAuthorization()
         
+        addSegment()
+        
+    }
+    
+    func addSegment() {
+        let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
+        segmentControl.tintColor = UIColor.black
+        segmentControl.backgroundColor =
+        UIColor.lightGray
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
+        segmentControl.frame.size = CGSize(
+            width: 150, height: 30)
+        segmentControl.center = CGPoint(
+          x: 80,
+          y: 65)
+        self.view.addSubview(segmentControl)
+    }
+    
+    
+    // 切換選項時執行動作的方法
+    @objc func onChange(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0 :
+            map.mapType = .hybridFlyover
+            map.showsTraffic = true
+            speedLabel.textColor = .white
+            timeLabel.textColor = .white
+            coordsLabel.textColor = .white
+            currentSegmentDistanceLabel.textColor = .white
+            totalTrackedDistanceLabel.textColor = .white
+        case 1 :
+            map.mapType = .standard
+            map.showsTraffic = true
+            speedLabel.textColor = .black
+            timeLabel.textColor = .black
+            coordsLabel.textColor = .black
+            currentSegmentDistanceLabel.textColor = .black
+            totalTrackedDistanceLabel.textColor = .black
+        default :
+            map.mapType = .standard
+        }
     }
     
     
@@ -357,12 +427,15 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let trakerRadius = trackerButton.frame.height / 2
         
         let otherRadius = saveButton.frame.height / 2
+
         
-        offlineMapButton.roundCorners(cornerRadius: otherRadius)
-        
-        loadMapButton.roundCorners(cornerRadius: otherRadius)
+//        offlineMapButton.roundCorners(cornerRadius: otherRadius)
+//
+//        loadMapButton.roundCorners(cornerRadius: otherRadius)
         
         followUserButton.roundCorners(cornerRadius: otherRadius)
+        
+        sendSMSButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
@@ -385,10 +458,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
                      UIColor.hexStringToUIColor(hex: "#FCCB00")],
             direction: .leftSkewed)
-        
     }
-    
-    
     
     // MARK: - Action
     
@@ -414,7 +484,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         let region = MKCoordinateRegion(center: center, span: span)
         
         map.setRegion(region, animated: true)
@@ -426,6 +496,23 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         self.view.addSubview(map)
     }
+    
+    @objc func sendSMS() {
+        
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self
+
+        // Configure the fields of the interface.
+        composeVC.recipients = ["請輸入收件人"]
+        composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+
+        // Present the view controller modally.
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        }
+
+    }
+    
     
     @objc func trackerButtonTapped() {
         
@@ -450,16 +537,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             gpxTrackingStatus = .tracking
         }
     }
-    //    /// returns a string with the format of current date dd-MMM-yyyy-HHmm' (20-Jun-2018-1133)
-    //    ///
-    //    func defaultFilename() -> String {
-    //        let defaultDate = DefaultDateFormat()
-    //        //let dateFormatter = DateFormatter()
-    //        //dateFormatter.dateFormat = "dd-MMM-yyyy-HHmm"
-    //        let dateStr = defaultDate.getDateFromPrefs()
-    //        print("fileName:" + dateStr)//dateFormatter.string(from: Date()))
-    //        return dateStr//dateFormatter.string(from: Date())
-    //    }
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
@@ -556,19 +633,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.present(navController, animated: true) { () -> Void in }
     }
     
-    
-    
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
-        if overlay is MKPolyline {
-            let lineView = MKPolylineRenderer(overlay: overlay)
-            lineView.strokeColor = .green
-            return lineView
-            
-        }
-        return MKOverlayRenderer()
-    }
     
     // MARK: 離線地圖
     func addRoute() {
@@ -671,24 +735,23 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         view.addSubview(buttonStackView)
         view.addSubview(leftStackView)
         
-        
         NSLayoutConstraint.activate([
             
-            buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            buttonStackView.widthAnchor.constraint(equalToConstant: UIScreen.width * 0.85),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            // widthAnchor.constraint = UIScreen.width * 0.85
+            buttonStackView.widthAnchor.constraint(equalToConstant: 150),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
             buttonStackView.heightAnchor.constraint(equalToConstant: 80),
             
-            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
             
-            leftStackView.widthAnchor.constraint(equalToConstant: 50),
+            leftStackView.widthAnchor.constraint(equalToConstant: 100),
             
-            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400),
+            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
             
-            leftStackView.heightAnchor.constraint(equalToConstant: 100)
+            leftStackView.heightAnchor.constraint(equalToConstant: 200)
         ] )
         
         //        let button = UIButton()
@@ -697,15 +760,20 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         buttonStackView.addArrangedSubview(pinButton)
         
-        buttonStackView.addArrangedSubview(trackerButton)
+        buttonStackView.addArrangedSubview(sendSMSButton)
         
-        buttonStackView.addArrangedSubview(saveButton)
+        //        buttonStackView.addArrangedSubview(trackerButton)
         
-        buttonStackView.addArrangedSubview(resetButton)
+        //        buttonStackView.addArrangedSubview(saveButton)
         
-        leftStackView.addArrangedSubview(offlineMapButton)
+        //        buttonStackView.addArrangedSubview(resetButton)
         
-        leftStackView.addArrangedSubview(loadMapButton)
+        //        leftStackView.addArrangedSubview(offlineMapButton)
+        
+        //        leftStackView.addArrangedSubview(loadMapButton)
+        leftStackView.addArrangedSubview(trackerButton)
+        leftStackView.addArrangedSubview(saveButton)
+        leftStackView.addArrangedSubview(resetButton)
         
         // MARK: button constraint
         
@@ -719,9 +787,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             
             pinButton.widthAnchor.constraint(equalToConstant: 50),
             
-            trackerButton.heightAnchor.constraint(equalToConstant: 80),
+            trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
-            trackerButton.widthAnchor.constraint(equalToConstant: 80),
+            trackerButton.widthAnchor.constraint(equalToConstant: 70),
             
             saveButton.heightAnchor.constraint(equalToConstant: 50),
             
@@ -751,14 +819,15 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         offlineMapButton.addTarget(self, action: #selector(openOfflineMap), for: .touchUpInside)
         
         loadMapButton.addTarget(self, action: #selector(openFolderViewController), for: .touchUpInside)
+        
+        sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
     }
     
     func setUpLabels() {
         
-        //        map.addSubview(coordsLabel)
+        map.addSubview(coordsLabel)
         ////         座標 - 改成時速
-        //        coordsLabel.frame = CGRect(x: 10, y: 30, width: 200, height: 100)
-        
+        coordsLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
         
         map.addSubview(speedLabel)
         speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
@@ -814,22 +883,21 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
     
+    //MARK: 桌面更新資料
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
         
-        //        altitude info if needed
-        //        let latFormat = String(format: "%.2f", newLocation.coordinate.latitude)
-        //        let lonFormat = String(format: "%.2f", newLocation.coordinate.longitude)
-        //        let altitude = newLocation.altitude.toAltitude()
-        //        let text = "latitude: \(latFormat) \r lontitude: \(lonFormat) \r altitude: \(altitude)"
-        //        coordsLabel.text = text
+        
+        let altitude = newLocation.altitude.toAltitude()
+        let text = "Height : \(altitude)"
+        coordsLabel.text = text
         
         let rUnknownSpeedText = "0.00"
         
-        //        Update_speed
+        //  MARK: Update_speed
         
-        speedLabel.text = "speed: \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+        speedLabel.text = "speed : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
         if followUser {
             map.setCenter(newLocation.coordinate, animated: true)

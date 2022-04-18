@@ -7,12 +7,13 @@
 
 import UIKit
 import MJRefresh
+import SwiftUI
 
 
 //MARK: User Record
 
 class TracksViewController: BaseViewController {
-
+    
     
     var indexOfRoute:Int = 0
     
@@ -28,9 +29,26 @@ class TracksViewController: BaseViewController {
         }
     }
     
+    
+      func backButton() {
+            let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
+            view.addSubview(button)
+        }
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+//            gView.alpha = 0.85
+            // 不會把資料覆蓋住
+        }
+        
+    }
+    
     func setUpTableView() {
         
-        setNavigationBar(title: "TrackTableView")
+        setNavigationBar(title: "Records")
         
         tableView = UITableView()
         
@@ -38,9 +56,9 @@ class TracksViewController: BaseViewController {
         
         view.addSubview(tableView)
         
-        tableView.backgroundColor = .clear
-        
         tableView.separatorStyle = .none
+        
+        tableView.backgroundColor = .clear
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -69,7 +87,7 @@ class TracksViewController: BaseViewController {
         }
     }
     
-     @objc func headerRefresh() {
+    @objc func headerRefresh() {
         
         fetchRecords()
         
@@ -77,6 +95,7 @@ class TracksViewController: BaseViewController {
         
         self.tableView.mj_header?.endRefreshing()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,16 +107,20 @@ class TracksViewController: BaseViewController {
         tableView.mj_header = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
-
+        
+//        backButton()
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
+        tabBarController?.tabBar.isHidden = false
         
-        self.tabBarController?.tabBar.isHidden = false
+        
     }
     
 }
@@ -130,8 +153,7 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
-        indexOfRoute = indexPath.row
-        print ("indexOfRoute= \(indexOfRoute)")
+        
     }
     
     
@@ -141,7 +163,6 @@ extension TracksViewController: UITableViewDelegate {
             if let nextVC = segue.destination as? TrackDetailsViewController {
                 if let record = sender as? Record {
                     nextVC.record = record
-//                    delegate?.sendData(record)
                 }
             }
         }

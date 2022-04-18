@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 // 下一頁的button
 
@@ -16,8 +17,9 @@ class NextPageButton: UIButton {
         
         self.backgroundColor = .white
         
-        let image = UIImage(systemName: "bicycle",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))
+        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+//        let image = UIImage(systemName: "bike",
+//                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))
         
         self.setImage(image, for: .normal)
         

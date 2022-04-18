@@ -14,12 +14,11 @@ let kilometersPerHourInOneMeterPerSecond = 3.6
 extension Double {
     
     func toKilometers() -> Double {
-        return self/metersPerKilometer
+        return self / metersPerKilometer
     }
     
     func toKilometers() -> String {
-        
-        return String(format: "%.1fkm", self as Double)
+        return String(format: "%.2fkm", toKilometers() as Double)
     }
     
     func toMeters() -> String {
@@ -27,14 +26,22 @@ extension Double {
     }
     
     func toDistance() -> String {
-        return self > metersPerKilometer ? toKilometers() as String : toMeters() as String
+        
+        if self > 1000 {
+            return toKilometers() as String
+        } else {
+            return toMeters() as String
+        }
+//        
+//        return toMeters()
+//        self > metersPerKilometer ? toMeters() as String : toMeters() as String
+//        return toMeters() as String
     }
     
     // MARK: transfer m/s to km/h
     func toKilometersPerHour() -> Double {
         return self * kilometersPerHourInOneMeterPerSecond
     }
-    
     
     func toKilometersPerHour() -> String {
         return String(format: "%.3fkm/h", toKilometersPerHour() as Double)
