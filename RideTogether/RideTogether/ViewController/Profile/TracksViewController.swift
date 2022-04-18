@@ -136,8 +136,33 @@ extension TracksViewController: UITableViewDelegate {
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
+//                switch result {
+//                case .success(_):
+//                    self.records.remove(at: indexPath.row)
+//                    self.tableView.deleteRows(at: [indexPath], with: .left)
+//
+//                case .failure(let error):
+//                    print ("delete error: \(error)")
+//                }
+//            }
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sheet = UIAlertController.init(title: "nil", message: "nil", preferredStyle: .alert)
+        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+            performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
+        }
+        
+        let shareOption = UIAlertAction(title: "Share to friends", style: .default) { _ in
+            self.shareGPXDataToFriends(indexPath.row, tableView: tableView, cellForRowAt: indexPath)
+        }
+        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self] _ in
+            
             RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
                 switch result {
                 case .success(_):
@@ -149,11 +174,51 @@ extension TracksViewController: UITableViewDelegate {
                 }
             }
         }
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        sheet.addAction(detailOption)
+        sheet.addAction(shareOption)
+        sheet.addAction(removeOption)
+        sheet.addAction(cancelOption)
+        
+        present(sheet, animated: true, completion: nil)
+        
+        
+//        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
+        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
+    func shareGPXDataToFriends(_ rowIndex: Int, tableView: UITableView, cellForRowAt indexPath: IndexPath) {
         
+        guard let gpxFileInfp: GPXFileInfo = (self.records[indexPath.row] as? GPXFileInfo ) else { return }
+        
+        RecordManager.shared.uploadRecordToDb(fileName: gpxFileInfp.fileName , fileURL: gpxFileInfp.fileURL)
+        
+        // MARK: 傳簡訊的方式 UIActivityViewController
+        
+        let activityViewController = UIActivityViewController(activityItems: [gpxFileInfp.fileURL], applicationActivities: nil)
+        
+        var cellRect = tableView.rectForRow(at: indexPath)
+        cellRect.origin = CGPoint(x: 0, y: 0) // origin must be at 0 or sheet will display offset due to height of cell
+        
+        activityViewController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
+        activityViewController.popoverPresentationController?.sourceRect = cellRect
+        
+        // NOTE: As the activity view controller can be quite tall at times,
+        //       the display of it may be offset automatically at times to ensure the activity view popup fits the screen.
+        
+        activityViewController.completionWithItemsHandler = {
+            (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                // User canceled
+                print("actionShareAtIndex: Cancelled")
+                return
+            }
+            // User completed activity
+            print("actionShareFileAtIndex: User completed activity")
+        }
+        
+       present(activityViewController, animated: true, completion: nil)
     }
     
     

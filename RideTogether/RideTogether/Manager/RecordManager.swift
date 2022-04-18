@@ -251,4 +251,6 @@ class RecordManager {
             }
         }
     }
+    
+    //MARK: 推薦路線的方式用先從storage 下載下來後在push 在database 上面，最後在讀取下來 在塗鴉牆上面
 }
