@@ -578,6 +578,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             //deleteCDRootFromCoreData()
             self.map.coreDataHelper.clearAllExceptWaypoints()
             self.map.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
+            
             print ("2\(fileName)2")
             //            }
             
