@@ -525,6 +525,11 @@
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks.sh\"\n";

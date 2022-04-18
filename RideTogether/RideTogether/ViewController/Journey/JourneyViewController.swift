@@ -244,8 +244,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.hasWaypoints = true
     }
     
-    
-    
     // MARK: 長按功能_ UILongPressGestureRecognizer
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
@@ -254,6 +252,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             map.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
+
 //            // 終點座標 成功把 cgpoint轉成 coordinateForm
 //            let targetCoordinate = self.map.convert(point, toCoordinateFrom: map)
 //            // 初始化 MKPlacemark
@@ -268,7 +267,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
 //            MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
         }
     }
-    
     
     /// Has the map any waypoint?
     var hasWaypoints: Bool = false
