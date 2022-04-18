@@ -254,19 +254,18 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             map.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
-            
-            // 終點座標 成功把 cgpoint轉成 coordinateForm
-            let targetCoordinate = self.map.convert(point, toCoordinateFrom: map)
-            // 初始化 MKPlacemark
-            let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
-            // 透過 targetPlacemark 初始化一個 MKMapItem
-            let targetItem = MKMapItem(placemark: targetPlacemark)
-            // 使用當前使用者當前座標初始化 MKMapItem
-            let userMapItem = MKMapItem.forCurrentLocation()
-            // 建立導航路線的起點及終點 MKMapItem
-            let routes = [userMapItem,targetItem]
-            // 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
-            MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
+//            // 終點座標 成功把 cgpoint轉成 coordinateForm
+//            let targetCoordinate = self.map.convert(point, toCoordinateFrom: map)
+//            // 初始化 MKPlacemark
+//            let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
+//            // 透過 targetPlacemark 初始化一個 MKMapItem
+//            let targetItem = MKMapItem(placemark: targetPlacemark)
+//            // 使用當前使用者當前座標初始化 MKMapItem
+//            let userMapItem = MKMapItem.forCurrentLocation()
+//            // 建立導航路線的起點及終點 MKMapItem
+//            let routes = [userMapItem,targetItem]
+//            // 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
+//            MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
         }
     }
     
