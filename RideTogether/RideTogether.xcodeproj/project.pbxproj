@@ -29,6 +29,9 @@
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
+		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
+		23CE42AE280E9EAE00C4C9F1 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AC280E9EAE00C4C9F1 /* SearchLocationViewController.swift */; };
+		23CE42AF280E9EAE00C4C9F1 /* SearchLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42AD280E9EAE00C4C9F1 /* SearchLocationViewController.xib */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B733280033FB000EDA70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B732280033FB000EDA70 /* ViewController.swift */; };
@@ -106,6 +109,9 @@
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
+		23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBuilder.swift; sourceTree = "<group>"; };
+		23CE42AC280E9EAE00C4C9F1 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		23CE42AD280E9EAE00C4C9F1 /* SearchLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationViewController.xib; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -367,6 +373,7 @@
 				23D1B78528006346000EDA70 /* GPXFileManager.swift */,
 				23D1B7872800637A000EDA70 /* RecordManager.swift */,
 				231BCB3828067DBD00DE2343 /* MapsManager.swift */,
+				23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */,
 				23D1B78928006396000EDA70 /* UserManager.swift */,
 			);
 			path = Manager;
@@ -377,6 +384,8 @@
 			children = (
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
 				23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */,
+				23CE42AC280E9EAE00C4C9F1 /* SearchLocationViewController.swift */,
+				23CE42AD280E9EAE00C4C9F1 /* SearchLocationViewController.xib */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -510,6 +519,7 @@
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
 				231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */,
+				23CE42AF280E9EAE00C4C9F1 /* SearchLocationViewController.xib in Resources */,
 				23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -621,8 +631,10 @@
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
+				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
+				23CE42AE280E9EAE00C4C9F1 /* SearchLocationViewController.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
 				2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */,

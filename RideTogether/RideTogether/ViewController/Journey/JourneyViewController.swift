@@ -42,6 +42,91 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     @IBOutlet weak var map: GPXMapView!
     
+    private var mapRoutes: [MKRoute] = []
+    //    private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
+    //
+    //    private let drawroute: DrawRoute
+    //
+    //    init(route: DrawRoute) {
+    //      self.drawroute = route
+    //
+    //      super.init(nibName: String(describing: JourneyViewController.self), bundle: nil)
+    //    }
+    //
+    //    required init?(coder aDecoder: NSCoder) {
+    //        fatalError("init(coder:) has not been implemented")
+    //    }
+    
+    
+    // MARK: - Helpers
+    
+    //    private func groupAndRequestDirections() {
+    //      guard let firstStop = drawroute.stops.first else {
+    //        return
+    //      }
+    //
+    //      groupedRoutes.append((drawroute.origin, firstStop))
+    //
+    //      if drawroute.stops.count == 2 {
+    //        let secondStop = drawroute.stops[1]
+    //
+    //        groupedRoutes.append((firstStop, secondStop))
+    //
+    //        groupedRoutes.append((secondStop, drawroute.origin))
+    //      }
+    //
+    //      fetchNextRoute()
+    //    }
+    var directionsResponse =  MKDirections.Response()
+    var route = MKRoute()
+    func fetchNextRoute() {
+        
+        let userMapItem = MKMapItem.forCurrentLocation()
+        let annotationView = MKPinAnnotationView()
+        let waypoint = annotationView.annotation as? GPXWaypoint
+        let targetCoordinate = annotationView.annotation?.coordinate
+        let targetPlacemark = MKPlacemark(coordinate: (((targetCoordinate ?? waypoint?.coordinate) ?? locationManager.location?.coordinate)!))
+        let targetItem = MKMapItem(placemark: targetPlacemark)
+        let request = MKDirections.Request()
+        
+        request.source = userMapItem
+        request.destination = targetItem
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [self]  response ,error in
+            if error == nil {
+                self.directionsResponse = response!
+                self.route = self.directionsResponse.routes[0]
+                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+            } else {
+                print("\(error)")
+            }
+        }
+    }
+    private func updateView(with mapRoute: MKRoute) {
+        let padding: CGFloat = 8
+        
+        map.addOverlay(mapRoute.polyline)
+        
+        //
+        map.setVisibleMapRect(
+            map.visibleMapRect.union(
+                mapRoute.polyline.boundingMapRect
+            ),
+            edgePadding: UIEdgeInsets(
+                top: 0,
+                left: padding,
+                bottom: padding,
+                right: padding
+            ),
+            animated: true
+        )
+        mapRoutes.append(mapRoute)
+    }
+    
     /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
@@ -166,7 +251,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return button
     }()
     
-  
+    
     
     private lazy var offlineMapButton: UIButton = {
         let button = UIButton()
@@ -282,7 +367,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }()
     
     private lazy var buttonStackView: UIStackView = {
-//        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
+        //        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
         let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, guideButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
@@ -375,6 +460,17 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         addSegment()
         
+        func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+
+                    if overlay is MKPolyline {
+                        var pr = MKPolylineRenderer(overlay: overlay)
+                        pr.strokeColor = UIColor.purple
+                        pr.lineWidth = 5
+                        return pr
+                    }
+                    return nil
+                }
+        
     }
     
     func addSegment() {
@@ -387,8 +483,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         segmentControl.frame.size = CGSize(
             width: 150, height: 30)
         segmentControl.center = CGPoint(
-          x: 80,
-          y: 65)
+            x: 80,
+            y: 65)
         self.view.addSubview(segmentControl)
     }
     
@@ -425,11 +521,11 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let trakerRadius = trackerButton.frame.height / 2
         
         let otherRadius = saveButton.frame.height / 2
-
         
-//        offlineMapButton.roundCorners(cornerRadius: otherRadius)
-//
-//        loadMapButton.roundCorners(cornerRadius: otherRadius)
+        
+        //        offlineMapButton.roundCorners(cornerRadius: otherRadius)
+        //
+        //        loadMapButton.roundCorners(cornerRadius: otherRadius)
         
         followUserButton.roundCorners(cornerRadius: otherRadius)
         
@@ -499,22 +595,23 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     @objc func guide() {
         
+        fetchNextRoute()
     }
     
     @objc func sendSMS() {
         
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-
+        
         // Configure the fields of the interface.
         composeVC.recipients = ["請輸入收件人"]
         composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
-
+        
         // Present the view controller modally.
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
         }
-
+        
     }
     
     
@@ -869,12 +966,12 @@ extension JourneyViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-      let renderer = MKPolylineRenderer(overlay: overlay)
-
-      renderer.strokeColor = .systemBlue
-      renderer.lineWidth = 3
-
-      return renderer
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        
+        renderer.strokeColor = .systemBlue
+        renderer.lineWidth = 3
+        
+        return renderer
     }
 }
 

@@ -18,6 +18,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     /// The Waypoint is being edited (if there is any)
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
+    var directionsResponse =  MKDirections.Response()
+    var route = MKRoute()
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is MKPolyline {
@@ -41,17 +44,37 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         
                 let annotationView = MKPinAnnotationView()
                 guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        guard let map = mapView as? GPXMapView else { return }
                 let targetCoordinate = annotationView.annotation?.coordinate
                 let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
                 let targetItem = MKMapItem(placemark: targetPlacemark)
                 // 使用當前使用者當前座標初始化 MKMapItem
                 let userMapItem = MKMapItem.forCurrentLocation()
                 // 建立導航路線的起點及終點 MKMapItem
-                let routes = [userMapItem,targetItem]
+//                let routes = [userMapItem,targetItem]
+        
+        let request = MKDirections.Request()
+        
+        request.source = userMapItem
+        request.destination = targetItem
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [self]  response ,error in
+            if error == nil {
+                self.directionsResponse = response!
+                self.route = self.directionsResponse.routes[0]
+                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+            } else {
+                print("\(error)")
+            }
+        }
         
                 
-//                 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
-                MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
+////                 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
+//                MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
     }
     
     
@@ -106,22 +129,22 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             
         case kDeleteWaypointAccesoryButtonTag:
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
-            map.removeWaypoint(waypoint)
+//            map.removeWaypoint(waypoint)
 //            guide(mapView, didSelect: view)
-//            let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
-//            let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
-//
-//                self.guide(mapView, didSelect: view)
-//            }
-//            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
-//                map.removeWaypoint(waypoint)
-//            }
-//            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
-//            sheet.addAction(mapOption)
-//            sheet.addAction(removeOption)
-//            sheet.addAction(cancelAction)
+            let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
+            let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
 
-//            UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
+                self.guide(mapView, didSelect: view)
+            }
+            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
+                map.removeWaypoint(waypoint)
+            }
+            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+            sheet.addAction(mapOption)
+            sheet.addAction(removeOption)
+            sheet.addAction(cancelAction)
+
+            UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
             
         case kEditWaypointAccesoryButtonTag:
             print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
