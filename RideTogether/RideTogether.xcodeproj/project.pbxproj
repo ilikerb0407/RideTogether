@@ -27,6 +27,8 @@
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
+		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
+		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B733280033FB000EDA70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B732280033FB000EDA70 /* ViewController.swift */; };
@@ -101,7 +103,9 @@
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
+		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 			children = (
 				23FC489F2809B46400EAD314 /* Route.swift */,
 				231BCB2D28066C3B00DE2343 /* RecommenMap.swift */,
+				23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */,
+				23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -220,16 +226,6 @@
 				23D1B782280062E9000EDA70 /* MapViewDelegate.swift */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		23CE42A1280E578E00C4C9F1 /* plist */ = {
-			isa = PBXGroup;
-			children = (
-				231BCB60280739AD00DE2343 /* Taipei1.plist */,
-				23D1B73C280033FC000EDA70 /* Info.plist */,
-				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
-			);
-			path = plist;
 			sourceTree = "<group>";
 		};
 		23CE42A5280E5F0A00C4C9F1 /* ReuseButton */ = {
@@ -265,13 +261,15 @@
 		23D1B72D280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXGroup;
 			children = (
+				23D1B73C280033FC000EDA70 /* Info.plist */,
+				231BCB60280739AD00DE2343 /* Taipei1.plist */,
+				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
 				23D1B74A28005CF1000EDA70 /* ViewController */,
 				23D1B767280060E0000EDA70 /* View */,
 				23D1B74B28005D9B000EDA70 /* Model */,
-				23CE42A1280E578E00C4C9F1 /* plist */,
 			);
 			path = RideTogether;
 			sourceTree = "<group>";
@@ -292,9 +290,9 @@
 			isa = PBXGroup;
 			children = (
 				231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */,
+				23D1B78B28006663000EDA70 /* Constant.swift */,
 				231BCB5028070BF500DE2343 /* Taiwan.swift */,
 				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
-				23D1B78B28006663000EDA70 /* Constant.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23D1B74E28005DE1000EDA70 /* GPX */,
 				231BCB69280858C800DE2343 /* Profile */,
@@ -595,9 +593,11 @@
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				23D1B733280033FB000EDA70 /* ViewController.swift in Sources */,
+				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
 				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
+				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
 				231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */,

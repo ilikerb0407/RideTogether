@@ -8,7 +8,7 @@
 import UIKit
 import CoreGPX
 import MapKit
-//import CoreLocation
+import CoreLocation
 
 class MapViewDelegate: NSObject, MKMapViewDelegate {
     
@@ -28,7 +28,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             
             polyLineRenderer.strokeColor = .orange
             
-            polyLineRenderer.lineWidth = 2
+            polyLineRenderer.lineWidth = 3
             
             return polyLineRenderer
         }
@@ -48,13 +48,14 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 let userMapItem = MKMapItem.forCurrentLocation()
                 // 建立導航路線的起點及終點 MKMapItem
                 let routes = [userMapItem,targetItem]
+        
+                
 //                 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
-                MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
+                MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
     }
     
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {}
-//
-        
+    
+    
 
 //
         //
@@ -73,7 +74,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         
         //
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
+//        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
+        deleteButton.setImage(UIImage(named: "delete1"), for: UIControl.State())
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
         deleteButton.tag = kDeleteWaypointAccesoryButtonTag
         annotationView.rightCalloutAccessoryView = deleteButton
@@ -104,20 +106,22 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             
         case kDeleteWaypointAccesoryButtonTag:
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
+            map.removeWaypoint(waypoint)
 //            guide(mapView, didSelect: view)
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
-            let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
-                self.guide(mapView, didSelect: view)
-            }
-            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
-                map.removeWaypoint(waypoint)
-            }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
-            sheet.addAction(mapOption)
-            sheet.addAction(removeOption)
-            sheet.addAction(cancelAction)
+//            let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
+//            let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
+//
+//                self.guide(mapView, didSelect: view)
+//            }
+//            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
+//                map.removeWaypoint(waypoint)
+//            }
+//            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+//            sheet.addAction(mapOption)
+//            sheet.addAction(removeOption)
+//            sheet.addAction(cancelAction)
 
-            UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
+//            UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
             
         case kEditWaypointAccesoryButtonTag:
             print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")

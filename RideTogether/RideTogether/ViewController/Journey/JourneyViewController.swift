@@ -145,6 +145,16 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             }
         }
     }
+    private lazy var guideButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        let image = UIImage(named: "information", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
+    
     private lazy var sendSMSButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -252,19 +262,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             map.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
-
-//            // 終點座標 成功把 cgpoint轉成 coordinateForm
-//            let targetCoordinate = self.map.convert(point, toCoordinateFrom: map)
-//            // 初始化 MKPlacemark
-//            let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
-//            // 透過 targetPlacemark 初始化一個 MKMapItem
-//            let targetItem = MKMapItem(placemark: targetPlacemark)
-//            // 使用當前使用者當前座標初始化 MKMapItem
-//            let userMapItem = MKMapItem.forCurrentLocation()
-//            // 建立導航路線的起點及終點 MKMapItem
-//            let routes = [userMapItem,targetItem]
-//            // 我們可以透過 launchOptions 選擇我們的導航模式，例如：開車、走路等等...
-//            MKMapItem.openMaps(with: routes, launchOptions: [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving])
         }
     }
     
@@ -280,12 +277,13 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         view.play()
         self.view.addSubview(view)
         self.view.bringSubviewToFront(buttonStackView)
+        // buttonStackView要改成 left
         return view
     }()
     
     private lazy var buttonStackView: UIStackView = {
 //        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, guideButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -437,6 +435,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         sendSMSButton.roundCorners(cornerRadius: otherRadius)
         
+        guideButton.roundCorners(cornerRadius: otherRadius)
+        
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
         saveButton.roundCorners(cornerRadius: otherRadius)
@@ -495,6 +495,10 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map)
+    }
+    
+    @objc func guide() {
+        
     }
     
     @objc func sendSMS() {
@@ -738,9 +742,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         NSLayoutConstraint.activate([
             
-            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 120),
             // widthAnchor.constraint = UIScreen.width * 0.85
-            buttonStackView.widthAnchor.constraint(equalToConstant: 150),
+            buttonStackView.widthAnchor.constraint(equalToConstant: 220),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
@@ -762,6 +766,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         buttonStackView.addArrangedSubview(pinButton)
         
         buttonStackView.addArrangedSubview(sendSMSButton)
+        
+        buttonStackView.addArrangedSubview(guideButton)
         
         //        buttonStackView.addArrangedSubview(trackerButton)
         
@@ -787,6 +793,14 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             pinButton.heightAnchor.constraint(equalToConstant: 50),
             
             pinButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            sendSMSButton.widthAnchor.constraint(equalToConstant: 70),
+            
+            sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            guideButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            guideButton.heightAnchor.constraint(equalToConstant: 50),
             
             trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
@@ -822,6 +836,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         loadMapButton.addTarget(self, action: #selector(openFolderViewController), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
+        
+        guideButton.addTarget(self, action: #selector(guide), for: .touchUpInside)
     }
     
     func setUpLabels() {
@@ -846,6 +862,20 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 100, width: 80, height: 30)
     }
     
+}
+// 藍色的導航路線
+
+extension JourneyViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+      let renderer = MKPolylineRenderer(overlay: overlay)
+
+      renderer.strokeColor = .systemBlue
+      renderer.lineWidth = 3
+
+      return renderer
+    }
 }
 
 // MARK: - StopWatchDelegate methods
@@ -930,3 +960,4 @@ extension Notification.Name {
     static let updateAppearance = Notification.Name("updateAppearance")
     // swiftlint:disable file_length
 }
+

@@ -38,6 +38,8 @@ enum ProfileSegue: String, CaseIterable {
 
 enum Collection: String {
     
+    //MARK:  左邊是 storage 的文件名稱 右邊是 firebase database 的文件名稱
+    
     case groups = "Groups"
     
     case messages = "Messages"
@@ -51,9 +53,11 @@ enum Collection: String {
     
     case users = "Users"
     
+    //trails 是推薦路線
+    
     case trails = "Trails"
     
-    //trails-maps
+    // maps 是離線地圖
     
     case maps = "Maps"
     
