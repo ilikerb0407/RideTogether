@@ -44,6 +44,9 @@ enum Collection: String {
     
     case records = "Records"
     
+    // 塗鴉牆
+    case sharedmaps = "Sharemaps"
+    
     case requests = "Requests"
     
     case users = "Users"

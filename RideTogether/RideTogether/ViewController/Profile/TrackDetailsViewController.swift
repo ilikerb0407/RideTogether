@@ -279,6 +279,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
     }
     
+    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
             if let nextVC = segue.destination as? FollowJourneyViewController {

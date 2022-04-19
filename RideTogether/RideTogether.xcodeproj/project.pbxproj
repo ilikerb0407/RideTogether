@@ -21,11 +21,12 @@
 		231BCB3F28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */; };
 		231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB402806A37B00DE2343 /* CoredataHelper.swift */; };
 		231BCB432806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB422806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift */; };
-		231BCB5128070BF500DE2343 /* Park.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5028070BF500DE2343 /* Park.swift */; };
-		231BCB5328070C0200DE2343 /* ParkMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5228070C0200DE2343 /* ParkMapOverlay.swift */; };
+		231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5028070BF500DE2343 /* Taiwan.swift */; };
+		231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */; };
 		231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB60280739AD00DE2343 /* Taipei1.plist */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
+		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B733280033FB000EDA70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B732280033FB000EDA70 /* ViewController.swift */; };
@@ -76,7 +77,6 @@
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
-		23FC489E2809A15100EAD314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23FC489D2809A15100EAD314 /* GoogleService-Info.plist */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 /* End PBXBuildFile section */
@@ -96,11 +96,12 @@
 		231BCB3E28069EDF00DE2343 /* OpenGpxTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OpenGpxTracker.xcdatamodel; sourceTree = "<group>"; };
 		231BCB402806A37B00DE2343 /* CoredataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataHelper.swift; sourceTree = "<group>"; };
 		231BCB422806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataHelper+FetchRequests.swift"; sourceTree = "<group>"; };
-		231BCB5028070BF500DE2343 /* Park.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Park.swift; sourceTree = "<group>"; };
-		231BCB5228070C0200DE2343 /* ParkMapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkMapOverlay.swift; sourceTree = "<group>"; };
+		231BCB5028070BF500DE2343 /* Taiwan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taiwan.swift; sourceTree = "<group>"; };
+		231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanMapOverlay.swift; sourceTree = "<group>"; };
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFilesTableViewController.swift; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
-		23FC489D2809A15100EAD314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +212,37 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		23CE42A0280E571700C4C9F1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
+				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				23D1B782280062E9000EDA70 /* MapViewDelegate.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		23CE42A1280E578E00C4C9F1 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				231BCB60280739AD00DE2343 /* Taipei1.plist */,
+				23D1B73C280033FC000EDA70 /* Info.plist */,
+				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
+		23CE42A5280E5F0A00C4C9F1 /* ReuseButton */ = {
+			isa = PBXGroup;
+			children = (
+				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
+				2304FF49280891AF00C6B1BF /* NextPageButton.swift */,
+				2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */,
+				2314F212280B5AE500425F8A /* SendSMSbutton.swift */,
+			);
+			path = ReuseButton;
+			sourceTree = "<group>";
+		};
 		23D1B722280033FB000EDA70 = {
 			isa = PBXGroup;
 			children = (
@@ -234,21 +265,13 @@
 		23D1B72D280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
-				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
-				23D1B782280062E9000EDA70 /* MapViewDelegate.swift */,
+				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
 				23D1B74A28005CF1000EDA70 /* ViewController */,
 				23D1B767280060E0000EDA70 /* View */,
 				23D1B74B28005D9B000EDA70 /* Model */,
-				23D1B734280033FB000EDA70 /* Main.storyboard */,
-				23D1B737280033FC000EDA70 /* Assets.xcassets */,
-				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
-				231BCB60280739AD00DE2343 /* Taipei1.plist */,
-				23D1B73C280033FC000EDA70 /* Info.plist */,
-				23FC489D2809A15100EAD314 /* GoogleService-Info.plist */,
-				23D1B78B28006663000EDA70 /* Constant.swift */,
+				23CE42A1280E578E00C4C9F1 /* plist */,
 			);
 			path = RideTogether;
 			sourceTree = "<group>";
@@ -269,8 +292,9 @@
 			isa = PBXGroup;
 			children = (
 				231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */,
-				231BCB5028070BF500DE2343 /* Park.swift */,
-				231BCB5228070C0200DE2343 /* ParkMapOverlay.swift */,
+				231BCB5028070BF500DE2343 /* Taiwan.swift */,
+				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
+				23D1B78B28006663000EDA70 /* Constant.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23D1B74E28005DE1000EDA70 /* GPX */,
 				231BCB69280858C800DE2343 /* Profile */,
@@ -301,12 +325,12 @@
 		23D1B767280060E0000EDA70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
+				23D1B734280033FB000EDA70 /* Main.storyboard */,
+				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				231BCB6528084B3300DE2343 /* Home.storyboard */,
 				23D1B8092805BED3000EDA70 /* Group.storyboard */,
-				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
-				2304FF49280891AF00C6B1BF /* NextPageButton.swift */,
-				2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */,
-				2314F212280B5AE500425F8A /* SendSMSbutton.swift */,
+				23CE42A5280E5F0A00C4C9F1 /* ReuseButton */,
 				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
@@ -482,7 +506,7 @@
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
-				23FC489E2809A15100EAD314 /* GoogleService-Info.plist in Resources */,
+				23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
@@ -520,10 +544,6 @@
 			);
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			inputPaths = (
 			);
@@ -580,7 +600,7 @@
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
-				231BCB5328070C0200DE2343 /* ParkMapOverlay.swift in Sources */,
+				231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */,
 				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
@@ -591,7 +611,7 @@
 				23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
-				231BCB5128070BF500DE2343 /* Park.swift in Sources */,
+				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
