@@ -11,7 +11,8 @@ import MapKit
 class DirectionViewController: UIViewController {
 
     @IBOutlet private var mapView: MKMapView!
-      
+    // 目前先連Journey 的 mapView
+    
     @IBOutlet private var headerLabel: UILabel!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var informationLabel: UILabel!

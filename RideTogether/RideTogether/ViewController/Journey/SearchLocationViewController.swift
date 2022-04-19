@@ -16,6 +16,7 @@ class SearchLocationViewController: UIViewController {
     @IBOutlet private var stopTextField: UITextField!
     @IBOutlet private var extraStopTextField: UITextField!
     @IBOutlet private var calculateButton: UIButton!
+    
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet private var keyboardAvoidingConstraint: NSLayoutConstraint!
 
