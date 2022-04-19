@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// 個人Pofile 頁面的TableViewCell 呈現資料
 
 protocol ProfileItemContent {
 
