@@ -43,97 +43,64 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     @IBOutlet weak var map: GPXMapView!
     
     private var mapRoutes: [MKRoute] = []
-    //    private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
-    //
-    //    private let drawroute: DrawRoute
-    //
-    //    init(route: DrawRoute) {
-    //      self.drawroute = route
-    //
-    //      super.init(nibName: String(describing: JourneyViewController.self), bundle: nil)
-    //    }
-    //
-    //    required init?(coder aDecoder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
     
-    
-    // MARK: - Helpers
-    
-    //    private func groupAndRequestDirections() {
-    //      guard let firstStop = drawroute.stops.first else {
-    //        return
-    //      }
-    //
-    //      groupedRoutes.append((drawroute.origin, firstStop))
-    //
-    //      if drawroute.stops.count == 2 {
-    //        let secondStop = drawroute.stops[1]
-    //
-    //        groupedRoutes.append((firstStop, secondStop))
-    //
-    //        groupedRoutes.append((secondStop, drawroute.origin))
-    //      }
-    //
-    //      fetchNextRoute()
-    //    }
     var directionsResponse =  MKDirections.Response()
     var route = MKRoute()
     
-    
-    func fetchNextRoute(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        let annotationView = MKPinAnnotationView()
-        guard let waypoint = view.annotation as? GPXWaypoint else { return }
-        guard let map = mapView as? GPXMapView else { return }
-        let renderer = MKPolylineRenderer()
-        let targetCoordinate = annotationView.annotation?.coordinate
-        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
-        let targetItem = MKMapItem(placemark: targetPlacemark)
-        let userMapItem = MKMapItem.forCurrentLocation()
-        
-        let request = MKDirections.Request()
-        
-        request.source = userMapItem
-        request.destination = targetItem
-        request.transportType = .walking
-        request.requestsAlternateRoutes = true
-        
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculate { [self]  response ,error in
-            if error == nil {
-                self.directionsResponse = response!
-                self.route = self.directionsResponse.routes[0]
-                
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
-            } else {
-                print("\(error)")
-            }
-        }
-    }
-    private func updateView(with mapRoute: MKRoute) {
-        let padding: CGFloat = 8
-        
-        map.addOverlay(mapRoute.polyline)
-        
-        //
-        map.setVisibleMapRect(
-            map.visibleMapRect.union(
-                mapRoute.polyline.boundingMapRect
-            ),
-            edgePadding: UIEdgeInsets(
-                top: 0,
-                left: padding,
-                bottom: padding,
-                right: padding
-            ),
-            animated: true
-        )
-        mapRoutes.append(mapRoute)
-    }
-    
+//
+//    func fetchNextRoute(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//
+//        let annotationView = MKPinAnnotationView()
+//        guard let waypoint = view.annotation as? GPXWaypoint else { return }
+//        guard let map = mapView as? GPXMapView else { return }
+//        let renderer = MKPolylineRenderer()
+//        let targetCoordinate = annotationView.annotation?.coordinate
+//        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
+//        let targetItem = MKMapItem(placemark: targetPlacemark)
+//        let userMapItem = MKMapItem.forCurrentLocation()
+//
+//        let request = MKDirections.Request()
+//
+//        request.source = userMapItem
+//        request.destination = targetItem
+//        request.transportType = .walking
+//        request.requestsAlternateRoutes = true
+//
+//
+//        let directions = MKDirections(request: request)
+//
+//        directions.calculate { [self]  response ,error in
+//            if error == nil {
+//                self.directionsResponse = response!
+//                self.route = self.directionsResponse.routes[0]
+//
+//                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
+//            } else {
+//                print("\(error)")
+//            }
+//        }
+//    }
+//    private func updateView(with mapRoute: MKRoute) {
+//        let padding: CGFloat = 8
+//
+//        map.addOverlay(mapRoute.polyline)
+//
+//        //
+//        map.setVisibleMapRect(
+//            map.visibleMapRect.union(
+//                mapRoute.polyline.boundingMapRect
+//            ),
+//            edgePadding: UIEdgeInsets(
+//                top: 0,
+//                left: padding,
+//                bottom: padding,
+//                right: padding
+//            ),
+//            animated: true
+//        )
+//        mapRoutes.append(mapRoute)
+//    }
+//
     /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
@@ -590,7 +557,39 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.view.addSubview(map)
     }
     
+    let taichung = CLLocationCoordinate2D(latitude: 24.18352165572669, longitude: 120.62348601471712)
+    
     @objc func guide() {
+        
+        let annotationView = MKPinAnnotationView()
+        let waypoint = annotationView.annotation as? GPXWaypoint
+
+        let targetCoordinate = taichung
+        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
+        let targetItem = MKMapItem(placemark: targetPlacemark)
+        let userMapItem = MKMapItem.forCurrentLocation()
+        
+        let request = MKDirections.Request()
+        
+        request.source = userMapItem
+        request.destination = targetItem
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [self]  response ,error in
+            if error == nil {
+                self.directionsResponse = response!
+                
+                self.route = self.directionsResponse.routes[0]
+                
+                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
+            } else {
+                print("\(error)")
+            }
+        }
         
     }
     
@@ -823,7 +822,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             map.removeOverlay(overlay)
             
             map.addOverlay(overlay)
-            
             
         }
     }

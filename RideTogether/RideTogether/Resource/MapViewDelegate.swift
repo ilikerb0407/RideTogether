@@ -22,8 +22,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     var directionsResponse =  MKDirections.Response()
     var route = MKRoute()
     var polyLineRenderer = MKPolylineRenderer()
-
     
+    var step: [String] = []
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
@@ -56,12 +56,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         let userMapItem = MKMapItem.forCurrentLocation()
         
         let request = MKDirections.Request()
-        
+    
         request.source = userMapItem
         request.destination = targetItem
         request.transportType = .walking
         request.requestsAlternateRoutes = true
-        
         
         let directions = MKDirections(request: request)
         
@@ -71,7 +70,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 
                 self.route = self.directionsResponse.routes[0]
                 
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
+                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
             } else {
                 print("\(error)")
             }
