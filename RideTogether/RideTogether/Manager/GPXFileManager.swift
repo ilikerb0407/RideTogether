@@ -11,6 +11,8 @@ import CoreGPX
 let kFileExt = ["gpx", "GPX"]
 
 
+//MARK: 處理 GPX 檔案
+
 class GPXFileManager {
     
     class var GPXFilesFolderURL: URL {

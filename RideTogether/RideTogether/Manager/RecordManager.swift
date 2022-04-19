@@ -12,7 +12,7 @@ import FirebaseFirestore
 //import FirebaseStorageSwift
 
 
-// FireBase
+//MARK: 紀錄路線的Manager
 
 class RecordManager {
     

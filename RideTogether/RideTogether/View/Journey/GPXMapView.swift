@@ -129,7 +129,6 @@ class GPXMapView: MKMapView {
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         let waypoint = GPXWaypoint(coordinate: coords)
         addWaypoint(waypoint)
-        
     }
     
   //MARK: Parameters: The waypoint to add to the map.

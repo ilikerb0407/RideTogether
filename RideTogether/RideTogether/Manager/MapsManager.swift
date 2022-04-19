@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 // MARK:  準備改成線上地圖
+// MARK:  Offline Map 的架構
 
 class MapsManager {
     
