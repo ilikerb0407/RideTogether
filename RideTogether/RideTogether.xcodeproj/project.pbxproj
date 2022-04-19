@@ -31,7 +31,11 @@
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
 		23CE42AE280E9EAE00C4C9F1 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AC280E9EAE00C4C9F1 /* SearchLocationViewController.swift */; };
-		23CE42AF280E9EAE00C4C9F1 /* SearchLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42AD280E9EAE00C4C9F1 /* SearchLocationViewController.xib */; };
+		23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B0280EEBF600C4C9F1 /* CLPlacemark+Additions.swift */; };
+		23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */; };
+		23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */; };
+		23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */; };
+		23CE42BA280EF07000C4C9F1 /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B8280EF07000C4C9F1 /* DirectionViewController.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B733280033FB000EDA70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B732280033FB000EDA70 /* ViewController.swift */; };
@@ -111,7 +115,11 @@
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBuilder.swift; sourceTree = "<group>"; };
 		23CE42AC280E9EAE00C4C9F1 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
-		23CE42AD280E9EAE00C4C9F1 /* SearchLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationViewController.xib; sourceTree = "<group>"; };
+		23CE42B0280EEBF600C4C9F1 /* CLPlacemark+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLPlacemark+Additions.swift"; sourceTree = "<group>"; };
+		23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
+		23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
+		23CE42B8280EF07000C4C9F1 /* DirectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -358,11 +366,15 @@
 				23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */,
 				23D1B772280061D5000EDA70 /* Double+Measures.swift */,
 				23D1B774280061F2000EDA70 /* UIButtonExtension.swift */,
+				23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */,
 				23D1B77628006212000EDA70 /* UIFontExtension.swift */,
 				23D1B77828006229000EDA70 /* UIViewExtension.swift */,
+				23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */,
 				23D1B77A28006243000EDA70 /* UIColor+Extension.swift */,
 				23D1B77C28006259000EDA70 /* TimeFormater.swift */,
 				23D1B7ED2804347B000EDA70 /* UITableView.swift */,
+				23CE42B0280EEBF600C4C9F1 /* CLPlacemark+Additions.swift */,
+				23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -384,8 +396,8 @@
 			children = (
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
 				23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */,
+				23CE42B8280EF07000C4C9F1 /* DirectionViewController.swift */,
 				23CE42AC280E9EAE00C4C9F1 /* SearchLocationViewController.swift */,
-				23CE42AD280E9EAE00C4C9F1 /* SearchLocationViewController.xib */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -519,7 +531,6 @@
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
 				231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */,
-				23CE42AF280E9EAE00C4C9F1 /* SearchLocationViewController.xib in Resources */,
 				23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,11 +608,14 @@
 				231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */,
 				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
+				23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */,
 				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
+				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
+				23CE42BA280EF07000C4C9F1 /* DirectionViewController.swift in Sources */,
 				23D1B733280033FB000EDA70 /* ViewController.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
@@ -620,9 +634,11 @@
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
+				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
+				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
 				231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */,

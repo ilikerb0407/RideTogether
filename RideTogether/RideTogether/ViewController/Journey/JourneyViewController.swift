@@ -81,14 +81,17 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     var route = MKRoute()
     
     
-    func fetchNextRoute() {
+    func fetchNextRoute(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        let userMapItem = MKMapItem.forCurrentLocation()
         let annotationView = MKPinAnnotationView()
-        let waypoint = annotationView.annotation as? GPXWaypoint
+        guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        guard let map = mapView as? GPXMapView else { return }
+        let renderer = MKPolylineRenderer()
         let targetCoordinate = annotationView.annotation?.coordinate
-        let targetPlacemark = MKPlacemark(coordinate: (((targetCoordinate ?? waypoint?.coordinate) ?? locationManager.location?.coordinate)!))
+        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
         let targetItem = MKMapItem(placemark: targetPlacemark)
+        let userMapItem = MKMapItem.forCurrentLocation()
+        
         let request = MKDirections.Request()
         
         request.source = userMapItem
@@ -96,13 +99,15 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         request.transportType = .walking
         request.requestsAlternateRoutes = true
         
+        
         let directions = MKDirections(request: request)
         
         directions.calculate { [self]  response ,error in
             if error == nil {
                 self.directionsResponse = response!
                 self.route = self.directionsResponse.routes[0]
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                
+                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
             } else {
                 print("\(error)")
             }
@@ -195,6 +200,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 //                waveLottieView.isHidden = false
                 
                 //                waveLottieView.play()
+                
                 
                 
             case .paused:
@@ -462,17 +468,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         addSegment()
         
-        func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-
-                    if overlay is MKPolyline {
-                        var pr = MKPolylineRenderer(overlay: overlay)
-                        pr.strokeColor = UIColor.purple
-                        pr.lineWidth = 5
-                        return pr
-                    }
-                    return nil
-                }
-        
     }
     
     func addSegment() {
@@ -597,7 +592,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     @objc func guide() {
         
-        fetchNextRoute()
     }
     
     @objc func sendSMS() {
@@ -829,6 +823,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             map.removeOverlay(overlay)
             
             map.addOverlay(overlay)
+            
+            
         }
     }
     
@@ -961,20 +957,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 100, width: 80, height: 30)
     }
     
-}
-// 藍色的導航路線
-
-extension JourneyViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        
-        renderer.strokeColor = .systemBlue
-        renderer.lineWidth = 3
-        
-        return renderer
-    }
 }
 
 // MARK: - StopWatchDelegate methods
