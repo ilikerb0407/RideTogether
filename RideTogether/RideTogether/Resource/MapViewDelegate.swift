@@ -29,7 +29,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             
             polyLineRenderer.alpha = 0.8
             
-            polyLineRenderer.strokeColor = .orange
+            polyLineRenderer.strokeColor = .blue
             
             polyLineRenderer.lineWidth = 3
             
@@ -39,12 +39,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
-
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
                 let annotationView = MKPinAnnotationView()
                 guard let waypoint = view.annotation as? GPXWaypoint else { return }
-        guard let map = mapView as? GPXMapView else { return }
+                guard let map = mapView as? GPXMapView else { return }
                 let targetCoordinate = annotationView.annotation?.coordinate
                 let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
                 let targetItem = MKMapItem(placemark: targetPlacemark)
@@ -98,7 +97,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         //
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 //        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
-        deleteButton.setImage(UIImage(named: "delete1"), for: UIControl.State())
+        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
         deleteButton.tag = kDeleteWaypointAccesoryButtonTag
         annotationView.rightCalloutAccessoryView = deleteButton
@@ -125,6 +124,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
         guard let button = control as? UIButton else { return }
         guard let map = mapView as? GPXMapView else { return }
+       
         switch button.tag {
             
         case kDeleteWaypointAccesoryButtonTag:
@@ -133,11 +133,12 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
 //            guide(mapView, didSelect: view)
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
             let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
-
+                
                 self.guide(mapView, didSelect: view)
             }
             let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
                 map.removeWaypoint(waypoint)
+                map.clearMap()
             }
             let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
             sheet.addAction(mapOption)

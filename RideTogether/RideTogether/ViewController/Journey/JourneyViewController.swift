@@ -79,6 +79,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     //    }
     var directionsResponse =  MKDirections.Response()
     var route = MKRoute()
+    
+    
     func fetchNextRoute() {
         
         let userMapItem = MKMapItem.forCurrentLocation()

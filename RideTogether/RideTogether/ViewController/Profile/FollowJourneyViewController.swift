@@ -124,7 +124,9 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
             map2.addOverlay(overlay)
         }
     }
-    //MARK: =========
+    
+    // MARK: =========
+    
     private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
@@ -174,7 +176,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
                 timeLabel.text = stopWatch.elapsedTimeString
                 
                 //MARK: 怕把線清掉
-//                map2.clearMap()
+                map2.clearMap()
                 
                 totalTrackedDistanceLabel.distance = (map2.session.totalTrackedDistance)
                 
