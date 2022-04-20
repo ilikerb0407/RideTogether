@@ -10,6 +10,14 @@ import UIKit
 class CreateGroupViewController: BaseViewController {
     
     
+    @IBOutlet weak var sendData: UIButton! {
+        didSet{
+            sendData.isUserInteractionEnabled = false
+            sendData.alpha = 0.6
+            sendData.backgroundColor = .orange
+            sendData.cornerRadius = 24
+        }
+    }
     
     
     
