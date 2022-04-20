@@ -186,7 +186,7 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sheet = UIAlertController.init(title: "nil", message: "nil", preferredStyle: .alert)
+        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
         let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
             performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
         }

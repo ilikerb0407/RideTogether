@@ -53,9 +53,9 @@ enum Collection: String {
     
     case users = "Users"
     
-    //trails 是推薦路線
+    // Trails 是推薦路線
     
-    case trails = "Trails"
+    case routes = "Routes"
     
     // maps 是離線地圖
     

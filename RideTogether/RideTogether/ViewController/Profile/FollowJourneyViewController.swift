@@ -782,8 +782,6 @@ extension FollowJourneyViewController: CLLocationManagerDelegate {
     }
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
-        print("mkMapcamera heading=\(map2.camera.heading)")
         map2.heading = newHeading // updates heading variable
         map2.updateHeading() // updates heading view's rotation
     }

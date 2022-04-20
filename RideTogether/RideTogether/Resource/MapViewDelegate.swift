@@ -69,7 +69,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 self.directionsResponse = response!
                 
                 self.route = self.directionsResponse.routes[0]
-                
+                // route.step
+                print ("\(route.expectedTravelTime)")
+                print ("\(route.distance)")
+                print ("\(route.advisoryNotices)")
+                print ("\(route.steps)")
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
             } else {
                 print("\(error)")
@@ -127,6 +131,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
             //            map.removeWaypoint(waypoint)
             //            guide(mapView, didSelect: view)
+            map.clearOverlays()
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
             let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
                 
