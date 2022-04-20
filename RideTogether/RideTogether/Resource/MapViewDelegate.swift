@@ -69,7 +69,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 self.directionsResponse = response!
                 
                 self.route = self.directionsResponse.routes[0]
-                
+                // route.step
+                print ("\(route.expectedTravelTime)")
+                print ("\(route.distance)")
+                print ("\(route.advisoryNotices)")
+                print ("\(route.steps)")
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
             } else {
                 print("\(error)")

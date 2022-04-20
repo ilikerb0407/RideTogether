@@ -13,7 +13,7 @@ import Firebase
 import Lottie
 import MessageUI
 
-class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
+class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate, MKLocalSearchCompleterDelegate {
     
     func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
         //emulate a reset button tap
@@ -45,62 +45,12 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     private var mapRoutes: [MKRoute] = []
     
     var directionsResponse =  MKDirections.Response()
+    
     var route = MKRoute()
     
-//
-//    func fetchNextRoute(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//
-//        let annotationView = MKPinAnnotationView()
-//        guard let waypoint = view.annotation as? GPXWaypoint else { return }
-//        guard let map = mapView as? GPXMapView else { return }
-//        let renderer = MKPolylineRenderer()
-//        let targetCoordinate = annotationView.annotation?.coordinate
-//        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
-//        let targetItem = MKMapItem(placemark: targetPlacemark)
-//        let userMapItem = MKMapItem.forCurrentLocation()
-//
-//        let request = MKDirections.Request()
-//
-//        request.source = userMapItem
-//        request.destination = targetItem
-//        request.transportType = .walking
-//        request.requestsAlternateRoutes = true
-//
-//
-//        let directions = MKDirections(request: request)
-//
-//        directions.calculate { [self]  response ,error in
-//            if error == nil {
-//                self.directionsResponse = response!
-//                self.route = self.directionsResponse.routes[0]
-//
-//                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
-//            } else {
-//                print("\(error)")
-//            }
-//        }
-//    }
-//    private func updateView(with mapRoute: MKRoute) {
-//        let padding: CGFloat = 8
-//
-//        map.addOverlay(mapRoute.polyline)
-//
-//        //
-//        map.setVisibleMapRect(
-//            map.visibleMapRect.union(
-//                mapRoute.polyline.boundingMapRect
-//            ),
-//            edgePadding: UIEdgeInsets(
-//                top: 0,
-//                left: padding,
-//                bottom: padding,
-//                right: padding
-//            ),
-//            animated: true
-//        )
-//        mapRoutes.append(mapRoute)
-//    }
-//
+    let completer = MKLocalSearchCompleter()
+    
+    
     /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
@@ -341,6 +291,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         return view
     }()
     
+    
     private lazy var buttonStackView: UIStackView = {
         //        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
         let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, guideButton])
@@ -435,6 +386,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         addSegment()
         
+        
+        completer.delegate = self
+        completer.region = map.region
     }
     
     func addSegment() {
@@ -557,41 +511,42 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         self.view.addSubview(map)
     }
     
-    let taichung = CLLocationCoordinate2D(latitude: 24.18352165572669, longitude: 120.62348601471712)
+    var taichung = CLLocationCoordinate2D(latitude: 24.18352165572669, longitude: 120.62348601471712)
     
-    @objc func guide() {
-        
-        let annotationView = MKPinAnnotationView()
-        let waypoint = annotationView.annotation as? GPXWaypoint
-
-        let targetCoordinate = taichung
-        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
-        let targetItem = MKMapItem(placemark: targetPlacemark)
-        let userMapItem = MKMapItem.forCurrentLocation()
-        
-        let request = MKDirections.Request()
-        
-        request.source = userMapItem
-        request.destination = targetItem
-        request.transportType = .walking
-        request.requestsAlternateRoutes = true
-        
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculate { [self]  response ,error in
-            if error == nil {
-                self.directionsResponse = response!
-                
-                self.route = self.directionsResponse.routes[0]
-                
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
-            } else {
-                print("\(error)")
-            }
-        }
-        
-    }
+    
+    //    @objc func guide() {
+    //
+    //        let annotationView = MKPinAnnotationView()
+    //        let waypoint = annotationView.annotation as? GPXWaypoint
+    //
+    //        let targetCoordinate = taichung
+    //        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
+    //        let targetItem = MKMapItem(placemark: targetPlacemark)
+    //        let userMapItem = MKMapItem.forCurrentLocation()
+    //
+    //        let request = MKDirections.Request()
+    //
+    //        request.source = userMapItem
+    //        request.destination = targetItem
+    //        request.transportType = .walking
+    //        request.requestsAlternateRoutes = true
+    //
+    //
+    //        let directions = MKDirections(request: request)
+    //
+    //        directions.calculate { [self]  response ,error in
+    //            if error == nil {
+    //                self.directionsResponse = response!
+    //
+    //                self.route = self.directionsResponse.routes[0]
+    //
+    //                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
+    //            } else {
+    //                print("\(error)")
+    //            }
+    //        }
+    //
+    //    }
     
     @objc func sendSMS() {
         
@@ -634,6 +589,74 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         }
     }
     
+    
+    @objc func searchLocation() {
+        
+        let alertController = UIAlertController(title: "Search_Destination", message: "Please enter Location", preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: {(textField) in
+            textField.clearButtonMode = .always
+            textField.text = "台北"
+        })
+        let searchAction = UIAlertAction(title: "Search", style: .default) { [self]_ in
+            var fileName = alertController.textFields?[0].text
+        
+            func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+              guard let firstResult = completer.results.first else { return }
+                
+                fileName = firstResult.title
+            }
+
+            let geoCoder = CLGeocoder()
+            
+            geoCoder.geocodeAddressString(fileName!) { (placemarks, error) in
+                guard
+                    let placemarks = placemarks,
+                    let location = placemarks.first?.location
+                else {
+                    print("location not found")
+                    return
+                }
+                self.taichung.latitude = location.coordinate.latitude
+                self.taichung.longitude = location.coordinate.longitude
+                let targetPlacemark = MKPlacemark(coordinate: taichung)
+                let targetItem = MKMapItem(placemark: targetPlacemark)
+                let userMapItem = MKMapItem.forCurrentLocation()
+                let request = MKDirections.Request()
+                request.source = userMapItem
+                request.destination = targetItem
+                request.transportType = .walking
+                request.requestsAlternateRoutes = true
+                let directions = MKDirections(request: request)
+                
+                directions.calculate { [self]  response ,error in
+                if error == nil {
+                                self.directionsResponse = response!
+                
+                                self.route = self.directionsResponse.routes[0]
+                
+                                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
+                            } else {
+                                print("\(error)")
+                            }
+                        }
+                
+                
+            }
+            
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(searchAction)
+        
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+        
+    }
+    
+    
     @objc func saveButtonTapped(withReset: Bool = false) {
         
         if gpxTrackingStatus == .notStarted && !self.hasWaypoints { return }
@@ -669,7 +692,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             //            if let fileName = fileName {
             GPXFileManager.save( fileName!, gpxContents: gpxString)
             self.lastGpxFilename = fileName!
-            
             self.map.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)
             //deleteCDRootFromCoreData()
             self.map.coreDataHelper.clearAllExceptWaypoints()
@@ -852,25 +874,11 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
             leftStackView.heightAnchor.constraint(equalToConstant: 200)
         ] )
         
-        //        let button = UIButton()
-        
         buttonStackView.addArrangedSubview(followUserButton)
         
         buttonStackView.addArrangedSubview(pinButton)
-        
         buttonStackView.addArrangedSubview(sendSMSButton)
-        
         buttonStackView.addArrangedSubview(guideButton)
-        
-        //        buttonStackView.addArrangedSubview(trackerButton)
-        
-        //        buttonStackView.addArrangedSubview(saveButton)
-        
-        //        buttonStackView.addArrangedSubview(resetButton)
-        
-        //        leftStackView.addArrangedSubview(offlineMapButton)
-        
-        //        leftStackView.addArrangedSubview(loadMapButton)
         leftStackView.addArrangedSubview(trackerButton)
         leftStackView.addArrangedSubview(saveButton)
         leftStackView.addArrangedSubview(resetButton)
@@ -930,7 +938,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
-        guideButton.addTarget(self, action: #selector(guide), for: .touchUpInside)
+        guideButton.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
     }
     
     func setUpLabels() {
@@ -1025,8 +1033,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
     
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
-        print("mkMapcamera heading=\(map.camera.heading)")
+        
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
@@ -1039,4 +1046,9 @@ extension Notification.Name {
     static let updateAppearance = Notification.Name("updateAppearance")
     // swiftlint:disable file_length
 }
+
+
+ 
+  
+
 

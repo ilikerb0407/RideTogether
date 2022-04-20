@@ -13,8 +13,12 @@ class SearchLocationViewController: UIViewController {
 
     @IBOutlet private var inputContainerView: UIView!
     @IBOutlet private var originTextField: UITextField!
+    
     @IBOutlet private var stopTextField: UITextField!
+    
     @IBOutlet private var extraStopTextField: UITextField!
+    
+    
     @IBOutlet private var calculateButton: UIButton!
     
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
