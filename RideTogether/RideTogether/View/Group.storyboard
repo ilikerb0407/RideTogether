@@ -178,7 +178,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuj-cd-zRs">
-                                <rect key="frame" x="20" y="672" width="374" height="70"/>
+                                <rect key="frame" x="20" y="672" width="374" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="騎車愛地球"/>
                             </button>
@@ -193,14 +193,21 @@
                             <constraint firstItem="Cuj-cd-zRs" firstAttribute="leading" secondItem="dah-ZX-h4v" secondAttribute="leading" constant="20" id="MsF-nE-sv4"/>
                             <constraint firstItem="nbl-4n-DaM" firstAttribute="top" secondItem="j5x-Sq-Jmc" secondAttribute="bottom" constant="10" id="N2j-B8-Hs0"/>
                             <constraint firstItem="dah-ZX-h4v" firstAttribute="trailing" secondItem="j5x-Sq-Jmc" secondAttribute="trailing" constant="20" id="Ph4-V6-Ie1"/>
-                            <constraint firstItem="dah-ZX-h4v" firstAttribute="bottom" secondItem="Cuj-cd-zRs" secondAttribute="bottom" constant="120" id="RHV-AT-zci"/>
                             <constraint firstItem="nbl-4n-DaM" firstAttribute="leading" secondItem="dah-ZX-h4v" secondAttribute="leading" constant="20" id="VK9-wA-7Kz"/>
                             <constraint firstItem="j5x-Sq-Jmc" firstAttribute="leading" secondItem="dah-ZX-h4v" secondAttribute="leading" constant="20" id="XVE-Dh-43N"/>
                             <constraint firstItem="j5x-Sq-Jmc" firstAttribute="top" secondItem="dah-ZX-h4v" secondAttribute="top" constant="20" id="ZZK-4B-0O6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="sjP-rp-Jhy" id="hdQ-wq-Hvd"/>
+                        <outlet property="groupName" destination="kUW-i0-HXB" id="0Gx-aw-cd6"/>
+                        <outlet property="headerView" destination="j5x-Sq-Jmc" id="ent-ri-qdZ"/>
+                        <outlet property="limitPeople" destination="yAf-KD-Vlr" id="fBg-eU-DkR"/>
+                        <outlet property="note" destination="bP0-ug-6HB" id="kNK-La-w6v"/>
+                        <outlet property="notes" destination="bP0-ug-6HB" id="ap7-7v-y5W"/>
+                        <outlet property="routeName" destination="9ba-Gh-WHt" id="g7Q-CI-4Fk"/>
                         <outlet property="sendData" destination="Cuj-cd-zRs" id="1Gi-3g-TXb"/>
+                        <outlet property="teamView" destination="nbl-4n-DaM" id="Kzh-v0-meh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOy-4J-kJ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

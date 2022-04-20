@@ -131,6 +131,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
             //            map.removeWaypoint(waypoint)
             //            guide(mapView, didSelect: view)
+            map.clearOverlays()
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
             let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
                 

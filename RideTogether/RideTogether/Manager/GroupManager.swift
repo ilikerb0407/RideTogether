@@ -22,6 +22,27 @@ class GroupManager {
     private let groupCollection = Collection.groups.rawValue
     
     
+    func buildTeam(group: inout Group, completion: (Result<String, Error>) -> Void) {
+        
+        let document = dataBase.collection(groupCollection).document()
+        
+        group.groupId = document.documentID
+        
+        do {
+            
+            try document.setData(from: group)
+            
+        } catch {
+            
+            completion(.failure(error))
+            
+        }
+        
+        completion(.success("Success"))
+    }
+    
+    
+    
     func fetchGroups(completion: @escaping (Result<[Group], Error>) -> Void) {
        
         let collection = dataBase.collection(groupCollection)

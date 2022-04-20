@@ -85,6 +85,9 @@ class GPXMapView: MKMapView {
         removeAnnotations(annotations)
         extent = GPXExtentCoordinates()
     }
+    func clearOverlays() {
+        removeOverlays(overlays)
+    }
 
     func exportToGPXString() -> String {
         return session.exportToGPXString()

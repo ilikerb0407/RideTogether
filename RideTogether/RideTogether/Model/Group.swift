@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 struct Group: Codable {
     
-    var groupID: String
+    var groupId: String
     var groupName: String
     var hostId: String
     var date: Timestamp
@@ -23,7 +23,7 @@ struct Group: Codable {
     var isExpired: Bool?
     
     enum CodingKeys: String, CodingKey {
-        case groupID = "group_id"
+        case groupId = "group_id"
         case groupName = "group_name"
         case hostId = "host_id"
         case date
@@ -37,7 +37,7 @@ struct Group: Codable {
     }
     
     init() {
-        self.groupID = ""
+        self.groupId = ""
         self.groupName = ""
         self.hostId = ""
         self.date = Timestamp()

@@ -29,6 +29,8 @@
 		2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23838789280FCBFF00E9F4F4 /* GroupManager.swift */; };
 		2383878C280FCD9000E9F4F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878B280FCD9000E9F4F4 /* Group.swift */; };
 		2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */; };
+		2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */ = {isa = PBXBuildFile; fileRef = 2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */; };
+		2383879228104D3D00E9F4F4 /* 49908-bike-ride.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2383879128104D3D00E9F4F4 /* 49908-bike-ride.gif */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -117,6 +119,8 @@
 		23838789280FCBFF00E9F4F4 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		2383878B280FCD9000E9F4F4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "49908-bike-ride.json"; sourceTree = "<group>"; };
+		2383879128104D3D00E9F4F4 /* 49908-bike-ride.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "49908-bike-ride.gif"; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 				23D1B73C280033FC000EDA70 /* Info.plist */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
+				2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */,
+				2383879128104D3D00E9F4F4 /* 49908-bike-ride.gif */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
@@ -543,6 +549,8 @@
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
+				2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */,
+				2383879228104D3D00E9F4F4 /* 49908-bike-ride.gif in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */,

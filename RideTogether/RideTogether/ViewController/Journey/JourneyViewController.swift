@@ -245,6 +245,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
+            
+            map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
             map.addWaypointAtViewPoint(point)
             //Allows save and reset
@@ -569,6 +571,8 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     @objc func searchLocation() {
         
+        map.clearOverlays()
+        
         let alertController = UIAlertController(title: "Search_Destination", message: "Please enter Location", preferredStyle: .alert)
         alertController.addTextField(configurationHandler: {(textField) in
             textField.clearButtonMode = .always
@@ -577,11 +581,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let searchAction = UIAlertAction(title: "Search", style: .default) { [self]_ in
             var fileName = alertController.textFields?[0].text
         
-//            func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-//              guard let firstResult = completer.results.first else { return }
-//
-//                fileName = firstResult.title
-//            }
 
             let geoCoder = CLGeocoder()
             
