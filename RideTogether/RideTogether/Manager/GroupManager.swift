@@ -22,7 +22,41 @@ class GroupManager {
     private let groupCollection = Collection.groups.rawValue
     
     
-    func fetchGroups(completion: @escaping (Result<[]>))
+    func fetchGroups(completion: @escaping (Result<[Group], Error>) -> Void) {
+       
+        let collection = dataBase.collection(groupCollection)
+        
+        collection.order(by: "date", descending: false).getDocuments { (querySnapshot, error) in
+           
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                var groups = [Group]()
+                
+                for document in querySnapshot.documents {
+                    do {
+                        if var group = try document.data(as: Group.self, decoder: Firestore.Decoder()) {
+                            if group.date.checkIsExpired() {
+                                group.isExpired = true
+                            } else {
+                                group.isExpired = false
+                            }
+                            groups.append(group)
+                        }
+                            
+                    }
+                    catch {
+                        completion(.failure(error))
+                    }
+                }
+                completion(.success(groups))
+            }
+            
+        }
+        
+    }
     
     
     
