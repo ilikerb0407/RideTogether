@@ -15,27 +15,6 @@ import MessageUI
 
 class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate, MKLocalSearchCompleterDelegate {
     
-    func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
-        //emulate a reset button tap
-        self.resetButtonTapped()
-        //println("Loaded GPX file", gpx.gpx())
-        lastGpxFilename = gpxFilename
-        // adds last file name to core data as well
-        //        self.map.coreDataHelper.add(toCoreData: gpxFilename, willContinueAfterSave: false)
-        //force reset timer just in case reset does not do it
-        self.stopWatch.reset()
-        //load data
-        self.map.importFromGPXRoot(gpxRoot)
-        //stop following user
-        self.followUser = false
-        //center map in GPX data
-        self.map.regionToGPXExtent()
-        
-        self.gpxTrackingStatus = .paused
-        
-        self.totalTrackedDistanceLabel.distance = self.map.session.totalTrackedDistance
-    }
-    
     //    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
@@ -50,8 +29,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     let completer = MKLocalSearchCompleter()
     
-    
-    /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
     private var stopWatch = StopWatch()
@@ -600,11 +577,11 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         let searchAction = UIAlertAction(title: "Search", style: .default) { [self]_ in
             var fileName = alertController.textFields?[0].text
         
-            func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-              guard let firstResult = completer.results.first else { return }
-                
-                fileName = firstResult.title
-            }
+//            func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+//              guard let firstResult = completer.results.first else { return }
+//
+//                fileName = firstResult.title
+//            }
 
             let geoCoder = CLGeocoder()
             
@@ -1002,6 +979,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
     }
     
     //MARK: 桌面更新資料
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
@@ -1038,6 +1016,26 @@ extension JourneyViewController: CLLocationManagerDelegate {
         map.updateHeading() // updates heading view's rotation
     }
     // MARK: 選擇路線後導航 (有時間在做)
+    func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
+        //emulate a reset button tap
+        self.resetButtonTapped()
+        //println("Loaded GPX file", gpx.gpx())
+        lastGpxFilename = gpxFilename
+        // adds last file name to core data as well
+        //        self.map.coreDataHelper.add(toCoreData: gpxFilename, willContinueAfterSave: false)
+        //force reset timer just in case reset does not do it
+        self.stopWatch.reset()
+        //load data
+        self.map.importFromGPXRoot(gpxRoot)
+        //stop following user
+        self.followUser = false
+        //center map in GPX data
+        self.map.regionToGPXExtent()
+        
+        self.gpxTrackingStatus = .paused
+        
+        self.totalTrackedDistanceLabel.distance = self.map.session.totalTrackedDistance
+    }
     
 }
 

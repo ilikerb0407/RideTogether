@@ -19,11 +19,20 @@ class GroupViewController: BaseViewController {
     }
     
     func setBuildTeamButton() {
+        
         let button = CreatGroupButton()
         let width = UIScreen.width
         let height = UIScreen.height
+        button.frame = CGRect(x: width * 0.8, y: height * 0.8, width: 70, height: 70)
+        button.addTarget(self, action: #selector(creatGroup), for: .touchUpInside)
+        view.addSubview(button)
     
     }
     
+    @objc func creatGroup() {
+
+        performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
+        
+    }
 
 }

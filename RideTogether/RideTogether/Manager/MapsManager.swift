@@ -65,8 +65,6 @@ class MapsManager {
             }
             
             
-            
-            
         } catch {
             
             print("Unable to upload data")
