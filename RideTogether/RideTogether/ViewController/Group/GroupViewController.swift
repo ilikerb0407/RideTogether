@@ -31,8 +31,17 @@ class GroupViewController: BaseViewController {
     
     @objc func creatGroup() {
 
-        performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
-        
+//        performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
+        if let createGroupViewController = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
+
+            let navBar = UINavigationController.init(rootViewController: createGroupViewController)
+            
+            if let sheetPresentationController = navBar.sheetPresentationController {
+
+                sheetPresentationController.detents = [.medium(),.large()]
+                self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+        }
     }
 
 }
