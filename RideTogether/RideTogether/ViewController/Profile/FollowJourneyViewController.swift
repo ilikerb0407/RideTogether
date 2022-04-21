@@ -294,6 +294,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     // MARK: 長按功能_ UILongPressGestureRecognizer
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
+        
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
             let point: CGPoint = gesture.location(in: self.map2)

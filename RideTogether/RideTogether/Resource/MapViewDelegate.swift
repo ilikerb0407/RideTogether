@@ -46,6 +46,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        
         let annotationView = MKPinAnnotationView()
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
         guard let map = mapView as? GPXMapView else { return }
