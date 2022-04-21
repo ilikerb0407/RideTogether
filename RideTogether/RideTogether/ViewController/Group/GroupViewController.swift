@@ -28,7 +28,7 @@ class GroupViewController: BaseViewController {
     }
     
     @objc func creatGroup() {
-
+        
 //        performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let createGroupViewController = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: createGroupViewController)

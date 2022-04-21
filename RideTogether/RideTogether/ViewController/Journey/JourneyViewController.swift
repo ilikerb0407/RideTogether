@@ -557,6 +557,10 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                     let placemarks = placemarks,
                     let location = placemarks.first?.location
                 else {
+                    let notify = UIAlertController(title: "請再輸入一次", message: "沒有這個地方", preferredStyle: .alert)
+                    let searchAction = UIAlertAction(title: "OK", style: .default) {_ in }
+                    notify.addAction(searchAction)
+                    present(notify, animated: true, completion: nil)
                     print("location not found")
                     return
                 }

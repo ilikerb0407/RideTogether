@@ -172,8 +172,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    
 }
 
 // MARK: - TextField & TextView Delegate -
