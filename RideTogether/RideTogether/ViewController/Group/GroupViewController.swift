@@ -160,7 +160,6 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
                 
                 self.myGroups = filteredGroups.filter { $0.isExpired == true }
                 
-                
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
                 
 //                self.rearrangeMyGroup(groups: self.myGroups)
