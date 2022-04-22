@@ -12,12 +12,21 @@ import MASegmentedControl
 import FirebaseAuth
 import FirebaseFirestore
 import RSKPlaceholderTextView
+import SwiftUI
+
+protocol reload {
+    
+    func reload(result : Group)
+}
 
 class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     private var group = Group()
     
+    var delegate: reload?
+    
     @IBOutlet weak var sendData: UIButton! {
+        
         didSet{
             sendData.isUserInteractionEnabled = false
             sendData.alpha = 0.6
@@ -159,11 +168,11 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                         
                         self.dismiss(animated: true, completion: nil)
                         
-                        
                     }
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
                     
+                    delegate?.reload(result: group)
                     
                 case .failure(let error):
                     

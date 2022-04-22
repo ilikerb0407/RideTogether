@@ -13,7 +13,13 @@ import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation
 
-class GroupViewController: BaseViewController, UISearchBarDelegate {
+class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
+    
+    func reload(result: Group) {
+        
+        self.tableView.reloadData()
+    }
+
 
     // MARK: Class Properties
     
@@ -32,11 +38,20 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     
     private var groupHeaderCell: GroupHeaderCell?
     
+    // Search Bar 查詢 Groups
     private var searchGroups = [Group]()
     
-    var onlyUserGroup = false
-    
     private var isSearching = false
+    
+    private var searchText = "" {
+        
+        didSet {
+            isSearching = true
+        }
+       
+    }
+    
+    var onlyUserGroup = false
     
     private var groupInfo: GroupInfo?
     
@@ -124,9 +139,10 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
                 unexpiredGroup.append(group)
             }
         }
-        expiredGroup.sort { $0.date.seconds < $1.date.seconds }
-        
+       
         unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
+        
+        expiredGroup.sort { $0.date.seconds > $1.date.seconds }
         
         myGroups =  unexpiredGroup + expiredGroup
     }
@@ -148,7 +164,6 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
                 
                 filteredGroups.sort { $0.date.seconds < $1.date.seconds }
                 
-                tableView.reloadData()
                 
                 
 //                inActivityGroup = groups
@@ -166,6 +181,8 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
                 
 //                self.rearrangeMyGroup(groups: self.myGroups)
                 rearrangeMyGroup(groups: filteredGroups)
+                
+                tableView.reloadData()
                 
 //                filteredGroups.forEach { group in
 //
