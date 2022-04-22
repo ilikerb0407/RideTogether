@@ -33,7 +33,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             
             polyLineRenderer.alpha = 0.8
             
-            
             polyLineRenderer.strokeColor = .orange
             
             polyLineRenderer.lineWidth = 3

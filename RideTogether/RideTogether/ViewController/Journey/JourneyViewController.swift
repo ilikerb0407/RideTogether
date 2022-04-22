@@ -13,15 +13,21 @@ import Firebase
 import Lottie
 import MessageUI
 
-class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate, MKLocalSearchCompleterDelegate {
+class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate, MKLocalSearchCompleterDelegate,sendRouteSecond {
+    
+    func sendRouteTwice(map: DrawRoute) {
+        mapData = map
+    }
+    
+    var mapData: DrawRoute?
+    
+    var routeVc: RouteSelectionViewController?
     
     //    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
     @IBOutlet weak var map: GPXMapView!
-    
-    private var mapRoutes: [MKRoute] = []
     
     var directionsResponse =  MKDirections.Response()
     
@@ -79,6 +85,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
+                
                 map.clearMap()
                 
                 totalTrackedDistanceLabel.distance = (map.session.totalTrackedDistance)
@@ -94,7 +101,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 waveLottieView.isHidden = false
                 
                 waveLottieView.play()
-                
                 
                 
             case .paused:
@@ -346,6 +352,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         locationManager.delegate = self
@@ -366,17 +373,17 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         addSegment()
         
-        
         completer.delegate = self
+        
         completer.region = map.region
-                
+        
+        routeVc?.delegate = self
     }
     
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
         segmentControl.tintColor = UIColor.black
-        segmentControl.backgroundColor =
-        UIColor.lightGray
+        segmentControl.backgroundColor = UIColor.lightGray
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
         segmentControl.frame.size = CGSize(
@@ -484,30 +491,31 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         map.setRegion(region, animated: true)
         
+        
         //   If user long presses the map, it will add a Pin (waypoint) at that point
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map)
+        
     }
     
     var taichung = CLLocationCoordinate2D(latitude: 24.18352165572669, longitude: 120.62348601471712)
     
-    
     @objc func sendSMS() {
         
-        let composeVC = MFMessageComposeViewController()
-        composeVC.messageComposeDelegate = self
-        
-        // Configure the fields of the interface.
-        composeVC.recipients = ["請輸入收件人"]
-        composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
-        
-        // Present the view controller modally.
-        if MFMessageComposeViewController.canSendText() {
-            self.present(composeVC, animated: true, completion: nil)
-        }
+//        let composeVC = MFMessageComposeViewController()
+//        composeVC.messageComposeDelegate = self
+//
+//        // Configure the fields of the interface.
+//        composeVC.recipients = ["請輸入收件人"]
+//        composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+//
+//        // Present the view controller modally.
+//        if MFMessageComposeViewController.canSendText() {
+//            self.present(composeVC, animated: true, completion: nil)
+//        }
         
     }
     
@@ -539,68 +547,13 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     
     @objc func searchLocation() {
         
-        map.clearOverlays()
-        
-        let alertController = UIAlertController(title: "Search_Destination", message: "Please enter Location", preferredStyle: .alert)
-        alertController.addTextField(configurationHandler: {(textField) in
-            textField.clearButtonMode = .always
-            textField.text = "台北"
-        })
-        let searchAction = UIAlertAction(title: "Search", style: .default) { [self]_ in
-            var fileName = alertController.textFields?[0].text
-        
-
-            let geoCoder = CLGeocoder()
-            
-            geoCoder.geocodeAddressString(fileName!) { (placemarks, error) in
-                guard
-                    let placemarks = placemarks,
-                    let location = placemarks.first?.location
-                else {
-                    let notify = UIAlertController(title: "請再輸入一次", message: "沒有這個地方", preferredStyle: .alert)
-                    let searchAction = UIAlertAction(title: "OK", style: .default) {_ in }
-                    notify.addAction(searchAction)
-                    present(notify, animated: true, completion: nil)
-                    print("location not found")
-                    return
-                }
-                self.taichung.latitude = location.coordinate.latitude
-                self.taichung.longitude = location.coordinate.longitude
-                let targetPlacemark = MKPlacemark(coordinate: taichung)
-                let targetItem = MKMapItem(placemark: targetPlacemark)
-                let userMapItem = MKMapItem.forCurrentLocation()
-                let request = MKDirections.Request()
-                request.source = userMapItem
-                request.destination = targetItem
-                request.transportType = .walking
-                request.requestsAlternateRoutes = true
-                let directions = MKDirections(request: request)
-                
-                directions.calculate { [self]  response ,error in
-                if error == nil {
-                                self.directionsResponse = response!
-                
-                                self.route = self.directionsResponse.routes[0]
-                
-                                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
-                            } else {
-                                print("\(error)")
-                            }
-                        }
-                
-                
-            }
-            
-            
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if let presentVc = navBar.sheetPresentationController {
+                presentVc.detents = [.large()]
+            self.navigationController?.present(navBar, animated: true, completion: .none)
+           }
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertController.addAction(searchAction)
-        
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true)
         
     }
     
@@ -1008,6 +961,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         self.totalTrackedDistanceLabel.distance = self.map.session.totalTrackedDistance
     }
+    
     
 }
 

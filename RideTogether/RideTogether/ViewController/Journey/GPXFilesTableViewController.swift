@@ -398,3 +398,69 @@ extension GPXFilesTableViewController {
         }
     }
 }
+// search Location in journey
+
+
+ 
+//map.clearOverlays()
+//
+//let alertController = UIAlertController(title: "Search_Destination", message: "Please enter Location", preferredStyle: .alert)
+//alertController.addTextField(configurationHandler: {(textField) in
+//    textField.clearButtonMode = .always
+//    textField.text = "台北"
+//})
+//let searchAction = UIAlertAction(title: "Search", style: .default) { [self]_ in
+//    var fileName = alertController.textFields?[0].text
+//
+//
+//    let geoCoder = CLGeocoder()
+//
+//    geoCoder.geocodeAddressString(fileName!) { (placemarks, error) in
+//        guard
+//            let placemarks = placemarks,
+//            let location = placemarks.first?.location
+//        else {
+//            let notify = UIAlertController(title: "請再輸入一次", message: "沒有這個地方", preferredStyle: .alert)
+//            let searchAction = UIAlertAction(title: "OK", style: .default) {_ in }
+//            notify.addAction(searchAction)
+//            present(notify, animated: true, completion: nil)
+//            print("location not found")
+//            return
+//        }
+//        self.taichung.latitude = location.coordinate.latitude
+//        self.taichung.longitude = location.coordinate.longitude
+//        let targetPlacemark = MKPlacemark(coordinate: taichung)
+//        let targetItem = MKMapItem(placemark: targetPlacemark)
+//        let userMapItem = MKMapItem.forCurrentLocation()
+//        let request = MKDirections.Request()
+//        request.source = userMapItem
+//        request.destination = targetItem
+//        request.transportType = .walking
+//        request.requestsAlternateRoutes = true
+//        let directions = MKDirections(request: request)
+//
+//        directions.calculate { [self]  response ,error in
+//        if error == nil {
+//                        self.directionsResponse = response!
+//
+//                        self.route = self.directionsResponse.routes[0]
+//
+//                        map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
+//                    } else {
+//                        print("\(error)")
+//                    }
+//                }
+//
+//
+//    }
+//
+//
+//}
+//
+//let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//alertController.addAction(searchAction)
+//
+//alertController.addAction(cancelAction)
+//
+//present(alertController, animated: true)
