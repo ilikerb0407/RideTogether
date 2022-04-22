@@ -34,7 +34,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     
     private var searchGroups = [Group]()
     
-    private var onlyUserGroup = true
+    var onlyUserGroup = false
     
     private var isSearching = false
     
@@ -141,6 +141,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     
     var filteredGroups = [Group]()
     
+    
     func fetchGroupData() {
         
         GroupManager.shared.fetchGroups { [self] result in
@@ -150,7 +151,29 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
             case .success(let groups):
                 
                 filteredGroups = groups
+                
+                var expiredGroup = [Group]()
+                var unexpiredGroup = [Group]()
+                
+                for group in filteredGroups {
+
+                    if group.isExpired == true {
+
+                        expiredGroup.append(group)
+
+                    } else {
+
+                        unexpiredGroup.append(group)
+                    }
+                }
+                expiredGroup.sort { $0.date.seconds < $1.date.seconds }
+
+                unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
+
+                filteredGroups =  unexpiredGroup + expiredGroup
+                
                 tableView.reloadData()
+                
                 
 //                inActivityGroup = groups
                 
@@ -210,7 +233,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         
         view.addSubview(headerView)
         
-//        headerView.groupSearchBar.searchTextField.text = searchText
+//        headerView.searchBar.searchTextField.text = searchText
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -334,7 +357,6 @@ extension GroupViewController: UITableViewDataSource {
         
         let cell: GroupInfo = tableView.dequeueCell(for: indexPath)
         
-       
         var group = Group()
         
         group = filteredGroups[indexPath.row]

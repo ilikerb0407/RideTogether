@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="nbl-4n-DaM">
-                                <rect key="frame" x="20" y="539" width="374" height="273"/>
+                                <rect key="frame" x="20" y="590" width="374" height="222"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-ZQ-P7Y">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="30"/>
@@ -99,8 +99,8 @@
                                             </datePicker>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="3R0-w3-gdR">
-                                        <rect key="frame" x="0.0" y="86" width="340" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="3R0-w3-gdR">
+                                        <rect key="frame" x="0.0" y="86" width="374" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="路線" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M26-Su-yH1">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
@@ -113,7 +113,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-Gh-WHt">
-                                                <rect key="frame" x="152" y="0.0" width="188" height="30"/>
+                                                <rect key="frame" x="167" y="0.0" width="207" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -143,22 +143,27 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="500" verticalCompressionResistancePriority="500" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y2n-1k-ig7">
-                                        <rect key="frame" x="0.0" y="172" width="360" height="101"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="139" translatesAutoresizingMaskIntoConstraints="NO" id="nnd-h0-PoJ">
+                                        <rect key="frame" x="0.0" y="172" width="360" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="備註" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-dS-u5X">
-                                                <rect key="frame" x="0.0" y="0.0" width="360" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kA9-oF-fA4">
-                                                <rect key="frame" x="0.0" y="23.5" width="360" height="77.5"/>
+                                                <rect key="frame" x="174" y="0.0" width="186" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bP0-ug-6HB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="186" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
