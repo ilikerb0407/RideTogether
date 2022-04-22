@@ -146,6 +146,8 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
                 
                 filteredGroups = groups
                 
+                filteredGroups.sort { $0.date.seconds < $1.date.seconds }
+                
                 tableView.reloadData()
                 
                 
