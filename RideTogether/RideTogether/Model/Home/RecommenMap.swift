@@ -11,7 +11,7 @@ import FirebaseFirestore
 // MARK: RecommendMap = Route
 struct RecommendMap: Codable, Hashable {
     
-//    var uid: String
+    var uid: String
     var createdTime: Timestamp
     var recordId: String?
     var recordName: String
@@ -27,7 +27,8 @@ struct RecommendMap: Codable, Hashable {
 //    let trailMap: String?
     
     enum CodingKeys: String, CodingKey {
-//        case uid
+        
+        case uid
         case createdTime = "created_time"
         case recordId = "record_id"
         case recordName = "record_name"
@@ -36,7 +37,7 @@ struct RecommendMap: Codable, Hashable {
     }
     
     init() {
-//        self.uid = ""
+        self.uid = ""
         self.createdTime = Timestamp()
         self.recordId = ""
         self.recordName = ""

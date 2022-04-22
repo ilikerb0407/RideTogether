@@ -24,7 +24,6 @@ struct TrackInfo: Codable {
         self.distance = 0.0
         self.spentTime = 0.0
         self.avgSpeed = 0.0
-        
         self.elevationDiff = 0.0
         self.totalClimb = 0.0
         self.totalDrop = 0.0
@@ -37,5 +36,5 @@ struct TrackInfo: Codable {
 struct TrackChartData {
     var elevation: [Double] = []
     var time: [Double] = []
-    var distance:[Double] = []
+    var distance: [Double] = []
 }

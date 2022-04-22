@@ -165,6 +165,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
                     
+                    
                 case .failure(let error):
                     
                     print("build team failure: \(error)")
@@ -172,8 +173,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    
 }
 
 // MARK: - TextField & TextView Delegate -

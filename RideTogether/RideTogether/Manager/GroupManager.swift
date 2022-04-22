@@ -12,7 +12,6 @@ import Firebase
 
 class GroupManager {
     
-    
     static let shared = GroupManager()
     
     private init() {}
@@ -20,7 +19,6 @@ class GroupManager {
     lazy var dataBase = Firestore.firestore()
     
     private let groupCollection = Collection.groups.rawValue
-    
     
     func buildTeam(group: inout Group, completion: (Result<String, Error>) -> Void) {
         
@@ -41,10 +39,8 @@ class GroupManager {
         completion(.success("Success"))
     }
     
-    
-    
     func fetchGroups(completion: @escaping (Result<[Group], Error>) -> Void) {
-       
+        
         let collection = dataBase.collection(groupCollection)
         
         collection.order(by: "date", descending: false).getDocuments { (querySnapshot, error) in
@@ -60,6 +56,7 @@ class GroupManager {
                     do {
                         if var group = try document.data(as: Group.self, decoder: Firestore.Decoder()) {
                             if group.date.checkIsExpired() {
+                                
                                 group.isExpired = true
                             } else {
                                 group.isExpired = false

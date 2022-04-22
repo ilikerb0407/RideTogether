@@ -75,7 +75,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 stopWatch.reset()
                 
-                //                waveLottieView.isHidden = true
+                waveLottieView.isHidden = true
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
@@ -91,9 +91,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 self.stopWatch.start()
                 
-                //                waveLottieView.isHidden = false
+                waveLottieView.isHidden = false
                 
-                //                waveLottieView.play()
+                waveLottieView.play()
                 
                 
                 
@@ -103,7 +103,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                 
                 self.stopWatch.stop()
                 
-                //                waveLottieView.isHidden = true
+                waveLottieView.isHidden = true
                 
                 self.map.startNewTrackSegment()
             }
@@ -258,18 +258,18 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     var hasWaypoints: Bool = false
     
     private lazy var waveLottieView: AnimationView = {
-        let view = AnimationView(name: "wave")
+        let view = AnimationView(name: "95671-wave-animation")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
-        view.center = buttonStackView.center
+//        view.translatesAutoresizingMaskIntoConstraints = false
+        view.frame = CGRect(x: 0, y: 0, width: 100 , height: 100)
+        view.center = leftStackView.center
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
-        self.view.bringSubviewToFront(buttonStackView)
+        self.view.bringSubviewToFront(leftStackView)
         // buttonStackView要改成 left
         return view
     }()
-    
     
     private lazy var buttonStackView: UIStackView = {
         //        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
@@ -283,13 +283,14 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     }()
     
     private lazy var leftStackView: UIStackView = {
-        //        let view = UIStackView(arrangedSubviews: [offlineMapButton, loadMapButton])
-        let view = UIStackView(arrangedSubviews: [trackerButton, saveButton, resetButton])
+    
+        let view = UIStackView(arrangedSubviews: [saveButton, trackerButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = 8
         view.distribution = .equalSpacing
-        view.alignment = .leading
+        view.alignment = .center
+//        view.centerXAnchor.
         return view
     }()
     
@@ -368,6 +369,7 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         
         completer.delegate = self
         completer.region = map.region
+                
     }
     
     func addSegment() {
@@ -493,40 +495,6 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
     var taichung = CLLocationCoordinate2D(latitude: 24.18352165572669, longitude: 120.62348601471712)
     
     
-    //    @objc func guide() {
-    //
-    //        let annotationView = MKPinAnnotationView()
-    //        let waypoint = annotationView.annotation as? GPXWaypoint
-    //
-    //        let targetCoordinate = taichung
-    //        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate)
-    //        let targetItem = MKMapItem(placemark: targetPlacemark)
-    //        let userMapItem = MKMapItem.forCurrentLocation()
-    //
-    //        let request = MKDirections.Request()
-    //
-    //        request.source = userMapItem
-    //        request.destination = targetItem
-    //        request.transportType = .walking
-    //        request.requestsAlternateRoutes = true
-    //
-    //
-    //        let directions = MKDirections(request: request)
-    //
-    //        directions.calculate { [self]  response ,error in
-    //            if error == nil {
-    //                self.directionsResponse = response!
-    //
-    //                self.route = self.directionsResponse.routes[0]
-    //
-    //                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveLabels)
-    //            } else {
-    //                print("\(error)")
-    //            }
-    //        }
-    //
-    //    }
-    
     @objc func sendSMS() {
         
         let composeVC = MFMessageComposeViewController()
@@ -589,6 +557,10 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
                     let placemarks = placemarks,
                     let location = placemarks.first?.location
                 else {
+                    let notify = UIAlertController(title: "請再輸入一次", message: "沒有這個地方", preferredStyle: .alert)
+                    let searchAction = UIAlertAction(title: "OK", style: .default) {_ in }
+                    notify.addAction(searchAction)
+                    present(notify, animated: true, completion: nil)
                     print("location not found")
                     return
                 }
@@ -855,8 +827,9 @@ class JourneyViewController: BaseViewController, GPXFilesTableViewControllerDele
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
         buttonStackView.addArrangedSubview(guideButton)
-        leftStackView.addArrangedSubview(trackerButton)
+        
         leftStackView.addArrangedSubview(saveButton)
+        leftStackView.addArrangedSubview(trackerButton)
         leftStackView.addArrangedSubview(resetButton)
         
         // MARK: button constraint

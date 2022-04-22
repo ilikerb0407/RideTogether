@@ -19,6 +19,7 @@ struct Record: Codable, Hashable {
     var recordRef: String
     
     enum CodingKeys: String, CodingKey {
+        
         case uid
         case createdTime = "created_time"
         case recordId = "record_id"
