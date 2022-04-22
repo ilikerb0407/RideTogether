@@ -28,6 +28,7 @@ class GroupInfo: UITableViewCell {
     @IBOutlet weak var isOver: UILabel!
     
 //    (group: Group, hostname: String)
+    
     func setUpCell(group: Group, hostname: String) {
         
         groupName.text = group.groupName

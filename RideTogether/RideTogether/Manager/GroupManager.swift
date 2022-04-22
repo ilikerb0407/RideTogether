@@ -43,18 +43,21 @@ class GroupManager {
         
         let collection = dataBase.collection(groupCollection)
         
-        collection.order(by: "date", descending: false).getDocuments { (querySnapshot, error) in
+        collection.order(by: "date", descending: true).getDocuments { (querySnapshot, error) in
            
             guard let querySnapshot = querySnapshot else { return }
             
             if let error = error {
+                
                 completion(.failure(error))
+                
             } else {
                 var groups = [Group]()
                 
                 for document in querySnapshot.documents {
                     do {
                         if var group = try document.data(as: Group.self, decoder: Firestore.Decoder()) {
+                            
                             if group.date.checkIsExpired() {
                                 
                                 group.isExpired = true
@@ -63,7 +66,6 @@ class GroupManager {
                             }
                             groups.append(group)
                         }
-                            
                     }
                     catch {
                         completion(.failure(error))

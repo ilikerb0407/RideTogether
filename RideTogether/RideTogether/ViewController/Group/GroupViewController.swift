@@ -13,7 +13,13 @@ import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation
 
-class GroupViewController: BaseViewController, UISearchBarDelegate {
+class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
+    
+    func reload(result: Group) {
+        
+        self.tableView.reloadData()
+    }
+
 
     // MARK: Class Properties
     
@@ -23,26 +29,34 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     
     private var historyGroup = [Group]()
     
-    private var myGroups = [Group]()
+    private var myGroups = [Group]() {
+        
+        didSet {
+            updateUserHistory()
+        }
+    }
     
     private var groupHeaderCell: GroupHeaderCell?
     
+    // Search Bar 查詢 Groups
     private var searchGroups = [Group]()
     
-    private var onlyUserGroup = true
-    
     private var isSearching = false
+    
+    private var searchText = "" {
+        
+        didSet {
+            isSearching = true
+        }
+       
+    }
+    
+    var onlyUserGroup = false
     
     private var groupInfo: GroupInfo?
     
     private let header = MJRefreshNormalHeader()
     
-    private lazy var cache = [String: UserInfo]() {
-        
-        didSet {
-            tableView.reloadData()
-        }
-    }
     
     private var tableView: UITableView! {
         
@@ -65,6 +79,8 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         
         tableView.mj_header = header
+        
+        view.backgroundColor = .U2
     
     }
     
@@ -80,12 +96,32 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(),.large()]
+                presentVc.detents = [.medium()]
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }
         }
     }
     // MARK: 確定時間有沒有過期
+    
+    func updateUserHistory() {
+        
+        var numOfGroups = 0
+        
+        var numOfPartners = 0
+        
+        myGroups.forEach { group in
+            
+            if group.isExpired == true {
+                
+                numOfGroups += 1
+                
+                numOfPartners += (group.userIds.count - 1) // -1 for self
+            }
+        }
+        
+//        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
+    }
+    
     
     func rearrangeMyGroup(groups: [Group]) {
         
@@ -103,9 +139,10 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
                 unexpiredGroup.append(group)
             }
         }
-        expiredGroup.sort { $0.date.seconds < $1.date.seconds }
-        
+       
         unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
+        
+        expiredGroup.sort { $0.date.seconds > $1.date.seconds }
         
         myGroups =  unexpiredGroup + expiredGroup
     }
@@ -113,6 +150,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     // MARK: 抓資料
     
     var filteredGroups = [Group]()
+    
     
     func fetchGroupData() {
         
@@ -123,7 +161,10 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
             case .success(let groups):
                 
                 filteredGroups = groups
-                tableView.reloadData()
+                
+                filteredGroups.sort { $0.date.seconds < $1.date.seconds }
+                
+                
                 
 //                inActivityGroup = groups
                 
@@ -134,13 +175,14 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
 //                    filteredGroups.append(group)
 //                }
                 
-                self.myGroups = filteredGroups.filter {
-                    $0.userIds.contains(self.userInfo.uid)
-                }
+                self.myGroups = filteredGroups.filter { $0.isExpired == true }
                 
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
                 
-                self.rearrangeMyGroup(groups: self.myGroups)
+//                self.rearrangeMyGroup(groups: self.myGroups)
+                rearrangeMyGroup(groups: filteredGroups)
+                
+                tableView.reloadData()
                 
 //                filteredGroups.forEach { group in
 //
@@ -183,7 +225,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         
         view.addSubview(headerView)
         
-//        headerView.groupSearchBar.searchTextField.text = searchText
+//        headerView.searchBar.searchTextField.text = searchText
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -256,6 +298,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
 extension GroupViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
         cell.alpha = 0
         
         UIView.animate(
@@ -283,7 +326,7 @@ extension GroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        filteredGroups.count
+//        filteredGroups.count
         
 //        if isSearching {
 //
@@ -291,14 +334,14 @@ extension GroupViewController: UITableViewDataSource {
 //
 //        } else {
             
-//            if onlyUserGroup {
-//
-//                return myGroups.count
-//
-//            } else {
-//
-//                return inActivityGroup.count
-//            }
+            if onlyUserGroup {
+
+                return myGroups.count
+
+            } else {
+
+                return inActivityGroup.count
+            }
 //        }
     }
     
@@ -306,10 +349,19 @@ extension GroupViewController: UITableViewDataSource {
         
         let cell: GroupInfo = tableView.dequeueCell(for: indexPath)
         
-       
         var group = Group()
-        group = filteredGroups[indexPath.row]
-        cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+        
+        if onlyUserGroup {
+                       
+            group = myGroups[indexPath.row]
+                       
+            } else {
+                       
+            group = inActivityGroup[indexPath.row]
+        }
+        
+        
+        cell.setUpCell(group: group, hostname: group.hostId )
         
 //        if isSearching {
 //

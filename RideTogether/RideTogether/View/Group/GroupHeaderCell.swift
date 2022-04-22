@@ -20,22 +20,6 @@ class GroupHeaderCell: UITableViewCell {
       
     }
     
-//    @IBOutlet weak var textSegmentControl: MASegmentedControl! {
-//                didSet {
-//
-//                    textSegmentControl.itemsWithText = true
-//                    textSegmentControl.fillEqually = false
-//                    textSegmentControl.roundedControl = true
-//                    textSegmentControl.setSegmentedWith(items: ["活動進行中", "個人揪團紀錄"])
-//                    textSegmentControl.padding = 2
-//                    textSegmentControl.textColor = .black
-//                    textSegmentControl.selectedTextColor = .black
-//                    textSegmentControl.thumbViewColor = .C4 ?? .systemBlue
-//                    textSegmentControl.titlesFont = UIFont(name: "NotoSansTC-Regular", size: 20)
-//                }
-//    }
-
-    
     @IBOutlet weak var searchBar: UISearchBar! {
         
         didSet {

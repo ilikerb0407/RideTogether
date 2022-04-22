@@ -121,15 +121,14 @@
                             </stackView>
                         </subviews>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="錯過囉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9H-8k-twI">
-                        <rect key="frame" x="427" y="85" width="52" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="錯過囉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9H-8k-twI">
+                        <rect key="frame" x="427" y="85" width="52" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="U3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZS-1G-gAi">
-                        <rect key="frame" x="10" y="20" width="502" height="154"/>
+                        <rect key="frame" x="10" y="20" width="503" height="154"/>
                         <color key="backgroundColor" name="B3"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
@@ -152,6 +151,7 @@
                 <constraints>
                     <constraint firstItem="IZS-1G-gAi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="1rs-6y-8Kn"/>
                     <constraint firstAttribute="trailing" secondItem="WPs-v5-ONo" secondAttribute="trailing" constant="20" id="4Ue-os-hqJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="v9H-8k-twI" secondAttribute="trailing" constant="27" id="7eZ-ht-jpn"/>
                     <constraint firstAttribute="bottom" secondItem="G6g-Jv-2Oi" secondAttribute="bottom" constant="20" id="8Kj-EH-wZi"/>
                     <constraint firstItem="ung-YW-6A5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DgX-3q-doP"/>
                     <constraint firstItem="jQs-zg-KRz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="EtT-Mk-9ee"/>
@@ -164,7 +164,8 @@
                     <constraint firstItem="jQs-zg-KRz" firstAttribute="top" secondItem="WPs-v5-ONo" secondAttribute="bottom" constant="8" id="VsO-t8-ChZ"/>
                     <constraint firstItem="IZS-1G-gAi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="flf-UB-5a3"/>
                     <constraint firstItem="boI-FQ-0LC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="h0l-nQ-5P3"/>
-                    <constraint firstAttribute="trailing" secondItem="IZS-1G-gAi" secondAttribute="trailing" constant="14" id="tB2-KQ-pb4"/>
+                    <constraint firstItem="v9H-8k-twI" firstAttribute="top" secondItem="WPs-v5-ONo" secondAttribute="bottom" constant="14.5" id="rAF-78-Bha"/>
+                    <constraint firstAttribute="trailing" secondItem="IZS-1G-gAi" secondAttribute="trailing" constant="13" id="tB2-KQ-pb4"/>
                     <constraint firstAttribute="trailing" secondItem="G6g-Jv-2Oi" secondAttribute="trailing" constant="50" id="tFo-eg-Ao7"/>
                 </constraints>
             </tableViewCellContentView>
