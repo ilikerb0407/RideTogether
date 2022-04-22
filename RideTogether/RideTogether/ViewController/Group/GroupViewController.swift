@@ -56,15 +56,15 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        setBuildTeamButton()
-        
         fetchGroupData()
         
         setUpHeaderView()
         
         setUpTableView()
         
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        
+        tableView.mj_header = header
     
     }
     
@@ -123,6 +123,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
             case .success(let groups):
                 
                 filteredGroups = groups
+                tableView.reloadData()
                 
 //                inActivityGroup = groups
                 
@@ -159,7 +160,19 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     }
     
     
+    
+    
     // MARK: header
+    
+    @objc func headerRefresh() {
+        
+        fetchGroupData()
+        
+        tableView.reloadData()
+        
+        self.tableView.mj_header?.endRefreshing()
+    }
+    
     func setUpHeaderView() {
         
         let headerView: GroupHeaderCell = .loadFromNib()
@@ -191,7 +204,6 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         
 //        headerView.groupSearchBar.searchTextField.text = searchText
         
-        
     }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
@@ -217,6 +229,8 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         tableView.registerCellWithNib(identifier: GroupInfo.identifier, bundle: nil)
         
         view.addSubview(tableView)
+        
+        setBuildTeamButton()
         
         tableView.backgroundColor = .clear
         
@@ -296,6 +310,7 @@ extension GroupViewController: UITableViewDataSource {
         var group = Group()
         group = filteredGroups[indexPath.row]
         cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+        
 //        if isSearching {
 //
 //            group = searchGroups[indexPath.row]
@@ -316,6 +331,4 @@ extension GroupViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }

@@ -16,25 +16,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="509" height="152"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BBm-RZ-DEJ">
-                        <rect key="frame" x="50" y="10" width="427" height="32"/>
-                        <segments>
-                            <segment title="First"/>
-                            <segment title="Second"/>
-                        </segments>
-                    </segmentedControl>
-                    <searchBar contentMode="redraw" placeholder="查詢路線" translatesAutoresizingMaskIntoConstraints="NO" id="eZj-dA-dma">
-                        <rect key="frame" x="20" y="61" width="469" height="51"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </searchBar>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TcM-Ad-w57">
+                        <rect key="frame" x="20" y="0.0" width="469" height="92"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BBm-RZ-DEJ">
+                                <rect key="frame" x="30" y="0.0" width="409" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" placeholder="查詢路線" translatesAutoresizingMaskIntoConstraints="NO" id="eZj-dA-dma">
+                                <rect key="frame" x="30" y="41" width="409" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="eZj-dA-dma" firstAttribute="leading" secondItem="TcM-Ad-w57" secondAttribute="leading" constant="30" id="LAX-TR-f9U"/>
+                            <constraint firstItem="eZj-dA-dma" firstAttribute="top" secondItem="BBm-RZ-DEJ" secondAttribute="bottom" constant="10" id="abv-52-GhO"/>
+                            <constraint firstAttribute="trailing" secondItem="BBm-RZ-DEJ" secondAttribute="trailing" constant="30" id="au2-vg-lnw"/>
+                            <constraint firstAttribute="trailing" secondItem="eZj-dA-dma" secondAttribute="trailing" constant="30" id="nlN-Vs-E6t"/>
+                            <constraint firstItem="BBm-RZ-DEJ" firstAttribute="leading" secondItem="TcM-Ad-w57" secondAttribute="leading" constant="30" id="r2l-zp-IPI"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BBm-RZ-DEJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="J7B-4T-yRh"/>
-                    <constraint firstAttribute="trailing" secondItem="BBm-RZ-DEJ" secondAttribute="trailing" constant="32" id="Q6C-zb-Azf"/>
-                    <constraint firstItem="eZj-dA-dma" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="SIa-l8-4y3"/>
-                    <constraint firstItem="eZj-dA-dma" firstAttribute="top" secondItem="BBm-RZ-DEJ" secondAttribute="bottom" constant="20" id="fOl-zR-Dh0"/>
-                    <constraint firstItem="BBm-RZ-DEJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="ied-9x-3oq"/>
-                    <constraint firstAttribute="trailing" secondItem="eZj-dA-dma" secondAttribute="trailing" constant="20" id="ma4-qk-Tuh"/>
+                    <constraint firstAttribute="trailing" secondItem="TcM-Ad-w57" secondAttribute="trailing" constant="20" id="4gc-vG-FPx"/>
+                    <constraint firstItem="TcM-Ad-w57" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gtk-dq-lnT"/>
+                    <constraint firstItem="TcM-Ad-w57" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wgN-Ne-ckE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -42,7 +51,7 @@
                 <outlet property="searchBar" destination="eZj-dA-dma" id="Mqt-gs-ahQ"/>
                 <outlet property="segment" destination="BBm-RZ-DEJ" id="6jR-4L-o7m"/>
             </connections>
-            <point key="canvasLocation" x="164.49275362318841" y="88.392857142857139"/>
+            <point key="canvasLocation" x="-451" y="5"/>
         </tableViewCell>
     </objects>
 </document>
