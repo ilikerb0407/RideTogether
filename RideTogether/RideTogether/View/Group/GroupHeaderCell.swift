@@ -12,20 +12,29 @@ import MASegmentedControl
 class GroupHeaderCell: UITableViewCell {
     
     
-    @IBOutlet weak var textSegmentControl: MASegmentedControl! {
+    @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
-            textSegmentControl.itemsWithText = true
-            textSegmentControl.fillEqually = true
-            textSegmentControl.roundedControl = true
-            textSegmentControl.setSegmentedWith(items: ["活動進行中","歷史紀錄","個人揪團紀錄"])
-            textSegmentControl.padding = 2
-            textSegmentControl.textColor = .black
-            textSegmentControl.selectedTextColor = .black
-            textSegmentControl.thumbViewColor = .C4 ?? .systemBlue
-            textSegmentControl.titlesFont = UIFont(name: "NotoSansTC-Regular", size: 20)
+            segment.setTitle("活動中", forSegmentAt: 0)
+            segment.setTitle("個人活動", forSegmentAt: 1)
         }
-        
+      
     }
+    
+//    @IBOutlet weak var textSegmentControl: MASegmentedControl! {
+//                didSet {
+//
+//                    textSegmentControl.itemsWithText = true
+//                    textSegmentControl.fillEqually = false
+//                    textSegmentControl.roundedControl = true
+//                    textSegmentControl.setSegmentedWith(items: ["活動進行中", "個人揪團紀錄"])
+//                    textSegmentControl.padding = 2
+//                    textSegmentControl.textColor = .black
+//                    textSegmentControl.selectedTextColor = .black
+//                    textSegmentControl.thumbViewColor = .C4 ?? .systemBlue
+//                    textSegmentControl.titlesFont = UIFont(name: "NotoSansTC-Regular", size: 20)
+//                }
+//    }
+
     
     @IBOutlet weak var searchBar: UISearchBar! {
         
@@ -35,17 +44,24 @@ class GroupHeaderCell: UITableViewCell {
         }
         
     }
-    
-    
-    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
+        self.backgroundColor = .clear
+        
+        let image = UIImage()
+        
+        searchBar.backgroundImage = image
+        searchBar.backgroundColor = .clear
+        searchBar.searchTextField.backgroundColor = .white
+        searchBar.layer.cornerRadius = 15
+        searchBar.clipsToBounds = true
+        
+        selectionStyle = .none
         
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
+    
     
 }

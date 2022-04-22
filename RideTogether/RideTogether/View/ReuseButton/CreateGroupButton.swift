@@ -27,7 +27,10 @@ class CreatGroupButton: UIButton {
         self.setImage(image, for: .normal)
         
         self.tintColor = .C4
+        
     }
+    
+   
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,5 +44,7 @@ class CreatGroupButton: UIButton {
         
         self.layer.masksToBounds = true
     }
+    
+    
 }
 

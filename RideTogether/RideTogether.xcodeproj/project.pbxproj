@@ -34,6 +34,8 @@
 		23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */; };
 		23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */; };
 		23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A712811673100DD8D39 /* 95671-wave-animation.json */; };
+		23A84A752811AE2300DD8D39 /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A732811AE2300DD8D39 /* GroupInfo.swift */; };
+		23A84A762811AE2300DD8D39 /* GroupInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A742811AE2300DD8D39 /* GroupInfo.xib */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -127,6 +129,8 @@
 		23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderCell.swift; sourceTree = "<group>"; };
 		23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupHeaderCell.xib; sourceTree = "<group>"; };
 		23A84A712811673100DD8D39 /* 95671-wave-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "95671-wave-animation.json"; sourceTree = "<group>"; };
+		23A84A732811AE2300DD8D39 /* GroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
+		23A84A742811AE2300DD8D39 /* GroupInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupInfo.xib; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				23D1B8092805BED3000EDA70 /* Group.storyboard */,
 				23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */,
 				23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */,
+				23A84A732811AE2300DD8D39 /* GroupInfo.swift */,
+				23A84A742811AE2300DD8D39 /* GroupInfo.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
 				231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */,
+				23A84A762811AE2300DD8D39 /* GroupInfo.xib in Resources */,
 				23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,6 +671,7 @@
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23CE42BA280EF07000C4C9F1 /* DirectionViewController.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
+				23A84A752811AE2300DD8D39 /* GroupInfo.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
 				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
