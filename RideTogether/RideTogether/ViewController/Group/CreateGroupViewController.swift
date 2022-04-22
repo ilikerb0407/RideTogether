@@ -84,14 +84,16 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         setUpButton()
+        
+        view.backgroundColor = .B2
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        headerView.applyGradient(colors: [.C4, .B2], locations: [0.0, 1.0], direction: .topToBottom)
-        
-        headerView.roundCornersTop(cornerRadius: 15)
+//        headerView.applyGradient(colors: [.C4, .B2], locations: [0.0, 1.0], direction: .topToBottom)
+//
+//        headerView.roundCornersTop(cornerRadius: 15)
         
         setUpTextView()
         
@@ -102,22 +104,17 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     func setUpTextView() {
         
-        note.placeholder = "想對 <Eric> 說些什麼呢..？"
+        note.placeholder = "有哪些需要注意的事項？"
         
         note.clipsToBounds = true
         
         note.layer.cornerRadius = 10
         
-        //        note.textContainer.maximumNumberOfLines = 3
-        //
-        //        note.textContainer.lineBreakMode = .byWordWrapping
     }
     
     func setUpButton() {
         
         sendData.addTarget(self, action: #selector(sendPost), for: .touchUpInside)
-        
-        //        dismiss(animated: true, completion: nil)
     }
     
     // MARK: check text Field
@@ -161,6 +158,8 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     let success = UIAlertAction(title: "Success", style: .default) { _ in
                         
                         self.dismiss(animated: true, completion: nil)
+                        
+                        
                     }
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])

@@ -23,7 +23,12 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
     
     private var historyGroup = [Group]()
     
-    private var myGroups = [Group]()
+    private var myGroups = [Group]() {
+        
+        didSet {
+            updateUserHistory()
+        }
+    }
     
     private var groupHeaderCell: GroupHeaderCell?
     
@@ -65,6 +70,8 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         
         tableView.mj_header = header
+        
+        view.backgroundColor = .U2
     
     }
     
@@ -80,12 +87,32 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(),.large()]
+                presentVc.detents = [.medium()]
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }
         }
     }
     // MARK: 確定時間有沒有過期
+    
+    func updateUserHistory() {
+        
+        var numOfGroups = 0
+        
+        var numOfPartners = 0
+        
+        myGroups.forEach { group in
+            
+            if group.isExpired == true {
+                
+                numOfGroups += 1
+                
+                numOfPartners += (group.userIds.count - 1) // -1 for self
+            }
+        }
+        
+//        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
+    }
+    
     
     func rearrangeMyGroup(groups: [Group]) {
         
@@ -256,6 +283,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate {
 extension GroupViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
         cell.alpha = 0
         
         UIView.animate(
@@ -308,7 +336,9 @@ extension GroupViewController: UITableViewDataSource {
         
        
         var group = Group()
+        
         group = filteredGroups[indexPath.row]
+        
         cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
         
 //        if isSearching {
