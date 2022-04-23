@@ -21,6 +21,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     var directionsResponse =  MKDirections.Response()
     var route = MKRoute()
+    
     var polyLineRenderer = MKPolylineRenderer()
     
     var step: [String] = []
@@ -32,7 +33,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             var polyLineRenderer = MKPolylineRenderer(overlay: overlay)
             
             polyLineRenderer.alpha = 0.8
-            
+        
             polyLineRenderer.strokeColor = .orange
             
             polyLineRenderer.lineWidth = 3
@@ -70,10 +71,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 
                 self.route = self.directionsResponse.routes[0]
                 // route.step
-                print ("\(route.expectedTravelTime)")
-                print ("\(route.distance)")
-                print ("\(route.advisoryNotices)")
-                print ("\(route.steps)")
+    
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
             } else {
                 print("\(error)")
@@ -93,6 +91,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         //        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
+        
         
         //
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -117,6 +116,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     let kDeleteWaypointAccesoryButtonTag = 666
     let kEditWaypointAccesoryButtonTag = 333
     
+    
+    
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
@@ -125,24 +126,35 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         guard let button = control as? UIButton else { return }
         guard let map = mapView as? GPXMapView else { return }
         
+        var routeStep = ""
+        
+        for (index, item) in self.route.steps.enumerated() {
+            routeStep = "\(index) = \(item)"
+        }
         switch button.tag {
             
         case kDeleteWaypointAccesoryButtonTag:
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
             //            map.removeWaypoint(waypoint)
             //            guide(mapView, didSelect: view)
-            map.clearOverlays()
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("SELECT_OPTION", comment: "no comment"), preferredStyle: .actionSheet)
-            let mapOption = UIAlertAction(title: NSLocalizedString("Guide", comment: "no comment"), style: .default) { _ in
-                
-                self.guide(mapView, didSelect: view)
-            }
+            let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
             let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
                 map.removeWaypoint(waypoint)
                 map.removeOverlays(map.overlays)
             }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
-            sheet.addAction(mapOption)
+            
+            let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
+            let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
+            
+           
+            var routeName = UIAlertAction(title: "RouteName = \(routeStep)", style: .destructive)
+            
+          
+            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
+            
+            sheet.addAction(distance)
+            sheet.addAction(time)
+            sheet.addAction(routeName)
             sheet.addAction(removeOption)
             sheet.addAction(cancelAction)
             
@@ -183,7 +195,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         
+        
         var num = 0
+        self.guide(mapView, didSelect: views[num])
         // swiftlint:disable force_cast
         let gpxMapView = mapView as! GPXMapView
         var hasImpacted = false
@@ -236,4 +250,52 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             })
         }
     }
+    
+    private var mapRoutes: [MKRoute] = []
+      
+    var routes: DrawRoute?
+    
+  private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
+
+  private func groupAndRequestDirections() {
+      guard let firstStop = routes!.stops.first else {
+      return
+    }
+
+      groupedRoutes.append((routes!.origin, firstStop))
+
+      if routes!.stops.count == 2 {
+        let secondStop = routes!.stops[1]
+
+      groupedRoutes.append((firstStop, secondStop))
+        
+          groupedRoutes.append((secondStop, routes!.origin))
+    }
+
+    fetchNextRoute()
+  }
+
+  private func fetchNextRoute() {
+    guard !groupedRoutes.isEmpty else {
+      return
+    }
+
+    let nextGroup = groupedRoutes.removeFirst()
+    let request = MKDirections.Request()
+
+    request.source = nextGroup.startItem
+    request.destination = nextGroup.endItem
+    request.transportType = .walking
+
+    let directions = MKDirections(request: request)
+
+      directions.calculate { [self] response, error in
+      guard let mapRoute = response?.routes.first else {
+        return
+      }
+        
+    
+      self.fetchNextRoute()
+    }
+  }
 }
