@@ -377,6 +377,14 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0 :
+            map.mapType = .mutedStandard
+            map.showsTraffic = true
+            speedLabel.textColor = .black
+            timeLabel.textColor = .black
+            coordsLabel.textColor = .black
+            currentSegmentDistanceLabel.textColor = .black
+            totalTrackedDistanceLabel.textColor = .black
+        case 1 :
             map.mapType = .hybridFlyover
             map.showsTraffic = true
             speedLabel.textColor = .white
@@ -384,14 +392,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             coordsLabel.textColor = .white
             currentSegmentDistanceLabel.textColor = .white
             totalTrackedDistanceLabel.textColor = .white
-        case 1 :
-            map.mapType = .standard
-            map.showsTraffic = true
-            speedLabel.textColor = .black
-            timeLabel.textColor = .black
-            coordsLabel.textColor = .black
-            currentSegmentDistanceLabel.textColor = .black
-            totalTrackedDistanceLabel.textColor = .black
         default :
             map.mapType = .standard
         }

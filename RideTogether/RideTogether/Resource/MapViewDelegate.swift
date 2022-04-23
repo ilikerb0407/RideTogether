@@ -44,8 +44,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
+    var destination: CLPlacemark?
+    
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
         
         let annotationView = MKPinAnnotationView()
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
@@ -77,7 +78,31 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 print("\(error)")
             }
         }
+        let ceo: CLGeocoder = CLGeocoder()
+        let loc: CLLocation = CLLocation(latitude: targetPlacemark.coordinate.latitude, longitude: targetPlacemark.coordinate.longitude)
+        
+        let locale = Locale(identifier: "zh_TW")
+        if #available(iOS 11.0, *) {
+            ceo.reverseGeocodeLocation(loc, preferredLocale: locale) {
+                (placemarks, error) in
+                if error == nil {
+                    let pm = placemarks! as [CLPlacemark]
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                        self.destination = pm
+                        print(pm.country)
+                        print(pm.locality)
+                        print(pm.subLocality)
+                        print(pm.thoroughfare)
+                        print(pm.postalCode)
+                        print(pm.subThoroughfare)
+                    }
+                }
+            }
+        }
+      
     }
+    
     
     // MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
     
@@ -129,7 +154,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         var routeStep = ""
         
         for (index, item) in self.route.steps.enumerated() {
-            routeStep = "\(index) = \(item)"
+            routeStep = "\(item.instructions)"
         }
         switch button.tag {
             
@@ -146,8 +171,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
             let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
             
-           
-            var routeName = UIAlertAction(title: "RouteName = \(routeStep)", style: .destructive)
+            var routeName = UIAlertAction(title: "Destionation= \(destination!.thoroughfare ?? "鄉間小路")", style: .destructive)
             
           
             let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
@@ -198,6 +222,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         
         var num = 0
         self.guide(mapView, didSelect: views[num])
+        
         // swiftlint:disable force_cast
         let gpxMapView = mapView as! GPXMapView
         var hasImpacted = false
@@ -298,4 +323,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
       self.fetchNextRoute()
     }
   }
+    
+    
+    
 }
