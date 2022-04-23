@@ -327,7 +327,6 @@ extension GroupViewController: UITableViewDelegate {
         100
     }
     
-    
 }
 
 // MARK: - TableView Data Source -

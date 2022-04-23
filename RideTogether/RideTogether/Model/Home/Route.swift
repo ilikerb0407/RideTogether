@@ -11,7 +11,7 @@ struct Route: Codable, Hashable {
     
     let routeId: String
     let routeName: String
-    let routeLevel: Int
+    let routeTypes: Int
     let routeLength: Double
     let routeInfo: String
     let routeMap: String
@@ -21,7 +21,7 @@ struct Route: Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case routeId = "route_id"
         case routeName = "route_name"
-        case routeLevel = "route_level"
+        case routeTypes = "route_types"
         case routeLength = "route_length"
         case routeInfo = "route_info"
         case routeMap = "route_map"

@@ -41,6 +41,11 @@
 		23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */; };
 		23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */; };
 		23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */; };
+		23A84A8D2813FA9B00DD8D39 /* RouteTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */; };
+		23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */; };
+		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
+		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
+		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -139,6 +144,11 @@
 		23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionsViewController.xib; sourceTree = "<group>"; };
 		23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
 		23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
+		23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTypes.swift; sourceTree = "<group>"; };
+		23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTypes.xib; sourceTree = "<group>"; };
+		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
+		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				23FC489F2809B46400EAD314 /* Route.swift */,
+				23C8871A28142BC400E3319A /* RoutesType.swift */,
 				231BCB2D28066C3B00DE2343 /* RecommenMap.swift */,
 				23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */,
 				23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */,
@@ -254,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				231BCB6728084B9E00DE2343 /* HomeViewController.swift */,
+				23C8871C281435EC00E3319A /* RouteViewController.swift */,
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
 				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
@@ -270,6 +282,16 @@
 				23A84A742811AE2300DD8D39 /* GroupInfo.xib */,
 			);
 			path = Group;
+			sourceTree = "<group>";
+		};
+		23C887192814285A00E3319A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				231BCB6528084B3300DE2343 /* Home.storyboard */,
+				23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */,
+				23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		23CE42A0280E571700C4C9F1 /* Resource */ = {
@@ -394,10 +416,8 @@
 			children = (
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
-				23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */,
-				23A84A792812EFFE00DD8D39 /* RouteSelectionViewController.xib */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
-				231BCB6528084B3300DE2343 /* Home.storyboard */,
+				23C887192814285A00E3319A /* Home */,
 				23A84A682811570600DD8D39 /* Group */,
 				23CE42A5280E5F0A00C4C9F1 /* ReuseButton */,
 				231BCB352806724F00DE2343 /* RecommendMap */,
@@ -410,6 +430,8 @@
 		23D1B76A28006116000EDA70 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
+				23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */,
+				23A84A792812EFFE00DD8D39 /* RouteSelectionViewController.xib */,
 				23D1B78F2800AD0C000EDA70 /* Journey.storyboard */,
 				23D1B74428004768000EDA70 /* GPXMapView.swift */,
 				23D1B768280060EC000EDA70 /* DistanceLabel.swift */,
@@ -445,6 +467,7 @@
 				23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */,
 				23D1B78928006396000EDA70 /* UserManager.swift */,
 				23838789280FCBFF00E9F4F4 /* GroupManager.swift */,
+				23C8871E281444B100E3319A /* WeatherManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -585,6 +608,7 @@
 				2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */,
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
 				2383879228104D3D00E9F4F4 /* 49908-bike-ride.gif in Resources */,
+				23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */,
 				23A84A7D2812EFFE00DD8D39 /* RouteSelectionViewController.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
@@ -685,7 +709,9 @@
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */,
 				23A84A752811AE2300DD8D39 /* GroupInfo.swift in Sources */,
+				23C8871B28142BC400E3319A /* RoutesType.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
+				23A84A8D2813FA9B00DD8D39 /* RouteTypes.swift in Sources */,
 				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
@@ -703,6 +729,7 @@
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
+				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
@@ -728,6 +755,7 @@
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				2304FF4A280891AF00C6B1BF /* NextPageButton.swift in Sources */,
+				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
