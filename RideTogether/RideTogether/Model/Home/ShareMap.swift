@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 // MARK: RecommendMap = Route
-struct RecommendMap: Codable, Hashable {
+struct SharedMap: Codable, Hashable {
     
     var uid: String
     var createdTime: Timestamp

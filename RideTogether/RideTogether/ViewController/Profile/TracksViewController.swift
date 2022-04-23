@@ -115,7 +115,6 @@ class TracksViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
-        view.backgroundColor = .C4
         
     }
     

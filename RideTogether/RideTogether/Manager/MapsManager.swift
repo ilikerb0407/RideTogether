@@ -29,6 +29,8 @@ class MapsManager {
     
     private let routeCollection = Collection.routes.rawValue
     
+    private let shareCollection = Collection.sharedmaps.rawValue
+    
     
     // MARK: 把資料放在 Storage，先用download的功能拿下來，在upload到firebase
     
@@ -103,9 +105,9 @@ class MapsManager {
     
     // MARK: 直接從 firebase 拿資料 : 可以直接在firebase 輸入資料，但是太浪費時間了
     
-    func fetchRecords(completion: @escaping (Result<[RecommendMap],Error>) -> Void) {
+    func fetchShareMap(completion: @escaping (Result<[SharedMap],Error>) -> Void) {
         
-        let collection = dataBase.collection(mapsCollection)
+        let collection = dataBase.collection(shareCollection)
         
         collection.getDocuments { (querySnapshot, error) in
             
@@ -115,11 +117,11 @@ class MapsManager {
                 completion(.failure(error))
             } else {
                 
-                var records = [RecommendMap]()
+                var records = [SharedMap]()
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: RecommendMap.self , decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: SharedMap.self , decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
                     }
@@ -132,6 +134,7 @@ class MapsManager {
             }
         }
     }
+    
     func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){
         let collection = dataBase.collection(routeCollection)
         

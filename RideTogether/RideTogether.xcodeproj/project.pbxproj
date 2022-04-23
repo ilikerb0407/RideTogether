@@ -12,7 +12,7 @@
 		2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */; };
 		2314F20E280AFC6500425F8A /* RecordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F20D280AFC6500425F8A /* RecordInfo.swift */; };
 		2314F213280B5AE500425F8A /* SendSMSbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F212280B5AE500425F8A /* SendSMSbutton.swift */; };
-		231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* RecommenMap.swift */; };
+		231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* ShareMap.swift */; };
 		231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2F280671DE00DE2343 /* RecommendViewController.swift */; };
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
 		231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */; };
@@ -46,6 +46,8 @@
 		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
 		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
 		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
+		23C8872228149ECC00E3319A /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872028149ECC00E3319A /* Routes.swift */; };
+		23C8872328149ECC00E3319A /* Routes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* Routes.xib */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -115,7 +117,7 @@
 		2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffLineMapButton.swift; sourceTree = "<group>"; };
 		2314F20D280AFC6500425F8A /* RecordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInfo.swift; sourceTree = "<group>"; };
 		2314F212280B5AE500425F8A /* SendSMSbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSMSbutton.swift; sourceTree = "<group>"; };
-		231BCB2D28066C3B00DE2343 /* RecommenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenMap.swift; sourceTree = "<group>"; };
+		231BCB2D28066C3B00DE2343 /* ShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMap.swift; sourceTree = "<group>"; };
 		231BCB2F280671DE00DE2343 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = "<group>"; };
@@ -149,6 +151,8 @@
 		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
 		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		23C8872028149ECC00E3319A /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		23C8872128149ECC00E3319A /* Routes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Routes.xib; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -254,7 +258,7 @@
 			children = (
 				23FC489F2809B46400EAD314 /* Route.swift */,
 				23C8871A28142BC400E3319A /* RoutesType.swift */,
-				231BCB2D28066C3B00DE2343 /* RecommenMap.swift */,
+				231BCB2D28066C3B00DE2343 /* ShareMap.swift */,
 				23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */,
 				23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */,
 			);
@@ -266,8 +270,6 @@
 			children = (
 				231BCB6728084B9E00DE2343 /* HomeViewController.swift */,
 				23C8871C281435EC00E3319A /* RouteViewController.swift */,
-				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
-				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -290,6 +292,8 @@
 				231BCB6528084B3300DE2343 /* Home.storyboard */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */,
 				23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */,
+				23C8872028149ECC00E3319A /* Routes.swift */,
+				23C8872128149ECC00E3319A /* Routes.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -420,7 +424,6 @@
 				23C887192814285A00E3319A /* Home */,
 				23A84A682811570600DD8D39 /* Group */,
 				23CE42A5280E5F0A00C4C9F1 /* ReuseButton */,
-				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
 			);
@@ -490,6 +493,8 @@
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
 				2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */,
+				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
+				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				23D1B7942800B0FD000EDA70 /* Profile.storyboard */,
 				23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */,
 				23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */,
+				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B7EF28045A42000EDA70 /* Track */,
 			);
 			path = Profile;
@@ -605,6 +611,7 @@
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
+				23C8872328149ECC00E3319A /* Routes.xib in Resources */,
 				2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */,
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
 				2383879228104D3D00E9F4F4 /* 49908-bike-ride.gif in Resources */,
@@ -716,7 +723,7 @@
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
-				231BCB2E28066C3B00DE2343 /* RecommenMap.swift in Sources */,
+				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
 				2383878C280FCD9000E9F4F4 /* Group.swift in Sources */,
 				231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */,
@@ -748,6 +755,7 @@
 				23CE42C0280FB77400C4C9F1 /* CreateGroupButton.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
+				23C8872228149ECC00E3319A /* Routes.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,

@@ -19,8 +19,8 @@ class TrackTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        self.backgroundColor = .clear
-        self.contentView.backgroundColor = .clear
+        self.backgroundColor = .C4
+//        self.contentView.backgroundColor = .clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

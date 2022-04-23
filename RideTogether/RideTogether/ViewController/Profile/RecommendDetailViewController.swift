@@ -23,7 +23,7 @@ class RecommendDetailViewController: UIViewController {
     private let mapViewDelegate = MapViewDelegate()
     
     // 只會有一筆
-    var record = RecommendMap()
+    var record = SharedMap()
     
     func setUp() {
         
@@ -94,6 +94,5 @@ class RecommendDetailViewController: UIViewController {
         
         setUp()
     }
-    
     
 }

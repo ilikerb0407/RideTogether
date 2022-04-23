@@ -18,8 +18,7 @@ class RouteTypes: UITableViewCell {
         
         routeTitle.text = routetitle
         routePhoto.image = routephoto
-        routePhoto.contentMode = .scaleToFill
-        
+        routePhoto.contentMode = .scaleAspectFit
         
     }
     

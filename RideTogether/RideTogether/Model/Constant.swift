@@ -46,17 +46,16 @@ enum Collection: String {
     
     case records = "Records"
     
+    // Trails 是推薦路線
+    
+    case routes = "Routes"
+    
     // 塗鴉牆
     case sharedmaps = "Sharemaps"
     
     case requests = "Requests"
     
     case users = "Users"
-    
-    // Trails 是推薦路線
-    
-    case routes = "Routes"
-    
     
     // maps 是離線地圖
     

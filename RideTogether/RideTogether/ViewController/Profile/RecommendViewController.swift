@@ -12,7 +12,7 @@ import MJRefresh
 class RecommendViewController: BaseViewController {
 
     
-    var maps = [RecommendMap]()
+    var maps = [SharedMap]()
     
     private let header = MJRefreshNormalHeader()
     
@@ -54,7 +54,7 @@ class RecommendViewController: BaseViewController {
     
     func fetchRecords() {
         
-        MapsManager.shared.fetchRecords { [weak self] result in
+        MapsManager.shared.fetchShareMap { [weak self] result in
             switch result {
             case .success(let records):
                 self?.maps = records
@@ -111,7 +111,7 @@ extension RecommendViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
             if let nextVC = segue.destination as? RecommendDetailViewController {
-                if let record = sender as? RecommendMap {
+                if let record = sender as? SharedMap {
                     nextVC.record = record
                 }
             }
