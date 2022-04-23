@@ -113,7 +113,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         title: String?,
         message: String? = "",
         preferredStyle: UIAlertController.Style = .alert,
-        actions: [UIAlertAction] = [UIAlertAction(title: "Ok", style: .cancel)] ) {
+        actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel)] ) {
             
             let controller = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
             

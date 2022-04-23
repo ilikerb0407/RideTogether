@@ -45,7 +45,4 @@ class GroupHeaderCell: UITableViewCell {
         selectionStyle = .none
         
     }
-
-    
-    
 }
