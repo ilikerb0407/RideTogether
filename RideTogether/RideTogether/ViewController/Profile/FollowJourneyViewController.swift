@@ -788,3 +788,4 @@ extension FollowJourneyViewController: CLLocationManagerDelegate {
     }
     // MARK: 選擇路線後導航 (有時間在做)
 }
+

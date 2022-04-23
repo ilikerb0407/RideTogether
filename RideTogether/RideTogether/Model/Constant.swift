@@ -10,7 +10,7 @@ import SwiftUI
 
 enum SegueIdentifier: String {
 
-    case trailList = "toTrailList"
+    case routeList = "toRouteList"
 
     case trailInfo = "toTrailInfo"
 
@@ -56,6 +56,7 @@ enum Collection: String {
     // Trails 是推薦路線
     
     case routes = "Routes"
+    
     
     // maps 是離線地圖
     

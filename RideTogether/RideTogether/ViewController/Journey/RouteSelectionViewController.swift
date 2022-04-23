@@ -8,8 +8,25 @@ protocol sendRouteSecond {
     func sendRouteTwice(map: DrawRoute)
 }
 
-class RouteSelectionViewController: UIViewController, sendRoutefirst {
+class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherProvider {
     
+    func provideWeather(weather: ResponseBody) {
+        weatherdata = weather
+    }
+    
+    var weatherdata : ResponseBody?
+    
+    let weatherManger = WeatherManager()
+    
+    @IBOutlet weak var temp: UILabel!
+    
+    @IBAction func getweatherData(_ sender: Any) {
+        
+        weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
+        
+        guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
+        temp.text = "\(tempdata)度"
+    }
     
     func sendRoute(map: DrawRoute) {
         mapdata = map
@@ -60,6 +77,10 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst {
     hideSuggestionView(animated: false)
       
       directionsVC?.delegate = self
+      weatherManger.delegate = self
+
+      
+      
       
     
   }
@@ -101,6 +122,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst {
       action: #selector(textFieldDidChange(_:)),
       for: .editingChanged
     )
+      
   }
 
   private func attemptLocationAccess() {

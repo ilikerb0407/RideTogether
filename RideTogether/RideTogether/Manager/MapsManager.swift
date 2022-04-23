@@ -27,6 +27,8 @@ class MapsManager {
     
     private let mapsCollection = Collection.maps.rawValue
     
+    private let routeCollection = Collection.routes.rawValue
+    
     
     // MARK: 把資料放在 Storage，先用download的功能拿下來，在upload到firebase
     
@@ -100,6 +102,7 @@ class MapsManager {
     
     
     // MARK: 直接從 firebase 拿資料 : 可以直接在firebase 輸入資料，但是太浪費時間了
+    
     func fetchRecords(completion: @escaping (Result<[RecommendMap],Error>) -> Void) {
         
         let collection = dataBase.collection(mapsCollection)
@@ -128,5 +131,31 @@ class MapsManager {
                 completion(.success(records))
             }
         }
+    }
+    func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){
+        let collection = dataBase.collection(routeCollection)
+        
+        collection.getDocuments{ (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                var routes = [Route]()
+                for document in querySnapshot.documents {
+                    do {
+                        if let route = try document.data(as: Route.self, decoder: Firestore.Decoder()){
+                            routes.append(route)
+                        }
+                    }
+                    catch {
+                        completion(.failure(error))
+                    }
+                }
+                completion(.success(routes))
+            }
+            
+        }
+        
     }
 }

@@ -13,12 +13,14 @@ import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation
 
-class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
+class GroupViewController: BaseViewController, reload {
     
     func reload(result: Group) {
         
-        self.tableView.reloadData()
+        self.table?.reloadData()
     }
+    
+    var table: UITableView?
 
 
     // MARK: Class Properties
@@ -57,7 +59,6 @@ class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
     
     private let header = MJRefreshNormalHeader()
     
-    
     private var tableView: UITableView! {
         
         didSet {
@@ -65,7 +66,6 @@ class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
             tableView.dataSource = self
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +81,9 @@ class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
         tableView.mj_header = header
         
         view.backgroundColor = .U2
-    
+        
+        table?.delegate = self
+        
     }
     
     func setBuildTeamButton() {
@@ -225,7 +227,7 @@ class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
         
         view.addSubview(headerView)
         
-//        headerView.searchBar.searchTextField.text = searchText
+        headerView.searchBar.searchTextField.text = searchText
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -243,8 +245,6 @@ class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
 //        headerView.requestListButton.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
         
           headerView.segment.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
-        
-//        headerView.groupSearchBar.searchTextField.text = searchText
         
     }
     
@@ -291,6 +291,16 @@ class GroupViewController: BaseViewController, UISearchBarDelegate, reload {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    // 查詢團名
+    func filtGroupBySearchName(groups: [Group]) -> [Group] {
+        
+        let fitledGroups = groups.filter {
+            $0.routeName.lowercased().prefix(searchText.count) == searchText.lowercased()
+            
+        }
+        
+        return fitledGroups
+    }
 
 }
 // MARK: - SearchBar Delegate -
@@ -317,7 +327,6 @@ extension GroupViewController: UITableViewDelegate {
         100
     }
     
-    
 }
 
 // MARK: - TableView Data Source -
@@ -326,13 +335,11 @@ extension GroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        filteredGroups.count
-        
-//        if isSearching {
-//
-//            return searchGroups.count
-//
-//        } else {
+        if isSearching {
+
+            return searchGroups.count
+
+        } else {
             
             if onlyUserGroup {
 
@@ -342,7 +349,7 @@ extension GroupViewController: UITableViewDataSource {
 
                 return inActivityGroup.count
             }
-//        }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -351,36 +358,54 @@ extension GroupViewController: UITableViewDataSource {
         
         var group = Group()
         
-        if onlyUserGroup {
-                       
-            group = myGroups[indexPath.row]
-                       
+        if isSearching {
+
+            group = searchGroups[indexPath.row]
+
+        } else {
+            
+            if onlyUserGroup {
+                
+                group = myGroups[indexPath.row]
+                
             } else {
-                       
-            group = inActivityGroup[indexPath.row]
+                
+                group = inActivityGroup[indexPath.row]
+            }
         }
-        
-        
         cell.setUpCell(group: group, hostname: group.hostId )
         
-//        if isSearching {
-//
-//            group = searchGroups[indexPath.row]
-//
-//        } else {
-            
-//            if onlyUserGroup {
-                
-//                group = myGroups[indexPath.row]
-                
-//            } else {
-                
-//                group = inActivityGroup[indexPath.row]
-//            }
-//        }
-        
-//        cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+//      cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
         
         return cell
     }
 }
+
+extension GroupViewController : UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        self.searchText = searchText
+        
+        if onlyUserGroup {
+            searchGroups = filtGroupBySearchName(groups: myGroups)
+        } else {
+            searchGroups = filtGroupBySearchName(groups: inActivityGroup)
+        }
+        tableView.reloadData()
+        isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+        isSearching = false
+        searchBar.endEditing(true)
+        searchBar.resignFirstResponder()
+        
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+}
+

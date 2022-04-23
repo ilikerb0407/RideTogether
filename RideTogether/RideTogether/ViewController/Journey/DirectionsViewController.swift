@@ -9,6 +9,8 @@ protocol sendRoutefirst {
 
 class DirectionsViewController: UIViewController {
     
+ 
+    
     var delegate: sendRoutefirst?
     
   @IBOutlet private var mapView: MKMapView!
@@ -52,10 +54,13 @@ class DirectionsViewController: UIViewController {
 
     mapView.delegate = self
     mapView.showAnnotations(route.annotations, animated: false)
+ 
   
   }
 
   // MARK: - Helpers
+
+
 
   private func groupAndRequestDirections() {
     guard let firstStop = route.stops.first else {

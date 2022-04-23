@@ -144,7 +144,8 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         
         textViewDidEndEditing(notes)
         
-//        group.hostId = hostId
+//        group.hostId = hostId ?? "阿富"
+        group.hostId =  "阿富"
         
         group.date = Timestamp(date: datePicker.date)
         
@@ -164,16 +165,16 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-                    let success = UIAlertAction(title: "Success", style: .default) { _ in
+                    let success = UIAlertAction(title: "Success", style: .default) { [self] _ in
                         
                         self.dismiss(animated: true, completion: nil)
                         
+                        delegate?.reload(result: group)
                     }
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
                     
-                    delegate?.reload(result: group)
-                    
+                   
                 case .failure(let error):
                     
                     print("build team failure: \(error)")
