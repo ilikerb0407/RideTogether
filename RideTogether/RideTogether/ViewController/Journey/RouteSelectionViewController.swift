@@ -18,18 +18,49 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     let weatherManger = WeatherManager()
     
-    @IBOutlet weak var temp: UILabel!
+    @IBOutlet weak var feelslikeTemp: UILabel!
+    
+    @IBOutlet weak var humidity: UILabel!
+    
+    @IBOutlet weak var showtemp: UILabel!
+    
+    @IBOutlet weak var sunrise: UILabel!
+    
+    @IBOutlet weak var sunset: UILabel!
+    
+    @IBOutlet weak var wind: UILabel!
     
     @IBAction func getweatherData(_ sender: Any) {
         
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
         
+        guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
+        feelslikeTemp.text = "\(feelslike)度"
+        guard let humiditydata = weatherdata?.main.humidity else { return }
+        humidity.text = "\(humiditydata) %"
+        
         guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-        temp.text = "最高溫\(tempdata)度"
-        print("\(weatherdata?.main.feelsLike)")
-        print("\(weatherdata?.main.humidity)")
-        print("\(weatherdata?.main.temp)")
-        print("\(weatherdata)")
+        showtemp.text = "\(tempdata)度"
+        
+        
+        guard let ssunrise = weatherdata?.sys.sunrise else { return }
+        var epocTime = TimeInterval(ssunrise)
+
+        let myDate = NSDate(timeIntervalSince1970: epocTime)
+        print ("=====++++\(myDate)")
+        sunrise.text = "\(myDate)"
+        
+        guard let ssunset = weatherdata?.sys.sunset else { return }
+        var sunsetTime = TimeInterval(ssunset)
+
+        let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
+        print ("=====++++\(sunsetDate)")
+        
+        sunset.text = "\(sunsetDate)"
+        
+        guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
+        wind.text = "\(swind)km/h"
+        
     }
     
     func sendRoute(map: DrawRoute) {
