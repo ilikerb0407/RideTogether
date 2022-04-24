@@ -248,7 +248,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         }
     }
     
-    
     func didLoadGPXFile(gpxRoot: GPXRoot) {
         
         map.importFromGPXRoot(gpxRoot)

@@ -16,22 +16,21 @@ import CoreLocation
 
 class RecommendDetailViewController: UIViewController {
     
-
-    @IBOutlet weak var map: GPXMapView!
     
+    @IBOutlet weak var map2: GPXMapView!
     
     private let mapViewDelegate = MapViewDelegate()
     
     // 只會有一筆
-    var record = SharedMap()
+    var record = Record()
     
     func setUp() {
         
         navigationController?.isNavigationBarHidden = true
         
-        map.delegate = mapViewDelegate
+        map2.delegate = mapViewDelegate
         
-        self.view.addSubview(map)
+        self.view.addSubview(map2)
         
         tabBarController?.tabBar.isHidden = true
         
@@ -50,7 +49,6 @@ class RecommendDetailViewController: UIViewController {
     }
     
     
-    
     @objc func popToPreviosPage(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -59,17 +57,21 @@ class RecommendDetailViewController: UIViewController {
         
         if let inputUrl = URL(string: record.recordRef) {
             
+            print("TrackDetail:\(inputUrl)")
+            
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)
+            
         }
     }
+
     
     func didLoadGPXFile(gpxRoot: GPXRoot) {
         
-        map.importFromGPXRoot(gpxRoot)
+        map2.importFromGPXRoot(gpxRoot)
         
-        map.regionToGPXExtent()
+        map2.regionToGPXExtent()
     }
 
     // MARK: - Polyline -
@@ -81,11 +83,11 @@ class RecommendDetailViewController: UIViewController {
     
     func updatePolylineColor() {
         
-        for overlay in map.overlays where overlay is MKPolyline {
+        for overlay in map2.overlays where overlay is MKPolyline {
             
-            map.removeOverlay(overlay)
+            map2.removeOverlay(overlay)
             
-            map.addOverlay(overlay)
+            map2.addOverlay(overlay)
         }
     }
     

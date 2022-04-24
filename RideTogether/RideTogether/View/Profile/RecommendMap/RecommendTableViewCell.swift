@@ -29,7 +29,7 @@ class RecommendTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func setUpCell(model : SharedMap) {
+    func setUpCell(model : Record) {
         mapTitle.text = model.recordName
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }

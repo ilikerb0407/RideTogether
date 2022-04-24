@@ -354,7 +354,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="AJs-dI-2lA"/>
                     <connections>
-                        <outlet property="map" destination="M1D-rb-EMM" id="y81-79-kvq"/>
+                        <outlet property="map2" destination="M1D-rb-EMM" id="fED-h1-gWu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYO-NY-QaB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

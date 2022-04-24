@@ -36,7 +36,6 @@ class TracksViewController: BaseViewController {
         }
     }
     
-    
       func backButton() {
             let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
             view.addSubview(button)

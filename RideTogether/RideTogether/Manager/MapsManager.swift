@@ -104,8 +104,8 @@ class MapsManager {
     
     
     // MARK: 直接從 firebase 拿資料 : 可以直接在firebase 輸入資料，但是太浪費時間了
-    
-    func fetchShareMap(completion: @escaping (Result<[SharedMap],Error>) -> Void) {
+    // 0424 把shareMap 改成Record
+    func fetchShareMap(completion: @escaping (Result<[Record],Error>) -> Void) {
         
         let collection = dataBase.collection(shareCollection)
         
@@ -117,11 +117,11 @@ class MapsManager {
                 completion(.failure(error))
             } else {
                 
-                var records = [SharedMap]()
+                var records = [Record]()
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: SharedMap.self , decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: Record.self , decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
                     }
