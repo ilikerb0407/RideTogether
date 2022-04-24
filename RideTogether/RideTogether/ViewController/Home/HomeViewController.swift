@@ -75,7 +75,6 @@ class HomeViewController: BaseViewController {
         
     }
     
-   
     
     func fetchTrailData() {
         MapsManager.shared.fetchRoutes { result in

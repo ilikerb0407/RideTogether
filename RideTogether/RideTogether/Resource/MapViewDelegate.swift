@@ -26,6 +26,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     var step: [String] = []
     
+    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is MKPolyline {
@@ -33,7 +35,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             var polyLineRenderer = MKPolylineRenderer(overlay: overlay)
             
             polyLineRenderer.alpha = 0.8
-        
+            
             polyLineRenderer.strokeColor = .orange
             
             polyLineRenderer.lineWidth = 3
@@ -58,7 +60,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         let userMapItem = MKMapItem.forCurrentLocation()
         
         let request = MKDirections.Request()
-    
+        
         request.source = userMapItem
         request.destination = targetItem
         request.transportType = .walking
@@ -72,8 +74,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 
                 self.route = self.directionsResponse.routes[0]
                 // route.step
-    
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                
+                //                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
             } else {
                 print("\(error)")
             }
@@ -100,7 +102,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 }
             }
         }
-      
+        
     }
     
     
@@ -171,9 +173,14 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
             let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
             
-            var routeName = UIAlertAction(title: "Destionation= \(destination!.thoroughfare ?? "鄉間小路")", style: .destructive)
+            var routeName = UIAlertAction(title: "Destionation= \(destination!.thoroughfare ?? "鄉間小路")", style: .destructive) {_ in
+                
+                
+                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                
+            }
             
-          
+            
             let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
             
             sheet.addAction(distance)
@@ -199,7 +206,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
                 print("Edit waypoint alert view")
                 self.waypointBeingEdited.title = alertController.textFields?[0].text
-                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
+                //                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
             }
             let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
             
@@ -277,52 +284,52 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     }
     
     private var mapRoutes: [MKRoute] = []
-      
+    
     var routes: DrawRoute?
     
-  private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
-
-  private func groupAndRequestDirections() {
-      guard let firstStop = routes!.stops.first else {
-      return
-    }
-
-      groupedRoutes.append((routes!.origin, firstStop))
-
-      if routes!.stops.count == 2 {
-        let secondStop = routes!.stops[1]
-
-      groupedRoutes.append((firstStop, secondStop))
-        
-          groupedRoutes.append((secondStop, routes!.origin))
-    }
-
-    fetchNextRoute()
-  }
-
-  private func fetchNextRoute() {
-    guard !groupedRoutes.isEmpty else {
-      return
-    }
-
-    let nextGroup = groupedRoutes.removeFirst()
-    let request = MKDirections.Request()
-
-    request.source = nextGroup.startItem
-    request.destination = nextGroup.endItem
-    request.transportType = .walking
-
-    let directions = MKDirections(request: request)
-
-      directions.calculate { [self] response, error in
-      guard let mapRoute = response?.routes.first else {
-        return
-      }
-        
+    private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
     
-      self.fetchNextRoute()
+    private func groupAndRequestDirections() {
+        guard let firstStop = routes!.stops.first else {
+            return
+        }
+        
+        groupedRoutes.append((routes!.origin, firstStop))
+        
+        if routes!.stops.count == 2 {
+            let secondStop = routes!.stops[1]
+            
+            groupedRoutes.append((firstStop, secondStop))
+            
+            groupedRoutes.append((secondStop, routes!.origin))
+        }
+        
+        fetchNextRoute()
     }
-  }
+    
+    private func fetchNextRoute() {
+        guard !groupedRoutes.isEmpty else {
+            return
+        }
+        
+        let nextGroup = groupedRoutes.removeFirst()
+        let request = MKDirections.Request()
+        
+        request.source = nextGroup.startItem
+        request.destination = nextGroup.endItem
+        request.transportType = .walking
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [self] response, error in
+            guard let mapRoute = response?.routes.first else {
+                return
+            }
+            
+            
+            self.fetchNextRoute()
+        }
+    }
     
     
     

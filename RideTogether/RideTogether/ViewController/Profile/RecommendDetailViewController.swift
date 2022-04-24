@@ -236,7 +236,7 @@ class RecommendDetailViewController: UIViewController {
     func didLoadGPXFile(gpxRoot: GPXRoot) {
         
 //        map2.importFromGPXRoot(gpxRoot)
-//        
+//
 //        map2.regionToGPXExtent()
     }
     // MARK: - Polyline -
@@ -265,7 +265,7 @@ class RecommendDetailViewController: UIViewController {
     
     // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.userRecord.rawValue {
+        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
             if let nextVC = segue.destination as? FollowJourneyViewController {
                 if let record = sender as? Record {
                     nextVC.record = record

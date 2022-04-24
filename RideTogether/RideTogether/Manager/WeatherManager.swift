@@ -18,7 +18,7 @@ class WeatherManager {
     
     func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
-        let firstDataRequest = URLRequest(url: URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=326b84d1f2c5560822cca874d9d155ae&units=metric")!)
+        let firstDataRequest = URLRequest(url: URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=d11fc33a5a4003b6bac4bb9d50f25d15&units=metric")!)
         
         URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
             guard let data = data else { return }

@@ -210,20 +210,21 @@
             </objects>
             <point key="canvasLocation" x="124.6376811594203" y="756.69642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Join View Controller-->
         <scene sceneID="37o-lo-TUh">
             <objects>
-                <viewController id="fUT-qe-iBH" sceneMemberID="viewController">
+                <viewController id="fUT-qe-iBH" customClass="JoinViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nT1-23-nwm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="PbW-Vv-4d6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="z6I-XZ-b5g"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9c-ud-ARe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="757"/>
+            <point key="canvasLocation" x="972" y="757"/>
         </scene>
     </scenes>
     <resources>

@@ -48,6 +48,7 @@
 		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
 		23C8872228149ECC00E3319A /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872028149ECC00E3319A /* Routes.swift */; };
 		23C8872328149ECC00E3319A /* Routes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* Routes.xib */; };
+		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -153,6 +154,7 @@
 		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		23C8872028149ECC00E3319A /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		23C8872128149ECC00E3319A /* Routes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Routes.xib; sourceTree = "<group>"; };
+		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				231BCB5028070BF500DE2343 /* Taiwan.swift */,
 				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
 				2383878B280FCD9000E9F4F4 /* Group.swift */,
+				23C887242815329800E3319A /* Request.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23D1B74E28005DE1000EDA70 /* GPX */,
 				231BCB69280858C800DE2343 /* Profile */,
@@ -741,6 +744,7 @@
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
+				23C887252815329800E3319A /* Request.swift in Sources */,
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,

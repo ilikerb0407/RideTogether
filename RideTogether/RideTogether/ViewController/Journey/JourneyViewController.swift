@@ -91,7 +91,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
-                
                 map.clearMap()
                 
                 totalTrackedDistanceLabel.distance = (map.session.totalTrackedDistance)

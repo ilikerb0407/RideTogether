@@ -9,8 +9,11 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseStorage
 import Firebase
+import Accelerate
 
 class GroupManager {
+    
+    var userId: String { UserManager.shared.userInfo.uid }
     
     static let shared = GroupManager()
     
@@ -19,6 +22,8 @@ class GroupManager {
     lazy var dataBase = Firestore.firestore()
     
     private let groupCollection = Collection.groups.rawValue
+    
+    private let requestCollection = Collection.requests.rawValue
     
     func buildTeam(group: inout Group, completion: (Result<String, Error>) -> Void) {
         
@@ -78,7 +83,19 @@ class GroupManager {
         
     }
     
-    
+    func requestListener (completion: @escaping(Result<[Request], Error>) -> ()) -> Void {
+        
+        dataBase.collection(requestCollection).whereField("host_id", isEqualTo: userId).addSnapshotListener { (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot else { return }
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(<#T##[Request]#>))
+            }
+            
+        }
+        
+    }
     
     
     
