@@ -35,7 +35,6 @@ class RouteViewController: BaseViewController {
     }
     
     private var routeLabel = ""
-    private var themeLabel = ""
     
     func setUpLabel() {
         
@@ -116,10 +115,7 @@ class RouteViewController: BaseViewController {
         collectionView.addSubview(label)
     }
     
-   
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

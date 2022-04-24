@@ -232,12 +232,12 @@ class RecommendDetailViewController: UIViewController {
             trackInfo.elevationDiff = maxValue - minValue
         }
     }
-    
+    // load 不出線
     func didLoadGPXFile(gpxRoot: GPXRoot) {
         
-//        map2.importFromGPXRoot(gpxRoot)
-//
-//        map2.regionToGPXExtent()
+        map2.importFromGPXRoot(gpxRoot)
+
+        map2.regionToGPXExtent()
     }
     // MARK: - Polyline -
     

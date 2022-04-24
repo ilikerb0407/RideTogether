@@ -53,7 +53,7 @@ class RecommendViewController: BaseViewController {
     
     func fetchRecords() {
         
-        MapsManager.shared.fetchShareMap { [weak self] result in
+        MapsManager.shared.fetchRecords { [weak self] result in
             switch result {
             case .success(let records):
                 self?.records = records
@@ -103,20 +103,37 @@ extension RecommendViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIdentifier.recommendMaps.rawValue, sender: records[indexPath.row])
+        
+        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
+        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+                navigationController?.pushViewController(journeyViewController, animated: true)
+                journeyViewController.record = records[indexPath.row]
+                // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
+            }
+        }
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        sheet.addAction(detailOption)
+
+        sheet.addAction(cancelOption)
+        
+        present(sheet, animated: true, completion: nil)
+        
+        
+        
     }
     
    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
-            if let nextVC = segue.destination as? RecommendDetailViewController{
-                if let record = sender as? Record {
-                    nextVC.record = record
-                    
-                }
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
+//            if let nextVC = segue.destination as? RecommendDetailViewController {
+//                if let record = sender as? Record {
+//                    nextVC.record = record
+//                }
+//            }
+//        }
+//    }
    
 }
 

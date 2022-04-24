@@ -173,16 +173,16 @@
                                     <constraint firstAttribute="bottom" secondItem="CoW-tB-9f7" secondAttribute="bottom" constant="26" id="ydb-Cq-y8i"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RWRouter" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ij-cS-hOI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GuideYou" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ij-cS-hOI">
                                 <rect key="frame" x="36" y="64" width="342" height="41"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75U-YJ-KzD">
-                                <rect key="frame" x="344" y="205" width="50" height="50"/>
+                                <rect key="frame" x="322" y="205" width="89" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="36M-A4-Fab"/>
+                                    <constraint firstAttribute="width" constant="89" id="36M-A4-Fab"/>
                                     <constraint firstAttribute="height" constant="50" id="Bru-MB-2I8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -203,7 +203,7 @@
                         <constraints>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="132" id="0GY-eA-Pm2"/>
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="centerX" secondItem="ear-Ap-X0O" secondAttribute="centerX" id="4VQ-V8-bjG"/>
-                            <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="75U-YJ-KzD" secondAttribute="trailing" constant="20" id="DZ1-Gp-UTR"/>
+                            <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="75U-YJ-KzD" secondAttribute="trailing" constant="3" id="DZ1-Gp-UTR"/>
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="140" id="Flq-J7-9va"/>
                             <constraint firstItem="8ij-cS-hOI" firstAttribute="top" secondItem="gG1-od-3dq" secondAttribute="top" constant="20" id="JQr-Mf-eKv"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="top" secondItem="ear-Ap-X0O" secondAttribute="top" constant="515" id="Ksm-bX-YEU"/>

@@ -105,10 +105,11 @@ class MapsManager {
     
     // MARK: 直接從 firebase 拿資料 : 可以直接在firebase 輸入資料，但是太浪費時間了
     // 0424 把shareMap 改成Record
-    func fetchShareMap(completion: @escaping (Result<[Record],Error>) -> Void) {
+    func fetchRecords(completion: @escaping (Result<[Record],Error>) -> Void) {
+        
+//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
         
         let collection = dataBase.collection(shareCollection)
-        
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
@@ -133,6 +134,7 @@ class MapsManager {
                 completion(.success(records))
             }
         }
+        
     }
     
     func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){

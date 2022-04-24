@@ -25,7 +25,11 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
         
         guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-        temp.text = "\(tempdata)度"
+        temp.text = "最高溫\(tempdata)度"
+        print("\(weatherdata?.main.feelsLike)")
+        print("\(weatherdata?.main.humidity)")
+        print("\(weatherdata?.main.temp)")
+        print("\(weatherdata)")
     }
     
     func sendRoute(map: DrawRoute) {

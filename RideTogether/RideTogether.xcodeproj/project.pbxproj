@@ -498,9 +498,9 @@
 				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
-				2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */,
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
 				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
+				2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
