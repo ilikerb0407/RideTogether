@@ -138,7 +138,8 @@ class MapsManager {
     }
     
     func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){
-        let collection = dataBase.collection(routeCollection)
+        
+        let collection = dataBase.collection(routeCollection).whereField("route_types", isEqualTo: 0 )
         
         collection.getDocuments{ (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else { return }

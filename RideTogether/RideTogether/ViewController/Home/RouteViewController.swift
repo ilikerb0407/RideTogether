@@ -6,238 +6,179 @@
 //
 
 import UIKit
+import MJRefresh
+import SwiftUI
+import FirebaseStorage
+import FirebaseFirestoreSwift
+import FirebaseFirestore
+
 
 class RouteViewController: BaseViewController {
     
-    // MARK: - DataSource & DataSourceSnapshot typelias -
+    lazy var storage = Storage.storage()
+    lazy var storageRef = storage.reference()
+    lazy var dataBase = Firestore.firestore()
     
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Route>
+    private let routeCollection = Collection.routes.rawValue
     
-    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Route>
+    var indexOfRoute:Int = 0
     
-    private var dataSource: DataSource!
+    var routes = [Route]()
     
-    private var snapshot = DataSourceSnapshot()
+    private let header = MJRefreshNormalHeader()
     
-    // MARK: - Class Properties -
-    
-    enum Section {
-        
-        case section
-    }
-    
-    
-    var routes = [Route]() {
+    private var tableView: UITableView! {
         
         didSet {
-            setUpLabel()
+            tableView.delegate = self
+            tableView.dataSource = self
         }
     }
     
-    private var routeLabel = ""
+      func backButton() {
+            let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
+            view.addSubview(button)
+        }
     
-    func setUpLabel() {
+    
+    func setUpTableView() {
         
-        if let label = routes.first?.routeTypes {
+        setNavigationBar(title: "Routes")
+        
+        tableView = UITableView()
+        
+        tableView.registerCellWithNib(identifier: RoutesTableViewCell.identifier, bundle: nil)
+        
+        view.addSubview(tableView)
+        
+        tableView.separatorStyle = .none
+        
+        tableView.backgroundColor = .clear
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
             
-            switch label {
-                
-            case 0:
-                
-                routeLabel = RoutesType.recommendOne.rawValue
-                
-            case 1:
-                
-                routeLabel = RoutesType.riverOne.rawValue
-                
-            case 2:
-                
-                routeLabel = RoutesType.mountainOne.rawValue
-                
-            default:
-                return
-            }
-        }
-    }
-    
-    private var collectionView: UICollectionView! {
-        
-        didSet {
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
-            collectionView.delegate = self
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+    }
+    
+    func fetchRecords() {
+        
+        MapsManager.shared.fetchRoutes { [weak self] result in
+                switch result {
+                case .success(let route):
+                    self?.routes = route
+                    self?.tableView.reloadData()
+                case .failure(let error): print ("fetchData Failure: \(error)")
+                }
         }
     }
     
-    private func setupCollectionView() {
-
-        collectionView = UICollectionView(frame: .zero , collectionViewLayout: configureCollectionViewLayout())
-
-        collectionView.register(Routes.self, forCellWithReuseIdentifier: "Routes")
-
-        view.stickSubView(collectionView)
-
-        collectionView.backgroundColor = .blue
-    }
-    
-    func setUpButton() {
+    @objc func headerRefresh() {
         
-        let radius = UIScreen.width * 13 / 107
+        fetchRecords()
         
-        let button = PreviousPageButton(frame: CGRect(x: 40, y: 50, width: radius, height: radius))
+        tableView.reloadData()
         
-        button.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
-        
-        view.addSubview(button)
-    }
-    
-    func setUpThemeTag() {
-        
-        let view = UIView(frame: CGRect(x: 0 , y: 80, width: UIScreen.width / 2 + 10, height: 200))
-        
-        let label = UILabel(frame: CGRect(x: 20, y: 83, width: 120, height: 50))
-        
-        view.backgroundColor = .U2
-        
-        view.layer.cornerRadius = 20
-        
-        view.layer.masksToBounds = true
-        
-        label.text = routeLabel
-        
-        label.textColor = .black
-        
-        label.textAlignment = .center
-        
-        label.font = UIFont.regular(size: 18)
-        
-        collectionView.addSubview(view)
-        
-        collectionView.addSubview(label)
+        self.tableView.mj_header?.endRefreshing()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupCollectionView()
         
-        configureDataSource()
+        setUpTableView()
         
-        configureSnapshot()
+        fetchRecords()
         
-        setUpButton()
+        tableView.mj_header = header
         
-        setUpThemeTag()
+        header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
-        navigationController?.isNavigationBarHidden = true
         
     }
     
-    // MARK: - CollectionView CompositionalLayout -
-
-    func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-        
-        return UICollectionViewCompositionalLayout { ( _, env) -> NSCollectionLayoutSection? in
-            
-            let inset: CGFloat = 8
-            
-            let height: CGFloat = 270
-            
-            let itemSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.5),
-                heightDimension: .fractionalHeight(1.0))
-            
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            
-            item.contentInsets = NSDirectionalEdgeInsets(
-                top: inset,
-                leading: inset,
-                bottom: inset,
-                trailing: inset)
-            
-            let groupLayoutSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(450))
-            
-            let group = NSCollectionLayoutGroup.custom(
-                layoutSize: groupLayoutSize) { (env) -> [NSCollectionLayoutGroupCustomItem] in
-                    
-                    let size = env.container.contentSize
-                    
-                    let itemWidth = (size.width - inset * 4) / 2
-                    
-                    return [
-                        
-                        NSCollectionLayoutGroupCustomItem(
-                            frame: CGRect(x: (itemWidth+inset * 2), y: 0, width: itemWidth, height: height)),
-                        
-                        NSCollectionLayoutGroupCustomItem(
-                            frame: CGRect(x: 0, y: height / 2, width: itemWidth, height: height))
-                    ]
-                }
-            
-            let section = NSCollectionLayoutSection(group: group)
-            
-            section.interGroupSpacing = -150
-            
-            section.contentInsets = NSDirectionalEdgeInsets(
-                top: inset,
-                leading: inset,
-                bottom: inset,
-                trailing: inset
-            )
-            
-            return section
-        }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+        tabBarController?.tabBar.isHidden = false
+        
     }
+    
 }
 
-extension RouteViewController: UICollectionViewDelegate {
+extension RouteViewController: UITableViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: routes[indexPath.row])
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+   
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if segue.identifier == SegueIdentifier.routeList.rawValue {
-            
-            if let trailInfoVC = segue.destination as? RouteRideViewController {
-                
-                if let trail = sender as? Route {
-                    
-                    trailInfoVC.routes = trail
-                }
+        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
+        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+//            performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: routes[indexPath.row])
+            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
+                navigationController?.pushViewController(journeyViewController, animated: true)
+                journeyViewController.routes = routes[indexPath.row]
             }
         }
+        
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        sheet.addAction(detailOption)
+     
+        sheet.addAction(cancelOption)
+        
+        present(sheet, animated: true, completion: nil)
+        
+        
+        
     }
+    
+    // MARK: 傳到Detail
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == SegueIdentifier.routeList.rawValue {
+//            if let nextVC = segue.destination as? RouteRideViewController {
+//                if let route = sender as? Route {
+//                    nextVC.routes = route
+//                }
+//            }
+//        }
+//    }
+//    
 }
 
-extension RouteViewController {
+extension RouteViewController: UITableViewDataSource {
     
-    func configureDataSource() {
-        
-        dataSource = DataSource (
-            collectionView: collectionView,
-            cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
-                
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Routes", for: indexPath) as? Routes
-            
-                cell!.setUpCell(model: model)
-                            
-                return cell
-            })
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        routes.count
     }
     
- 
-    func configureSnapshot() {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        snapshot.appendSections([.section])
+        let cell: RoutesTableViewCell = tableView.dequeueCell(for: indexPath)
         
-        snapshot.appendItems(routes, toSection: .section)
+        cell.setUpCell(model: self.routes[indexPath.row])
         
-        dataSource.apply(snapshot, animatingDifferences: false)
+        return cell
     }
+    
 }

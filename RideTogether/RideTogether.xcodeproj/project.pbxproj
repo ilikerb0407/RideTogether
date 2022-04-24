@@ -50,6 +50,10 @@
 		23C8872328149ECC00E3319A /* Routes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* Routes.xib */; };
 		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
 		23C887272815450500E3319A /* RouteRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887262815450500E3319A /* RouteRideViewController.swift */; };
+		23C887292815A18F00E3319A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887282815A18E00E3319A /* UICollectionView.swift */; };
+		23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */; };
+		23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */; };
+		23C8872E2815C05F00E3319A /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -97,7 +101,6 @@
 		23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B78F2800AD0C000EDA70 /* Journey.storyboard */; };
 		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
 		23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7942800B0FD000EDA70 /* Profile.storyboard */; };
-		23D1B7A12802147C000EDA70 /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 		23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E228041F67000EDA70 /* TracksViewController.swift */; };
 		23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */; };
 		23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E6280428B3000EDA70 /* ProfileItem.swift */; };
@@ -157,6 +160,9 @@
 		23C8872128149ECC00E3319A /* Routes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Routes.xib; sourceTree = "<group>"; };
 		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		23C887262815450500E3319A /* RouteRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRideViewController.swift; sourceTree = "<group>"; };
+		23C887282815A18E00E3319A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
+		23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesTableViewCell.xib; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -230,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D1B7A12802147C000EDA70 /* Pods_RideTogether.framework in Frameworks */,
+				23C8872E2815C05F00E3319A /* Pods_RideTogether.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +303,8 @@
 				231BCB6528084B3300DE2343 /* Home.storyboard */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */,
 				23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */,
+				23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */,
+				23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */,
 				23C8872028149ECC00E3319A /* Routes.swift */,
 				23C8872128149ECC00E3319A /* Routes.xib */,
 			);
@@ -463,6 +471,7 @@
 				23D1B7ED2804347B000EDA70 /* UITableView.swift */,
 				23CE42B0280EEBF600C4C9F1 /* CLPlacemark+Additions.swift */,
 				23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */,
+				23C887282815A18E00E3319A /* UICollectionView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -630,6 +639,7 @@
 				23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
+				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
 				231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */,
 				23A84A762811AE2300DD8D39 /* GroupInfo.xib in Resources */,
@@ -749,6 +759,7 @@
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
+				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
 				231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */,
@@ -762,6 +773,7 @@
 				23CE42C0280FB77400C4C9F1 /* CreateGroupButton.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
+				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				23C8872228149ECC00E3319A /* Routes.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,

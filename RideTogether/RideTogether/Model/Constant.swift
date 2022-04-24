@@ -10,6 +10,8 @@ import SwiftUI
 
 enum SegueIdentifier: String {
 
+    case route = "routeList"
+    
     case routeList = "toRouteList"
 
     case trailInfo = "toTrailInfo"
@@ -24,6 +26,10 @@ enum SegueIdentifier: String {
     
     case recommendMaps = "toRecommendMaps"
 }
+
+
+
+
 
 enum ProfileSegue: String, CaseIterable {
     

@@ -117,11 +117,11 @@ extension HomeViewController: UITableViewDelegate {
         default:
             return
         }
-        performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: sender)
+        performSegue(withIdentifier: SegueIdentifier.route.rawValue, sender: sender)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.routeList.rawValue {
+        if segue.identifier == SegueIdentifier.route.rawValue {
             if let routeListVC = segue.destination as? RouteViewController{
                 
                 if let routes = sender as? [Route] {

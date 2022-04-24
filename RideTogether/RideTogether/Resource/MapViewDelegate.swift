@@ -27,7 +27,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     var step: [String] = []
     
     
-    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is MKPolyline {
@@ -92,12 +91,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                     if pm.count > 0 {
                         let pm = placemarks![0]
                         self.destination = pm
-                        print(pm.country)
-                        print(pm.locality)
-                        print(pm.subLocality)
-                        print(pm.thoroughfare)
-                        print(pm.postalCode)
-                        print(pm.subThoroughfare)
                     }
                 }
             }
@@ -228,10 +221,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         
         
         var num = 0
-        self.guide(mapView, didSelect: views[num])
         
         // swiftlint:disable force_cast
-        let gpxMapView = mapView as! GPXMapView
+        guard let gpxMapView = mapView as? GPXMapView else { return }
+//        let gpxMapView = mapView as! GPXMapView
+        
         var hasImpacted = false
         //adds the pins with an animation
         for object in views {
