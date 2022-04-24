@@ -22,6 +22,7 @@ class Routes: UICollectionViewCell {
     }
     
     func setUpCell (model: Route) {
+        
         routeName.text = model.routeName
         routeLength.text = model.routeLength.description
         

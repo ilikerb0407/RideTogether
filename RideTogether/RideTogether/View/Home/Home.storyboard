@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOt-Fa-5T4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="40"/>
+            <point key="canvasLocation" x="1132" y="53"/>
         </scene>
         <!--Journey-->
         <scene sceneID="R5B-ob-qzC">
@@ -76,6 +76,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZmM-H7-Guc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3543" y="297"/>
+        </scene>
+        <!--Route Ride View Controller-->
+        <scene sceneID="o9d-CD-zYe">
+            <objects>
+                <viewController id="aBK-17-zew" customClass="RouteRideViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UTj-Gq-Xq1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eAf-FY-AQe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5HQ-H1-1cP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5HQ-H1-1cP" firstAttribute="trailing" secondItem="eAf-FY-AQe" secondAttribute="trailing" id="ANG-u4-VBR"/>
+                            <constraint firstItem="eAf-FY-AQe" firstAttribute="top" secondItem="5HQ-H1-1cP" secondAttribute="top" id="U2J-dw-SoS"/>
+                            <constraint firstItem="5HQ-H1-1cP" firstAttribute="bottom" secondItem="eAf-FY-AQe" secondAttribute="bottom" id="XSb-DL-9RF"/>
+                            <constraint firstItem="eAf-FY-AQe" firstAttribute="leading" secondItem="5HQ-H1-1cP" secondAttribute="leading" id="yrq-e3-Yzc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="routeMap" destination="eAf-FY-AQe" id="bfu-IV-r3s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KoE-zc-YdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2050.7246376811595" y="39.508928571428569"/>
         </scene>
     </scenes>
     <resources>

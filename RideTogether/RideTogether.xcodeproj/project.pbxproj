@@ -49,6 +49,7 @@
 		23C8872228149ECC00E3319A /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872028149ECC00E3319A /* Routes.swift */; };
 		23C8872328149ECC00E3319A /* Routes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* Routes.xib */; };
 		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
+		23C887272815450500E3319A /* RouteRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887262815450500E3319A /* RouteRideViewController.swift */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -155,6 +156,7 @@
 		23C8872028149ECC00E3319A /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		23C8872128149ECC00E3319A /* Routes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Routes.xib; sourceTree = "<group>"; };
 		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		23C887262815450500E3319A /* RouteRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRideViewController.swift; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				231BCB6728084B9E00DE2343 /* HomeViewController.swift */,
 				23C8871C281435EC00E3319A /* RouteViewController.swift */,
+				23C887262815450500E3319A /* RouteRideViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
+				23C887272815450500E3319A /* RouteRideViewController.swift in Sources */,
 				231BCB3F28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,

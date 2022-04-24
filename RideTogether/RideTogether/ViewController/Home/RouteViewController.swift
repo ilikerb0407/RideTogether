@@ -15,6 +15,10 @@ class RouteViewController: BaseViewController {
     
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Route>
     
+    private var dataSource: DataSource!
+    
+    private var snapshot = DataSourceSnapshot()
+    
     // MARK: - Class Properties -
     
     enum Section {
@@ -24,6 +28,7 @@ class RouteViewController: BaseViewController {
     
     
     var routes = [Route]() {
+        
         didSet {
             setUpLabel()
         }
@@ -66,13 +71,13 @@ class RouteViewController: BaseViewController {
     
     private func setupCollectionView() {
 
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
+        collectionView = UICollectionView(frame: .zero , collectionViewLayout: configureCollectionViewLayout())
 
         collectionView.register(Routes.self, forCellWithReuseIdentifier: "Routes")
 
         view.stickSubView(collectionView)
 
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .blue
     }
     
     func setUpButton() {
@@ -86,6 +91,31 @@ class RouteViewController: BaseViewController {
         view.addSubview(button)
     }
     
+    func setUpThemeTag() {
+        
+        let view = UIView(frame: CGRect(x: 0 , y: 80, width: UIScreen.width / 2 + 10, height: 200))
+        
+        let label = UILabel(frame: CGRect(x: 20, y: 83, width: 120, height: 50))
+        
+        view.backgroundColor = .U2
+        
+        view.layer.cornerRadius = 20
+        
+        view.layer.masksToBounds = true
+        
+        label.text = routeLabel
+        
+        label.textColor = .black
+        
+        label.textAlignment = .center
+        
+        label.font = UIFont.regular(size: 18)
+        
+        collectionView.addSubview(view)
+        
+        collectionView.addSubview(label)
+    }
+    
    
     
     
@@ -94,6 +124,17 @@ class RouteViewController: BaseViewController {
         super.viewDidLoad()
 
         setupCollectionView()
+        
+        configureDataSource()
+        
+        configureSnapshot()
+        
+        setUpButton()
+        
+        setUpThemeTag()
+        
+        navigationController?.isNavigationBarHidden = true
+        
     }
     
     // MARK: - CollectionView CompositionalLayout -
@@ -158,4 +199,49 @@ class RouteViewController: BaseViewController {
 
 extension RouteViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: routes[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SegueIdentifier.routeList.rawValue {
+            
+            if let trailInfoVC = segue.destination as? RouteRideViewController {
+                
+                if let trail = sender as? Route {
+                    
+                    trailInfoVC.routes = trail
+                }
+            }
+        }
+    }
+}
+
+extension RouteViewController {
+    
+    func configureDataSource() {
+        
+        dataSource = DataSource (
+            collectionView: collectionView,
+            cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
+                
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Routes", for: indexPath) as? Routes
+            
+                cell!.setUpCell(model: model)
+                            
+                return cell
+            })
+    }
+    
+ 
+    func configureSnapshot() {
+        
+        snapshot.appendSections([.section])
+        
+        snapshot.appendItems(routes, toSection: .section)
+        
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
 }
