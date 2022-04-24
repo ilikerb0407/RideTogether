@@ -13,7 +13,7 @@ struct Route: Codable, Hashable {
     var routeId: String
     var routeName: String
     var routeTypes: Int
-    var routeLength: Double
+    var routeLength: String
     var routeInfo: String
     var routeMap: String
     // URL(String: record.reference)
@@ -32,7 +32,7 @@ struct Route: Codable, Hashable {
         self.routeId = ""
         self.routeName = ""
         self.routeTypes = 0
-        self.routeLength = 0.0
+        self.routeLength = ""
         self.routeInfo = ""
         self.routeMap = ""
         
