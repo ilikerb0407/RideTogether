@@ -1,8 +1,8 @@
 //
-//  TrackDetailsViewController.swift
+//  RecommendDetailViewController.swift
 //  RideTogether
 //
-//  Created by Kai Fu Jhuang on 2022/4/11.
+//  Created by Kai Fu Jhuang on 2022/4/13.
 //
 
 import UIKit
@@ -11,28 +11,15 @@ import MapKit
 import Firebase
 import CoreGPX
 import CoreLocation
-import Charts
 
-//MARK: User Record detail
+// MARK: RecommendRoute
+//MARK: No Use!!!
 
 
-class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
-    
-    @IBOutlet weak var map: GPXMapView!
-    
-    // MARK: recordInfoView
-    
-    @IBOutlet weak var totalTime: UILabel!
-    @IBOutlet weak var totalDistance: UILabel!
-    @IBOutlet weak var avgSpeed: UILabel!
+class RecommendDetailViewController: UIViewController {
     
     
-    @IBOutlet weak var chartView: LineChartView! {
-        didSet {
-            chartView.delegate = self
-        }
-    }
-
+    @IBOutlet weak var map2: GPXMapView!
     
     private let mapViewDelegate = MapViewDelegate()
     
@@ -47,9 +34,9 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         navigationController?.isNavigationBarHidden = true
         
-        map.delegate = mapViewDelegate
+        map2.delegate = mapViewDelegate
         
-        self.view.addSubview(map)
+        self.view.addSubview(map2)
         
         tabBarController?.tabBar.isHidden = true
         
@@ -59,81 +46,81 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         backToJourneyButton()
         
-        updateInfo(data: trackInfo)
-        
-        setChart(xValues: trackChartData.distance, yValues: trackChartData.elevation)
+//        updateInfo(data: trackInfo)
+//
+//        setChart(xValues: trackChartData.distance, yValues: trackChartData.elevation)
     }
     
-    func updateInfo(data: TrackInfo) {
-        
-        totalTime.text = data.spentTime.tohmsTimeFormat()
-        
-        totalDistance.text = data.distance.toDistance()
-        
-        let speed = data.distance / data.spentTime
-        
-        avgSpeed.text = speed.toSpeed()
-        
-    }
+//    func updateInfo(data: TrackInfo) {
+//
+//        totalTime.text = data.spentTime.tohmsTimeFormat()
+//
+//        totalDistance.text = data.distance.toDistance()
+//
+//        let speed = data.distance / data.spentTime
+//
+//        avgSpeed.text = speed.toSpeed()
+//
+//    }
     
     
-    func setChart(xValues: [Double], yValues: [Double]) {
-        
-        var dataEntries: [ChartDataEntry] = []
-        
-        //        chartView.noDataText = "Can not get track record!"
-        
-        for index in 0..<trackChartData.elevation.count {
-            
-            let xvalue = xValues[index] / 1000 // m -> km
-            
-            let yvalue = yValues[index]
-            
-            let dataEntry = ChartDataEntry(x: xvalue, y: yvalue)
-            
-            dataEntries.append(dataEntry)
-        }
-        
-        let dataSet = LineChartDataSet(entries: dataEntries, label: "")
-        
-        dataSet.colors = [.U1 ?? .systemGray]
-        dataSet.drawFilledEnabled = true
-        dataSet.drawCirclesEnabled = false
-        dataSet.drawValuesEnabled = false
-        dataSet.lineWidth = 2
-        dataSet.fillAlpha = 0.8
-        dataSet.fillColor = .U2 ?? .lightGray
-        
-        chartView.data = LineChartData(dataSets: [dataSet])
-        
-        chartView.xAxis.setLabelCount(yValues.count, force: true)
-        
-        chartView.legend.enabled = false
-        
-        setUpChartLayout()
-    }
+//    func setChart(xValues: [Double], yValues: [Double]) {
+//
+//        var dataEntries: [ChartDataEntry] = []
+//
+//        //        chartView.noDataText = "Can not get track record!"
+//
+//        for index in 0..<trackChartData.elevation.count {
+//
+//            let xvalue = xValues[index] / 1000 // m -> km
+//
+//            let yvalue = yValues[index]
+//
+//            let dataEntry = ChartDataEntry(x: xvalue, y: yvalue)
+//
+//            dataEntries.append(dataEntry)
+//        }
+//
+//        let dataSet = LineChartDataSet(entries: dataEntries, label: "")
+//
+//        dataSet.colors = [.U1 ?? .systemGray]
+//        dataSet.drawFilledEnabled = true
+//        dataSet.drawCirclesEnabled = false
+//        dataSet.drawValuesEnabled = false
+//        dataSet.lineWidth = 2
+//        dataSet.fillAlpha = 0.8
+//        dataSet.fillColor = .U2 ?? .lightGray
+//
+//        chartView.data = LineChartData(dataSets: [dataSet])
+//
+//        chartView.xAxis.setLabelCount(yValues.count, force: true)
+//
+//        chartView.legend.enabled = false
+//
+//        setUpChartLayout()
+//    }
     
-    func setUpChartLayout() {
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.setLabelCount(10, force: false)
-        xAxis.drawGridLinesEnabled = true
-        xAxis.granularityEnabled = true
-        
-        let yAxis = chartView.leftAxis
-        yAxis.axisMinimum = 0
-        yAxis.setLabelCount(10, force: false)
-        yAxis.labelPosition = .outsideChart
-        yAxis.drawGridLinesEnabled = true
-        yAxis.granularityEnabled = true
-        
-        chartView.rightAxis.enabled = false
-        
-        chartView.animate(xAxisDuration: 2.0)
-    }
+//    func setUpChartLayout() {
+//
+//        let xAxis = chartView.xAxis
+//        xAxis.labelPosition = .bottom
+//        xAxis.setLabelCount(10, force: false)
+//        xAxis.drawGridLinesEnabled = true
+//        xAxis.granularityEnabled = true
+//
+//        let yAxis = chartView.leftAxis
+//        yAxis.axisMinimum = 0
+//        yAxis.setLabelCount(10, force: false)
+//        yAxis.labelPosition = .outsideChart
+//        yAxis.drawGridLinesEnabled = true
+//        yAxis.granularityEnabled = true
+//
+//        chartView.rightAxis.enabled = false
+//
+//        chartView.animate(xAxisDuration: 2.0)
+//    }
     
-    
+//
     func backToJourneyButton() {
         let button = NextPageButton(frame: CGRect(x: 270 , y: 50, width: 80, height: 80))
         button.addTarget(self, action: #selector(push), for: .touchUpInside)
@@ -141,7 +128,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     }
     
     @objc func push(_ sender: UIButton) {
-        
+
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)
             journeyViewController.record = record
@@ -172,13 +159,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             processTrackInfo(gpxRoot: gpx)
             
         }
-    }
-    
-    func didLoadGPXFile(gpxRoot: GPXRoot) {
-        
-        map.importFromGPXRoot(gpxRoot)
-        
-        map.regionToGPXExtent()
     }
     
     func processTrackInfo(gpxRoot: GPXRoot) {
@@ -254,7 +234,13 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             trackInfo.elevationDiff = maxValue - minValue
         }
     }
-   
+    // load 不出線
+    func didLoadGPXFile(gpxRoot: GPXRoot) {
+        
+        map2.importFromGPXRoot(gpxRoot)
+
+        map2.regionToGPXExtent()
+    }
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -264,11 +250,11 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     func updatePolylineColor() {
         
-        for overlay in map.overlays where overlay is MKPolyline {
+        for overlay in map2.overlays where overlay is MKPolyline {
             
-            map.removeOverlay(overlay)
+            map2.removeOverlay(overlay)
             
-            map.addOverlay(overlay)
+            map2.addOverlay(overlay)
         }
     }
     
@@ -279,9 +265,9 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
     }
     
-    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue 
+    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.userRecord.rawValue {
+        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
             if let nextVC = segue.destination as? FollowJourneyViewController {
                 if let record = sender as? Record {
                     nextVC.record = record

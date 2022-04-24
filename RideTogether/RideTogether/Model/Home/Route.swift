@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct Route: Codable, Hashable {
     
-    let routeId: String
-    let routeName: String
-    let routeTypes: Int
-    let routeLength: Double
-    let routeInfo: String
-    let routeMap: String
+    var routeId: String
+    var routeName: String
+    var routeTypes: Int
+    var routeLength: String
+    var routeInfo: String
+    var routeMap: String
     // URL(String: record.reference)
     
     
@@ -25,5 +26,15 @@ struct Route: Codable, Hashable {
         case routeLength = "route_length"
         case routeInfo = "route_info"
         case routeMap = "route_map"
+    }
+    
+    init() {
+        self.routeId = ""
+        self.routeName = ""
+        self.routeTypes = 0
+        self.routeLength = ""
+        self.routeInfo = ""
+        self.routeMap = ""
+        
     }
 }

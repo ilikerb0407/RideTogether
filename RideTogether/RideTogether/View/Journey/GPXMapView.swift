@@ -105,7 +105,6 @@ class GPXMapView: MKMapView {
     private func addTrackSegments(for gpx: GPXRoot) {
         session.tracks = gpx.tracks
         
-        
         session.waypoints = gpx.waypoints
         for pin in session.waypoints {
             addWaypoint(pin)

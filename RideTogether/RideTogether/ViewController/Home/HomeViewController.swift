@@ -75,10 +75,21 @@ class HomeViewController: BaseViewController {
         
     }
     
-   
     
     func fetchTrailData() {
-        
+        MapsManager.shared.fetchRoutes { result in
+            
+            switch result {
+                
+            case .success(let routes):
+                
+                self.routes = routes
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
         
     }
     
@@ -87,6 +98,10 @@ class HomeViewController: BaseViewController {
 // MARK: - TableView Delegate -
 
 extension HomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        150
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -102,16 +117,16 @@ extension HomeViewController: UITableViewDelegate {
         default:
             return
         }
-        performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: sender)
+        performSegue(withIdentifier: SegueIdentifier.route.rawValue, sender: sender)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.routeList.rawValue {
+        if segue.identifier == SegueIdentifier.route.rawValue {
             if let routeListVC = segue.destination as? RouteViewController{
                 
                 if let routes = sender as? [Route] {
                     
-                    routeListVC.route = routes
+                    routeListVC.routes = routes
                 }
             }
         }
@@ -125,7 +140,6 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
         RoutesType.allCases.count
     }
     
@@ -135,7 +149,7 @@ extension HomeViewController: UITableViewDataSource {
         
         cell.setUpCell(
             routetitle: RoutesType.allCases[indexPath.row].rawValue,
-            routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "IMG_3635")!)
+            routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
         
         if indexPath.row % 2 == 1 {
             cell.routeTitle.textColor = .black

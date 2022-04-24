@@ -24,7 +24,7 @@ enum RoutesType: String, RoutesPhoto, CaseIterable {
     case riverOne = "河堤路線"
     
     case mountainOne = "爬山路線"
-    
+
     
     var image: UIImage? {
         

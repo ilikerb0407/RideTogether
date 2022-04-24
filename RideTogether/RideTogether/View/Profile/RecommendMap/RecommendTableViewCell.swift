@@ -20,7 +20,7 @@ class RecommendTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        self.backgroundColor = .orange
+        self.backgroundColor = .C4
         self.contentView.backgroundColor = .clear
     }
 
@@ -29,7 +29,7 @@ class RecommendTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func setUpCell(model : RecommendMap) {
+    func setUpCell(model : Record) {
         mapTitle.text = model.recordName
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }

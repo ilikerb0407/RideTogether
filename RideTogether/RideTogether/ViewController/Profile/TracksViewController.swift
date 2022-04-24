@@ -36,7 +36,6 @@ class TracksViewController: BaseViewController {
         }
     }
     
-    
       func backButton() {
             let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
             view.addSubview(button)
@@ -115,7 +114,6 @@ class TracksViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
-        view.backgroundColor = .C4
         
     }
     
@@ -200,7 +198,7 @@ extension TracksViewController: UITableViewDelegate {
                 switch result {
                 case .success(let url) :
 //                    completion(.success(url))
-                    
+                    print ("\(url)")
                     self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
                 case .failure(let error) :
 //                    completion(.failure(error))

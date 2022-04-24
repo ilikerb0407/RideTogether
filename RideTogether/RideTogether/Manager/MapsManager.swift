@@ -29,6 +29,8 @@ class MapsManager {
     
     private let routeCollection = Collection.routes.rawValue
     
+    private let shareCollection = Collection.sharedmaps.rawValue
+    
     
     // MARK: 把資料放在 Storage，先用download的功能拿下來，在upload到firebase
     
@@ -102,11 +104,12 @@ class MapsManager {
     
     
     // MARK: 直接從 firebase 拿資料 : 可以直接在firebase 輸入資料，但是太浪費時間了
-    
-    func fetchRecords(completion: @escaping (Result<[RecommendMap],Error>) -> Void) {
+    // 0424 把shareMap 改成Record
+    func fetchRecords(completion: @escaping (Result<[Record],Error>) -> Void) {
         
-        let collection = dataBase.collection(mapsCollection)
+//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
         
+        let collection = dataBase.collection(shareCollection)
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
@@ -115,11 +118,11 @@ class MapsManager {
                 completion(.failure(error))
             } else {
                 
-                var records = [RecommendMap]()
+                var records = [Record]()
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: RecommendMap.self , decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: Record.self , decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
                     }
@@ -131,9 +134,12 @@ class MapsManager {
                 completion(.success(records))
             }
         }
+        
     }
+    
     func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){
-        let collection = dataBase.collection(routeCollection)
+        
+        let collection = dataBase.collection(routeCollection).whereField("route_types", isEqualTo: 0 )
         
         collection.getDocuments{ (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else { return }

@@ -91,7 +91,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
-                
                 map.clearMap()
                 
                 totalTrackedDistanceLabel.distance = (map.session.totalTrackedDistance)
@@ -285,7 +284,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 20)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         return label
     }()
     
@@ -294,7 +293,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 30)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         return label
     }()
     
@@ -302,7 +301,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let label = UILabel()
         label.textAlignment = .right
         label.font = UIFont.regular(size: 40)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         label.text = "Timer"
         return label
     }()
@@ -311,7 +310,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 26)
-        distaneLabel.textColor = UIColor.white
+        distaneLabel.textColor = UIColor.black
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -320,7 +319,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 18)
-        distaneLabel.textColor = UIColor.white
+        distaneLabel.textColor = UIColor.black
         distaneLabel.distance = 0.00
         return distaneLabel
     }()

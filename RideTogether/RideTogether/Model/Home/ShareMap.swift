@@ -8,23 +8,15 @@
 import Foundation
 import FirebaseFirestore
 
-// MARK: RecommendMap = Route
-struct RecommendMap: Codable, Hashable {
+
+struct SharedMap: Codable, Hashable {
     
     var uid: String
     var createdTime: Timestamp
     var recordId: String?
     var recordName: String
     var recordRef: String
-    
-//    let trailId: String
-//    let trailName: String
-//    let trailLocation: String
-//    let trailLevel: Int
-//    let trailLength: Double
-//    let trailInfo: String
-//    let trailTraffic: String
-//    let trailMap: String?
+
     
     enum CodingKeys: String, CodingKey {
         
