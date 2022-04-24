@@ -198,7 +198,7 @@ extension TracksViewController: UITableViewDelegate {
                 switch result {
                 case .success(let url) :
 //                    completion(.success(url))
-                    
+                    print ("\(url)")
                     self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
                 case .failure(let error) :
 //                    completion(.failure(error))

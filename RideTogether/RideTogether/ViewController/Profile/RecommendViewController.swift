@@ -11,8 +11,7 @@ import MJRefresh
 // MARK: Recommend-Route
 class RecommendViewController: BaseViewController {
 
-    
-    var maps = [Record]()
+    var records = [Record]()
     
     private let header = MJRefreshNormalHeader()
     
@@ -57,7 +56,7 @@ class RecommendViewController: BaseViewController {
         MapsManager.shared.fetchShareMap { [weak self] result in
             switch result {
             case .success(let records):
-                self?.maps = records
+                self?.records = records
                 self?.tableView.reloadData()
             case .failure(let error): print ("fetchData Failure: \(error)")
             }
@@ -104,31 +103,34 @@ extension RecommendViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIdentifier.recommendMaps.rawValue, sender: maps[indexPath.row])
+        performSegue(withIdentifier: SegueIdentifier.recommendMaps.rawValue, sender: records[indexPath.row])
     }
     
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
-            if let nextVC = segue.destination as? RecommendDetailViewController {
+            if let nextVC = segue.destination as? RecommendDetailViewController{
                 if let record = sender as? Record {
                     nextVC.record = record
+                    
                 }
             }
         }
     }
+   
 }
 
 extension RecommendViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        maps.count
+        records.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: RecommendTableViewCell = tableView.dequeueCell(for: indexPath)
         
-        cell.setUpCell(model: self.maps[indexPath.row])
+        cell.setUpCell(model: self.records[indexPath.row])
         
         return cell
     }

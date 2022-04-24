@@ -174,6 +174,13 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         }
     }
     
+    func didLoadGPXFile(gpxRoot: GPXRoot) {
+        
+        map.importFromGPXRoot(gpxRoot)
+        
+        map.regionToGPXExtent()
+    }
+    
     func processTrackInfo(gpxRoot: GPXRoot) {
         var temArray: [Double] = []
         
@@ -247,13 +254,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             trackInfo.elevationDiff = maxValue - minValue
         }
     }
-    
-    func didLoadGPXFile(gpxRoot: GPXRoot) {
-        
-        map.importFromGPXRoot(gpxRoot)
-        
-        map.regionToGPXExtent()
-    }
+   
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

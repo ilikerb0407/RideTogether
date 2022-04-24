@@ -404,9 +404,9 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        praseGPXFile()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        praseGPXFile()
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
