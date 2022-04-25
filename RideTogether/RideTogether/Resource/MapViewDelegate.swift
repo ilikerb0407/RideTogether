@@ -134,6 +134,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     /// Delete Waypoint Button tag. Used in a waypoint bubble
     let kDeleteWaypointAccesoryButtonTag = 666
+    
     let kEditWaypointAccesoryButtonTag = 333
     
     
@@ -157,6 +158,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
             //            map.removeWaypoint(waypoint)
             //            guide(mapView, didSelect: view)
+            
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
             let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                 map.removeWaypoint(waypoint)
