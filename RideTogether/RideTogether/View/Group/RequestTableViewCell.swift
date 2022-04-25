@@ -6,15 +6,31 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import RSKPlaceholderTextView
 
-class RequestTableViewCell: UITableViewCell {
+class RequestTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var gRouteTitle: UILabel!
-    @IBOutlet weak var gTime: UILabel!
+    var groupInfo: Group?
     
-    @IBOutlet weak var gPeople: UILabel!
     
-    @IBOutlet weak var gText: UITextView!
+    @IBOutlet weak var hostButton: UIButton!
+    
+    @IBOutlet weak var trailName: UITextField! {
+        didSet {
+            trailName.delegate = self
+        }
+    }
+    
+    
+    @IBOutlet weak var numberOfPeople: UITextField! {
+        didSet {
+            numberOfPeople.delegate = self
+        }
+    }
+    
+    
+    
     
     @IBOutlet weak var gButton: UIButton!
     
@@ -31,8 +47,7 @@ class RequestTableViewCell: UITableViewCell {
     }
     
     func setUpCell(model: Request) {
-        gRouteTitle.text = model.groupName
-        gTime.text = model.createdTime
+        
         
     }
     
