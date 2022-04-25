@@ -184,7 +184,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G9-QS-6UZ">
-                                <rect key="frame" x="8" y="446" width="45" height="49"/>
+                                <rect key="frame" x="8" y="567" width="45" height="49"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -302,6 +302,23 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vbe-kC-QR3">
+                                <rect key="frame" x="8" y="416" width="45" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天氣" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hce-FE-nty">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl8-5r-IqR">
+                                        <rect key="frame" x="0.0" y="46.5" width="45" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gG1-od-3dq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -313,12 +330,14 @@
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="centerX" secondItem="ear-Ap-X0O" secondAttribute="centerX" id="4VQ-V8-bjG"/>
                             <constraint firstItem="LKf-ZT-ABj" firstAttribute="top" secondItem="D1i-pG-aKM" secondAttribute="bottom" constant="20" id="6EA-HD-wKc"/>
                             <constraint firstItem="O4s-Li-QGM" firstAttribute="leading" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="20" id="9pZ-Ke-rkO"/>
-                            <constraint firstItem="8G9-QS-6UZ" firstAttribute="top" secondItem="Gip-Us-cBp" secondAttribute="bottom" constant="50" id="Aru-rX-1bu"/>
+                            <constraint firstItem="8G9-QS-6UZ" firstAttribute="top" secondItem="Gip-Us-cBp" secondAttribute="bottom" constant="171" id="Aru-rX-1bu"/>
                             <constraint firstItem="Mlg-WN-yl6" firstAttribute="top" secondItem="8ij-cS-hOI" secondAttribute="bottom" constant="50" id="BgH-Co-XKj"/>
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="140" id="Flq-J7-9va"/>
                             <constraint firstItem="Gip-Us-cBp" firstAttribute="top" secondItem="LKf-ZT-ABj" secondAttribute="bottom" constant="20" id="Idp-ud-Smh"/>
                             <constraint firstItem="8ij-cS-hOI" firstAttribute="top" secondItem="gG1-od-3dq" secondAttribute="top" constant="20" id="JQr-Mf-eKv"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="top" secondItem="ear-Ap-X0O" secondAttribute="top" constant="515" id="Ksm-bX-YEU"/>
+                            <constraint firstItem="vbe-kC-QR3" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="8" id="LEG-NV-oAz"/>
+                            <constraint firstItem="vbe-kC-QR3" firstAttribute="top" secondItem="Gip-Us-cBp" secondAttribute="bottom" constant="20" id="Mfu-BM-mNb"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="100" id="O9R-n7-jbi"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="ucR-gQ-dXv" secondAttribute="trailing" constant="8" id="OfT-p0-vQe"/>
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="centerX" secondItem="8ij-cS-hOI" secondAttribute="centerX" id="Rzu-82-rof"/>
@@ -342,6 +361,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="vLZ-te-912" id="139-Vi-nD2"/>
                         <outlet property="calculateButton" destination="hvI-gD-hew" id="Skg-xI-pN1"/>
+                        <outlet property="cloud" destination="Yl8-5r-IqR" id="qzG-A2-DIO"/>
                         <outlet property="extraStopTextField" destination="gHw-To-PZ9" id="NHA-3l-pmS"/>
                         <outlet property="feelslikeTemp" destination="5HS-fE-92B" id="DzS-aU-yrN"/>
                         <outlet property="humidity" destination="2vj-xF-WG0" id="QmH-CB-8yH"/>

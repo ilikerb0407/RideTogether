@@ -54,6 +54,10 @@
 		23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */; };
 		23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */; };
 		23C8872E2815C05F00E3319A /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
+		23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */; };
+		23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */; };
+		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
+		23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -163,6 +167,10 @@
 		23C887282815A18E00E3319A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
 		23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesTableViewCell.xib; sourceTree = "<group>"; };
+		23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
+		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
+		23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -293,6 +301,8 @@
 				23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */,
 				23A84A732811AE2300DD8D39 /* GroupInfo.swift */,
 				23A84A742811AE2300DD8D39 /* GroupInfo.xib */,
+				23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */,
+				23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -309,6 +319,16 @@
 				23C8872128149ECC00E3319A /* Routes.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		23CB74B82816C7FE00DED822 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				2383878B280FCD9000E9F4F4 /* Group.swift */,
+				23C887242815329800E3319A /* Request.swift */,
+				23CB74B92816C81E00DED822 /* GroupStatus.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		23CE42A0280E571700C4C9F1 /* Resource */ = {
@@ -338,6 +358,7 @@
 			children = (
 				23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */,
 				2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */,
+				23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */,
 				23A84A772812E63800DD8D39 /* JoinViewController.swift */,
 			);
 			path = Group;
@@ -400,8 +421,7 @@
 				23D1B78B28006663000EDA70 /* Constant.swift */,
 				231BCB5028070BF500DE2343 /* Taiwan.swift */,
 				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
-				2383878B280FCD9000E9F4F4 /* Group.swift */,
-				23C887242815329800E3319A /* Request.swift */,
+				23CB74B82816C7FE00DED822 /* Group */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23D1B74E28005DE1000EDA70 /* GPX */,
 				231BCB69280858C800DE2343 /* Profile */,
@@ -635,6 +655,7 @@
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */,
+				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
@@ -725,8 +746,10 @@
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
+				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
+				23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
@@ -776,6 +799,7 @@
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				23C8872228149ECC00E3319A /* Routes.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
+				23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
 				2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */,

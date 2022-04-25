@@ -21,13 +21,13 @@ class GroupManager {
     
     lazy var dataBase = Firestore.firestore()
     
-    private let groupCollection = Collection.groups.rawValue
+    private let groupsCollection = Collection.groups.rawValue
     
-    private let requestCollection = Collection.requests.rawValue
+    private let requestsCollection = Collection.requests.rawValue
     
     func buildTeam(group: inout Group, completion: (Result<String, Error>) -> Void) {
         
-        let document = dataBase.collection(groupCollection).document()
+        let document = dataBase.collection(groupsCollection).document()
         
         group.groupId = document.documentID
         
@@ -46,7 +46,7 @@ class GroupManager {
     
     func fetchGroups(completion: @escaping (Result<[Group], Error>) -> Void) {
         
-        let collection = dataBase.collection(groupCollection)
+        let collection = dataBase.collection(groupsCollection)
         
         collection.order(by: "date", descending: true).getDocuments { (querySnapshot, error) in
            
@@ -85,7 +85,7 @@ class GroupManager {
     
     func requestListener (completion: @escaping(Result<[Request], Error>) -> ()) -> Void {
         
-        dataBase.collection(requestCollection).whereField("host_id", isEqualTo: userId).addSnapshotListener { (querySnapshot, error) in
+        dataBase.collection(requestsCollection).whereField("host_id", isEqualTo: userId).addSnapshotListener { (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else { return }
             if let error = error {
                 completion(.failure(error))
@@ -95,6 +95,58 @@ class GroupManager {
             
         }
         
+    }
+    
+    
+    func updateTeam(group: Group, completion: (Result<String, Error>) -> Void) {
+        
+        let document = dataBase.collection(groupsCollection).document(group.groupId)
+        
+        do {
+            
+            try document.setData(from: group)
+            
+        } catch {
+            
+            completion(.failure(error))
+            
+        }
+        
+        completion(.success("Success"))
+    }
+    
+    func sendRequest(request: Request, completion: (Result<String, Error>) -> Void) {
+        
+        let document = dataBase.collection(requestsCollection).document()
+        
+        do {
+            
+            try document.setData(from: request)
+            
+        } catch {
+            
+            completion(.failure(error))
+        }
+        
+        completion(.success("Success"))
+    }
+    
+    func leaveGroup(groupId: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let docRef = dataBase.collection(groupsCollection).document(groupId)
+        
+        docRef.updateData([
+            "user_ids": FieldValue.arrayRemove([userId])
+        ]) { error in
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+            } else {
+                
+                print("User leave group successfully")
+            }
+        }
     }
     
     
