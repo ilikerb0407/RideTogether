@@ -8,10 +8,8 @@
 import Foundation
 import UIKit
 
+// 原本要把UIview的class改成 RecordInfoView 但是拉不了，所以先放著之後重構可以移過來
 
 class RecordInfoView: UIView {
-    
-    
-    
     
 }

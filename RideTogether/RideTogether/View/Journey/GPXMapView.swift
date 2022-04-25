@@ -85,6 +85,9 @@ class GPXMapView: MKMapView {
         removeAnnotations(annotations)
         extent = GPXExtentCoordinates()
     }
+    func clearOverlays() {
+        removeOverlays(overlays)
+    }
 
     func exportToGPXString() -> String {
         return session.exportToGPXString()
@@ -101,7 +104,6 @@ class GPXMapView: MKMapView {
 
     private func addTrackSegments(for gpx: GPXRoot) {
         session.tracks = gpx.tracks
-        
         
         session.waypoints = gpx.waypoints
         for pin in session.waypoints {
@@ -129,7 +131,6 @@ class GPXMapView: MKMapView {
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         let waypoint = GPXWaypoint(coordinate: coords)
         addWaypoint(waypoint)
-        
     }
     
   //MARK: Parameters: The waypoint to add to the map.

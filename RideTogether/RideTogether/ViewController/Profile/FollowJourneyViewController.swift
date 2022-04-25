@@ -12,35 +12,13 @@ import CoreLocation
 import Firebase
 import Lottie
 
-class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControllerDelegate {
+class FollowJourneyViewController: BaseViewController {
     
 //    func sendData(_ inputRecord: Record) {
 //        self.record = inputRecord
 //    }
     
     var record = Record()
-    
-
-    func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot) {
-        //emulate a reset button tap
-        self.resetButtonTapped()
-        //println("Loaded GPX file", gpx.gpx())
-        lastGpxFilename = gpxFilename
-        // adds last file name to core data as well
-        //        self.map.coreDataHelper.add(toCoreData: gpxFilename, willContinueAfterSave: false)
-        //force reset timer just in case reset does not do it
-        self.stopWatch.reset()
-        //load data
-        self.map2.importFromGPXRoot(gpxRoot)
-        //stop following user
-        self.followUser = false
-        //center map in GPX data
-        self.map2.regionToGPXExtent()
-        
-        self.gpxTrackingStatus = .paused
-        
-        self.totalTrackedDistanceLabel.distance = self.map2.session.totalTrackedDistance
-    }
     
     //    let userId = { UserManager.shared.userInfo }
     
@@ -124,7 +102,9 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
             map2.addOverlay(overlay)
         }
     }
-    //MARK: =========
+    
+    // MARK: =========
+    
     private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
@@ -174,7 +154,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
                 timeLabel.text = stopWatch.elapsedTimeString
                 
                 //MARK: 怕把線清掉
-//                map2.clearMap()
+                map2.clearMap()
                 
                 totalTrackedDistanceLabel.distance = (map2.session.totalTrackedDistance)
                 
@@ -292,6 +272,7 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
     
     // MARK: 長按功能_ UILongPressGestureRecognizer
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
+        
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
             let point: CGPoint = gesture.location(in: self.map2)
@@ -391,8 +372,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         
         setUpLabels()
         
-        praseGPXFile()
-        
         backButton()
 
         navigationController?.isNavigationBarHidden = true
@@ -401,9 +380,6 @@ class FollowJourneyViewController: BaseViewController, GPXFilesTableViewControll
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        praseGPXFile()
-    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -780,10 +756,9 @@ extension FollowJourneyViewController: CLLocationManagerDelegate {
     }
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        print("ViewController::didUpdateHeading true: \(newHeading.trueHeading) magnetic: \(newHeading.magneticHeading)")
-        print("mkMapcamera heading=\(map2.camera.heading)")
         map2.heading = newHeading // updates heading variable
         map2.updateHeading() // updates heading view's rotation
     }
     // MARK: 選擇路線後導航 (有時間在做)
 }
+

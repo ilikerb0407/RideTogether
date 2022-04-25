@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// 個人Pofile 頁面的TableViewCell 呈現資料
 
 protocol ProfileItemContent {
 
@@ -22,14 +23,14 @@ protocol ProfileItemContent {
 enum ProfileItemType : ProfileItemContent, CaseIterable {
     
     case routeRecord
-//    case recommendMap
+    case recommendMap
     
     var title: String {
         switch self {
         case .routeRecord:
-            return " 騎乘紀錄 "
-//        case .recommendMap:
-//            return "Recommend_Map"
+            return "騎乘紀錄"
+        case .recommendMap:
+            return "分享牆"
         }
         
     }
@@ -38,8 +39,8 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         switch self {
         case .routeRecord:
             return UIColor.orange
-//        case .recommendMap:
-//            return UIColor.blue
+        case .recommendMap:
+            return UIColor.orange
         }
     }
     
@@ -47,8 +48,8 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         switch self {
         case .routeRecord:
             return UIImage.init(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-//        case .recommendMap:
-//            return UIImage.init(systemName: "map")
+        case .recommendMap:
+            return UIImage.init(systemName: "map")
         }
     }
 }

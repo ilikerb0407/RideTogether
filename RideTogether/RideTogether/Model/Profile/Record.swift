@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 
+// 使用者個人騎乘紀錄
+
 struct Record: Codable, Hashable {
     
     var uid: String
@@ -17,6 +19,7 @@ struct Record: Codable, Hashable {
     var recordRef: String
     
     enum CodingKeys: String, CodingKey {
+        
         case uid
         case createdTime = "created_time"
         case recordId = "record_id"

@@ -174,6 +174,13 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         }
     }
     
+    func didLoadGPXFile(gpxRoot: GPXRoot) {
+        
+        map.importFromGPXRoot(gpxRoot)
+        
+        map.regionToGPXExtent()
+    }
+    
     func processTrackInfo(gpxRoot: GPXRoot) {
         var temArray: [Double] = []
         
@@ -247,14 +254,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             trackInfo.elevationDiff = maxValue - minValue
         }
     }
-    
-    
-    func didLoadGPXFile(gpxRoot: GPXRoot) {
-        
-        map.importFromGPXRoot(gpxRoot)
-        
-        map.regionToGPXExtent()
-    }
+   
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -279,6 +279,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
     }
     
+    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
             if let nextVC = segue.destination as? FollowJourneyViewController {

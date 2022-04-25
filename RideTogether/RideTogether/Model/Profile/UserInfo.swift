@@ -36,4 +36,5 @@ struct UserInfo: Codable {
         self.totalGroups = 0
         self.blockList = []
     }
+    
 }

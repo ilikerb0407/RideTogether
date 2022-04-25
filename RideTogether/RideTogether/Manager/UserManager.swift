@@ -12,6 +12,8 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorageSwift
 
+// MARK: 之後登入用得到
+
 class UserManager {
 //    
     let userId = Auth.auth().currentUser?.uid
@@ -46,33 +48,33 @@ class UserManager {
 //        completion(.success("Success"))
 //    }
 //    
-//    func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
-//        
-//        let docRef = dataBase.collection(usersCollection).document(uid)
-//        
-//        docRef.getDocument {(document, error) in
-//            
-//            guard let document = document else { return }
-//            
-//            if let error = error {
-//                
-//                completion(.failure(error))
-//                
-//            } else {
-//                
-//                do {
-//                    if let userData = try document.data(as: UserInfo.self, decoder: Firestore.Decoder()) {
-//                        
-//                        completion(.success(userData))
-//                    }
-//                    
-//                } catch {
-//                    
-//                    completion(.failure(error))
-//                }
-//            }
-//        }
-//    }
+    func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
+        
+        let docRef = dataBase.collection(usersCollection).document(uid)
+        
+        docRef.getDocument {(document, error) in
+            
+            guard let document = document else { return }
+            
+            if let error = error {
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                do {
+                    if let userData = try document.data(as: UserInfo.self, decoder: Firestore.Decoder()) {
+                        
+                        completion(.success(userData))
+                    }
+                    
+                } catch {
+                    
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 //    
 //    func uploadUserPicture(imageData: Data, completion: @escaping (Result<URL, Error>) -> Void) {
 //
