@@ -117,6 +117,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="zW4-gP-sTE">
+                        <rect key="frame" x="236" y="124" width="99" height="24"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0z-Ke-TVp">
+                                <rect key="frame" x="0.0" y="0.0" width="41" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阿富" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2M-0J-duZ">
+                                <rect key="frame" x="58" y="0.0" width="41" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="jBH-LX-WmQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="2Wx-YN-tN8"/>
@@ -125,10 +142,12 @@
                     <constraint firstAttribute="trailingMargin" secondItem="8YD-X6-1HH" secondAttribute="trailing" constant="152" id="BgJ-kc-Zcl"/>
                     <constraint firstItem="AEF-pW-fWk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Eet-0Q-oip"/>
                     <constraint firstItem="afL-pq-HnA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ILW-4a-b27"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zW4-gP-sTE" secondAttribute="trailing" constant="100" id="LEG-1H-fG5"/>
                     <constraint firstAttribute="trailing" secondItem="7lg-6G-X0y" secondAttribute="trailing" constant="20" id="NmG-G7-FYH"/>
                     <constraint firstItem="P7G-Yv-rBp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ogm-0x-W19"/>
                     <constraint firstItem="P7G-Yv-rBp" firstAttribute="top" secondItem="AEF-pW-fWk" secondAttribute="bottom" constant="8" id="Ov3-ef-t9P"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AEF-pW-fWk" secondAttribute="trailing" id="PEo-Go-exP"/>
+                    <constraint firstItem="zW4-gP-sTE" firstAttribute="top" secondItem="AEF-pW-fWk" secondAttribute="bottom" constant="12" id="W2f-6B-ter"/>
                     <constraint firstItem="afL-pq-HnA" firstAttribute="top" secondItem="P7G-Yv-rBp" secondAttribute="bottom" constant="8" id="W83-0d-G1H"/>
                     <constraint firstItem="nAp-ZJ-6A7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="YFD-X7-pWK"/>
                     <constraint firstItem="Mj9-61-uno" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lIq-z5-Zhc"/>
@@ -146,8 +165,14 @@
             <connections>
                 <outlet property="gButton" destination="7lg-6G-X0y" id="y5t-Oh-r4M"/>
                 <outlet property="hostButton" destination="jBH-LX-WmQ" id="QHh-KE-NTw"/>
+                <outlet property="hostName" destination="h2M-0J-duZ" id="f8x-2v-dZv"/>
+                <outlet property="note" destination="rN4-yz-59g" id="d5c-oW-LEn"/>
                 <outlet property="numberOfPeople" destination="9r3-1V-D4c" id="56f-Pr-v5I"/>
+                <outlet property="timeLabel" destination="8YD-X6-1HH" id="ame-FS-4IF"/>
                 <outlet property="trailName" destination="OKQ-AB-3Bn" id="dre-hU-6WI"/>
+                <outlet property="travelDate" destination="nAp-ZJ-6A7" id="nUh-Fv-Weq"/>
+                <outlet property="travelTime" destination="XYt-Jd-Ouv" id="6vG-AQ-vJK"/>
+                <outlet property="travelTimePicker" destination="3z3-fr-fmQ" id="5dh-lB-v3q"/>
             </connections>
             <point key="canvasLocation" x="229.71014492753625" y="186.16071428571428"/>
         </tableViewCell>

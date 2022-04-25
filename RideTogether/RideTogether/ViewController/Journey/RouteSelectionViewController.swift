@@ -66,6 +66,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         
         guard let clouds = weatherdata?.weather[0].main else { return }
         cloud.text = "\(clouds)"
+        
+        
     }
     
     func sendRoute(map: DrawRoute) {
