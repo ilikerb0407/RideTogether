@@ -158,7 +158,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             //            map.removeWaypoint(waypoint)
             //            guide(mapView, didSelect: view)
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
-            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .default) { _ in
+            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                 map.removeWaypoint(waypoint)
                 map.removeOverlays(map.overlays)
             }
@@ -166,7 +166,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
             let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
             
-            var routeName = UIAlertAction(title: "Destionation= \(destination!.thoroughfare ?? "鄉間小路")", style: .destructive) {_ in
+            var routeName = UIAlertAction(title: "Destionation= \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
                 
                 
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
@@ -219,18 +219,16 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         
-        
         var num = 0
-        
         // swiftlint:disable force_cast
         guard let gpxMapView = mapView as? GPXMapView else { return }
 //        let gpxMapView = mapView as! GPXMapView
-        
         var hasImpacted = false
         //adds the pins with an animation
         for object in views {
             num += 1
             let annotationView = object as MKAnnotationView
+            guide(gpxMapView, didSelect: annotationView)
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
                 if gpxMapView.headingImageView == nil {
@@ -320,11 +318,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
                 return
             }
             
-            
             self.fetchNextRoute()
         }
     }
-    
-    
-    
 }
