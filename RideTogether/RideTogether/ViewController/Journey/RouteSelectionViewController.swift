@@ -30,6 +30,9 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     @IBOutlet weak var wind: UILabel!
     
+    @IBOutlet weak var cloud: UILabel!
+    
+    
     @IBAction func getweatherData(_ sender: Any) {
         
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
@@ -61,6 +64,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
         wind.text = "\(swind)km/h"
         
+        guard let clouds = weatherdata?.weather[0].main else { return }
+        cloud.text = "\(clouds)"
     }
     
     func sendRoute(map: DrawRoute) {
