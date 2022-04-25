@@ -57,6 +57,7 @@
 		23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */; };
 		23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */; };
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
+		23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */; };
 		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -169,6 +170,7 @@
 		23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
+		23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */,
 				2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */,
+				23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */,
 				23A84A772812E63800DD8D39 /* JoinViewController.swift */,
 			);
 			path = Group;
@@ -746,6 +749,7 @@
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
+				23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
