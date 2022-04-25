@@ -37,10 +37,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="rIF-tM-mUp"/>
+                    <connections>
+                        <segue destination="ogp-fI-TYw" kind="show" identifier="toGroupChat" id="cSV-F9-TOw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="125" y="41"/>
+        </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="f5C-ek-rIL">
+            <objects>
+                <viewController storyboardIdentifier="ChatRoomViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ogp-fI-TYw" customClass="ChatRoomViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9hz-GR-aOP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dnf-RX-uvb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1tG-Yx-cVA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8j-kA-jOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="38"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="tR9-si-EUl">

@@ -110,7 +110,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         }
     }
     
-    func setUpCell(group: Group, cashe: UserInfo, userStatus: GroupStatus) {
+    func setUpCell(group: Group, cache: UserInfo, userStatus: GroupStatus) {
         
         self.groupInfo = group
         
@@ -130,7 +130,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         numberOfPeople.text = "\(counts)/\(upperlimit)"
         
-        hostName.text = cashe.userName
+        hostName.text = cache.userName
         
         note.text = group.note
         
@@ -159,10 +159,9 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
     }
     
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         
         selectionStyle = .none
         

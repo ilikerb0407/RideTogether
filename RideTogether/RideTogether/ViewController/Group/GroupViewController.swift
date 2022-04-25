@@ -327,6 +327,28 @@ extension GroupViewController: UITableViewDelegate {
         100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var sender = [Group]()
+        
+        if isSearching {
+            
+            sender = searchGroups
+            
+        } else {
+            
+            if onlyUserGroup {
+                
+                sender = myGroups
+                
+            } else {
+                
+                sender = inActivityGroup
+            }
+        }
+        performSegue(withIdentifier: SegueIdentifier.groupChat.rawValue, sender: sender[indexPath.row])
+    }
+    
 }
 
 // MARK: - TableView Data Source -
