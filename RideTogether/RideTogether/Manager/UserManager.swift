@@ -30,23 +30,23 @@ class UserManager {
 //    
     let usersCollection = Collection.users.rawValue
 //    
-//    func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
-//        
-//        let uid = userInfo.uid
-//        
-//        let document = dataBase.collection(usersCollection).document(uid)
-//        
-//        do {
-//            
-//            try document.setData(from: userInfo)
-//            
-//        } catch {
-//            
-//            completion(.failure(error))
-//        }
-//        
-//        completion(.success("Success"))
-//    }
+    func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let uid = userInfo.uid
+        
+        let document = dataBase.collection(usersCollection).document(uid)
+        
+        do {
+            
+            try document.setData(from: userInfo)
+            
+        } catch {
+            
+            completion(.failure(error))
+        }
+        
+        completion(.success("Success"))
+    }
 //    
     func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         

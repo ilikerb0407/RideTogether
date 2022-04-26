@@ -20,6 +20,13 @@ class GroupViewController: BaseViewController, reload {
         self.table?.reloadData()
     }
     
+    private lazy var cache = [String: UserInfo]() {
+        
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     var table: UITableView?
 
 
@@ -84,6 +91,34 @@ class GroupViewController: BaseViewController, reload {
         
         table?.delegate = self
         
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SegueIdentifier.groupChat.rawValue {
+            if let chatRoomVC = segue.destination as? ChatRoomViewController {
+                
+                if let groupInfo = sender as? Group {
+                    
+                    chatRoomVC.groupInfo = groupInfo
+                    
+                    chatRoomVC.cache = cache
+                }
+            }
+        }
+        
+        if segue.identifier == SegueIdentifier.requestList.rawValue {
+            
+            if let requestVC = segue.destination as? JoinViewController {
+                
+                if let requests = sender as? [Request] {
+                    
+                    requestVC.requests = requests
+                }
+            }
+        }
     }
     
     func setBuildTeamButton() {

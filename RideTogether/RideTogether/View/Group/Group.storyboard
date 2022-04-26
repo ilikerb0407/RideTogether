@@ -39,6 +39,7 @@
                     <navigationItem key="navigationItem" id="rIF-tM-mUp"/>
                     <connections>
                         <segue destination="ogp-fI-TYw" kind="show" identifier="toGroupChat" id="cSV-F9-TOw"/>
+                        <segue destination="fUT-qe-iBH" kind="show" identifier="toRequestList" id="AUf-dX-qMX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

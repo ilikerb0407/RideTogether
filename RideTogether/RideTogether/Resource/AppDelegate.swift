@@ -10,6 +10,7 @@ import Firebase
 import IQKeyboardManagerSwift
 import CoreData
 
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -37,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: screen rotation
     
-    var shouldAutorotate = false
+    var shouldAutorotate = true
+    
     func application(_ application: UIApplication,
     supportedInterfaceOrientationsFor window: UIWindow?) ->
     UIInterfaceOrientationMask {
