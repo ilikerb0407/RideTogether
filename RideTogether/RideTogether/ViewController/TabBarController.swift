@@ -30,6 +30,7 @@ private enum Tab {
         case .journey: controller = UIStoryboard.journey.instantiateInitialViewController()!
             
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
+        
         }
         
         return controller
@@ -43,7 +44,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         return String(describing: self)
     }
     
-    private let tabs: [Tab] = [.home, .group, .journey, .profile]
+    private let tabs: [Tab] = [ .journey, .home , .group , .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()

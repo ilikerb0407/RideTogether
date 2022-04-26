@@ -94,7 +94,6 @@ class GroupViewController: BaseViewController, reload {
     }
     
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SegueIdentifier.groupChat.rawValue {
@@ -129,6 +128,7 @@ class GroupViewController: BaseViewController, reload {
     }
     
     @objc func creatGroup() {
+        
 //       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)

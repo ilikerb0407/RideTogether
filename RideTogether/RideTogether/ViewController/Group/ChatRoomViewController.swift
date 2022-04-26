@@ -73,10 +73,8 @@ class ChatRoomViewController: BaseViewController {
         }
     }
     
-    
     func fetchMemberDate() {
-        
-        groupInfo?.userIds.forEach{ fetchUserData(uid: $0) }
+        groupInfo?.userIds.forEach { fetchUserData(uid: $0) }
     
     }
     
@@ -126,7 +124,6 @@ class ChatRoomViewController: BaseViewController {
             headerView?.gButton.setTitle("已送出申請", for: .normal)
             
             headerView?.gButton.isEnabled = false
-            
             
         case .isInGroup:
             
@@ -252,14 +249,11 @@ class ChatRoomViewController: BaseViewController {
         ])
     }
     
-    
 }
 
 extension ChatRoomViewController: UITableViewDelegate {
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let headerView : RequestTableViewCell = .loadFromNib()
         
         self.headerView = headerView
@@ -277,7 +271,6 @@ extension ChatRoomViewController: UITableViewDelegate {
         
     }
     
-    
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         200
     }
@@ -294,6 +287,4 @@ extension ChatRoomViewController: UITableViewDelegate {
         200
     }
     
-    
 }
-
