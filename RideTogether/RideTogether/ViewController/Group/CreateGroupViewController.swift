@@ -140,8 +140,8 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func sendPost() {
         
-//        guard let hostId = Auth.auth().currentUser?.uid else { return }
-         let hostId = "阿富"
+        guard let hostId = Auth.auth().currentUser?.uid else { return }
+//         let hostId = "阿富"
         
         textViewDidEndEditing(notes)
         

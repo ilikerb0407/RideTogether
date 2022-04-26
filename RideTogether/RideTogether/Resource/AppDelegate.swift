@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if
             let userId = Auth.auth().currentUser {
-            print ("\(userId.uid)and \(userId.email)")
+            print ("\(userId.uid) and \(userId.email)")
         }
         return true
     }

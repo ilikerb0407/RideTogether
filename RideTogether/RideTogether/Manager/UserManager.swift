@@ -76,122 +76,120 @@ class UserManager {
         }
     }
 //    
-//    func uploadUserPicture(imageData: Data, completion: @escaping (Result<URL, Error>) -> Void) {
-//
-////        let userId = userInfo.uid
-//
-////        let spaceRef = storageRef.child("pictures").child(userId)
-//        let spaceRef = storageRef.child("pictures")
-//
-//        spaceRef.putData(imageData, metadata: nil) { result in
-//
-//            switch result {
-//
-//            case .success(_):
-//
-//                spaceRef.downloadURL { result in
-//
-//                    switch result {
-//
-//                    case .success(let url):
-//
-//                        completion(.success(url))
-//
-//                        self.updateImageToDb(fileURL: url)
-//
-//                    case .failure(let error):
-//
-//                        completion(.failure(error))
-//                    }
-//                }
-//
-//            case .failure(let error):
-//
-//                completion(.failure(error))
-//            }
-//        }
-//    }
-//    
-//    func updateImageToDb(fileURL: URL) {
-//        
-//        let userId = userInfo.uid
-//        
-//        let docRef = dataBase.collection(usersCollection).document(userId)
-//        let docRef = dataBase.collection(usersCollection).document()
-//        
-//        userInfo.pictureRef = fileURL.absoluteString
-//        
-//        do {
-//            
-//            try docRef.setData(from: userInfo)
-//            
-//        } catch {
-//            
-//            print("error")
-//        }
-//        
-//        print("sucessfully")
-//    }
-//    
-//    func updateUserName(name: String) {
-//        
-//        userInfo.userName = name
-//        
-//        let userId = userInfo.uid
-//        
-//        let post = [UserInfo.CodingKeys.userName.rawValue: name]
-//        
-//        let docRef = dataBase.collection(usersCollection).document(userId)
-//        
-//        docRef.updateData(post) { error in
-//            
-//            if let error = error {
-//                
-//                print("Error updating document: \(error)")
-//                
-//            } else {
-//                
-//                print("User name successfully updated")
-//            }
-//        }
-//    }
-//    
-//    func updateUserGroupRecords(numOfGroups: Int, numOfPartners: Int) {
-//        
-//        userInfo.totalGroups = numOfGroups
-//        userInfo.totalFriends = numOfPartners
-//        
-//        let userId = userInfo.uid
-//        
-//        let post = [UserInfo.CodingKeys.totalGroups.rawValue: numOfGroups,
-//                    UserInfo.CodingKeys.totalFriends.rawValue: numOfPartners
-//        ]
-//        
-//        let docRef = dataBase.collection(usersCollection).document(userId)
-//        
-//        docRef.updateData(post) { error in
-//            
-//            if let error = error {
-//                
-//                print("Error updating document: \(error)")
-//                
-//            } else {
-//                
-//                print("User name successfully updated")
-//            }
-//        }
-//    }
+    func uploadUserPicture(imageData: Data, completion: @escaping (Result<URL, Error>) -> Void) {
+
+        let userId = userInfo.uid
+
+        let spaceRef = storageRef.child("pictures").child(userId)
+
+        spaceRef.putData(imageData, metadata: nil) { result in
+
+            switch result {
+
+            case .success(_):
+
+                spaceRef.downloadURL { result in
+
+                    switch result {
+
+                    case .success(let url):
+
+                        completion(.success(url))
+
+                        self.updateImageToDb(fileURL: url)
+
+                    case .failure(let error):
+
+                        completion(.failure(error))
+                    }
+                }
+
+            case .failure(let error):
+
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func updateImageToDb(fileURL: URL) {
+        
+        let userId = userInfo.uid
+        
+        let docRef = dataBase.collection(usersCollection).document(userId)
+        
+        userInfo.pictureRef = fileURL.absoluteString
+        
+        do {
+            
+            try docRef.setData(from: userInfo)
+            
+        } catch {
+            
+            print("error")
+        }
+        
+        print("sucessfully")
+    }
+    
+    func updateUserName(name: String) {
+        
+        userInfo.userName = name
+        
+        let userId = userInfo.uid
+        
+        let post = [UserInfo.CodingKeys.userName.rawValue: name]
+        
+        let docRef = dataBase.collection(usersCollection).document(userId)
+        
+        docRef.updateData(post) { error in
+            
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+            } else {
+                
+                print("User name successfully updated")
+            }
+        }
+    }
+    
+    func updateUserGroupRecords(numOfGroups: Int, numOfPartners: Int) {
+        
+        userInfo.totalGroups = numOfGroups
+        userInfo.totalFriends = numOfPartners
+        
+        let userId = userInfo.uid
+        
+        let post = [UserInfo.CodingKeys.totalGroups.rawValue: numOfGroups,
+                    UserInfo.CodingKeys.totalFriends.rawValue: numOfPartners
+        ]
+        
+        let docRef = dataBase.collection(usersCollection).document(userId)
+        
+        docRef.updateData(post) { error in
+            
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+            } else {
+                
+                print("User name successfully updated")
+            }
+        }
+    }
 //    
     func updateUserTrackLength(length: Double) {
         
         userInfo.totalLength += length
         
-//        let userId = userInfo.uid
+        let userId = userInfo.uid
         
         let post = [UserInfo.CodingKeys.totalLength.rawValue: userInfo.totalLength]
         
-//       let docRef = dataBase.collection(usersCollection).document(userId)
-        let docRef = dataBase.collection(usersCollection).document()
+       let docRef = dataBase.collection(usersCollection).document(userId)
+//        let docRef = dataBase.collection(usersCollection).document()
         
         docRef.updateData(post) { error in
             

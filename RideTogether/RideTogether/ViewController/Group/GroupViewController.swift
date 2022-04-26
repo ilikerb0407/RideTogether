@@ -186,7 +186,7 @@ class GroupViewController: BaseViewController, reload {
     
     // MARK: 抓資料
     
-    var filteredGroups = [Group]()
+//    var filteredGroups = [Group]()
     
     
     func fetchGroupData() {
@@ -197,39 +197,30 @@ class GroupViewController: BaseViewController, reload {
                 
             case .success(let groups):
                 
-                filteredGroups = groups
+                var filteredGroups = [Group]()
                 
-                filteredGroups.sort { $0.date.seconds < $1.date.seconds }
+                for group in groups where self.userInfo.blockList?.contains(group.hostId) == false {
+                    
+                    filteredGroups.append(group)
+                }
                 
-                
-                
-//                inActivityGroup = groups
-                
-//                var filteredGroups = [Group]()
-                
-//                for group in groups where self.userInfo.blockList?.contains(group.hostId) == false {
-//
-//                    filteredGroups.append(group)
-//                }
-                
-                self.myGroups = filteredGroups.filter { $0.isExpired == true }
+                self.myGroups = filteredGroups.filter {
+                    $0.userIds.contains(self.userInfo.uid)
+                }
                 
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
                 
-//                self.rearrangeMyGroup(groups: self.myGroups)
-                rearrangeMyGroup(groups: filteredGroups)
+                self.rearrangeMyGroup(groups: self.myGroups)
                 
-                tableView.reloadData()
-                
-//                filteredGroups.forEach { group in
-//
-//                    guard self.cache[group.hostId] != nil else {
-//
-//                        self.fetchUserData(uid: group.hostId)
-//
-//                        return
-//                    }
-//                }
+                filteredGroups.forEach { group in
+                    
+                    guard self.cache[group.hostId] != nil else {
+                        
+                        self.fetchUserData(uid: group.hostId)
+                        
+                        return
+                    }
+                }
                 
             case .failure(let error):
                 
@@ -237,9 +228,24 @@ class GroupViewController: BaseViewController, reload {
             }
         }
     }
+    func fetchUserData(uid: String) {
+        
+        UserManager.shared.fetchUserInfo(uid: uid, completion: { result in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                self.cache[uid] = user
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        })
+    }
     
-    
-    
+
     
     // MARK: header
     
@@ -430,9 +436,9 @@ extension GroupViewController: UITableViewDataSource {
                 group = inActivityGroup[indexPath.row]
             }
         }
-        cell.setUpCell(group: group, hostname: group.hostId )
         
-//      cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+      cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+
         
         return cell
     }
