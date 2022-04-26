@@ -13,7 +13,6 @@ import FirebaseAuth
 class ChatRoomViewController: BaseViewController {
     
     
-    
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
     var groupInfo: Group?

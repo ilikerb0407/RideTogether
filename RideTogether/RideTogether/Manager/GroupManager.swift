@@ -115,6 +115,7 @@ class GroupManager {
         completion(.success("Success"))
     }
     
+    
     func sendRequest(request: Request, completion: (Result<String, Error>) -> Void) {
         
         let document = dataBase.collection(requestsCollection).document()

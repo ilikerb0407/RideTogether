@@ -142,10 +142,15 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         switch userStatus {
             
         case .ishost:
+            
+            hostButton.isHidden = false
+            
             gButton.setTitle("編輯資訊", for: .normal)
+            
         case .notInGroup:
             gButton.setTitle("送出申請", for: .normal)
             guard counts != upperlimit else {
+                
                 gButton.setTitle("人滿～～為患", for: .normal)
                 gButton.isEnabled = false
                 
@@ -153,6 +158,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             }
             
         case .isInGroup:
+            
             gButton.setTitle("退出隊伍", for: .normal)
         }
         
