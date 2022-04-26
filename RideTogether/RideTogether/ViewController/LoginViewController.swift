@@ -19,9 +19,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
     }
     
-
-    
-    
     // MARK: - Class Properties -
     
     fileprivate var currentNonce: String?
@@ -73,24 +70,12 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     func performSignIn() {
         
-        let request = createAppleIDRequest()
-        
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        
-        authorizationController.delegate = self
-        
-        authorizationController.presentationContextProvider = self
-        
-        authorizationController.performRequests()
-    }
-    
-    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
-        
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        
-        let request = appleIDProvider.createRequest()
-        
-        request.requestedScopes = [.fullName]
+        let provider = ASAuthorizationAppleIDProvider()
+                let request = provider.createRequest()
+                request.requestedScopes = [.fullName, .email]
+                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+                authorizationController.delegate = self
+                authorizationController.performRequests()
         
         let nonce = randomNonceString()
         
@@ -98,8 +83,18 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         currentNonce = nonce
         
-        return request
     }
+    
+//    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+//
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+//
+//        let request = appleIDProvider.createRequest()
+//
+//        request.requestedScopes = [.fullName, .email]
+//
+//        return request
+//    }
     
     private func sha256(_ input: String) -> String {
         
@@ -113,6 +108,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         return hashString
     }
+    
+
     
     func loginButtonFadeIn () {
         
@@ -180,6 +177,20 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
+        
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                   let userId = credential.user
+                   let fullname = credential.fullName
+                   let email = credential.email
+                   let idToken = credential.identityToken
+                   print("---------\(userId)")
+                   print("---------\(fullname)")
+                   print("---------\(email)")
+                   print("---------\(idToken)")
+//                   guard let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else { return }
+//                   vc.modalPresentationStyle = .fullScreen
+//                   self.present(vc, animated: true)
+               }
         
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             
