@@ -77,8 +77,10 @@ extension ProfileViewController : UITableViewDelegate {
                 self.signOut()
             }
             let removeAccount = UIAlertAction(title: AccountActionSheet.allCases[1].rawValue, style: .destructive) { _ in
-        
-                self.showAlertAction(title: "刪除帳號", message: "請來信至kevin12342247@gmail.com")
+                
+                self.deleteAccount()
+                
+                
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
             showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
@@ -93,13 +95,22 @@ extension ProfileViewController : UITableViewDelegate {
 
         user?.delete { error in
           if let error = error {
+              
             print ("\(error)")
               
           } else {
               print ("delete succes")
               UserManager.shared.deleteUserInfo(uid: user!.uid)
+              
               }
           }
+        
+        guard let loginVC = UIStoryboard.login.instantiateViewController(
+            identifier: LoginViewController.identifier) as? LoginViewController else { return }
+        
+        loginVC.modalPresentationStyle = .fullScreen
+        
+        present(loginVC, animated: true, completion: nil)
     }
     
     func signOut() {
@@ -159,5 +170,6 @@ extension ProfileViewController: UITableViewDataSource {
 
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     
 }

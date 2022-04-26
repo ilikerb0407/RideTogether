@@ -42,8 +42,8 @@ class RecordManager {
             //▿ pointer : 0x000000013510ace0
             //  - pointerValue : 5185252576
             // 還未辨識userId
-            //  let recordRef = storageRef.child("records").child(userId)
-            let recordRef = storageRef.child("records")
+            let recordRef = storageRef.child("records").child(userId)
+//            let recordRef = storageRef.child("records")
             //  gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(fileName)
 
@@ -92,7 +92,7 @@ class RecordManager {
         
         var record = Record()
         
-//        record.uid = userId
+        record.uid = userId
         
         record.recordId = document.documentID
         
@@ -114,9 +114,9 @@ class RecordManager {
     
     func fetchRecords(completion: @escaping (Result<[Record],Error>) -> Void) {
         
-//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
+        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
         
-        let collection = dataBase.collection(recordsCollection)
+//        let collection = dataBase.collection(recordsCollection)
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
@@ -146,9 +146,9 @@ class RecordManager {
     
     func fetchOneRecord(completion: @escaping (Result<Record,Error>) -> Void) {
         
-//        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
+        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
         
-        let collection = dataBase.collection(recordsCollection)
+//        let collection = dataBase.collection(recordsCollection)
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
@@ -178,9 +178,9 @@ class RecordManager {
 
     func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-//        let recordRef = storageRef.child("records").child(userId)
+        let recordRef = storageRef.child("records").child(userId)
         
-        let recordRef = storageRef.child("records")
+//        let recordRef = storageRef.child("records")
         
         let spaceRef = recordRef.child(fileName)
         
@@ -251,6 +251,5 @@ class RecordManager {
             }
         }
     }
-    
-    //MARK: 推薦路線的方式用先從storage 下載下來後在push 在database 上面，最後在讀取下來 在塗鴉牆上面
+
 }

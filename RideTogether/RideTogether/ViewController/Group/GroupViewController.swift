@@ -200,7 +200,7 @@ class GroupViewController: BaseViewController, reload {
                 var filteredGroups = [Group]()
                 
                 for group in groups where self.userInfo.blockList?.contains(group.hostId) == false {
-                    
+
                     filteredGroups.append(group)
                 }
                 
