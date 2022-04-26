@@ -23,6 +23,7 @@ class SignUpViewController: BaseViewController {
     @objc func signUp() {
         
         if signUpEmail.text == "" {
+            
             let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -31,9 +32,11 @@ class SignUpViewController: BaseViewController {
             present(alertController, animated: true, completion: nil)
             
         } else {
+            
             Auth.auth().createUser(withEmail: signUpEmail.text!, password: signUpEmail.text!) { (user, error) in
                 
                 if error == nil {
+                    
                     print("You have successfully signed up")
                     
                     if let isNewUser = user?.additionalUserInfo?.isNewUser,
@@ -52,6 +55,7 @@ class SignUpViewController: BaseViewController {
                                     
                                 case .success:
                                     
+                                    self.fetchUserInfo(uid: uid)
                                     
                                     print("User Sign up successfully")
                                     
@@ -60,15 +64,24 @@ class SignUpViewController: BaseViewController {
                                     print("Sign up failure: \(error)")
                                 }
                             }
+                        } else {
+                            
+                            self.fetchUserInfo(uid: uid)
+                            
                         }
+                        
                     }
                     
+                } else {
+                        let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-                    
-                    self.present(vc!, animated: true, completion: nil)
-                    
-                }
+                
             }
         }
         

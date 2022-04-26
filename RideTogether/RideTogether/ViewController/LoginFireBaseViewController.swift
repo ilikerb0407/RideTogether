@@ -25,11 +25,8 @@ class LoginFireBaseViewController: UIViewController {
     @objc func loginwithFB() {
         
         
-        
-        
         if self.loginEmail.text == "" || self.loginPassword.text == "" {
             
-            //Alert to tell the user that there was an error because they didn't fill anything in the textfields because they didn't fill anything in
             
             let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
             
@@ -40,62 +37,46 @@ class LoginFireBaseViewController: UIViewController {
             
         } else {
             
-            Auth.auth().signIn(withEmail: self.loginEmail.text!, password: self.loginPassword.text!) { (user, error) in
+            Auth.auth().signIn(withEmail: self.loginEmail.text!, password: self.loginPassword.text!) { ( user, error) in
                 
                 if error == nil {
                     
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
-                    
-                    // MARK: fetchUserData
-                    
-                    if Auth.auth().currentUser != nil {
+                    if let isNewUser = user?.additionalUserInfo?.isNewUser,
+                       
+                       let uid = user?.user.uid {
                         
-                        if let uid = Auth.auth().currentUser?.uid {
+                        if isNewUser {
                             
-                            print("----------Current User ID: \(uid)----------")
+                            self.userInfo.uid = uid
+                            self.userInfo.userName = "新使用者"
                             
-                            UserManager.shared.fetchUserInfo(uid: uid) { result in
+                            UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                                 
                                 switch result {
                                     
-                                case .success(let userInfo):
+                                case .success:
                                     
-                                    UserManager.shared.userInfo = userInfo
+                                    self.fetchUserInfo(uid: uid)
                                     
-                                    guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-                                        identifier: TabBarController.identifier) as? TabBarController else { return }
-                                    
-                                    tabbarVC.modalPresentationStyle = .fullScreen
-                                    
-                                    self.present(tabbarVC, animated: true, completion: nil)
-                                    
-                                    
-                                    print("Fetch user info successfully")
+                                    print("User Sign up successfully")
                                     
                                 case .failure(let error):
                                     
-                                    print("Fetch user info failure: \(error)")
+                                    print("Sign up failure: \(error)")
                                 }
                             }
+                            
+                        } else {
+                            
+                            self.fetchUserInfo(uid: uid)
                         }
-                        
-                    } else {
-                        // 初始畫面
-                        guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-                            identifier: TabBarController.identifier) as? TabBarController else { return }
-                        
-                        tabbarVC.modalPresentationStyle = .fullScreen
-                        
-                        self.present(tabbarVC, animated: true, completion: nil)
-                        
-                        
                     }
                     
-//
-//                    //Go to the HomeViewController if the login is sucessful
-//                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController")
-//                    self.present(vc!, animated: true, completion: nil)
+                    
+                    //Go to the HomeViewController if the login is sucessful
+                    
                     
                 } else {
                     
@@ -108,10 +89,35 @@ class LoginFireBaseViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
+            
         }
-        
     }
     
+    func fetchUserInfo (uid: String) {
+        
+        UserManager.shared.fetchUserInfo(uid: uid) { result in
+            
+            switch result {
+                
+            case .success(let userInfo):
+                
+                UserManager.shared.userInfo = userInfo
+                
+                print("Fetch user info successfully")
+                //
+                guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                    identifier: TabBarController.identifier) as? TabBarController else { return }
+                
+                tabbarVC.modalPresentationStyle = .fullScreen
+                
+                self.present(tabbarVC, animated: true, completion: nil)
+                
+            case .failure(let error):
+                
+                print("Fetch user info failure: \(error)")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
