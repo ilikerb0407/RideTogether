@@ -17,9 +17,11 @@ class SignUpViewController: BaseViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     
+    private var userInfo = UserManager.shared.userInfo
     
     
     @objc func signUp() {
+        
         if signUpEmail.text == "" {
             let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
             
@@ -34,21 +36,68 @@ class SignUpViewController: BaseViewController {
                 if error == nil {
                     print("You have successfully signed up")
                     
+                    if let isNewUser = user?.additionalUserInfo?.isNewUser,
+                       
+                        let uid = user?.user.uid {
+                        
+                        if isNewUser {
+                            
+                            self.userInfo.uid = uid
+                            
+                            self.userInfo.userName = user?.user.displayName ?? "新使用者"
+                            
+                            UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
+                                
+                                switch result {
+                                    
+                                case .success:
+                                    
+                                    
+                                    print("User Sign up successfully")
+                                    
+                                case .failure(let error):
+                                    
+                                    print("Sign up failure: \(error)")
+                                }
+                            }
+                        }
+                    }
+                    
+                    
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
                     
                     self.present(vc!, animated: true, completion: nil)
                     
-                } else {
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
         
+    }
+    
+    func fetchUserInfo (uid: String) {
+        
+        UserManager.shared.fetchUserInfo(uid: uid) { result in
+            
+            switch result {
+                
+            case .success(let userInfo):
+                
+                UserManager.shared.userInfo = userInfo
+                
+                print("Fetch user info successfully")
+                //
+                guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                    identifier: TabBarController.identifier) as? TabBarController else { return }
+                
+                tabbarVC.modalPresentationStyle = .fullScreen
+                
+                self.present(tabbarVC, animated: true, completion: nil)
+                
+            case .failure(let error):
+                
+                print("Fetch user info failure: \(error)")
+            }
+        }
     }
     
     
@@ -58,5 +107,5 @@ class SignUpViewController: BaseViewController {
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
     }
-
+    
 }

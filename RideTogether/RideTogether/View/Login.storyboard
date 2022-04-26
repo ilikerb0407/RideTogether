@@ -20,20 +20,18 @@
                                 <rect key="frame" x="20" y="244" width="374" height="418"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-uj-7LK">
-                                <rect key="frame" x="150" y="762" width="114" height="31"/>
+                                <rect key="frame" x="39" y="762" width="337" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="SignUp"/>
+                                <buttonConfiguration key="configuration" style="plain" title="SignUp [FireBase]"/>
                                 <connections>
-                                    <action selector="signUpWithFB:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cTB-Ak-Vv2"/>
                                     <segue destination="rJJ-2c-W4i" kind="show" id="tTS-x2-xHv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-y7-XZI">
-                                <rect key="frame" x="150" y="813" width="114" height="31"/>
+                                <rect key="frame" x="106" y="813" width="204" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="LogIn"/>
+                                <buttonConfiguration key="configuration" style="plain" title="LogIn [FireBase]"/>
                                 <connections>
-                                    <action selector="signUpWithFB:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="y27-aJ-4NP"/>
                                     <segue destination="IFs-Qk-gum" kind="show" id="FgU-wg-gwK"/>
                                 </connections>
                             </button>
@@ -44,13 +42,14 @@
                             <constraint firstItem="MXd-uj-7LK" firstAttribute="top" secondItem="lbJ-sp-oc6" secondAttribute="bottom" constant="100" id="1Sg-sd-HJI"/>
                             <constraint firstItem="lbJ-sp-oc6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="200" id="2FX-si-wag"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lbJ-sp-oc6" secondAttribute="trailing" constant="20" id="SPJ-Iu-NeM"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Ut-y7-XZI" secondAttribute="trailing" constant="150" id="UX3-mI-gIE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8Ut-y7-XZI" secondAttribute="trailing" constant="104" id="UX3-mI-gIE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lbJ-sp-oc6" secondAttribute="bottom" constant="200" id="an6-iI-Kgs"/>
                             <constraint firstItem="8Ut-y7-XZI" firstAttribute="top" secondItem="MXd-uj-7LK" secondAttribute="bottom" constant="20" id="bJd-Tx-dsu"/>
-                            <constraint firstItem="MXd-uj-7LK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="150" id="ko9-jl-5nL"/>
+                            <constraint firstItem="MXd-uj-7LK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="39" id="ko9-jl-5nL"/>
                             <constraint firstItem="lbJ-sp-oc6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="nJq-SC-jKg"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MXd-uj-7LK" secondAttribute="trailing" constant="150" id="qp5-T4-0Rk"/>
-                            <constraint firstItem="8Ut-y7-XZI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="150" id="vTi-Tn-UdP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MXd-uj-7LK" secondAttribute="trailing" constant="38" id="qp5-T4-0Rk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8Ut-y7-XZI" secondAttribute="bottom" constant="18" id="tf8-QZ-Ys7"/>
+                            <constraint firstItem="8Ut-y7-XZI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="106" id="vTi-Tn-UdP"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -146,6 +145,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AbW-NK-dYN"/>
+                    <connections>
+                        <outlet property="loginButton" destination="ZPZ-wh-zVa" id="OKa-Qx-DN9"/>
+                        <outlet property="loginEmail" destination="AVc-uW-dE5" id="UmB-5y-aJ9"/>
+                        <outlet property="loginPassword" destination="KRQ-jy-rb8" id="53T-Zs-haR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDy-vQ-D2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

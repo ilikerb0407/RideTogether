@@ -231,6 +231,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 
                 if let isNewUser = authResult?.additionalUserInfo?.isNewUser,
+                   
                    let uid = authResult?.user.uid {
                     
                     if isNewUser {

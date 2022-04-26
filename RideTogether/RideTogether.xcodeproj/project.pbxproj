@@ -29,7 +29,6 @@
 		237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279A2817ED2C004F039F /* PickPhotoButton.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
 		237A279F28181F56004F039F /* LoginFireBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279E28181F56004F039F /* LoginFireBaseViewController.swift */; };
-		237A27A128182418004F039F /* FBUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A028182418004F039F /* FBUserManager.swift */; };
 		237A27A328182FE4004F039F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A228182FE4004F039F /* ProfileView.swift */; };
 		2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23838789280FCBFF00E9F4F4 /* GroupManager.swift */; };
 		2383878C280FCD9000E9F4F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878B280FCD9000E9F4F4 /* Group.swift */; };
@@ -152,7 +151,6 @@
 		237A279A2817ED2C004F039F /* PickPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPhotoButton.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		237A279E28181F56004F039F /* LoginFireBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFireBaseViewController.swift; sourceTree = "<group>"; };
-		237A27A028182418004F039F /* FBUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserManager.swift; sourceTree = "<group>"; };
 		237A27A228182FE4004F039F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		23838789280FCBFF00E9F4F4 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		2383878B280FCD9000E9F4F4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -531,7 +529,6 @@
 				231BCB3828067DBD00DE2343 /* MapsManager.swift */,
 				23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */,
 				23D1B78928006396000EDA70 /* UserManager.swift */,
-				237A27A028182418004F039F /* FBUserManager.swift */,
 				23838789280FCBFF00E9F4F4 /* GroupManager.swift */,
 				23C8871E281444B100E3319A /* WeatherManager.swift */,
 			);
@@ -793,7 +790,6 @@
 				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
 				237A279F28181F56004F039F /* LoginFireBaseViewController.swift in Sources */,
-				237A27A128182418004F039F /* FBUserManager.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
