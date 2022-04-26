@@ -34,7 +34,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpSignInButton()
         
         loginButtonFadeIn()
@@ -63,17 +63,12 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         loginButton.alpha = 0.0
     }
     
-    func setUpSignInWithFireBaseButton() {
-        let button = UIButton()
-        button.setTitle("Firebase Sign Up ", for: .normal)
-        button.addTarget(self, action: #selector(showUpSignUpVC), for: .touchUpInside)
+    
+    @IBAction func signUpWithFB(_ sender: Any) {
+        
         
     }
     
-    @objc func showUpSignUpVC() {
-        
-        
-    }
     
     // MARK: - Methods -
     
@@ -85,11 +80,11 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     func performSignIn() {
         
         let provider = ASAuthorizationAppleIDProvider()
-                let request = provider.createRequest()
-                request.requestedScopes = [.fullName, .email]
-                let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-                authorizationController.delegate = self
-                authorizationController.performRequests()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.performRequests()
         
         let nonce = randomNonceString()
         
@@ -99,16 +94,16 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
     }
     
-//    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
-//
-//        let appleIDProvider = ASAuthorizationAppleIDProvider()
-//
-//        let request = appleIDProvider.createRequest()
-//
-//        request.requestedScopes = [.fullName, .email]
-//
-//        return request
-//    }
+    //    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+    //
+    //        let appleIDProvider = ASAuthorizationAppleIDProvider()
+    //
+    //        let request = appleIDProvider.createRequest()
+    //
+    //        request.requestedScopes = [.fullName, .email]
+    //
+    //        return request
+    //    }
     
     private func sha256(_ input: String) -> String {
         
@@ -123,25 +118,25 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         return hashString
     }
     
-
+    
     
     func loginButtonFadeIn () {
         
         self.loginButton.alpha = 0.0
         
-//        self.agreementStackView.alpha = 0.0
+        //        self.agreementStackView.alpha = 0.0
         
-//        appLogo.translatesAutoresizingMaskIntoConstraints = false
+        //        appLogo.translatesAutoresizingMaskIntoConstraints = false
         
         UIView.animate(withDuration: 0.5, delay: 1) {
             
-//            self.logoTopConstrain.constant = 150
+            //            self.logoTopConstrain.constant = 150
         }
         
         UIView.animate(withDuration: 0.5, delay: 1.5) {
             
             self.loginButton.alpha = 1.0
-//            self.agreementStackView.alpha = 1.0
+            //            self.agreementStackView.alpha = 1.0
         }
     }
     
@@ -193,18 +188,18 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-                   let userId = credential.user
-                   let fullname = credential.fullName
-                   let email = credential.email
-                   let idToken = credential.identityToken
-                   print("---------\(userId)")
-                   print("---------\(fullname)")
-                   print("---------\(email)")
-                   print("---------\(idToken)")
-//                   guard let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else { return }
-//                   vc.modalPresentationStyle = .fullScreen
-//                   self.present(vc, animated: true)
-               }
+            let userId = credential.user
+            let fullname = credential.fullName
+            let email = credential.email
+            let idToken = credential.identityToken
+            print("---------\(userId)")
+            print("---------\(fullname)")
+            print("---------\(email)")
+            print("---------\(idToken)")
+            //                   guard let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else { return }
+            //                   vc.modalPresentationStyle = .fullScreen
+            //                   self.present(vc, animated: true)
+        }
         
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             
