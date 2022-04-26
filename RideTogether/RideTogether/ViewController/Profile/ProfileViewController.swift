@@ -10,6 +10,15 @@ import UIKit
 class ProfileViewController: BaseViewController {
 
     
+    
+
+    enum AccountActionSheet: String, CaseIterable {
+        
+        case signOut = "登出帳號"
+        case delete = "刪除帳號"
+        case cancel = "取消"
+    }
+    
     let items = ProfileItemType.allCases
     
     @IBOutlet weak var gView: UIView! {
@@ -26,7 +35,7 @@ class ProfileViewController: BaseViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.backgroundColor = .clear
-            tableView.isScrollEnabled = false
+            tableView.isScrollEnabled = true
         }
     }
     
@@ -62,20 +71,15 @@ extension ProfileViewController : UITableViewDelegate {
             let segueId = ProfileSegue.allCases[indexPath.row].rawValue
             performSegue(withIdentifier: segueId, sender: nil)
         case 2 :
-            let alert = UIAlertController(title: "選擇", message: "帳號設定", preferredStyle: .alert)
-            let logOut = UIAlertAction(title: "登出帳號", style: .default) { _ in
+            
+            let logOut = UIAlertAction(title: AccountActionSheet.allCases[0].rawValue , style: .default) { _ in
                 
             }
-            let removeAccount = UIAlertAction(title: "刪除帳號", style: .destructive) { _ in
+            let removeAccount = UIAlertAction(title: AccountActionSheet.allCases[1].rawValue, style: .destructive) { _ in
                 
             }
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
-            
-            alert.addAction(logOut)
-            alert.addAction(removeAccount)
-            alert.addAction(cancel)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
+            let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
+            showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
         default :
             return
         }
