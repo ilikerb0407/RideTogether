@@ -34,6 +34,21 @@
             </objects>
             <point key="canvasLocation" x="83" y="81"/>
         </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="AiW-6G-5dh">
+            <objects>
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rJJ-2c-W4i" customClass="SignUpViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="30f-Ra-0p1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dEM-cG-d6V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sug-We-rVv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="34"/>
+        </scene>
     </scenes>
     <resources>
         <image name="information" width="512" height="512"/>

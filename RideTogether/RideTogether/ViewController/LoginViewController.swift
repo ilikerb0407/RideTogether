@@ -30,6 +30,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +61,18 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         ])
         
         loginButton.alpha = 0.0
+    }
+    
+    func setUpSignInWithFireBaseButton() {
+        let button = UIButton()
+        button.setTitle("Firebase Sign Up ", for: .normal)
+        button.addTarget(self, action: #selector(showUpSignUpVC), for: .touchUpInside)
+        
+    }
+    
+    @objc func showUpSignUpVC() {
+        
+        
     }
     
     // MARK: - Methods -

@@ -93,6 +93,7 @@ extension ProfileViewController : UITableViewDelegate {
 
         user?.delete { error in
           if let error = error {
+              
             print ("\(error)")
               
           } else {
