@@ -140,16 +140,17 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func sendPost() {
         
-//        guard let hostId = Auth.auth().currentUser?.uid else { return }
+        guard let hostId = Auth.auth().currentUser?.uid else { return }
+//         let hostId = "阿富"
         
         textViewDidEndEditing(notes)
         
-//        group.hostId = hostId ?? "阿富"
-        group.hostId =  "阿富"
+        group.hostId = hostId
         
+//        group.hostId = hostId ?? "阿富"
         group.date = Timestamp(date: datePicker.date)
         
-//        group.userIds = [hostId]
+        group.userIds = [hostId]
         
         if group.date.checkIsExpired() {
             

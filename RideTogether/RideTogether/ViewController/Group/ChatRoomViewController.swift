@@ -33,8 +33,71 @@ class ChatRoomViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .C2
         
+        checkUserStatus()
+        
+//        setUpChatTextView()
+        
+        setUpTableView()
+        
+//        tableView.registerCellWithNib(identifier: GroupChatCell.identifier, bundle: nil)
+        
+//        addMessageListener()
+        
+        setNavigationBar()
+        
+//        setUpStatusBarView()
+        
+        fetchMemberDate()
+        
+//        configureDataSource()
     }
+    
+    func checkUserStatus() {
+        
+        guard let groupInfo = groupInfo else { return }
+        
+        let isInGroup = groupInfo.userIds.contains(userInfo.uid)
+        
+        if groupInfo.hostId == userInfo.uid {
+            
+            userStatus = .ishost
+            
+        } else {
+            
+            userStatus = isInGroup ? .isInGroup : .notInGroup
+            
+//            chatTextView.isHidden = isInGroup ? false : true
+            
+            self.navigationItem.rightBarButtonItem?.isEnabled = isInGroup ? true : false
+        }
+    }
+    
+    
+    func fetchMemberDate() {
+        
+        groupInfo?.userIds.forEach{ fetchUserData(uid: $0) }
+    
+    }
+    
+    func fetchUserData(uid: String) {
+        
+        UserManager.shared.fetchUserInfo(uid: uid, completion: { result in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                self.cache[user.uid] = user
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        })
+    }
+    
     
     @objc func didTapButton () {
         
@@ -70,7 +133,6 @@ class ChatRoomViewController: BaseViewController {
             
             leaveGroup()
         }
-        
         
     }
     
@@ -144,16 +206,60 @@ class ChatRoomViewController: BaseViewController {
         showAlertAction(title: "確認退出", message: nil, actions: [cancelAction, leaveAction])
     }
     
+    func setNavigationBar() {
+        
+        setNavigationBar(title: "\(groupInfo?.groupName ?? "揪團隊伍")")
+        
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        
+        let infoImage = UIImage(systemName: "info")
+        
+        rightButton.setImage(infoImage, for: .normal)
+        
+//        rightButton.addTarget(self, action: #selector(showMembers), for: .touchUpInside)
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
+    }
+    
+    func setUpTableView() {
+        
+        tableView = UITableView()
+        
+        tableView.backgroundColor = .C4
+        view.addSubview(tableView)
+        
+        if #available(iOS 15.0, *) {
+
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
+        tableView.backgroundColor = .white
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.separatorStyle = .none
+        
+        tableView.bounces = false
+        
+        NSLayoutConstraint.activate([
+            
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
     
 }
-
-
 
 extension ChatRoomViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         
         let headerView : RequestTableViewCell = .loadFromNib()
         
@@ -161,6 +267,34 @@ extension ChatRoomViewController: UITableViewDelegate {
         
         headerView.gButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
+        if let groupInfo = groupInfo,
+           
+           let userInfo = cache[groupInfo.hostId] {
+            
+            headerView.setUpCell(group: groupInfo, cache: userInfo, userStatus: userStatus)
+        }
+        
+        return headerView.contentView
+        
     }
     
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        200
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        300
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        300
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        200
+    }
+    
+    
 }
+
