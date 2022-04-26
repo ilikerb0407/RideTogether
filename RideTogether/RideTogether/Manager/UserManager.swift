@@ -29,6 +29,26 @@ class UserManager {
     lazy var dataBase = Firestore.firestore()
 //    
     let usersCollection = Collection.users.rawValue
+    
+    func deleteUserInfo (uid: String) {
+        
+        let uid = userInfo.uid
+        
+        let document = dataBase.collection(usersCollection).document(uid)
+        
+        do {
+            try document.delete { err in
+                
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                    print ("uid ========= \(uid)")
+                }
+            }
+        }
+        
+    }
 //    
     func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
         
@@ -188,7 +208,7 @@ class UserManager {
         
         let post = [UserInfo.CodingKeys.totalLength.rawValue: userInfo.totalLength]
         
-       let docRef = dataBase.collection(usersCollection).document(userId)
+        let docRef = dataBase.collection(usersCollection).document(userId)
 //        let docRef = dataBase.collection(usersCollection).document()
         
         docRef.updateData(post) { error in

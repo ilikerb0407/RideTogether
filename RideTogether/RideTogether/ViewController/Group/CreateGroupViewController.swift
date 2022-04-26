@@ -15,7 +15,6 @@ import RSKPlaceholderTextView
 import SwiftUI
 
 protocol reload {
-    
     func reload(result : Group)
 }
 
@@ -26,7 +25,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     var delegate: reload?
     
     @IBOutlet weak var sendData: UIButton! {
-        
         didSet{
             sendData.isUserInteractionEnabled = false
             sendData.alpha = 0.6
@@ -69,14 +67,12 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     }
     @IBOutlet weak var notes: UITextView!
     
-    
     @IBOutlet weak var note: UITextField! {
         didSet {
             
             note.delegate = self
         }
     }
-    
     
     private var textsWerefilled: Bool = false {
         
@@ -87,7 +83,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             sendData.alpha = textsWerefilled ? 1.0 : 0.5
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +102,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         setUpTextView()
         
     }
-    
     
     // MARK: - UI Settings -
     
@@ -187,7 +181,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
 
 // MARK: - TextField & TextView Delegate -
 
-extension CreateGroupViewController:  UITextViewDelegate {
+ extension CreateGroupViewController :  UITextViewDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -245,8 +239,6 @@ extension CreateGroupViewController:  UITextViewDelegate {
         checkTextsFilled()
     }
 }
-
-
 
 
 

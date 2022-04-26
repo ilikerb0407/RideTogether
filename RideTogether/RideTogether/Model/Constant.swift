@@ -28,13 +28,10 @@ enum SegueIdentifier: String {
 }
 
 
-
-
-
 enum ProfileSegue: String, CaseIterable {
     
     case record = "toRecord"
-    
+
     case recommendMap = "toRecommend"
     
     case account = "toAccount"

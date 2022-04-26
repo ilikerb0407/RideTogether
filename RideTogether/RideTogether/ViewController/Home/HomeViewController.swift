@@ -57,7 +57,7 @@ class HomeViewController: BaseViewController {
         
     }
     
-    func manageRouteData(){
+    func manageRouteData() {
         
         for route in routes {
             
@@ -74,7 +74,6 @@ class HomeViewController: BaseViewController {
         }
         
     }
-    
     
     func fetchTrailData() {
         MapsManager.shared.fetchRoutes { result in
