@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import AVFoundation
 
 class ProfileViewController: BaseViewController {
     
@@ -76,6 +77,8 @@ extension ProfileViewController : UITableViewDelegate {
                 self.signOut()
             }
             let removeAccount = UIAlertAction(title: AccountActionSheet.allCases[1].rawValue, style: .destructive) { _ in
+                
+                self.deleteAccount()
                 self.showAlertAction(title: "刪除帳號", message: "請來信至kevin12342247@gmail.com")
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
@@ -84,6 +87,23 @@ extension ProfileViewController : UITableViewDelegate {
             return
         }
     }
+    
+    func deleteAccount() {
+        
+        let user = Auth.auth().currentUser
+
+        user?.delete { error in
+          if let error = error {
+            print ("\(error)")
+              
+          } else {
+              print ("delete succes")
+        
+              }
+          }
+    }
+    
+    
     
     func signOut() {
         

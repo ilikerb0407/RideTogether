@@ -16,7 +16,7 @@ import FirebaseFirestore
 
 class RecordManager {
     
-//    var userId: String { UserManager.shared.userInfo.uid }
+    var userId: String { UserManager.shared.userInfo.uid }
     
     lazy var storage = Storage.storage()
     
