@@ -31,6 +31,7 @@ class RoutesTableViewCell: UITableViewCell {
     func setUpCell(model : Route) {
         routeTitle.text = model.routeName
         routeType.text = model.routeInfo
+        
     }
     
 }
