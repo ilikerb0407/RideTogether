@@ -17,8 +17,14 @@ class RouteTypes: UITableViewCell {
     func setUpCell(routetitle: String, routephoto: UIImage) {
         
         routeTitle.text = routetitle
+        
         routePhoto.image = routephoto
-        routePhoto.contentMode = .scaleAspectFit
+        
+        self.contentMode = .scaleAspectFill
+        
+        self.contentView.cornerRadius = contentView.borderWidth / 2
+        
+        self.routePhoto.cornerRadius = routePhoto.borderWidth / 2
         
     }
     
@@ -31,6 +37,7 @@ class RouteTypes: UITableViewCell {
         self.backgroundColor = .clear
         
         self.selectionStyle = .none
+        
     }
     
 }
