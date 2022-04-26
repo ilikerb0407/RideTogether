@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ProfileViewController: BaseViewController {
-
     
     
-
     enum AccountActionSheet: String, CaseIterable {
         
         case signOut = "登出帳號"
@@ -53,7 +53,7 @@ class ProfileViewController: BaseViewController {
     
 }
 extension ProfileViewController : UITableViewDelegate {
-  
+    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }
@@ -72,16 +72,43 @@ extension ProfileViewController : UITableViewDelegate {
             performSegue(withIdentifier: segueId, sender: nil)
         case 2 :
             
-            let logOut = UIAlertAction(title: AccountActionSheet.allCases[0].rawValue , style: .default) { _ in
-                
+            let logOut = UIAlertAction(title: AccountActionSheet.allCases[0].rawValue, style: .default) { _ in
+                self.signOut()
             }
             let removeAccount = UIAlertAction(title: AccountActionSheet.allCases[1].rawValue, style: .destructive) { _ in
+                
+                
                 
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
             showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
         default :
             return
+        }
+    }
+    
+    func signOut() {
+        
+        let firebaseAuth = Auth.auth()
+        
+        do {
+            
+            try firebaseAuth.signOut()
+            
+        } catch let signOutError as NSError {
+            
+            print("Error signing out: %@", signOutError)
+            
+        }
+        
+        if Auth.auth().currentUser == nil {
+            
+            guard let loginVC = UIStoryboard.login.instantiateViewController(
+                identifier: LoginViewController.identifier) as? LoginViewController else { return }
+            
+            loginVC.modalPresentationStyle = .fullScreen
+            
+            present(loginVC, animated: true, completion: nil)
         }
     }
     
@@ -98,8 +125,8 @@ extension ProfileViewController: UITableViewDataSource {
         let cell : ProfileTableViewCell = tableView.dequeueCell(for: indexPath)
         
         cell.backgroundColor = .clear
-//        cell.backgroundView = UIView()
-//        cell.selectedBackgroundView = UIView()
+        //        cell.backgroundView = UIView()
+        //        cell.selectedBackgroundView = UIView()
         cell.setUpCell(indexPath: indexPath)
         
         return cell
@@ -107,9 +134,9 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    
+        
         cell.backgroundColor = .clear
-  
+        
     }
     
 }
