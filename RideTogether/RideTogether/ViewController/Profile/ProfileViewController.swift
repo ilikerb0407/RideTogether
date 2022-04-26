@@ -98,7 +98,7 @@ extension ProfileViewController : UITableViewDelegate {
               
           } else {
               print ("delete succes")
-        
+              UserManager.shared.deleteUserInfo(uid: user!.uid)
               }
           }
     }

@@ -30,9 +30,7 @@ class UserManager {
 //    
     let usersCollection = Collection.users.rawValue
     
-    typealias holder = () -> ()
-    
-    func deleteUserInfo (uid: String, completion: @escaping (Result<String, Error>)-> Void) {
+    func deleteUserInfo (uid: String) {
         
         let uid = userInfo.uid
         
@@ -49,11 +47,7 @@ class UserManager {
                 }
             }
         }
-        catch {
-            
-            completion(.failure(error))
-        }
-        completion(.success("Success"))
+        
     }
 //    
     func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
