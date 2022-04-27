@@ -22,7 +22,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-uj-7LK">
                                 <rect key="frame" x="39" y="762" width="337" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="SignUp [FireBase]"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign up with Email"/>
                                 <connections>
                                     <segue destination="rJJ-2c-W4i" kind="show" id="tTS-x2-xHv"/>
                                 </connections>
@@ -30,7 +30,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ut-y7-XZI">
                                 <rect key="frame" x="106" y="813" width="204" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="LogIn [FireBase]"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Log in with Email"/>
                                 <connections>
                                     <segue destination="IFs-Qk-gum" kind="show" id="FgU-wg-gwK"/>
                                 </connections>
@@ -76,7 +76,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-c5-fED">
-                                <rect key="frame" x="150" y="488" width="114" height="31"/>
+                                <rect key="frame" x="100" y="488" width="214" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                             </button>
@@ -89,8 +89,8 @@
                             <constraint firstItem="zmi-RG-gIk" firstAttribute="top" secondItem="EP6-To-1Lf" secondAttribute="bottom" constant="60" id="bbB-aC-mLK"/>
                             <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="zmi-RG-gIk" secondAttribute="trailing" constant="50" id="h7f-KO-IK4"/>
                             <constraint firstItem="zmi-RG-gIk" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="50" id="hqc-ev-eMm"/>
-                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="Xxd-c5-fED" secondAttribute="trailing" constant="150" id="jL0-va-bUl"/>
-                            <constraint firstItem="Xxd-c5-fED" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="150" id="nt1-Q5-si5"/>
+                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="Xxd-c5-fED" secondAttribute="trailing" constant="100" id="jL0-va-bUl"/>
+                            <constraint firstItem="Xxd-c5-fED" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="100" id="nt1-Q5-si5"/>
                             <constraint firstItem="EP6-To-1Lf" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="50" id="yFG-kC-OIi"/>
                             <constraint firstItem="Xxd-c5-fED" firstAttribute="top" secondItem="zmi-RG-gIk" secondAttribute="bottom" constant="60" id="ycg-8h-0VO"/>
                         </constraints>

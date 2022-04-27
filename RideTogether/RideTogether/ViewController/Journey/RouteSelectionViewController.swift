@@ -120,6 +120,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
       
       directionsVC?.delegate = self
       weatherManger.delegate = self
+      
 
       
       

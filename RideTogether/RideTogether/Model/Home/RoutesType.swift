@@ -16,6 +16,8 @@ protocol RoutesPhoto {
     var image : UIImage? { get }
 }
 
+
+
 enum RoutesType: String, RoutesPhoto, CaseIterable {
     
     case recommendOne = "推薦路線"
@@ -28,7 +30,7 @@ enum RoutesType: String, RoutesPhoto, CaseIterable {
     var image: UIImage? {
         
         switch self {
-            
+            // 394 * 204 圖片好的畫質 上傳前注意
         case .recommendOne:
             return UIImage(named: "routesphoto")
         case .riverOne:

@@ -9,8 +9,35 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import AVFoundation
+import Kingfisher
 
 class ProfileViewController: BaseViewController {
+    
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
+    
+    private var textInTextfield: String = ""
+    
+    
+    @IBOutlet weak var profileView: ProfileView!
+    
+    @IBAction func editName(_ sender: UIButton) {
+        
+        if profileView.isEditting == false {
+            
+            profileView.isEditting.toggle()
+            
+        } else {
+            
+            if let name = profileView.userName.text {
+                
+                profileView.userName.text = name
+                
+                updateUserInfo(name: name)
+            }
+            
+            profileView.isEditting.toggle()
+        }
+    }
     
     
     enum AccountActionSheet: String, CaseIterable {
@@ -45,12 +72,43 @@ class ProfileViewController: BaseViewController {
         
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
+        setUpProfileView()
+        
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+    }
+    
+    func updateUserInfo(name: String) {
+        
+        UserManager.shared.updateUserName(name: name)
+    }
+    
+    // MARK: - UI Settings -
+    
+    func setUpProfileView() {
+        
+        profileView.setUpProfileView(userInfo: userInfo)
+        
+//        profileView.editImageButton.delegate = self
+        
+        profileView.userName.delegate = self
+        
+        profileView.userName.addTarget(
+            self,
+            action: #selector(self.textFieldDidChange(_:)),
+            for: .editingChanged)
+    }
+    
+    
     
 }
 extension ProfileViewController : UITableViewDelegate {
@@ -168,6 +226,16 @@ extension ProfileViewController: UITableViewDataSource {
         
     }
     
+}
+
+// MARK: - TextField DataSource -
+
+extension ProfileViewController: UITextFieldDelegate {
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        textInTextfield = textField.text ?? ""
+    }
 }
 // MARK: - ImagePicker Delegate -
 
