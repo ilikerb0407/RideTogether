@@ -40,7 +40,19 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         loginButtonFadeIn()
         
+        if let user = Auth.auth().currentUser {
+            print("\(user.uid) login")
+        } else {
+            print("not login")
+        }
+        
         Auth.auth().addStateDidChangeListener { auth, user in
+            
+            if let user = user {
+                   print("\(user.uid) login")
+               } else {
+                   print("not login")
+               }
             
             self.curerentUser = Auth.auth().currentUser
         }

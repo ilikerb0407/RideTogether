@@ -72,6 +72,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system"/>
                                         <connections>
+                                            <action selector="editPhoto:" destination="3J9-PV-Y8M" eventType="touchUpInside" id="M5v-rA-a8a"/>
                                             <action selector="editPhotobtn:" destination="94W-RV-Prh" eventType="touchUpInside" id="0wQ-A7-Rug"/>
                                         </connections>
                                     </button>

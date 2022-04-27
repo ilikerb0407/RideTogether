@@ -39,6 +39,12 @@ class ProfileViewController: BaseViewController {
         }
     }
     
+    enum CameraActionSheet: String {
+        
+        case camera = "相機"
+        case library = "圖庫"
+        case cancel = "取消"
+    }
     
     enum AccountActionSheet: String, CaseIterable {
         
@@ -49,6 +55,11 @@ class ProfileViewController: BaseViewController {
     
     let items = ProfileItemType.allCases
     
+    @IBAction func editPhoto(_ sender: UIButton) {
+        
+        showPickerController()
+        
+    }
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
@@ -90,6 +101,23 @@ class ProfileViewController: BaseViewController {
     func updateUserInfo(name: String) {
         
         UserManager.shared.updateUserName(name: name)
+    }
+    
+    func updateUserInfo(imageData: Data) {
+        
+        UserManager.shared.uploadUserPicture(imageData: imageData) { result in
+            
+            switch result {
+                
+            case .success:
+                
+                print("Upload user picture successfully")
+                
+            case .failure(let error):
+                
+                print("Upload failure: \(error)")
+            }
+        }
     }
     
     // MARK: - UI Settings -
@@ -242,5 +270,63 @@ extension ProfileViewController: UITextFieldDelegate {
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func showPickerController() {
+        
+        let imagePickerController = UIImagePickerController()
+        
+        imagePickerController.delegate = self
+        
+        imagePickerController.modalPresentationStyle = .fullScreen
+        
+        imagePickerController.allowsEditing = true
+        
+        let actionSheet = UIAlertController(
+            title: "選擇照片來源",
+            message: nil,
+            preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(
+            title: CameraActionSheet.camera.rawValue,
+            style: .default,
+            handler: { _ in
+                
+                imagePickerController.sourceType = .camera
+                
+                self.present(imagePickerController, animated: true, completion: nil)
+            }))
+        
+        actionSheet.addAction(UIAlertAction(
+            title: CameraActionSheet.library.rawValue,
+            style: .default,
+            handler: { _ in
+                
+                imagePickerController.sourceType = .photoLibrary
+                
+                self.present(imagePickerController, animated: true, completion: nil)
+            }))
+        
+        actionSheet.addAction(UIAlertAction(
+            title: CameraActionSheet.cancel.rawValue,
+            style: .cancel,
+            handler: nil
+        ))
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
     
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else { return }
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.profileView.userPhoto.image = image
+        }
+        
+        updateUserInfo(imageData: imageData)
+        
+        dismiss(animated: true)
+    }
 }
