@@ -30,15 +30,21 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
     
     
+}
+var curerentUser = Auth.auth().currentUser
+
+
+override func viewDidLoad() {
+    super.viewDidLoad()
     
+    setUpSignInButton()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    loginButtonFadeIn()
+    
+    Auth.auth().addStateDidChangeListener { auth, user in
         
-        setUpSignInButton()
-        
-        loginButtonFadeIn()
-        
+        self.curerentUser = Auth.auth().currentUser
+    }
     }
     
     func setUpSignInButton() {
@@ -233,7 +239,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 
                 if let isNewUser = authResult?.additionalUserInfo?.isNewUser,
                    
-                   let uid = authResult?.user.uid {
+                    let uid = authResult?.user.uid {
                     
                     if isNewUser {
                         
