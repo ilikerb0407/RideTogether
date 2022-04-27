@@ -37,7 +37,7 @@ class LoginFireBaseViewController: UIViewController {
             
         } else {
             
-            Auth.auth().signIn(withEmail: self.loginEmail.text!, password: self.loginPassword.text!) { ( user, error) in
+            Auth.auth().signIn(withEmail: self.loginEmail.text!, password: self.loginPassword.text!) { [self] ( user, error) in
                 
                 if error == nil {
                     
@@ -50,6 +50,7 @@ class LoginFireBaseViewController: UIViewController {
                         if isNewUser {
                             
                             self.userInfo.uid = uid
+                            
                             self.userInfo.userName = "新使用者"
                             
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
@@ -57,8 +58,6 @@ class LoginFireBaseViewController: UIViewController {
                                 switch result {
                                     
                                 case .success:
-                                    
-                                    self.fetchUserInfo(uid: uid)
                                     
                                     print("User Sign up successfully")
                                     
@@ -70,12 +69,41 @@ class LoginFireBaseViewController: UIViewController {
                             
                         } else {
                             
-                            self.fetchUserInfo(uid: uid)
+                            UserManager.shared.fetchUserInfo(uid: uid) { result in
+                                switch result {
+                                    
+                                case .success(let userInfo):
+                                    
+                                    UserManager.shared.userInfo = userInfo
+                                    
+                                    print("Fetch user info successfully")
+                                    //
+                                    guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                                        identifier: TabBarController.identifier) as? TabBarController else { return }
+                                    
+                                    tabbarVC.modalPresentationStyle = .fullScreen
+                                    
+                                    self.present(tabbarVC, animated: true, completion: nil)
+                                    
+                                case .failure(let error):
+                                    
+                                    print("Fetch user info failure: \(error)")
+                                }
+                            }
+                            
+                            guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                                identifier: TabBarController.identifier) as? TabBarController else { return }
+                            
+                            tabbarVC.modalPresentationStyle = .fullScreen
+                            
+                            self.present(tabbarVC, animated: true, completion: nil)
+                            
                         }
                     }
                     
                     
                     //Go to the HomeViewController if the login is sucessful
+                    
                     
                     
                 } else {

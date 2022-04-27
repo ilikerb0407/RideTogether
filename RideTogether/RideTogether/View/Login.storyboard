@@ -147,8 +147,8 @@
                     <navigationItem key="navigationItem" id="AbW-NK-dYN"/>
                     <connections>
                         <outlet property="loginButton" destination="ZPZ-wh-zVa" id="OKa-Qx-DN9"/>
-                        <outlet property="loginEmail" destination="AVc-uW-dE5" id="UmB-5y-aJ9"/>
-                        <outlet property="loginPassword" destination="KRQ-jy-rb8" id="53T-Zs-haR"/>
+                        <outlet property="loginEmail" destination="AVc-uW-dE5" id="dum-AS-OVd"/>
+                        <outlet property="loginPassword" destination="KRQ-jy-rb8" id="Zd9-do-EqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDy-vQ-D2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -192,6 +192,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let fullname = credential.fullName
             let email = credential.email
             let idToken = credential.identityToken
+            
             print("---------\(userId)")
             print("---------\(fullname)")
             print("---------\(email)")
@@ -243,6 +244,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                             switch result {
                                 
                             case .success:
+                                
+                                print ("\(credential.idToken)")
                                 
                                 self.fetchUserInfo(uid: uid)
                                 

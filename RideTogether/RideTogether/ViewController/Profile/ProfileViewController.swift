@@ -99,7 +99,9 @@ extension ProfileViewController : UITableViewDelegate {
             print ("\(error)")
               
           } else {
+              
               print ("delete succes")
+              
               UserManager.shared.deleteUserInfo(uid: user!.uid)
               
               }
@@ -118,9 +120,10 @@ extension ProfileViewController : UITableViewDelegate {
         let firebaseAuth = Auth.auth()
         
         do {
-            
+            print ("current user uid ======= \(firebaseAuth.currentUser?.uid)===========")
             try firebaseAuth.signOut()
-            
+            print ("sign out current user uid ======= \(firebaseAuth.currentUser?.uid)===========")
+//            UserDefaults.standard.removeObject(forKey: )
         } catch let signOutError as NSError {
             
             print("Error signing out: %@", signOutError)

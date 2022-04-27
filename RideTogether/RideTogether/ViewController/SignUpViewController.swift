@@ -22,7 +22,7 @@ class SignUpViewController: BaseViewController {
     
     @objc func signUp() {
         
-        if signUpEmail.text == "" {
+        if self.signUpEmail.text == "" || self.signUpPassword.text == "" {
             
             let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
             
@@ -33,7 +33,7 @@ class SignUpViewController: BaseViewController {
             
         } else {
             
-            Auth.auth().createUser(withEmail: signUpEmail.text!, password: signUpEmail.text!) { (user, error) in
+            Auth.auth().createUser(withEmail: self.signUpEmail.text!, password: self.signUpPassword.text!) { (user, error) in
                 
                 if error == nil {
                     
@@ -69,10 +69,8 @@ class SignUpViewController: BaseViewController {
                             self.fetchUserInfo(uid: uid)
                             
                         }
-                        
-                    }
-                    
-                } else {
+                    } }
+                else {
                         let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                         
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -80,8 +78,6 @@ class SignUpViewController: BaseViewController {
                         
                         self.present(alertController, animated: true, completion: nil)
                     }
-                    
-                
             }
         }
         
