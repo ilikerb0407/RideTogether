@@ -27,6 +27,8 @@ class TracksViewController: BaseViewController {
     
     var records = [Record]()
     
+    var userId: String { UserManager.shared.userInfo.uid }
+    
     private let header = MJRefreshNormalHeader()
     
     private var tableView: UITableView! {
@@ -162,7 +164,7 @@ extension TracksViewController: UITableViewDelegate {
         
         var record = Record()
         
-//        record.uid = userId
+        record.uid = userId
         
         record.recordId = document.documentID
         
@@ -192,15 +194,20 @@ extension TracksViewController: UITableViewDelegate {
         
         let shareOption = UIAlertAction(title: "Share to friends", style: .default) { [self] _ in
 
-            let recordRef = storageRef.child("records")
+            
+            
+            let recordRef = storageRef.child("records").child("\(userId)")
             //  gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(records[indexPath.row].recordName)
+
+
             spaceRef.downloadURL { result in
                 switch result {
                 case .success(let url) :
 //                    completion(.success(url))
                     print ("\(url)")
                     self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
+                    //
                 case .failure(let error) :
 //                    completion(.failure(error))
                     print ("\(error)")

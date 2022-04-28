@@ -19,8 +19,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         fetchGroupData()
         
-        print ("fuckkkkkkk ")
-        
     }
     
     
@@ -168,7 +166,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
         
-//        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
+        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
     }
     
     
@@ -189,7 +187,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
        
-        unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
+        unexpiredGroup.sort { $0.date.seconds > $1.date.seconds }
         
         expiredGroup.sort { $0.date.seconds > $1.date.seconds }
         

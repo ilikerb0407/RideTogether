@@ -14,7 +14,7 @@ import Lottie
 import MessageUI
 import SwiftUI
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,sendRouteSecond{
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
     
     
     func sendRouteTwice(map: DrawRoute) {
@@ -24,8 +24,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     var routeVc: RouteSelectionViewController?
     
-    
-    //    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
@@ -353,6 +351,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         completer.region = map.region
         
         routeVc?.delegate = self
+        
  
         
     }
@@ -559,11 +558,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             self.lastGpxFilename = fileName!
             
-            //            if let fileName = fileName {
-            GPXFileManager.save( fileName!, gpxContents: gpxString)
+                        if let fileName = fileName {
+                            GPXFileManager.save( fileName, gpxContents: gpxString)
             
             print ("2\(fileName)2")
-            //            }
+                        }
             
             if withReset {
                 self.gpxTrackingStatus = .notStarted
