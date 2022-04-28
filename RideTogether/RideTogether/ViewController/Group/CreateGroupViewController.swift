@@ -14,15 +14,18 @@ import FirebaseFirestore
 import RSKPlaceholderTextView
 import SwiftUI
 
-protocol reload {
-    func reload(result : Group)
+protocol Reload {
+    
+    func reload()
+    
 }
 
 class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     private var group = Group()
     
-    var delegate: reload?
+    var delegate: Reload?
+    
     
     @IBOutlet weak var sendData: UIButton! {
         didSet{
@@ -135,13 +138,11 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     @objc func sendPost() {
         
         guard let hostId = Auth.auth().currentUser?.uid else { return }
-//         let hostId = "阿富"
         
         textViewDidEndEditing(notes)
         
         group.hostId = hostId
         
-//        group.hostId = hostId ?? "阿富"
         group.date = Timestamp(date: datePicker.date)
         
         group.userIds = [hostId]
@@ -160,16 +161,17 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-                    let success = UIAlertAction(title: "Success", style: .default) { [self] _ in
-                        
-                        self.dismiss(animated: true, completion: nil)
-                        
-                        delegate?.reload(result: group)
+//                    self.delegate?.reload()
+                    
+//                    (title: "Success", style: .default) { _ in  }
+                    let success = UIAlertAction(title: "Success", style: .default) { _ in
+                        self.delegate?.reload()
                     }
+                    
+//                    self.dismiss(animated: true, completion: nil)
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
                     
-                   
                 case .failure(let error):
                     
                     print("build team failure: \(error)")

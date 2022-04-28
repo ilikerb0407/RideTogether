@@ -20,6 +20,7 @@ class TracksViewController: BaseViewController {
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
     lazy var dataBase = Firestore.firestore()
+    
     private let sharedRecordsCollection = Collection.sharedmaps.rawValue
     
     var indexOfRoute:Int = 0
@@ -190,7 +191,7 @@ extension TracksViewController: UITableViewDelegate {
         }
         
         let shareOption = UIAlertAction(title: "Share to friends", style: .default) { [self] _ in
-//            self.shareGPXDataToFriends(indexPath.row, tableView: tableView, cellForRowAt: indexPath)
+
             let recordRef = storageRef.child("records")
             //  gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(records[indexPath.row].recordName)
