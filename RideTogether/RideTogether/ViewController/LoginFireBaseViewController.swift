@@ -24,7 +24,6 @@ class LoginFireBaseViewController: UIViewController {
     
     @objc func loginwithFB() {
         
-        
         if self.loginEmail.text == "" || self.loginPassword.text == "" {
             
             
@@ -59,6 +58,8 @@ class LoginFireBaseViewController: UIViewController {
                                     
                                 case .success:
                                     
+                                    fetchUserInfo(uid: uid)
+                                    
                                     print("User Sign up successfully")
                                     
                                 case .failure(let error):
@@ -76,14 +77,9 @@ class LoginFireBaseViewController: UIViewController {
                                     
                                     UserManager.shared.userInfo = userInfo
                                     
+                                    fetchUserInfo(uid: uid)
+                                    
                                     print("Fetch user info successfully")
-                                    //
-                                    guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-                                        identifier: TabBarController.identifier) as? TabBarController else { return }
-                                    
-                                    tabbarVC.modalPresentationStyle = .fullScreen
-                                    
-                                    self.present(tabbarVC, animated: true, completion: nil)
                                     
                                 case .failure(let error):
                                     

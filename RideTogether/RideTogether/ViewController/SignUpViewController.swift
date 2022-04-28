@@ -55,8 +55,6 @@ class SignUpViewController: BaseViewController {
                                     
                                 case .success:
                                     
-                                    self.fetchUserInfo(uid: uid)
-                                    
                                     print("User Sign up successfully")
                                     
                                 case .failure(let error):
@@ -67,9 +65,11 @@ class SignUpViewController: BaseViewController {
                         } else {
                             
                             self.fetchUserInfo(uid: uid)
-                            
                         }
-                    } }
+                        
+                    }
+                    
+                }
                 else {
                         let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                         
