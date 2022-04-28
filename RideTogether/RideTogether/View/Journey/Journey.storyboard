@@ -48,18 +48,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Wzz-Lv-i2G">
-                                <rect key="frame" x="140" y="594" width="134" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzz-Lv-i2G">
+                                <rect key="frame" x="60" y="594" width="294" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvI-gD-hew">
-                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
-                                        <state key="normal" title="Calculate Route"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="274" height="30"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Calculate Route">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="calculateButtonTapped" destination="fSj-T7-DcF" eventType="touchUpInside" id="MkB-iQ-BEa"/>
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vLZ-te-912">
-                                        <rect key="frame" x="115" y="0.0" width="19" height="30"/>
+                                        <rect key="frame" x="274" y="0.0" width="20" height="30"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </stackView>
@@ -321,7 +325,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gG1-od-3dq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="U1"/>
                         <constraints>
                             <constraint firstItem="Gip-Us-cBp" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="8" id="07F-9l-Arr"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="132" id="0GY-eA-Pm2"/>
@@ -330,9 +334,10 @@
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="centerX" secondItem="ear-Ap-X0O" secondAttribute="centerX" id="4VQ-V8-bjG"/>
                             <constraint firstItem="LKf-ZT-ABj" firstAttribute="top" secondItem="D1i-pG-aKM" secondAttribute="bottom" constant="20" id="6EA-HD-wKc"/>
                             <constraint firstItem="O4s-Li-QGM" firstAttribute="leading" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="20" id="9pZ-Ke-rkO"/>
+                            <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="Wzz-Lv-i2G" secondAttribute="trailing" constant="60" id="ADo-hZ-7x2"/>
                             <constraint firstItem="8G9-QS-6UZ" firstAttribute="top" secondItem="Gip-Us-cBp" secondAttribute="bottom" constant="171" id="Aru-rX-1bu"/>
                             <constraint firstItem="Mlg-WN-yl6" firstAttribute="top" secondItem="8ij-cS-hOI" secondAttribute="bottom" constant="50" id="BgH-Co-XKj"/>
-                            <constraint firstItem="Wzz-Lv-i2G" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="140" id="Flq-J7-9va"/>
+                            <constraint firstItem="Wzz-Lv-i2G" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="60" id="Flq-J7-9va"/>
                             <constraint firstItem="Gip-Us-cBp" firstAttribute="top" secondItem="LKf-ZT-ABj" secondAttribute="bottom" constant="20" id="Idp-ud-Smh"/>
                             <constraint firstItem="8ij-cS-hOI" firstAttribute="top" secondItem="gG1-od-3dq" secondAttribute="top" constant="20" id="JQr-Mf-eKv"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="top" secondItem="ear-Ap-X0O" secondAttribute="top" constant="515" id="Ksm-bX-YEU"/>
@@ -474,6 +479,9 @@
     <resources>
         <image name="sun.min.fill" catalog="system" width="128" height="121"/>
         <image name="sunrise.fill" catalog="system" width="128" height="97"/>
+        <namedColor name="U1">
+            <color red="0.46299999952316284" green="0.89399999380111694" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="U3">
             <color red="1" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

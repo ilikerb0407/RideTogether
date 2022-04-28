@@ -13,12 +13,16 @@ import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation
 
-class GroupViewController: BaseViewController, reload {
+class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
     
-    func reload(result: Group) {
+    func reload() {
         
-        self.table?.reloadData()
+        fetchGroupData()
+        
+        print ("fuckkkkkkk ")
+        
     }
+    
     
     private lazy var cache = [String: UserInfo]() {
         
@@ -26,9 +30,12 @@ class GroupViewController: BaseViewController, reload {
             tableView.reloadData()
         }
     }
+
     
     var table: UITableView?
-
+    
+    var VC = CreateGroupViewController()
+    
 
     // MARK: Class Properties
     
@@ -91,6 +98,9 @@ class GroupViewController: BaseViewController, reload {
         
         table?.delegate = self
         
+        VC.delegate = self
+        
+        
     }
     
     
@@ -129,11 +139,13 @@ class GroupViewController: BaseViewController, reload {
     
     @objc func creatGroup() {
         
+        
 //       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
                 presentVc.detents = [.medium()]
+                rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }
         }
@@ -186,9 +198,7 @@ class GroupViewController: BaseViewController, reload {
     
     // MARK: 抓資料
     
-//    var filteredGroups = [Group]()
-    
-    
+
     func fetchGroupData() {
         
         GroupManager.shared.fetchGroups { [self] result in
@@ -218,6 +228,8 @@ class GroupViewController: BaseViewController, reload {
                         
                         self.fetchUserData(uid: group.hostId)
                         
+                        self.table?.reloadData()
+                        
                         return
                     }
                 }
@@ -228,6 +240,8 @@ class GroupViewController: BaseViewController, reload {
             }
         }
     }
+    
+    
     func fetchUserData(uid: String) {
         
         UserManager.shared.fetchUserInfo(uid: uid, completion: { result in

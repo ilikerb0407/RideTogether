@@ -209,7 +209,6 @@ class UserManager {
         let post = [UserInfo.CodingKeys.totalLength.rawValue: userInfo.totalLength]
         
         let docRef = dataBase.collection(usersCollection).document(userId)
-//        let docRef = dataBase.collection(usersCollection).document()
         
         docRef.updateData(post) { error in
             

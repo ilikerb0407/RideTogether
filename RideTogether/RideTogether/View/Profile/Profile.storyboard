@@ -71,15 +71,19 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system"/>
+                                        <connections>
+                                            <action selector="editPhoto:" destination="3J9-PV-Y8M" eventType="touchUpInside" id="M5v-rA-a8a"/>
+                                            <action selector="editPhotobtn:" destination="94W-RV-Prh" eventType="touchUpInside" id="0wQ-A7-Rug"/>
+                                        </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-6j-tIP">
-                                        <rect key="frame" x="55" y="44.5" width="133" height="319"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride.gif" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-6j-tIP">
+                                        <rect key="frame" x="55" y="44" width="125" height="288"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="133" id="7hx-FX-SOS"/>
+                                            <constraint firstAttribute="width" constant="125" id="7hx-FX-SOS"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="阿富" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fIf-KK-V4D">
-                                        <rect key="frame" x="296" y="263" width="77" height="39"/>
+                                        <rect key="frame" x="198" y="263" width="175" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -87,15 +91,19 @@
                                         <rect key="frame" x="318" y="150" width="45" height="191"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="editName:" destination="3J9-PV-Y8M" eventType="touchUpInside" id="Uf5-SB-Aq7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="fIf-KK-V4D" firstAttribute="leading" secondItem="4Cg-6j-tIP" secondAttribute="trailing" constant="18" id="45E-2b-qa2"/>
                                     <constraint firstItem="Zna-nX-YeG" firstAttribute="top" secondItem="vPE-yp-ZV1" secondAttribute="bottom" constant="8" symbolic="YES" id="5rU-K6-1Hu"/>
-                                    <constraint firstItem="4Cg-6j-tIP" firstAttribute="bottom" secondItem="nc9-Cr-rVu" secondAttribute="bottom" id="6Se-qh-A5d"/>
+                                    <constraint firstItem="4Cg-6j-tIP" firstAttribute="bottom" secondItem="nc9-Cr-rVu" secondAttribute="bottom" constant="-32" id="6Se-qh-A5d"/>
                                     <constraint firstItem="4Cg-6j-tIP" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" constant="55" id="Djs-C4-1m3"/>
                                     <constraint firstAttribute="trailing" secondItem="Zna-nX-YeG" secondAttribute="trailing" id="K5a-hl-EuP"/>
-                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="4Cg-6j-tIP" secondAttribute="bottom" constant="20" id="OhH-kz-eOB"/>
+                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="4Cg-6j-tIP" secondAttribute="bottom" constant="52" id="OhH-kz-eOB"/>
                                     <constraint firstItem="C27-Ud-r1N" firstAttribute="top" secondItem="Opy-dE-Pdx" secondAttribute="top" constant="150" id="Shj-2c-cwR"/>
                                     <constraint firstItem="4Cg-6j-tIP" firstAttribute="top" secondItem="Opy-dE-Pdx" secondAttribute="top" constant="44" id="U6e-7H-scr"/>
                                     <constraint firstItem="vPE-yp-ZV1" firstAttribute="centerX" secondItem="Zna-nX-YeG" secondAttribute="centerX" constant="-2.5" id="YTc-kj-Zo4"/>
@@ -108,6 +116,11 @@
                                     <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="C27-Ud-r1N" secondAttribute="bottom" constant="43" id="vLH-6c-4pN"/>
                                     <constraint firstItem="nc9-Cr-rVu" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" constant="157" id="wiK-rq-k7a"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="editNameBtn" destination="C27-Ud-r1N" id="wuY-GL-XXF"/>
+                                    <outlet property="userName" destination="fIf-KK-V4D" id="zpM-hj-17b"/>
+                                    <outlet property="userPhoto" destination="4Cg-6j-tIP" id="pls-Of-4hq"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qxy-Gs-kTX"/>
@@ -129,12 +142,14 @@
                     <navigationItem key="navigationItem" id="0aj-GT-TF9"/>
                     <connections>
                         <outlet property="gView" destination="tHO-FC-rc5" id="rd8-f2-Otz"/>
+                        <outlet property="profileView" destination="Opy-dE-Pdx" id="uuz-Km-Qw9"/>
                         <outlet property="tableView" destination="Zna-nX-YeG" id="5bk-MY-FAa"/>
                         <segue destination="Y0Y-w7-fwb" kind="show" identifier="toRecord" id="YZm-ih-Pyd"/>
                         <segue destination="N8s-xc-8hQ" kind="show" identifier="toRecommend" id="5QD-Mn-zAh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrk-gs-Yjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="94W-RV-Prh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-91.304347826086968" y="97.767857142857139"/>
         </scene>
@@ -367,10 +382,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="49908-bike-ride.gif" width="640" height="640"/>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="doc.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -732,7 +732,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         ] )
         
         buttonStackView.addArrangedSubview(followUserButton)
-        
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
         buttonStackView.addArrangedSubview(guideButton)

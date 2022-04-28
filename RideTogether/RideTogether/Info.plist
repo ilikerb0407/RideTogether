@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FirebaseAutomaticScreenReportingEnabled</key>
-	<false/>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -13,11 +11,9 @@
 			<string>Default</string>
 		</dict>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
 	<key>Privacy - Location usage description</key>
-	<string></string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

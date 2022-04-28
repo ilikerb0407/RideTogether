@@ -92,9 +92,7 @@ class GroupManager {
             } else {
 //                completion(.success(<#T##[Request]#>))
             }
-            
         }
-        
     }
     
     

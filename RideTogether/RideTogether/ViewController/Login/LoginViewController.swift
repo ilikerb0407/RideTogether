@@ -30,6 +30,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
     
     
+    var curerentUser = Auth.auth().currentUser
     
     
     override func viewDidLoad() {
@@ -39,6 +40,22 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         loginButtonFadeIn()
         
+        if let user = Auth.auth().currentUser {
+            print("\(user.uid) login")
+        } else {
+            print("not login")
+        }
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            
+            if let user = user {
+                   print("\(user.uid) login")
+               } else {
+                   print("not login")
+               }
+            
+            self.curerentUser = Auth.auth().currentUser
+        }
     }
     
     func setUpSignInButton() {
@@ -64,10 +81,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     }
     
     
-    @IBAction func signUpWithFB(_ sender: Any) {
-        
-        
-    }
     
     
     // MARK: - Methods -
@@ -192,6 +205,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let fullname = credential.fullName
             let email = credential.email
             let idToken = credential.identityToken
+            
             print("---------\(userId)")
             print("---------\(fullname)")
             print("---------\(email)")
@@ -232,7 +246,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 
                 if let isNewUser = authResult?.additionalUserInfo?.isNewUser,
                    
-                   let uid = authResult?.user.uid {
+                    let uid = authResult?.user.uid {
                     
                     if isNewUser {
                         
@@ -243,6 +257,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                             switch result {
                                 
                             case .success:
+                                
+                                print ("\(credential.idToken)")
                                 
                                 self.fetchUserInfo(uid: uid)
                                 
