@@ -14,12 +14,13 @@ class RoutesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var routeType: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         selectionStyle = .none
         self.backgroundColor = .C4
         self.contentView.backgroundColor = .clear
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,6 +30,7 @@ class RoutesTableViewCell: UITableViewCell {
     }
     
     func setUpCell(model : Route) {
+        
         routeTitle.text = model.routeName
         routeType.text = model.routeInfo
         

@@ -141,6 +141,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
     }
+    
     private lazy var guideButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -598,7 +599,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         self.followUser = !self.followUser
     }
-    
     
     //原本放在folder button 裡面
     

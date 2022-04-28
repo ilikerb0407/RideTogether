@@ -10,12 +10,12 @@ import Foundation
 
 enum GroupStatus: String {
     
-
     case ishost
     
     case notInGroup
     
     case isInGroup 
 
-
 }
+
+

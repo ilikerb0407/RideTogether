@@ -21,6 +21,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
     }
     
+    var table: UITableView?
+    
+    var VC = CreateGroupViewController()
+    
     
     private lazy var cache = [String: UserInfo]() {
         
@@ -28,18 +32,15 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             tableView.reloadData()
         }
     }
+    private lazy var requests = [Request]()
+   
 
-    var table: UITableView?
-    
-    var VC = CreateGroupViewController()
     
     // MARK: Class Properties
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
     private var inActivityGroup = [Group]()
-    
-    private var historyGroup = [Group]()
     
     private var myGroups = [Group]() {
         
@@ -84,6 +85,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         setUpHeaderView()
         
+        addRequestListener()
+        
         setUpTableView()
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
@@ -97,6 +100,30 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         VC.delegate = self
         
         
+    }
+    
+    func addRequestListener() {
+        
+        GroupManager.shared.addRequestListener { result in
+            
+            switch result {
+                
+            case .success(let requests):
+                
+                var filtedRequests = [Request]()
+                
+                for request in requests where self.userInfo.blockList?.contains(request.requestId) == false {
+                    
+                    filtedRequests.append(request)
+                }
+                
+                self.requests = filtedRequests
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
     }
     
     
@@ -125,6 +152,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
     }
+    
+    
     
     func setBuildTeamButton() {
         
@@ -293,10 +322,36 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             headerView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
-//        headerView.requestListButton.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
+          headerView.resquestsBell.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
         
           headerView.segment.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
         
+    }
+    
+    @objc func checkRequestList(_ sender: UIButton) {
+        
+        if requests.count != 0 {
+            
+            performSegue(withIdentifier: SegueIdentifier.requestList.rawValue, sender: requests)
+            
+        } else {
+            
+            groupHeaderCell?.resquestsBell.shake()
+        }
+    }
+    
+    func checkRequestsNum() {
+        
+        guard let groupHeaderCell = groupHeaderCell else { return }
+        
+        if requests.count == 0 {
+            
+
+        } else {
+            
+            groupHeaderCell.resquestsBell.shake()
+            
+        }
     }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
@@ -324,6 +379,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         view.addSubview(tableView)
         
         setBuildTeamButton()
+        
         
         tableView.backgroundColor = .clear
         

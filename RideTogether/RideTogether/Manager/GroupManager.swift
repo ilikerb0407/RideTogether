@@ -149,5 +149,93 @@ class GroupManager {
     }
     
     
+    func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) {
+        
+        dataBase.collection(requestsCollection)
+            .whereField("host_id", isEqualTo: userId)
+            .addSnapshotListener { (querySnapshot, error) in
+                
+                guard let querySnapshot = querySnapshot else { return }
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                    
+                } else {
+                    
+                    var requests = [Request]()
+                    
+                    for document in querySnapshot.documents {
+                        
+                        do {
+                            
+                            if let request = try document.data(as: Request.self, decoder: Firestore.Decoder()) {
+                                
+                                requests.append(request)
+                            }
+                            
+                        } catch {
+                            
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                    requests.sort { $0.createdTime.seconds > $1.createdTime.seconds }
+                    
+                    completion(.success(requests))
+                }
+            }
+    }
+    
+    func addUserToGroup(groupId: String, userId: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let docRef = dataBase.collection(groupsCollection).document(groupId)
+        
+        docRef.updateData([
+            "user_ids": FieldValue.arrayUnion([userId])
+        ]) { error in
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                print("User leave group successfully")
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func removeRequest(groupId: String, userId: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        dataBase.collection(requestsCollection)
+            .whereField("group_id", isEqualTo: groupId)
+            .whereField("request_id", isEqualTo: userId)
+            .getDocuments { (querySnapshot, error) in
+                
+                guard let querySnapshot = querySnapshot else { return }
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                    
+                } else {
+                    
+                    for document in querySnapshot.documents {
+                        
+                        document.reference.delete()
+                        
+                        completion(.success("Success"))
+                    }
+                }
+            }
+    }
+    
+    
+    
+    
     
 }

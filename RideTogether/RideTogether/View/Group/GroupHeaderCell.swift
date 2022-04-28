@@ -12,6 +12,9 @@ import MASegmentedControl
 class GroupHeaderCell: UITableViewCell {
     
     
+    
+    @IBOutlet weak var resquestsBell: UIButton!
+    
     @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
             segment.setTitle("活動中", forSegmentAt: 0)
@@ -28,6 +31,7 @@ class GroupHeaderCell: UITableViewCell {
         }
         
     }
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()

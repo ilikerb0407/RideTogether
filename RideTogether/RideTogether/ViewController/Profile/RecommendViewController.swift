@@ -15,6 +15,8 @@ class RecommendViewController: BaseViewController {
     
     private let header = MJRefreshNormalHeader()
     
+    private let tableViewCell = RecommendTableViewCell()
+    
     private var tableView: UITableView! {
         
         didSet {
@@ -72,8 +74,8 @@ class RecommendViewController: BaseViewController {
        self.tableView.mj_header?.endRefreshing()
    }
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setUpTableView()
@@ -83,6 +85,7 @@ class RecommendViewController: BaseViewController {
         tableView.mj_header = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
+        
 
     }
     
@@ -94,6 +97,7 @@ class RecommendViewController: BaseViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    
 }
 
 extension RecommendViewController: UITableViewDelegate {
@@ -104,21 +108,12 @@ extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
-        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+       
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]
                 // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
             }
-        }
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
-        
-        sheet.addAction(detailOption)
-
-        sheet.addAction(cancelOption)
-        
-        present(sheet, animated: true, completion: nil)
         
     }
     

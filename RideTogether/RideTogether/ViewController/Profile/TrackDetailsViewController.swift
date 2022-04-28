@@ -15,7 +15,6 @@ import Charts
 
 //MARK: User Record detail
 
-
 class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     @IBOutlet weak var map: GPXMapView!

@@ -24,7 +24,7 @@ class RouteTypes: UITableViewCell {
         
         self.contentView.cornerRadius = contentView.borderWidth / 2
         
-        self.routePhoto.cornerRadius = routePhoto.borderWidth / 2
+        self.routePhoto.cornerRadius = 20
         
     }
     
