@@ -121,11 +121,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
       directionsVC?.delegate = self
       weatherManger.delegate = self
       
-
-      
-      
-      
-    
   }
 
   // MARK: - Helpers
@@ -304,8 +299,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
           
           let viewController = DirectionsViewController(route: route)
           
-          
-//          delegate?.sendRouteTwice(map: route)
+          viewController.delegate = self
+          delegate?.sendRouteTwice(map: route)
           
           self.present(viewController, animated: true)
           

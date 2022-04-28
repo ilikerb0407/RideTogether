@@ -14,6 +14,7 @@ import Lottie
 import MessageUI
 import SwiftUI
 
+
 class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
     
     
@@ -22,8 +23,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     var mapData: DrawRoute?
     
-    var routeVc: RouteSelectionViewController?
-    
+    var routeVc =  RouteSelectionViewController()
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
@@ -350,9 +350,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         completer.region = map.region
         
-        routeVc?.delegate = self
-        
- 
+        routeVc.delegate = self
         
     }
     

@@ -166,9 +166,9 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                         self.delegate?.reload()
                     }
                     
-                    self.dismiss(animated: true, completion: nil)
-                    
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
+                    
+                    self.dismiss(animated: true, completion: nil)
                     
                 case .failure(let error):
                     

@@ -29,12 +29,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         }
     }
 
-    
     var table: UITableView?
     
     var VC = CreateGroupViewController()
     
-
     // MARK: Class Properties
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
