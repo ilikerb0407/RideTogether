@@ -7,6 +7,11 @@
 
 import UIKit
 import MJRefresh
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseFirestoreSwift
+
 
 // MARK: Recommend-Route
 class RecommendViewController: BaseViewController {
@@ -16,6 +21,17 @@ class RecommendViewController: BaseViewController {
     private let header = MJRefreshNormalHeader()
     
     private let tableViewCell = RecommendTableViewCell()
+    
+    private let saveCollection = Collection.savemaps.rawValue // Profile
+    
+    var userId: String { UserManager.shared.userInfo.uid }
+    
+    lazy var storage = Storage.storage()
+    
+    lazy var storageRef = storage.reference()
+    
+    lazy var dataBase = Firestore.firestore()
+
     
     private var tableView: UITableView! {
         
@@ -52,6 +68,33 @@ class RecommendViewController: BaseViewController {
         ])
         
     }
+    
+    func uploadRecordToSavemaps(fileName: String, fileURL: URL) {
+        
+        let document = dataBase.collection(saveCollection).document()
+        
+        var record = Record()
+        
+        record.uid = userId
+        
+        record.recordId = document.documentID
+        
+        record.recordName = fileName
+        
+        record.recordRef = fileURL.absoluteString
+        
+        do {
+            
+            try document.setData(from: record)
+            
+        } catch {
+            
+            print("error")
+        }
+        
+        print("sucessfully")
+    }
+
     
     func fetchRecords() {
         
@@ -116,6 +159,26 @@ extension RecommendViewController: UITableViewDelegate {
             }
         
     }
+    
+    
+//        let recordRef = storageRef.child("records").child("\(userId)")
+//        //  gs://bikeproject-59c89.appspot.com/records
+//        let spaceRef = recordRef.child(records[indexPath.row].recordName)
+//
+//
+//        spaceRef.downloadURL { [self] result in
+//            switch result {
+//            case .success(let url) :
+////                    completion(.success(url))
+//                print ("\(url)")
+//                self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileURL: url)
+//                //
+//            case .failure(let error) :
+////                    completion(.failure(error))
+//                print ("\(error)")
+//            }
+//        }
+
     
    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

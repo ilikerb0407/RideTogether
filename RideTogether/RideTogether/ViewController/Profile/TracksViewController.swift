@@ -105,7 +105,6 @@ class TracksViewController: BaseViewController {
         self.tableView.mj_header?.endRefreshing()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -142,7 +141,6 @@ extension TracksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
-    
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {

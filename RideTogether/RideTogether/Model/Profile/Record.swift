@@ -20,7 +20,7 @@ struct Record: Codable, Hashable {
     
     enum CodingKeys: String, CodingKey {
         
-        case uid
+        case uid 
         case createdTime = "created_time"
         case recordId = "record_id"
         case recordName = "record_name"
