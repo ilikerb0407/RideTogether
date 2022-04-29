@@ -34,7 +34,7 @@ class UserManager {
     
     let shareCollection = Collection.sharedmaps.rawValue // Profile
     
-    private let groupsCollection = Collection.groups.rawValue
+    let groupsCollection = Collection.groups.rawValue
     
     func deleteUserInfo (uid: String) {
         
@@ -55,13 +55,34 @@ class UserManager {
         }
         
     }
+    func deleteUserFromGroup(uid : String) {
+       
+        let docRef = dataBase.collection(groupsCollection).whereField("user_ids", arrayContains: uid).getDocuments { (querySnapshot, error) in
+            
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                
+                
+            } else {
+                
+                for document in querySnapshot.documents {
+                    
+                    document.reference.updateData([
+                        "user_ids": FieldValue.arrayRemove([uid])
+                    ])
+                    
+                }
+            }
+        }
+        
+    }
+    
     
     func deleteUserRequests (uid: String) {
-        
-        
-//        let uid = userInfo.uid
-        let uid = "9aF98NFhLHQhIqalvFBmaPUgItD3"
-        
+    
+        let uid = userInfo.uid
+      
         let document = dataBase.collection(requestsCollection).whereField("request_id", isEqualTo: uid ).getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }

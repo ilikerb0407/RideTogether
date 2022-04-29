@@ -149,6 +149,8 @@ class GroupManager {
         }
     }
     
+ 
+    
     
     func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) {
         
@@ -234,11 +236,6 @@ class GroupManager {
                 }
             }
     }
-    
-    func removeUserMember() {
-        
-    }
-    
     
     
     
