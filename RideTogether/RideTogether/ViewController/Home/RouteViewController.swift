@@ -97,7 +97,7 @@ class RouteViewController: BaseViewController {
         
         setUpTableView()
         
-        fetchRecords()
+//        fetchRecords()
         
         tableView.mj_header = header
         
@@ -132,25 +132,14 @@ extension RouteViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
-        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+       
 //            performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: routes[indexPath.row])
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.routes = routes[indexPath.row]
             }
-        }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
-        
-        sheet.addAction(detailOption)
-     
-        sheet.addAction(cancelOption)
-        
-        present(sheet, animated: true, completion: nil)
-        
-        
-        
+    
     }
     
     // MARK: 傳到Detail

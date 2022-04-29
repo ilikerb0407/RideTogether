@@ -33,6 +33,8 @@ class MapsManager {
     
     private let shareCollection = Collection.sharedmaps.rawValue // Profile
     
+    private let saveCollection = Collection.savemaps.rawValue // Profile
+    
     
     // MARK: 把資料放在 Storage，先用download的功能拿下來，在upload到firebase
     
@@ -154,7 +156,7 @@ class MapsManager {
     
     func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){
         
-        let collection = dataBase.collection(routeCollection).whereField("route_types", isEqualTo: 0 )
+        let collection = dataBase.collection(routeCollection)
         
         collection.getDocuments{ (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else { return }
