@@ -15,7 +15,6 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mapTime: UILabel!
     
-    
     @IBOutlet weak var heart: UIButton!
     
     

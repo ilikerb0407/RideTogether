@@ -497,7 +497,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         composeVC.messageComposeDelegate = self
 
         // Configure the fields of the interface.
-        composeVC.recipients = ["0972071860"]
+        composeVC.recipients = ["請輸入電話號碼"]
         composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
 
         // Present the view controller modally.

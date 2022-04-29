@@ -30,6 +30,12 @@ class UserManager {
 //    
     let usersCollection = Collection.users.rawValue
     
+    let requestsCollection = Collection.requests.rawValue
+    
+    let shareCollection = Collection.sharedmaps.rawValue // Profile
+    
+    private let groupsCollection = Collection.groups.rawValue
+    
     func deleteUserInfo (uid: String) {
         
         let uid = userInfo.uid
@@ -48,6 +54,52 @@ class UserManager {
             }
         }
         
+    }
+    
+    func deleteUserRequests (uid: String) {
+        
+        
+//        let uid = userInfo.uid
+        let uid = "9aF98NFhLHQhIqalvFBmaPUgItD3"
+        
+        let document = dataBase.collection(requestsCollection).whereField("request_id", isEqualTo: uid ).getDocuments { (querySnapshot, error) in
+            
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                
+                
+            } else {
+                
+                for document in querySnapshot.documents {
+                    
+                    document.reference.delete()
+                    
+                }
+            }
+        }
+    }
+    
+    func deleteUserSharemaps (uid: String) {
+        
+        let uid = userInfo.uid
+        
+        let document = dataBase.collection(shareCollection).whereField("uid", isEqualTo: uid).getDocuments { (querySnapshot, error) in
+            
+            guard let querySnapshot = querySnapshot else { return }
+            
+            if let error = error {
+                
+                
+            } else {
+                
+                for document in querySnapshot.documents {
+                    
+                    document.reference.delete()
+                    
+                }
+            }
+        }
     }
 //    
     func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {

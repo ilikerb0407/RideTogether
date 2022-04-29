@@ -25,6 +25,7 @@ class GroupManager {
     
     private let requestsCollection = Collection.requests.rawValue
     
+    
     func buildTeam(group: inout Group, completion: (Result<String, Error>) -> Void) {
         
         let document = dataBase.collection(groupsCollection).document()

@@ -62,7 +62,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         sunset.text = "\(sunsetDate)"
         
         guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-        wind.text = "\(swind)km/h"
+        wind.text = "\(swind) km/h"
         
         guard let clouds = weatherdata?.weather[0].main else { return }
         cloud.text = "\(clouds)"
