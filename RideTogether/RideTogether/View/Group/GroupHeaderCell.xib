@@ -41,8 +41,8 @@
                             <constraint firstItem="BBm-RZ-DEJ" firstAttribute="leading" secondItem="TcM-Ad-w57" secondAttribute="leading" constant="30" id="r2l-zp-IPI"/>
                         </constraints>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-5a-JqC">
-                        <rect key="frame" x="12" y="12" width="44.5" height="31"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-5a-JqC">
+                        <rect key="frame" x="12" y="12" width="22" height="22"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" image="bell" catalog="system"/>
                     </button>

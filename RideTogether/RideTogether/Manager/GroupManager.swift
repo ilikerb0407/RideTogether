@@ -234,6 +234,10 @@ class GroupManager {
             }
     }
     
+    func removeUserMember() {
+        
+    }
+    
     
     
     

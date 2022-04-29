@@ -70,6 +70,41 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         
     }
     
+    func weather() {
+        
+        weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
+        
+        guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
+        feelslikeTemp.text = "\(feelslike)度"
+        guard let humiditydata = weatherdata?.main.humidity else { return }
+        humidity.text = "\(humiditydata) %"
+        
+        guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
+        showtemp.text = "\(tempdata)度"
+        
+        
+        guard let ssunrise = weatherdata?.sys.sunrise else { return }
+        var epocTime = TimeInterval(ssunrise)
+
+        let myDate = NSDate(timeIntervalSince1970: epocTime)
+        print ("=====++++\(myDate)")
+        sunrise.text = "\(myDate)"
+        
+        guard let ssunset = weatherdata?.sys.sunset else { return }
+        var sunsetTime = TimeInterval(ssunset)
+
+        let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
+        print ("=====++++\(sunsetDate)")
+        
+        sunset.text = "\(sunsetDate)"
+        
+        guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
+        wind.text = "\(swind)km/h"
+        
+        guard let clouds = weatherdata?.weather[0].main else { return }
+        cloud.text = "\(clouds)"
+    }
+    
     func sendRoute(map: DrawRoute) {
         mapdata = map
         delegate?.sendRouteTwice(map: mapdata!)
@@ -121,8 +156,16 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
       directionsVC?.delegate = self
       weatherManger.delegate = self
       
+      weather()
+      
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        weather()
+    }
 
+    
   // MARK: - Helpers
 
   private func configureGestures() {
@@ -242,10 +285,11 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
   }
 
   @objc private func suggestionTapped(_ gesture: UITapGestureRecognizer) {
+      
     hideSuggestionView(animated: true)
-
     editingTextField?.text = suggestionLabel.text
     editingTextField = nil
+      
   }
 
   @IBAction private func calculateButtonTapped() {

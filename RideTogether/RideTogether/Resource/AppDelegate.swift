@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
+//        Thread.sleep(forTimeInterval: 3)
         
         if
             let userId = Auth.auth().currentUser {
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: screen rotation
     
-    var shouldAutorotate = true
+    var shouldAutorotate = false
     
     func application(_ application: UIApplication,
     supportedInterfaceOrientationsFor window: UIWindow?) ->

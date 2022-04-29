@@ -27,11 +27,11 @@ class MapsManager {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
-    private let mapsCollection = Collection.maps.rawValue
+    private let mapsCollection = Collection.maps.rawValue // 離線地圖
     
-    private let routeCollection = Collection.routes.rawValue
+    private let routeCollection = Collection.routes.rawValue // Home
     
-    private let shareCollection = Collection.sharedmaps.rawValue
+    private let shareCollection = Collection.sharedmaps.rawValue // Profile
     
     
     // MARK: 把資料放在 Storage，先用download的功能拿下來，在upload到firebase

@@ -105,6 +105,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.play()
                 
+                lottie()
                 
             case .paused:
                 
@@ -353,6 +354,19 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         routeVc.delegate = self
         
+        
+    }
+    
+    func lottie() {
+        var waveLottieView: AnimationView = {
+            let view = AnimationView(name: "49908-bike-ride")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width - 50, y: UIScreen.height - 100, width: 50, height: 50)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
     }
     
     func addSegment() {
