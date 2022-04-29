@@ -87,6 +87,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.isHidden = true
                 
+                bikeLottieView.isHidden = false
+                
                 timeLabel.text = stopWatch.elapsedTimeString
                 
                 map.clearMap()
@@ -105,7 +107,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.play()
                 
-                lottie()
+                bikeLottieView.play()
                 
             case .paused:
                 
@@ -114,6 +116,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 self.stopWatch.stop()
                 
                 waveLottieView.isHidden = true
+                
+                bikeLottieView.stop()
                 
                 self.map.startNewTrackSegment()
             }
@@ -357,17 +361,18 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
     }
     
-    func lottie() {
-        var waveLottieView: AnimationView = {
+
+    private lazy var bikeLottieView: AnimationView = {
+            
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width - 50, y: UIScreen.height - 100, width: 50, height: 50)
+            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
             view.contentMode = .scaleAspectFit
             view.play()
             self.view.addSubview(view)
             return view
         }()
-    }
+    
     
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
