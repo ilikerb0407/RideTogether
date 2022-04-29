@@ -161,16 +161,14 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-//                    self.delegate?.reload()
-                    
-//                    (title: "Success", style: .default) { _ in  }
+
                     let success = UIAlertAction(title: "Success", style: .default) { _ in
                         self.delegate?.reload()
                     }
                     
-//                    self.dismiss(animated: true, completion: nil)
-                    
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
+                    
+                    self.dismiss(animated: true, completion: nil)
                     
                 case .failure(let error):
                     
@@ -179,6 +177,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             }
         }
     }
+    
 }
 
 // MARK: - TextField & TextView Delegate -
@@ -241,6 +240,8 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         checkTextsFilled()
     }
 }
+
+
 
 
 

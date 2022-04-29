@@ -50,7 +50,9 @@ class SignUpViewController: BaseViewController {
                             
                             self.userInfo.uid = uid
                             
-                            self.userInfo.userName = user?.user.displayName ?? "新使用者"
+                            self.userInfo.userName = "新生你好"
+                            // upload mock photo url to get url
+                            self.userInfo.pictureRef = ""
                             
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                                 
@@ -73,18 +75,6 @@ class SignUpViewController: BaseViewController {
                                             alertController.addAction(defaultAction)
                                             
                                             self.present(alertController, animated: true, completion: nil)
-                                        }
-                                    }
-                                    
-                                    loadingQueue.async {
-                                        semaphore.wait()
-                                      
-                                        semaphore.signal()
-                                        DispatchQueue.main.async {
-                                            self.navigationController?.popViewController(animated: true)
-                                            
-                                            print("User Sign up successfully")
-                                            
                                         }
                                     }
                                    
@@ -162,7 +152,7 @@ class SignUpViewController: BaseViewController {
                     
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
-                    if let isNewUser = user?.additionalUserInfo?.isNewUser,
+                    if let isNewUser = user?.additionalUserInfo?.isNewUser ,
                        
                        let uid = user?.user.uid {
                         

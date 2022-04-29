@@ -56,6 +56,10 @@ enum Collection: String {
     // 塗鴉牆
     case sharedmaps = "Sharemaps"
     
+    // 收藏路線
+    
+    case savemaps = "Savemaps"
+    
     case requests = "Requests"
     
     case users = "Users"

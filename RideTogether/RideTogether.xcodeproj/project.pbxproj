@@ -30,6 +30,8 @@
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
 		237A27A328182FE4004F039F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A228182FE4004F039F /* ProfileView.swift */; };
 		237A27A728199F2A004F039F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A628199F2A004F039F /* UIImageView.swift */; };
+		237A27AB281AEC82004F039F /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A9281AEC81004F039F /* Member.swift */; };
+		237A27AC281AEC82004F039F /* Member.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237A27AA281AEC81004F039F /* Member.xib */; };
 		2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23838789280FCBFF00E9F4F4 /* GroupManager.swift */; };
 		2383878C280FCD9000E9F4F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878B280FCD9000E9F4F4 /* Group.swift */; };
 		2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */; };
@@ -152,6 +154,8 @@
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		237A27A228182FE4004F039F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		237A27A628199F2A004F039F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		237A27A9281AEC81004F039F /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		237A27AA281AEC81004F039F /* Member.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Member.xib; sourceTree = "<group>"; };
 		23838789280FCBFF00E9F4F4 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		2383878B280FCD9000E9F4F4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +333,8 @@
 				23A84A742811AE2300DD8D39 /* GroupInfo.xib */,
 				23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */,
 				23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */,
+				237A27A9281AEC81004F039F /* Member.swift */,
+				237A27AA281AEC81004F039F /* Member.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -561,8 +567,8 @@
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
-				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 				2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */,
+				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -690,6 +696,7 @@
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */,
+				237A27AC281AEC82004F039F /* Member.xib in Resources */,
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */,
@@ -789,6 +796,7 @@
 				23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */,
+				237A27AB281AEC82004F039F /* Member.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */,
 				23A84A752811AE2300DD8D39 /* GroupInfo.swift in Sources */,

@@ -9,10 +9,12 @@ import UIKit
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import Lottie
+
 
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
     
-    
+
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         
         return self.view.window!
@@ -49,13 +51,27 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         Auth.auth().addStateDidChangeListener { auth, user in
             
             if let user = user {
-                   print("\(user.uid) login")
-               } else {
-                   print("not login")
-               }
+                print("\(user.uid) login")
+            } else {
+                print("not login")
+            }
             
             self.curerentUser = Auth.auth().currentUser
         }
+        
+        lottie()
+    }
+    
+    func lottie() {
+        var waveLottieView: AnimationView = {
+            let view = AnimationView(name: "49908-bike-ride")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
     }
     
     func setUpSignInButton() {
@@ -261,6 +277,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                 print ("\(credential.idToken)")
                                 
                                 self.fetchUserInfo(uid: uid)
+                                
+                                
                                 
                                 print("User Sign up successfully")
                                 

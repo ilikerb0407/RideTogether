@@ -98,7 +98,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         
     }
     
-    
     // MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -132,7 +131,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         return annotationView
     }
     
-    /// Delete Waypoint Button tag. Used in a waypoint bubble
     let kDeleteWaypointAccesoryButtonTag = 666
     
     let kEditWaypointAccesoryButtonTag = 333
@@ -160,6 +158,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             //            guide(mapView, didSelect: view)
             
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
+            
             let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                 map.removeWaypoint(waypoint)
                 map.removeOverlays(map.overlays)
@@ -169,7 +168,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
             
             var routeName = UIAlertAction(title: "Destionation= \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
-                
                 
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
                 
@@ -223,8 +221,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         
         var num = 0
         // swiftlint:disable force_cast
-        guard let gpxMapView = mapView as? GPXMapView else { return }
-//        let gpxMapView = mapView as! GPXMapView
+//        guard let gpxMapView = mapView as? GPXMapView else { return }
+        let gpxMapView = mapView as! GPXMapView
         var hasImpacted = false
         //adds the pins with an animation
         for object in views {

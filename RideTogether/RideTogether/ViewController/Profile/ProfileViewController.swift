@@ -86,7 +86,11 @@ class ProfileViewController: BaseViewController {
         setUpProfileView()
         
         
-        
+//        UserManager.shared.deleteUserSharemaps(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
+//        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
+//        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
+//          UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
+//
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -167,6 +171,7 @@ extension ProfileViewController : UITableViewDelegate {
                 self.deleteAccount()
                 
                 
+                
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
             showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
@@ -186,9 +191,12 @@ extension ProfileViewController : UITableViewDelegate {
               
           } else {
               
-              print ("delete succes")
+              print ("delete success")
               
               UserManager.shared.deleteUserInfo(uid: user!.uid)
+              UserManager.shared.deleteUserSharemaps(uid: user!.uid)
+              UserManager.shared.deleteUserRequests(uid: user!.uid)
+              UserManager.shared.deleteUserFromGroup(uid: user!.uid)
               
               }
           }
@@ -200,6 +208,7 @@ extension ProfileViewController : UITableViewDelegate {
         
         present(loginVC, animated: true, completion: nil)
     }
+    
     
     func signOut() {
         

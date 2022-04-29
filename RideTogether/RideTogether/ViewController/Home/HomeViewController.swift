@@ -151,7 +151,7 @@ extension HomeViewController: UITableViewDataSource {
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
         
         if indexPath.row % 2 == 1 {
-            cell.routeTitle.textColor = .black
+            cell.routeTitle.textColor = .C4
         }
         
         return cell

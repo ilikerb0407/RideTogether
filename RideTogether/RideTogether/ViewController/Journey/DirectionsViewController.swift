@@ -10,8 +10,7 @@ protocol sendRoutefirst {
 class DirectionsViewController: UIViewController {
     
  
-    
-    var delegate: sendRoutefirst?
+ var delegate: sendRoutefirst?
     
   @IBOutlet private var mapView: MKMapView!
     

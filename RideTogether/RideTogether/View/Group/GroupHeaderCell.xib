@@ -41,22 +41,31 @@
                             <constraint firstItem="BBm-RZ-DEJ" firstAttribute="leading" secondItem="TcM-Ad-w57" secondAttribute="leading" constant="30" id="r2l-zp-IPI"/>
                         </constraints>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-5a-JqC">
+                        <rect key="frame" x="12" y="12" width="22" height="22"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" image="bell" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="TcM-Ad-w57" secondAttribute="trailing" constant="20" id="4gc-vG-FPx"/>
+                    <constraint firstItem="W3m-5a-JqC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="TLj-hO-fcb"/>
                     <constraint firstItem="TcM-Ad-w57" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gtk-dq-lnT"/>
+                    <constraint firstItem="W3m-5a-JqC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="kTK-Jt-gn0"/>
                     <constraint firstItem="TcM-Ad-w57" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wgN-Ne-ckE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="resquestsBell" destination="W3m-5a-JqC" id="JEX-WG-kN4"/>
                 <outlet property="searchBar" destination="eZj-dA-dma" id="Mqt-gs-ahQ"/>
                 <outlet property="segment" destination="BBm-RZ-DEJ" id="6jR-4L-o7m"/>
             </connections>
-            <point key="canvasLocation" x="-451" y="5"/>
+            <point key="canvasLocation" x="-451.44927536231887" y="4.6875"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
         <namedColor name="C2">
             <color red="0.093999996781349182" green="0.76499998569488525" blue="0.85500001907348633" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

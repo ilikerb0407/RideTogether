@@ -14,7 +14,8 @@ import Lottie
 import MessageUI
 import SwiftUI
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,sendRouteSecond{
+
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
     
     
     func sendRouteTwice(map: DrawRoute) {
@@ -22,10 +23,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     var mapData: DrawRoute?
     
-    var routeVc: RouteSelectionViewController?
-    
-    
-    //    let userId = { UserManager.shared.userInfo }
+    var routeVc =  RouteSelectionViewController()
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
@@ -89,6 +87,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.isHidden = true
                 
+                bikeLottieView.isHidden = false
+                
                 timeLabel.text = stopWatch.elapsedTimeString
                 
                 map.clearMap()
@@ -107,6 +107,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.play()
                 
+                bikeLottieView.play()
                 
             case .paused:
                 
@@ -115,6 +116,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 self.stopWatch.stop()
                 
                 waveLottieView.isHidden = true
+                
+                bikeLottieView.stop()
                 
                 self.map.startNewTrackSegment()
             }
@@ -143,6 +146,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
     }
+    
     private lazy var guideButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -352,10 +356,23 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         completer.region = map.region
         
-        routeVc?.delegate = self
- 
+        routeVc.delegate = self
+        
         
     }
+    
+
+    private lazy var bikeLottieView: AnimationView = {
+            
+            let view = AnimationView(name: "49908-bike-ride")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    
     
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
@@ -480,7 +497,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         composeVC.messageComposeDelegate = self
 
         // Configure the fields of the interface.
-        composeVC.recipients = ["0972071860"]
+        composeVC.recipients = ["請輸入電話號碼"]
         composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
 
         // Present the view controller modally.
@@ -559,11 +576,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             self.lastGpxFilename = fileName!
             
-            //            if let fileName = fileName {
-            GPXFileManager.save( fileName!, gpxContents: gpxString)
+                        if let fileName = fileName {
+                            GPXFileManager.save( fileName, gpxContents: gpxString)
             
             print ("2\(fileName)2")
-            //            }
+                        }
             
             if withReset {
                 self.gpxTrackingStatus = .notStarted
@@ -601,7 +618,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         self.followUser = !self.followUser
     }
-    
     
     //原本放在folder button 裡面
     

@@ -48,3 +48,39 @@ class CreatGroupButton: UIButton {
     
 }
 
+class RequestButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let width = UIScreen.width
+        let height = UIScreen.height
+        self.frame = CGRect(x: width * 0.8, y: height * 0.6, width: 70, height: 70)
+        
+        self.backgroundColor = .white
+        
+        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        
+        self.setImage(image, for: .normal)
+        
+        self.tintColor = .C4
+        
+    }
+    
+   
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = self.frame.height / 2
+        
+        self.layer.masksToBounds = true
+    }
+    
+}
+
