@@ -89,7 +89,7 @@ class ProfileViewController: BaseViewController {
 //        UserManager.shared.deleteUserSharemaps(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
-          UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
+//          UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //
         
         
@@ -198,6 +198,7 @@ extension ProfileViewController : UITableViewDelegate {
               UserManager.shared.deleteUserInfo(uid: user!.uid)
               UserManager.shared.deleteUserSharemaps(uid: user!.uid)
               UserManager.shared.deleteUserRequests(uid: user!.uid)
+              UserManager.shared.deleteUserFromGroup(uid: user!.uid)
               
               }
           }
