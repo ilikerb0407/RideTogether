@@ -91,8 +91,6 @@ class ProfileViewController: BaseViewController {
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //          UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

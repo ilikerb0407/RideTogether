@@ -78,7 +78,6 @@ class UserManager {
         
     }
     
-    
     func deleteUserRequests (uid: String) {
     
         let uid = userInfo.uid
