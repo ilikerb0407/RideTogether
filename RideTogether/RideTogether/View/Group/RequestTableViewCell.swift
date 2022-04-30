@@ -58,19 +58,19 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             
             trailName.textColor = isEditting ? .black : .B1
             
-            trailName.backgroundColor = isEditting ? .U1 : .clear
+            trailName.backgroundColor = isEditting ? .white : .clear
             
             numberOfPeople.isEnabled = isEditting ? true : false
             
             numberOfPeople.textColor = isEditting ? .black : .B1
             
-            numberOfPeople.backgroundColor = isEditting ? .U1 : .clear
+            numberOfPeople.backgroundColor = isEditting ? .white : .clear
             
             note.isEditable = isEditting ? true : false
             
             note.textColor = isEditting ? .black : .B1
             
-            note.backgroundColor = isEditting ? .U1 : .clear
+            note.backgroundColor = isEditting ? .white : .clear
             
             travelDate.isHidden = isEditting ? true : false
             

@@ -32,7 +32,7 @@ class ChatRoomViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .U1
+        view.backgroundColor = .U2
         
         checkUserStatus()
         
@@ -224,7 +224,6 @@ class ChatRoomViewController: BaseViewController {
         
         tableView = UITableView()
         
-        tableView.backgroundColor = .C4
         view.addSubview(tableView)
         
         if #available(iOS 15.0, *) {
@@ -232,7 +231,7 @@ class ChatRoomViewController: BaseViewController {
             tableView.sectionHeaderTopPadding = 0
         }
         
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
