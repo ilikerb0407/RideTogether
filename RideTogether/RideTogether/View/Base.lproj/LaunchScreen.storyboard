@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,27 +16,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride.gif" translatesAutoresizingMaskIntoConstraints="NO" id="p2d-y1-Zh4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyz-rs-kaw">
-                                <rect key="frame" x="50" y="144" width="314" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyz-rs-kaw">
+                                <rect key="frame" x="50" y="498" width="314" height="26.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26.5" id="bbE-Sj-RIh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="e0d-G4-Yds">
+                                <rect key="frame" x="177" y="418" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="TMl-qX-fVU"/>
+                                    <constraint firstAttribute="width" constant="60" id="Xx0-gT-HPV"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="U1"/>
                         <constraints>
+                            <constraint firstItem="hyz-rs-kaw" firstAttribute="top" secondItem="e0d-G4-Yds" secondAttribute="bottom" constant="20" id="30f-W4-z6V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hyz-rs-kaw" secondAttribute="trailing" constant="50" id="Gha-j7-ljQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p2d-y1-Zh4" secondAttribute="trailing" id="dbk-Bi-S2r"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="p2d-y1-Zh4" secondAttribute="bottom" id="dv8-fK-nz4"/>
-                            <constraint firstItem="p2d-y1-Zh4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lMc-i2-Rhf"/>
+                            <constraint firstItem="e0d-G4-Yds" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GwL-MV-iTj"/>
                             <constraint firstItem="hyz-rs-kaw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="lrP-tc-pk1"/>
-                            <constraint firstItem="hyz-rs-kaw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="wGV-PM-eB3"/>
-                            <constraint firstItem="p2d-y1-Zh4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xPJ-jI-wdB"/>
+                            <constraint firstItem="e0d-G4-Yds" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nlY-ro-TE1"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,6 +50,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="49908-bike-ride.gif" width="640" height="640"/>
+        <image name="ic_launcher" width="192" height="192"/>
+        <namedColor name="U1">
+            <color red="0.46299999952316284" green="0.89399999380111694" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

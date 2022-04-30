@@ -167,14 +167,16 @@ extension ProfileViewController : UITableViewDelegate {
                 self.signOut()
             }
             let removeAccount = UIAlertAction(title: AccountActionSheet.allCases[1].rawValue, style: .destructive) { _ in
-                
                 self.deleteAccount()
-                
-                
-                
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
             showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
+            
+            
+        case 3:
+            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
+            performSegue(withIdentifier: segueId, sender: nil)
+            
         default :
             return
         }

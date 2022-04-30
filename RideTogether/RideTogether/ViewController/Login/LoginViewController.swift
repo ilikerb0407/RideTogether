@@ -148,6 +148,9 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     }
     
     
+    @IBOutlet weak var emailbtn: UIButton!
+    
+    
     
     func loginButtonFadeIn () {
         

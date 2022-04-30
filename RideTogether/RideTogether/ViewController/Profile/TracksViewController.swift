@@ -211,13 +211,13 @@ extension TracksViewController: UITableViewDelegate {
                     print ("\(error)")
                 }
             }
-  
         }
         
         let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self] _ in
             
             RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
                 switch result {
+                    
                 case .success(_):
                     self.records.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .left)
@@ -227,6 +227,7 @@ extension TracksViewController: UITableViewDelegate {
                 }
             }
         }
+        
         let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
         
         sheet.addAction(detailOption)

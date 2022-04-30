@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import Kingfisher
 import MessageUI
+import Lottie
 
 
 
@@ -143,6 +144,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
+    
     
     
     

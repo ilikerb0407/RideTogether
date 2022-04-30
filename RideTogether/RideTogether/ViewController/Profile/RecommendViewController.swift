@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
+import Lottie
 
 
 // MARK: Recommend-Route
@@ -69,7 +70,7 @@ class RecommendViewController: BaseViewController {
         
     }
     
-    func uploadRecordToSavemaps(fileName: String, fileURL: URL) {
+    func uploadRecordToSavemaps(fileName: String, fileRef: String) {
         
         let document = dataBase.collection(saveCollection).document()
         
@@ -81,7 +82,7 @@ class RecommendViewController: BaseViewController {
         
         record.recordName = fileName
         
-        record.recordRef = fileURL.absoluteString
+        record.recordRef = fileRef
         
         do {
             
@@ -93,6 +94,10 @@ class RecommendViewController: BaseViewController {
         }
         
         print("sucessfully")
+    }
+    
+    func updateSavemaps(){
+        
     }
 
     
@@ -129,6 +134,7 @@ class RecommendViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
+        
 
     }
     
@@ -139,6 +145,22 @@ class RecommendViewController: BaseViewController {
         
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        waitlottie.isHidden = true
+    }
+    
+    private lazy var waitlottie : AnimationView = {
+        let view = AnimationView(name: "waiting-pigeon")
+        view.loopMode = .loop
+        view.frame = CGRect(x: UIScreen.width / 8 , y: UIScreen.height / 6  , width: 300 , height: 300)
+        view.cornerRadius = 20
+        view.contentMode = .scaleToFill
+        view.play()
+        self.view.addSubview(view)
+        return view
+    }()
     
     
 }
@@ -151,46 +173,44 @@ extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       
+        
+        waitlottie.isHidden = false
+        waitlottie.play()
+        
+        let alert = UIAlertController(title: "Choose", message: nil , preferredStyle: .actionSheet)
+        
+        let detailOption = UIAlertAction(title: "Take A Look", style: .default){ [self]_ in
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]
-                // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
+                
             }
+        }
+        let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
+            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        }
         
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        alert.addAction(detailOption)
+        alert.addAction(likeOption)
+        alert.addAction(cancelOption)
+        
+        present(alert, animated: true, completion: nil)
+   
+//        tableViewCell.likes.toggle()
+//        if tableViewCell.heart.isSelected == true {
+//            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+//        }
+//        if tableViewCell.likes == true {
+//            // 加到 使用者的 savemaps
+//            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+//        }else {
+//            // 將savemaps 從使用者中刪除
+//            self.updateSavemaps()
+//        }
     }
-    
-    
-//        let recordRef = storageRef.child("records").child("\(userId)")
-//        //  gs://bikeproject-59c89.appspot.com/records
-//        let spaceRef = recordRef.child(records[indexPath.row].recordName)
-//
-//
-//        spaceRef.downloadURL { [self] result in
-//            switch result {
-//            case .success(let url) :
-////                    completion(.success(url))
-//                print ("\(url)")
-//                self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileURL: url)
-//                //
-//            case .failure(let error) :
-////                    completion(.failure(error))
-//                print ("\(error)")
-//            }
-//        }
 
-    
-   
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
-//            if let nextVC = segue.destination as? RecommendDetailViewController {
-//                if let record = sender as? Record {
-//                    nextVC.record = record
-//                }
-//            }
-//        }
-//    }
-   
 }
 
 extension RecommendViewController: UITableViewDataSource {

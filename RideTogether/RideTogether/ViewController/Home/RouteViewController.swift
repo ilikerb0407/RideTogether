@@ -11,6 +11,7 @@ import SwiftUI
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import Lottie
 
 
 class RouteViewController: BaseViewController {
@@ -59,7 +60,7 @@ class RouteViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
@@ -84,7 +85,7 @@ class RouteViewController: BaseViewController {
     
     @objc func headerRefresh() {
         
-        fetchRecords()
+//        fetchRecords()
         
         tableView.reloadData()
         
@@ -103,7 +104,6 @@ class RouteViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
-        
     }
     
     
@@ -115,6 +115,21 @@ class RouteViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = false
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        waitlottie.isHidden = true
+    }
+    
+    private lazy var waitlottie : AnimationView = {
+        let view = AnimationView(name: "waiting-pigeon")
+        view.loopMode = .loop
+        view.frame = CGRect(x: UIScreen.width / 8 , y: UIScreen.height / 6  , width: 300 , height: 300)
+        view.cornerRadius = 20
+        view.contentMode = .scaleToFill
+        view.play()
+        self.view.addSubview(view)
+        return view
+    }()
     
 }
 
@@ -132,12 +147,21 @@ extension RouteViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        waitlottie.isHidden = false
+        waitlottie.play()
+      
+            
+           
+                if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
+                    navigationController?.pushViewController(journeyViewController, animated: true)
+                    journeyViewController.routes = routes[indexPath.row]
+                }
+            
+            
+        
        
-//            performSegue(withIdentifier: SegueIdentifier.routeList.rawValue, sender: routes[indexPath.row])
-            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
-                navigationController?.pushViewController(journeyViewController, animated: true)
-                journeyViewController.routes = routes[indexPath.row]
-            }
+        
+          
         
     
     }

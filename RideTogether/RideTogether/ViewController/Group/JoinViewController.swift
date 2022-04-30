@@ -54,6 +54,8 @@ class JoinViewController: BaseViewController {
         configureDataSource()
         
         configureSnapshot()
+        
+        
     }
     
     // MARK: - Methods -
