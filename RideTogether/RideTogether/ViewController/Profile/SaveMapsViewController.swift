@@ -19,6 +19,9 @@ class SaveMapsViewController: BaseViewController {
     
     var records = [Record]()
     
+    
+    private let header = MJRefreshNormalHeader()
+    
     private var tableView: UITableView! {
         
         didSet {
@@ -44,6 +47,16 @@ class SaveMapsViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = false
         
     }
+    
+    @objc func headerRefresh() {
+        
+        fetchRecords()
+        
+        tableView.reloadData()
+        
+        self.tableView.mj_header?.endRefreshing()
+    }
+    
     // fetch uid
     func fetchRecords() {
         
@@ -58,6 +71,8 @@ class SaveMapsViewController: BaseViewController {
     }
     
     func setUptableView() {
+        
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         
         setNavigationBar(title: "SaveMaps")
         
