@@ -59,7 +59,7 @@ class RouteViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
@@ -84,7 +84,7 @@ class RouteViewController: BaseViewController {
     
     @objc func headerRefresh() {
         
-        fetchRecords()
+//        fetchRecords()
         
         tableView.reloadData()
         

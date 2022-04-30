@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class HomeViewController: BaseViewController {
 
@@ -31,32 +32,75 @@ class HomeViewController: BaseViewController {
         }
     }
     
+  
+        
+        private lazy var bikelottie : AnimationView = {
+            let view = AnimationView(name: "bike-city-rider")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width / 8 , y: 50 , width: 200 , height: 180)
+            view.cornerRadius = 20
+            view.contentMode = .scaleToFill
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .B4
+        
+        navigationController?.isNavigationBarHidden = true
         
         setUpTableView()
         
         fetchTrailData()
         
         manageRouteData()
+        
+        bikelottie.play()
+        
+
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setUpTableView()
+        
+        bikelottie.play()
+    }
     
     func setUpTableView() {
         
-        tableView = UITableView(frame: .zero, style: .grouped)
+        tableView = UITableView()
         
         tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
         
-        view.stickSubView(tableView)
+//        view.stickSubView(tableView)
+        view.addSubview(tableView)
         
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
         
+        tableView.isScrollEnabled = false
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+
+            tableView.topAnchor.constraint(equalTo: bikelottie.bottomAnchor, constant: 10),
+
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
     }
     
     func manageRouteData() {
@@ -101,7 +145,7 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

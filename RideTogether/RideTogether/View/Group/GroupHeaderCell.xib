@@ -41,17 +41,21 @@
                             <constraint firstItem="BBm-RZ-DEJ" firstAttribute="leading" secondItem="TcM-Ad-w57" secondAttribute="leading" constant="30" id="r2l-zp-IPI"/>
                         </constraints>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-5a-JqC">
-                        <rect key="frame" x="12" y="12" width="22" height="22"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3m-5a-JqC">
+                        <rect key="frame" x="8" y="0.0" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="FfN-Jj-SZq"/>
+                            <constraint firstAttribute="width" constant="30" id="iD8-7j-nCW"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="filled" image="bell" catalog="system"/>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="TcM-Ad-w57" secondAttribute="trailing" constant="20" id="4gc-vG-FPx"/>
-                    <constraint firstItem="W3m-5a-JqC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="TLj-hO-fcb"/>
+                    <constraint firstItem="W3m-5a-JqC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8dr-zy-mjA"/>
+                    <constraint firstItem="W3m-5a-JqC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Wbm-VH-My9"/>
                     <constraint firstItem="TcM-Ad-w57" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gtk-dq-lnT"/>
-                    <constraint firstItem="W3m-5a-JqC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="kTK-Jt-gn0"/>
                     <constraint firstItem="TcM-Ad-w57" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wgN-Ne-ckE"/>
                 </constraints>
             </tableViewCellContentView>

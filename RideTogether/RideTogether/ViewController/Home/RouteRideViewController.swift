@@ -42,7 +42,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
         @objc func popToPreviosPage(_ sender: UIButton) {
             let count = self.navigationController!.viewControllers.count
-            if let preController = self.navigationController?.viewControllers[count-2] {
+            if let preController = self.navigationController?.viewControllers[count-1] {
                 self.navigationController?.popToViewController(preController, animated: true)
             }
             navigationController?.popViewController(animated: true)
