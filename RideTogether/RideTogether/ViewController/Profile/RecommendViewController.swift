@@ -173,6 +173,30 @@ extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
+        waitlottie.isHidden = false
+        waitlottie.play()
+        
+        let alert = UIAlertController(title: "Choose", message: nil , preferredStyle: .actionSheet)
+        
+        let detailOption = UIAlertAction(title: "Take A Look", style: .default){ [self]_ in
+            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+                navigationController?.pushViewController(journeyViewController, animated: true)
+                journeyViewController.record = records[indexPath.row]
+                
+            }
+        }
+        let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
+            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        }
+        
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        alert.addAction(detailOption)
+        alert.addAction(likeOption)
+        alert.addAction(cancelOption)
+        
+        present(alert, animated: true, completion: nil)
    
 //        tableViewCell.likes.toggle()
 //        if tableViewCell.heart.isSelected == true {
@@ -185,51 +209,8 @@ extension RecommendViewController: UITableViewDelegate {
 //            // 將savemaps 從使用者中刪除
 //            self.updateSavemaps()
 //        }
-        waitlottie.isHidden = false
-        waitlottie.play()
-        
-            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
-                navigationController?.pushViewController(journeyViewController, animated: true)
-                journeyViewController.record = records[indexPath.row]
-                
-                self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-                // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
-                
-            }
-        
     }
-    
-    
-//        let recordRef = storageRef.child("records").child("\(userId)")
-//        //  gs://bikeproject-59c89.appspot.com/records
-//        let spaceRef = recordRef.child(records[indexPath.row].recordName)
-//
-//
-//        spaceRef.downloadURL { [self] result in
-//            switch result {
-//            case .success(let url) :
-////                    completion(.success(url))
-//                print ("\(url)")
-//                self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileURL: url)
-//                //
-//            case .failure(let error) :
-////                    completion(.failure(error))
-//                print ("\(error)")
-//            }
-//        }
 
-    
-   
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == SegueIdentifier.recommendMaps.rawValue {
-//            if let nextVC = segue.destination as? RecommendDetailViewController {
-//                if let record = sender as? Record {
-//                    nextVC.record = record
-//                }
-//            }
-//        }
-//    }
-   
 }
 
 extension RecommendViewController: UITableViewDataSource {

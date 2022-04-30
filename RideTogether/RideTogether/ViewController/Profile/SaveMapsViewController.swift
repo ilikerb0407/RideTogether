@@ -115,11 +115,20 @@ extension SaveMapsViewController: UITableViewDelegate {
         true
     }
     
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCell.EditingStyle.delete {
+        let alert = UIAlertController(title: "Choose", message: nil, preferredStyle: .alert)
+        
+        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+            
+            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+                navigationController?.pushViewController(journeyViewController, animated: true)
+                journeyViewController.record = records[indexPath.row]}
+            
+        }
+        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) {
+            [self] _ in
             
             MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
                 
@@ -129,7 +138,7 @@ extension SaveMapsViewController: UITableViewDelegate {
                     
                     self.records.remove(at: indexPath.row)
                     
-                    self.tableView.deleteRows(at: [indexPath], with: .middle)
+                    self.tableView.deleteRows(at: [indexPath], with: .left)
                     
                 case .failure(let error):
                     
@@ -138,7 +147,18 @@ extension SaveMapsViewController: UITableViewDelegate {
             }
             
         }
+        
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        alert.addAction(detailOption)
+        alert.addAction(removeOption)
+        alert.addAction(cancelOption)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
     }
+    
     
 }
 

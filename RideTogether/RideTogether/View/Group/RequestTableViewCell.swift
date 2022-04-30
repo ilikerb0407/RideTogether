@@ -58,19 +58,19 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             
             trailName.textColor = isEditting ? .black : .B1
             
-            trailName.backgroundColor = isEditting ? .systemPink : .clear
+            trailName.backgroundColor = isEditting ? .U1 : .clear
             
             numberOfPeople.isEnabled = isEditting ? true : false
             
             numberOfPeople.textColor = isEditting ? .black : .B1
             
-            numberOfPeople.backgroundColor = isEditting ? .systemPink : .clear
+            numberOfPeople.backgroundColor = isEditting ? .U1 : .clear
             
             note.isEditable = isEditting ? true : false
             
             note.textColor = isEditting ? .black : .B1
             
-            note.backgroundColor = isEditting ? .systemPink : .clear
+            note.backgroundColor = isEditting ? .U1 : .clear
             
             travelDate.isHidden = isEditting ? true : false
             
@@ -80,8 +80,9 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             
             travelTimePicker.isHidden = isEditting ? false : true
             
-            travelTimePicker.backgroundColor = isEditting ? UIColor.systemPink : .clear
+            travelTimePicker.backgroundColor = isEditting ? .clear : .clear
             
+            travelTimePicker.cornerRadius = 20
             
             if isEditting {
                 
@@ -170,6 +171,8 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         
         selectionStyle = .none
+        
+        self.backgroundColor = .clear
         
         gButton.titleLabel?.font = UIFont.regular(size: 20)
         

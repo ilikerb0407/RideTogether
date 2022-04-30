@@ -32,9 +32,11 @@ class ChatRoomViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .C2
+        view.backgroundColor = .U1
         
         checkUserStatus()
+        
+        headerView?.backgroundColor = .clear
         
 //        setUpChatTextView()
         

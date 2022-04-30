@@ -15,6 +15,8 @@
 		23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C38281D11C7001DE91D /* SaveMapsViewController.swift */; };
 		23129C3C281D30CF001DE91D /* SaveMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C3A281D30CF001DE91D /* SaveMaps.swift */; };
 		23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23129C3B281D30CF001DE91D /* SaveMaps.xib */; };
+		23129C3F281D5B11001DE91D /* RouteCarLenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C3E281D5B11001DE91D /* RouteCarLenViewController.swift */; };
+		23129C43281D5BB8001DE91D /* RouteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C42281D5BB8001DE91D /* RouteCollectionViewCell.swift */; };
 		2314F20E280AFC6500425F8A /* RecordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F20D280AFC6500425F8A /* RecordInfo.swift */; };
 		2314F213280B5AE500425F8A /* SendSMSbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F212280B5AE500425F8A /* SendSMSbutton.swift */; };
 		231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* ShareMap.swift */; };
@@ -143,6 +145,8 @@
 		23129C38281D11C7001DE91D /* SaveMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMapsViewController.swift; sourceTree = "<group>"; };
 		23129C3A281D30CF001DE91D /* SaveMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMaps.swift; sourceTree = "<group>"; };
 		23129C3B281D30CF001DE91D /* SaveMaps.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveMaps.xib; sourceTree = "<group>"; };
+		23129C3E281D5B11001DE91D /* RouteCarLenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCarLenViewController.swift; sourceTree = "<group>"; };
+		23129C42281D5BB8001DE91D /* RouteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollectionViewCell.swift; sourceTree = "<group>"; };
 		2314F20D280AFC6500425F8A /* RecordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInfo.swift; sourceTree = "<group>"; };
 		2314F212280B5AE500425F8A /* SendSMSbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSMSbutton.swift; sourceTree = "<group>"; };
 		231BCB2D28066C3B00DE2343 /* ShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMap.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 			children = (
 				231BCB6728084B9E00DE2343 /* HomeViewController.swift */,
 				23C8871C281435EC00E3319A /* RouteViewController.swift */,
+				23129C3E281D5B11001DE91D /* RouteCarLenViewController.swift */,
 				23C887262815450500E3319A /* RouteRideViewController.swift */,
 			);
 			path = Home;
@@ -357,6 +362,7 @@
 				23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */,
 				23C8872028149ECC00E3319A /* Routes.swift */,
 				23C8872128149ECC00E3319A /* Routes.xib */,
+				23129C42281D5BB8001DE91D /* RouteCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -846,6 +852,7 @@
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
 				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
+				23129C43281D5BB8001DE91D /* RouteCollectionViewCell.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
 				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
 				231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */,
@@ -870,6 +877,7 @@
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				2304FF4A280891AF00C6B1BF /* NextPageButton.swift in Sources */,
+				23129C3F281D5B11001DE91D /* RouteCarLenViewController.swift in Sources */,
 				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,

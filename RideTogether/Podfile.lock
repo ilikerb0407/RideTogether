@@ -218,6 +218,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - CarLensCollectionViewLayout (1.2.0)
   - Charts (4.0.2):
     - Charts/Core (= 4.0.2)
   - Charts/Core (4.0.2):
@@ -356,6 +357,7 @@ PODS:
   - SwiftLint (0.47.0)
 
 DEPENDENCIES:
+  - CarLensCollectionViewLayout (~> 1.2.0)
   - Charts
   - CoreGPX
   - Firebase/Auth
@@ -377,6 +379,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - CarLensCollectionViewLayout
     - Charts
     - CoreGPX
     - Firebase
@@ -411,6 +414,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  CarLensCollectionViewLayout: 75a28307dbd7dbacbba417d13501415ff3471a68
   Charts: cfa4e911e6dc289582c2fe011a0e87c03d96727f
   CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
@@ -442,6 +446,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 3baf2ffe2ab335ba1a1b967e457a3c71473b1a20
+PODFILE CHECKSUM: 848e53707a8fb1722076b166390330ed69744a3b
 
 COCOAPODS: 1.11.2
