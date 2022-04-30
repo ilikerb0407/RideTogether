@@ -16,16 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="1Oz-4e-a42">
-                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bikeLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="1Oz-4e-a42">
+                                <rect key="frame" x="50" y="226" width="314" height="418"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Ise-sa-ypx"/>
-                                    <constraint firstAttribute="width" constant="100" id="dPM-HN-AG7"/>
+                                    <constraint firstAttribute="height" constant="418" id="Ise-sa-ypx"/>
+                                    <constraint firstAttribute="width" constant="314" id="dPM-HN-AG7"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyz-rs-kaw">
-                                <rect key="frame" x="50" y="523" width="314" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="50" y="149.5" width="314" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -33,11 +33,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="U1"/>
                         <constraints>
+                            <constraint firstItem="1Oz-4e-a42" firstAttribute="top" secondItem="hyz-rs-kaw" secondAttribute="bottom" constant="50" id="3Z5-fA-lmk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hyz-rs-kaw" secondAttribute="trailing" constant="50" id="Gha-j7-ljQ"/>
                             <constraint firstItem="1Oz-4e-a42" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SCE-vA-0iE"/>
-                            <constraint firstItem="hyz-rs-kaw" firstAttribute="top" secondItem="1Oz-4e-a42" secondAttribute="bottom" constant="25" id="f4m-cj-TQm"/>
                             <constraint firstItem="hyz-rs-kaw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="lrP-tc-pk1"/>
-                            <constraint firstItem="1Oz-4e-a42" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qPz-6t-hJT"/>
+                            <constraint firstItem="1Oz-4e-a42" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-13" id="qPz-6t-hJT"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,7 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_launcher" width="192" height="192"/>
+        <image name="bikeLaunch" width="878" height="1012"/>
         <namedColor name="U1">
             <color red="0.46299999952316284" green="0.89399999380111694" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
