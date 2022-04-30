@@ -13,6 +13,8 @@
 		23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C30281CF43D001DE91D /* bike-city-rider.json */; };
 		23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C36281D0E60001DE91D /* waiting-pigeon.json */; };
 		23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C38281D11C7001DE91D /* SaveMapsViewController.swift */; };
+		23129C3C281D30CF001DE91D /* SaveMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C3A281D30CF001DE91D /* SaveMaps.swift */; };
+		23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23129C3B281D30CF001DE91D /* SaveMaps.xib */; };
 		2314F20E280AFC6500425F8A /* RecordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F20D280AFC6500425F8A /* RecordInfo.swift */; };
 		2314F213280B5AE500425F8A /* SendSMSbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F212280B5AE500425F8A /* SendSMSbutton.swift */; };
 		231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* ShareMap.swift */; };
@@ -140,6 +142,8 @@
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
 		23129C36281D0E60001DE91D /* waiting-pigeon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waiting-pigeon.json"; sourceTree = "<group>"; };
 		23129C38281D11C7001DE91D /* SaveMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMapsViewController.swift; sourceTree = "<group>"; };
+		23129C3A281D30CF001DE91D /* SaveMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMaps.swift; sourceTree = "<group>"; };
+		23129C3B281D30CF001DE91D /* SaveMaps.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveMaps.xib; sourceTree = "<group>"; };
 		2314F20D280AFC6500425F8A /* RecordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInfo.swift; sourceTree = "<group>"; };
 		2314F212280B5AE500425F8A /* SendSMSbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSMSbutton.swift; sourceTree = "<group>"; };
 		231BCB2D28066C3B00DE2343 /* ShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMap.swift; sourceTree = "<group>"; };
@@ -589,6 +593,8 @@
 				237A27A228182FE4004F039F /* ProfileView.swift */,
 				23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */,
 				23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */,
+				23129C3A281D30CF001DE91D /* SaveMaps.swift */,
+				23129C3B281D30CF001DE91D /* SaveMaps.xib */,
 				231BCB352806724F00DE2343 /* RecommendMap */,
 				23D1B7EF28045A42000EDA70 /* Track */,
 			);
@@ -692,6 +698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */,
+				23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */,
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
@@ -833,6 +840,7 @@
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
+				23129C3C281D30CF001DE91D /* SaveMaps.swift in Sources */,
 				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,

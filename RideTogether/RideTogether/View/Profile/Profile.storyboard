@@ -161,6 +161,7 @@
                         <outlet property="tableView" destination="Zna-nX-YeG" id="5bk-MY-FAa"/>
                         <segue destination="Y0Y-w7-fwb" kind="show" identifier="toRecord" id="YZm-ih-Pyd"/>
                         <segue destination="N8s-xc-8hQ" kind="show" identifier="toRecommend" id="5QD-Mn-zAh"/>
+                        <segue destination="OlT-UA-jCm" kind="show" identifier="toSavemaps" id="Eyk-co-sry"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrk-gs-Yjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -393,7 +394,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYO-NY-QaB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2490" y="1081"/>
+            <point key="canvasLocation" x="4130" y="1685"/>
+        </scene>
+        <!--Save Maps View Controller-->
+        <scene sceneID="M6I-Zv-DPX">
+            <objects>
+                <viewController storyboardIdentifier="SaveMapsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OlT-UA-jCm" customClass="SaveMapsViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rdP-cA-SzV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8BR-Nv-wch"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="O0v-r2-E9B"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUL-XW-W6V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="162" y="984"/>
         </scene>
     </scenes>
     <resources>

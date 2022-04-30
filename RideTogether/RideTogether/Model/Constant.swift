@@ -36,7 +36,10 @@ enum ProfileSegue: String, CaseIterable {
     
     case account = "toAccount"
     
+    case savemaps = "toSavemaps"
+    
     case privacy = "toPrivacy"
+    
 }
 
 enum Collection: String {

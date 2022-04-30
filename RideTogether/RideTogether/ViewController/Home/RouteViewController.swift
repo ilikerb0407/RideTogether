@@ -149,23 +149,16 @@ extension RouteViewController: UITableViewDelegate {
         
         waitlottie.isHidden = false
         waitlottie.play()
-        
-        let semaphore = DispatchSemaphore(value: 1)
-        
-        let loadingQueue = DispatchQueue.global()
-        
-        loadingQueue.async { [self] in
-            semaphore.wait()
-            semaphore.signal()
+      
             
-            DispatchQueue.main.async {
+           
                 if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
                     navigationController?.pushViewController(journeyViewController, animated: true)
                     journeyViewController.routes = routes[indexPath.row]
                 }
-            }
             
-        }
+            
+        
        
         
           

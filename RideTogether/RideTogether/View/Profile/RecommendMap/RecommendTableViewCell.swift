@@ -8,6 +8,8 @@
 import UIKit
 import SwiftUI
 
+
+
 class RecommendTableViewCell: UITableViewCell {
     
     
@@ -33,14 +35,14 @@ class RecommendTableViewCell: UITableViewCell {
         
         print ("like it or not  ")
         self.heart.isSelected = self.likes
-//        likes.toggle()
+        likes.toggle()
         heart.isSelected.toggle()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        selectionStyle = .none
+        selectionStyle = .none
         self.backgroundColor = .C4
         self.contentView.backgroundColor = .clear
         
