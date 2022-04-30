@@ -6,21 +6,21 @@
 //
 
 import UIKit
-import CarLensCollectionViewLayout
+//import CarLensCollectionViewLayout
 
 
-class RouteCarLenViewController: UIViewController {
-
-    @IBOutlet weak var routeCollecitonView: RouteCollectionViewCell!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-    }
-    
+//class RouteCarLenViewController: UIViewController {
+//
+//    @IBOutlet weak var routeCollecitonView: RouteCollectionViewCell!
+//
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//
+//    }
+//
 
   
 
-}
+//}
