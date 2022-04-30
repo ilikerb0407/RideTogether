@@ -32,7 +32,8 @@ class HomeViewController: BaseViewController {
         }
     }
     
-  
+   
+   
         
         private lazy var bikelottie : AnimationView = {
             let view = AnimationView(name: "bike-city-rider")

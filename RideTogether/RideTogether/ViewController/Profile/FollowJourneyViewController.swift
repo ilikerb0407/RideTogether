@@ -61,7 +61,7 @@ class FollowJourneyViewController: BaseViewController {
 
     @objc func popToPreviosPage(_ sender: UIButton) {
         let count = self.navigationController!.viewControllers.count
-        if let preController = self.navigationController?.viewControllers[count-2] {
+        if let preController = self.navigationController?.viewControllers[count-1] {
             self.navigationController?.popToViewController(preController, animated: true)
         }
         navigationController?.popViewController(animated: true)
@@ -314,7 +314,7 @@ class FollowJourneyViewController: BaseViewController {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 20)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         return label
     }()
     
