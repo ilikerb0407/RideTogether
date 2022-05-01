@@ -162,9 +162,6 @@ class RecommendViewController: BaseViewController {
         return view
     }()
     
-    
-    
-    
 }
 
 extension RecommendViewController: UITableViewDelegate {
@@ -198,7 +195,9 @@ extension RecommendViewController: UITableViewDelegate {
 
         }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in
+            self.waitlottie.isHidden = true
+        }
         
         alert.addAction(detailOption)
         alert.addAction(likeOption)

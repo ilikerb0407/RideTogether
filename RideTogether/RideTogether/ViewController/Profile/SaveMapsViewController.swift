@@ -141,10 +141,9 @@ extension SaveMapsViewController: UITableViewDelegate {
                 case .success(_):
                     
                     self.records.remove(at: indexPath.row)
+
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
                     
-                    self.tableView.deleteRows(at: [indexPath], with: .left)
-                    
-                    tableView.reloadData()
                     
                 case .failure(let error):
                     

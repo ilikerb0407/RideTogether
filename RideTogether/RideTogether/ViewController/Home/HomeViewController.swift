@@ -50,7 +50,6 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .B4
         
         navigationController?.isNavigationBarHidden = true
         

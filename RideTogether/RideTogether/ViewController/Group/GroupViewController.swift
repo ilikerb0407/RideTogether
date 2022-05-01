@@ -25,6 +25,14 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     
     var VC = CreateGroupViewController()
     
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .B1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
+    }
+    
     
     private lazy var cache = [String: UserInfo]() {
         
@@ -93,7 +101,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView.mj_header = header
         
-        view.backgroundColor = .U2
+//        view.applyGradient(colors: [.B2, .U2], locations: [0.0, 1.0], direction: .leftSkewed)
+//        view.backgroundColor = .U2
         
         table?.delegate = self
         
@@ -158,6 +167,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
+        
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -169,7 +179,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium()]
+                presentVc.detents = [.medium(), .large() ]
                 rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }

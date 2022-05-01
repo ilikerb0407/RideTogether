@@ -30,8 +30,8 @@
                                 <color key="textColor" name="U1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kms I rode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsR-8O-mwN">
-                                <rect key="frame" x="39.5" y="108" width="110.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kms I rode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsR-8O-mwN">
+                                <rect key="frame" x="36.5" y="108" width="113.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" name="U1"/>
                                 <nil key="highlightedColor"/>
@@ -39,10 +39,10 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-ux-HVR">
-                        <rect key="frame" x="185" y="188" width="157" height="138"/>
+                        <rect key="frame" x="181" y="188" width="161" height="138"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csc-2H-12u">
-                                <rect key="frame" x="7" y="0.0" width="150" height="100"/>
+                                <rect key="frame" x="11" y="0.0" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="1Uv-Kw-Ycq"/>
                                     <constraint firstAttribute="height" constant="100" id="qLZ-lN-2mx"/>
@@ -51,8 +51,8 @@
                                 <color key="textColor" name="U1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="groups I joined" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGg-k8-fLU">
-                                <rect key="frame" x="0.0" y="108" width="157" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups I joined" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGg-k8-fLU">
+                                <rect key="frame" x="0.0" y="108" width="161" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" name="U1"/>
                                 <nil key="highlightedColor"/>

@@ -9,6 +9,17 @@ import UIKit
 
 class JoinViewController: BaseViewController {
     
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .B1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
+    }
+    
+    
+    
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
     typealias DataSource = UITableViewDiffableDataSource<Section, Request>
