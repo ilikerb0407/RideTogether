@@ -37,6 +37,10 @@ class SaveMapsViewController: BaseViewController {
         
         fetchRecords()
         
+        tableView.mj_header? = header
+        
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

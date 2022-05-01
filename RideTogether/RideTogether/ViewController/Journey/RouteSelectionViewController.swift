@@ -38,12 +38,12 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
         
         guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-        feelslikeTemp.text = "\(feelslike)度"
+        feelslikeTemp.text = "\(feelslike) °C"
         guard let humiditydata = weatherdata?.main.humidity else { return }
         humidity.text = "\(humiditydata) %"
         
         guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-        showtemp.text = "\(tempdata)度"
+        showtemp.text = "\(tempdata) °C"
         
         
         guard let ssunrise = weatherdata?.sys.sunrise else { return }
@@ -75,12 +75,12 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
         
         guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-        feelslikeTemp.text = "\(feelslike)度"
+        feelslikeTemp.text = "\(feelslike) °C"
         guard let humiditydata = weatherdata?.main.humidity else { return }
         humidity.text = "\(humiditydata) %"
         
         guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-        showtemp.text = "\(tempdata)度"
+        showtemp.text = "\(tempdata) °C"
         
         
         guard let ssunrise = weatherdata?.sys.sunrise else { return }
@@ -99,7 +99,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         sunset.text = "\(sunsetDate)"
         
         guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-        wind.text = "\(swind)km/h"
+        wind.text = "\(swind) km/h"
         
         guard let clouds = weatherdata?.weather[0].main else { return }
         cloud.text = "\(clouds)"

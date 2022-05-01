@@ -55,6 +55,10 @@
 		23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */; };
 		23A84A8D2813FA9B00DD8D39 /* RouteTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */; };
 		23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */; };
+		23C0C41C281E7B320020237C /* wait-processbar.json in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C41B281E7B320020237C /* wait-processbar.json */; };
+		23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C41D281E9C810020237C /* HomeHeader.swift */; };
+		23C0C420281E9C810020237C /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C41E281E9C810020237C /* HomeHeader.xib */; };
+		23C0C422281EA4870020237C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C421281EA4870020237C /* Notification.swift */; };
 		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
 		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
 		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
@@ -185,6 +189,10 @@
 		23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTypes.swift; sourceTree = "<group>"; };
 		23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTypes.xib; sourceTree = "<group>"; };
+		23C0C41B281E7B320020237C /* wait-processbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wait-processbar.json"; sourceTree = "<group>"; };
+		23C0C41D281E9C810020237C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		23C0C41E281E9C810020237C /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
+		23C0C421281EA4870020237C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
 		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
@@ -356,6 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				231BCB6528084B3300DE2343 /* Home.storyboard */,
+				23C0C41D281E9C810020237C /* HomeHeader.swift */,
+				23C0C41E281E9C810020237C /* HomeHeader.xib */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */,
 				23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */,
 				23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */,
@@ -441,6 +451,7 @@
 				23A84A712811673100DD8D39 /* 95671-wave-animation.json */,
 				23129C30281CF43D001DE91D /* bike-city-rider.json */,
 				23129C36281D0E60001DE91D /* waiting-pigeon.json */,
+				23C0C41B281E7B320020237C /* wait-processbar.json */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
@@ -546,6 +557,7 @@
 				23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */,
 				23C887282815A18E00E3319A /* UICollectionView.swift */,
 				237A27A628199F2A004F039F /* UIImageView.swift */,
+				23C0C421281EA4870020237C /* Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -719,8 +731,10 @@
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */,
+				23C0C420281E9C810020237C /* HomeHeader.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
+				23C0C41C281E7B320020237C /* wait-processbar.json in Resources */,
 				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
@@ -806,6 +820,7 @@
 				237A279D28181A60004F039F /* SignUpViewController.swift in Sources */,
 				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
+				23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
 				237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */,
@@ -831,6 +846,7 @@
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
+				23C0C422281EA4870020237C /* Notification.swift in Sources */,
 				2383878C280FCD9000E9F4F4 /* Group.swift in Sources */,
 				231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */,
 				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,

@@ -36,10 +36,10 @@ class RouteViewController: BaseViewController {
         }
     }
     
-      func backButton() {
-            let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
-            view.addSubview(button)
-        }
+    func backButton() {
+        let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
+        view.addSubview(button)
+    }
     
     
     func setUpTableView() {
@@ -74,18 +74,18 @@ class RouteViewController: BaseViewController {
     func fetchRecords() {
         
         MapsManager.shared.fetchRoutes { [weak self] result in
-                switch result {
-                case .success(let route):
-                    self?.routes = route
-                    self?.tableView.reloadData()
-                case .failure(let error): print ("fetchData Failure: \(error)")
-                }
+            switch result {
+            case .success(let route):
+                self?.routes = route
+                self?.tableView.reloadData()
+            case .failure(let error): print ("fetchData Failure: \(error)")
+            }
         }
     }
     
     @objc func headerRefresh() {
         
-//        fetchRecords()
+        //        fetchRecords()
         
         tableView.reloadData()
         
@@ -98,7 +98,7 @@ class RouteViewController: BaseViewController {
         
         setUpTableView()
         
-//        fetchRecords()
+        //        fetchRecords()
         
         tableView.mj_header = header
         
@@ -143,40 +143,23 @@ extension RouteViewController: UITableViewDelegate {
         true
     }
     
-   
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         waitlottie.isHidden = false
+        
         waitlottie.play()
-      
-            
-           
-                if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
-                    navigationController?.pushViewController(journeyViewController, animated: true)
-                    journeyViewController.routes = routes[indexPath.row]
-                }
-            
-            
         
-       
         
-          
         
-    
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
+            navigationController?.pushViewController(journeyViewController, animated: true)
+            journeyViewController.routes = routes[indexPath.row]
+        }
+     
     }
     
-    // MARK: 傳到Detail
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == SegueIdentifier.routeList.rawValue {
-//            if let nextVC = segue.destination as? RouteRideViewController {
-//                if let route = sender as? Route {
-//                    nextVC.routes = route
-//                }
-//            }
-//        }
-//    }
-//    
 }
 
 extension RouteViewController: UITableViewDataSource {

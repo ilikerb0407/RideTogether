@@ -16,31 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyz-rs-kaw">
-                                <rect key="frame" x="50" y="498" width="314" height="26.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to RideTogether" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxR-hQ-eBQ">
+                                <rect key="frame" x="0.0" y="652" width="414" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26.5" id="bbE-Sj-RIh"/>
+                                    <constraint firstAttribute="height" constant="37" id="Rne-tP-Xv3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" name="U1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher" translatesAutoresizingMaskIntoConstraints="NO" id="e0d-G4-Yds">
-                                <rect key="frame" x="177" y="418" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="TMl-qX-fVU"/>
-                                    <constraint firstAttribute="width" constant="60" id="Xx0-gT-HPV"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride" translatesAutoresizingMaskIntoConstraints="NO" id="Ikd-ci-tSG">
+                                <rect key="frame" x="50" y="244" width="314" height="383"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="U1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hyz-rs-kaw" firstAttribute="top" secondItem="e0d-G4-Yds" secondAttribute="bottom" constant="20" id="30f-W4-z6V"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hyz-rs-kaw" secondAttribute="trailing" constant="50" id="Gha-j7-ljQ"/>
-                            <constraint firstItem="e0d-G4-Yds" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GwL-MV-iTj"/>
-                            <constraint firstItem="hyz-rs-kaw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="lrP-tc-pk1"/>
-                            <constraint firstItem="e0d-G4-Yds" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nlY-ro-TE1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vxR-hQ-eBQ" secondAttribute="trailing" id="CLC-Bp-I8a"/>
+                            <constraint firstItem="vxR-hQ-eBQ" firstAttribute="top" secondItem="Ikd-ci-tSG" secondAttribute="bottom" constant="25" id="Fr9-tg-gb3"/>
+                            <constraint firstItem="Ikd-ci-tSG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="MVM-bK-cAz"/>
+                            <constraint firstItem="vxR-hQ-eBQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z1d-EY-UiX"/>
+                            <constraint firstItem="Ikd-ci-tSG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="d5R-Du-oKk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ikd-ci-tSG" secondAttribute="trailing" constant="50" id="wi6-RI-JDO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vxR-hQ-eBQ" secondAttribute="bottom" constant="173" id="ysY-13-WHp"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -50,7 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_launcher" width="192" height="192"/>
+        <image name="49908-bike-ride" width="640" height="640"/>
         <namedColor name="U1">
             <color red="0.46299999952316284" green="0.89399999380111694" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

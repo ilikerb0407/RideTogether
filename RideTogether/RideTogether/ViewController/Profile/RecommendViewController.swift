@@ -162,6 +162,11 @@ class RecommendViewController: BaseViewController {
         return view
     }()
     
+    @objc func savemaps() {
+        
+    
+    }
+    
     
 }
 
@@ -197,6 +202,8 @@ extension RecommendViewController: UITableViewDelegate {
         alert.addAction(cancelOption)
         
         present(alert, animated: true, completion: nil)
+        
+        
    
 //        tableViewCell.likes.toggle()
 //        if tableViewCell.heart.isSelected == true {
@@ -224,6 +231,8 @@ extension RecommendViewController: UITableViewDataSource {
         let cell: RecommendTableViewCell = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(model: self.records[indexPath.row])
+        
+//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         
         return cell
     }

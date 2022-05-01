@@ -167,12 +167,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
             let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
             
-            var routeName = UIAlertAction(title: "Destionation= \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
+            let routeName = UIAlertAction(title: "Destionation = \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
                 
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
                 
             }
-            
             
             let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
             

@@ -14,6 +14,8 @@ class Routes: UICollectionViewCell {
     
     @IBOutlet weak var routeLength: UILabel!
     
+    @IBOutlet weak var routeInfo: UILabel!
+    
     @IBOutlet weak var rideButton: UIButton!
     
     override func awakeFromNib() {
@@ -25,6 +27,7 @@ class Routes: UICollectionViewCell {
         
         routeName.text = model.routeName
         routeLength.text = model.routeLength.description
+        routeInfo.text = model.routeInfo
         
         
     }
