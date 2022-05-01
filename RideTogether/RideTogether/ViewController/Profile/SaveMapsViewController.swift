@@ -40,7 +40,6 @@ class SaveMapsViewController: BaseViewController {
         tableView.mj_header? = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,9 +75,9 @@ class SaveMapsViewController: BaseViewController {
     
     func setUptableView() {
         
-        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
-        
         setNavigationBar(title: "SaveMaps")
+        
+        
         
         tableView = UITableView()
         // 借用同一個tableViewcell

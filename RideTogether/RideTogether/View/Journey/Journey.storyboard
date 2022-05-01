@@ -305,26 +305,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G9-QS-6UZ">
-                                <rect key="frame" x="8" y="523" width="40" height="40"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="9jh-zS-xRF"/>
-                                    <constraint firstAttribute="height" constant="40" id="lHs-fZ-otC"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <color key="baseForegroundColor" name="U3"/>
-                                </buttonConfiguration>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="getweatherData:" destination="fSj-T7-DcF" eventType="touchUpInside" id="wSA-cB-bH3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gG1-od-3dq"/>
                         <color key="backgroundColor" name="U1"/>
@@ -353,10 +333,8 @@
                             <constraint firstItem="8ij-cS-hOI" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="36" id="c4c-EO-rKe"/>
                             <constraint firstItem="ucR-gQ-dXv" firstAttribute="top" secondItem="Mlg-WN-yl6" secondAttribute="bottom" constant="20" id="dAM-e0-znX"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="trailing" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="-32" id="dpo-PQ-Arb"/>
-                            <constraint firstItem="8G9-QS-6UZ" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="8" id="f4W-eT-kNb"/>
                             <constraint firstItem="Mlg-WN-yl6" firstAttribute="leading" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="20" id="fXt-iI-1hK"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="top" secondItem="npB-tj-SFB" secondAttribute="bottom" constant="1" id="gmn-79-lA9"/>
-                            <constraint firstItem="8G9-QS-6UZ" firstAttribute="top" secondItem="vbe-kC-QR3" secondAttribute="bottom" constant="50" id="hWb-p5-8KW"/>
                             <constraint firstItem="O4s-Li-QGM" firstAttribute="top" secondItem="ucR-gQ-dXv" secondAttribute="bottom" constant="20" id="jUv-Ni-iGM"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wzz-Lv-i2G" secondAttribute="bottom" constant="192" id="ma3-z3-Z6H"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="Mlg-WN-yl6" secondAttribute="trailing" constant="8" id="pVd-K7-c0p"/>
@@ -483,9 +461,6 @@
         <namedColor name="U1">
             <color red="0.46299999952316284" green="0.89399999380111694" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="U3">
-            <color red="1" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="rw-green">
             <color red="0.0" green="0.40799999237060547" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -497,9 +472,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

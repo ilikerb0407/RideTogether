@@ -3,6 +3,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Lottie
 
 protocol sendRouteSecond {
     func sendRouteTwice(map: DrawRoute)
@@ -32,43 +33,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     @IBOutlet weak var cloud: UILabel!
     
-    
-    @IBAction func getweatherData(_ sender: Any) {
-        
-        weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
-        
-        guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-        feelslikeTemp.text = "\(feelslike) °C"
-        guard let humiditydata = weatherdata?.main.humidity else { return }
-        humidity.text = "\(humiditydata) %"
-        
-        guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-        showtemp.text = "\(tempdata) °C"
-        
-        
-        guard let ssunrise = weatherdata?.sys.sunrise else { return }
-        var epocTime = TimeInterval(ssunrise)
-
-        let myDate = NSDate(timeIntervalSince1970: epocTime)
-        print ("=====++++\(myDate)")
-        sunrise.text = "\(myDate)"
-        
-        guard let ssunset = weatherdata?.sys.sunset else { return }
-        var sunsetTime = TimeInterval(ssunset)
-
-        let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
-        print ("=====++++\(sunsetDate)")
-        
-        sunset.text = "\(sunsetDate)"
-        
-        guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-        wind.text = "\(swind) km/h"
-        
-        guard let clouds = weatherdata?.weather[0].main else { return }
-        cloud.text = "\(clouds)"
-        
-        
-    }
     
     func weather() {
         
@@ -101,9 +65,31 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
         wind.text = "\(swind) km/h"
         
-        guard let clouds = weatherdata?.weather[0].main else { return }
-        cloud.text = "\(clouds)"
+        guard let weather = weatherdata?.weather[0].main else { return }
+        cloud.text = "\(weather)"
+        
+        if cloud.text == "Rain" {
+            rainLottieView.isHidden = false
+            rainLottieView.play()
+        }
+        
+        if cloud.text == "Drizzle" {
+            rainLottieView.isHidden = false
+            rainLottieView.play()
+        }
+        
+        if cloud.text == "Sun" {
+            sunLottieView.isHidden = false
+            sunLottieView.play()
+        } else {
+            otherLottieView.isHidden = false
+            otherLottieView.play()
+        }
+        
+        
     }
+    
+    
     
     func sendRoute(map: DrawRoute) {
         mapdata = map
@@ -158,7 +144,39 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
       
       weather()
       
+     
   }
+    
+    private lazy var rainLottieView: AnimationView = {
+            let view = AnimationView(name: "rain")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width / 2 - 120, y: 0 , width: 250 , height: 250)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    
+    private lazy var sunLottieView: AnimationView = {
+            let view = AnimationView(name: "sun")
+            view.loopMode = .loop
+            view.frame = CGRect(x: 0, y: 0 , width: 150 , height: 150)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    
+    private lazy var otherLottieView: AnimationView = {
+            let view = AnimationView(name: "otherweather")
+            view.loopMode = .loop
+            view.frame = CGRect(x: 0, y: 0 , width: 150 , height: 150)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
