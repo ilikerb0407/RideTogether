@@ -259,10 +259,10 @@ extension RouteViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
-                        navigationController?.pushViewController(journeyViewController, animated: true)
-                        journeyViewController.routes = routes[indexPath.row]
-                    }
+//            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
+//                        navigationController?.pushViewController(journeyViewController, animated: true)
+//                        journeyViewController.routes = routes[indexPath.row]
+//                    }
     }
 }
 
@@ -332,11 +332,13 @@ extension RouteViewController {
         
         dataSource = DataSource(
             collectionView: collectionView,
-            cellProvider: { (collectionView, indexPath, model) -> UICollectionViewCell? in
+            cellProvider: { [self] (collectionView, indexPath, model) -> UICollectionViewCell? in
                 
                 let cell: Routes = collectionView.dequeueCell(for: indexPath)
                 
                 cell.setUpCell(model: model)
+                
+                cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
                 
 //                cell.checkGroupButton.tag = indexPath.row
                 
@@ -346,14 +348,13 @@ extension RouteViewController {
             })
     }
     
-//    @objc func toGroupPage(_ sender: UIButton) {
-//        self.tabBarController?.selectedIndex = 1
-//
-//        NotificationCenter.default.post(
-//            name: NSNotification.checkGroupDidTaped,
-//            object: nil,
-//            userInfo: ["trailName": self.routes[sender.tag].trailName] )
-//    }
+    @objc func goToRide(_ sender: UIButton) {
+        
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
+                    navigationController?.pushViewController(journeyViewController, animated: true)
+            journeyViewController.routes = routes[sender.tag]
+                }
+    }
     
     func configureSnapshot() {
         
