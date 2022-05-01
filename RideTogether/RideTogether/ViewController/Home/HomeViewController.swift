@@ -61,11 +61,11 @@ class HomeViewController: BaseViewController {
             object: nil
         )
         
+        
         setUpTableView()
         
         fetchTrailData()
         
-        manageRouteData()
         
 //        bikelottie.play()
         
@@ -74,7 +74,6 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setUpTableView()
         
 //        bikelottie.play()
     }

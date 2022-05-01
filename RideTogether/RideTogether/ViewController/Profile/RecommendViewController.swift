@@ -162,10 +162,30 @@ class RecommendViewController: BaseViewController {
         return view
     }()
     
+    var likes : Bool = false {
+        didSet {
+            if likes == true {
+                
+                tableViewCell.heart.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+                
+            } else {
+                
+                
+                tableViewCell.heart.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        }
+      }
+    
     @objc func savemaps() {
         
+        self.likes = tableViewCell.heart.isSelected
+        print ("like it or not  ")
+        self.tableViewCell.heart.isSelected = self.likes
+        likes.toggle()
+        tableViewCell.heart.isSelected.toggle()
     
     }
+    
     
     
 }
@@ -193,6 +213,10 @@ extension RecommendViewController: UITableViewDelegate {
         }
         let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
             self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+            
+            
+            tableViewCell.chooselLike([indexPath.row])
+//            tableViewCell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         }
         
         let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
@@ -232,7 +256,6 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         
         return cell
     }

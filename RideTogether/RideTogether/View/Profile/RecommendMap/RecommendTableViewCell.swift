@@ -19,28 +19,28 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var heart: UIButton!
     
+    
     var likes : Bool = false {
         didSet {
             if likes == true {
                 
-                heart.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+//                heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                
                 
             } else {
                 
-                
-                heart.setImage(UIImage(systemName: "heart"), for: .normal)
+               
+//                heart.setImage(UIImage(systemName: "heart"), for: .normal)
             }
         }
       }
     
     
-    @IBAction func chooselLike(_ sender: Any) {
-        self.likes = heart.isSelected
+    func chooselLike(_ sender: IndexPath) {
         
         print ("like it or not  ")
-        self.heart.isSelected = self.likes
         likes.toggle()
-        heart.isSelected.toggle()
+        
     }
     
     override func awakeFromNib() {
@@ -52,7 +52,7 @@ class RecommendTableViewCell: UITableViewCell {
         
         self.heart.isSelected = self.likes
         
-//        heart.setImage(UIImage(systemName: "heart"), for: .normal)
+        heart.setImage(UIImage(systemName: "heart"), for: .normal)
 
         heart.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         
@@ -68,8 +68,10 @@ class RecommendTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func setUpCell(model : Record) {
+        
         mapTitle.text = model.recordName
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }
+    
     
 }
