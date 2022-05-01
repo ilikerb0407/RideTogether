@@ -131,8 +131,8 @@ extension SaveMapsViewController: UITableViewDelegate {
                 journeyViewController.record = records[indexPath.row]}
             
         }
-        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) {
-            [self] _ in
+        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self]
+            _ in
             
             MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
                 
@@ -143,6 +143,8 @@ extension SaveMapsViewController: UITableViewDelegate {
                     self.records.remove(at: indexPath.row)
                     
                     self.tableView.deleteRows(at: [indexPath], with: .left)
+                    
+                    tableView.reloadData()
                     
                 case .failure(let error):
                     
