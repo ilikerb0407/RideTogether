@@ -14,6 +14,9 @@ class RoutesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var routeType: UILabel!
     
+    @IBOutlet weak var routelength: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -33,6 +36,7 @@ class RoutesTableViewCell: UITableViewCell {
         
         routeTitle.text = model.routeName
         routeType.text = model.routeInfo
+        routelength.text = model.routeLength
         
     }
     

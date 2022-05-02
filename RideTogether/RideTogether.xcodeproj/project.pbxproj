@@ -43,6 +43,10 @@
 		2383878C280FCD9000E9F4F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878B280FCD9000E9F4F4 /* Group.swift */; };
 		2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */; };
 		2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */ = {isa = PBXBuildFile; fileRef = 2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */; };
+		2397D454281F095E0018FC5E /* rain.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D453281F095E0018FC5E /* rain.json */; };
+		2397D456281F106B0018FC5E /* sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D455281F106B0018FC5E /* sun.json */; };
+		2397D458281F14170018FC5E /* otherweather.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D457281F14170018FC5E /* otherweather.json */; };
+		2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2397D459281F938F0018FC5E /* GroupMemberViewController.swift */; };
 		23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */; };
 		23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */; };
 		23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A712811673100DD8D39 /* 95671-wave-animation.json */; };
@@ -55,6 +59,11 @@
 		23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */; };
 		23A84A8D2813FA9B00DD8D39 /* RouteTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */; };
 		23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */; };
+		23C0C41C281E7B320020237C /* wait-processbar.json in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C41B281E7B320020237C /* wait-processbar.json */; };
+		23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C41D281E9C810020237C /* HomeHeader.swift */; };
+		23C0C420281E9C810020237C /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C41E281E9C810020237C /* HomeHeader.xib */; };
+		23C0C422281EA4870020237C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C421281EA4870020237C /* Notification.swift */; };
+		23C0C424281ECAF10020237C /* delete.json in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C423281ECAF10020237C /* delete.json */; };
 		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
 		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
 		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
@@ -173,6 +182,10 @@
 		2383878B280FCD9000E9F4F4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "49908-bike-ride.json"; sourceTree = "<group>"; };
+		2397D453281F095E0018FC5E /* rain.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rain.json; sourceTree = "<group>"; };
+		2397D455281F106B0018FC5E /* sun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sun.json; sourceTree = "<group>"; };
+		2397D457281F14170018FC5E /* otherweather.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = otherweather.json; sourceTree = "<group>"; };
+		2397D459281F938F0018FC5E /* GroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewController.swift; sourceTree = "<group>"; };
 		23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderCell.swift; sourceTree = "<group>"; };
 		23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupHeaderCell.xib; sourceTree = "<group>"; };
 		23A84A712811673100DD8D39 /* 95671-wave-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "95671-wave-animation.json"; sourceTree = "<group>"; };
@@ -185,6 +198,11 @@
 		23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTypes.swift; sourceTree = "<group>"; };
 		23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTypes.xib; sourceTree = "<group>"; };
+		23C0C41B281E7B320020237C /* wait-processbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wait-processbar.json"; sourceTree = "<group>"; };
+		23C0C41D281E9C810020237C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		23C0C41E281E9C810020237C /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
+		23C0C421281EA4870020237C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		23C0C423281ECAF10020237C /* delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = delete.json; sourceTree = "<group>"; };
 		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
 		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
@@ -356,6 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				231BCB6528084B3300DE2343 /* Home.storyboard */,
+				23C0C41D281E9C810020237C /* HomeHeader.swift */,
+				23C0C41E281E9C810020237C /* HomeHeader.xib */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */,
 				23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */,
 				23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */,
@@ -406,6 +426,7 @@
 				23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */,
 				2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */,
 				23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */,
+				2397D459281F938F0018FC5E /* GroupMemberViewController.swift */,
 				23A84A772812E63800DD8D39 /* JoinViewController.swift */,
 			);
 			path = Group;
@@ -441,6 +462,11 @@
 				23A84A712811673100DD8D39 /* 95671-wave-animation.json */,
 				23129C30281CF43D001DE91D /* bike-city-rider.json */,
 				23129C36281D0E60001DE91D /* waiting-pigeon.json */,
+				23C0C41B281E7B320020237C /* wait-processbar.json */,
+				23C0C423281ECAF10020237C /* delete.json */,
+				2397D453281F095E0018FC5E /* rain.json */,
+				2397D455281F106B0018FC5E /* sun.json */,
+				2397D457281F14170018FC5E /* otherweather.json */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
@@ -546,6 +572,7 @@
 				23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */,
 				23C887282815A18E00E3319A /* UICollectionView.swift */,
 				237A27A628199F2A004F039F /* UIImageView.swift */,
+				23C0C421281EA4870020237C /* Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -700,16 +727,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2397D454281F095E0018FC5E /* rain.json in Resources */,
 				23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */,
 				23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */,
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				23C8872328149ECC00E3319A /* Routes.xib in Resources */,
+				23C0C424281ECAF10020237C /* delete.json in Resources */,
 				23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */,
+				2397D456281F106B0018FC5E /* sun.json in Resources */,
 				2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */,
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
 				23CB74CA281787B400DED822 /* Login.storyboard in Resources */,
+				2397D458281F14170018FC5E /* otherweather.json in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */,
 				23A84A7D2812EFFE00DD8D39 /* RouteSelectionViewController.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
@@ -719,8 +750,10 @@
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */,
+				23C0C420281E9C810020237C /* HomeHeader.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
+				23C0C41C281E7B320020237C /* wait-processbar.json in Resources */,
 				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
@@ -806,6 +839,7 @@
 				237A279D28181A60004F039F /* SignUpViewController.swift in Sources */,
 				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
+				23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
 				237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */,
@@ -831,6 +865,7 @@
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
+				23C0C422281EA4870020237C /* Notification.swift in Sources */,
 				2383878C280FCD9000E9F4F4 /* Group.swift in Sources */,
 				231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */,
 				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,
@@ -893,6 +928,7 @@
 				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
+				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,
 				23D1B75228005F2D000EDA70 /* GPXFileInfo.swift in Sources */,
 				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,

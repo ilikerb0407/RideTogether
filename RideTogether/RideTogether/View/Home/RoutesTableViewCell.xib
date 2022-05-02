@@ -28,11 +28,19 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdS-gS-rp1">
+                        <rect key="frame" x="107" y="60" width="42" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="00V-MO-Qv1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="6si-LW-1CZ"/>
+                    <constraint firstItem="ZdS-gS-rp1" firstAttribute="leading" secondItem="O5E-B1-KdC" secondAttribute="trailing" constant="45" id="B4O-Xx-95n"/>
                     <constraint firstAttribute="bottom" secondItem="O5E-B1-KdC" secondAttribute="bottom" constant="20" id="OAi-Mc-Wkx"/>
                     <constraint firstItem="O5E-B1-KdC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ibd-Bh-TNI"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZdS-gS-rp1" secondAttribute="bottom" constant="9.5" id="izo-9v-4h7"/>
                     <constraint firstItem="00V-MO-Qv1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wge-j3-HE6"/>
                 </constraints>
             </tableViewCellContentView>
@@ -40,6 +48,7 @@
             <connections>
                 <outlet property="routeTitle" destination="00V-MO-Qv1" id="gFx-ia-Aat"/>
                 <outlet property="routeType" destination="O5E-B1-KdC" id="2XC-vo-OoE"/>
+                <outlet property="routelength" destination="ZdS-gS-rp1" id="mVq-hb-qNd"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="100.78125"/>
         </tableViewCell>

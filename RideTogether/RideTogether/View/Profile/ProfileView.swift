@@ -19,7 +19,7 @@ class ProfileView: UIView {
     
     @IBOutlet weak var editNameBtn: UIButton!
     
-    func setUpProfileView( userInfo: UserInfo) {
+    func setUpProfileView(userInfo: UserInfo) {
         
         userName.text = userInfo.userName
         

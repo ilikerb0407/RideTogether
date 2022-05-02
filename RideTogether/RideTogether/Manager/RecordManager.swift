@@ -62,8 +62,8 @@ class RecordManager {
                             completion(.success(url))
                             // 上傳到FireBase DataBase
                             self.uploadRecordToDb(fileName: fileName, fileURL: url)
-
-                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
+                            // 在save的時候就已經先upload length了
+//                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
 
                         case .failure(let error):
 

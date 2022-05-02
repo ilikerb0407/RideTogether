@@ -30,9 +30,9 @@ class Member: UITableViewCell {
         
         requestNameLabel.text = userInfo.userName
         
-        requestLabel.text = "want to join your group"
+        requestLabel.text = "Wants to join"
         
-        groupNameLabel.text = "\(model.groupName)"
+        groupNameLabel.text = "Group : \(model.groupName)"
         
         guard let ref = userInfo.pictureRef else { return }
         
@@ -45,17 +45,21 @@ class Member: UITableViewCell {
     func setUpCell(group: Group, userInfo: UserInfo) {
         
         requestLabel.isHidden = true
+        
         acceptButton.isHidden = true
+        
         groupNameLabel.isHidden = true
         
-        let image = UIImage(named: "block")
-
-        rejectButton.setImage(image, for: .normal)
+//        let image = UIImage(named: "block")
+//
+//        rejectButton.setImage(image, for: .normal)
+//
+//        rejectButton.backgroundColor = .white
         
-        rejectButton.backgroundColor = .white
-        
+        rejectButton.isHidden = true
+//
         if userInfo.uid == UserManager.shared.userId {
-            
+
             rejectButton.isHidden = true
         }
         
@@ -65,7 +69,6 @@ class Member: UITableViewCell {
         
     }
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear

@@ -32,7 +32,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             sendData.isUserInteractionEnabled = false
             sendData.alpha = 0.6
             sendData.backgroundColor = .orange
-            sendData.cornerRadius = 24
+            sendData.cornerRadius = 15
         }
     }
     
@@ -163,18 +163,21 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
 
                     let success = UIAlertAction(title: "Success", style: .default) { _ in
+                        
                         self.delegate?.reload()
+                    
                     }
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
                     
-                    self.dismiss(animated: true, completion: nil)
+                    delegate?.reload()
                     
                 case .failure(let error):
                     
                     print("build team failure: \(error)")
                 }
             }
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

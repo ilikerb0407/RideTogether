@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsq-RZ-K1o">
-                        <rect key="frame" x="50" y="108.5" width="67" height="66.5"/>
+                        <rect key="frame" x="50" y="144" width="67" height="31"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="騎乘去"/>
@@ -55,7 +55,6 @@
                 <constraint firstItem="amg-Bi-vbc" firstAttribute="top" secondItem="EPv-k0-Wew" secondAttribute="bottom" constant="8" id="7Nb-ip-ede"/>
                 <constraint firstAttribute="bottom" secondItem="bsq-RZ-K1o" secondAttribute="bottom" constant="12" id="858-vC-BDb"/>
                 <constraint firstItem="EPv-k0-Wew" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="M5L-1Q-Ty3"/>
-                <constraint firstItem="bsq-RZ-K1o" firstAttribute="top" secondItem="QF6-5p-dzn" secondAttribute="bottom" constant="8" symbolic="YES" id="P5N-M0-H4W"/>
                 <constraint firstItem="EPv-k0-Wew" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="SzY-lg-JOJ"/>
                 <constraint firstAttribute="trailing" secondItem="Vtr-hP-pZg" secondAttribute="trailing" constant="30" id="XI3-Cb-mAI"/>
                 <constraint firstItem="amg-Bi-vbc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Yxu-aA-v5j"/>
@@ -69,6 +68,7 @@
             <size key="customSize" width="167" height="187"/>
             <connections>
                 <outlet property="rideButton" destination="bsq-RZ-K1o" id="2RV-hW-6Vt"/>
+                <outlet property="routeInfo" destination="QF6-5p-dzn" id="stg-gf-aMB"/>
                 <outlet property="routeLength" destination="QF6-5p-dzn" id="PL1-a7-6nF"/>
                 <outlet property="routeName" destination="EPv-k0-Wew" id="BZT-u6-uGv"/>
             </connections>

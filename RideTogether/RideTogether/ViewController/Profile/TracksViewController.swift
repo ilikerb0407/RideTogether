@@ -57,7 +57,7 @@ class TracksViewController: BaseViewController {
     
     func setUpTableView() {
         
-        setNavigationBar(title: "Records")
+        setNavigationBar(title: "Personal Records")
         
         tableView = UITableView()
         

@@ -184,8 +184,6 @@ class MapsManager {
     
     func fetchSavemaps (completion: @escaping (Result<[Record],Error>) -> Void) {
         
-        //        let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId) 等有User 再改
-                
         let collection = dataBase.collection(saveCollection).whereField("uid", isEqualTo: userId)
                 collection.getDocuments { (querySnapshot, error) in
                     

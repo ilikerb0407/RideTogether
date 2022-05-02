@@ -13,6 +13,14 @@ import FirebaseAuth
 class ChatRoomViewController: BaseViewController {
     
     
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .B1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
+    }
+    
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
     var groupInfo: Group?
@@ -215,9 +223,23 @@ class ChatRoomViewController: BaseViewController {
         
         rightButton.setImage(infoImage, for: .normal)
         
-//        rightButton.addTarget(self, action: #selector(showMembers), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(showMembers), for: .touchUpInside)
         
         self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
+    }
+    
+    @objc func showMembers() {
+        
+        if let teammateVC = self.storyboard?.instantiateViewController(
+            withIdentifier: "GroupMemberViewController"
+        ) as? GroupMemberViewController {
+            
+            teammateVC.groupInfo = groupInfo
+            
+            teammateVC.cache = cache
+            
+            navigationController?.pushViewController(teammateVC, animated: true)
+        }
     }
     
     func setUpTableView() {

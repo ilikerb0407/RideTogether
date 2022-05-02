@@ -9,7 +9,9 @@ import UIKit
 import Lottie
 
 class HomeViewController: BaseViewController {
-
+    
+    
+    private var headerView: HomeHeader?
     
     var routes = [Route]() {
         didSet {
@@ -31,77 +33,69 @@ class HomeViewController: BaseViewController {
             tableView.dataSource = self
         }
     }
-    
-   
-   
-        
-        private lazy var bikelottie : AnimationView = {
-            let view = AnimationView(name: "bike-city-rider")
-            view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 8 , y: 50 , width: 200 , height: 180)
-            view.cornerRadius = 20
-            view.contentMode = .scaleToFill
-            view.play()
-            self.view.addSubview(view)
-            return view
-        }()
+
+//        private lazy var bikelottie : AnimationView = {
+//            let view = AnimationView(name: "bike-city-rider")
+//            view.loopMode = .loop
+//            view.frame = CGRect(x: UIScreen.width / 8 , y: 50 , width: 200 , height: 180)
+//            view.cornerRadius = 20
+//            view.contentMode = .scaleToFill
+//            view.play()
+//            self.view.addSubview(view)
+//            return view
+//        }()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .B4
+        
         
         navigationController?.isNavigationBarHidden = true
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserInfo),
+            name: NSNotification.userInfoDidChanged,
+            object: nil
+        )
+        
         
         setUpTableView()
         
         fetchTrailData()
         
-        manageRouteData()
         
-        bikelottie.play()
+//        bikelottie.play()
         
-
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        setUpTableView()
         
-        bikelottie.play()
+//        bikelottie.play()
     }
     
     func setUpTableView() {
         
-        tableView = UITableView()
+        tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
         
-//        view.stickSubView(tableView)
-        view.addSubview(tableView)
+        view.stickSubView(tableView)
         
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
+
+    }
+    
+    @objc func updateUserInfo(notification: Notification) {
         
-        tableView.isScrollEnabled = false
+        guard let headerView = headerView else { return }
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-
-            tableView.topAnchor.constraint(equalTo: bikelottie.bottomAnchor, constant: 10),
-
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-
+        headerView.updateUserInfo(user: UserManager.shared.userInfo)
     }
     
     func manageRouteData() {
@@ -145,8 +139,23 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView: HomeHeader = .loadFromNib()
+        
+        self.headerView = headerView
+        
+        headerView.updateUserInfo(user: UserManager.shared.userInfo)
+        
+        return self.headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        400
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
+        200
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

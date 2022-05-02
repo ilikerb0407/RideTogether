@@ -43,7 +43,7 @@ class RecommendViewController: BaseViewController {
     }
     func setUpTableView() {
         
-        setNavigationBar(title: "分享牆")
+        setNavigationBar(title: "Share Wall")
         
         tableView = UITableView()
         
@@ -162,7 +162,6 @@ class RecommendViewController: BaseViewController {
         return view
     }()
     
-    
 }
 
 extension RecommendViewController: UITableViewDelegate {
@@ -188,15 +187,25 @@ extension RecommendViewController: UITableViewDelegate {
         }
         let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
             self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+            
+            waitlottie.isHidden = true
+            
+            
+            tableViewCell.chooselLike([indexPath.row])
+
         }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
+            self.waitlottie.isHidden = true
+        }
         
         alert.addAction(detailOption)
         alert.addAction(likeOption)
         alert.addAction(cancelOption)
         
         present(alert, animated: true, completion: nil)
+        
+        
    
 //        tableViewCell.likes.toggle()
 //        if tableViewCell.heart.isSelected == true {
@@ -225,7 +234,18 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
+//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
+        
+        
+        
         return cell
+    }
+    
+    @objc func savemaps(_ sender: UIButton) {
+        
+        
+        
+        
     }
 }
 

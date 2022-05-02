@@ -31,12 +31,16 @@ class SaveMapsViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setUptableView()
         
         fetchRecords()
         
+        tableView.mj_header? = header
+        
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,9 +76,7 @@ class SaveMapsViewController: BaseViewController {
     
     func setUptableView() {
         
-        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
-        
-        setNavigationBar(title: "SaveMaps")
+        setNavigationBar(title: "Personal Collection")
         
         tableView = UITableView()
         // 借用同一個tableViewcell
@@ -127,8 +129,9 @@ extension SaveMapsViewController: UITableViewDelegate {
                 journeyViewController.record = records[indexPath.row]}
             
         }
-        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) {
-            [self] _ in
+        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self]
+            _ in
+            
             
             MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
                 
@@ -137,8 +140,9 @@ extension SaveMapsViewController: UITableViewDelegate {
                 case .success(_):
                     
                     self.records.remove(at: indexPath.row)
+
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
                     
-                    self.tableView.deleteRows(at: [indexPath], with: .left)
                     
                 case .failure(let error):
                     
@@ -148,7 +152,7 @@ extension SaveMapsViewController: UITableViewDelegate {
             
         }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in }
         
         alert.addAction(detailOption)
         alert.addAction(removeOption)
@@ -174,6 +178,7 @@ extension SaveMapsViewController: UITableViewDataSource {
         let cell: SaveMaps = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(model: self.records[indexPath.row])
+        
         
         return cell
     }

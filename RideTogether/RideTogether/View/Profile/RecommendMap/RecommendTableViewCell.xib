@@ -38,10 +38,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                    <backgroundConfiguration key="background"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="chooselLike:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2kc-mr-Zcb"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="B2"/>
