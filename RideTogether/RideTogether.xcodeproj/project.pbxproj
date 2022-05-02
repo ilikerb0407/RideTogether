@@ -47,6 +47,7 @@
 		2397D456281F106B0018FC5E /* sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D455281F106B0018FC5E /* sun.json */; };
 		2397D458281F14170018FC5E /* otherweather.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D457281F14170018FC5E /* otherweather.json */; };
 		2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2397D459281F938F0018FC5E /* GroupMemberViewController.swift */; };
+		2397D46028203F820018FC5E /* cloud.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D45F28203F820018FC5E /* cloud.json */; };
 		23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */; };
 		23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */; };
 		23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A712811673100DD8D39 /* 95671-wave-animation.json */; };
@@ -186,6 +187,7 @@
 		2397D455281F106B0018FC5E /* sun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sun.json; sourceTree = "<group>"; };
 		2397D457281F14170018FC5E /* otherweather.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = otherweather.json; sourceTree = "<group>"; };
 		2397D459281F938F0018FC5E /* GroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewController.swift; sourceTree = "<group>"; };
+		2397D45F28203F820018FC5E /* cloud.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cloud.json; sourceTree = "<group>"; };
 		23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderCell.swift; sourceTree = "<group>"; };
 		23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupHeaderCell.xib; sourceTree = "<group>"; };
 		23A84A712811673100DD8D39 /* 95671-wave-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "95671-wave-animation.json"; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 				2397D453281F095E0018FC5E /* rain.json */,
 				2397D455281F106B0018FC5E /* sun.json */,
 				2397D457281F14170018FC5E /* otherweather.json */,
+				2397D45F28203F820018FC5E /* cloud.json */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
@@ -728,6 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2397D454281F095E0018FC5E /* rain.json in Resources */,
+				2397D46028203F820018FC5E /* cloud.json in Resources */,
 				23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */,
 				23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */,
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,

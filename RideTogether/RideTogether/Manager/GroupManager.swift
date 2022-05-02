@@ -87,11 +87,32 @@ class GroupManager {
     func requestListener (completion: @escaping(Result<[Request], Error>) -> ()) -> Void {
         
         dataBase.collection(requestsCollection).whereField("host_id", isEqualTo: userId).addSnapshotListener { (querySnapshot, error) in
+            
             guard let querySnapshot = querySnapshot else { return }
             if let error = error {
                 completion(.failure(error))
             } else {
-//                completion(.success(<#T##[Request]#>))
+                
+                var requests = [Request]()
+                
+                for document in querySnapshot.documents {
+                    
+                    do {
+                        
+                        if let request = try document.data(as: Request.self, decoder: Firestore.Decoder()) {
+                            
+                            requests.append(request)
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+                requests.sort { $0.createdTime.seconds > $1.createdTime.seconds }
+                
+                completion(.success(requests))
             }
         }
     }

@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import Lottie
 
 
 class ChatRoomViewController: BaseViewController {
@@ -37,6 +38,17 @@ class ChatRoomViewController: BaseViewController {
         }
     }
     
+    private lazy var leaveLottieView: AnimationView = {
+        let view = AnimationView(name: "delete")
+        view.loopMode = .loop
+        view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
+        view.contentMode = .scaleAspectFit
+        view.play()
+        self.view.addSubview(view)
+        return view
+    }()
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +74,8 @@ class ChatRoomViewController: BaseViewController {
         
 //        configureDataSource()
     }
+    
+   
     
     func checkUserStatus() {
         
@@ -203,14 +217,20 @@ class ChatRoomViewController: BaseViewController {
                     
                     self.navigationController?.popViewController(animated: true)
                     
+                    
                 case .failure(let error):
                     
                     print("leave group failure: \(error)")
                 }
+                
             }
+            self.leaveLottieView.play()
         }
+       
 
         showAlertAction(title: "確認退出", message: nil, actions: [cancelAction, leaveAction])
+       
+       
     }
     
     func setNavigationBar() {

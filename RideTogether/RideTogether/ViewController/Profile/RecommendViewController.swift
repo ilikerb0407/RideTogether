@@ -189,7 +189,7 @@ extension RecommendViewController: UITableViewDelegate {
         
         let alert = UIAlertController(title: "Choose", message: nil , preferredStyle: .actionSheet)
         
-        let detailOption = UIAlertAction(title: "Take A Look", style: .default){ [self]_ in
+        let detailOption = UIAlertAction(title: "Detail", style: .default){ [self]_ in
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]
@@ -210,11 +210,7 @@ extension RecommendViewController: UITableViewDelegate {
             self.waitlottie.isHidden = true
         }
         
-        alert.addAction(detailOption)
-        alert.addAction(likeOption)
-        alert.addAction(cancelOption)
-        
-        present(alert, animated: true, completion: nil)
+        showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption])
         
         
    

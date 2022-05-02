@@ -116,7 +116,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             return nil
         }
         let annotationView = MKPinAnnotationView()
-        
+
         //  let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
@@ -207,9 +207,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
             
-            let alertController = UIAlertController(title: NSLocalizedString("EDIT_WAYPOINT_NAME_TITLE", comment: "no comment"),
-                                                    message: NSLocalizedString("EDIT_WAYPOINT_NAME_MESSAGE", comment: "no comment"),
-                                                    preferredStyle: .alert)
+    
+            let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
+            
             alertController.addTextField { (textField) in
                 textField.text = waypoint.title
                 textField.clearButtonMode = .always
