@@ -46,6 +46,7 @@
 		2397D454281F095E0018FC5E /* rain.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D453281F095E0018FC5E /* rain.json */; };
 		2397D456281F106B0018FC5E /* sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D455281F106B0018FC5E /* sun.json */; };
 		2397D458281F14170018FC5E /* otherweather.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D457281F14170018FC5E /* otherweather.json */; };
+		2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2397D459281F938F0018FC5E /* GroupMemberViewController.swift */; };
 		23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */; };
 		23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */; };
 		23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A712811673100DD8D39 /* 95671-wave-animation.json */; };
@@ -184,6 +185,7 @@
 		2397D453281F095E0018FC5E /* rain.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rain.json; sourceTree = "<group>"; };
 		2397D455281F106B0018FC5E /* sun.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sun.json; sourceTree = "<group>"; };
 		2397D457281F14170018FC5E /* otherweather.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = otherweather.json; sourceTree = "<group>"; };
+		2397D459281F938F0018FC5E /* GroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewController.swift; sourceTree = "<group>"; };
 		23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderCell.swift; sourceTree = "<group>"; };
 		23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupHeaderCell.xib; sourceTree = "<group>"; };
 		23A84A712811673100DD8D39 /* 95671-wave-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "95671-wave-animation.json"; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */,
 				2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */,
 				23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */,
+				2397D459281F938F0018FC5E /* GroupMemberViewController.swift */,
 				23A84A772812E63800DD8D39 /* JoinViewController.swift */,
 			);
 			path = Group;
@@ -925,6 +928,7 @@
 				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
+				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,
 				23D1B75228005F2D000EDA70 /* GPXFileInfo.swift in Sources */,
 				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,

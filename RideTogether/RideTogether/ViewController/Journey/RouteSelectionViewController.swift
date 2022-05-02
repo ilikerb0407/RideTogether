@@ -81,11 +81,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         if cloud.text == "Sun" {
             sunLottieView.isHidden = false
             sunLottieView.play()
-        } else {
-            otherLottieView.isHidden = false
-            otherLottieView.play()
         }
-        
         
     }
     

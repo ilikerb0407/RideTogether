@@ -77,7 +77,7 @@
                                             <action selector="editPhotobtn:" destination="94W-RV-Prh" eventType="touchUpInside" id="0wQ-A7-Rug"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride.gif" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-6j-tIP">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride.gif" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-6j-tIP">
                                         <rect key="frame" x="55" y="44" width="125" height="288"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="125" id="7hx-FX-SOS"/>

@@ -88,7 +88,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8j-kA-jOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="37.5"/>
+            <point key="canvasLocation" x="1048" y="41"/>
+        </scene>
+        <!--Group Member View Controller-->
+        <scene sceneID="M1s-Tr-Iyg">
+            <objects>
+                <viewController storyboardIdentifier="GroupMemberViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="csi-wI-tAG" customClass="GroupMemberViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TQH-2T-Osn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hUj-Ov-mOP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ui7-Ol-R9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878" y="69"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="tR9-si-EUl">

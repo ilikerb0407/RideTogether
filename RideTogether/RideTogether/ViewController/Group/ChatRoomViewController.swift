@@ -223,9 +223,23 @@ class ChatRoomViewController: BaseViewController {
         
         rightButton.setImage(infoImage, for: .normal)
         
-//        rightButton.addTarget(self, action: #selector(showMembers), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(showMembers), for: .touchUpInside)
         
         self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
+    }
+    
+    @objc func showMembers() {
+        
+        if let teammateVC = self.storyboard?.instantiateViewController(
+            withIdentifier: "GroupMemberViewController"
+        ) as? GroupMemberViewController {
+            
+            teammateVC.groupInfo = groupInfo
+            
+            teammateVC.cache = cache
+            
+            navigationController?.pushViewController(teammateVC, animated: true)
+        }
     }
     
     func setUpTableView() {

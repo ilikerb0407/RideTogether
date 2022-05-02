@@ -45,19 +45,21 @@ class Member: UITableViewCell {
     func setUpCell(group: Group, userInfo: UserInfo) {
         
         requestLabel.isHidden = true
+        
         acceptButton.isHidden = true
+        
         groupNameLabel.isHidden = true
         
-        let image = UIImage(named: "block")
-
-        rejectButton.setImage(image, for: .normal)
-        
-        rejectButton.backgroundColor = .white
-        
-        if userInfo.uid == UserManager.shared.userId {
-            
-            rejectButton.isHidden = true
-        }
+//        let image = UIImage(named: "block")
+//
+//        rejectButton.setImage(image, for: .normal)
+//
+//        rejectButton.backgroundColor = .white
+//
+//        if userInfo.uid == UserManager.shared.userId {
+//
+//            rejectButton.isHidden = true
+//        }
         
         requestNameLabel.text = userInfo.userName
         
@@ -65,7 +67,6 @@ class Member: UITableViewCell {
         
     }
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
