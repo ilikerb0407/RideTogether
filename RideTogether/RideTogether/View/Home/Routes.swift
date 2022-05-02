@@ -22,7 +22,8 @@ class Routes: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.backgroundColor = .C4
+        self.backgroundColor = .U1
+        
         self.contentView.backgroundColor = .clear
     }
     
@@ -31,7 +32,6 @@ class Routes: UICollectionViewCell {
         routeName.text = model.routeName
         routeLength.text = model.routeLength
         routeInfo.text = model.routeInfo
-        
         
     }
 

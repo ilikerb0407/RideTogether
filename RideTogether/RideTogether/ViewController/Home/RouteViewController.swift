@@ -15,6 +15,16 @@ import Lottie
 
 class RouteViewController: BaseViewController {
     
+    
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .U1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
+    }
+    
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Route>
@@ -139,18 +149,50 @@ class RouteViewController: BaseViewController {
         collectionView.backgroundColor = .clear
     }
     
+    // MARK: 新增路線資料
+    func uploadRecordToDb() {
+        
+        let document = dataBase.collection("Routes").document()
+        
+        var record = Route()
+        
+        record.routeId = document.documentID
+        
+        record.routeTypes = 2
+        
+        record.routeInfo = ""
+        
+        record.routeLength = ""
+        
+        record.routeMap = ""
+        
+        record.routeName = ""
+        
+        do {
+            
+            try document.setData(from: record)
+            
+        } catch {
+            
+            print("error")
+        }
+        
+        print("sucessfully")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpTableView()
+//        setUpTableView()
         
-//        setupCollectionView()
+        setupCollectionView()
         
-//        configureDataSource()
+        configureDataSource()
 //
-//        configureSnapshot()
+        configureSnapshot()
         
+        setUpThemeTag()
         
     }
     
@@ -163,21 +205,31 @@ class RouteViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = false
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        waitlottie.isHidden = true
-    }
     
-    private lazy var waitlottie : AnimationView = {
-        let view = AnimationView(name: "waiting-pigeon")
-        view.loopMode = .loop
-        view.frame = CGRect(x: UIScreen.width / 8 , y: UIScreen.height / 6  , width: 300 , height: 300)
-        view.cornerRadius = 20
-        view.contentMode = .scaleToFill
-        view.play()
-        self.view.addSubview(view)
-        return view
-    }()
+    func setUpThemeTag() {
+        
+        let view = UIView(frame: CGRect(x: -20, y: 40, width: UIScreen.width / 2 + 10, height: 40))
+        
+        let label = UILabel(frame: CGRect(x: 20, y: 43, width: 120, height: 35))
+        
+        view.backgroundColor = .U2
+        
+        view.layer.cornerRadius = 20
+        
+        view.layer.masksToBounds = true
+        
+        label.text = themeLabel
+        
+        label.textColor = .black
+        
+        label.textAlignment = .center
+        
+        label.font = UIFont.regular(size: 18)
+        
+        collectionView.addSubview(view)
+        
+        collectionView.addSubview(label)
+    }
     
 }
 
@@ -191,12 +243,6 @@ extension RouteViewController: UITableViewDelegate {
         true
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        waitlottie.isHidden = false
-
-        waitlottie.play()
-
-
 
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)
@@ -239,7 +285,7 @@ func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         
         let inset: CGFloat = 8
         
-        let height: CGFloat = 270
+        let height: CGFloat = 230
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.5),
@@ -304,6 +350,8 @@ extension RouteViewController {
                 cell.setUpCell(model: model)
                 
                 cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
+                
+                cell.rideButton.tag = indexPath.row
                 
 //                cell.checkGroupButton.tag = indexPath.row
                 

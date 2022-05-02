@@ -47,6 +47,8 @@ class HomeViewController: BaseViewController {
     
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,8 +68,18 @@ class HomeViewController: BaseViewController {
         fetchTrailData()
         
         
+        
+        
 //        bikelottie.play()
         
+    }
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .U1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -205,8 +217,7 @@ extension HomeViewController: UITableViewDataSource {
         cell.setUpCell(
             routetitle: RoutesType.allCases[indexPath.row].rawValue,
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
-        
-   
+    
         
         return cell
     }

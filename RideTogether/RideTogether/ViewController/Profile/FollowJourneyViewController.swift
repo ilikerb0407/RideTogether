@@ -275,13 +275,14 @@ class FollowJourneyViewController: BaseViewController {
         
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
+            
             let point: CGPoint = gesture.location(in: self.map2)
             map2.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
         }
     }
-    /// Has the map any waypoint?
+    
     var hasWaypoints: Bool = false
     
     private lazy var waveLottieView: AnimationView = {

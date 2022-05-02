@@ -609,9 +609,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         if gpxTrackingStatus == .notStarted { return }
         
-        let cancelOption = UIAlertAction(title: "取消", style: .cancel)
+        let cancelOption = UIAlertAction(title: "CANCEL", style: .cancel)
         
-        let resetOption = UIAlertAction(title: "重置", style: .destructive) { _ in
+        let resetOption = UIAlertAction(title: "RESET", style: .destructive) { _ in
             self.gpxTrackingStatus = .notStarted
             
             UIView.animate(withDuration: 0.3) {
@@ -647,6 +647,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
         print ("===========Pleaseprint")
         map.addOverlay(myPolyline)
+        
     }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {

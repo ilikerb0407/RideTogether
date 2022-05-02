@@ -38,7 +38,7 @@ class HomeHeader: UITableViewCell {
         
         let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
         
-        displayLink.add(to: .main, forMode: .default)
+        displayLink.add(to: .current, forMode: .default)
         
         lengthEndValue = user.totalLength / 1000
         

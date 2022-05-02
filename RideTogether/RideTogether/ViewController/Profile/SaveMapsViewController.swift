@@ -14,13 +14,23 @@ import FirebaseFirestoreSwift
 import Lottie
 
 class SaveMapsViewController: BaseViewController {
-
+    
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+//            gView.alpha = 0.85
+            // 不會把資料覆蓋住
+        }
+    }
+    
     var userId: String { UserManager.shared.userInfo.uid }
     
     var records = [Record]()
     
     
-    private let header = MJRefreshNormalHeader()
     
     private var tableView: UITableView! {
         
@@ -29,6 +39,7 @@ class SaveMapsViewController: BaseViewController {
             tableView.dataSource = self
         }
     }
+    private let header = MJRefreshNormalHeader()
     
     override func viewDidLoad() {
         
@@ -38,9 +49,11 @@ class SaveMapsViewController: BaseViewController {
         
         fetchRecords()
         
-        tableView.mj_header? = header
+        tableView.mj_header = header
         
-        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +93,9 @@ class SaveMapsViewController: BaseViewController {
         
         tableView = UITableView()
         // 借用同一個tableViewcell
+        
+       
+        
         tableView.registerCellWithNib(identifier: SaveMaps.identifier, bundle: nil)
         
         view.addSubview(tableView)
@@ -110,57 +126,45 @@ class SaveMapsViewController: BaseViewController {
 extension SaveMapsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        100
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+            if editingStyle == .delete {
+              
+                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
+                    
+                    switch result {
+                        
+                    case .success(_):
+                        
+                        self.records.remove(at: indexPath.row)
+                        
+                        self.tableView.deleteRows(at: [indexPath], with: .left)
+                        
+                        
+                    case .failure(let error):
+                        
+                        print ("delete error: \(error)")
+                    }
+                }
+            }
+        }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let alert = UIAlertController(title: "Choose", message: nil, preferredStyle: .alert)
-        
-        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
-            
+
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]}
             
-        }
-        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self]
-            _ in
-            
-            
-            MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
-                
-                switch result {
-                    
-                case .success(_):
-                    
-                    self.records.remove(at: indexPath.row)
-
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
-                    
-                    
-                case .failure(let error):
-                    
-                    print ("delete error: \(error)")
-                }
-            }
-            
-        }
-        
-        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in }
-        
-        alert.addAction(detailOption)
-        alert.addAction(removeOption)
-        alert.addAction(cancelOption)
-        
-        present(alert, animated: true, completion: nil)
-        
-        
+  
     }
     
     

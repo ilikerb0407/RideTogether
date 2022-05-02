@@ -16,6 +16,17 @@ import Lottie
 
 // MARK: Recommend-Route
 class RecommendViewController: BaseViewController {
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+//            gView.alpha = 0.85
+            // 不會把資料覆蓋住
+        }
+    }
+    
 
     var records = [Record]()
     
@@ -167,7 +178,7 @@ class RecommendViewController: BaseViewController {
 extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -178,7 +189,7 @@ extension RecommendViewController: UITableViewDelegate {
         
         let alert = UIAlertController(title: "Choose", message: nil , preferredStyle: .actionSheet)
         
-        let detailOption = UIAlertAction(title: "Take A Look", style: .default){ [self]_ in
+        let detailOption = UIAlertAction(title: "Detail", style: .default){ [self]_ in
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]
@@ -191,7 +202,7 @@ extension RecommendViewController: UITableViewDelegate {
             waitlottie.isHidden = true
             
             
-            tableViewCell.chooselLike([indexPath.row])
+//            tableViewCell.chooselLike([indexPath.row])
 
         }
         
@@ -199,11 +210,7 @@ extension RecommendViewController: UITableViewDelegate {
             self.waitlottie.isHidden = true
         }
         
-        alert.addAction(detailOption)
-        alert.addAction(likeOption)
-        alert.addAction(cancelOption)
-        
-        present(alert, animated: true, completion: nil)
+        showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption])
         
         
    
@@ -218,6 +225,8 @@ extension RecommendViewController: UITableViewDelegate {
 //            // 將savemaps 從使用者中刪除
 //            self.updateSavemaps()
 //        }
+        
+        
     }
 
 }
@@ -234,18 +243,16 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
+        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         
-        
+        cell.heart.tag = indexPath.row
         
         return cell
     }
     
     @objc func savemaps(_ sender: UIButton) {
         
-        
-        
-        
+        self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
+    
     }
 }
-

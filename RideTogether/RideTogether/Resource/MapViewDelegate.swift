@@ -11,7 +11,17 @@ import MapKit
 import CoreLocation
 import SwiftUI
 
-class MapViewDelegate: NSObject, MKMapViewDelegate {
+class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
+    
+    
+    func provideWeather(weather: ResponseBody) {
+        weatherdata = weather
+    }
+    
+    var weatherdata : ResponseBody?
+    
+    let weatherManger = WeatherManager()
+    
     
     /// Current session of GPX location logging. Handles all background tasks and recording.
     let session = GPXSession()
@@ -106,12 +116,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             return nil
         }
         let annotationView = MKPinAnnotationView()
-        
-        //        let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
+
+        //  let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
-        
-        
         //
         let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         //        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
@@ -120,11 +128,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
         deleteButton.tag = kDeleteWaypointAccesoryButtonTag
         annotationView.rightCalloutAccessoryView = deleteButton
         //        annotationView.pinTintColor = .red
-        
         let editButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         editButton.setImage(UIImage(named: "edit"), for: UIControl.State())
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        
         editButton.tag = kEditWaypointAccesoryButtonTag
         annotationView.leftCalloutAccessoryView = editButton
         
@@ -140,9 +146,16 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
+        weatherManger.delegate = self
+        
         print("calloutAccesoryControlTapped ")
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        
+        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!)
+        guard let weatherdata = weatherdata else { return }
+
         guard let button = control as? UIButton else { return }
+        
         guard let map = mapView as? GPXMapView else { return }
         
         var routeStep = ""
@@ -158,6 +171,11 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             //            guide(mapView, didSelect: view)
             
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
+            
+            let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in
+
+                
+            }
             
             let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                 map.removeWaypoint(waypoint)
@@ -178,6 +196,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             sheet.addAction(distance)
             sheet.addAction(time)
             sheet.addAction(routeName)
+            sheet.addAction(weather)
             sheet.addAction(removeOption)
             sheet.addAction(cancelAction)
             
@@ -188,9 +207,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate {
             
             let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
             
-            let alertController = UIAlertController(title: NSLocalizedString("EDIT_WAYPOINT_NAME_TITLE", comment: "no comment"),
-                                                    message: NSLocalizedString("EDIT_WAYPOINT_NAME_MESSAGE", comment: "no comment"),
-                                                    preferredStyle: .alert)
+    
+            let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
+            
             alertController.addTextField { (textField) in
                 textField.text = waypoint.title
                 textField.clearButtonMode = .always

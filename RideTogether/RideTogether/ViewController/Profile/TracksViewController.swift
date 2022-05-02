@@ -45,6 +45,7 @@ class TracksViewController: BaseViewController {
         }
     
     @IBOutlet weak var gView: UIView! {
+        
         didSet {
             gView.applyGradient(
                 colors: [.white, .orange],
@@ -135,7 +136,7 @@ class TracksViewController: BaseViewController {
 extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        100
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -220,6 +221,7 @@ extension TracksViewController: UITableViewDelegate {
                     
                 case .success(_):
                     self.records.remove(at: indexPath.row)
+                    
                     self.tableView.deleteRows(at: [indexPath], with: .left)
                     
                 case .failure(let error):

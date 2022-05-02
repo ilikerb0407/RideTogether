@@ -41,7 +41,6 @@ class RouteTypes: UITableViewCell {
         self.selectionStyle = .none
       
         
-        
     }
     
 }
