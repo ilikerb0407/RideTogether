@@ -19,27 +19,32 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var heart: UIButton!
     
+//
+//    var likes : Bool = false {
+//        didSet {
+//            if likes == true {
+//
+//                heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//
+//
+//            } else {
+//
+//                heart.setImage(UIImage(systemName: "heart"), for: .normal)
+//            }
+//        }
+//      }
+//
     
-    var likes : Bool = false {
-        didSet {
-            if likes == true {
-                
-                heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                
-                
-            } else {
-                
-                heart.setImage(UIImage(systemName: "heart"), for: .normal)
-            }
-        }
-      }
+//    func chooselLike(_ sender: IndexPath) {
+//
+//        print ("like it or not  ")
+////        likes.toggle()
+//
+//    }
     
-    
-    func chooselLike(_ sender: IndexPath) {
+    @objc func heartTapped(_ sender: Int) {
         
-        print ("like it or not  ")
-        likes.toggle()
-        
+        heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
     }
     
     override func awakeFromNib() {
@@ -49,15 +54,13 @@ class RecommendTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
         
-        self.heart.isSelected = self.likes
+//        self.heart.isSelected = self.likes
         
         heart.setImage(UIImage(systemName: "heart"), for: .normal)
 
         heart.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         
-        
-        
-        
+        heart.addTarget(self, action: #selector(heartTapped), for: .touchUpInside)
         
     }
     

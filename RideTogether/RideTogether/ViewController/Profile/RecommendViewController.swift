@@ -202,7 +202,7 @@ extension RecommendViewController: UITableViewDelegate {
             waitlottie.isHidden = true
             
             
-            tableViewCell.chooselLike([indexPath.row])
+//            tableViewCell.chooselLike([indexPath.row])
 
         }
         
@@ -229,6 +229,8 @@ extension RecommendViewController: UITableViewDelegate {
 //            // 將savemaps 從使用者中刪除
 //            self.updateSavemaps()
 //        }
+        
+        
     }
 
 }
@@ -245,18 +247,16 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
+        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         
-        
+        cell.heart.tag = indexPath.row
         
         return cell
     }
     
     @objc func savemaps(_ sender: UIButton) {
         
-        
-        
-        
+        self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
+    
     }
 }
-

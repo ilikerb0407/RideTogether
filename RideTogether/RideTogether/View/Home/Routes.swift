@@ -33,7 +33,6 @@ class Routes: UICollectionViewCell {
         routeLength.text = model.routeLength
         routeInfo.text = model.routeInfo
         
-        
     }
 
 }

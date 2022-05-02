@@ -315,6 +315,8 @@ extension RouteViewController {
                 
                 cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
                 
+                cell.rideButton.tag = indexPath.row
+                
 //                cell.checkGroupButton.tag = indexPath.row
                 
 //                cell.checkGroupButton.addTarget(self, action: #selector(self.toGroupPage), for: .touchUpInside)
