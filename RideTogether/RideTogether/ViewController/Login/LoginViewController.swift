@@ -152,17 +152,16 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     
     
+    
     func loginButtonFadeIn () {
         
         self.loginButton.alpha = 0.0
+        self.emailbtn.alpha = 0.0
         
         //        self.agreementStackView.alpha = 0.0
         
-        //        appLogo.translatesAutoresizingMaskIntoConstraints = false
-        
-        UIView.animate(withDuration: 0.5, delay: 1) {
-            
-            //            self.logoTopConstrain.constant = 150
+        UIView.animate(withDuration: 0.5, delay: 2) {
+            self.emailbtn.alpha = 1.0
         }
         
         UIView.animate(withDuration: 0.5, delay: 1.5) {
@@ -171,9 +170,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             //            self.agreementStackView.alpha = 1.0
         }
     }
-    
-    
-    
 }
 
 private func randomNonceString(length: Int = 32) -> String {

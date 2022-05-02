@@ -60,6 +60,9 @@
                             <constraint firstItem="QOo-wi-bvo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="rVK-lV-7Hn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailbtn" destination="MXd-uj-7LK" id="gjn-9x-brP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
