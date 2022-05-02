@@ -70,6 +70,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="38" id="XHC-6T-fDi"/>
                                         </constraints>
+                                        <color key="tintColor" name="B1"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system"/>
                                         <connections>
@@ -77,64 +78,61 @@
                                             <action selector="editPhotobtn:" destination="94W-RV-Prh" eventType="touchUpInside" id="0wQ-A7-Rug"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride.gif" translatesAutoresizingMaskIntoConstraints="NO" id="4Cg-6j-tIP">
-                                        <rect key="frame" x="55" y="44" width="125" height="288"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="125" id="7hx-FX-SOS"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="U3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="阿富" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fIf-KK-V4D">
-                                        <rect key="frame" x="198" y="263" width="175" height="39"/>
+                                        <rect key="frame" x="205" y="250" width="168" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C27-Ud-r1N">
-                                        <rect key="frame" x="318" y="150" width="45" height="191"/>
+                                        <rect key="frame" x="329" y="289" width="45" height="31"/>
+                                        <color key="tintColor" name="B1"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system"/>
                                         <connections>
                                             <action selector="editName:" destination="3J9-PV-Y8M" eventType="touchUpInside" id="Uf5-SB-Aq7"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ANH-ae-BB8">
+                                        <rect key="frame" x="60" y="213" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="KPu-4p-uot"/>
+                                            <constraint firstAttribute="height" constant="120" id="aAh-Kw-Jgt"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="U3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="fIf-KK-V4D" firstAttribute="leading" secondItem="4Cg-6j-tIP" secondAttribute="trailing" constant="18" id="45E-2b-qa2"/>
+                                    <constraint firstItem="ANH-ae-BB8" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" constant="60" id="5OD-VO-0wj"/>
                                     <constraint firstItem="Zna-nX-YeG" firstAttribute="top" secondItem="vPE-yp-ZV1" secondAttribute="bottom" constant="8" symbolic="YES" id="5rU-K6-1Hu"/>
-                                    <constraint firstItem="4Cg-6j-tIP" firstAttribute="bottom" secondItem="nc9-Cr-rVu" secondAttribute="bottom" constant="-32" id="6Se-qh-A5d"/>
-                                    <constraint firstItem="4Cg-6j-tIP" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" constant="55" id="Djs-C4-1m3"/>
+                                    <constraint firstItem="C27-Ud-r1N" firstAttribute="top" secondItem="fIf-KK-V4D" secondAttribute="bottom" id="CQV-mM-zpZ"/>
+                                    <constraint firstItem="fIf-KK-V4D" firstAttribute="leading" secondItem="ANH-ae-BB8" secondAttribute="trailing" constant="25" id="EBI-SI-hHr"/>
+                                    <constraint firstItem="nc9-Cr-rVu" firstAttribute="top" secondItem="ANH-ae-BB8" secondAttribute="bottom" id="J5h-wv-dtd"/>
                                     <constraint firstAttribute="trailing" secondItem="Zna-nX-YeG" secondAttribute="trailing" id="K5a-hl-EuP"/>
-                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="4Cg-6j-tIP" secondAttribute="bottom" constant="52" id="OhH-kz-eOB"/>
-                                    <constraint firstItem="C27-Ud-r1N" firstAttribute="top" secondItem="Opy-dE-Pdx" secondAttribute="top" constant="150" id="Shj-2c-cwR"/>
-                                    <constraint firstItem="4Cg-6j-tIP" firstAttribute="top" secondItem="Opy-dE-Pdx" secondAttribute="top" constant="44" id="U6e-7H-scr"/>
+                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="nc9-Cr-rVu" secondAttribute="bottom" constant="20" id="Y5g-fw-enD"/>
                                     <constraint firstItem="vPE-yp-ZV1" firstAttribute="centerX" secondItem="Zna-nX-YeG" secondAttribute="centerX" constant="-2.5" id="YTc-kj-Zo4"/>
                                     <constraint firstItem="Zna-nX-YeG" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" id="Zlx-lJ-5on"/>
                                     <constraint firstAttribute="trailing" secondItem="fIf-KK-V4D" secondAttribute="trailing" constant="41" id="aIm-gk-CPC"/>
-                                    <constraint firstAttribute="trailing" secondItem="C27-Ud-r1N" secondAttribute="trailing" constant="51" id="fMT-vM-XNs"/>
+                                    <constraint firstAttribute="trailing" secondItem="C27-Ud-r1N" secondAttribute="trailing" constant="40" id="fMT-vM-XNs"/>
                                     <constraint firstItem="Zna-nX-YeG" firstAttribute="leading" secondItem="vPE-yp-ZV1" secondAttribute="leading" constant="-36" id="r08-89-qa3"/>
-                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="fIf-KK-V4D" secondAttribute="bottom" constant="82" id="rGV-MC-pUb"/>
+                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="fIf-KK-V4D" secondAttribute="bottom" constant="95" id="rGV-MC-pUb"/>
                                     <constraint firstAttribute="bottom" secondItem="Zna-nX-YeG" secondAttribute="bottom" id="tKC-va-whS"/>
-                                    <constraint firstItem="vPE-yp-ZV1" firstAttribute="top" secondItem="C27-Ud-r1N" secondAttribute="bottom" constant="43" id="vLH-6c-4pN"/>
                                     <constraint firstItem="nc9-Cr-rVu" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" constant="157" id="wiK-rq-k7a"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="editNameBtn" destination="C27-Ud-r1N" id="wuY-GL-XXF"/>
                                     <outlet property="userName" destination="fIf-KK-V4D" id="zpM-hj-17b"/>
-                                    <outlet property="userPhoto" destination="4Cg-6j-tIP" id="pls-Of-4hq"/>
+                                    <outlet property="userPhoto" destination="ANH-ae-BB8" id="sJH-ry-4e9"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -414,10 +412,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="49908-bike-ride.gif" width="640" height="640"/>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="doc.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="B1">
+            <color red="0.098000004887580872" green="0.76499998569488525" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="U3">
             <color red="1" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

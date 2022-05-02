@@ -59,7 +59,7 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
             cell.setUpCell(group: group, userInfo: userInfo)
             
 //            cell.rejectButton.addTarget(self, action: #selector(blockUser), for: .touchUpInside)
-            
+//            
 //            cell.rejectButton.tag = indexPath.row
         }
         

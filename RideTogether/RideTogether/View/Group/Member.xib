@@ -18,16 +18,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="568" height="142"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dx7-EL-Ph2">
-                        <rect key="frame" x="11" y="75" width="87" height="62"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLX-fp-dKU">
                         <rect key="frame" x="12" y="12" width="544" height="99"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="Puz-xy-3yw">
-                                <rect key="frame" x="424" y="27" width="91" height="35"/>
+                                <rect key="frame" x="445" y="27" width="91" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUl-8r-cqE">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -58,13 +53,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ugv-hF-ine" secondAttribute="height" multiplier="1:1" id="9X6-0q-T9F"/>
                                     <constraint firstAttribute="height" constant="68" id="EcI-W5-jEB"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="amS-w6-CUQ"/>
                                     <constraint firstAttribute="width" constant="68" id="uGJ-Oa-SH2"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="un2-l0-Ub1"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="WRY-Of-olp">
-                                <rect key="frame" x="108" y="11.5" width="306" height="76"/>
+                                <rect key="frame" x="108" y="11.5" width="327" height="76"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RequestName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-zg-hW0">
                                         <rect key="frame" x="0.0" y="0.0" width="119.5" height="23"/>
@@ -95,7 +88,7 @@
                             <constraint firstAttribute="bottom" secondItem="Ugv-hF-ine" secondAttribute="bottom" constant="10" id="Rhg-By-Mh9"/>
                             <constraint firstItem="Puz-xy-3yw" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="27" id="TpD-IF-bXv"/>
                             <constraint firstItem="Ugv-hF-ine" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="10" id="Vj0-4w-863"/>
-                            <constraint firstAttribute="trailing" secondItem="Puz-xy-3yw" secondAttribute="trailing" constant="29" id="WJ7-ya-uRJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Puz-xy-3yw" secondAttribute="trailing" constant="8" id="WJ7-ya-uRJ"/>
                             <constraint firstItem="WRY-Of-olp" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="11.5" id="cxW-XM-RIW"/>
                             <constraint firstItem="WRY-Of-olp" firstAttribute="leading" secondItem="Ugv-hF-ine" secondAttribute="trailing" constant="30" id="qWo-lg-JFV"/>
                             <constraint firstItem="Ugv-hF-ine" firstAttribute="leading" secondItem="JLX-fp-dKU" secondAttribute="leading" constant="10" id="z1s-uh-pHo"/>

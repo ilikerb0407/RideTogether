@@ -55,11 +55,13 @@ class Member: UITableViewCell {
 //        rejectButton.setImage(image, for: .normal)
 //
 //        rejectButton.backgroundColor = .white
+        
+        rejectButton.isHidden = true
 //
-//        if userInfo.uid == UserManager.shared.userId {
-//
-//            rejectButton.isHidden = true
-//        }
+        if userInfo.uid == UserManager.shared.userId {
+
+            rejectButton.isHidden = true
+        }
         
         requestNameLabel.text = userInfo.userName
         
