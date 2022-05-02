@@ -74,7 +74,6 @@ class RouteViewController: BaseViewController {
         }
     }
     
-    
     private var collectionView: UICollectionView! {
         
         didSet {

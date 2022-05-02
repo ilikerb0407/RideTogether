@@ -30,9 +30,9 @@ class Member: UITableViewCell {
         
         requestNameLabel.text = userInfo.userName
         
-        requestLabel.text = "wants to join your group"
+        requestLabel.text = "Wants to join"
         
-        groupNameLabel.text = "\(model.groupName)"
+        groupNameLabel.text = "Group : \(model.groupName)"
         
         guard let ref = userInfo.pictureRef else { return }
         

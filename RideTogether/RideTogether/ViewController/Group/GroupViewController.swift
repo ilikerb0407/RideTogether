@@ -40,8 +40,12 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             tableView.reloadData()
         }
     }
-    private lazy var requests = [Request]()
-   
+    private lazy var requests = [Request]() {
+        
+        didSet {
+            checkRequestsNum()
+        }
+    }
 
     
     // MARK: Class Properties
@@ -108,7 +112,11 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         VC.delegate = self
         
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addRequestListener()
     }
     
     func addRequestListener() {
@@ -346,7 +354,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             
         } else {
             
-            groupHeaderCell?.resquestsBell.shake()
+//            groupHeaderCell?.resquestsBell.shake()
         }
     }
     
@@ -356,7 +364,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         if requests.count == 0 {
             
-
+            
         } else {
             
             groupHeaderCell.resquestsBell.shake()

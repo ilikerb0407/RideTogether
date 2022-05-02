@@ -43,7 +43,7 @@ class RecommendViewController: BaseViewController {
     }
     func setUpTableView() {
         
-        setNavigationBar(title: "分享牆")
+        setNavigationBar(title: "Share Wall")
         
         tableView = UITableView()
         
@@ -195,7 +195,7 @@ extension RecommendViewController: UITableViewDelegate {
 
         }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in
+        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
             self.waitlottie.isHidden = true
         }
         
@@ -234,8 +234,18 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
+//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
+        
+        
         
         return cell
+    }
+    
+    @objc func savemaps(_ sender: UIButton) {
+        
+        
+        
+        
     }
 }
 

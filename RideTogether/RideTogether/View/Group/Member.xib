@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLX-fp-dKU">
-                        <rect key="frame" x="12" y="12" width="544" height="99"/>
+                        <rect key="frame" x="12" y="12" width="544" height="92"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="Puz-xy-3yw">
                                 <rect key="frame" x="445" y="27" width="91" height="35"/>
@@ -57,7 +57,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="WRY-Of-olp">
-                                <rect key="frame" x="108" y="11.5" width="327" height="76"/>
+                                <rect key="frame" x="108" y="8" width="327" height="76"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RequestName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-zg-hW0">
                                         <rect key="frame" x="0.0" y="0.0" width="119.5" height="23"/>
@@ -83,13 +83,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Puz-xy-3yw" firstAttribute="leading" secondItem="WRY-Of-olp" secondAttribute="trailing" constant="10" id="7RC-Rl-ExH"/>
-                            <constraint firstAttribute="bottom" secondItem="WRY-Of-olp" secondAttribute="bottom" constant="11.5" id="7Sc-cO-C55"/>
+                            <constraint firstAttribute="bottom" secondItem="WRY-Of-olp" secondAttribute="bottom" constant="8" id="7Sc-cO-C55"/>
                             <constraint firstItem="WRY-Of-olp" firstAttribute="centerY" secondItem="JLX-fp-dKU" secondAttribute="centerY" id="G3e-y7-7jm"/>
                             <constraint firstAttribute="bottom" secondItem="Ugv-hF-ine" secondAttribute="bottom" constant="10" id="Rhg-By-Mh9"/>
                             <constraint firstItem="Puz-xy-3yw" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="27" id="TpD-IF-bXv"/>
                             <constraint firstItem="Ugv-hF-ine" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="10" id="Vj0-4w-863"/>
                             <constraint firstAttribute="trailing" secondItem="Puz-xy-3yw" secondAttribute="trailing" constant="8" id="WJ7-ya-uRJ"/>
-                            <constraint firstItem="WRY-Of-olp" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="11.5" id="cxW-XM-RIW"/>
+                            <constraint firstItem="WRY-Of-olp" firstAttribute="top" secondItem="JLX-fp-dKU" secondAttribute="top" constant="8" id="cxW-XM-RIW"/>
                             <constraint firstItem="WRY-Of-olp" firstAttribute="leading" secondItem="Ugv-hF-ine" secondAttribute="trailing" constant="30" id="qWo-lg-JFV"/>
                             <constraint firstItem="Ugv-hF-ine" firstAttribute="leading" secondItem="JLX-fp-dKU" secondAttribute="leading" constant="10" id="z1s-uh-pHo"/>
                         </constraints>
@@ -98,7 +98,7 @@
                 <constraints>
                     <constraint firstItem="JLX-fp-dKU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Apu-BM-tJl"/>
                     <constraint firstAttribute="trailing" secondItem="JLX-fp-dKU" secondAttribute="trailing" constant="12" id="Z6a-Qo-usz"/>
-                    <constraint firstAttribute="bottom" secondItem="JLX-fp-dKU" secondAttribute="bottom" constant="12" id="dZj-8g-N5J"/>
+                    <constraint firstAttribute="bottom" secondItem="JLX-fp-dKU" secondAttribute="bottom" constant="8" id="dZj-8g-N5J"/>
                     <constraint firstItem="JLX-fp-dKU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="zT0-bd-lXJ"/>
                 </constraints>
             </tableViewCellContentView>

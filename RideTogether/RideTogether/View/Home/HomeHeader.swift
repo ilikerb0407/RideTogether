@@ -74,7 +74,7 @@ class HomeHeader: UITableViewCell {
         
         totalGroups.text = "\(groupsStartValue)"
 
-        lengthStartValue += 0.3
+        lengthStartValue += 5
 //        friendsStartValue += 1
         groupsStartValue += 1
         

@@ -31,6 +31,7 @@ class SaveMapsViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setUptableView()
@@ -75,9 +76,7 @@ class SaveMapsViewController: BaseViewController {
     
     func setUptableView() {
         
-        setNavigationBar(title: "SaveMaps")
-        
-        
+        setNavigationBar(title: "Personal Collection")
         
         tableView = UITableView()
         // 借用同一個tableViewcell
@@ -133,6 +132,7 @@ extension SaveMapsViewController: UITableViewDelegate {
         let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self]
             _ in
             
+            
             MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
                 
                 switch result {
@@ -152,7 +152,7 @@ extension SaveMapsViewController: UITableViewDelegate {
             
         }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in }
         
         alert.addAction(detailOption)
         alert.addAction(removeOption)
@@ -178,6 +178,7 @@ extension SaveMapsViewController: UITableViewDataSource {
         let cell: SaveMaps = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(model: self.records[indexPath.row])
+        
         
         return cell
     }

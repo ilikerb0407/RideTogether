@@ -24,13 +24,12 @@ class RecommendTableViewCell: UITableViewCell {
         didSet {
             if likes == true {
                 
-//                heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 
                 
             } else {
                 
-               
-//                heart.setImage(UIImage(systemName: "heart"), for: .normal)
+                heart.setImage(UIImage(systemName: "heart"), for: .normal)
             }
         }
       }
