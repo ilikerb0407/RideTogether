@@ -46,7 +46,7 @@ class RecommendTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        self.backgroundColor = .C4
+        self.backgroundColor = .clear
         self.contentView.backgroundColor = .clear
         
         self.heart.isSelected = self.likes

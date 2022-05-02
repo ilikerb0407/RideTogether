@@ -14,7 +14,18 @@ import FirebaseFirestoreSwift
 import Lottie
 
 class SaveMapsViewController: BaseViewController {
-
+    
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+//            gView.alpha = 0.85
+            // 不會把資料覆蓋住
+        }
+    }
+    
     var userId: String { UserManager.shared.userInfo.uid }
     
     var records = [Record]()
@@ -41,6 +52,7 @@ class SaveMapsViewController: BaseViewController {
         tableView.mj_header? = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,7 +122,7 @@ class SaveMapsViewController: BaseViewController {
 extension SaveMapsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        100
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -174,17 +174,30 @@
                     <view key="view" contentMode="scaleToFill" id="ttQ-6p-dhQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E44-7Y-m0h">
+                                <rect key="frame" x="0.0" y="-45" width="414" height="978"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="d2B-FO-ic1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d2B-FO-ic1" firstAttribute="trailing" secondItem="E44-7Y-m0h" secondAttribute="trailing" id="Ewg-Hf-Mgn"/>
+                            <constraint firstItem="d2B-FO-ic1" firstAttribute="bottom" secondItem="E44-7Y-m0h" secondAttribute="bottom" constant="-120" id="Xjj-Of-GmF"/>
+                            <constraint firstItem="E44-7Y-m0h" firstAttribute="leading" secondItem="d2B-FO-ic1" secondAttribute="leading" id="iGd-q8-9uG"/>
+                            <constraint firstItem="E44-7Y-m0h" firstAttribute="top" secondItem="d2B-FO-ic1" secondAttribute="top" constant="-133" id="kdB-4h-vMX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dh3-JU-7Ld"/>
                     <connections>
+                        <outlet property="gView" destination="E44-7Y-m0h" id="eu4-pQ-gWI"/>
                         <segue destination="HPt-2x-2Pf" kind="show" identifier="toUserRecord" id="1xl-BP-Erv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZV-P3-N87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="98"/>
+            <point key="canvasLocation" x="1298.5507246376812" y="97.767857142857139"/>
         </scene>
         <!--Track Details View Controller-->
         <scene sceneID="Jxf-As-eKa">
@@ -355,14 +368,29 @@
                     <view key="view" contentMode="scaleToFill" id="Z8g-PJ-GSm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0Z-NA-net">
+                                <rect key="frame" x="0.0" y="-49" width="414" height="945"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UKi-Gv-pIU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B0Z-NA-net" firstAttribute="top" secondItem="UKi-Gv-pIU" secondAttribute="top" id="2Ny-gg-Inq"/>
+                            <constraint firstItem="UKi-Gv-pIU" firstAttribute="trailing" secondItem="B0Z-NA-net" secondAttribute="trailing" id="92H-JA-MRT"/>
+                            <constraint firstItem="UKi-Gv-pIU" firstAttribute="bottom" secondItem="B0Z-NA-net" secondAttribute="bottom" id="B3H-o7-2H3"/>
+                            <constraint firstItem="B0Z-NA-net" firstAttribute="leading" secondItem="UKi-Gv-pIU" secondAttribute="leading" id="GMS-Cz-Vid"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GmR-dB-tmy"/>
+                    <connections>
+                        <outlet property="gView" destination="B0Z-NA-net" id="w4E-3H-6Za"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiO-wR-kQm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478" y="909"/>
+            <point key="canvasLocation" x="1476.8115942028987" y="908.70535714285711"/>
         </scene>
         <!--Recommend Detail View Controller-->
         <scene sceneID="Jof-5b-W5z">
@@ -401,14 +429,29 @@
                     <view key="view" contentMode="scaleToFill" id="rdP-cA-SzV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZL-7F-FAG">
+                                <rect key="frame" x="0.0" y="-64" width="414" height="982"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="8BR-Nv-wch"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8BR-Nv-wch" firstAttribute="trailing" secondItem="8ZL-7F-FAG" secondAttribute="trailing" id="DcN-Px-Elp"/>
+                            <constraint firstItem="8ZL-7F-FAG" firstAttribute="top" secondItem="8BR-Nv-wch" secondAttribute="top" constant="-152" id="NrZ-65-Gry"/>
+                            <constraint firstItem="8ZL-7F-FAG" firstAttribute="leading" secondItem="8BR-Nv-wch" secondAttribute="leading" id="YhE-t8-am6"/>
+                            <constraint firstItem="8BR-Nv-wch" firstAttribute="bottom" secondItem="8ZL-7F-FAG" secondAttribute="bottom" constant="-105" id="jcc-Qj-Vcz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O0v-r2-E9B"/>
+                    <connections>
+                        <outlet property="gView" destination="8ZL-7F-FAG" id="lMB-2P-GeT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUL-XW-W6V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="984"/>
+            <point key="canvasLocation" x="160.86956521739131" y="983.70535714285711"/>
         </scene>
     </scenes>
     <resources>

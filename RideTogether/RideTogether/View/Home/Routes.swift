@@ -23,6 +23,7 @@ class Routes: UICollectionViewCell {
         // Initialization code
         
         self.backgroundColor = .C4
+        
         self.contentView.backgroundColor = .clear
     }
     

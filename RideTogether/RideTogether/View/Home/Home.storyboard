@@ -33,11 +33,24 @@
                     <view key="view" contentMode="scaleToFill" id="lJc-D8-mmk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzb-fJ-NFQ">
+                                <rect key="frame" x="0.0" y="-48" width="414" height="1247"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5WQ-FE-XOT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dzb-fJ-NFQ" firstAttribute="top" secondItem="5WQ-FE-XOT" secondAttribute="top" constant="-136" id="6dQ-Lu-SXm"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="bottom" secondItem="dzb-fJ-NFQ" secondAttribute="bottom" constant="-386" id="T3b-8x-cW5"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="trailing" secondItem="dzb-fJ-NFQ" secondAttribute="trailing" id="blE-L9-Ibg"/>
+                            <constraint firstItem="dzb-fJ-NFQ" firstAttribute="leading" secondItem="5WQ-FE-XOT" secondAttribute="leading" id="rkh-dM-bMX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oG9-91-4Jy"/>
                     <connections>
+                        <outlet property="gView" destination="dzb-fJ-NFQ" id="Ly1-ma-HRJ"/>
                         <segue destination="nnY-XE-OqT" kind="show" identifier="routeList" id="W6M-cr-gbH"/>
                     </connections>
                 </viewController>
@@ -52,14 +65,29 @@
                     <view key="view" contentMode="scaleToFill" id="QsF-sT-lgP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drI-YP-d4p">
+                                <rect key="frame" x="0.0" y="-58" width="414" height="1129"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="pa3-uj-87k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pa3-uj-87k" firstAttribute="bottom" secondItem="drI-YP-d4p" secondAttribute="bottom" constant="-258" id="4BM-Jn-xBr"/>
+                            <constraint firstItem="drI-YP-d4p" firstAttribute="leading" secondItem="pa3-uj-87k" secondAttribute="leading" id="6zf-d5-wsV"/>
+                            <constraint firstItem="pa3-uj-87k" firstAttribute="trailing" secondItem="drI-YP-d4p" secondAttribute="trailing" id="Jsf-Q2-mQJ"/>
+                            <constraint firstItem="drI-YP-d4p" firstAttribute="top" secondItem="pa3-uj-87k" secondAttribute="top" constant="-146" id="vJK-f8-IhO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qeF-nq-U0u"/>
+                    <connections>
+                        <outlet property="gView" destination="drI-YP-d4p" id="D74-sM-XZ0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOt-Fa-5T4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="68"/>
+            <point key="canvasLocation" x="1211.5942028985507" y="67.633928571428569"/>
         </scene>
         <!--Journey-->
         <scene sceneID="R5B-ob-qzC">

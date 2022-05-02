@@ -21,13 +21,13 @@
                         <rect key="frame" x="8" y="8" width="327" height="127"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMW-eZ-cZm">
-                                <rect key="frame" x="20" y="0.0" width="307" height="24"/>
+                                <rect key="frame" x="10" y="10" width="317" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8A-rB-EVB">
-                                <rect key="frame" x="20" y="106.5" width="307" height="20.5"/>
+                                <rect key="frame" x="10" y="54" width="317" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,19 +35,19 @@
                         </subviews>
                         <color key="backgroundColor" name="B2"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="u8A-rB-EVB" secondAttribute="bottom" id="PMa-QF-krP"/>
-                            <constraint firstItem="IMW-eZ-cZm" firstAttribute="top" secondItem="EUP-JZ-BQh" secondAttribute="top" id="RXI-oZ-S0D"/>
+                            <constraint firstItem="u8A-rB-EVB" firstAttribute="leading" secondItem="EUP-JZ-BQh" secondAttribute="leading" constant="10" id="RyC-Jq-MXm"/>
                             <constraint firstAttribute="trailing" secondItem="IMW-eZ-cZm" secondAttribute="trailing" id="Sn5-Is-XeV"/>
-                            <constraint firstItem="IMW-eZ-cZm" firstAttribute="leading" secondItem="EUP-JZ-BQh" secondAttribute="leading" constant="20" id="iH8-13-vEn"/>
-                            <constraint firstItem="u8A-rB-EVB" firstAttribute="leading" secondItem="EUP-JZ-BQh" secondAttribute="leading" constant="20" id="j2F-73-v5N"/>
+                            <constraint firstItem="IMW-eZ-cZm" firstAttribute="top" secondItem="EUP-JZ-BQh" secondAttribute="top" constant="10" id="k2t-EQ-fjt"/>
                             <constraint firstAttribute="trailing" secondItem="u8A-rB-EVB" secondAttribute="trailing" id="m26-i4-Qke"/>
+                            <constraint firstItem="u8A-rB-EVB" firstAttribute="top" secondItem="IMW-eZ-cZm" secondAttribute="bottom" constant="20" id="mSR-mb-xQJ"/>
+                            <constraint firstItem="IMW-eZ-cZm" firstAttribute="leading" secondItem="EUP-JZ-BQh" secondAttribute="leading" constant="10" id="yQX-NU-rBz"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="2"/>
+                                <real key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="30"/>

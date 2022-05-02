@@ -16,6 +16,17 @@ import Lottie
 
 // MARK: Recommend-Route
 class RecommendViewController: BaseViewController {
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .orange],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+//            gView.alpha = 0.85
+            // 不會把資料覆蓋住
+        }
+    }
+    
 
     var records = [Record]()
     
@@ -167,7 +178,7 @@ class RecommendViewController: BaseViewController {
 extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
