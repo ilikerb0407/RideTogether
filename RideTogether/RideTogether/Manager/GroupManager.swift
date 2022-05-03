@@ -171,8 +171,6 @@ class GroupManager {
     }
     
  
-    
-    
     func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) {
         
         dataBase.collection(requestsCollection)
