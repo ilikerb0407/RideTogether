@@ -13,23 +13,46 @@ import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation
 
-class GroupViewController: BaseViewController, reload {
+class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
     
-    func reload(result: Group) {
+    func reload() {
         
-        self.table?.reloadData()
+        fetchGroupData()
+        
     }
     
     var table: UITableView?
+    
+    var VC = CreateGroupViewController()
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .B1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
+    }
+    
+    
+    private lazy var cache = [String: UserInfo]() {
+        
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    private lazy var requests = [Request]() {
+        
+        didSet {
+            checkRequestsNum()
+        }
+    }
 
-
+    
     // MARK: Class Properties
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
     private var inActivityGroup = [Group]()
-    
-    private var historyGroup = [Group]()
     
     private var myGroups = [Group]() {
         
@@ -74,31 +97,98 @@ class GroupViewController: BaseViewController, reload {
         
         setUpHeaderView()
         
+        addRequestListener()
+        
         setUpTableView()
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         
         tableView.mj_header = header
         
-        view.backgroundColor = .U2
+//        view.applyGradient(colors: [.B2, .U2], locations: [0.0, 1.0], direction: .leftSkewed)
+//        view.backgroundColor = .U2
         
         table?.delegate = self
         
+        VC.delegate = self
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addRequestListener()
+    }
+    
+    func addRequestListener() {
+        
+        GroupManager.shared.addRequestListener { result in
+            
+            switch result {
+                
+            case .success(let requests):
+                
+                var filtedRequests = [Request]()
+                
+                for request in requests where self.userInfo.blockList?.contains(request.requestId) == false {
+                    
+                    filtedRequests.append(request)
+                }
+                
+                self.requests = filtedRequests
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == SegueIdentifier.groupChat.rawValue {
+            if let chatRoomVC = segue.destination as? ChatRoomViewController {
+                
+                if let groupInfo = sender as? Group {
+                    
+                    chatRoomVC.groupInfo = groupInfo
+                    
+                    chatRoomVC.cache = cache
+                }
+            }
+        }
+        
+        if segue.identifier == SegueIdentifier.requestList.rawValue {
+            
+            if let requestVC = segue.destination as? JoinViewController {
+                
+                if let requests = sender as? [Request] {
+                    
+                    requestVC.requests = requests
+                }
+            }
+        }
+    }
+    
+    
     
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
+        
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
     
     @objc func creatGroup() {
+        
+        
 //       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium()]
+                presentVc.detents = [.medium(), .large() ]
+                rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }
         }
@@ -121,7 +211,7 @@ class GroupViewController: BaseViewController, reload {
             }
         }
         
-//        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
+        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
     }
     
     
@@ -142,7 +232,7 @@ class GroupViewController: BaseViewController, reload {
             }
         }
        
-        unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
+        unexpiredGroup.sort { $0.date.seconds > $1.date.seconds }
         
         expiredGroup.sort { $0.date.seconds > $1.date.seconds }
         
@@ -151,9 +241,7 @@ class GroupViewController: BaseViewController, reload {
     
     // MARK: 抓資料
     
-    var filteredGroups = [Group]()
-    
-    
+
     func fetchGroupData() {
         
         GroupManager.shared.fetchGroups { [self] result in
@@ -162,39 +250,32 @@ class GroupViewController: BaseViewController, reload {
                 
             case .success(let groups):
                 
-                filteredGroups = groups
+                var filteredGroups = [Group]()
                 
-                filteredGroups.sort { $0.date.seconds < $1.date.seconds }
+                for group in groups where self.userInfo.blockList?.contains(group.hostId) == false {
+
+                    filteredGroups.append(group)
+                }
                 
-                
-                
-//                inActivityGroup = groups
-                
-//                var filteredGroups = [Group]()
-                
-//                for group in groups where self.userInfo.blockList?.contains(group.hostId) == false {
-//
-//                    filteredGroups.append(group)
-//                }
-                
-                self.myGroups = filteredGroups.filter { $0.isExpired == true }
+                self.myGroups = filteredGroups.filter {
+                    $0.userIds.contains(self.userInfo.uid)
+                }
                 
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
                 
-//                self.rearrangeMyGroup(groups: self.myGroups)
-                rearrangeMyGroup(groups: filteredGroups)
+                self.rearrangeMyGroup(groups: self.myGroups)
                 
-                tableView.reloadData()
-                
-//                filteredGroups.forEach { group in
-//
-//                    guard self.cache[group.hostId] != nil else {
-//
-//                        self.fetchUserData(uid: group.hostId)
-//
-//                        return
-//                    }
-//                }
+                filteredGroups.forEach { group in
+                    
+                    guard self.cache[group.hostId] != nil else {
+                        
+                        self.fetchUserData(uid: group.hostId)
+                        
+                        self.table?.reloadData()
+                        
+                        return
+                    }
+                }
                 
             case .failure(let error):
                 
@@ -204,7 +285,24 @@ class GroupViewController: BaseViewController, reload {
     }
     
     
+    func fetchUserData(uid: String) {
+        
+        UserManager.shared.fetchUserInfo(uid: uid, completion: { result in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                self.cache[uid] = user
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        })
+    }
     
+
     
     // MARK: header
     
@@ -242,10 +340,36 @@ class GroupViewController: BaseViewController, reload {
             headerView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
-//        headerView.requestListButton.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
+          headerView.resquestsBell.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
         
           headerView.segment.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
         
+    }
+    
+    @objc func checkRequestList(_ sender: UIButton) {
+        
+        if requests.count != 0 {
+            
+            performSegue(withIdentifier: SegueIdentifier.requestList.rawValue, sender: requests)
+            
+        } else {
+            
+//            groupHeaderCell?.resquestsBell.shake()
+        }
+    }
+    
+    func checkRequestsNum() {
+        
+        guard let groupHeaderCell = groupHeaderCell else { return }
+        
+        if requests.count == 0 {
+            
+            
+        } else {
+            
+            groupHeaderCell.resquestsBell.shake()
+            
+        }
     }
     
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
@@ -273,6 +397,7 @@ class GroupViewController: BaseViewController, reload {
         view.addSubview(tableView)
         
         setBuildTeamButton()
+        
         
         tableView.backgroundColor = .clear
         
@@ -320,11 +445,33 @@ extension GroupViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        200
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var sender = [Group]()
+        
+        if isSearching {
+            
+            sender = searchGroups
+            
+        } else {
+            
+            if onlyUserGroup {
+                
+                sender = myGroups
+                
+            } else {
+                
+                sender = inActivityGroup
+            }
+        }
+        performSegue(withIdentifier: SegueIdentifier.groupChat.rawValue, sender: sender[indexPath.row])
     }
     
 }
@@ -373,9 +520,9 @@ extension GroupViewController: UITableViewDataSource {
                 group = inActivityGroup[indexPath.row]
             }
         }
-        cell.setUpCell(group: group, hostname: group.hostId )
         
-//      cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+      cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+
         
         return cell
     }

@@ -61,7 +61,7 @@ class FollowJourneyViewController: BaseViewController {
 
     @objc func popToPreviosPage(_ sender: UIButton) {
         let count = self.navigationController!.viewControllers.count
-        if let preController = self.navigationController?.viewControllers[count-2] {
+        if let preController = self.navigationController?.viewControllers[count-1] {
             self.navigationController?.popToViewController(preController, animated: true)
         }
         navigationController?.popViewController(animated: true)
@@ -275,13 +275,14 @@ class FollowJourneyViewController: BaseViewController {
         
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
+            
             let point: CGPoint = gesture.location(in: self.map2)
             map2.addWaypointAtViewPoint(point)
             //Allows save and reset
             self.hasWaypoints = true
         }
     }
-    /// Has the map any waypoint?
+    
     var hasWaypoints: Bool = false
     
     private lazy var waveLottieView: AnimationView = {
@@ -314,7 +315,7 @@ class FollowJourneyViewController: BaseViewController {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 20)
-        label.textColor = UIColor.white
+        label.textColor = UIColor.black
         return label
     }()
     
@@ -488,8 +489,8 @@ class FollowJourneyViewController: BaseViewController {
         
         let defaultFileName = "\(time)"
         
-        let alertController = UIAlertController(title: "儲存至裝置",
-                                                message: "請輸入檔案名稱",
+        let alertController = UIAlertController(title: "Save Record",
+                                                message: "Please enter the title",
                                                 preferredStyle: .alert)
         
         alertController.addTextField(configurationHandler: { (textField) in
@@ -499,7 +500,7 @@ class FollowJourneyViewController: BaseViewController {
             textField.text =  defaultFileName
         })
         
-        let saveAction = UIAlertAction(title: "儲存",
+        let saveAction = UIAlertAction(title: "Save",
                                        style: .default) { _ in
             
             let gpxString = self.map2.exportToGPXString()

@@ -3,18 +3,18 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Routes" id="gTV-IL-0wX" customClass="Routes" customModule="RideTogether" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="167" height="187"/>
+            <rect key="frame" x="0.0" y="0.0" width="172" height="195"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="167" height="187"/>
+                <rect key="frame" x="0.0" y="0.0" width="172" height="195"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="路線名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPv-k0-Wew">
@@ -24,26 +24,35 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsq-RZ-K1o">
-                        <rect key="frame" x="50" y="108.5" width="67" height="66.5"/>
+                        <rect key="frame" x="30" y="152" width="112" height="31"/>
+                        <color key="backgroundColor" name="U3"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="騎乘去"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amg-Bi-vbc">
-                        <rect key="frame" x="10" y="59" width="147" height="1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <rect key="frame" x="10" y="59" width="152" height="1"/>
+                        <color key="backgroundColor" name="U2"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="es1-8W-FTe"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtr-hP-pZg">
-                        <rect key="frame" x="111" y="90" width="26" height="21"/>
+                        <rect key="frame" x="131" y="120" width="26" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF6-5p-dzn">
-                        <rect key="frame" x="16" y="80" width="87" height="56"/>
+                        <rect key="frame" x="16" y="80" width="51" height="40"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -51,33 +60,48 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="amg-Bi-vbc" firstAttribute="top" secondItem="EPv-k0-Wew" secondAttribute="bottom" constant="8" id="7Nb-ip-ede"/>
                 <constraint firstAttribute="bottom" secondItem="bsq-RZ-K1o" secondAttribute="bottom" constant="12" id="858-vC-BDb"/>
+                <constraint firstAttribute="trailing" secondItem="Vtr-hP-pZg" secondAttribute="trailing" constant="15" id="HXi-Bm-6pL"/>
                 <constraint firstItem="EPv-k0-Wew" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="M5L-1Q-Ty3"/>
-                <constraint firstItem="bsq-RZ-K1o" firstAttribute="top" secondItem="QF6-5p-dzn" secondAttribute="bottom" constant="8" symbolic="YES" id="P5N-M0-H4W"/>
                 <constraint firstItem="EPv-k0-Wew" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="SzY-lg-JOJ"/>
-                <constraint firstAttribute="trailing" secondItem="Vtr-hP-pZg" secondAttribute="trailing" constant="30" id="XI3-Cb-mAI"/>
                 <constraint firstItem="amg-Bi-vbc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Yxu-aA-v5j"/>
                 <constraint firstAttribute="trailing" secondItem="amg-Bi-vbc" secondAttribute="trailing" constant="10" id="eTp-qV-v7d"/>
                 <constraint firstItem="QF6-5p-dzn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="flj-cv-f39"/>
-                <constraint firstItem="bsq-RZ-K1o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="gOx-5g-dPp"/>
+                <constraint firstItem="bsq-RZ-K1o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="gkb-fB-vvf"/>
                 <constraint firstItem="QF6-5p-dzn" firstAttribute="top" secondItem="amg-Bi-vbc" secondAttribute="bottom" constant="20" id="oZW-EP-BFN"/>
-                <constraint firstAttribute="trailing" secondItem="bsq-RZ-K1o" secondAttribute="trailing" constant="50" id="pF8-t7-l9n"/>
-                <constraint firstItem="Vtr-hP-pZg" firstAttribute="top" secondItem="amg-Bi-vbc" secondAttribute="bottom" constant="30" id="zUg-ni-mwa"/>
+                <constraint firstAttribute="trailing" secondItem="bsq-RZ-K1o" secondAttribute="trailing" constant="30" id="w45-T5-FrX"/>
+                <constraint firstItem="Vtr-hP-pZg" firstAttribute="top" secondItem="amg-Bi-vbc" secondAttribute="bottom" constant="60" id="zUg-ni-mwa"/>
             </constraints>
-            <size key="customSize" width="167" height="187"/>
+            <size key="customSize" width="172" height="195"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="15"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="0.0"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="rideButton" destination="bsq-RZ-K1o" id="2RV-hW-6Vt"/>
-                <outlet property="routeLength" destination="QF6-5p-dzn" id="PL1-a7-6nF"/>
+                <outlet property="routeInfo" destination="QF6-5p-dzn" id="stg-gf-aMB"/>
+                <outlet property="routeLength" destination="Vtr-hP-pZg" id="tCE-5h-PJU"/>
                 <outlet property="routeName" destination="EPv-k0-Wew" id="BZT-u6-uGv"/>
             </connections>
-            <point key="canvasLocation" x="222.46376811594206" y="113.50446428571428"/>
+            <point key="canvasLocation" x="226.08695652173915" y="116.18303571428571"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="U2">
+            <color red="0.81199997663497925" green="1" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="U3">
+            <color red="1" green="0.50199997425079346" blue="0.50199997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

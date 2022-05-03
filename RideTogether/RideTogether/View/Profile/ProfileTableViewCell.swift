@@ -20,7 +20,7 @@ class ProfileTableViewCell: UITableViewCell {
         
         itemTitle.text = ProfileItemType.allCases[indexPath.item].title
         
-        itemImage.contentMode = .scaleToFill
+        itemImage.contentMode = .scaleAspectFit
         
         itemBackground.backgroundColor = ProfileItemType.allCases[indexPath.row].backgroundColor
         

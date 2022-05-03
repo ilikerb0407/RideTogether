@@ -42,7 +42,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
         @objc func popToPreviosPage(_ sender: UIButton) {
             let count = self.navigationController!.viewControllers.count
-            if let preController = self.navigationController?.viewControllers[count-2] {
+            if let preController = self.navigationController?.viewControllers[count-1] {
                 self.navigationController?.popToViewController(preController, animated: true)
             }
             navigationController?.popViewController(animated: true)
@@ -472,8 +472,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             let defaultFileName = "\(time)"
             
-            let alertController = UIAlertController(title: "儲存至裝置",
-                                                    message: "請輸入檔案名稱",
+            let alertController = UIAlertController(title: "Save Record",
+                                                    message: "Please enter the title",
                                                     preferredStyle: .alert)
             
             alertController.addTextField(configurationHandler: { (textField) in
@@ -483,7 +483,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
                 textField.text =  defaultFileName
             })
             
-            let saveAction = UIAlertAction(title: "儲存",
+            let saveAction = UIAlertAction(title: "Save",
                                            style: .default) { _ in
                 
                 let gpxString = self.map3.exportToGPXString()

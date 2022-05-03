@@ -13,8 +13,10 @@ import SwiftUI
 
 
 protocol RoutesPhoto {
+    
     var image : UIImage? { get }
 }
+
 
 
 enum RoutesType: String, RoutesPhoto, CaseIterable {
@@ -24,22 +26,18 @@ enum RoutesType: String, RoutesPhoto, CaseIterable {
     case riverOne = "河堤路線"
     
     case mountainOne = "爬山路線"
-
-    
+   
     var image: UIImage? {
         
         switch self {
+            // 394 * 204 圖片好的畫質 上傳前注意
         case .recommendOne:
-            return UIImage(named: "routesphoto")
+            return UIImage(named: "type0")
         case .riverOne:
-            return UIImage(named: "IMG_3635")
+            return UIImage(named: "type1")
         case .mountainOne:
-            return UIImage(named: "IMG_5453")
+            return UIImage(named: "type2")
         }
     }
-    
-    
-
-    
     
 }

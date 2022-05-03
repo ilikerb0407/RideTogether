@@ -28,18 +28,18 @@ enum SegueIdentifier: String {
 }
 
 
-
-
-
 enum ProfileSegue: String, CaseIterable {
     
     case record = "toRecord"
-    
+
     case recommendMap = "toRecommend"
     
     case account = "toAccount"
     
+    case savemaps = "toSavemaps"
+    
     case privacy = "toPrivacy"
+    
 }
 
 enum Collection: String {
@@ -58,6 +58,10 @@ enum Collection: String {
     
     // 塗鴉牆
     case sharedmaps = "Sharemaps"
+    
+    // 收藏路線
+    
+    case savemaps = "Savemaps"
     
     case requests = "Requests"
     

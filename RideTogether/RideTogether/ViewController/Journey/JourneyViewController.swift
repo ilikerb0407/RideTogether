@@ -14,7 +14,8 @@ import Lottie
 import MessageUI
 import SwiftUI
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,sendRouteSecond{
+
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
     
     
     func sendRouteTwice(map: DrawRoute) {
@@ -22,10 +23,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     var mapData: DrawRoute?
     
-    var routeVc: RouteSelectionViewController?
-    
-    
-    //    let userId = { UserManager.shared.userInfo }
+    var routeVc =  RouteSelectionViewController()
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
@@ -89,6 +87,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.isHidden = true
                 
+                bikeLottieView.isHidden = false
+                
                 timeLabel.text = stopWatch.elapsedTimeString
                 
                 map.clearMap()
@@ -107,6 +107,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
                 waveLottieView.play()
                 
+                bikeLottieView.play()
+        
                 
             case .paused:
                 
@@ -115,6 +117,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 self.stopWatch.stop()
                 
                 waveLottieView.isHidden = true
+                
+                bikeLottieView.stop()
                 
                 self.map.startNewTrackSegment()
             }
@@ -143,6 +147,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
     }
+    
     private lazy var guideButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -238,9 +243,18 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }
     }
     
-    /// Has the map any waypoint?
     var hasWaypoints: Bool = false
     
+    private lazy var waitBar: AnimationView = {
+        let view = AnimationView(name: "wait-processbar")
+        view.loopMode = .playOnce
+        view.frame = CGRect(x: UIScreen.width / 2 - 50, y: UIScreen.height / 2  - 50 , width: 200  , height: 200)
+        view.contentMode = .scaleAspectFit
+        self.view.addSubview(view)
+        self.view.bringSubviewToFront(leftStackView)
+        return view
+    }()
+
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "95671-wave-animation")
         view.loopMode = .loop
@@ -279,7 +293,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     // MARK: 之後再改字體
     
-    var coordsLabel: UILabel = {
+    var altitudeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -300,9 +314,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont.regular(size: 40)
+        label.font = UIFont.bold(size: 40)
         label.textColor = UIColor.black
-        label.text = "Timer"
+        label.text = "00:00"
         return label
     }()
     
@@ -352,10 +366,22 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         completer.region = map.region
         
-        routeVc?.delegate = self
- 
+        routeVc.delegate = self
+        
         
     }
+    
+    private lazy var bikeLottieView: AnimationView = {
+            
+            let view = AnimationView(name: "49908-bike-ride")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    
     
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
@@ -380,7 +406,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             map.showsTraffic = true
             speedLabel.textColor = .black
             timeLabel.textColor = .black
-            coordsLabel.textColor = .black
+            altitudeLabel.textColor = .black
             currentSegmentDistanceLabel.textColor = .black
             totalTrackedDistanceLabel.textColor = .black
         case 1 :
@@ -388,7 +414,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             map.showsTraffic = true
             speedLabel.textColor = .white
             timeLabel.textColor = .white
-            coordsLabel.textColor = .white
+            altitudeLabel.textColor = .white
             currentSegmentDistanceLabel.textColor = .white
             totalTrackedDistanceLabel.textColor = .white
         default :
@@ -439,7 +465,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     func setUpMap() {
         
         locationManager.delegate = self
+        
         locationManager.startUpdatingLocation()
+        
         locationManager.startUpdatingHeading()
         
         map.delegate = mapViewDelegate
@@ -472,21 +500,21 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
     }
     
-    var taichung = CLLocationCoordinate2D(latitude: 24.18352165572669, longitude: 120.62348601471712)
-    
     @objc func sendSMS() {
         
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
 
         // Configure the fields of the interface.
-        composeVC.recipients = ["0972071860"]
-        composeVC.body = "分享我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
-
+        composeVC.recipients = ["請輸入電話號碼"]
+        composeVC.body = "傳送我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+        
         // Present the view controller modally.
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
+          
         }
+       
     }
     
     
@@ -520,11 +548,10 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.large()]
+                presentVc.detents = [.medium(), .large()]
             self.navigationController?.present(navBar, animated: true, completion: .none)
            }
         }
-        
     }
     
     @objc func saveButtonTapped(withReset: Bool = false) {
@@ -537,8 +564,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let defaultFileName = "\(time)"
         
-        let alertController = UIAlertController(title: "儲存至裝置",
-                                                message: "請輸入檔案名稱",
+        let alertController = UIAlertController(title: "Save Record",
+                                                message: "Please enter the title",
                                                 preferredStyle: .alert)
         
         alertController.addTextField(configurationHandler: { (textField) in
@@ -548,7 +575,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             textField.text =  defaultFileName
         })
         
-        let saveAction = UIAlertAction(title: "儲存",
+        let saveAction = UIAlertAction(title: "Save",
                                        style: .default) { _ in
             
             let gpxString = self.map.exportToGPXString()
@@ -559,18 +586,18 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             self.lastGpxFilename = fileName!
             
-            //            if let fileName = fileName {
-            GPXFileManager.save( fileName!, gpxContents: gpxString)
+                        if let fileName = fileName {
+                            GPXFileManager.save( fileName, gpxContents: gpxString)
             
             print ("2\(fileName)2")
-            //            }
+                        }
             
             if withReset {
                 self.gpxTrackingStatus = .notStarted
             }
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         alertController.addAction(saveAction)
         
@@ -583,9 +610,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         if gpxTrackingStatus == .notStarted { return }
         
-        let cancelOption = UIAlertAction(title: "取消", style: .cancel)
+        let cancelOption = UIAlertAction(title: "CANCEL", style: .cancel)
         
-        let resetOption = UIAlertAction(title: "重置", style: .destructive) { _ in
+        let resetOption = UIAlertAction(title: "RESET", style: .destructive) { _ in
             self.gpxTrackingStatus = .notStarted
             
             UIView.animate(withDuration: 0.3) {
@@ -601,7 +628,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         self.followUser = !self.followUser
     }
-    
     
     //原本放在folder button 裡面
     
@@ -622,6 +648,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
         print ("===========Pleaseprint")
         map.addOverlay(myPolyline)
+        
     }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
@@ -732,7 +759,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         ] )
         
         buttonStackView.addArrangedSubview(followUserButton)
-        
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
         buttonStackView.addArrangedSubview(guideButton)
@@ -789,24 +815,25 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     func setUpLabels() {
         
-        map.addSubview(coordsLabel)
+        map.addSubview( altitudeLabel)
         ////         座標 - 改成時速
-        coordsLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
+        altitudeLabel.frame = CGRect(x: 10, y: 80, width: 200, height: 100)
         
         map.addSubview(speedLabel)
-        speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
+        
+        speedLabel.frame = CGRect(x: 10, y: 50, width: 200, height: 100)
         
         map.addSubview(timeLabel)
         // 時間
-        timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 30)
+        timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 80)
         
         map.addSubview(totalTrackedDistanceLabel)
         // 距離
-        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 70, width: 80, height: 30)
+        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 90, width: 80, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
         
-        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 100, width: 80, height: 30)
+        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 120, width: 80, height: 30)
     }
     
 }
@@ -829,10 +856,11 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let newLocation = locations.first!
         
-        
         let altitude = newLocation.altitude.toAltitude()
-        let text = "Height : \(altitude)"
-        coordsLabel.text = text
+        
+        let text = "Altitude : \(altitude)"
+        
+        altitudeLabel.text = text
         
         let rUnknownSpeedText = "0.00"
         
@@ -860,7 +888,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
-    // MARK: 選擇路線後導航 (有時間在做)
     
 }
 

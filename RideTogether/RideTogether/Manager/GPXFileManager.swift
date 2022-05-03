@@ -102,6 +102,7 @@ class GPXFileManager {
             guard let gpx = GPXParser(withURL: inputURL)?.parsedData() else { return }
         
         let length = gpx.tracksLength
+    
         
         UserManager.shared.updateUserTrackLength(length: length)
     }

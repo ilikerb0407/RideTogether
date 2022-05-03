@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class HomeViewController: BaseViewController {
-
+    
+    
+    private var headerView: HomeHeader?
     
     var routes = [Route]() {
         didSet {
@@ -30,18 +33,63 @@ class HomeViewController: BaseViewController {
             tableView.dataSource = self
         }
     }
+
+//        private lazy var bikelottie : AnimationView = {
+//            let view = AnimationView(name: "bike-city-rider")
+//            view.loopMode = .loop
+//            view.frame = CGRect(x: UIScreen.width / 8 , y: 50 , width: 200 , height: 180)
+//            view.cornerRadius = 20
+//            view.contentMode = .scaleToFill
+//            view.play()
+//            self.view.addSubview(view)
+//            return view
+//        }()
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .B4
+        
+        
+        navigationController?.isNavigationBarHidden = true
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserInfo),
+            name: NSNotification.userInfoDidChanged,
+            object: nil
+        )
+        
         
         setUpTableView()
         
         fetchTrailData()
         
+        
+        
+        
+//        bikelottie.play()
+        
     }
     
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .U1],
+                locations: [0.0, 2.0], direction: .leftSkewed)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+//        bikelottie.play()
+    }
     
     func setUpTableView() {
         
@@ -54,10 +102,17 @@ class HomeViewController: BaseViewController {
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
-        
+
     }
     
-    func manageRouteData(){
+    @objc func updateUserInfo(notification: Notification) {
+        
+        guard let headerView = headerView else { return }
+        
+        headerView.updateUserInfo(user: UserManager.shared.userInfo)
+    }
+    
+    func manageRouteData() {
         
         for route in routes {
             
@@ -74,7 +129,6 @@ class HomeViewController: BaseViewController {
         }
         
     }
-    
     
     func fetchTrailData() {
         MapsManager.shared.fetchRoutes { result in
@@ -99,8 +153,23 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView: HomeHeader = .loadFromNib()
+        
+        self.headerView = headerView
+        
+        headerView.updateUserInfo(user: UserManager.shared.userInfo)
+        
+        return self.headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        400
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        200
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -150,10 +219,7 @@ extension HomeViewController: UITableViewDataSource {
         cell.setUpCell(
             routetitle: RoutesType.allCases[indexPath.row].rawValue,
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
-        
-        if indexPath.row % 2 == 1 {
-            cell.routeTitle.textColor = .black
-        }
+    
         
         return cell
     }

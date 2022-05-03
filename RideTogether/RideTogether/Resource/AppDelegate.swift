@@ -10,6 +10,7 @@ import Firebase
 import IQKeyboardManagerSwift
 import CoreData
 
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -17,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
+//        Thread.sleep(forTimeInterval: 3)
+        
+        if
+            let userId = Auth.auth().currentUser {
+            print ("\(userId.uid) and \(userId.email)")
+        }
         return true
     }
     
@@ -38,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: screen rotation
     
     var shouldAutorotate = false
+    
     func application(_ application: UIApplication,
     supportedInterfaceOrientationsFor window: UIWindow?) ->
     UIInterfaceOrientationMask {

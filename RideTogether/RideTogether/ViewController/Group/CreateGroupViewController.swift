@@ -14,24 +14,25 @@ import FirebaseFirestore
 import RSKPlaceholderTextView
 import SwiftUI
 
-protocol reload {
+protocol Reload {
     
-    func reload(result : Group)
+    func reload()
+    
 }
 
 class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     private var group = Group()
     
-    var delegate: reload?
+    var delegate: Reload?
+    
     
     @IBOutlet weak var sendData: UIButton! {
-        
         didSet{
             sendData.isUserInteractionEnabled = false
             sendData.alpha = 0.6
             sendData.backgroundColor = .orange
-            sendData.cornerRadius = 24
+            sendData.cornerRadius = 15
         }
     }
     
@@ -69,14 +70,12 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     }
     @IBOutlet weak var notes: UITextView!
     
-    
     @IBOutlet weak var note: UITextField! {
         didSet {
             
             note.delegate = self
         }
     }
-    
     
     private var textsWerefilled: Bool = false {
         
@@ -87,7 +86,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             sendData.alpha = textsWerefilled ? 1.0 : 0.5
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +105,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         setUpTextView()
         
     }
-    
     
     // MARK: - UI Settings -
     
@@ -140,16 +137,15 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func sendPost() {
         
-//        guard let hostId = Auth.auth().currentUser?.uid else { return }
+        guard let hostId = Auth.auth().currentUser?.uid else { return }
         
         textViewDidEndEditing(notes)
         
-//        group.hostId = hostId ?? "阿富"
-        group.hostId =  "阿富"
+        group.hostId = hostId
         
         group.date = Timestamp(date: datePicker.date)
         
-//        group.userIds = [hostId]
+        group.userIds = [hostId]
         
         if group.date.checkIsExpired() {
             
@@ -165,28 +161,31 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-                    let success = UIAlertAction(title: "Success", style: .default) { [self] _ in
+
+                    let success = UIAlertAction(title: "Success", style: .default) { _ in
                         
-                        self.dismiss(animated: true, completion: nil)
-                        
-                        delegate?.reload(result: group)
+                        self.delegate?.reload()
+                    
                     }
                     
                     showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
                     
-                   
+                    delegate?.reload()
+                    
                 case .failure(let error):
                     
                     print("build team failure: \(error)")
                 }
             }
+            self.dismiss(animated: true, completion: nil)
         }
     }
+    
 }
 
 // MARK: - TextField & TextView Delegate -
 
-extension CreateGroupViewController:  UITextViewDelegate {
+ extension CreateGroupViewController :  UITextViewDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,

@@ -20,11 +20,14 @@ class TracksViewController: BaseViewController {
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
     lazy var dataBase = Firestore.firestore()
+    
     private let sharedRecordsCollection = Collection.sharedmaps.rawValue
     
     var indexOfRoute:Int = 0
     
     var records = [Record]()
+    
+    var userId: String { UserManager.shared.userInfo.uid }
     
     private let header = MJRefreshNormalHeader()
     
@@ -42,6 +45,7 @@ class TracksViewController: BaseViewController {
         }
     
     @IBOutlet weak var gView: UIView! {
+        
         didSet {
             gView.applyGradient(
                 colors: [.white, .orange],
@@ -54,7 +58,7 @@ class TracksViewController: BaseViewController {
     
     func setUpTableView() {
         
-        setNavigationBar(title: "Records")
+        setNavigationBar(title: "Personal Records")
         
         tableView = UITableView()
         
@@ -102,7 +106,6 @@ class TracksViewController: BaseViewController {
         self.tableView.mj_header?.endRefreshing()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,13 +136,12 @@ class TracksViewController: BaseViewController {
 extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        100
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
-    
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
@@ -161,7 +163,7 @@ extension TracksViewController: UITableViewDelegate {
         
         var record = Record()
         
-//        record.uid = userId
+        record.uid = userId
         
         record.recordId = document.documentID
         
@@ -184,36 +186,43 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
-        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+        let sheet = UIAlertController.init(title: "Choose", message: "", preferredStyle: .alert)
+        
+        let detailOption = UIAlertAction(title: "Detail", style: .default) { [self] _ in
             performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
         }
         
         let shareOption = UIAlertAction(title: "Share to friends", style: .default) { [self] _ in
-//            self.shareGPXDataToFriends(indexPath.row, tableView: tableView, cellForRowAt: indexPath)
-            let recordRef = storageRef.child("records")
+
+            
+            
+            let recordRef = storageRef.child("records").child("\(userId)")
             //  gs://bikeproject-59c89.appspot.com/records
             let spaceRef = recordRef.child(records[indexPath.row].recordName)
+
+
             spaceRef.downloadURL { result in
                 switch result {
                 case .success(let url) :
 //                    completion(.success(url))
                     print ("\(url)")
                     self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
+                    //
                 case .failure(let error) :
 //                    completion(.failure(error))
                     print ("\(error)")
                 }
             }
-  
         }
         
-        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self] _ in
+        let removeOption = UIAlertAction(title: "Delete", style: .destructive) { [self] _ in
             
             RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
                 switch result {
+                    
                 case .success(_):
                     self.records.remove(at: indexPath.row)
+                    
                     self.tableView.deleteRows(at: [indexPath], with: .left)
                     
                 case .failure(let error):
@@ -221,7 +230,8 @@ extension TracksViewController: UITableViewDelegate {
                 }
             }
         }
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        
+        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in }
         
         sheet.addAction(detailOption)
         sheet.addAction(shareOption)
