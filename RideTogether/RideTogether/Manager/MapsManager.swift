@@ -27,6 +27,8 @@ class MapsManager {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
+    
     private let mapsCollection = Collection.maps.rawValue // 離線地圖
     
     private let routeCollection = Collection.routes.rawValue // Home
@@ -34,6 +36,8 @@ class MapsManager {
     private let shareCollection = Collection.sharedmaps.rawValue // Profile
     
     private let saveCollection = Collection.savemaps.rawValue // Profile
+    
+    private let userCollection = Collection.users.rawValue // Profile
     
     
     // MARK: 把資料放在 Storage，先用download的功能拿下來，在upload到firebase
@@ -240,4 +244,50 @@ class MapsManager {
             }
         }
     }
+    
+    // saveMapsTouser
+    // 按愛心之後
+    func saveMapToUser(uid: String, savemaps: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let docRef = dataBase.collection(userCollection).document(uid)
+        
+        docRef.updateData([
+            "save_maps": FieldValue.arrayUnion([savemaps])
+        ]) { error in
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+                completion(.failure(error))
+                
+            } else {
+                
+                print("User leave group successfully")
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    // 在按下一次愛心的時候
+    
+    func deleteMapFromUser(uid: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let docRef = dataBase.collection(userCollection).document(uid)
+        
+        docRef.updateData([
+            "save_maps": FieldValue.arrayRemove([savemaps])
+        ]) { error in
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+            } else {
+                
+                print("User leave group successfully")
+            }
+        }
+    }
+    
+   
 }

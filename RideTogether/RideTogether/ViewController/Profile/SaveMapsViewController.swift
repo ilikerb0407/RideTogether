@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
+import AVFoundation
 
 class SaveMapsViewController: BaseViewController {
     
@@ -119,6 +120,18 @@ class SaveMapsViewController: BaseViewController {
         
     }
     
+    func deleteMapsFromUser(uid: String, savemaps: String) {
+        
+        MapsManager.shared.deleteMapFromUser(uid: userId) { result in
+            switch result {
+            case .success:
+                print ("success")
+            case .failure(let error):
+                print ("\(error)")
+            }
+        }
+    }
+    
     
 
 }
@@ -143,7 +156,8 @@ extension SaveMapsViewController: UITableViewDelegate {
                         self.records.remove(at: indexPath.row)
                         
                         self.tableView.deleteRows(at: [indexPath], with: .left)
-
+                        
+//                        self.deleteMapsFromUser(uid: userId, savemaps: UserInfo.CodingKeys.saveMaps.rawValue)
                         
                     case .failure(let error):
                         
@@ -152,7 +166,6 @@ extension SaveMapsViewController: UITableViewDelegate {
                 }
             }
         }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

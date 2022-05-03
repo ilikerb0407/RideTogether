@@ -22,12 +22,12 @@ class RecommendViewController: BaseViewController {
             gView.applyGradient(
                 colors: [.white, .orange],
                 locations: [0.0, 3.0], direction: .leftSkewed)
-//            gView.alpha = 0.85
+            //            gView.alpha = 0.85
             // 不會把資料覆蓋住
         }
     }
     
-
+    
     var records = [Record]()
     
     private let header = MJRefreshNormalHeader()
@@ -38,12 +38,14 @@ class RecommendViewController: BaseViewController {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+//    @objc var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
+    
     lazy var storage = Storage.storage()
     
     lazy var storageRef = storage.reference()
     
     lazy var dataBase = Firestore.firestore()
-
+    
     
     private var tableView: UITableView! {
         
@@ -106,7 +108,7 @@ class RecommendViewController: BaseViewController {
         
         print("sucessfully")
     }
-
+    
     
     func fetchRecords() {
         
@@ -120,14 +122,26 @@ class RecommendViewController: BaseViewController {
         }
     }
     
+    func savemapsToUser(uid: String, savemaps: String) {
+        
+        MapsManager.shared.saveMapToUser(uid: uid, savemaps: savemaps) { result in
+            switch result {
+            case .success:
+                print ("success")
+            case .failure(let error):
+                print ("\(error)")
+            }
+        }
+    }
+    
     @objc func headerRefresh() {
-       
-       fetchRecords()
-       
-       tableView.reloadData()
-       
-       self.tableView.mj_header?.endRefreshing()
-   }
+        
+        fetchRecords()
+        
+        tableView.reloadData()
+        
+        self.tableView.mj_header?.endRefreshing()
+    }
     
     override func viewDidLoad() {
         
@@ -142,7 +156,7 @@ class RecommendViewController: BaseViewController {
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
         
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -195,11 +209,8 @@ extension RecommendViewController: UITableViewDelegate {
         let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
             self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
             
+            
             waitlottie.isHidden = true
-            
-            
-//            tableViewCell.chooselLike([indexPath.row])
-
         }
         
         let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
@@ -209,22 +220,22 @@ extension RecommendViewController: UITableViewDelegate {
         showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption])
         
         
-   
-//        tableViewCell.likes.toggle()
-//        if tableViewCell.heart.isSelected == true {
-//            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-//        }
-//        if tableViewCell.likes == true {
-//            // 加到 使用者的 savemaps
-//            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-//        }else {
-//            // 將savemaps 從使用者中刪除
-//            self.updateSavemaps()
-//        }
+        
+        //        tableViewCell.likes.toggle()
+        //        if tableViewCell.heart.isSelected == true {
+        //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        //        }
+        //        if tableViewCell.likes == true {
+        //            // 加到 使用者的 savemaps
+        //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        //        }else {
+        //            // 將savemaps 從使用者中刪除
+        //            self.updateSavemaps()
+        //        }
         
         
     }
-
+    
 }
 
 extension RecommendViewController: UITableViewDataSource {
@@ -239,9 +250,9 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
-        
         cell.heart.tag = indexPath.row
+        
+        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         
         return cell
     }
@@ -249,6 +260,7 @@ extension RecommendViewController: UITableViewDataSource {
     @objc func savemaps(_ sender: UIButton) {
         
         self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
-    
+        self.savemapsToUser(uid: userId, savemaps: records[sender.tag].recordId)
+        
     }
 }

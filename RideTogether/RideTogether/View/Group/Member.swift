@@ -63,6 +63,7 @@ class Member: UITableViewCell {
             rejectButton.isHidden = true
         }
         
+        
         requestNameLabel.text = userInfo.userName
         
         userImage.loadImage(userInfo.pictureRef)

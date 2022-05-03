@@ -56,13 +56,12 @@ class RecommendTableViewCell: UITableViewCell {
         
     }
     
-    
     func setUpCell(model : Record) {
         
         mapTitle.text = model.recordName
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
         
+        
     }
-    
     
 }
