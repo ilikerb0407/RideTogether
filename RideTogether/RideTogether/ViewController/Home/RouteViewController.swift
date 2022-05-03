@@ -25,6 +25,8 @@ class RouteViewController: BaseViewController {
         }
     }
     
+   
+    
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Route>
@@ -53,7 +55,7 @@ class RouteViewController: BaseViewController {
     
     private var themeLabel = ""
     
-    var routes = [Route]()  {
+    var routes = [Route]() {
         
         didSet {
             
@@ -101,8 +103,13 @@ class RouteViewController: BaseViewController {
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
+        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
+    }
+    
+    @objc func popToPreviosPage(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -147,6 +154,7 @@ class RouteViewController: BaseViewController {
         view.stickSubView(collectionView)
         
         collectionView.backgroundColor = .clear
+        
     }
     
     // MARK: 新增路線資料
@@ -202,9 +210,11 @@ class RouteViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
+        
         tabBarController?.tabBar.isHidden = false
         
     }
+    
     
     func setUpThemeTag() {
         
@@ -311,10 +321,10 @@ func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
                 let itemWidth = (size.width - inset * 4) / 2
                 
                 return [
-                    
+                    // 右邊的 group item
                     NSCollectionLayoutGroupCustomItem(
                         frame: CGRect(x: (itemWidth+inset * 2), y: 0, width: itemWidth, height: height)),
-                    
+                    // 左邊的 group item
                     NSCollectionLayoutGroupCustomItem(
                         frame: CGRect(x: 0, y: height / 2, width: itemWidth, height: height))
                 ]
@@ -322,7 +332,7 @@ func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         
         let section = NSCollectionLayoutSection(group: group)
         
-        section.interGroupSpacing = -150
+        section.interGroupSpacing = -180
         
         section.contentInsets = NSDirectionalEdgeInsets(
             top: inset,

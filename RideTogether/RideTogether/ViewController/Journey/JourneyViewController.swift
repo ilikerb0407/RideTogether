@@ -108,6 +108,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 waveLottieView.play()
                 
                 bikeLottieView.play()
+        
                 
             case .paused:
                 

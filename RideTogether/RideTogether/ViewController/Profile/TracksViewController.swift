@@ -186,8 +186,9 @@ extension TracksViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sheet = UIAlertController.init(title: "What do you want", message: "", preferredStyle: .alert)
-        let detailOption = UIAlertAction(title: "Show Detail", style: .default) { [self] _ in
+        let sheet = UIAlertController.init(title: "Choose", message: "", preferredStyle: .alert)
+        
+        let detailOption = UIAlertAction(title: "Detail", style: .default) { [self] _ in
             performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
         }
         
@@ -214,7 +215,7 @@ extension TracksViewController: UITableViewDelegate {
             }
         }
         
-        let removeOption = UIAlertAction(title: "Delete it", style: .destructive) { [self] _ in
+        let removeOption = UIAlertAction(title: "Delete", style: .destructive) { [self] _ in
             
             RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
                 switch result {
@@ -230,7 +231,7 @@ extension TracksViewController: UITableViewDelegate {
             }
         }
         
-        let cancelOption = UIAlertAction(title: "cancel", style: .cancel){ _ in }
+        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in }
         
         sheet.addAction(detailOption)
         sheet.addAction(shareOption)

@@ -71,7 +71,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         if cloud.text == "Rain" {
             rainLottieView.isHidden = false
             rainLottieView.play()
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天不要騎車拉～～", comment: "no comment"), preferredStyle: .alert)
+            let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天不要騎車小心！", comment: "no comment"), preferredStyle: .alert)
             let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
             
             sheet.addAction(okOption)

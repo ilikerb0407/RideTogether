@@ -456,11 +456,4 @@ extension GPXFilesTableViewController {
 //
 //
 //}
-//
-//let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//
-//alertController.addAction(searchAction)
-//
-//alertController.addAction(cancelAction)
-//
-//present(alertController, animated: true)
+
