@@ -333,7 +333,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         
         UIView.animate(withDuration: 0.2) {
+            
             self.profileView.userPhoto.image = image
+            
         }
         
         updateUserInfo(imageData: imageData)

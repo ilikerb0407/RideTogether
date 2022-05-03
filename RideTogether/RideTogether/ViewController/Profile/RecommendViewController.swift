@@ -106,10 +106,6 @@ class RecommendViewController: BaseViewController {
         
         print("sucessfully")
     }
-    
-    func updateSavemaps(){
-        
-    }
 
     
     func fetchRecords() {

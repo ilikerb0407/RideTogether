@@ -221,6 +221,7 @@ extension TracksViewController: UITableViewDelegate {
                 switch result {
                     
                 case .success(_):
+                    
                     self.records.remove(at: indexPath.row)
                     
                     self.tableView.deleteRows(at: [indexPath], with: .left)

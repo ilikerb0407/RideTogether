@@ -129,15 +129,12 @@ extension SaveMapsViewController: UITableViewDelegate {
         100
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
             if editingStyle == .delete {
               
-                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
+                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { [self] result in
                     
                     switch result {
                         
@@ -146,7 +143,7 @@ extension SaveMapsViewController: UITableViewDelegate {
                         self.records.remove(at: indexPath.row)
                         
                         self.tableView.deleteRows(at: [indexPath], with: .left)
-                        
+
                         
                     case .failure(let error):
                         

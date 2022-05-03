@@ -30,31 +30,44 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
     var directionsResponse =  MKDirections.Response()
-    var route = MKRoute()
     
-    var polyLineRenderer = MKPolylineRenderer()
+    var route = MKRoute()
+//
+//    var polyLineRenderer = MKPolylineRenderer()
+    
+    
     
     var step: [String] = []
-    
-    
+//    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
         
         if overlay is MKPolyline {
             
-            var polyLineRenderer = MKPolylineRenderer(overlay: overlay)
+            let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
             
             polyLineRenderer.alpha = 0.8
             
-            polyLineRenderer.strokeColor = .orange
+            polyLineRenderer.strokeColor = UIColor.orange
+            
+            if overlay.title == "one"{
+                polyLineRenderer.strokeColor = UIColor.blue
+            } else
+            if overlay.title == "two" {
+              polyLineRenderer.strokeColor = UIColor.orange
+            }
             
             polyLineRenderer.lineWidth = 3
+            
             
             return polyLineRenderer
         }
         
         return MKOverlayRenderer()
+        
+        
     }
-    
+//    
     var destination: CLPlacemark?
     
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -78,13 +91,15 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         let directions = MKDirections(request: request)
         
         directions.calculate { [self]  response ,error in
+            
             if error == nil {
+                
                 self.directionsResponse = response!
                 
                 self.route = self.directionsResponse.routes[0]
-                // route.step
                 
-                //                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+//                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                
             } else {
                 print("\(error)")
             }
@@ -142,7 +157,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     let kEditWaypointAccesoryButtonTag = 333
     
     
-    
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
@@ -186,7 +200,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
             
             let routeName = UIAlertAction(title: "Destionation = \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
-                
+               
+                self.route.polyline.title = "one"
                 map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
                 
             }
@@ -340,3 +355,5 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         }
     }
 }
+
+

@@ -190,6 +190,7 @@ class MapsManager {
                     guard let querySnapshot = querySnapshot else { return }
                     
                     if let error = error {
+                        
                         completion(.failure(error))
                     } else {
                         
@@ -206,6 +207,7 @@ class MapsManager {
                             }
                         }
                         records.sort { $0.createdTime.seconds > $1.createdTime.seconds}
+                        
                         completion(.success(records))
                     }
                 }
@@ -224,11 +226,16 @@ class MapsManager {
                 
                 print("\(error)")
                 
+                completion(.failure(error))
+                
             } else {
                 
                 for document in querySnapshot.documents {
                     
                     document.reference.delete()
+                    
+                    completion(.success(""))
+                    
                 }
             }
         }

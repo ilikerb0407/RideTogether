@@ -220,7 +220,6 @@ extension HomeViewController: UITableViewDataSource {
             routetitle: RoutesType.allCases[indexPath.row].rawValue,
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
     
-        
         return cell
     }
 }

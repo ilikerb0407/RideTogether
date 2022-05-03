@@ -187,7 +187,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(), .large() ]
+                presentVc.detents = [ .medium(), .large() ]
                 rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }

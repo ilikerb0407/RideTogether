@@ -47,8 +47,9 @@ class StopWatch: NSObject {
                                      target: self, selector: #selector(StopWatch.updateElapsedTime),
                                      userInfo: nil, repeats: true)
     }
-
+    
     func stop() {
+        
         self.status = .stopped
  
         let currentTime = Date.timeIntervalSinceReferenceDate
@@ -58,6 +59,7 @@ class StopWatch: NSObject {
         tmpElapsedTime += diff
         
         timer.invalidate()
+        
     }
  
     func reset() {
@@ -69,12 +71,15 @@ class StopWatch: NSObject {
         self.startedTime = Date.timeIntervalSinceReferenceDate
         
         self.status = .stopped
+        
     }
     
     var elapsedTime: TimeInterval {
         
         if self.status == .stopped {
+            
             return self.tmpElapsedTime
+        
         }
         
         let diff = Date.timeIntervalSinceReferenceDate - startedTime

@@ -14,9 +14,7 @@ import Lottie
 import MessageUI
 import SwiftUI
 
-
 class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
-    
     
     func sendRouteTwice(map: DrawRoute) {
         mapData = map
@@ -368,6 +366,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         routeVc.delegate = self
         
+        mapViewDelegate.route.polyline.title = "two"
+        
         
     }
     
@@ -495,7 +495,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
-        
+    
         self.view.addSubview(map)
         
     }
@@ -629,27 +629,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         self.followUser = !self.followUser
     }
     
-    //原本放在folder button 裡面
     
-    @objc func openOfflineMap() {
-        addRoute()
-    }
-    
-    
-    // MARK: 離線地圖
-    func addRoute() {
-        guard let points = Park.plist("Taipei1") as? [String] else { return }
-        
-        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
-        let coords = cgPoints.map { CLLocationCoordinate2D(
-            latitude: CLLocationDegrees($0.x),
-            longitude: CLLocationDegrees($0.y))
-        }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        print ("===========Pleaseprint")
-        map.addOverlay(myPolyline)
-        
-    }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -837,9 +817,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     
 }
-
 // MARK: - StopWatchDelegate methods
-
 extension JourneyViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
@@ -876,18 +854,19 @@ extension JourneyViewController: CLLocationManagerDelegate {
             
             map.addPointToCurrentTrackSegmentAtLocation(newLocation)
             
+            
+            
             totalTrackedDistanceLabel.distance = map.session.totalTrackedDistance
             
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
     }
-    
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
-    
 }
+
 

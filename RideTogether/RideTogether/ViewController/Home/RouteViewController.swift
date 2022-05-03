@@ -16,7 +16,6 @@ import Lottie
 class RouteViewController: BaseViewController {
     
     
-    
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
@@ -24,8 +23,6 @@ class RouteViewController: BaseViewController {
                 locations: [0.0, 2.0], direction: .leftSkewed)
         }
     }
-    
-   
     
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
@@ -43,7 +40,6 @@ class RouteViewController: BaseViewController {
     private var snapshot = DataSourceSnapshot()
     
     let routesCollectionCell = Routes()
-    
     
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
