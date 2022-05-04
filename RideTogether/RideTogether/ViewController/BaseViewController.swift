@@ -99,9 +99,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
             
-            //            UserManager.shared.blockUser(blockUserId: uid)
+                        UserManager.shared.blockUser(blockUserId: uid)
             
-            //            UserManager.shared.userInfo.blockList?.append(uid)
+                        UserManager.shared.userInfo.blockList?.append(uid)
         }
         
         controller.addAction(cancelAction)

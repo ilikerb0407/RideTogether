@@ -54,13 +54,15 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
         let cell: Member = tableView.dequeueCell(for: indexPath)
         
         if let group = groupInfo,
+           
            let userInfo = cache?[group.userIds[indexPath.row]] {
             
             cell.setUpCell(group: group, userInfo: userInfo)
             
-//            cell.rejectButton.addTarget(self, action: #selector(blockUser), for: .touchUpInside)
-//            
-//            cell.rejectButton.tag = indexPath.row
+            cell.rejectButton.addTarget(self, action: #selector(blockUser), for: .touchUpInside)
+            
+            cell.rejectButton.tag = indexPath.row
+            
         }
         
         return cell
@@ -74,4 +76,3 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
 }
-

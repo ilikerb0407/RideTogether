@@ -157,7 +157,7 @@ extension SaveMapsViewController: UITableViewDelegate {
                         
                         self.tableView.deleteRows(at: [indexPath], with: .left)
                         
-//                        self.deleteMapsFromUser(uid: userId, savemaps: UserInfo.CodingKeys.saveMaps.rawValue)
+//                      self.deleteMapsFromUser(uid: userId, savemaps: UserInfo.CodingKeys.saveMaps.rawValue)
                         
                     case .failure(let error):
                         

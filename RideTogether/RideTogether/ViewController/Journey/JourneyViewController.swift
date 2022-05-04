@@ -854,8 +854,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
             
             map.addPointToCurrentTrackSegmentAtLocation(newLocation)
             
-            
-            
             totalTrackedDistanceLabel.distance = map.session.totalTrackedDistance
             
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance

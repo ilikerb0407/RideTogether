@@ -50,11 +50,11 @@ class Member: UITableViewCell {
         
         groupNameLabel.isHidden = true
         
-//        let image = UIImage(named: "block")
+        let image = UIImage(named: "block")
 //
-//        rejectButton.setImage(image, for: .normal)
+        rejectButton.setImage(image, for: .normal)
 //
-//        rejectButton.backgroundColor = .white
+        rejectButton.backgroundColor = .white
         
         rejectButton.isHidden = true
 //
