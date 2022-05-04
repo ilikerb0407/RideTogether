@@ -99,13 +99,18 @@ class RouteViewController: BaseViewController {
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
+        
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
+        button.backgroundColor = .lightGray
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
+        
     }
     
     @objc func popToPreviosPage(_ sender: UIButton) {
+        
         self.navigationController?.popViewController(animated: true)
+        
     }
     
     
@@ -144,6 +149,7 @@ class RouteViewController: BaseViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         
 //        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
+    
         
         collectionView.lk_registerCellWithNib(identifier: "Routes", bundle: nil)
         
@@ -192,25 +198,27 @@ class RouteViewController: BaseViewController {
         
         setupCollectionView()
         
+        backButton()
+    
         configureDataSource()
 //
         configureSnapshot()
         
         setUpThemeTag()
         
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = true
         
         tabBarController?.tabBar.isHidden = false
         
+        
     }
-    
     
     func setUpThemeTag() {
         

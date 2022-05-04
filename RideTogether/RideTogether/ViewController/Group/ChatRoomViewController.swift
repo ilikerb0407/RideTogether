@@ -235,7 +235,7 @@ class ChatRoomViewController: BaseViewController {
         
         setNavigationBar(title: "\(groupInfo?.groupName ?? "揪團隊伍")")
         
-        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         let infoImage = UIImage(systemName: "info")
         

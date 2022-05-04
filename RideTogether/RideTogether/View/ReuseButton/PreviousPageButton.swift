@@ -19,7 +19,7 @@ class PreviousPageButton: UIButton {
 //            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
 //            direction: .leftSkewed)
         
-        let image = UIImage(named: "backbtn", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        let image = UIImage(named: "backbtn", in: nil, with: UIImage.SymbolConfiguration(pointSize: 40, weight: .medium))
 
         
         

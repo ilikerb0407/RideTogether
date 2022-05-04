@@ -138,7 +138,7 @@ class RecommendDetailViewController: UIViewController {
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 50, width: 50, height: 50))
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 50, width: 40, height: 40))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
