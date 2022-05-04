@@ -56,7 +56,7 @@ class Member: UITableViewCell {
 //
         rejectButton.backgroundColor = .white
         
-        rejectButton.isHidden = true
+//        rejectButton.isHidden = false
 //
         if userInfo.uid == UserManager.shared.userId {
 

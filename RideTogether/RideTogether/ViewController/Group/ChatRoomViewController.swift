@@ -119,7 +119,6 @@ class ChatRoomViewController: BaseViewController {
         })
     }
     
-    
     @objc func didTapButton () {
         
         switch userStatus {
@@ -165,7 +164,6 @@ class ChatRoomViewController: BaseViewController {
             case .success:
                 
                 showAlertAction(title: "編輯成功")
-                
                 
             case .failure(let error):
                 
@@ -217,7 +215,6 @@ class ChatRoomViewController: BaseViewController {
                     
                     self.navigationController?.popViewController(animated: true)
                     
-                    
                 case .failure(let error):
                     
                     print("leave group failure: \(error)")
@@ -226,10 +223,8 @@ class ChatRoomViewController: BaseViewController {
             }
             self.leaveLottieView.play()
         }
-       
-
+    
         showAlertAction(title: "確認退出", message: nil, actions: [cancelAction, leaveAction])
-       
        
     }
     
