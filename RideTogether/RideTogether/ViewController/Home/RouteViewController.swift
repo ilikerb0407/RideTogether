@@ -100,7 +100,7 @@ class RouteViewController: BaseViewController {
     
     func backButton() {
         
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
         button.backgroundColor = .lightGray
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
@@ -112,7 +112,6 @@ class RouteViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
         
     }
-    
     
     func setUpTableView() {
 
@@ -199,7 +198,7 @@ class RouteViewController: BaseViewController {
         setupCollectionView()
         
         backButton()
-    
+        
         configureDataSource()
 //
         configureSnapshot()
@@ -222,9 +221,9 @@ class RouteViewController: BaseViewController {
     
     func setUpThemeTag() {
         
-        let view = UIView(frame: CGRect(x: -20, y: 40, width: UIScreen.width / 2 + 10, height: 40))
+        let view = UIView(frame: CGRect(x: -20, y: 55, width: UIScreen.width / 2 + 10, height: 40))
         
-        let label = UILabel(frame: CGRect(x: 20, y: 43, width: 120, height: 35))
+        let label = UILabel(frame: CGRect(x: 20, y: 58, width: 120, height: 35))
         
         view.backgroundColor = .U2
         

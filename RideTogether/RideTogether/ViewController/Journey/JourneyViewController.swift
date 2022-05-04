@@ -384,7 +384,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     
     func addSegment() {
-        let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
+        let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
         segmentControl.tintColor = UIColor.black
         segmentControl.backgroundColor = UIColor.lightGray
         segmentControl.selectedSegmentIndex = 0
