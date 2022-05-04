@@ -186,10 +186,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
             
-            let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in
-
-                
-            }
+            let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in }
             
             let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                 map.removeWaypoint(waypoint)

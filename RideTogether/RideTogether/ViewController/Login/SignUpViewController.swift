@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Lottie
 
 
 class SignUpViewController: BaseViewController {
@@ -168,6 +169,7 @@ class SignUpViewController: BaseViewController {
                             
                             self.userInfo.userName = "新使用者"
                             
+                            self.userInfo.blockList = []
                             
                             
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
@@ -235,6 +237,20 @@ class SignUpViewController: BaseViewController {
         }
     }
     
+    func lottie() {
+        
+        var waveLottieView: AnimationView = {
+            let view = AnimationView(name: "49908-bike-ride")
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width / 2 - 175, y: UIScreen.height / 2 - 250 , width: 350 , height: 350)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+        
+    }
+    
     
     
     
@@ -243,6 +259,8 @@ class SignUpViewController: BaseViewController {
         
         signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginwithFB), for: .touchUpInside)
+        
+        lottie()
     }
     
 }

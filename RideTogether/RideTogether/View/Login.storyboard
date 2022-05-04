@@ -3,8 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,15 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-uj-7LK">
-                                <rect key="frame" x="39" y="757" width="337" height="35"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="39" y="725" width="337" height="47"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="uRI-cW-8eQ"/>
+                                    <constraint firstAttribute="height" constant="47" id="uRI-cW-8eQ"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign in with Email">
-                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -35,12 +35,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="rJJ-2c-W4i" kind="show" id="tTS-x2-xHv"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-wi-bvo">
                                 <rect key="frame" x="50" y="144" width="314" height="36"/>
@@ -50,9 +47,9 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="U1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MXd-uj-7LK" secondAttribute="bottom" constant="70" id="Xnn-rO-DYI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MXd-uj-7LK" secondAttribute="bottom" constant="90" id="Xnn-rO-DYI"/>
                             <constraint firstItem="QOo-wi-bvo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="bzK-W8-SsN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QOo-wi-bvo" secondAttribute="trailing" constant="50" id="iYU-4C-1Ey"/>
                             <constraint firstItem="MXd-uj-7LK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="39" id="ko9-jl-5nL"/>
@@ -73,23 +70,16 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rJJ-2c-W4i" customClass="SignUpViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="30f-Ra-0p1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EP6-To-1Lf">
-                                <rect key="frame" x="80" y="294" width="254" height="34"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-c5-fED">
-                                <rect key="frame" x="80" y="504" width="92" height="56"/>
-                                <color key="backgroundColor" name="rw-light"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-c5-fED">
+                                <rect key="frame" x="80" y="690" width="100" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="UC0-Cv-wOL"/>
+                                    <constraint firstAttribute="width" constant="100" id="ZPN-Af-PaP"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
@@ -103,11 +93,18 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-wh-zVa">
-                                <rect key="frame" x="243" y="504" width="92" height="56"/>
-                                <color key="backgroundColor" name="rw-light"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-wh-zVa">
+                                <rect key="frame" x="234" y="690" width="100" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="512-uA-sOD"/>
+                                    <constraint firstAttribute="width" constant="100" id="KXw-DK-6g5"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login"/>
@@ -121,28 +118,22 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4F-Fr-i1C">
-                                <rect key="frame" x="50" y="100" width="314" height="36"/>
+                                <rect key="frame" x="50" y="144" width="314" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your Email?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihU-UQ-vFv">
-                                <rect key="frame" x="80" y="241" width="254" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your Password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq6-j7-aOY">
-                                <rect key="frame" x="80" y="358" width="254" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zmi-RG-gIk">
-                                <rect key="frame" x="80" y="411" width="254" height="34"/>
+                                <rect key="frame" x="80" y="625" width="254" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="fjg-LU-HB1"/>
+                                </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -152,29 +143,37 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EP6-To-1Lf">
+                                <rect key="frame" x="80" y="550" width="254" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="x8z-cQ-E77"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dEM-cG-d6V"/>
-                        <color key="backgroundColor" name="U1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zmi-RG-gIk" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="0VF-EG-U6A"/>
-                            <constraint firstItem="fq6-j7-aOY" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="BOF-WL-bO3"/>
-                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="ihU-UQ-vFv" secondAttribute="trailing" constant="80" id="Ef8-Gz-Aww"/>
-                            <constraint firstItem="EP6-To-1Lf" firstAttribute="top" secondItem="dEM-cG-d6V" secondAttribute="top" constant="294" id="LEU-gp-sFl"/>
-                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="EP6-To-1Lf" secondAttribute="trailing" constant="80" id="Mrb-N1-D74"/>
-                            <constraint firstItem="EP6-To-1Lf" firstAttribute="top" secondItem="ihU-UQ-vFv" secondAttribute="bottom" constant="30" id="SkP-fd-ols"/>
-                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="zmi-RG-gIk" secondAttribute="trailing" constant="80" id="VrM-JF-lq6"/>
+                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="ZPZ-wh-zVa" secondAttribute="trailing" constant="80" id="2RW-9x-xNT"/>
+                            <constraint firstItem="ZPZ-wh-zVa" firstAttribute="top" secondItem="zmi-RG-gIk" secondAttribute="bottom" constant="20" id="Dw6-ZS-Mbl"/>
+                            <constraint firstItem="zmi-RG-gIk" firstAttribute="top" secondItem="EP6-To-1Lf" secondAttribute="bottom" constant="30" id="FeV-PH-Rlg"/>
+                            <constraint firstItem="Xxd-c5-fED" firstAttribute="top" secondItem="zmi-RG-gIk" secondAttribute="bottom" constant="20" id="IOG-1P-GJd"/>
+                            <constraint firstItem="EP6-To-1Lf" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="SaK-uP-bdp"/>
                             <constraint firstItem="U4F-Fr-i1C" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="50" id="X0k-j9-Zge"/>
-                            <constraint firstItem="ihU-UQ-vFv" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="ZZP-ca-VZH"/>
                             <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="U4F-Fr-i1C" secondAttribute="trailing" constant="50" id="abI-Q0-tHJ"/>
-                            <constraint firstItem="zmi-RG-gIk" firstAttribute="top" secondItem="fq6-j7-aOY" secondAttribute="bottom" constant="30" id="bHC-zh-hTI"/>
-                            <constraint firstItem="ZPZ-wh-zVa" firstAttribute="top" secondItem="zmi-RG-gIk" secondAttribute="bottom" constant="59" id="d43-JE-iVI"/>
-                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="ZPZ-wh-zVa" secondAttribute="trailing" constant="79" id="f6T-Gj-3Et"/>
-                            <constraint firstItem="Xxd-c5-fED" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="nt1-Q5-si5"/>
-                            <constraint firstItem="EP6-To-1Lf" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="px1-tq-6Do"/>
+                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="EP6-To-1Lf" secondAttribute="trailing" constant="80" id="bDK-Bm-VyV"/>
+                            <constraint firstItem="zmi-RG-gIk" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="egL-zN-S1w"/>
+                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="zmi-RG-gIk" secondAttribute="trailing" constant="80" id="i97-Nh-wrl"/>
                             <constraint firstItem="U4F-Fr-i1C" firstAttribute="top" secondItem="dEM-cG-d6V" secondAttribute="top" constant="100" id="rUF-Hr-Q6p"/>
-                            <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="fq6-j7-aOY" secondAttribute="trailing" constant="80" id="v1k-hQ-3NS"/>
-                            <constraint firstItem="Xxd-c5-fED" firstAttribute="top" secondItem="zmi-RG-gIk" secondAttribute="bottom" constant="59" id="ycg-8h-0VO"/>
-                            <constraint firstItem="fq6-j7-aOY" firstAttribute="top" secondItem="EP6-To-1Lf" secondAttribute="bottom" constant="30" id="zWA-zD-cib"/>
+                            <constraint firstItem="EP6-To-1Lf" firstAttribute="top" secondItem="U4F-Fr-i1C" secondAttribute="bottom" constant="370" id="s3d-z9-HTJ"/>
+                            <constraint firstItem="Xxd-c5-fED" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="vn3-5m-4C4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rel-vF-epZ"/>
@@ -191,11 +190,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="U1">
-            <color red="0.46299999952316284" green="0.89399999380111694" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="rw-light">
-            <color red="0.94900000095367432" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -29,7 +29,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     private var userInfo = UserManager.shared.userInfo
     
-    private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
+    private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     
     var curerentUser = Auth.auth().currentUser
@@ -60,6 +60,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         }
         
         lottie()
+        
     }
     
     func lottie() {
@@ -84,7 +85,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         NSLayoutConstraint.activate([
             
-            loginButton.heightAnchor.constraint(equalToConstant: 36),
+            loginButton.heightAnchor.constraint(equalToConstant: 45),
             
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             
@@ -147,16 +148,22 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         return hashString
     }
     
-    
     @IBOutlet weak var emailbtn: UIButton!
     
-    
-    
-    
+    @objc func popUpEmailSignIn() {
+        
+        if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController{
+            self.modalPresentationStyle = .fullScreen
+            self.present(nextVC, animated: true, completion: .none)
+        }
+        
+    }
     func loginButtonFadeIn () {
         
         self.loginButton.alpha = 0.0
         self.emailbtn.alpha = 0.0
+        self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        self.emailbtn.addTarget(self, action: #selector(popUpEmailSignIn), for: .touchUpInside)
         
         //        self.agreementStackView.alpha = 0.0
         
