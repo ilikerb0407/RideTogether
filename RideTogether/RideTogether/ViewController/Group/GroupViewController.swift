@@ -105,9 +105,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView.mj_header = header
         
-//        view.applyGradient(colors: [.B2, .U2], locations: [0.0, 1.0], direction: .leftSkewed)
-//        view.backgroundColor = .U2
-        
         table?.delegate = self
         
         VC.delegate = self

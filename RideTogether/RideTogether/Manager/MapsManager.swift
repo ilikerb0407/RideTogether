@@ -143,7 +143,7 @@ class MapsManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self , decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
                     }

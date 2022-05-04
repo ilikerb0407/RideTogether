@@ -38,6 +38,8 @@ class RecommendViewController: BaseViewController {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
+    
 //    @objc var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
     
     lazy var storage = Storage.storage()
@@ -110,13 +112,24 @@ class RecommendViewController: BaseViewController {
     }
     
     
+    
     func fetchRecords() {
         
         MapsManager.shared.fetchRecords { [weak self] result in
             switch result {
             case .success(let records):
-                self?.records = records
+                
+                var filtermaps = [Record]()
+                
+                for maps in records where self?.userInfo.blockList?.contains(maps.uid) == false {
+                    
+                    filtermaps.append(maps)
+                }
+                
+                self?.records = filtermaps
+                
                 self?.tableView.reloadData()
+                
             case .failure(let error): print ("fetchData Failure: \(error)")
             }
         }
@@ -154,8 +167,6 @@ class RecommendViewController: BaseViewController {
         tableView.mj_header = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
-        
-        
         
     }
     
@@ -213,11 +224,22 @@ extension RecommendViewController: UITableViewDelegate {
             waitlottie.isHidden = true
         }
         
+        let blockOption = UIAlertAction(title: "block it", style: .default) { [self] _ in
+            
+            UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
+
+            UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
+            
+            self.fetchRecords()
+            
+            self.waitlottie.isHidden = true
+        }
+        
         let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
             self.waitlottie.isHidden = true
         }
         
-        showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption])
+        showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption, blockOption])
         
         
         

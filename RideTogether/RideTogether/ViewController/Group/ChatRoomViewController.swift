@@ -33,9 +33,11 @@ class ChatRoomViewController: BaseViewController {
     private var headerView: RequestTableViewCell?
     
     private var tableView: UITableView! {
+        
         didSet {
             tableView.delegate = self
         }
+        
     }
     
     private lazy var leaveLottieView: AnimationView = {
@@ -98,6 +100,7 @@ class ChatRoomViewController: BaseViewController {
     }
     
     func fetchMemberDate() {
+        
         groupInfo?.userIds.forEach { fetchUserData(uid: $0) }
     
     }
