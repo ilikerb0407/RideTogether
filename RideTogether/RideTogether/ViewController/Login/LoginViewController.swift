@@ -267,6 +267,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                         
                         self.userInfo.uid = uid
                         
+//                        se
+                        
                         UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                             
                             switch result {

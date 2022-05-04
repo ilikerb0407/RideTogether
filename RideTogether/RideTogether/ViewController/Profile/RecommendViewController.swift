@@ -116,7 +116,9 @@ class RecommendViewController: BaseViewController {
     func fetchRecords() {
         
         MapsManager.shared.fetchRecords { [weak self] result in
+            
             switch result {
+                
             case .success(let records):
                 
                 var filtermaps = [Record]()

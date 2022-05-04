@@ -19,6 +19,7 @@ class GroupHeaderCell: UITableViewCell {
         didSet {
             segment.setTitle("活動中", forSegmentAt: 0)
             segment.setTitle("個人活動", forSegmentAt: 1)
+            
         }
       
     }

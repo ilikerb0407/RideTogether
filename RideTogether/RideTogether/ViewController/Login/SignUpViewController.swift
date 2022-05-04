@@ -54,6 +54,12 @@ class SignUpViewController: BaseViewController {
                             // upload mock photo url to get url
                             self.userInfo.pictureRef = ""
                             
+                            self.userInfo.saveMaps = []
+                            
+                            self.userInfo.blockList = []
+                            
+                            self.userInfo.totalLength = 0.0
+                            
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                                 
                                 switch result {
@@ -161,6 +167,8 @@ class SignUpViewController: BaseViewController {
                             self.userInfo.uid = uid
                             
                             self.userInfo.userName = "新使用者"
+                            
+                            
                             
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                                 

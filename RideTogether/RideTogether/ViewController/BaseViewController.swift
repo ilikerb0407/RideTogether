@@ -135,7 +135,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         
-        let image = UIImage(named: "hat")
+        let image = UIImage(named: "backbtn")
         // 改圖片
         
         leftButton.setImage(image, for: .normal)
