@@ -46,7 +46,7 @@ class ProfileView: UIView {
                 
                 self.userName.backgroundColor = self.isEditting ? .systemGray6 : .clear
                 
-                self.userName.textColor = self.isEditting ? .black : .B1
+                self.userName.textColor = self.isEditting ? .darkGray : .black
                 
             } completion: { [self] _ in
                 

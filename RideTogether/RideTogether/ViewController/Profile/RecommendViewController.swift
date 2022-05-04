@@ -58,7 +58,7 @@ class RecommendViewController: BaseViewController {
     }
     func setUpTableView() {
         
-        setNavigationBar(title: "Share Wall")
+        setNavigationBar(title: "分享牆")
         
         tableView = UITableView()
         

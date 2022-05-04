@@ -44,6 +44,6 @@ class ProfileTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        itemBackground.layer.cornerRadius = 30
+        itemBackground.layer.cornerRadius = 20
     }
 }

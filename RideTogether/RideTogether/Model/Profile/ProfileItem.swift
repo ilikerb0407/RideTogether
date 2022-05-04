@@ -49,13 +49,13 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         
         switch self {
         case .routeRecord:
-            return UIColor.orange
+            return UIColor.lightGray
         case .recommendMap:
-            return UIColor.orange
+            return UIColor.lightGray
         case .userAccount:
-            return UIColor.orange
+            return UIColor.lightGray
         case .saveRoutes:
-            return UIColor.orange
+            return UIColor.lightGray
         }
     }
     

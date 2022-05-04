@@ -19,7 +19,7 @@ class RouteViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .U1],
+                colors: [.white, .darkGray],
                 locations: [0.0, 2.0], direction: .leftSkewed)
         }
     }

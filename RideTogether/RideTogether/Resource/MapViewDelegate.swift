@@ -269,6 +269,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                                                                 width: image.size.width,
                                                                 height: image.size.height)
                     annotationView.insertSubview(gpxMapView.headingImageView!, at: 0)
+                    
                     gpxMapView.headingImageView!.isHidden = true
                 }
                 continue
@@ -285,7 +286,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             let interval: TimeInterval = 0.04 * 1.1
             
-            UIView.animate(withDuration: 0.5, delay: interval, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, delay: interval, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
                 annotationView.frame = endFrame
                 
             }, completion: { (finished) -> Void in

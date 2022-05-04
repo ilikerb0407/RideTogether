@@ -33,24 +33,11 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OV6-lC-lPI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="OV6-lC-lPI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-88" id="MSk-qQ-gvd"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OV6-lC-lPI" secondAttribute="bottom" id="fEV-LQ-Djv"/>
-                            <constraint firstItem="OV6-lC-lPI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fwo-OA-iGc"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OV6-lC-lPI" secondAttribute="trailing" id="mUF-dB-95h"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rIF-tM-mUp"/>
                     <connections>
-                        <outlet property="gView" destination="OV6-lC-lPI" id="FU0-6W-UnN"/>
                         <segue destination="ogp-fI-TYw" kind="show" identifier="toGroupChat" id="cSV-F9-TOw"/>
                         <segue destination="fUT-qe-iBH" kind="show" identifier="toRequestList" id="AUf-dX-qMX"/>
                     </connections>
@@ -68,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-0A-VKy">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -77,8 +64,8 @@
                         <constraints>
                             <constraint firstItem="jIK-0A-VKy" firstAttribute="top" secondItem="dnf-RX-uvb" secondAttribute="top" constant="-88" id="HBX-eS-RlB"/>
                             <constraint firstItem="jIK-0A-VKy" firstAttribute="leading" secondItem="dnf-RX-uvb" secondAttribute="leading" id="Rn9-Hr-vYb"/>
+                            <constraint firstItem="dnf-RX-uvb" firstAttribute="bottom" secondItem="jIK-0A-VKy" secondAttribute="bottom" id="UQl-G3-nBb"/>
                             <constraint firstItem="dnf-RX-uvb" firstAttribute="trailing" secondItem="jIK-0A-VKy" secondAttribute="trailing" id="f4H-lt-NuH"/>
-                            <constraint firstItem="dnf-RX-uvb" firstAttribute="bottom" secondItem="jIK-0A-VKy" secondAttribute="bottom" constant="-83" id="kWA-Tf-SFT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1tG-Yx-cVA"/>
@@ -88,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8j-kA-jOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="41"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="40.848214285714285"/>
         </scene>
         <!--Group Member View Controller-->
         <scene sceneID="M1s-Tr-Iyg">

@@ -79,8 +79,8 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .U1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .darkGray],
+                locations: [0.0, 1.0], direction: .leftSkewed)
         }
     }
     

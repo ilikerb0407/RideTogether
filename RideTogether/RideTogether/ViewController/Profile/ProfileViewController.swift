@@ -89,7 +89,7 @@ class ProfileViewController: BaseViewController {
 //        UserManager.shared.deleteUserSharemaps(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
-//          UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
+//        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -150,7 +150,7 @@ extension ProfileViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        65
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -170,8 +170,7 @@ extension ProfileViewController : UITableViewDelegate {
                 self.deleteAccount()
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
-            showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
-            
+            showAlertAction(title: nil, message: nil, preferredStyle: .alert, actions: [logOut, removeAccount, cancel])
             
         case 3:
             let segueId = ProfileSegue.allCases[indexPath.row].rawValue

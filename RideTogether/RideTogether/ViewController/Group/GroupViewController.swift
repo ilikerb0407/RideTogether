@@ -28,7 +28,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .B1],
+                colors: [.white, .darkGray],
                 locations: [0.0, 2.0], direction: .leftSkewed)
         }
     }

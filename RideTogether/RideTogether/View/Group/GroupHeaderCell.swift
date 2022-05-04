@@ -13,7 +13,11 @@ class GroupHeaderCell: UITableViewCell {
     
     
     
-    @IBOutlet weak var resquestsBell: UIButton!
+    @IBOutlet weak var resquestsBell: UIButton! {
+        didSet {
+            resquestsBell.backgroundColor = .darkGray
+        }
+    }
     
     @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
