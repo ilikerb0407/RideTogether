@@ -44,7 +44,7 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         case .saveRoutes:
             return "收藏路線"
         case .privacy :
-            return "隱私權設定"
+            return "隱私權說明"
         }
         
     }

@@ -252,7 +252,6 @@ extension RecommendViewController: UITableViewDelegate {
             
         }
   
-        
         //        tableViewCell.likes.toggle()
         //        if tableViewCell.heart.isSelected == true {
         //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
@@ -260,7 +259,7 @@ extension RecommendViewController: UITableViewDelegate {
         //        if tableViewCell.likes == true {
         //            // 加到 使用者的 savemaps
         //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-        //        }else {
+        //        } else {
         //            // 將savemaps 從使用者中刪除
         //            self.updateSavemaps()
         //        }
