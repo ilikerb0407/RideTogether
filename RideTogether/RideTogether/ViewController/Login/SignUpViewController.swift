@@ -240,12 +240,29 @@ class SignUpViewController: BaseViewController {
     func lottie() {
         
         var waveLottieView: AnimationView = {
+            
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 125 , y: UIScreen.height / 2 - 250 , width: 250 , height: 250)
+//            view.frame = CGRect(x: UIScreen.width / 4, y: UIScreen.height / 10 , width: 250 , height: 250)
+            self.view.addSubview(view)
+            
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                
+                view.heightAnchor.constraint(equalToConstant: 250),
+                
+                view.widthAnchor.constraint(equalToConstant: 250),
+                
+                view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50),
+                
+                view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
+                
+                view.centerYAnchor.constraint(equalTo: self.signUpEmail.topAnchor, constant: -120)
+            ])
             view.contentMode = .scaleAspectFit
             view.play()
-            self.view.addSubview(view)
+            
             return view
         }()
         

@@ -58,14 +58,18 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             
             self.curerentUser = Auth.auth().currentUser
         }
-        
         lottie()
+        
+
         
     }
     
+    
     func lottie() {
-        var waveLottieView: AnimationView = {
+      var waveLottieView: AnimationView = {
+        
             let view = AnimationView(name: "49908-bike-ride")
+            
             view.loopMode = .loop
             view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
             view.contentMode = .scaleAspectFit
@@ -74,7 +78,13 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             return view
         }()
     }
+
     
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
     func setUpSignInButton() {
         
         view.addSubview(loginButton)
@@ -162,8 +172,21 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         self.loginButton.alpha = 0.0
         self.emailbtn.alpha = 0.0
-        self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 17.5)
         self.emailbtn.addTarget(self, action: #selector(popUpEmailSignIn), for: .touchUpInside)
+        
+        emailbtn.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            emailbtn.heightAnchor.constraint(equalToConstant: 45),
+            
+            emailbtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
+            emailbtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            
+            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 50)
+            
+        ])
         
         //        self.agreementStackView.alpha = 0.0
         
