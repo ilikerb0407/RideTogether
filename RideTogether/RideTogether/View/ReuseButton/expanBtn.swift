@@ -20,7 +20,7 @@ fileprivate let buttonSize: CGFloat = 56
 fileprivate let shadowOpacity: Float = 0.7
 
 class ButtonPanelView: UIView {
-
+    
   weak var delegate: ButtonPanelDelegate?
 
   lazy var menuButton: UIButton = {

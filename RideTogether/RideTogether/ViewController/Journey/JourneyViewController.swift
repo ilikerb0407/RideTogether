@@ -14,11 +14,8 @@ import Lottie
 import MessageUI
 import SwiftUI
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond, ButtonPanelDelegate{
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
-    func didTapButtonWithText(_ text: String) {
-      
-    }
     
     func sendRouteTwice(map: DrawRoute) {
         mapData = map
@@ -112,7 +109,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 waveLottieView.play()
                 
                 bikeLottieView.play()
-        
                 
             case .paused:
                 
@@ -375,10 +371,18 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         mapViewDelegate.route.polyline.title = "two"
         
-        buttonPanelView.delegate = self
+//        buttonPanelView.delegate = self
+//
+//        view.addSubview(buttonPanelView)
         
-        view.addSubview(buttonPanelView)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if gpxTrackingStatus == .tracking {
+            bikeLottieView.play()
+            waveLottieView.play()
+        }
     }
     
     private func addConstraints() {
@@ -390,10 +394,19 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 100),
+            view.heightAnchor.constraint(equalToConstant: 100),
+            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+        
+        ])
+//            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
             view.contentMode = .scaleAspectFit
             view.play()
-            self.view.addSubview(view)
+            
             return view
         }()
     
@@ -461,18 +474,19 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         pinButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
-            direction: .leftSkewed)
+            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),
+                     UIColor.hexStringToUIColor(hex: "#95BF22")],
+            direction: .rightSkewed )
         
         saveButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
                      UIColor.hexStringToUIColor(hex: "#1273DE")],
-            direction: .leftSkewed)
+            direction: .rightSkewed)
         
         resetButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
                      UIColor.hexStringToUIColor(hex: "#FCCB00")],
-            direction: .leftSkewed)
+            direction: .rightSkewed)
     }
     
     // MARK: - Action
