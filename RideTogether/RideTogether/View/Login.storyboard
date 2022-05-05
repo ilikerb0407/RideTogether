@@ -17,25 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-uj-7LK">
-                                <rect key="frame" x="39" y="725" width="337" height="47"/>
+                                <rect key="frame" x="39" y="767" width="337" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="uRI-cW-8eQ"/>
+                                    <constraint firstAttribute="height" constant="45" id="JzC-ia-fw6"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign in with Email">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
+                                        <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
@@ -49,7 +49,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MXd-uj-7LK" secondAttribute="bottom" constant="90" id="Xnn-rO-DYI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MXd-uj-7LK" secondAttribute="bottom" constant="50" id="Xnn-rO-DYI"/>
                             <constraint firstItem="QOo-wi-bvo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="bzK-W8-SsN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QOo-wi-bvo" secondAttribute="trailing" constant="50" id="iYU-4C-1Ey"/>
                             <constraint firstItem="MXd-uj-7LK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="39" id="ko9-jl-5nL"/>
@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-c5-fED">
-                                <rect key="frame" x="80" y="690" width="100" height="45"/>
+                                <rect key="frame" x="80" y="520" width="100" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="UC0-Cv-wOL"/>
@@ -99,7 +99,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-wh-zVa">
-                                <rect key="frame" x="234" y="690" width="100" height="45"/>
+                                <rect key="frame" x="234" y="520" width="100" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="512-uA-sOD"/>
@@ -124,13 +124,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideTogether" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4F-Fr-i1C">
-                                <rect key="frame" x="50" y="144" width="314" height="36"/>
+                                <rect key="frame" x="50" y="94" width="314" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zmi-RG-gIk">
-                                <rect key="frame" x="80" y="625" width="254" height="45"/>
+                                <rect key="frame" x="80" y="455" width="254" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="fjg-LU-HB1"/>
                                 </constraints>
@@ -144,7 +144,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EP6-To-1Lf">
-                                <rect key="frame" x="80" y="550" width="254" height="45"/>
+                                <rect key="frame" x="80" y="380" width="254" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="x8z-cQ-E77"/>
                                 </constraints>
@@ -171,8 +171,8 @@
                             <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="EP6-To-1Lf" secondAttribute="trailing" constant="80" id="bDK-Bm-VyV"/>
                             <constraint firstItem="zmi-RG-gIk" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="egL-zN-S1w"/>
                             <constraint firstItem="dEM-cG-d6V" firstAttribute="trailing" secondItem="zmi-RG-gIk" secondAttribute="trailing" constant="80" id="i97-Nh-wrl"/>
-                            <constraint firstItem="U4F-Fr-i1C" firstAttribute="top" secondItem="dEM-cG-d6V" secondAttribute="top" constant="100" id="rUF-Hr-Q6p"/>
-                            <constraint firstItem="EP6-To-1Lf" firstAttribute="top" secondItem="U4F-Fr-i1C" secondAttribute="bottom" constant="370" id="s3d-z9-HTJ"/>
+                            <constraint firstItem="U4F-Fr-i1C" firstAttribute="top" secondItem="dEM-cG-d6V" secondAttribute="top" constant="50" id="rUF-Hr-Q6p"/>
+                            <constraint firstItem="EP6-To-1Lf" firstAttribute="top" secondItem="U4F-Fr-i1C" secondAttribute="bottom" constant="250" id="s3d-z9-HTJ"/>
                             <constraint firstItem="Xxd-c5-fED" firstAttribute="leading" secondItem="dEM-cG-d6V" secondAttribute="leading" constant="80" id="vn3-5m-4C4"/>
                         </constraints>
                     </view>

@@ -242,7 +242,7 @@ class SignUpViewController: BaseViewController {
         var waveLottieView: AnimationView = {
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 175, y: UIScreen.height / 2 - 250 , width: 350 , height: 350)
+            view.frame = CGRect(x: UIScreen.width / 2 - 125 , y: UIScreen.height / 2 - 250 , width: 250 , height: 250)
             view.contentMode = .scaleAspectFit
             view.play()
             self.view.addSubview(view)
@@ -250,9 +250,6 @@ class SignUpViewController: BaseViewController {
         }()
         
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -33,11 +33,24 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-pb-RDi">
+                                <rect key="frame" x="0.0" y="78" width="414" height="635"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0qm-pb-RDi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vou-Zn-Qq8"/>
+                            <constraint firstItem="0qm-pb-RDi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-10" id="l5h-ZR-HSI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="0qm-pb-RDi" secondAttribute="bottom" constant="100" id="q44-2R-NA3"/>
+                            <constraint firstItem="0qm-pb-RDi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qTy-7e-QJ1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rIF-tM-mUp"/>
                     <connections>
+                        <outlet property="gView" destination="0qm-pb-RDi" id="kU0-MI-asL"/>
                         <segue destination="ogp-fI-TYw" kind="show" identifier="toGroupChat" id="cSV-F9-TOw"/>
                         <segue destination="fUT-qe-iBH" kind="show" identifier="toRequestList" id="AUf-dX-qMX"/>
                     </connections>
@@ -300,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9c-ud-ARe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="757.36607142857144"/>
+            <point key="canvasLocation" x="1048" y="865"/>
         </scene>
     </scenes>
     <resources>

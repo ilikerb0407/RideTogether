@@ -161,13 +161,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         weatherManger.delegate = self
-        
         print("calloutAccesoryControlTapped ")
-        guard let waypoint = view.annotation as? GPXWaypoint else { return }
         
-        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!)
-        guard let weatherdata = weatherdata else { return }
-
+       
+        
         guard let button = control as? UIButton else { return }
         
         guard let map = mapView as? GPXMapView else { return }
@@ -177,71 +174,87 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         for (index, item) in self.route.steps.enumerated() {
             routeStep = "\(item.instructions)"
         }
-        switch button.tag {
+        
+        guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
-        case kDeleteWaypointAccesoryButtonTag:
-            print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
-            //            map.removeWaypoint(waypoint)
-            //            guide(mapView, didSelect: view)
+            self?.weatherdata = result
             
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
-            
-            let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in }
-            
-            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
-                map.removeWaypoint(waypoint)
-                map.removeOverlays(map.overlays)
+            DispatchQueue.main.async {
+                markMarkers()
             }
             
-            let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
-            let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
+        }
+       
+        func markMarkers() {
+            guard let weatherdata = weatherdata else { return }
             
-            let routeName = UIAlertAction(title: "Destionation = \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
-               
-                self.route.polyline.title = "one"
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+            switch button.tag {
                 
+            case kDeleteWaypointAccesoryButtonTag:
+                print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
+                //            map.removeWaypoint(waypoint)
+                //            guide(mapView, didSelect: view)
+                
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
+                
+                let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in }
+                
+                let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
+                    map.removeWaypoint(waypoint)
+                    map.removeOverlays(map.overlays)
+                }
+                
+                let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
+                let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
+                
+                let routeName = UIAlertAction(title: "Destionation = \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
+                   
+                    self.route.polyline.title = "one"
+                    map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                    
+                }
+                
+                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
+                
+                sheet.addAction(distance)
+                sheet.addAction(time)
+                sheet.addAction(routeName)
+                sheet.addAction(weather)
+                sheet.addAction(removeOption)
+                sheet.addAction(cancelAction)
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
+                
+            case kEditWaypointAccesoryButtonTag:
+                print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
+                
+                let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
+                
+        
+                let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
+                
+                alertController.addTextField { (textField) in
+                    textField.text = waypoint.title
+                    textField.clearButtonMode = .always
+                }
+                let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
+                    print("Edit waypoint alert view")
+                    self.waypointBeingEdited.title = alertController.textFields?[0].text
+                    //                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
+                }
+                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+                
+                alertController.addAction(saveAction)
+                alertController.addAction(cancelAction)
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
+                
+                self.waypointBeingEdited = waypoint
+                
+            default:
+                print("[calloutAccesoryControlTapped ERROR] unknown control")
             }
-            
-            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
-            
-            sheet.addAction(distance)
-            sheet.addAction(time)
-            sheet.addAction(routeName)
-            sheet.addAction(weather)
-            sheet.addAction(removeOption)
-            sheet.addAction(cancelAction)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
-            
-        case kEditWaypointAccesoryButtonTag:
-            print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
-            
-            let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
-            
-    
-            let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
-            
-            alertController.addTextField { (textField) in
-                textField.text = waypoint.title
-                textField.clearButtonMode = .always
-            }
-            let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
-                print("Edit waypoint alert view")
-                self.waypointBeingEdited.title = alertController.textFields?[0].text
-                //                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
-            }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
-            
-            alertController.addAction(saveAction)
-            alertController.addAction(cancelAction)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
-            
-            self.waypointBeingEdited = waypoint
-            
-        default:
-            print("[calloutAccesoryControlTapped ERROR] unknown control")
         }
     }
     
@@ -259,6 +272,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             num += 1
             let annotationView = object as MKAnnotationView
             guide(gpxMapView, didSelect: annotationView)
+            
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
                 if gpxMapView.headingImageView == nil {

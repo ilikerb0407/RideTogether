@@ -162,7 +162,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         self.loginButton.alpha = 0.0
         self.emailbtn.alpha = 0.0
-        self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 18)
         self.emailbtn.addTarget(self, action: #selector(popUpEmailSignIn), for: .touchUpInside)
         
         //        self.agreementStackView.alpha = 0.0

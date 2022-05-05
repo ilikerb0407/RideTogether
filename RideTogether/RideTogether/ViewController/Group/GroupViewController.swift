@@ -112,8 +112,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         addRequestListener()
+        
     }
     
     func addRequestListener() {
