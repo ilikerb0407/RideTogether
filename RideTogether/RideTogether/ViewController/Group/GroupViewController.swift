@@ -174,7 +174,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
-        
+        button.setTitle("建", for: .highlighted)
+        button.tintColor = .B5
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -186,7 +187,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [ .medium(), .large() ]
+                presentVc.detents = [ .large(), .medium() ]
                 rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }

@@ -258,13 +258,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuj-cd-zRs">
-                                <rect key="frame" x="47.5" y="498" width="319" height="31"/>
+                                <rect key="frame" x="47.5" y="490" width="319" height="31"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="騎車愛地球"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="建立活動" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ln-lf-Qfs">
-                                <rect key="frame" x="47.5" y="84" width="319" height="24"/>
+                                <rect key="frame" x="47.5" y="69" width="319" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -279,13 +279,13 @@
                             <constraint firstItem="dah-ZX-h4v" firstAttribute="trailing" secondItem="LQ0-jB-qu9" secondAttribute="trailing" constant="47.5" id="HKu-6l-bp3"/>
                             <constraint firstItem="LQ0-jB-qu9" firstAttribute="top" secondItem="xAj-aN-dXk" secondAttribute="bottom" constant="20" id="Jz9-ik-ily"/>
                             <constraint firstItem="Cuj-cd-zRs" firstAttribute="leading" secondItem="dah-ZX-h4v" secondAttribute="leading" constant="47.5" id="MsF-nE-sv4"/>
-                            <constraint firstItem="Cuj-cd-zRs" firstAttribute="top" secondItem="LQ0-jB-qu9" secondAttribute="bottom" constant="20" id="NSL-jZ-7h8"/>
+                            <constraint firstItem="Cuj-cd-zRs" firstAttribute="top" secondItem="LQ0-jB-qu9" secondAttribute="bottom" constant="12" id="NSL-jZ-7h8"/>
                             <constraint firstItem="7Ln-lf-Qfs" firstAttribute="centerX" secondItem="6l5-j7-j2v" secondAttribute="centerX" id="Os1-H6-sFU"/>
-                            <constraint firstItem="7Ln-lf-Qfs" firstAttribute="top" secondItem="dah-ZX-h4v" secondAttribute="top" constant="40" id="Scg-Aj-V1d"/>
+                            <constraint firstItem="7Ln-lf-Qfs" firstAttribute="top" secondItem="dah-ZX-h4v" secondAttribute="top" constant="25" id="Scg-Aj-V1d"/>
                             <constraint firstItem="dah-ZX-h4v" firstAttribute="trailing" secondItem="7Ln-lf-Qfs" secondAttribute="trailing" constant="47.5" id="V9b-j0-n6Z"/>
                             <constraint firstItem="dah-ZX-h4v" firstAttribute="trailing" secondItem="xAj-aN-dXk" secondAttribute="trailing" constant="47.5" id="ZS7-bO-tCw"/>
                             <constraint firstItem="LQ0-jB-qu9" firstAttribute="centerX" secondItem="6l5-j7-j2v" secondAttribute="centerX" id="ZYX-jx-ga5"/>
-                            <constraint firstItem="xAj-aN-dXk" firstAttribute="top" secondItem="7Ln-lf-Qfs" secondAttribute="bottom" constant="20" id="efa-iR-sfb"/>
+                            <constraint firstItem="xAj-aN-dXk" firstAttribute="top" secondItem="7Ln-lf-Qfs" secondAttribute="bottom" constant="35" id="efa-iR-sfb"/>
                             <constraint firstItem="7Ln-lf-Qfs" firstAttribute="leading" secondItem="dah-ZX-h4v" secondAttribute="leading" constant="47.5" id="mSh-Ew-9TT"/>
                         </constraints>
                     </view>
