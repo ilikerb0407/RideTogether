@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,7 +70,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="38" id="XHC-6T-fDi"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="B6"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="camera" catalog="system"/>
                                         <connections>
@@ -104,7 +105,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C27-Ud-r1N">
                                         <rect key="frame" x="331" y="257" width="45" height="31"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="B6"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system"/>
                                         <connections>
@@ -152,12 +153,14 @@
                             <constraint firstItem="Opy-dE-Pdx" firstAttribute="leading" secondItem="tHO-FC-rc5" secondAttribute="leading" id="b1Q-uj-bih"/>
                             <constraint firstItem="tHO-FC-rc5" firstAttribute="top" secondItem="C1b-Qo-W94" secondAttribute="top" id="lwk-cC-nbm"/>
                             <constraint firstAttribute="trailing" secondItem="tHO-FC-rc5" secondAttribute="trailing" constant="-293" id="mYc-Nb-n0z"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="bottom" secondItem="qxy-Gs-kTX" secondAttribute="bottom" id="xtG-Q2-gfx"/>
                             <constraint firstItem="Opy-dE-Pdx" firstAttribute="leading" secondItem="C1b-Qo-W94" secondAttribute="leading" id="yVi-Ew-Y3T"/>
                             <constraint firstItem="tHO-FC-rc5" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="yja-bx-kPO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="0aj-GT-TF9"/>
                     <connections>
+                        <outlet property="gView" destination="tHO-FC-rc5" id="GAd-5l-Wbe"/>
                         <outlet property="profileView" destination="Opy-dE-Pdx" id="uuz-Km-Qw9"/>
                         <outlet property="tableView" destination="Zna-nX-YeG" id="5bk-MY-FAa"/>
                         <segue destination="Y0Y-w7-fwb" kind="show" identifier="toRecord" id="YZm-ih-Pyd"/>
@@ -178,22 +181,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E44-7Y-m0h">
-                                <rect key="frame" x="0.0" y="-45" width="414" height="978"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mV-gk-fHX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d2B-FO-ic1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="d2B-FO-ic1" firstAttribute="trailing" secondItem="E44-7Y-m0h" secondAttribute="trailing" id="Ewg-Hf-Mgn"/>
-                            <constraint firstItem="d2B-FO-ic1" firstAttribute="bottom" secondItem="E44-7Y-m0h" secondAttribute="bottom" constant="-120" id="Xjj-Of-GmF"/>
-                            <constraint firstItem="E44-7Y-m0h" firstAttribute="leading" secondItem="d2B-FO-ic1" secondAttribute="leading" id="iGd-q8-9uG"/>
-                            <constraint firstItem="E44-7Y-m0h" firstAttribute="top" secondItem="d2B-FO-ic1" secondAttribute="top" constant="-133" id="kdB-4h-vMX"/>
+                            <constraint firstItem="d2B-FO-ic1" firstAttribute="bottom" secondItem="2mV-gk-fHX" secondAttribute="bottom" id="DK3-1f-0Na"/>
+                            <constraint firstItem="d2B-FO-ic1" firstAttribute="trailing" secondItem="2mV-gk-fHX" secondAttribute="trailing" id="KkQ-sm-Eq6"/>
+                            <constraint firstItem="2mV-gk-fHX" firstAttribute="top" secondItem="d2B-FO-ic1" secondAttribute="top" id="dVa-F7-nPD"/>
+                            <constraint firstItem="2mV-gk-fHX" firstAttribute="leading" secondItem="d2B-FO-ic1" secondAttribute="leading" id="kwY-OT-MsB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dh3-JU-7Ld"/>
                     <connections>
+                        <outlet property="gView" destination="2mV-gk-fHX" id="bIb-2D-kTB"/>
                         <segue destination="HPt-2x-2Pf" kind="show" identifier="toUserRecord" id="1xl-BP-Erv"/>
                     </connections>
                 </viewController>
@@ -455,6 +459,9 @@
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="doc.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="B6">
+            <color red="0.1803921568627451" green="0.25098039215686274" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

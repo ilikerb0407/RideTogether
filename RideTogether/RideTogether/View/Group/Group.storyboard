@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-pb-RDi">
-                                <rect key="frame" x="0.0" y="78" width="414" height="635"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -43,7 +43,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vou-Zn-Qq8"/>
-                            <constraint firstItem="0qm-pb-RDi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-10" id="l5h-ZR-HSI"/>
+                            <constraint firstItem="0qm-pb-RDi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-88" id="l5h-ZR-HSI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="0qm-pb-RDi" secondAttribute="bottom" constant="100" id="q44-2R-NA3"/>
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qTy-7e-QJ1"/>
                         </constraints>

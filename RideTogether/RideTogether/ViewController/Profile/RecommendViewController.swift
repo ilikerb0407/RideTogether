@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
+import SwiftUI
 
 
 // MARK: Recommend-Route
@@ -170,6 +171,9 @@ class RecommendViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        tableView.addGestureRecognizer(longPress)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -196,9 +200,45 @@ class RecommendViewController: BaseViewController {
         return view
     }()
     
+    
+    
 }
 
 extension RecommendViewController: UITableViewDelegate {
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+//                let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
+//                        self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+//
+//
+//                        waitlottie.isHidden = true
+//                    }
+                
+                let blockOption = UIAlertAction(title: "block it", style: .destructive) { [self] _ in
+                    
+                    UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
+
+                    UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
+                    
+                    self.fetchRecords()
+                    
+                    self.waitlottie.isHidden = true
+                }
+                
+                let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
+                    self.waitlottie.isHidden = true
+                }
+                
+                showAlertAction(title: "Block User's Maps ?", message: nil, actions: [cancelOption, blockOption])
+                
+            }
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
@@ -206,44 +246,12 @@ extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        waitlottie.isHidden = false
-        waitlottie.play()
-        
-        let alert = UIAlertController(title: "Choose", message: nil , preferredStyle: .actionSheet)
-        
-        let detailOption = UIAlertAction(title: "Detail", style: .default){ [self]_ in
-            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
-                navigationController?.pushViewController(journeyViewController, animated: true)
-                journeyViewController.record = records[indexPath.row]
-                
-            }
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+            navigationController?.pushViewController(journeyViewController, animated: true)
+            journeyViewController.record = records[indexPath.row]
+            
         }
-        let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
-            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-            
-            
-            waitlottie.isHidden = true
-        }
-        
-        let blockOption = UIAlertAction(title: "block it", style: .default) { [self] _ in
-            
-            UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
-
-            UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
-            
-            self.fetchRecords()
-            
-            self.waitlottie.isHidden = true
-        }
-        
-        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
-            self.waitlottie.isHidden = true
-        }
-        
-        showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption, blockOption])
-        
-        
+  
         
         //        tableViewCell.likes.toggle()
         //        if tableViewCell.heart.isSelected == true {

@@ -37,7 +37,7 @@ class ProfileTableViewCell: UITableViewCell {
         
         contentView.backgroundColor = .clear
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .B2
         
     }
     

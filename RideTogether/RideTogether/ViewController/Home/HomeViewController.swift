@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import QuartzCore
 
 class HomeViewController: BaseViewController {
     
@@ -200,7 +201,6 @@ extension HomeViewController: UITableViewDelegate {
             }
         }
     }
-    
 }
 
 // MARK: - TableView Data Source -
@@ -222,4 +222,5 @@ extension HomeViewController: UITableViewDataSource {
     
         return cell
     }
+    
 }

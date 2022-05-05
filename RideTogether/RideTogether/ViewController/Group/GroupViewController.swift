@@ -336,7 +336,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             
             headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
             
-            headerView.heightAnchor.constraint(equalToConstant: 100)
+            headerView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
           headerView.resquestsBell.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
@@ -391,14 +391,13 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView = UITableView()
         
+        tableView.backgroundColor = .clear
+        
         tableView.registerCellWithNib(identifier: GroupInfo.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
         setBuildTeamButton()
-        
-        
-        tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
         
@@ -412,7 +411,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     // 查詢團名

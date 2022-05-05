@@ -95,7 +95,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         let dataSet = LineChartDataSet(entries: dataEntries, label: "")
         
-        dataSet.colors = [.U1 ?? .systemGray]
+        dataSet.colors = [.C1 ?? .systemGray]
         dataSet.drawFilledEnabled = true
         dataSet.drawCirclesEnabled = false
         dataSet.drawValuesEnabled = false
@@ -150,7 +150,8 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 50, width: 40, height: 40))
+        let button = PreviousPageButton(frame: CGRect(x: 15, y: 25, width: 40, height: 40))
+        button.backgroundColor = .B6
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }

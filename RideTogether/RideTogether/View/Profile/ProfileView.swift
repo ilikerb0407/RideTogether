@@ -55,6 +55,5 @@ class ProfileView: UIView {
             }
         }
     }
-    
-    
+   
 }

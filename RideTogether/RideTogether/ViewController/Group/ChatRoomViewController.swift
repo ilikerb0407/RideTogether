@@ -41,7 +41,7 @@ class ChatRoomViewController: BaseViewController {
     }
     
     private lazy var leaveLottieView: AnimationView = {
-        let view = AnimationView(name: "delete")
+        let view = AnimationView(name: "leave")
         view.loopMode = .loop
         view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
         view.contentMode = .scaleAspectFit

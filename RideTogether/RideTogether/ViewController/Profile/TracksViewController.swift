@@ -48,10 +48,10 @@ class TracksViewController: BaseViewController {
         
         didSet {
             gView.applyGradient(
-                colors: [.white, .orange],
-                locations: [0.0, 3.0], direction: .leftSkewed)
-//            gView.alpha = 0.85
-            // 不會把資料覆蓋住
+                colors: [.white, .C1],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
+       
         }
         
     }
@@ -80,7 +80,7 @@ class TracksViewController: BaseViewController {
             
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
     }

@@ -234,6 +234,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     
     // MARK: 長按功能_ UILongPressGestureRecognizer
+    
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
@@ -257,12 +258,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }()
 
     private lazy var waveLottieView: AnimationView = {
-        let view = AnimationView(name: "95671-wave-animation")
+        let view = AnimationView(name: "circle")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0, width: 100 , height: 100)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         view.center = leftStackView.center
         view.contentMode = .scaleAspectFit
         view.play()
+        
         self.view.addSubview(view)
         self.view.bringSubviewToFront(leftStackView)
         return view
@@ -895,5 +897,3 @@ extension JourneyViewController: CLLocationManagerDelegate {
         map.updateHeading() // updates heading view's rotation
     }
 }
-
-

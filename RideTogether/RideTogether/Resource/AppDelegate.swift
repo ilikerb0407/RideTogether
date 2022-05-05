@@ -49,11 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
     supportedInterfaceOrientationsFor window: UIWindow?) ->
     UIInterfaceOrientationMask {
-        if shouldAutorotate {
-            return .allButUpsideDown
-        } else {
-            return .portrait
-        }
+//        if shouldAutorotate {
+//            return .allButUpsideDown
+//        } else {
+//            return .portrait
+//        }
+        let deviceOrientation = UIInterfaceOrientationMask.portrait
+        return deviceOrientation
+        
     }
     /// Default placeholder function
     lazy var managedObjectModel: NSManagedObjectModel = {

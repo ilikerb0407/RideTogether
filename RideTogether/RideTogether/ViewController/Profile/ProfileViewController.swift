@@ -63,8 +63,10 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .orange],
-                locations: [0.0, 3.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+        
+            gView.alpha = 0.85
         }
     }
     
@@ -78,8 +80,50 @@ class ProfileViewController: BaseViewController {
         }
     }
     
+    var bView = UIView() {
+        didSet {
+            
+//            self.view.addSubview(bView)
+            
+            bView.applyGradient(
+                colors: [.white, .C1],
+                locations: [0.0, 3.0], direction: .leftSkewed)
+            
+            
+//            bView.translatesAutoresizingMaskIntoConstraints = false
+//
+//            NSLayoutConstraint.activate([
+//
+//                bView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//                bView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+//                bView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//                bView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//
+//            ])
+        
+        }
+    }
+//
+    func backgroundcolor() {
+        
+        gView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        ])
+
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundcolor()
         
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
@@ -258,11 +302,6 @@ extension ProfileViewController: UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.backgroundColor = .clear
-        
-    }
     
 }
 

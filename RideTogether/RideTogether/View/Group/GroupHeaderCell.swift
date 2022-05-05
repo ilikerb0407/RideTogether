@@ -31,7 +31,9 @@ class GroupHeaderCell: UITableViewCell {
     @IBOutlet weak var searchBar: UISearchBar! {
         
         didSet {
+            
             self.searchBar.searchTextField.font = UIFont.regular(size: 20)
+            
             self.searchBar.placeholder = "查詢路線"
         }
         
@@ -46,9 +48,14 @@ class GroupHeaderCell: UITableViewCell {
         let image = UIImage()
         
         searchBar.backgroundImage = image
+        
         searchBar.backgroundColor = .clear
-        searchBar.searchTextField.backgroundColor = .white
+        
+        searchBar.searchTextField.backgroundColor = .clear
+        
+        
         searchBar.layer.cornerRadius = 15
+        
         searchBar.clipsToBounds = true
         
         selectionStyle = .none
