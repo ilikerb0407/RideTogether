@@ -99,9 +99,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
             
-            //            UserManager.shared.blockUser(blockUserId: uid)
+                        UserManager.shared.blockUser(blockUserId: uid)
             
-            //            UserManager.shared.userInfo.blockList?.append(uid)
+                        UserManager.shared.userInfo.blockList?.append(uid)
         }
         
         controller.addAction(cancelAction)
@@ -133,10 +133,11 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
-        let image = UIImage(named: "hat")
+        let image = UIImage(named: "backbtn")
         // 改圖片
+        leftButton.backgroundColor = .lightGray
         
         leftButton.setImage(image, for: .normal)
         

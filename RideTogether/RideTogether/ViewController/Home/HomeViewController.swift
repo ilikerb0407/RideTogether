@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import QuartzCore
 
 class HomeViewController: BaseViewController {
     
@@ -79,8 +80,8 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .U1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .darkGray],
+                locations: [0.0, 1.0], direction: .leftSkewed)
         }
     }
     
@@ -200,7 +201,6 @@ extension HomeViewController: UITableViewDelegate {
             }
         }
     }
-    
 }
 
 // MARK: - TableView Data Source -
@@ -220,7 +220,7 @@ extension HomeViewController: UITableViewDataSource {
             routetitle: RoutesType.allCases[indexPath.row].rawValue,
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
     
-        
         return cell
     }
+    
 }

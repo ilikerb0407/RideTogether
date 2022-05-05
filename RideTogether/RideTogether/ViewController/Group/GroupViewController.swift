@@ -28,7 +28,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .B1],
+                colors: [.white, .darkGray],
                 locations: [0.0, 2.0], direction: .leftSkewed)
         }
     }
@@ -105,9 +105,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView.mj_header = header
         
-//        view.applyGradient(colors: [.B2, .U2], locations: [0.0, 1.0], direction: .leftSkewed)
-//        view.backgroundColor = .U2
-        
         table?.delegate = self
         
         VC.delegate = self
@@ -115,8 +112,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         addRequestListener()
+        
     }
     
     func addRequestListener() {
@@ -175,7 +174,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
-        
+        button.setTitle("建", for: .highlighted)
+        button.tintColor = .B5
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -187,7 +187,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(), .large() ]
+                presentVc.detents = [ .large(), .medium() ]
                 rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
         }
@@ -337,7 +337,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             
             headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
             
-            headerView.heightAnchor.constraint(equalToConstant: 100)
+            headerView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
           headerView.resquestsBell.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
@@ -392,14 +392,13 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView = UITableView()
         
+        tableView.backgroundColor = .clear
+        
         tableView.registerCellWithNib(identifier: GroupInfo.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
         setBuildTeamButton()
-        
-        
-        tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
         
@@ -413,7 +412,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     // 查詢團名

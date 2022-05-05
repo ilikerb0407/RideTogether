@@ -117,7 +117,6 @@ class GroupManager {
         }
     }
     
-    
     func updateTeam(group: Group, completion: (Result<String, Error>) -> Void) {
         
         let document = dataBase.collection(groupsCollection).document(group.groupId)

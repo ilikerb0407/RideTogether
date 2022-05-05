@@ -22,9 +22,9 @@ class CreatGroupButton: UIButton {
         
         self.backgroundColor = .white
         
-        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-        
-        self.setImage(image, for: .normal)
+//        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+//        
+//        self.setImage(image, for: .normal)
         
         self.tintColor = .C4
         

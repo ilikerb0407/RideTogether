@@ -295,26 +295,26 @@ class UserManager {
         }
     }
     
-//    func blockUser(blockUserId: String) {
-//        
-//        userInfo.blockList?.append(blockUserId)
-//        
-//        let userId = userInfo.uid
-//        
-//        let docRef = dataBase.collection(usersCollection).document(userId)
-//        
-//        docRef.updateData([
-//            "block_list": FieldValue.arrayUnion([blockUserId])
-//        ]) {error in
-//            
-//            if let error = error {
-//                
-//                print("Error updating document: \(error)")
-//                
-//            } else {
-//                
-//                print("Block list successfully updated")
-//            }
-//        }
-//    }
+    func blockUser(blockUserId: String) {
+        
+        userInfo.blockList?.append(blockUserId)
+        
+        let userId = userInfo.uid
+        
+        let docRef = dataBase.collection(usersCollection).document(userId)
+        
+        docRef.updateData([
+            "block_list": FieldValue.arrayUnion([blockUserId])
+        ]) {error in
+            
+            if let error = error {
+                
+                print("Error updating document: \(error)")
+                
+            } else {
+                
+                print("Block list successfully updated")
+            }
+        }
+    }
 }

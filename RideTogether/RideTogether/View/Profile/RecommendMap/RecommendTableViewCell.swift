@@ -19,42 +19,29 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var heart: UIButton!
     
-//
-//    var likes : Bool = false {
-//        didSet {
-//            if likes == true {
-//
-//                heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//
-//
-//            } else {
-//
-//                heart.setImage(UIImage(systemName: "heart"), for: .normal)
-//            }
-//        }
-//      }
-//
+    var likes : Bool = false
     
-//    func chooselLike(_ sender: IndexPath) {
-//
-//        print ("like it or not  ")
-////        likes.toggle()
-//
-//    }
+    var sendIsLike : ((_ isSelected: Bool) ->())?
     
-    @objc func heartTapped(_ sender: Int) {
+    @objc func heartTapped(_ sender: UIButton) {
         
-        heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//      heart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        
+        sender.isSelected = !likes
+        
+        likes.toggle()
+
     }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        self.backgroundColor = .clear
-        self.contentView.backgroundColor = .clear
         
-//        self.heart.isSelected = self.likes
+        self.backgroundColor = .clear
+        
+        self.contentView.backgroundColor = .clear
         
         heart.setImage(UIImage(systemName: "heart"), for: .normal)
 
@@ -67,13 +54,14 @@ class RecommendTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
     }
+    
     func setUpCell(model : Record) {
         
         mapTitle.text = model.recordName
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
+        
+        
     }
-    
     
 }

@@ -50,18 +50,17 @@ class Member: UITableViewCell {
         
         groupNameLabel.isHidden = true
         
-//        let image = UIImage(named: "block")
-//
-//        rejectButton.setImage(image, for: .normal)
-//
-//        rejectButton.backgroundColor = .white
-        
-        rejectButton.isHidden = true
-//
+        let image = UIImage(named: "block")
+
+        rejectButton.setImage(image, for: .normal)
+
+        rejectButton.backgroundColor = .white
+
         if userInfo.uid == UserManager.shared.userId {
 
             rejectButton.isHidden = true
         }
+        
         
         requestNameLabel.text = userInfo.userName
         

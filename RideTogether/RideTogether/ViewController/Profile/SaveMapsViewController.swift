@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
+import AVFoundation
 
 class SaveMapsViewController: BaseViewController {
     
@@ -119,6 +120,18 @@ class SaveMapsViewController: BaseViewController {
         
     }
     
+    func deleteMapsFromUser(uid: String, savemaps: String) {
+        
+        MapsManager.shared.deleteMapFromUser(uid: userId) { result in
+            switch result {
+            case .success:
+                print ("success")
+            case .failure(let error):
+                print ("\(error)")
+            }
+        }
+    }
+    
     
 
 }
@@ -129,15 +142,12 @@ extension SaveMapsViewController: UITableViewDelegate {
         100
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
             if editingStyle == .delete {
               
-                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
+                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { [self] result in
                     
                     switch result {
                         
@@ -147,6 +157,7 @@ extension SaveMapsViewController: UITableViewDelegate {
                         
                         self.tableView.deleteRows(at: [indexPath], with: .left)
                         
+//                      self.deleteMapsFromUser(uid: userId, savemaps: UserInfo.CodingKeys.saveMaps.rawValue)
                         
                     case .failure(let error):
                         
@@ -155,7 +166,6 @@ extension SaveMapsViewController: UITableViewDelegate {
                 }
             }
         }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

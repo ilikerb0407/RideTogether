@@ -283,4 +283,3 @@ extension JoinViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
-

@@ -16,7 +16,6 @@ class ProfileView: UIView {
     
     @IBOutlet weak var userName: UITextField!
     
-    
     @IBOutlet weak var editNameBtn: UIButton!
     
     func setUpProfileView(userInfo: UserInfo) {
@@ -36,6 +35,7 @@ class ProfileView: UIView {
         didSet {
             
             if isEditting {
+                
                 editNameBtn.setImage(UIImage(systemName: "arrow.down.square"), for: .normal)
                 
             } else {
@@ -46,7 +46,7 @@ class ProfileView: UIView {
                 
                 self.userName.backgroundColor = self.isEditting ? .systemGray6 : .clear
                 
-                self.userName.textColor = self.isEditting ? .black : .B1
+                self.userName.textColor = self.isEditting ? .darkGray : .black
                 
             } completion: { [self] _ in
                 
@@ -55,7 +55,5 @@ class ProfileView: UIView {
             }
         }
     }
-    
-    
-    
+   
 }

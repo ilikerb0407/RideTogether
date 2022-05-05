@@ -36,67 +36,78 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     func weather() {
         
-        weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12)
-        
-        guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-        feelslikeTemp.text = "\(feelslike) °C"
-        guard let humiditydata = weatherdata?.main.humidity else { return }
-        humidity.text = "\(humiditydata) %"
-        
-        guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-        showtemp.text = "\(tempdata) °C"
-        
-        
-        guard let ssunrise = weatherdata?.sys.sunrise else { return }
-        var epocTime = TimeInterval(ssunrise)
-        
-        let myDate = NSDate(timeIntervalSince1970: epocTime)
-        print ("=====++++\(myDate)")
-        sunrise.text = "\(myDate)"
-        
-        guard let ssunset = weatherdata?.sys.sunset else { return }
-        var sunsetTime = TimeInterval(ssunset)
-        
-        let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
-        print ("=====++++\(sunsetDate)")
-        
-        sunset.text = "\(sunsetDate)"
-        
-        guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-        wind.text = "\(swind) km/h"
-        
-        guard let weather = weatherdata?.weather[0].main else { return }
-        cloud.text = "\(weather)"
-        
-        if cloud.text == "Rain" {
-            rainLottieView.isHidden = false
-            rainLottieView.play()
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天不要騎車小心！", comment: "no comment"), preferredStyle: .alert)
-            let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
+        weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
             
-            sheet.addAction(okOption)
-            present(sheet, animated: true, completion: nil)
+            self?.weatherdata = result
+            DispatchQueue.main.async {
+                showWeatherInfo()
+            }
+            
         }
         
-        if cloud.text == "Clouds" {
-            cloudsLottieView.isHidden = false
-            cloudsLottieView.play()
-        }
-        
-        if cloud.text == "Drizzle" {
-            rainLottieView.isHidden = false
-            rainLottieView.play()
-        }
-        
-        if cloud.text == "Sun" {
-            sunLottieView.isHidden = false
-            sunLottieView.play()
+        func showWeatherInfo() {
             
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分～～", comment: "no comment"), preferredStyle: .alert)
-            let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
+            guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
+            feelslikeTemp.text = "\(feelslike) °C"
+            guard let humiditydata = weatherdata?.main.humidity else { return }
+            humidity.text = "\(humiditydata) %"
             
-            sheet.addAction(okOption)
-            present(sheet, animated: true, completion: nil)
+            guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
+            showtemp.text = "\(tempdata) °C"
+            
+            
+            guard let ssunrise = weatherdata?.sys.sunrise else { return }
+            var epocTime = TimeInterval(ssunrise)
+            
+            let myDate = NSDate(timeIntervalSince1970: epocTime)
+            print ("=====++++\(myDate)")
+            sunrise.text = "\(myDate)"
+            
+            guard let ssunset = weatherdata?.sys.sunset else { return }
+            var sunsetTime = TimeInterval(ssunset)
+            
+            let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
+            print ("=====++++\(sunsetDate)")
+            
+            sunset.text = "\(sunsetDate)"
+            
+            guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
+            wind.text = "\(swind) km/h"
+            
+            guard let weather = weatherdata?.weather[0].main else { return }
+            cloud.text = "\(weather)"
+            
+            if cloud.text == "Rain" {
+                rainLottieView.isHidden = false
+                rainLottieView.play()
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天不要騎車小心！", comment: "no comment"), preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
+                
+                sheet.addAction(okOption)
+                present(sheet, animated: true, completion: nil)
+            }
+            
+            if cloud.text == "Clouds" {
+                cloudsLottieView.isHidden = false
+                cloudsLottieView.play()
+            }
+            
+            if cloud.text == "Drizzle" {
+                rainLottieView.isHidden = false
+                rainLottieView.play()
+            }
+            
+            if cloud.text == "Sun" {
+                sunLottieView.isHidden = false
+                sunLottieView.play()
+                
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分～～", comment: "no comment"), preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
+                
+                sheet.addAction(okOption)
+                present(sheet, animated: true, completion: nil)
+            }
+            
         }
         
     }

@@ -16,16 +16,13 @@ import Lottie
 class RouteViewController: BaseViewController {
     
     
-    
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .U1],
+                colors: [.white, .darkGray],
                 locations: [0.0, 2.0], direction: .leftSkewed)
         }
     }
-    
-   
     
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
@@ -43,7 +40,6 @@ class RouteViewController: BaseViewController {
     private var snapshot = DataSourceSnapshot()
     
     let routesCollectionCell = Routes()
-    
     
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
@@ -103,15 +99,19 @@ class RouteViewController: BaseViewController {
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
+        
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
+        button.backgroundColor = .lightGray
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
+        
     }
     
     @objc func popToPreviosPage(_ sender: UIButton) {
+        
         self.navigationController?.popViewController(animated: true)
+        
     }
-    
     
     func setUpTableView() {
 
@@ -148,6 +148,7 @@ class RouteViewController: BaseViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         
 //        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
+    
         
         collectionView.lk_registerCellWithNib(identifier: "Routes", bundle: nil)
         
@@ -196,31 +197,33 @@ class RouteViewController: BaseViewController {
         
         setupCollectionView()
         
+        backButton()
+        
         configureDataSource()
 //
         configureSnapshot()
         
         setUpThemeTag()
         
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = true
         
         tabBarController?.tabBar.isHidden = false
         
+        
     }
-    
     
     func setUpThemeTag() {
         
-        let view = UIView(frame: CGRect(x: -20, y: 40, width: UIScreen.width / 2 + 10, height: 40))
+        let view = UIView(frame: CGRect(x: -20, y: 55, width: UIScreen.width / 2 + 10, height: 40))
         
-        let label = UILabel(frame: CGRect(x: 20, y: 43, width: 120, height: 35))
+        let label = UILabel(frame: CGRect(x: 20, y: 58, width: 120, height: 35))
         
         view.backgroundColor = .U2
         

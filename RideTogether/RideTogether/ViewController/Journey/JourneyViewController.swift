@@ -14,14 +14,15 @@ import Lottie
 import MessageUI
 import SwiftUI
 
-
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
     
     func sendRouteTwice(map: DrawRoute) {
         mapData = map
     }
     var mapData: DrawRoute?
+    
+    private let buttonPanelView = ButtonPanelView()
     
     var routeVc =  RouteSelectionViewController()
     
@@ -108,7 +109,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 waveLottieView.play()
                 
                 bikeLottieView.play()
-        
                 
             case .paused:
                 
@@ -147,27 +147,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
     }
-    
-    private lazy var guideButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        let image = UIImage(named: "information", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        return button
-    }()
-    
-    private lazy var sendSMSButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        let image = UIImage(systemName: "message",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        return button
-    }()
+
     
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
@@ -198,7 +178,30 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         return button
     }()
     
+    
+    private lazy var weatherBtn: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        let image = UIImage(named: "information", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
+    
+    private lazy var sendSMSButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .clear
+        let image = UIImage(systemName: "message",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
+    
     private lazy var followUserButton: UIButton = {
+        
         let button = UIButton()
         button.backgroundColor = .clear
         let image = UIImage(systemName: "location.fill",
@@ -231,14 +234,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     
     // MARK: 長按功能_ UILongPressGestureRecognizer
+    
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
-            
             map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
             map.addWaypointAtViewPoint(point)
-            //Allows save and reset
             self.hasWaypoints = true
         }
     }
@@ -256,12 +258,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }()
 
     private lazy var waveLottieView: AnimationView = {
-        let view = AnimationView(name: "95671-wave-animation")
+        let view = AnimationView(name: "circle")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0, width: 100 , height: 100)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         view.center = leftStackView.center
         view.contentMode = .scaleAspectFit
         view.play()
+        
         self.view.addSubview(view)
         self.view.bringSubviewToFront(leftStackView)
         return view
@@ -269,7 +272,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     private lazy var buttonStackView: UIStackView = {
  
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, guideButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, weatherBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -368,23 +371,50 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         routeVc.delegate = self
         
+        mapViewDelegate.route.polyline.title = "two"
         
+//        buttonPanelView.delegate = self
+//
+//        view.addSubview(buttonPanelView)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if gpxTrackingStatus == .tracking {
+            bikeLottieView.play()
+            waveLottieView.play()
+        }
+    }
+    
+    private func addConstraints() {
+      buttonPanelView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+      buttonPanelView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     private lazy var bikeLottieView: AnimationView = {
             
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 100),
+            view.heightAnchor.constraint(equalToConstant: 100),
+            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+        
+        ])
+//            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
             view.contentMode = .scaleAspectFit
             view.play()
-            self.view.addSubview(view)
+            
             return view
         }()
     
     
     func addSegment() {
-        let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
+        let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
         segmentControl.tintColor = UIColor.black
         segmentControl.backgroundColor = UIColor.lightGray
         segmentControl.selectedSegmentIndex = 0
@@ -435,7 +465,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         sendSMSButton.roundCorners(cornerRadius: otherRadius)
         
-        guideButton.roundCorners(cornerRadius: otherRadius)
+        weatherBtn.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
@@ -446,18 +476,19 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         pinButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
-            direction: .leftSkewed)
+            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),
+                     UIColor.hexStringToUIColor(hex: "#95BF22")],
+            direction: .rightSkewed )
         
         saveButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
                      UIColor.hexStringToUIColor(hex: "#1273DE")],
-            direction: .leftSkewed)
+            direction: .rightSkewed)
         
         resetButton.applyButtonGradient(
             colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
                      UIColor.hexStringToUIColor(hex: "#FCCB00")],
-            direction: .leftSkewed)
+            direction: .rightSkewed)
     }
     
     // MARK: - Action
@@ -495,7 +526,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
-        
+    
         self.view.addSubview(map)
         
     }
@@ -629,27 +660,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         self.followUser = !self.followUser
     }
     
-    //原本放在folder button 裡面
     
-    @objc func openOfflineMap() {
-        addRoute()
-    }
-    
-    
-    // MARK: 離線地圖
-    func addRoute() {
-        guard let points = Park.plist("Taipei1") as? [String] else { return }
-        
-        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
-        let coords = cgPoints.map { CLLocationCoordinate2D(
-            latitude: CLLocationDegrees($0.x),
-            longitude: CLLocationDegrees($0.y))
-        }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        print ("===========Pleaseprint")
-        map.addOverlay(myPolyline)
-        
-    }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -761,7 +772,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         buttonStackView.addArrangedSubview(followUserButton)
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
-        buttonStackView.addArrangedSubview(guideButton)
+        buttonStackView.addArrangedSubview(weatherBtn)
         
         leftStackView.addArrangedSubview(saveButton)
         leftStackView.addArrangedSubview(trackerButton)
@@ -783,9 +794,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
             
-            guideButton.widthAnchor.constraint(equalToConstant: 50),
+            weatherBtn.widthAnchor.constraint(equalToConstant: 50),
             
-            guideButton.heightAnchor.constraint(equalToConstant: 50),
+            weatherBtn.heightAnchor.constraint(equalToConstant: 50),
             
             trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
@@ -810,7 +821,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
-        guideButton.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
+        weatherBtn.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
     }
     
     func setUpLabels() {
@@ -837,9 +848,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     
 }
-
 // MARK: - StopWatchDelegate methods
-
 extension JourneyViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
@@ -881,13 +890,10 @@ extension JourneyViewController: CLLocationManagerDelegate {
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
     }
-    
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
-    
 }
-

@@ -34,7 +34,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         
         func backButton() {
-            let button = PreviousPageButton(frame: CGRect(x: 20, y: 150, width: 50, height: 50))
+            let button = PreviousPageButton(frame: CGRect(x: 20, y: 80, width: 40, height: 40))
+            button.backgroundColor = .lightGray
             button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
             view.addSubview(button)
         }

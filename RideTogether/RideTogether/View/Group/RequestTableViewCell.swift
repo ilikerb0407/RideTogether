@@ -47,7 +47,6 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
     
     @IBOutlet weak var hostName: UILabel!
     
-    
     @IBOutlet weak var gButton: UIButton!
     
     

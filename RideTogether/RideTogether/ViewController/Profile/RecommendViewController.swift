@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
+import SwiftUI
 
 
 // MARK: Recommend-Route
@@ -22,12 +23,12 @@ class RecommendViewController: BaseViewController {
             gView.applyGradient(
                 colors: [.white, .orange],
                 locations: [0.0, 3.0], direction: .leftSkewed)
-//            gView.alpha = 0.85
+            //            gView.alpha = 0.85
             // 不會把資料覆蓋住
         }
     }
     
-
+    
     var records = [Record]()
     
     private let header = MJRefreshNormalHeader()
@@ -38,12 +39,16 @@ class RecommendViewController: BaseViewController {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
+    
+//    @objc var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
+    
     lazy var storage = Storage.storage()
     
     lazy var storageRef = storage.reference()
     
     lazy var dataBase = Firestore.firestore()
-
+    
     
     private var tableView: UITableView! {
         
@@ -54,7 +59,7 @@ class RecommendViewController: BaseViewController {
     }
     func setUpTableView() {
         
-        setNavigationBar(title: "Share Wall")
+        setNavigationBar(title: "分享牆")
         
         tableView = UITableView()
         
@@ -107,31 +112,52 @@ class RecommendViewController: BaseViewController {
         print("sucessfully")
     }
     
-    func updateSavemaps(){
-        
-    }
-
+    
     
     func fetchRecords() {
         
         MapsManager.shared.fetchRecords { [weak self] result in
+            
             switch result {
+                
             case .success(let records):
-                self?.records = records
+                
+                var filtermaps = [Record]()
+                
+                for maps in records where self?.userInfo.blockList?.contains(maps.uid) == false {
+                    
+                    filtermaps.append(maps)
+                }
+                
+                self?.records = filtermaps
+                
                 self?.tableView.reloadData()
+                
             case .failure(let error): print ("fetchData Failure: \(error)")
             }
         }
     }
     
+    func savemapsToUser(uid: String, savemaps: String) {
+        
+        MapsManager.shared.saveMapToUser(uid: uid, savemaps: savemaps) { result in
+            switch result {
+            case .success:
+                print ("success")
+            case .failure(let error):
+                print ("\(error)")
+            }
+        }
+    }
+    
     @objc func headerRefresh() {
-       
-       fetchRecords()
-       
-       tableView.reloadData()
-       
-       self.tableView.mj_header?.endRefreshing()
-   }
+        
+        fetchRecords()
+        
+        tableView.reloadData()
+        
+        self.tableView.mj_header?.endRefreshing()
+    }
     
     override func viewDidLoad() {
         
@@ -145,8 +171,9 @@ class RecommendViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        tableView.addGestureRecognizer(longPress)
         
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -173,9 +200,45 @@ class RecommendViewController: BaseViewController {
         return view
     }()
     
+    
+    
 }
 
 extension RecommendViewController: UITableViewDelegate {
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+//                let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
+//                        self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+//
+//
+//                        waitlottie.isHidden = true
+//                    }
+                
+                let blockOption = UIAlertAction(title: "block it", style: .destructive) { [self] _ in
+                    
+                    UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
+
+                    UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
+                    
+                    self.fetchRecords()
+                    
+                    self.waitlottie.isHidden = true
+                }
+                
+                let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
+                    self.waitlottie.isHidden = true
+                }
+                
+                showAlertAction(title: "Block User's Maps ?", message: nil, actions: [cancelOption, blockOption])
+                
+            }
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
@@ -183,52 +246,27 @@ extension RecommendViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        waitlottie.isHidden = false
-        waitlottie.play()
-        
-        let alert = UIAlertController(title: "Choose", message: nil , preferredStyle: .actionSheet)
-        
-        let detailOption = UIAlertAction(title: "Detail", style: .default){ [self]_ in
-            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
-                navigationController?.pushViewController(journeyViewController, animated: true)
-                journeyViewController.record = records[indexPath.row]
-                
-            }
-        }
-        let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
-            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+            navigationController?.pushViewController(journeyViewController, animated: true)
+            journeyViewController.record = records[indexPath.row]
             
-            waitlottie.isHidden = true
-            
-            
-//            tableViewCell.chooselLike([indexPath.row])
-
         }
-        
-        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
-            self.waitlottie.isHidden = true
-        }
-        
-        showAlertAction(title: "Show Detail", message: nil, actions: [cancelOption, detailOption])
-        
-        
-   
-//        tableViewCell.likes.toggle()
-//        if tableViewCell.heart.isSelected == true {
-//            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-//        }
-//        if tableViewCell.likes == true {
-//            // 加到 使用者的 savemaps
-//            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-//        }else {
-//            // 將savemaps 從使用者中刪除
-//            self.updateSavemaps()
-//        }
+  
+        //        tableViewCell.likes.toggle()
+        //        if tableViewCell.heart.isSelected == true {
+        //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        //        }
+        //        if tableViewCell.likes == true {
+        //            // 加到 使用者的 savemaps
+        //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+        //        } else {
+        //            // 將savemaps 從使用者中刪除
+        //            self.updateSavemaps()
+        //        }
         
         
     }
-
+    
 }
 
 extension RecommendViewController: UITableViewDataSource {
@@ -243,9 +281,9 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
-        
         cell.heart.tag = indexPath.row
+        
+        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
         
         return cell
     }
@@ -253,6 +291,7 @@ extension RecommendViewController: UITableViewDataSource {
     @objc func savemaps(_ sender: UIButton) {
         
         self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
-    
+        self.savemapsToUser(uid: userId, savemaps: records[sender.tag].recordId)
+        
     }
 }

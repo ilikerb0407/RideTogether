@@ -15,19 +15,18 @@ protocol weatherProvider {
 class WeatherManager {
     
     var delegate: weatherProvider?
+
     
-    func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (ResponseBody) -> Void) {
         
         let firstDataRequest = URLRequest(url: URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=d11fc33a5a4003b6bac4bb9d50f25d15&units=metric")!)
-        
         
         URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
                 let firstData = try decoder.decode(ResponseBody.self, from: data)
-                
-                self.delegate?.provideWeather(weather: firstData)
+                completion(firstData)
                 print ("=================\(firstData)===================")
                
             } catch {
