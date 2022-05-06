@@ -76,61 +76,15 @@ class ProfileViewController: BaseViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.backgroundColor = .clear
-            tableView.isScrollEnabled = true
+            tableView.isScrollEnabled = false
         }
     }
     
-    var bView = UIView() {
-        didSet {
-            
-            self.view.addSubview(bView)
-            
-            bView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 3.0], direction: .leftSkewed)
-            
-//            bView.translatesAutoresizingMaskIntoConstraints = false
-//
-//            NSLayoutConstraint.activate([
-//
-//                bView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//                bView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//                bView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//                bView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//
-//            ])
-        
-        }
-    }
-//
-    func backgroundcolor() {
-        
-        bView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-        
-            bView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            bView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            bView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        
-        ])
 
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 15.0, *){
-            
-                   let appearance = UITabBarAppearance()
-                   appearance.configureWithOpaqueBackground()
-                   appearance.backgroundColor = UIColor.lightGray
-            
-                   self.tabBarItem.standardAppearance = appearance
-                   self.tabBarItem.scrollEdgeAppearance = appearance
-            
-    }
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
         setUpProfileView()
@@ -193,11 +147,11 @@ class ProfileViewController: BaseViewController {
 extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        20
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        65
+        60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

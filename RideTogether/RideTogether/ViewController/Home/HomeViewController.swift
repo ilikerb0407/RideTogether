@@ -49,7 +49,7 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
         
         tabBarController?.tabBar.isHidden = false
         
@@ -75,13 +75,6 @@ class HomeViewController: BaseViewController {
                 locations: [0.0, 1.0], direction: .leftSkewed)
             gView.alpha = 0.85
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-//        bikelottie.play()
     }
     
     func setUpTableView() {
@@ -158,7 +151,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        400
+        270
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -74,4 +74,13 @@ class GroupInfo: UITableViewCell {
         
     }
     
+    override func layoutSubviews() {
+        
+            super.layoutSubviews()
+            let margins = UIEdgeInsets(top: 27, left: 27, bottom: 20, right: 20)
+            contentView.frame = contentView.frame.inset(by: margins)
+            contentView.layer.cornerRadius = 15.0
+            contentView.layer.masksToBounds = true
+        }
+    
 }

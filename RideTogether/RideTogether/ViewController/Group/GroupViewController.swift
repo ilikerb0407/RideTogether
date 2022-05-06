@@ -28,8 +28,9 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .darkGray],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -388,6 +389,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         tableView.reloadData()
     }
     
+    
+    
     func setUpTableView() {
         
         tableView = UITableView()
@@ -425,11 +428,15 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         return fitledGroups
     }
+    
+  
 
 }
 // MARK: - SearchBar Delegate -
 
 extension GroupViewController: UITableViewDelegate {
+    
+   
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -441,14 +448,16 @@ extension GroupViewController: UITableViewDelegate {
             animations: {
                 cell.alpha = 1
             })
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+       220
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+       220
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

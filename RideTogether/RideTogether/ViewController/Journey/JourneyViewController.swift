@@ -30,10 +30,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     @IBOutlet weak var map: GPXMapView!
     
-    @IBOutlet weak var tempView: UIView!
-    
-    @IBOutlet weak var tempText: UILabel!
-    
     var directionsResponse =  MKDirections.Response()
     
     var route = MKRoute()
@@ -82,7 +78,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
             case .notStarted:
                 
-                trackerButton.setTitle("Start", for: .normal)
+                trackerButton.setTitle("開始", for: .normal)
                 
                 stopWatch.reset()
                 
@@ -100,7 +96,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
             case .tracking:
                 
-                trackerButton.setTitle("Pause", for: .normal)
+                trackerButton.setTitle("暫停", for: .normal)
                 
                 self.stopWatch.start()
                 
@@ -112,7 +108,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
             case .paused:
                 
-                self.trackerButton.setTitle("Resume", for: .normal)
+                self.trackerButton.setTitle("繼續", for: .normal)
                 
                 self.stopWatch.stop()
                 
@@ -152,7 +148,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
+        button.setTitle("開始", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 18)
         button.titleLabel?.textAlignment = .center
         return button
@@ -161,7 +157,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var resetButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Reset", for: .normal)
+        button.setTitle("重置", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
@@ -171,7 +167,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Save", for: .normal)
+        button.setTitle("儲存", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
@@ -181,9 +177,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     private lazy var weatherBtn: UIButton = {
         let button = UIButton()
+        button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
-        let image = UIImage(named: "information", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        let image = UIImage(systemName: "info.circle",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 24
         return button
@@ -191,6 +189,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     private lazy var sendSMSButton: UIButton = {
         let button = UIButton()
+        button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
         let image = UIImage(systemName: "message",
@@ -203,6 +202,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var followUserButton: UIButton = {
         
         let button = UIButton()
+        button.tintColor = .B5
         button.backgroundColor = .clear
         let image = UIImage(systemName: "location.fill",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
@@ -214,6 +214,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
       
         let button = UIButton()
         button.layer.cornerRadius = 24.0
+        button.tintColor = .B5
         button.backgroundColor = .clear
         let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
@@ -244,7 +245,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             self.hasWaypoints = true
         }
     }
-    
     var hasWaypoints: Bool = false
     
     private lazy var waitBar: AnimationView = {
@@ -293,7 +293,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         return view
     }()
     
-    
     // MARK: 之後再改字體
     
     var altitudeLabel: UILabel = {
@@ -301,7 +300,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 20)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.B5
         return label
     }()
     
@@ -310,7 +309,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         label.numberOfLines = 0
         label.textAlignment = .left
         label.font = UIFont.regular(size: 30)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.B5
         return label
     }()
     
@@ -318,7 +317,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let label = UILabel()
         label.textAlignment = .right
         label.font = UIFont.bold(size: 40)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.B5
         label.text = "00:00"
         return label
     }()
@@ -327,7 +326,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 26)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.textColor = UIColor.B5
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -336,7 +335,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
         distaneLabel.font = UIFont.regular(size: 18)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.textColor = UIColor.B5
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -415,8 +414,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
-        segmentControl.tintColor = UIColor.black
-        segmentControl.backgroundColor = UIColor.lightGray
+        segmentControl.tintColor = UIColor.B2
+        segmentControl.backgroundColor = UIColor.B5
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
         segmentControl.frame.size = CGSize(
@@ -434,25 +433,23 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         case 0 :
             map.mapType = .mutedStandard
             map.showsTraffic = true
-            speedLabel.textColor = .black
-            timeLabel.textColor = .black
-            altitudeLabel.textColor = .black
-            currentSegmentDistanceLabel.textColor = .black
-            totalTrackedDistanceLabel.textColor = .black
+            speedLabel.textColor = .B5
+            timeLabel.textColor = .B5
+            altitudeLabel.textColor = .B5
+            currentSegmentDistanceLabel.textColor = .B5
+            totalTrackedDistanceLabel.textColor = .B5
         case 1 :
             map.mapType = .hybridFlyover
             map.showsTraffic = true
-            speedLabel.textColor = .white
-            timeLabel.textColor = .white
-            altitudeLabel.textColor = .white
-            currentSegmentDistanceLabel.textColor = .white
-            totalTrackedDistanceLabel.textColor = .white
+            speedLabel.textColor = .B2
+            timeLabel.textColor = .B2
+            altitudeLabel.textColor = .B2
+            currentSegmentDistanceLabel.textColor = .B2
+            totalTrackedDistanceLabel.textColor = .B2
         default :
             map.mapType = .standard
         }
     }
-    
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -476,18 +473,18 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         pinButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),
-                     UIColor.hexStringToUIColor(hex: "#95BF22")],
+            colors: [UIColor.B2,
+                     UIColor.B5],
             direction: .rightSkewed )
         
         saveButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
-                     UIColor.hexStringToUIColor(hex: "#1273DE")],
+            colors: [UIColor.B2,
+                     UIColor.B5],
             direction: .rightSkewed)
         
         resetButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
-                     UIColor.hexStringToUIColor(hex: "#FCCB00")],
+            colors: [UIColor.B2,
+                     UIColor.B5],
             direction: .rightSkewed)
     }
     

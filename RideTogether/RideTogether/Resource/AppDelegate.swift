@@ -25,6 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print ("\(userId.uid) and \(userId.email)")
         }
         return true
+        
+        
+//        / Navigatiob Bar Item Color
+                let navigationBarAppearance = UINavigationBar.appearance()
+                navigationBarAppearance.tintColor = UIColor.B5
+                navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor :  UIColor.B5]
+
+//        // Tab Bar color
+//                UITabBar.appearance().tintColor = UIColor.B5
+        
     }
     
     // MARK: UISceneSession Lifecycle

@@ -21,10 +21,9 @@ class RecommendViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .orange],
-                locations: [0.0, 3.0], direction: .leftSkewed)
-            //            gView.alpha = 0.85
-            // 不會把資料覆蓋住
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     

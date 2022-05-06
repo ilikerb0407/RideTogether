@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Group-->
+        <!--群組-->
         <scene sceneID="Dcf-4B-uPt">
             <objects>
                 <navigationController id="jTf-tD-i06" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Group" image="rectangle.3.group.bubble.left" catalog="system" id="sIG-BA-I9Z"/>
+                    <tabBarItem key="tabBarItem" title="群組" image="rectangle.3.group.bubble.left" catalog="system" id="sIG-BA-I9Z"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GmV-8A-G56">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-691" y="41"/>
         </scene>
-        <!--Group View Controller-->
+        <!--群組-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="GroupViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qTy-7e-QJ1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rIF-tM-mUp"/>
+                    <navigationItem key="navigationItem" title="群組" id="rIF-tM-mUp"/>
                     <connections>
                         <outlet property="gView" destination="0qm-pb-RDi" id="kU0-MI-asL"/>
                         <segue destination="ogp-fI-TYw" kind="show" identifier="toGroupChat" id="cSV-F9-TOw"/>

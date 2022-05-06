@@ -59,11 +59,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             self.curerentUser = Auth.auth().currentUser
         }
         lottie()
-        
-
-        
     }
-    
     
     func lottie() {
       var waveLottieView: AnimationView = {
@@ -71,7 +67,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             let view = AnimationView(name: "49908-bike-ride")
             
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
+            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 350)
             view.contentMode = .scaleAspectFit
             view.play()
             self.view.addSubview(view)

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,30 +27,34 @@
                                     <constraint firstAttribute="height" constant="100" id="HfQ-Au-GdU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kms I rode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsR-8O-mwN">
-                                <rect key="frame" x="36.5" y="108" width="113.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累積公里" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsR-8O-mwN">
+                                <rect key="frame" x="48.5" y="108" width="101.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-ux-HVR">
-                        <rect key="frame" x="181" y="188" width="161" height="138"/>
+                        <rect key="frame" x="192" y="188" width="150" height="138"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csc-2H-12u">
-                                <rect key="frame" x="11" y="0.0" width="150" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="1Uv-Kw-Ycq"/>
                                     <constraint firstAttribute="height" constant="100" id="qLZ-lN-2mx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groups I joined" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGg-k8-fLU">
-                                <rect key="frame" x="0.0" y="108" width="161" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累積群組" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGg-k8-fLU">
+                                <rect key="frame" x="48.5" y="108" width="101.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -60,21 +65,22 @@
                             <constraint firstAttribute="height" constant="37" id="79r-eF-iks"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                        <color key="textColor" name="B5"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1gU-yU-dPb">
                         <rect key="frame" x="12" y="127" width="182" height="104"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVt-NF-F5E">
-                                <rect key="frame" x="0.0" y="0.0" width="88" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哈囉 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVt-NF-F5E">
+                                <rect key="frame" x="0.0" y="0.0" width="100.5" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="418-mA-VeT">
                                 <rect key="frame" x="0.0" y="56" width="182" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -100,4 +106,9 @@
             <point key="canvasLocation" x="166.66666666666669" y="195.20089285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="B5">
+            <color red="0.25490196078431371" green="0.32156862745098042" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -19,8 +19,9 @@ class RouteViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .darkGray],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -101,7 +102,7 @@ class RouteViewController: BaseViewController {
     func backButton() {
         
         let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
-        button.backgroundColor = .lightGray
+        button.backgroundColor = .B5
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
         
@@ -223,7 +224,7 @@ class RouteViewController: BaseViewController {
         
         let label = UILabel(frame: CGRect(x: 20, y: 58, width: 120, height: 35))
         
-        view.backgroundColor = .U2
+        view.backgroundColor = .B5
         
         view.layer.cornerRadius = 20
         
@@ -231,7 +232,7 @@ class RouteViewController: BaseViewController {
         
         label.text = themeLabel
         
-        label.textColor = .black
+        label.textColor = .B2
         
         label.textAlignment = .center
         
