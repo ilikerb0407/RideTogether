@@ -10,7 +10,7 @@ import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import Lottie
-import WebKit
+
 
 
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
@@ -76,13 +76,12 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         }()
     }
     
-    
     @IBAction func goToPrivacyPage(_ sender: UIButton) {
         
         guard let policyVC = UIStoryboard.policy.instantiateViewController(
             identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
         
-        policyVC.policyType = .privacy
+        policyVC.policy = .privacy
         
         present(policyVC, animated: true, completion: nil)
     }
@@ -92,7 +91,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         guard let policyVC = UIStoryboard.policy.instantiateViewController(
             identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
         
-        policyVC.policyType = .eula
+        policyVC.policy = .eula
         
         present(policyVC, animated: true, completion: nil)
     }

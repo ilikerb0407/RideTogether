@@ -54,6 +54,9 @@
                                                         </fragment>
                                                     </attributedString>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goToPrivacyPage:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qCx-so-ePm"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdG-BL-czA">
                                                 <rect key="frame" x="60" y="0.0" width="8.5" height="25"/>
@@ -74,6 +77,9 @@
                                                         </fragment>
                                                     </attributedString>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goToEulaPage:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vm6-Iz-902"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
