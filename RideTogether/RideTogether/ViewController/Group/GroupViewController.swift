@@ -175,8 +175,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
-        button.setTitle("建", for: .highlighted)
-        button.tintColor = .B5
+        button.setTitleColor(.B5, for: .normal)
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -409,7 +408,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
@@ -453,12 +452,9 @@ extension GroupViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       220
+       200
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-       220
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -531,7 +527,6 @@ extension GroupViewController: UITableViewDataSource {
         
       cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
 
-        
         return cell
     }
 }

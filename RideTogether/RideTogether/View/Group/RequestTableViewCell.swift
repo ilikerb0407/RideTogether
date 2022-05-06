@@ -208,7 +208,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         note.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
-        note.font = UIFont.regular(size: 14)
+        note.font = UIFont.regular(size: 20)
         
         note.clipsToBounds = true
         

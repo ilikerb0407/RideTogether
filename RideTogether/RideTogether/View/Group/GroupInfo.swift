@@ -42,7 +42,6 @@ class GroupInfo: UITableViewCell {
         let count = group.userIds.count
         limitPeople.text = "\(count)/\(limit)"
         
-        
         let userInfo = UserManager.shared.userInfo
         
         if group.hostId == userInfo.uid {
@@ -77,7 +76,7 @@ class GroupInfo: UITableViewCell {
     override func layoutSubviews() {
         
             super.layoutSubviews()
-            let margins = UIEdgeInsets(top: 27, left: 27, bottom: 20, right: 20)
+            let margins = UIEdgeInsets(top: 20, left: 27, bottom: 5, right: 27)
             contentView.frame = contentView.frame.inset(by: margins)
             contentView.layer.cornerRadius = 15.0
             contentView.layer.masksToBounds = true

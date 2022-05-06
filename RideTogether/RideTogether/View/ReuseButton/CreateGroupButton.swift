@@ -20,9 +20,9 @@ class CreatGroupButton: UIButton {
         let height = UIScreen.height
         self.frame = CGRect(x: width * 0.8, y: height * 0.8, width: 70, height: 70)
         
-        self.backgroundColor = .B5
+        self.backgroundColor = .B2
         self.setTitle("約", for: .normal)
-        self.tintColor = .B2
+        self.tintColor = .B5
         
 //        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
 //        

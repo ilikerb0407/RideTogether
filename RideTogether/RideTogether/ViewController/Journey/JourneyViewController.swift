@@ -149,6 +149,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B5
+        button.tintColor = .B2
         button.setTitle("開始", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 18)
         button.titleLabel?.textAlignment = .center
@@ -158,6 +160,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var resetButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B5
+        button.tintColor = .B2
         button.setTitle("重置", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
@@ -168,6 +172,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B5
+        button.tintColor = .B2
         button.setTitle("儲存", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
@@ -180,7 +186,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let button = UIButton()
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
+        button.backgroundColor = .B2
         let image = UIImage(systemName: "info.circle",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -192,7 +198,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let button = UIButton()
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
+        button.backgroundColor = .B2
         let image = UIImage(systemName: "message",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -204,7 +210,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let button = UIButton()
         button.tintColor = .B5
-        button.backgroundColor = .clear
+        button.backgroundColor = .B2
         let image = UIImage(systemName: "location.fill",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -216,7 +222,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let button = UIButton()
         button.layer.cornerRadius = 24.0
         button.tintColor = .B5
-        button.backgroundColor = .clear
+        button.backgroundColor = .B2
         let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         let mappinHighlighted = UIImage(systemName: "mappin.and.ellipse",
@@ -393,7 +399,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     
     private lazy var bikeLottieView: AnimationView = {
-            
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
         self.view.addSubview(view)
@@ -403,31 +408,23 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             view.heightAnchor.constraint(equalToConstant: 100),
             view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
             view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
-        
         ])
-//            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
             view.contentMode = .scaleAspectFit
             view.play()
             
             return view
         }()
     
-    
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
-        segmentControl.tintColor = UIColor.B2
+        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B5], for: .normal)
         segmentControl.backgroundColor = UIColor.B5
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
-        segmentControl.frame.size = CGSize(
-            width: 150, height: 30)
-        segmentControl.center = CGPoint(
-            x: 80,
-            y: 65)
+        segmentControl.frame.size = CGSize(width: 150, height: 30)
+        segmentControl.center = CGPoint(x: 80, y: 65)
         self.view.addSubview(segmentControl)
     }
-    
-    
     // 切換選項時執行動作的方法
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -472,21 +469,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         resetButton.roundCorners(cornerRadius: otherRadius)
         
         pinButton.roundCorners(cornerRadius: otherRadius)
-        
-        trackerButton.applyButtonGradient(
-            colors: [UIColor.B2,
-                     UIColor.B5],
-            direction: .rightSkewed )
-        
-        saveButton.applyButtonGradient(
-            colors: [UIColor.B2,
-                     UIColor.B5],
-            direction: .rightSkewed)
-        
-        resetButton.applyButtonGradient(
-            colors: [UIColor.B2,
-                     UIColor.B5],
-            direction: .rightSkewed)
     }
     
     // MARK: - Action
@@ -740,7 +722,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             map.removeOverlay(overlay)
             
             map.addOverlay(overlay)
-            
         }
     }
     
