@@ -62,6 +62,7 @@ class SaveMapsViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
+        
         tabBarController?.tabBar.isHidden = false
         
     }
@@ -90,12 +91,10 @@ class SaveMapsViewController: BaseViewController {
     
     func setUptableView() {
         
-        setNavigationBar(title: "Personal Collection")
+        setNavigationBar(title: "收藏路線")
         
         tableView = UITableView()
         // 借用同一個tableViewcell
-        
-       
         
         tableView.registerCellWithNib(identifier: SaveMaps.identifier, bundle: nil)
         

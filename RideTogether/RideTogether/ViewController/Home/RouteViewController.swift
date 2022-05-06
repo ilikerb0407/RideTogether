@@ -205,7 +205,6 @@ class RouteViewController: BaseViewController {
         
         setUpThemeTag()
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,7 +214,6 @@ class RouteViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = true
         
         tabBarController?.tabBar.isHidden = false
-        
         
     }
     

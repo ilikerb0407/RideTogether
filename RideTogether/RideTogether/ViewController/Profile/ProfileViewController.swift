@@ -83,12 +83,11 @@ class ProfileViewController: BaseViewController {
     var bView = UIView() {
         didSet {
             
-//            self.view.addSubview(bView)
+            self.view.addSubview(bView)
             
             bView.applyGradient(
-                colors: [.white, .C1],
+                colors: [.white, .B3],
                 locations: [0.0, 3.0], direction: .leftSkewed)
-            
             
 //            bView.translatesAutoresizingMaskIntoConstraints = false
 //
@@ -106,25 +105,32 @@ class ProfileViewController: BaseViewController {
 //
     func backgroundcolor() {
         
-        gView.translatesAutoresizingMaskIntoConstraints = false
+        bView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
         
-            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            gView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            bView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            bView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         
         ])
-
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundcolor()
-        
+        if #available(iOS 15.0, *){
+            
+                   let appearance = UITabBarAppearance()
+                   appearance.configureWithOpaqueBackground()
+                   appearance.backgroundColor = UIColor.lightGray
+            
+                   self.tabBarItem.standardAppearance = appearance
+                   self.tabBarItem.scrollEdgeAppearance = appearance
+            
+    }
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
         setUpProfileView()
@@ -142,9 +148,6 @@ class ProfileViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    override func viewDidLayoutSubviews() {
-        
-    }
     
     func updateUserInfo(name: String) {
         

@@ -64,6 +64,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         
         if isHideNavigationBar {
@@ -79,6 +80,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             
             IQKeyboardManager.shared.enable = true
         }
+        
     }
     
     @objc func popToPreviousPage(_ sender: UIButton) {
@@ -135,9 +137,12 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
-        let image = UIImage(named: "backbtn")
+        let image = UIImage(systemName: "chevron.left",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light ))
         // 改圖片
-        leftButton.backgroundColor = .lightGray
+        leftButton.backgroundColor = .B5
+        
+        leftButton.tintColor = .B2
         
         leftButton.setImage(image, for: .normal)
         

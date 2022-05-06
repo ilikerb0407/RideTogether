@@ -40,7 +40,8 @@ class TracksViewController: BaseViewController {
     }
     
       func backButton() {
-            let button = PreviousPageButton(frame: CGRect(x: 30, y: 50, width: 40, height: 40))
+            let button = PreviousPageButton()
+          button.tintColor = .lightGray
             view.addSubview(button)
         }
     
@@ -48,7 +49,7 @@ class TracksViewController: BaseViewController {
         
         didSet {
             gView.applyGradient(
-                colors: [.white, .C1],
+                colors: [.white, .B3],
                 locations: [0.0, 1.0], direction: .leftSkewed)
             gView.alpha = 0.85
        
@@ -58,7 +59,7 @@ class TracksViewController: BaseViewController {
     
     func setUpTableView() {
         
-        setNavigationBar(title: "Personal Records")
+        setNavigationBar(title: "騎乘紀錄")
         
         tableView = UITableView()
         
@@ -117,6 +118,8 @@ class TracksViewController: BaseViewController {
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
+        backButton()
+        
         
     }
     
@@ -126,6 +129,7 @@ class TracksViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
+        
         tabBarController?.tabBar.isHidden = false
         
         

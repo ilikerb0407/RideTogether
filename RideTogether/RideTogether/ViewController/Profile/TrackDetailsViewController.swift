@@ -31,7 +31,17 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             chartView.delegate = self
         }
     }
-
+    
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet{
+            gView.applyGradient(
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.5
+        }
+    }
+    
     
     private let mapViewDelegate = MapViewDelegate()
     
@@ -134,7 +144,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     
     func backToJourneyButton() {
-        let button = NextPageButton(frame: CGRect(x: 270 , y: 50, width: 80, height: 80))
+        let button = NextPageButton(frame: CGRect(x: UIScreen.width - 60 , y: 25, width: 50, height: 50))
         button.addTarget(self, action: #selector(push), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -151,7 +161,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     func backButton() {
         let button = PreviousPageButton(frame: CGRect(x: 15, y: 25, width: 40, height: 40))
-        button.backgroundColor = .B6
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -265,7 +274,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     func updatePolylineColor() {
         
         for overlay in map.overlays where overlay is MKPolyline {
-            
+        
             map.removeOverlay(overlay)
             
             map.addOverlay(overlay)
@@ -276,6 +285,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         super.viewDidLoad()
         
         setUp()
+    
         
     }
     

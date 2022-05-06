@@ -14,18 +14,20 @@ class PreviousPageButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .B5
+        self.tintColor = .B2
 //        self.applyButtonGradient(
 //            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
 //            direction: .leftSkewed)
         
-        let image = UIImage(named: "backbtn", in: nil, with: UIImage.SymbolConfiguration(pointSize: 40, weight: .medium))
+        let image = UIImage(systemName: "chevron.left",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .light))
 
         
         
         self.setImage(image, for: .normal)
         
-        self.tintColor = .B1
+      
     }
     
     required init?(coder aDecoder: NSCoder) {

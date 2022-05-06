@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,16 +29,16 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推薦路線" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMU-Ac-r95">
-                        <rect key="frame" x="50" y="50" width="70" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="50" y="154" width="82" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" name="B2"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="bMU-Ac-r95" secondAttribute="bottom" constant="40" id="FVm-bS-rJA"/>
                     <constraint firstItem="bMU-Ac-r95" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="XEG-yd-QYv"/>
                     <constraint firstItem="5rA-vh-8lN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="ZUu-gs-mqe"/>
-                    <constraint firstItem="bMU-Ac-r95" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="mGI-Mf-b9m"/>
                     <constraint firstItem="5rA-vh-8lN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nLM-Ai-Rl0"/>
                     <constraint firstAttribute="trailing" secondItem="5rA-vh-8lN" secondAttribute="trailing" constant="20" id="s3W-LS-WQ7"/>
                     <constraint firstAttribute="bottom" secondItem="5rA-vh-8lN" secondAttribute="bottom" constant="20" id="zvh-Bt-hec"/>
@@ -51,4 +52,9 @@
             <point key="canvasLocation" x="155.07246376811597" y="156.69642857142856"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="B2">
+            <color red="0.98431372549019602" green="0.99607843137254903" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
