@@ -12,6 +12,7 @@ import FirebaseAuth
 import Lottie
 
 
+
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
     
 
@@ -59,11 +60,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             self.curerentUser = Auth.auth().currentUser
         }
         lottie()
-        
-
-        
     }
-    
     
     func lottie() {
       var waveLottieView: AnimationView = {
@@ -71,13 +68,36 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             let view = AnimationView(name: "49908-bike-ride")
             
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
+            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 350)
             view.contentMode = .scaleAspectFit
             view.play()
             self.view.addSubview(view)
             return view
         }()
     }
+    
+    @IBAction func goToPrivacyPage(_ sender: UIButton) {
+        
+        guard let policyVC = UIStoryboard.policy.instantiateViewController(
+            identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
+        
+        policyVC.policy = .privacy
+        
+        present(policyVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToEulaPage(_ sender: Any) {
+        
+        guard let policyVC = UIStoryboard.policy.instantiateViewController(
+            identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
+        
+        policyVC.policy = .eula
+        
+        present(policyVC, animated: true, completion: nil)
+    }
+    
+    
+//      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
 
     
                                                     
@@ -184,7 +204,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             
             emailbtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
-            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 50)
+            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30)
             
         ])
         

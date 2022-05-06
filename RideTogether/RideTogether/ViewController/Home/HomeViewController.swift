@@ -46,17 +46,12 @@ class HomeViewController: BaseViewController {
 //            return view
 //        }()
     
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.isNavigationBarHidden = false
         
-        navigationController?.isNavigationBarHidden = true
+        tabBarController?.tabBar.isHidden = false
         
         NotificationCenter.default.addObserver(
             self,
@@ -65,13 +60,9 @@ class HomeViewController: BaseViewController {
             object: nil
         )
         
-        
         setUpTableView()
         
         fetchTrailData()
-        
-        
-        
         
 //        bikelottie.play()
         
@@ -80,16 +71,10 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .darkGray],
+                colors: [.white, .B3],
                 locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-//        bikelottie.play()
     }
     
     func setUpTableView() {
@@ -103,7 +88,7 @@ class HomeViewController: BaseViewController {
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
-
+        
     }
     
     @objc func updateUserInfo(notification: Notification) {
@@ -166,7 +151,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        400
+        270
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

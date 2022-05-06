@@ -17,8 +17,9 @@ class ChatRoomViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .B1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -148,6 +149,7 @@ class ChatRoomViewController: BaseViewController {
             sendJoinRequest()
             
             headerView?.gButton.setTitle("已送出申請", for: .normal)
+            
             
             headerView?.gButton.isEnabled = false
             

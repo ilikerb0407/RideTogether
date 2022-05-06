@@ -76,54 +76,14 @@ class ProfileViewController: BaseViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.backgroundColor = .clear
-            tableView.isScrollEnabled = true
+            tableView.isScrollEnabled = false
         }
     }
     
-    var bView = UIView() {
-        didSet {
-            
-//            self.view.addSubview(bView)
-            
-            bView.applyGradient(
-                colors: [.white, .C1],
-                locations: [0.0, 3.0], direction: .leftSkewed)
-            
-            
-//            bView.translatesAutoresizingMaskIntoConstraints = false
-//
-//            NSLayoutConstraint.activate([
-//
-//                bView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//                bView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//                bView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//                bView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//
-//            ])
-        
-        }
-    }
-//
-    func backgroundcolor() {
-        
-        gView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-        
-            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            gView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        
-        ])
 
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        backgroundcolor()
         
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
@@ -142,9 +102,6 @@ class ProfileViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    override func viewDidLayoutSubviews() {
-        
-    }
     
     func updateUserInfo(name: String) {
         
@@ -190,11 +147,11 @@ class ProfileViewController: BaseViewController {
 extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        20
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        65
+        60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

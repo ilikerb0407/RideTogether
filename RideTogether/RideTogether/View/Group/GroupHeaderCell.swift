@@ -8,11 +8,8 @@
 import UIKit
 import MASegmentedControl
 
-
 class GroupHeaderCell: UITableViewCell {
-    
-    
-    
+        
     @IBOutlet weak var resquestsBell: UIButton! {
         didSet {
             resquestsBell.backgroundColor = .darkGray
@@ -22,6 +19,7 @@ class GroupHeaderCell: UITableViewCell {
     @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
             segment.setTitle("活動中", forSegmentAt: 0)
+            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 as Any], for: .normal)
             segment.setTitle("個人活動", forSegmentAt: 1)
             
         }
@@ -52,7 +50,6 @@ class GroupHeaderCell: UITableViewCell {
         searchBar.backgroundColor = .clear
         
         searchBar.searchTextField.backgroundColor = .clear
-        
         
         searchBar.layer.cornerRadius = 15
         

@@ -148,10 +148,13 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             gButton.setTitle("編輯資訊", for: .normal)
             
         case .notInGroup:
+            
             gButton.setTitle("送出申請", for: .normal)
+            
             guard counts != upperlimit else {
                 
                 gButton.setTitle("人滿～～為患", for: .normal)
+                
                 gButton.isEnabled = false
                 
                 return
@@ -205,7 +208,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         note.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
-        note.font = UIFont.regular(size: 14)
+        note.font = UIFont.regular(size: 20)
         
         note.clipsToBounds = true
         

@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
+        <!--探索-->
         <scene sceneID="f0Z-Wu-YkW">
             <objects>
                 <navigationController id="9ko-J6-rRR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="magnifyingglass.circle" catalog="system" id="FL8-VV-mhN"/>
+                    <tabBarItem key="tabBarItem" title="探索" image="magnifyingglass.circle" catalog="system" id="FL8-VV-mhN"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U0r-ac-xeW">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -26,18 +26,31 @@
             </objects>
             <point key="canvasLocation" x="-690" y="53"/>
         </scene>
-        <!--Home View Controller-->
+        <!--探索路線-->
         <scene sceneID="Wwp-t3-4h5">
             <objects>
                 <viewController id="fkg-3r-rE9" customClass="HomeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lJc-D8-mmk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLN-Ba-dr0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5WQ-FE-XOT"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XLN-Ba-dr0" firstAttribute="top" secondItem="5WQ-FE-XOT" secondAttribute="top" constant="-88" id="Hky-cA-pUk"/>
+                            <constraint firstItem="XLN-Ba-dr0" firstAttribute="leading" secondItem="5WQ-FE-XOT" secondAttribute="leading" id="SMw-PX-LSK"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="trailing" secondItem="XLN-Ba-dr0" secondAttribute="trailing" id="j1g-6R-xep"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="bottom" secondItem="XLN-Ba-dr0" secondAttribute="bottom" id="qb8-Xh-kes"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oG9-91-4Jy"/>
+                    <navigationItem key="navigationItem" title="探索路線" id="oG9-91-4Jy"/>
                     <connections>
+                        <outlet property="gView" destination="XLN-Ba-dr0" id="Qf2-9A-wrL"/>
                         <segue destination="nnY-XE-OqT" kind="show" identifier="routeList" id="W6M-cr-gbH"/>
                     </connections>
                 </viewController>

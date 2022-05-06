@@ -22,5 +22,6 @@ target 'RideTogether' do
   pod 'RSKPlaceholderTextView'
   pod 'Firebase/Crashlytics'
   pod 'lottie-ios'
+  pod 'JGProgressHUD'
 
 end

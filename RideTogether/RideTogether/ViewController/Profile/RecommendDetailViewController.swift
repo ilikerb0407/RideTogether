@@ -38,7 +38,7 @@ class RecommendDetailViewController: UIViewController {
         
         self.view.addSubview(map2)
         
-        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
         
         backButton()
         

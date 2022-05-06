@@ -117,6 +117,8 @@ class GPXSession {
     }
     
     func addWaypoint(_ waypoint: GPXWaypoint) {
+        
         self.waypoints.append(waypoint)
+        
     }
 }

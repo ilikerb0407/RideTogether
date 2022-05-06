@@ -48,10 +48,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             polyLineRenderer.alpha = 0.8
             
-            polyLineRenderer.strokeColor = UIColor.orange
+            polyLineRenderer.strokeColor = UIColor.B5
             
             if overlay.title == "one"{
-                polyLineRenderer.strokeColor = UIColor.blue
+                polyLineRenderer.strokeColor = UIColor.B6
             } else
             if overlay.title == "two" {
               polyLineRenderer.strokeColor = UIColor.orange
@@ -136,18 +136,24 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
         //
-        let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        //        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
-        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
+        let rightbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightbtn.clipsToBounds = true
+        rightbtn.tintColor = .B5
+        let rightImg = UIImage(systemName: "info.circle",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
+        rightbtn.setImage(rightImg, for: .normal)
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        deleteButton.tag = kDeleteWaypointAccesoryButtonTag
-        annotationView.rightCalloutAccessoryView = deleteButton
+        rightbtn.tag = kDeleteWaypointAccesoryButtonTag
+        annotationView.rightCalloutAccessoryView = rightbtn
         //        annotationView.pinTintColor = .red
-        let editButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        editButton.setImage(UIImage(named: "edit"), for: UIControl.State())
+        let leftbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        leftbtn.tintColor = .B5
+        let leftImg = UIImage(systemName: "pencil.circle",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
+        leftbtn.setImage(leftImg, for: .normal)
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        editButton.tag = kEditWaypointAccesoryButtonTag
-        annotationView.leftCalloutAccessoryView = editButton
+        leftbtn.tag = kEditWaypointAccesoryButtonTag
+        annotationView.leftCalloutAccessoryView = leftbtn
         
         return annotationView
     }
@@ -236,6 +242,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 alertController.addTextField { (textField) in
                     textField.text = waypoint.title
+                    textField.tintColor = .B5
                     textField.clearButtonMode = .always
                 }
                 let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
