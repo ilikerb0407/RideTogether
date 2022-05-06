@@ -10,6 +10,7 @@ import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import Lottie
+import WebKit
 
 
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
@@ -74,6 +75,30 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             return view
         }()
     }
+    
+    
+    @IBAction func goToPrivacyPage(_ sender: UIButton) {
+        
+        guard let policyVC = UIStoryboard.policy.instantiateViewController(
+            identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
+        
+        policyVC.policyType = .privacy
+        
+        present(policyVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToEulaPage(_ sender: Any) {
+        
+        guard let policyVC = UIStoryboard.policy.instantiateViewController(
+            identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
+        
+        policyVC.policyType = .eula
+        
+        present(policyVC, animated: true, completion: nil)
+    }
+    
+    
+//      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
 
     
                                                     
@@ -180,7 +205,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             
             emailbtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
-            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 50)
+            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30)
             
         ])
         

@@ -12,7 +12,6 @@ import MASegmentedControl
 class GroupHeaderCell: UITableViewCell {
     
     
-    
     @IBOutlet weak var resquestsBell: UIButton! {
         didSet {
             resquestsBell.backgroundColor = .darkGray
@@ -52,7 +51,6 @@ class GroupHeaderCell: UITableViewCell {
         searchBar.backgroundColor = .clear
         
         searchBar.searchTextField.backgroundColor = .clear
-        
         
         searchBar.layer.cornerRadius = 15
         

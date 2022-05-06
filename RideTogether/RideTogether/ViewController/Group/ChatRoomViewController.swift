@@ -150,6 +150,7 @@ class ChatRoomViewController: BaseViewController {
             
             headerView?.gButton.setTitle("已送出申請", for: .normal)
             
+            
             headerView?.gButton.isEnabled = false
             
         case .isInGroup:

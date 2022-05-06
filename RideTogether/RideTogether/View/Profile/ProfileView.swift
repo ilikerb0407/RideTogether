@@ -28,6 +28,8 @@ class ProfileView: UIView {
         
         userPhoto.loadImage(userInfo.pictureRef)
         
+        userPhoto.cornerRadius = 25
+        
     }
     
     var isEditting: Bool = false {
