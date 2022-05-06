@@ -79,7 +79,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride" translatesAutoresizingMaskIntoConstraints="NO" id="ANH-ae-BB8">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="49908-bike-ride" translatesAutoresizingMaskIntoConstraints="NO" id="ANH-ae-BB8">
                                         <rect key="frame" x="90" y="55" width="234" height="175"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="175" id="aAh-Kw-Jgt"/>

@@ -97,13 +97,28 @@
                     <view key="view" contentMode="scaleToFill" id="TQH-2T-Osn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Zk-2ZQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hUj-Ov-mOP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EGG-Zk-2ZQ" firstAttribute="top" secondItem="hUj-Ov-mOP" secondAttribute="top" constant="-44" id="AXN-jY-ZgW"/>
+                            <constraint firstItem="hUj-Ov-mOP" firstAttribute="trailing" secondItem="EGG-Zk-2ZQ" secondAttribute="trailing" id="IaG-kE-iSx"/>
+                            <constraint firstItem="EGG-Zk-2ZQ" firstAttribute="leading" secondItem="hUj-Ov-mOP" secondAttribute="leading" id="WD0-ov-p2N"/>
+                            <constraint firstItem="hUj-Ov-mOP" firstAttribute="bottom" secondItem="EGG-Zk-2ZQ" secondAttribute="bottom" id="XHy-sf-C9q"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gView" destination="EGG-Zk-2ZQ" id="GFZ-Tn-KA9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ui7-Ol-R9W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="69"/>
+            <point key="canvasLocation" x="1876.8115942028987" y="68.973214285714278"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="tR9-si-EUl">

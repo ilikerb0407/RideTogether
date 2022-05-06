@@ -10,7 +10,7 @@ import Kingfisher
 
 extension UIImageView {
 
-    func loadImage(_ urlString: String?, placeHolder: UIImage? = UIImage(systemName: "person.crop.fill",withConfiguration: UIImage.SymbolConfiguration(pointSize: 50, weight: .light))) {
+    func loadImage(_ urlString: String?, placeHolder: UIImage? = UIImage(named: "bikeinlaunch")) {
 
         guard urlString != nil else { return }
         

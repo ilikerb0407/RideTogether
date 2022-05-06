@@ -22,6 +22,16 @@ class GroupMemberViewController: BaseViewController {
             tableView.dataSource = self
         }
     }
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet{
+            gView.applyGradient(
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +56,7 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let num =  groupInfo?.userIds.count else { fatalError() }
+        
         return num
     }
     
