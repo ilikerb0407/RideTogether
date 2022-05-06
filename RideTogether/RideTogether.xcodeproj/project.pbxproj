@@ -35,6 +35,7 @@
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
+		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
 		237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279A2817ED2C004F039F /* PickPhotoButton.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
 		237A27A328182FE4004F039F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A228182FE4004F039F /* ProfileView.swift */; };
@@ -178,6 +179,7 @@
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
+		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		237A279A2817ED2C004F039F /* PickPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPhotoButton.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		237A27A228182FE4004F039F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B7F8280561D3000EDA70 /* MJRefresher.swift */,
+				2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
+				2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,

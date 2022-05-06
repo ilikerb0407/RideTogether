@@ -13,6 +13,7 @@ import Firebase
 import Lottie
 import MessageUI
 import SwiftUI
+import JGProgressHUD
 
 class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
@@ -530,6 +531,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     @objc func sendSMS() {
         
+        LKProgressHUD.show()
+        
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
 
@@ -540,8 +543,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         // Present the view controller modally.
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
-          
+            LKProgressHUD.dismiss()
         }
+        
        
     }
     

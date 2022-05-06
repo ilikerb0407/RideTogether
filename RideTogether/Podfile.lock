@@ -340,6 +340,7 @@ PODS:
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.1)
   - IQKeyboardManagerSwift (6.5.9)
+  - JGProgressHUD (2.2)
   - Kingfisher (7.2.0)
   - leveldb-library (1.22.1)
   - lottie-ios (3.3.0)
@@ -366,6 +367,7 @@ DEPENDENCIES:
   - FirebaseStorage
   - FirebaseStorageSwift
   - IQKeyboardManagerSwift
+  - JGProgressHUD
   - Kingfisher
   - lottie-ios
   - MASegmentedControl
@@ -397,6 +399,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
+    - JGProgressHUD
     - Kingfisher
     - leveldb-library
     - lottie-ios
@@ -431,6 +434,7 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
@@ -442,6 +446,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 3baf2ffe2ab335ba1a1b967e457a3c71473b1a20
+PODFILE CHECKSUM: 731c487f09818a91e3d281c377df96b593d0ea5e
 
 COCOAPODS: 1.11.2
