@@ -38,7 +38,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cjk-8N-4d4">
-                                        <rect key="frame" x="49" y="12.5" width="216.5" height="25"/>
+                                        <rect key="frame" x="47" y="12.5" width="220.5" height="25"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crP-s6-pap">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="25"/>
@@ -65,13 +65,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxQ-Ro-nHz">
-                                                <rect key="frame" x="73.5" y="0.0" width="143" height="25"/>
+                                                <rect key="frame" x="73.5" y="0.0" width="147" height="25"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="應用程式終端使用者授權協議">
                                                             <attributes>
-                                                                <font key="NSFont" size="11" name=".PingFangTC-Regular"/>
+                                                                <font key="NSFont" metaFont="smallSystem"/>
                                                                 <integer key="NSUnderline" value="1"/>
                                                             </attributes>
                                                         </fragment>
