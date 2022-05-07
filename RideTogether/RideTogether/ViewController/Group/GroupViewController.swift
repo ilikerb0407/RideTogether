@@ -176,6 +176,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         let button = CreatGroupButton()
         button.setTitleColor(.B5, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -190,7 +191,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                 presentVc.detents = [ .large(), .medium() ]
                 rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
-        }
+            }
         }
     }
     // MARK: 確定時間有沒有過期

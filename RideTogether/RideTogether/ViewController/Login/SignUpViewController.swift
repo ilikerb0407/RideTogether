@@ -76,7 +76,7 @@ class SignUpViewController: BaseViewController {
                                        
                                         semaphore.signal()
                                         DispatchQueue.main.async {
-                                            let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success" , preferredStyle: .alert)
+                                            let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success", preferredStyle: .alert)
                                             
                                             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                                             alertController.addAction(defaultAction)

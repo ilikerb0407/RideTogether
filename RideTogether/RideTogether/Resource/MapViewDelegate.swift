@@ -51,23 +51,21 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             polyLineRenderer.strokeColor = UIColor.B5
             
             if overlay.title == "one"{
-                polyLineRenderer.strokeColor = UIColor.B6
+                polyLineRenderer.strokeColor = UIColor.orange
             } else
             if overlay.title == "two" {
-              polyLineRenderer.strokeColor = UIColor.orange
+              polyLineRenderer.strokeColor = UIColor.B6
             }
             
             polyLineRenderer.lineWidth = 3
-            
             
             return polyLineRenderer
         }
         
         return MKOverlayRenderer()
         
-        
     }
-//    
+
     var destination: CLPlacemark?
     
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

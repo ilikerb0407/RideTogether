@@ -83,6 +83,52 @@ extension Double {
         
         return timeString
     }
+    
+    func sunrise () -> String {
+        
+        let seconds = Int(self)
+        
+        let hour = (seconds / 3600) - 458848
+        
+        let minute = (seconds % 3600) / 60
+        
+        let second = (seconds % 3600) % 60
+        
+        var timeString = ""
+        
+        timeString += hour.description
+        
+        timeString += ":"
+        
+        timeString += minute.description
+        
+        
+        return timeString
+    }
+    
+    func sunset () -> String {
+        
+        let seconds = Int(self)
+        
+        let hour = (seconds / 3600) - 458860
+        
+        let minute = (seconds % 3600) / 60
+        
+        let second = (seconds % 3600) % 60
+        
+        var timeString = ""
+        
+        timeString += hour.description
+        
+        timeString += ":"
+        
+        timeString += minute.description
+        
+        return timeString
+    }
+    
+    
+    
     func roundDouble() -> String {
         return String(format: "%.0f", self)
     }

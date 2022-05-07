@@ -181,12 +181,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         return button
     }()
     
-    
     private lazy var weatherBtn: UIButton = {
         let button = UIButton()
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .B2
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let image = UIImage(systemName: "info.circle",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -198,7 +197,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let button = UIButton()
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .B2
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let image = UIImage(systemName: "message",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -210,7 +209,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let button = UIButton()
         button.tintColor = .B5
-        button.backgroundColor = .B2
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let image = UIImage(systemName: "location.fill",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -218,11 +217,10 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }()
     
     private lazy var pinButton: UIButton = {
-      
         let button = UIButton()
         button.layer.cornerRadius = 24.0
         button.tintColor = .B5
-        button.backgroundColor = .B2
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         let mappinHighlighted = UIImage(systemName: "mappin.and.ellipse",
@@ -306,7 +304,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.regular(size: 20)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = UIColor.B5
         return label
     }()
@@ -315,7 +313,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.regular(size: 30)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = UIColor.B5
         return label
     }()
@@ -323,7 +321,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont.bold(size: 40)
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.B5
         label.text = "00:00"
         return label
@@ -332,7 +330,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var totalTrackedDistanceLabel: DistanceLabel = {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
-        distaneLabel.font = UIFont.regular(size: 26)
+        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         distaneLabel.textColor = UIColor.B5
         distaneLabel.distance = 0.00
         return distaneLabel
@@ -341,7 +339,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var currentSegmentDistanceLabel: DistanceLabel = {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
-        distaneLabel.font = UIFont.regular(size: 18)
+        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         distaneLabel.textColor = UIColor.B5
         distaneLabel.distance = 0.00
         return distaneLabel
@@ -352,6 +350,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        LKProgressHUD.dismiss()
         
         locationManager.delegate = self
         
@@ -562,7 +562,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(), .large()]
+                presentVc.detents = [.large(), .medium()]
             self.navigationController?.present(navBar, animated: true, completion: .none)
            }
         }
@@ -736,7 +736,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 120),
             // widthAnchor.constraint = UIScreen.width * 0.85
-            buttonStackView.widthAnchor.constraint(equalToConstant: 220),
+            buttonStackView.widthAnchor.constraint(equalToConstant: 230),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
@@ -772,7 +772,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             pinButton.widthAnchor.constraint(equalToConstant: 50),
             
-            sendSMSButton.widthAnchor.constraint(equalToConstant: 70),
+            sendSMSButton.widthAnchor.constraint(equalToConstant: 50),
             
             sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
             
@@ -809,7 +809,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     func setUpLabels() {
         
         map.addSubview( altitudeLabel)
-        ////         座標 - 改成時速
+        // 座標 - 改成時速
         altitudeLabel.frame = CGRect(x: 10, y: 80, width: 200, height: 100)
         
         map.addSubview(speedLabel)
@@ -818,15 +818,15 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         map.addSubview(timeLabel)
         // 時間
-        timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 80)
+        timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
         
         map.addSubview(totalTrackedDistanceLabel)
         // 距離
-        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 90, width: 80, height: 30)
+        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
         
-        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 120, width: 80, height: 30)
+        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 120, width: 100, height: 30)
     }
     
 }
@@ -834,7 +834,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
 extension JourneyViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
-        timeLabel.text = elapsedTimeString
+        timeLabel.text = "時間 : \(elapsedTimeString)"
     }
 }
 // MARK: - CLLocationManager Delegate -
@@ -849,7 +849,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let altitude = newLocation.altitude.toAltitude()
         
-        let text = "Altitude : \(altitude)"
+        let text = "高度 : \(altitude)"
         
         altitudeLabel.text = text
         
@@ -857,9 +857,10 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         //  MARK: Update_speed
         
-        speedLabel.text = "speed : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+        speedLabel.text = "時速 : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
         if followUser {
+            
             map.setCenter(newLocation.coordinate, animated: true)
         }
         

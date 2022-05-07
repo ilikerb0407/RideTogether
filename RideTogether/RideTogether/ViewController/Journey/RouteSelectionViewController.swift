@@ -33,6 +33,13 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     @IBOutlet weak var cloud: UILabel!
     
+    @IBOutlet weak var lefttop: UILabel!
+    
+    
+    func setUp() {
+        lefttop.translatesAutoresizingMaskIntoConstraints = false
+        lefttop.cornerRadius = 30
+    }
     
     func weather() {
         
@@ -58,18 +65,18 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             
             guard let ssunrise = weatherdata?.sys.sunrise else { return }
             var epocTime = TimeInterval(ssunrise)
-            
-            let myDate = NSDate(timeIntervalSince1970: epocTime)
-            print ("=====++++\(myDate)")
-            sunrise.text = "\(myDate)"
+//
+//            let myDate = NSDate(timeIntervalSince1970: epocTime)
+//            print ("=====++++\(myDate)")
+            sunrise.text = "\(epocTime.sunrise()) AM"
             
             guard let ssunset = weatherdata?.sys.sunset else { return }
             var sunsetTime = TimeInterval(ssunset)
             
-            let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
-            print ("=====++++\(sunsetDate)")
+//            let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
+//            print ("=====++++\(sunsetDate)")
             
-            sunset.text = "\(sunsetDate)"
+            sunset.text = "\(sunsetTime.sunset()) PM"
             
             guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
             wind.text = "\(swind) km/h"
@@ -80,8 +87,9 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             if cloud.text == "Rain" {
                 rainLottieView.isHidden = false
                 rainLottieView.play()
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天不要騎車小心！", comment: "no comment"), preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+                }
                 
                 sheet.addAction(okOption)
                 present(sheet, animated: true, completion: nil)
@@ -90,27 +98,39 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             if cloud.text == "Clouds" {
                 cloudsLottieView.isHidden = false
                 cloudsLottieView.play()
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分!", comment: "no comment"), preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+                    }
+                sheet.addAction(okOption)
+                present(sheet, animated: true, completion: nil)
             }
             
             if cloud.text == "Drizzle" {
                 rainLottieView.isHidden = false
                 rainLottieView.play()
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+                    rainLottieView.isHidden = true
+                }
+                sheet.addAction(okOption)
+                present(sheet, animated: true, completion: nil)
             }
             
             if cloud.text == "Sun" {
                 sunLottieView.isHidden = false
                 sunLottieView.play()
                 
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分～～", comment: "no comment"), preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
-                
+                let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分!", comment: "no comment"), preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+                    }
                 sheet.addAction(okOption)
                 present(sheet, animated: true, completion: nil)
-            }
+                }
             
+            }
+    
         }
         
-    }
     
     func sendRoute(map: DrawRoute) {
         mapdata = map
@@ -148,6 +168,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         suggestionContainerView.addBorder()
         inputContainerView.addBorder()
         calculateButton.stylize()
@@ -166,17 +187,20 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         weather()
         
     }
+    
+    override func viewDidLayoutSubviews() {
+        setUp()
+    }
+    
     private lazy var cloudsLottieView: AnimationView = {
         let view = AnimationView(name: "cloud")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0 , width: 400 , height: 400)
+        view.frame = CGRect(x: -30, y: -150 , width: 400 , height: 400)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
         return view
     }()
-    
-    
     
     private lazy var rainLottieView: AnimationView = {
         let view = AnimationView(name: "rain")
@@ -293,10 +317,13 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     }
     
     private func presentAlert(message: String) {
+        
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
         alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         
         present(alertController, animated: true)
+        
     }
     
     // MARK: - Actions
@@ -342,6 +369,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     }
     
     @IBAction private func calculateButtonTapped() {
+        
         view.endEditing(true)
         
         calculateButton.isEnabled = false
@@ -388,14 +416,20 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             self.activityIndicatorView.stopAnimating()
             
             switch result {
+                
             case .success(let route):
                 
                 let viewController = DirectionsViewController(route: route)
                 
                 viewController.delegate = self
+                
                 delegate?.sendRouteTwice(map: route)
                 
-                self.present(viewController, animated: true)
+//                self.present(viewController, animated: true)
+                if let presentVc = viewController.sheetPresentationController {
+                    presentVc.detents = [ .large(), .medium() ]
+                self.navigationController?.present(viewController, animated: true, completion: .none)
+                }
                 
                 
             case .failure(let error):

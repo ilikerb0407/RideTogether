@@ -265,6 +265,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
+        
+        
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userId = credential.user
             let fullname = credential.fullName
@@ -275,6 +277,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             print("---------\(fullname)")
             print("---------\(email)")
             print("---------\(idToken)")
+            
+            
+            
             //                   guard let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else { return }
             //                   vc.modalPresentationStyle = .fullScreen
             //                   self.present(vc, animated: true)
@@ -313,6 +318,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                    
                     let uid = authResult?.user.uid {
                     
+                    LKProgressHUD.show()
+                    
                     if isNewUser {
                         
                         self.userInfo.uid = uid
@@ -330,8 +337,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                 self.fetchUserInfo(uid: uid)
                                 
                                 
-                                
                                 print("User Sign up successfully")
+                                
+                                LKProgressHUD.show()
                                 
                             case .failure(let error):
                                 
@@ -342,6 +350,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     } else {
                         
                         self.fetchUserInfo(uid: uid)
+                        
+                        LKProgressHUD.show()
                     }
                 }
             }

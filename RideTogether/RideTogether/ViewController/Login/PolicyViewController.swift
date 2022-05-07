@@ -26,6 +26,7 @@ enum PolicyType: String, policy {
         case .privacy: return "https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269"
             
         case .eula: return "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            
         }
     }
 }
@@ -33,7 +34,6 @@ enum PolicyType: String, policy {
 
 
 class PolicyViewController: BaseViewController, WKNavigationDelegate {
-    
     
     var policy: PolicyType?
     
@@ -58,12 +58,13 @@ class PolicyViewController: BaseViewController, WKNavigationDelegate {
             webView.load(request)
         }
     }
-    
+
     private func setWebView() {
         
         view.stickSubView(webView)
         
         view.sendSubviewToBack(webView)
+        
     }
  
     override func viewDidLoad() {
@@ -72,7 +73,9 @@ class PolicyViewController: BaseViewController, WKNavigationDelegate {
         setWebView()
         
         if let policyType = policy {
+            
             loadURL(type: policyType)
+            
         }
     }
     

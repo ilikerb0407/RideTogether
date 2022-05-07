@@ -9,8 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DirectionsViewController" customModule="RideTogether" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicatorView" destination="A0h-41-M2Q" id="YkU-lm-d7w"/>
-                <outlet property="headerLabel" destination="yIv-BI-hzm" id="rh4-wW-vr0"/>
                 <outlet property="mapView" destination="uKW-wm-cZb" id="jq3-lb-a2g"/>
                 <outlet property="tableView" destination="PWX-Mo-F18" id="zEZ-Bd-gNk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="rlZ-O2-jLf"/>
@@ -22,62 +20,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsBuildings="NO" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uKW-wm-cZb">
-                    <rect key="frame" x="0.0" y="75" width="375" height="592"/>
+                    <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="592" id="0cV-9o-fRa"/>
+                        <constraint firstAttribute="height" constant="601" id="0cV-9o-fRa"/>
                     </constraints>
                 </mapView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="PWX-Mo-F18">
                     <rect key="frame" x="0.0" y="656" width="375" height="11"/>
                 </tableView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-C6-nig">
-                    <rect key="frame" x="24" y="20" width="335" height="47"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIv-BI-hzm">
-                            <rect key="frame" x="0.0" y="0.0" width="335" height="26.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-ka-RWA">
-                            <rect key="frame" x="0.0" y="26.5" width="335" height="20.5"/>
-                            <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="A0h-41-M2Q">
-                                    <rect key="frame" x="0.0" y="0.5" width="20" height="20"/>
-                                </activityIndicatorView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculating..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmU-0X-OMO">
-                                    <rect key="frame" x="28" y="0.0" width="307" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                    <color key="textColor" systemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </stackView>
-                    </subviews>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="導航至目的地" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoA-X5-kcI">
+                    <rect key="frame" x="20" y="17" width="335" height="41"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="uKW-wm-cZb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="66" id="3Je-TS-hTt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uKW-wm-cZb" secondAttribute="trailing" id="DnP-JV-emd"/>
-                <constraint firstItem="uKW-wm-cZb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="75" id="Keq-Jj-JE9"/>
+                <constraint firstItem="PWX-Mo-F18" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="656" id="Giz-Mb-WCc"/>
+                <constraint firstItem="qoA-X5-kcI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="VHh-zn-fFa"/>
                 <constraint firstItem="uKW-wm-cZb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XlH-3r-ZqE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SL5-C6-nig" secondAttribute="trailing" constant="16" id="aVW-eJ-aIA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qoA-X5-kcI" secondAttribute="trailing" constant="20" id="aXE-le-HTu"/>
                 <constraint firstItem="PWX-Mo-F18" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="boe-ao-s9D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PWX-Mo-F18" secondAttribute="trailing" id="bwT-S1-rq1"/>
-                <constraint firstItem="SL5-C6-nig" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="ccK-iX-hKh"/>
-                <constraint firstItem="PWX-Mo-F18" firstAttribute="top" secondItem="SL5-C6-nig" secondAttribute="bottom" constant="589" id="euu-Ee-1G9"/>
-                <constraint firstItem="SL5-C6-nig" firstAttribute="top" secondItem="uKW-wm-cZb" secondAttribute="bottom" constant="-647" id="f05-x2-ltK"/>
+                <constraint firstItem="qoA-X5-kcI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="17" id="jXO-qr-jAh"/>
                 <constraint firstAttribute="bottom" secondItem="PWX-Mo-F18" secondAttribute="bottom" id="zKn-Yd-TCP"/>
             </constraints>
             <point key="canvasLocation" x="-484" y="-25.637181409295355"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

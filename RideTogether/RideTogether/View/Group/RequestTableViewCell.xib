@@ -93,7 +93,9 @@
                         <color key="backgroundColor" name="B2"/>
                         <color key="tintColor" name="B5"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="filled" title="發起人"/>
+                        <buttonConfiguration key="configuration" style="filled" title="發起人">
+                            <color key="baseBackgroundColor" name="B5"/>
+                        </buttonConfiguration>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mj9-61-uno">
                         <rect key="frame" x="20" y="20" width="151" height="34"/>
