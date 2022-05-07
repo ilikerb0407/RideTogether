@@ -82,9 +82,10 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             wind.text = "\(swind) km/h"
             
             guard let weather = weatherdata?.weather[0].main else { return }
-            cloud.text = "\(weather)"
+//            cloud.text = "\(weather)"
             
-            if cloud.text == "Rain" {
+            if weather == "Rain" {
+                cloud.text = "雨天"
                 rainLottieView.isHidden = false
                 rainLottieView.play()
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
@@ -95,7 +96,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                 present(sheet, animated: true, completion: nil)
             }
             
-            if cloud.text == "Clouds" {
+            if weather == "Clouds" {
+                cloud.text = "多雲"
                 cloudsLottieView.isHidden = false
                 cloudsLottieView.play()
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分!", comment: "no comment"), preferredStyle: .alert)
@@ -105,7 +107,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                 present(sheet, animated: true, completion: nil)
             }
             
-            if cloud.text == "Drizzle" {
+            if weather == "Drizzle" {
+                cloud.text = "細雨"
                 rainLottieView.isHidden = false
                 rainLottieView.play()
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
@@ -116,7 +119,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                 present(sheet, animated: true, completion: nil)
             }
             
-            if cloud.text == "Sun" {
+            if weather == "Sun" {
+                cloud.text = "晴天"
                 sunLottieView.isHidden = false
                 sunLottieView.play()
                 
