@@ -81,9 +81,9 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
             wind.text = "\(swind) km/h"
             
+//            let weather = "Sun"
             guard let weather = weatherdata?.weather[0].main else { return }
-//            cloud.text = "\(weather)"
-            
+//
             if weather == "Rain" {
                 cloud.text = "雨天"
                 rainLottieView.isHidden = false
@@ -194,6 +194,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     override func viewDidLayoutSubviews() {
         setUp()
+        
+        inputContainerView.cornerRadius = 30
     }
     
     private lazy var cloudsLottieView: AnimationView = {
@@ -209,7 +211,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     private lazy var rainLottieView: AnimationView = {
         let view = AnimationView(name: "rain")
         view.loopMode = .loop
-        view.frame = CGRect(x: UIScreen.width / 2 - 120, y: 0 , width: 250 , height: 250)
+        view.frame = CGRect(x: UIScreen.width / 2 - 100, y: -25 , width: 200 , height: 200)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
@@ -431,7 +433,9 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                 
 //                self.present(viewController, animated: true)
                 if let presentVc = viewController.sheetPresentationController {
+                    
                     presentVc.detents = [ .large(), .medium() ]
+                    
                 self.navigationController?.present(viewController, animated: true, completion: .none)
                 }
                 

@@ -49,6 +49,9 @@ class RecommendTableViewCell: UITableViewCell {
         
         heart.addTarget(self, action: #selector(heartTapped), for: .touchUpInside)
         
+        // Demo 後改
+        heart.isHidden = true
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

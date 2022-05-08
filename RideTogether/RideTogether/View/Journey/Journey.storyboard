@@ -385,6 +385,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天氣" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="031-th-q2z">
+                                <rect key="frame" x="60" y="64" width="294" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" name="B5"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gG1-od-3dq"/>
                         <color key="backgroundColor" name="B2"/>
@@ -393,13 +399,17 @@
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="centerX" secondItem="ear-Ap-X0O" secondAttribute="centerX" id="4VQ-V8-bjG"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="Wzz-Lv-i2G" secondAttribute="trailing" constant="60" id="ADo-hZ-7x2"/>
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="60" id="Flq-J7-9va"/>
+                            <constraint firstItem="031-th-q2z" firstAttribute="centerX" secondItem="ear-Ap-X0O" secondAttribute="centerX" id="Gnz-uu-Q7T"/>
                             <constraint firstItem="w9R-Xf-fu4" firstAttribute="top" secondItem="gG1-od-3dq" secondAttribute="top" constant="55" id="HNS-UC-qOL"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="top" secondItem="ear-Ap-X0O" secondAttribute="top" constant="520" id="Ksm-bX-YEU"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="w9R-Xf-fu4" secondAttribute="trailing" constant="50" id="NEa-Bt-8UB"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="50" id="O9R-n7-jbi"/>
+                            <constraint firstItem="gG1-od-3dq" firstAttribute="trailing" secondItem="031-th-q2z" secondAttribute="trailing" constant="60" id="PZ0-RB-jMv"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="leading" secondItem="npB-tj-SFB" secondAttribute="leading" constant="32" id="YMu-eQ-W1e"/>
+                            <constraint firstItem="031-th-q2z" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="60" id="caj-wo-TLZ"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="trailing" secondItem="npB-tj-SFB" secondAttribute="trailing" constant="-32" id="dpo-PQ-Arb"/>
                             <constraint firstItem="JOI-HH-3gg" firstAttribute="top" secondItem="npB-tj-SFB" secondAttribute="bottom" constant="1" id="gmn-79-lA9"/>
+                            <constraint firstItem="031-th-q2z" firstAttribute="top" secondItem="gG1-od-3dq" secondAttribute="top" constant="20" id="lap-KD-vFS"/>
                             <constraint firstItem="gG1-od-3dq" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wzz-Lv-i2G" secondAttribute="bottom" constant="192" id="ma3-z3-Z6H"/>
                             <constraint firstItem="Wzz-Lv-i2G" firstAttribute="top" secondItem="JOI-HH-3gg" secondAttribute="bottom" constant="8" id="xU8-YN-XXG"/>
                             <constraint firstItem="w9R-Xf-fu4" firstAttribute="leading" secondItem="gG1-od-3dq" secondAttribute="leading" constant="50" id="z53-RC-qb5"/>
