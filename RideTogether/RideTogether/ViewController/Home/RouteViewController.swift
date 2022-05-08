@@ -274,11 +274,15 @@ extension RouteViewController: UITableViewDataSource {
     
     @objc func goToRide(_ sender: UIButton) {
         
+        LKProgressHUD.show()
+        
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
             
-                    navigationController?.pushViewController(journeyViewController, animated: true)
             journeyViewController.routes = routes[sender.tag]
-                }
+            
+            navigationController?.pushViewController(journeyViewController, animated: true)
+            
+            }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

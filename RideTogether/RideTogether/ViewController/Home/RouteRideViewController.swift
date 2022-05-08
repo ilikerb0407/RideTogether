@@ -364,6 +364,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             praseGPXFile()
             
+            LKProgressHUD.dismiss()
+            
         }
         
     override func viewWillLayoutSubviews() {
