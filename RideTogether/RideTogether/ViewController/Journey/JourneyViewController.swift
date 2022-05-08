@@ -145,7 +145,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }
     }
 
-    
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -251,16 +250,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }
     }
     var hasWaypoints: Bool = false
-    
-    private lazy var waitBar: AnimationView = {
-        let view = AnimationView(name: "wait-processbar")
-        view.loopMode = .playOnce
-        view.frame = CGRect(x: UIScreen.width / 2 - 50, y: UIScreen.height / 2  - 50 , width: 200  , height: 200)
-        view.contentMode = .scaleAspectFit
-        self.view.addSubview(view)
-        self.view.bringSubviewToFront(leftStackView)
-        return view
-    }()
 
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "circle")
@@ -294,7 +283,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         view.spacing = 8
         view.distribution = .equalSpacing
         view.alignment = .center
-//        view.centerXAnchor.
         return view
     }()
     
