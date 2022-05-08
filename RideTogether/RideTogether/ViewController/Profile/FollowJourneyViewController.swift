@@ -53,9 +53,11 @@ class FollowJourneyViewController: BaseViewController {
 //    }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 150, width: 40, height: 40))
+        
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 200, width: 40, height: 40))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
+        
     }
     
 
@@ -328,7 +330,6 @@ class FollowJourneyViewController: BaseViewController {
         return label
     }()
     
-    
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
@@ -361,6 +362,8 @@ class FollowJourneyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBar(title: "繼續騎乘")
+        
         locationManager.delegate = self
         
         stopWatch.delegate = self
@@ -373,14 +376,14 @@ class FollowJourneyViewController: BaseViewController {
         
         setUpLabels()
         
-        backButton()
+//        backButton()
 
-        navigationController?.isNavigationBarHidden = true
+//        navigationController?.isNavigationBarHidden = true
+        
         
         self.locationManager.requestAlwaysAuthorization()
         
     }
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

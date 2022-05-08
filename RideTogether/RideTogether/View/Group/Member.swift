@@ -54,7 +54,7 @@ class Member: UITableViewCell {
 
         rejectButton.setImage(image, for: .normal)
 
-        rejectButton.backgroundColor = .white
+        rejectButton.backgroundColor = .B2
 
         if userInfo.uid == UserManager.shared.userId {
 
@@ -70,9 +70,13 @@ class Member: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.backgroundColor = .clear
+        
         viewOfBackground.layer.cornerRadius = 10
+        
         viewOfBackground.layer.masksToBounds = true
+        
         selectionStyle = .none
     }
 

@@ -179,10 +179,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
+        
     }
     
     @objc func creatGroup() {
-        
         
 //       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {

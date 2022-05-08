@@ -51,11 +51,8 @@ class ChatRoomViewController: BaseViewController {
         return view
     }()
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .U2
         
         checkUserStatus()
         

@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-pb-RDi">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -44,8 +44,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vou-Zn-Qq8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="0qm-pb-RDi" secondAttribute="bottom" id="b0n-Sc-nn5"/>
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-88" id="l5h-ZR-HSI"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="0qm-pb-RDi" secondAttribute="bottom" constant="100" id="q44-2R-NA3"/>
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qTy-7e-QJ1"/>
                         </constraints>
                     </view>
@@ -100,14 +100,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Zk-2ZQ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="-66" width="414" height="928"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hUj-Ov-mOP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EGG-Zk-2ZQ" firstAttribute="top" secondItem="hUj-Ov-mOP" secondAttribute="top" constant="-44" id="AXN-jY-ZgW"/>
+                            <constraint firstItem="EGG-Zk-2ZQ" firstAttribute="top" secondItem="hUj-Ov-mOP" secondAttribute="top" constant="-110" id="AXN-jY-ZgW"/>
                             <constraint firstItem="hUj-Ov-mOP" firstAttribute="trailing" secondItem="EGG-Zk-2ZQ" secondAttribute="trailing" id="IaG-kE-iSx"/>
                             <constraint firstItem="EGG-Zk-2ZQ" firstAttribute="leading" secondItem="hUj-Ov-mOP" secondAttribute="leading" id="WD0-ov-p2N"/>
                             <constraint firstItem="hUj-Ov-mOP" firstAttribute="bottom" secondItem="EGG-Zk-2ZQ" secondAttribute="bottom" id="XHy-sf-C9q"/>

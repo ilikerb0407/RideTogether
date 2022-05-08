@@ -49,9 +49,12 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = false
+//        navigationController?.isNavigationBarHidden = false
+//
+//        tabBarController?.tabBar.isHidden = false
+//
+//        navigationItem.hidesBackButton = false
         
-        tabBarController?.tabBar.isHidden = false
         
         NotificationCenter.default.addObserver(
             self,
@@ -67,6 +70,7 @@ class HomeViewController: BaseViewController {
 //        bikelottie.play()
         
     }
+    
     
     @IBOutlet weak var gView: UIView! {
         didSet {
