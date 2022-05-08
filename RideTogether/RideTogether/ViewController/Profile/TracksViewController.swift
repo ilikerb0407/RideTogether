@@ -120,6 +120,9 @@ class TracksViewController: BaseViewController {
         
         backButton()
         
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        
+        tableView.addGestureRecognizer(longPress)
         
     }
     
@@ -139,6 +142,43 @@ class TracksViewController: BaseViewController {
 
 extension TracksViewController: UITableViewDelegate {
     
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == .began {
+            
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+                let shareOption = UIAlertAction(title: "分享", style: .default) { [self] _ in
+                    
+                    let recordRef = storageRef.child("records").child("\(userId)")
+                    //  gs://bikeproject-59c89.appspot.com/records
+                    let spaceRef = recordRef.child(records[indexPath.row].recordName)
+
+                    spaceRef.downloadURL { [self] result in
+                        switch result {
+                        case .success(let url) :
+        //                    completion(.success(url))
+                            print ("\(url)")
+                            self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
+                            //
+                            LKProgressHUD.dismiss()
+                        case .failure(let error) :
+        //                    completion(.failure(error))
+                            print ("\(error)")
+                        }
+                    }
+                }
+                
+                let cancelOption = UIAlertAction(title: "取消", style: .default) { _ in }
+                
+                showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [ shareOption,cancelOption])
+//                showAlertAction(title: nil, message: nil, actions: [cancelOption, shareOption])
+                
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
@@ -147,20 +187,21 @@ extension TracksViewController: UITableViewDelegate {
         true
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
-//                switch result {
-//                case .success(_):
-//                    self.records.remove(at: indexPath.row)
-//                    self.tableView.deleteRows(at: [indexPath], with: .left)
-//
-//                case .failure(let error):
-//                    print ("delete error: \(error)")
-//                }
-//            }
-//        }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
+                switch result {
+                case .success(_):
+                    self.records.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .left)
+
+                case .failure(let error):
+                    print ("delete error: \(error)")
+                }
+            }
+        }
+    }
+    
     func uploadRecordToDb(fileName: String, fileURL: URL) {
         
         let document = dataBase.collection(sharedRecordsCollection).document()
@@ -187,100 +228,14 @@ extension TracksViewController: UITableViewDelegate {
         print("sucessfully")
     }
    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sheet = UIAlertController.init(title: "Choose", message: "", preferredStyle: .alert)
+        LKProgressHUD.show()
         
-        let detailOption = UIAlertAction(title: "Detail", style: .default) { [self] _ in
-            performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
-        }
+        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
         
-        let shareOption = UIAlertAction(title: "Share to friends", style: .default) { [self] _ in
-
-            
-            
-            let recordRef = storageRef.child("records").child("\(userId)")
-            //  gs://bikeproject-59c89.appspot.com/records
-            let spaceRef = recordRef.child(records[indexPath.row].recordName)
-
-
-            spaceRef.downloadURL { result in
-                switch result {
-                case .success(let url) :
-//                    completion(.success(url))
-                    print ("\(url)")
-                    self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
-                    //
-                case .failure(let error) :
-//                    completion(.failure(error))
-                    print ("\(error)")
-                }
-            }
-        }
-        
-        let removeOption = UIAlertAction(title: "Delete", style: .destructive) { [self] _ in
-            
-            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
-                switch result {
-                    
-                case .success(_):
-                    
-                    self.records.remove(at: indexPath.row)
-                    
-                    self.tableView.deleteRows(at: [indexPath], with: .left)
-                    
-                case .failure(let error):
-                    print ("delete error: \(error)")
-                }
-            }
-        }
-        
-        let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in }
-        
-        sheet.addAction(detailOption)
-        sheet.addAction(shareOption)
-        sheet.addAction(removeOption)
-        sheet.addAction(cancelOption)
-        
-        present(sheet, animated: true, completion: nil)
-        
-        
-//        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
         
     }
-    
-//    func shareGPXDataToFriends(_ rowIndex: Int, tableView: UITableView, cellForRowAt indexPath: IndexPath) {}
-        
-        
-        
-        // MARK: 傳簡訊的方式 UIActivityViewController
-        
-//        let activityViewController = UIActivityViewController(activityItems: [gpxFileInfp.fileURL], applicationActivities: nil)
-//
-//        var cellRect = tableView.rectForRow(at: indexPath)
-//        cellRect.origin = CGPoint(x: 0, y: 0) // origin must be at 0 or sheet will display offset due to height of cell
-//
-//        activityViewController.popoverPresentationController?.sourceView = tableView.cellForRow(at: indexPath)
-//        activityViewController.popoverPresentationController?.sourceRect = cellRect
-//
-//        // NOTE: As the activity view controller can be quite tall at times,
-//        //       the display of it may be offset automatically at times to ensure the activity view popup fits the screen.
-//
-//        activityViewController.completionWithItemsHandler = {
-//            (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-//            if !completed {
-//                // User canceled
-//                print("actionShareAtIndex: Cancelled")
-//                return
-//            }
-//            // User completed activity
-//            print("actionShareFileAtIndex: User completed activity")
-//        }
-//
-//       present(activityViewController, animated: true, completion: nil)
-    
-    
     
     // MARK: 傳到Detail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

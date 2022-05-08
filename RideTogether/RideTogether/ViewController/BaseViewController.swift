@@ -144,7 +144,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         leftButton.tintColor = .B2
         
-        leftButton.setImage(image, for: .normal)
+        leftButton.setImage(image, for: .normal) 
         
         leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
         

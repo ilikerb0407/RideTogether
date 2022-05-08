@@ -57,16 +57,15 @@ class JoinViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpDimmingView()
+//        setUpDimmingView()
         
         setUpTableView()
         
-        setUpDismissButton()
+//        setUpDismissButton()
         
         configureDataSource()
         
         configureSnapshot()
-        
         
     }
     
@@ -206,7 +205,7 @@ class JoinViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
@@ -224,7 +223,7 @@ class JoinViewController: BaseViewController {
         
         button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         
-        view.addSubview(button)
+//        view.addSubview(button)
     }
     
     func setUpDimmingView() {

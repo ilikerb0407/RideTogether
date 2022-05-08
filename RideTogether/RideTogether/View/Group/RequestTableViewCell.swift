@@ -18,7 +18,9 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
     
     @IBOutlet weak var trailName: UITextField! {
         didSet {
+            
             trailName.delegate = self
+            
         }
     }
     
@@ -49,27 +51,27 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
     
     @IBOutlet weak var gButton: UIButton!
     
-    
     var isEditting: Bool = false {
         
         didSet {
+            
             trailName.isEnabled = isEditting ? true : false
             
-            trailName.textColor = isEditting ? .black : .B1
+            trailName.textColor = isEditting ? .black : .B5
             
             trailName.backgroundColor = isEditting ? .white : .clear
             
             numberOfPeople.isEnabled = isEditting ? true : false
             
-            numberOfPeople.textColor = isEditting ? .black : .B1
+            numberOfPeople.textColor = isEditting ? .black : .B5
             
             numberOfPeople.backgroundColor = isEditting ? .white : .clear
             
             note.isEditable = isEditting ? true : false
             
-            note.textColor = isEditting ? .black : .B1
+            note.textColor = isEditting ? .black : .B5
             
-            note.backgroundColor = isEditting ? .white : .clear
+            note.backgroundColor = isEditting ? .white : .white
             
             travelDate.isHidden = isEditting ? true : false
             
@@ -86,15 +88,16 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             if isEditting {
                 
                 numberOfPeople.text = groupInfo?.limit.description
+                
                 travelTimePicker.date = groupInfo?.date.dateValue() ?? Date()
                 
             } else {
+                
                 let pickTime = Timestamp(date: travelTimePicker.date)
                 groupInfo?.date = pickTime
                 
-                guard let groupInfo = groupInfo else {
-                    return
-                }
+                guard let groupInfo = groupInfo else { return }
+                
                 travelDate.text = TimeFormater.dateStyle.timestampToString(time: groupInfo.date)
                 
                 travelTime.text = TimeFormater.timeStyle.timestampToString(time: groupInfo.date)
@@ -167,10 +170,8 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         
         selectionStyle = .none
         
@@ -181,7 +182,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         setUpTextView()
         
         setUpTextField()
-        /// ===== 改成 isediting = false
+//      ===== 改成 isediting = false
         trailName.isEnabled = false
         
         numberOfPeople.isEnabled =  false
@@ -193,7 +194,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         travelTime.isHidden = false
         
         timeLabel.isHidden =  false
-        /// =====
+//      =====
         travelTimePicker.isHidden = true
         
         hostButton.isHidden = true
@@ -208,7 +209,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         note.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
-        note.font = UIFont.regular(size: 20)
+        note.font = UIFont.systemFont(ofSize: 15, weight: .light)
         
         note.clipsToBounds = true
         
@@ -225,13 +226,24 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         trailName.layer.cornerRadius = 10
         
+        trailName.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        
         trailName.clipsToBounds = true
+        
+        travelDate.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        
+        travelTime.font = UIFont.systemFont(ofSize: 15, weight: .light)
         
         numberOfPeople.setLeftPaddingPoints(8)
         
         numberOfPeople.layer.cornerRadius = 10
         
+        numberOfPeople.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        
         numberOfPeople.clipsToBounds = true
+        
+        hostName.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        
     }
     
     

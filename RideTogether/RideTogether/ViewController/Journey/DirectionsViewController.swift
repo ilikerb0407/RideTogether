@@ -47,14 +47,14 @@ class DirectionsViewController: UIViewController {
 
     groupAndRequestDirections()
 
-    headerLabel.text = route.label
+//    headerLabel.text = route.label
 
     tableView.dataSource = self
 
     mapView.delegate = self
+      
     mapView.showAnnotations(route.annotations, animated: false)
  
-  
   }
 
   // MARK: - Helpers
@@ -81,7 +81,7 @@ class DirectionsViewController: UIViewController {
 
   private func fetchNextRoute() {
     guard !groupedRoutes.isEmpty else {
-      activityIndicatorView.stopAnimating()
+//      activityIndicatorView.stopAnimating()
       return
     }
 

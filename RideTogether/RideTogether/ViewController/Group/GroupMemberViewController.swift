@@ -38,6 +38,8 @@ class GroupMemberViewController: BaseViewController {
         
         tableView = UITableView()
         
+        tableView.backgroundColor = .clear
+        
         tableView.registerCellWithNib(identifier: Member.identifier, bundle: nil)
         
         view.stickSubView(tableView)

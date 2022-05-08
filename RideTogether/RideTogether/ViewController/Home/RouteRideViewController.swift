@@ -11,7 +11,9 @@ import CoreGPX
 import CoreLocation
 import Firebase
 import Lottie
-
+import MessageUI
+import SwiftUI
+import JGProgressHUD
 
 class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocationManagerDelegate {
     
@@ -31,24 +33,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         /// Name of the last file that was saved (without extension)
         var lastGpxFilename: String = ""
-        
-        
-        func backButton() {
-            let button = PreviousPageButton(frame: CGRect(x: 20, y: 80, width: 40, height: 40))
-            button.backgroundColor = .lightGray
-            button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-            view.addSubview(button)
-        }
-        
-
-        @objc func popToPreviosPage(_ sender: UIButton) {
-            let count = self.navigationController!.viewControllers.count
-            if let preController = self.navigationController?.viewControllers[count-1] {
-                self.navigationController?.popToViewController(preController, animated: true)
-            }
-            navigationController?.popViewController(animated: true)
-            
-        }
     
         func praseGPXFile() {
             
@@ -119,53 +103,74 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             case paused
         }
-        
-        private var gpxTrackingStatus: GpxTrackingStatus = GpxTrackingStatus.notStarted {
+    
+    private lazy var bikeLottieView: AnimationView = {
+            let view = AnimationView(name: "49908-bike-ride")
+            view.loopMode = .loop
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 100),
+            view.heightAnchor.constraint(equalToConstant: 100),
+            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+        ])
+            view.contentMode = .scaleAspectFit
+            view.play()
             
-            didSet {
+            return view
+        }()
+        
+    private var gpxTrackingStatus: GpxTrackingStatus = GpxTrackingStatus.notStarted {
+        
+        didSet {
+            
+            switch gpxTrackingStatus {
                 
-                switch gpxTrackingStatus {
-                    
-                case .notStarted:
-                    
-                    trackerButton.setTitle("Start", for: .normal)
-                    
-                    stopWatch.reset()
-                    
-                    //   waveLottieView.isHidden = true
-                    
-                    timeLabel.text = stopWatch.elapsedTimeString
-                    
-                    //MARK: 怕把線清掉
-                    map3.clearMap()
-                    
-                    totalTrackedDistanceLabel.distance = (map3.session.totalTrackedDistance)
-                    
-                    currentSegmentDistanceLabel.distance = (map3.session.currentSegmentDistance)
-                    
-                case .tracking:
-                    
-                    trackerButton.setTitle("Pause", for: .normal)
-                    
-                    self.stopWatch.start()
-                    
-                    //                waveLottieView.isHidden = false
-                    //                waveLottieView.play()
-                    
-                    
-                case .paused:
-                    
-                    self.trackerButton.setTitle("Resume", for: .normal)
-                    
-                    self.stopWatch.stop()
-                    
-                    //                waveLottieView.isHidden = true
-                    
-                    self.map3.startNewTrackSegment()
-                }
+            case .notStarted:
+                
+                trackerButton.setTitle("開始", for: .normal)
+                
+                stopWatch.reset()
+                
+                waveLottieView.isHidden = true
+                
+                bikeLottieView.isHidden = false
+                
+                timeLabel.text = stopWatch.elapsedTimeString
+                
+                map3.clearMap()
+                
+                totalTrackedDistanceLabel.distance = (map3.session.totalTrackedDistance)
+                
+                currentSegmentDistanceLabel.distance = (map3.session.currentSegmentDistance)
+                
+            case .tracking:
+                
+                trackerButton.setTitle("暫停", for: .normal)
+                
+                self.stopWatch.start()
+                
+                waveLottieView.isHidden = false
+                
+                waveLottieView.play()
+                
+                bikeLottieView.play()
+                
+            case .paused:
+                
+                self.trackerButton.setTitle("繼續", for: .normal)
+                
+                self.stopWatch.stop()
+                
+                waveLottieView.isHidden = true
+                
+                bikeLottieView.stop()
+                
+                self.map3.startNewTrackSegment()
             }
         }
-        
+    }
         private var followUser: Bool = true {
             
             didSet {
@@ -189,154 +194,150 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             }
         }
         
-        private lazy var trackerButton: UIButton = {
-            let button = UIButton()
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setTitle("Start", for: .normal)
-            button.titleLabel?.font = UIFont.regular(size: 18)
-            button.titleLabel?.textAlignment = .center
-            return button
-        }()
+    private lazy var trackerButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B5
+        button.tintColor = .B2
+        button.setTitle("開始", for: .normal)
+        button.titleLabel?.font = UIFont.regular(size: 18)
+        button.titleLabel?.textAlignment = .center
+        return button
+    }()
+    
+    private lazy var resetButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B5
+        button.tintColor = .B2
+        button.setTitle("重置", for: .normal)
+        button.titleLabel?.font = UIFont.regular(size: 16)
+        button.titleLabel?.textAlignment = .center
+        button.alpha = 0.5
+        return button
+    }()
+    
+    private lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B5
+        button.tintColor = .B2
+        button.setTitle("儲存", for: .normal)
+        button.titleLabel?.font = UIFont.regular(size: 16)
+        button.titleLabel?.textAlignment = .center
+        button.alpha = 0.5
+        return button
+    }()
+    
+    
+    private lazy var sendSMSButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .B5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
+        let image = UIImage(systemName: "message",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
         
-        private lazy var resetButton: UIButton = {
-            let button = UIButton()
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setTitle("Reset", for: .normal)
-            button.titleLabel?.font = UIFont.regular(size: 16)
-            button.titleLabel?.textAlignment = .center
-            button.alpha = 0.5
-            return button
-        }()
+    private lazy var followUserButton: UIButton = {
         
-        private lazy var saveButton: UIButton = {
-            let button = UIButton()
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setTitle("Save", for: .normal)
-            button.titleLabel?.font = UIFont.regular(size: 16)
-            button.titleLabel?.textAlignment = .center
-            button.alpha = 0.5
-            return button
-        }()
-        
-        private lazy var followUserButton: UIButton = {
-            let button = UIButton()
-            button.backgroundColor = .clear
-            let image = UIImage(systemName: "location.fill",
-                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-            button.setImage(image, for: .normal)
-            return button
-        }()
-        
-        private lazy var pinButton: UIButton = {
-            //        // Pin Button (on the left of start)
-            let button = UIButton()
-            button.layer.cornerRadius = 24.0
-            button.backgroundColor = .clear
-            let mappin = UIImage(systemName: "mappin",
-                                 withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
-            let mappinHighlighted = UIImage(systemName: "mappin.circle.fill",
-                                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
-            button.setImage(mappin, for: UIControl.State())
-            button.setImage(mappinHighlighted, for: .highlighted)
-            //        button.setImage(UIImage(named: "mappin"), for: UIControl.State())
-            //        button.setImage(UIImage(named: "mappin.circle.fill"), for: .highlighted)
-            button.addTarget(self, action: #selector(FollowJourneyViewController.addPinAtMyLocation), for: .touchUpInside)
-            return button
-        }()
-        
-        @objc func addPinAtMyLocation() {
-            print("Adding Pin at my location")
-            let altitude = locationManager.location?.altitude
-            let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map3.userLocation.coordinate, altitude: altitude)
-            map3.addWaypoint(waypoint)
+        let button = UIButton()
+        button.tintColor = .B5
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
+        let image = UIImage(systemName: "location.fill",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        return button
+    }()
+    
+    var hasWaypoints: Bool = false
 
-            self.hasWaypoints = true
-        }
+    private lazy var waveLottieView: AnimationView = {
+        let view = AnimationView(name: "circle")
+        view.loopMode = .loop
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        view.center = leftStackView.center
+        view.contentMode = .scaleAspectFit
+        view.play()
         
-        // MARK: 長按功能_ UILongPressGestureRecognizer
-        @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
-            
-            if gesture.state == UIGestureRecognizer.State.began {
-                print("Adding Pin map Long Press Gesture")
-                let point: CGPoint = gesture.location(in: self.map3)
-                map3.addWaypointAtViewPoint(point)
-                //Allows save and reset
-                self.hasWaypoints = true
-            }
-        }
-        /// Has the map any waypoint?
-        var hasWaypoints: Bool = false
+        self.view.addSubview(view)
+        self.view.bringSubviewToFront(leftStackView)
+        return view
+    }()
         
-        private lazy var waveLottieView: AnimationView = {
-            let view = AnimationView(name: "wave")
-            view.loopMode = .loop
-            view.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
-            view.center = buttonStackView.center
-            view.contentMode = .scaleAspectFit
-            view.play()
-            self.view.addSubview(view)
-            self.view.bringSubviewToFront(buttonStackView)
-            return view
-        }()
-        
-        private lazy var buttonStackView: UIStackView = {
-            
-            let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, trackerButton, saveButton, resetButton])
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.axis = .horizontal
-            view.spacing = 8
-            view.distribution = .equalSpacing
-            view.alignment = .bottom
-            return view
-        }()
+    
+    private lazy var buttonStackView: UIStackView = {
+ 
+        let view = UIStackView(arrangedSubviews: [followUserButton, sendSMSButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.spacing = 8
+        view.distribution = .equalSpacing
+        view.alignment = .bottom
+        return view
+    }()
+    
+    private lazy var leftStackView: UIStackView = {
+    
+        let view = UIStackView(arrangedSubviews: [saveButton, trackerButton, resetButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.spacing = 8
+        view.distribution = .equalSpacing
+        view.alignment = .center
+        return view
+    }()
+    
         
         // MARK: 之後再改字體
         
-        var coordsLabel: UILabel = {
-            let label = UILabel()
-            label.numberOfLines = 0
-            label.textAlignment = .left
-            label.font = UIFont.regular(size: 20)
-            label.textColor = UIColor.white
-            return label
-        }()
-        
-        var speedLabel: UILabel = {
-            let label = UILabel()
-            label.numberOfLines = 0
-            label.textAlignment = .left
-            label.font = UIFont.regular(size: 30)
-            label.textColor = UIColor.white
-            return label
-        }()
-        
-        
-        var timeLabel: UILabel = {
-            let label = UILabel()
-            label.textAlignment = .right
-            label.font = UIFont.regular(size: 26)
-            label.textColor = UIColor.white
-            label.text = "00:00"
-            return label
-        }()
-        
-        private lazy var totalTrackedDistanceLabel: DistanceLabel = {
-            let distaneLabel = DistanceLabel()
-            distaneLabel.textAlignment = .right
-            distaneLabel.font = UIFont.regular(size: 26)
-            distaneLabel.textColor = UIColor.white
-            distaneLabel.distance = 0.00
-            return distaneLabel
-        }()
-        
-        private lazy var currentSegmentDistanceLabel: DistanceLabel = {
-            let distaneLabel = DistanceLabel()
-            distaneLabel.textAlignment = .right
-            distaneLabel.font = UIFont.regular(size: 18)
-            distaneLabel.textColor = UIColor.white
-            distaneLabel.distance = 0.00
-            return distaneLabel
-        }()
+    var altitudeLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.textColor = UIColor.B5
+        return label
+    }()
+    
+    var speedLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.textColor = UIColor.B5
+        return label
+    }()
+    
+    var timeLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.textColor = UIColor.B5
+        label.text = "00:00"
+        return label
+    }()
+    
+    private lazy var totalTrackedDistanceLabel: DistanceLabel = {
+        let distaneLabel = DistanceLabel()
+        distaneLabel.textAlignment = .right
+        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        distaneLabel.textColor = UIColor.B5
+        distaneLabel.distance = 0.00
+        return distaneLabel
+    }()
+    
+    private lazy var currentSegmentDistanceLabel: DistanceLabel = {
+        let distaneLabel = DistanceLabel()
+        distaneLabel.textAlignment = .right
+        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        distaneLabel.textColor = UIColor.B5
+        distaneLabel.distance = 0.00
+        return distaneLabel
+    }()
         
         // MARK: - View Life Cycle
         
@@ -355,49 +356,36 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             setUpLabels()
             
-            backButton()
+            setNavigationBar(title: "探索路線")
 
-            navigationController?.isNavigationBarHidden = true
+            navigationController?.isNavigationBarHidden = false
             
             self.locationManager.requestAlwaysAuthorization()
             
             praseGPXFile()
             
-        }
-        
-        
-        override func viewWillLayoutSubviews() {
-            super.viewWillLayoutSubviews()
-            
-            let trakerRadius = trackerButton.frame.height / 2
-            
-            let otherRadius = saveButton.frame.height / 2
-            
-            followUserButton.roundCorners(cornerRadius: otherRadius)
-            
-            trackerButton.roundCorners(cornerRadius: trakerRadius)
-            
-            saveButton.roundCorners(cornerRadius: otherRadius)
-            
-            resetButton.roundCorners(cornerRadius: otherRadius)
-            
-            pinButton.roundCorners(cornerRadius: otherRadius)
-            
-            trackerButton.applyButtonGradient(
-                colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),  .orange],
-                direction: .leftSkewed)
-            
-            saveButton.applyButtonGradient(
-                colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
-                         UIColor.hexStringToUIColor(hex: "#1273DE")],
-                direction: .leftSkewed)
-            
-            resetButton.applyButtonGradient(
-                colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
-                         UIColor.hexStringToUIColor(hex: "#FCCB00")],
-                direction: .leftSkewed)
+            LKProgressHUD.dismiss()
             
         }
+        
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let trakerRadius = trackerButton.frame.height / 2
+        
+        let otherRadius = saveButton.frame.height / 2
+        
+        followUserButton.roundCorners(cornerRadius: otherRadius)
+        
+        sendSMSButton.roundCorners(cornerRadius: otherRadius)
+        
+        trackerButton.roundCorners(cornerRadius: trakerRadius)
+        
+        saveButton.roundCorners(cornerRadius: otherRadius)
+        
+        resetButton.roundCorners(cornerRadius: otherRadius)
+        
+    }
         
         
         // MARK: - Action
@@ -605,87 +593,146 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
         // MARK: - UI Settings -
         
-        func setUpButtonsStackView() {
-            
-            view.addSubview(buttonStackView)
-            
-            NSLayoutConstraint.activate([
-                
-                buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                
-                buttonStackView.widthAnchor.constraint(equalToConstant: UIScreen.width * 0.85),
-                
-                buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
-                
-                buttonStackView.heightAnchor.constraint(equalToConstant: 80)
-            ] )
-            
-            buttonStackView.addArrangedSubview(followUserButton)
-            
-            buttonStackView.addArrangedSubview(pinButton)
-            
-            buttonStackView.addArrangedSubview(trackerButton)
-            
-            buttonStackView.addArrangedSubview(saveButton)
-            
-            buttonStackView.addArrangedSubview(resetButton)
-            
-            // MARK: button constraint
-            
-            NSLayoutConstraint.activate([
-                
-                followUserButton.heightAnchor.constraint(equalToConstant: 50),
-                
-                followUserButton.widthAnchor.constraint(equalToConstant: 50),
-                
-                pinButton.heightAnchor.constraint(equalToConstant: 50),
-                
-                pinButton.widthAnchor.constraint(equalToConstant: 50),
-                
-                trackerButton.heightAnchor.constraint(equalToConstant: 80),
-                
-                trackerButton.widthAnchor.constraint(equalToConstant: 80),
-                
-                saveButton.heightAnchor.constraint(equalToConstant: 50),
-                
-                saveButton.widthAnchor.constraint(equalToConstant: 50),
-                
-                resetButton.heightAnchor.constraint(equalToConstant: 50),
-                
-                resetButton.widthAnchor.constraint(equalToConstant: 50)
-            ])
-            
-            trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
-            
-            saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
-            
-            resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
-            
-            followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
-            
-        }
+    func setUpButtonsStackView() {
         
+        view.addSubview(buttonStackView)
+        view.addSubview(leftStackView)
+        
+        NSLayoutConstraint.activate([
+            
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            
+            buttonStackView.widthAnchor.constraint(equalToConstant: 120),
+            
+            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
+            
+            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
+            
+            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            
+            leftStackView.widthAnchor.constraint(equalToConstant: 100),
+            
+            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
+            
+            leftStackView.heightAnchor.constraint(equalToConstant: 200)
+        ] )
+        
+        buttonStackView.addArrangedSubview(followUserButton)
+        
+        buttonStackView.addArrangedSubview(sendSMSButton)
+        
+        leftStackView.addArrangedSubview(saveButton)
+        leftStackView.addArrangedSubview(trackerButton)
+        leftStackView.addArrangedSubview(resetButton)
+        
+        // MARK: button constraint
+        
+        NSLayoutConstraint.activate([
+            
+            followUserButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            followUserButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            sendSMSButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            trackerButton.heightAnchor.constraint(equalToConstant: 70),
+            
+            trackerButton.widthAnchor.constraint(equalToConstant: 70),
+            
+            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            saveButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            resetButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            resetButton.widthAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
+        
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        
+        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        
+        followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        
+        sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
+        
+    }
+    
+    @objc func sendSMS() {
+        
+        LKProgressHUD.show()
+        
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self
+
+        // Configure the fields of the interface.
+        composeVC.recipients = ["請輸入電話號碼"]
+        
+        composeVC.body = "傳送我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+        
+        // Present the view controller modally.
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+            LKProgressHUD.dismiss()
+        }
+    }
         func setUpLabels() {
 
-            map3.addSubview(speedLabel)
-            speedLabel.frame = CGRect(x: 10, y: 40, width: 200, height: 100)
+            map3.addSubview( altitudeLabel)
+            // 座標 - 改成時速
+            altitudeLabel.frame = CGRect(x: 10, y: 90, width: 200, height: 100)
             
-            map3.addSubview(coordsLabel)
-            ////         座標 - 改成時速
-            coordsLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
+            map3.addSubview(speedLabel)
+            
+            speedLabel.frame = CGRect(x: 10, y: 60, width: 200, height: 100)
             
             map3.addSubview(timeLabel)
             // 時間
-            timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 30)
+            timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
             
             map3.addSubview(totalTrackedDistanceLabel)
             // 距離
-            totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 70, width: 80, height: 30)
+            totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
             
             map3.addSubview(currentSegmentDistanceLabel)
             
-            currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 100, width: 80, height: 30)
+            currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 120, width: 100, height: 30)
         }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let newLocation = locations.first!
+        
+        let altitude = newLocation.altitude.toAltitude()
+        
+        let text = "高度 : \(altitude)"
+        
+        altitudeLabel.text = text
+        
+        let rUnknownSpeedText = "0.00"
+        
+        //  MARK: Update_speed
+        
+        speedLabel.text = "時速 : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+        
+        if followUser {
+            
+            map3.setCenter(newLocation.coordinate, animated: true)
+        }
+        
+        if gpxTrackingStatus == .tracking {
+            
+            map3.addPointToCurrentTrackSegmentAtLocation(newLocation)
+            
+            totalTrackedDistanceLabel.distance = map3.session.totalTrackedDistance
+            
+            currentSegmentDistanceLabel.distance = map3.session.currentSegmentDistance
+        }
+    }
         
     }
 

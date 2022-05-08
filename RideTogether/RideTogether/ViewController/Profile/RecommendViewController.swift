@@ -171,6 +171,7 @@ class RecommendViewController: BaseViewController {
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        
         tableView.addGestureRecognizer(longPress)
         
     }
@@ -206,18 +207,19 @@ class RecommendViewController: BaseViewController {
 extension RecommendViewController: UITableViewDelegate {
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        
         if sender.state == .began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 
-//                let likeOption = UIAlertAction(title: "I like it ❤️", style: .default) { [self] _ in
-//                        self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-//
-//
-//                        waitlottie.isHidden = true
-//                    }
+                let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
+                        self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
+
+
+                        waitlottie.isHidden = true
+                    }
                 
-                let blockOption = UIAlertAction(title: "block it", style: .destructive) { [self] _ in
+                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
                     
                     UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
 
@@ -228,22 +230,23 @@ extension RecommendViewController: UITableViewDelegate {
                     self.waitlottie.isHidden = true
                 }
                 
-                let cancelOption = UIAlertAction(title: "Cancel", style: .cancel){ _ in
+                let cancelOption = UIAlertAction(title: "取消", style: .cancel){ _ in
                     self.waitlottie.isHidden = true
                 }
                 
-                showAlertAction(title: "Block User's Maps ?", message: nil, actions: [cancelOption, blockOption])
+                showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
                 
             }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        LKProgressHUD.show()
         
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)

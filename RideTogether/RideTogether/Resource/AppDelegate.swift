@@ -14,31 +14,30 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
-//    // swiftlint:disable force_cast
+//    swiftlint:disable force_cast
 //    static let shared = UIApplication.shared.delegate as! AppDelegate
 //    // swiftlint:enable force_cast
 //    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//    Override point for customization after application launch.
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
 //        Thread.sleep(forTimeInterval: 3)
         
-        if
-            let userId = Auth.auth().currentUser {
+        if let userId = Auth.auth().currentUser {
+            
             print ("\(userId.uid) and \(userId.email)")
+            
         }
         return true
         
-        
-//        / Navigatiob Bar Item Color
-                let navigationBarAppearance = UINavigationBar.appearance()
-                navigationBarAppearance.tintColor = UIColor.B5
-                navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor :  UIColor.B5]
+//     Navigatiob Bar Item Color
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.tintColor = UIColor.B5
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor :  UIColor.B5]
 
-//        // Tab Bar color
+//      Tab Bar color
 //                UITabBar.appearance().tintColor = UIColor.B5
         
     }

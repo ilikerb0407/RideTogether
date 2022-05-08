@@ -30,9 +30,20 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var sendData: UIButton! {
         didSet{
             sendData.isUserInteractionEnabled = false
-            sendData.alpha = 0.6
-            sendData.backgroundColor = .orange
+            sendData.alpha = 0.9
+            sendData.backgroundColor = .B5
+            sendData.tintColor = .B2
             sendData.cornerRadius = 15
+        }
+    }
+    
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -92,7 +103,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         
         setUpButton()
         
-        view.backgroundColor = .B2
+//        view.backgroundColor = .B5
     }
     
     override func viewWillLayoutSubviews() {

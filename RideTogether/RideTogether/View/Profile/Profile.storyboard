@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-1162" y="98"/>
         </scene>
-        <!--個人-->
+        <!--個人資訊-->
         <scene sceneID="qYq-dE-Oou">
             <objects>
                 <viewController id="3J9-PV-Y8M" customClass="ProfileViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,7 +154,7 @@
                             <constraint firstItem="tHO-FC-rc5" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="yja-bx-kPO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="個人" id="0aj-GT-TF9"/>
+                    <navigationItem key="navigationItem" title="個人資訊" id="0aj-GT-TF9"/>
                     <connections>
                         <outlet property="gView" destination="tHO-FC-rc5" id="EAT-X9-39A"/>
                         <outlet property="profileView" destination="Opy-dE-Pdx" id="uuz-Km-Qw9"/>
@@ -214,7 +214,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyF-2L-WcT" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="512" width="374" height="281"/>
+                                <rect key="frame" x="20" y="525" width="374" height="283"/>
                                 <subviews>
                                     <stackView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fZT-Ig-ZYH">
                                         <rect key="frame" x="30" y="43.5" width="329" height="56"/>
@@ -286,7 +286,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance(km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmX-Q9-cqd">
-                                        <rect key="frame" x="260" y="244" width="102" height="20.5"/>
+                                        <rect key="frame" x="260" y="246" width="102" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -304,7 +304,7 @@
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CY4-04-0aW" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
-                                <rect key="frame" x="20" y="108" width="374" height="392"/>
+                                <rect key="frame" x="20" y="93" width="374" height="392"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="392" id="sie-7h-nCN"/>
                                 </constraints>
@@ -319,15 +319,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="G62-vk-MyL" firstAttribute="top" secondItem="9cA-FX-fdz" secondAttribute="top" constant="-88" id="BAT-7U-Wsa"/>
-                            <constraint firstItem="tyF-2L-WcT" firstAttribute="top" secondItem="CY4-04-0aW" secondAttribute="bottom" constant="12" id="GAS-Ru-Wy2"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="tyF-2L-WcT" secondAttribute="bottom" constant="20" id="GS6-Lx-PMj"/>
+                            <constraint firstItem="tyF-2L-WcT" firstAttribute="top" secondItem="CY4-04-0aW" secondAttribute="bottom" constant="40" id="GAS-Ru-Wy2"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="tyF-2L-WcT" secondAttribute="bottom" constant="5" id="GS6-Lx-PMj"/>
                             <constraint firstItem="9cA-FX-fdz" firstAttribute="trailing" secondItem="tyF-2L-WcT" secondAttribute="trailing" constant="20" id="LHp-mL-ELA"/>
                             <constraint firstItem="CY4-04-0aW" firstAttribute="leading" secondItem="9cA-FX-fdz" secondAttribute="leading" constant="20" id="W6l-un-ANn"/>
                             <constraint firstItem="9cA-FX-fdz" firstAttribute="trailing" secondItem="G62-vk-MyL" secondAttribute="trailing" id="d2a-6y-YXL"/>
                             <constraint firstItem="CY4-04-0aW" firstAttribute="trailing" secondItem="9cA-FX-fdz" secondAttribute="trailing" constant="-20" id="gGK-AL-wXg"/>
                             <constraint firstItem="9cA-FX-fdz" firstAttribute="bottom" secondItem="G62-vk-MyL" secondAttribute="bottom" id="kR0-EI-CVs"/>
                             <constraint firstItem="tyF-2L-WcT" firstAttribute="leading" secondItem="9cA-FX-fdz" secondAttribute="leading" constant="20" id="nVr-iX-gBt"/>
-                            <constraint firstItem="CY4-04-0aW" firstAttribute="top" secondItem="9cA-FX-fdz" secondAttribute="top" constant="20" id="oyA-Rs-Maw"/>
+                            <constraint firstItem="CY4-04-0aW" firstAttribute="top" secondItem="9cA-FX-fdz" secondAttribute="top" constant="5" id="oyA-Rs-Maw"/>
                             <constraint firstItem="G62-vk-MyL" firstAttribute="leading" secondItem="9cA-FX-fdz" secondAttribute="leading" id="vth-3V-Xsi"/>
                         </constraints>
                     </view>

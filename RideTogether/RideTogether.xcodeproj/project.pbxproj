@@ -33,6 +33,7 @@
 		231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB60280739AD00DE2343 /* Taipei1.plist */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
+		233206C92826483D0017864C /* Noto_Sans_TC in Resources */ = {isa = PBXBuildFile; fileRef = 233206C82826483D0017864C /* Noto_Sans_TC */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
@@ -177,6 +178,7 @@
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		233206C82826483D0017864C /* Noto_Sans_TC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto_Sans_TC; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				2397D455281F106B0018FC5E /* sun.json */,
 				2397D457281F14170018FC5E /* otherweather.json */,
 				2397D45F28203F820018FC5E /* cloud.json */,
+				233206C82826483D0017864C /* Noto_Sans_TC */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
@@ -758,6 +761,7 @@
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
 				23CB74CA281787B400DED822 /* Login.storyboard in Resources */,
 				2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */,
+				233206C92826483D0017864C /* Noto_Sans_TC in Resources */,
 				2397D458281F14170018FC5E /* otherweather.json in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */,
 				23A84A7D2812EFFE00DD8D39 /* RouteSelectionViewController.xib in Resources */,
