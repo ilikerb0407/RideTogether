@@ -131,7 +131,7 @@ class RouteViewController: BaseViewController {
 
         NSLayoutConstraint.activate([
 
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 110),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
 
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 

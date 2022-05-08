@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-1162" y="98"/>
         </scene>
-        <!--個人-->
+        <!--個人資訊-->
         <scene sceneID="qYq-dE-Oou">
             <objects>
                 <viewController id="3J9-PV-Y8M" customClass="ProfileViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,7 +154,7 @@
                             <constraint firstItem="tHO-FC-rc5" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="yja-bx-kPO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="個人" id="0aj-GT-TF9"/>
+                    <navigationItem key="navigationItem" title="個人資訊" id="0aj-GT-TF9"/>
                     <connections>
                         <outlet property="gView" destination="tHO-FC-rc5" id="EAT-X9-39A"/>
                         <outlet property="profileView" destination="Opy-dE-Pdx" id="uuz-Km-Qw9"/>

@@ -355,9 +355,10 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             setUpLabels()
             
-            backButton()
+//            backButton()
+            setNavigationBar(title: "探索路線")
 
-            navigationController?.isNavigationBarHidden = true
+            navigationController?.isNavigationBarHidden = false
             
             self.locationManager.requestAlwaysAuthorization()
             

@@ -61,7 +61,6 @@ class Member: UITableViewCell {
             rejectButton.isHidden = true
         }
         
-        
         requestNameLabel.text = userInfo.userName
         
         userImage.loadImage(userInfo.pictureRef)
@@ -89,9 +88,11 @@ class Member: UITableViewCell {
     override func layoutSubviews() {
         
         acceptButton.layer.cornerRadius = acceptButton.frame.height / 2
+        
         acceptButton.layer.masksToBounds = true
         
         rejectButton.layer.cornerRadius = rejectButton.frame.height / 2
+        
         rejectButton.layer.masksToBounds = true
         
         userImage.cornerRadius = userImage.frame.height / 2
