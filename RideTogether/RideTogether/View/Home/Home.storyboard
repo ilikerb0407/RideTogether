@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--探索-->
         <scene sceneID="f0Z-Wu-YkW">
             <objects>
                 <navigationController id="9ko-J6-rRR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="FL8-VV-mhN"/>
+                    <tabBarItem key="tabBarItem" title="探索" image="magnifyingglass.circle" catalog="system" id="FL8-VV-mhN"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U0r-ac-xeW">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-690" y="53"/>
         </scene>
-        <!--Home View Controller-->
+        <!--探索路線-->
         <scene sceneID="Wwp-t3-4h5">
             <objects>
                 <viewController id="fkg-3r-rE9" customClass="HomeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,23 +34,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzb-fJ-NFQ">
-                                <rect key="frame" x="0.0" y="-48" width="414" height="1247"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLN-Ba-dr0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5WQ-FE-XOT"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dzb-fJ-NFQ" firstAttribute="top" secondItem="5WQ-FE-XOT" secondAttribute="top" constant="-136" id="6dQ-Lu-SXm"/>
-                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="bottom" secondItem="dzb-fJ-NFQ" secondAttribute="bottom" constant="-386" id="T3b-8x-cW5"/>
-                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="trailing" secondItem="dzb-fJ-NFQ" secondAttribute="trailing" id="blE-L9-Ibg"/>
-                            <constraint firstItem="dzb-fJ-NFQ" firstAttribute="leading" secondItem="5WQ-FE-XOT" secondAttribute="leading" id="rkh-dM-bMX"/>
+                            <constraint firstItem="XLN-Ba-dr0" firstAttribute="top" secondItem="lJc-D8-mmk" secondAttribute="top" id="PBm-Mg-YuL"/>
+                            <constraint firstItem="XLN-Ba-dr0" firstAttribute="leading" secondItem="5WQ-FE-XOT" secondAttribute="leading" id="SMw-PX-LSK"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="trailing" secondItem="XLN-Ba-dr0" secondAttribute="trailing" id="j1g-6R-xep"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="bottom" secondItem="XLN-Ba-dr0" secondAttribute="bottom" id="qb8-Xh-kes"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oG9-91-4Jy"/>
+                    <navigationItem key="navigationItem" title="探索路線" id="oG9-91-4Jy"/>
                     <connections>
-                        <outlet property="gView" destination="dzb-fJ-NFQ" id="Ly1-ma-HRJ"/>
+                        <outlet property="gView" destination="XLN-Ba-dr0" id="Qf2-9A-wrL"/>
                         <segue destination="nnY-XE-OqT" kind="show" identifier="routeList" id="W6M-cr-gbH"/>
                     </connections>
                 </viewController>
@@ -66,23 +66,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drI-YP-d4p">
-                                <rect key="frame" x="0.0" y="-58" width="414" height="1129"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-US-Wli">
+                                <rect key="frame" x="0.0" y="-37" width="414" height="850"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pa3-uj-87k"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pa3-uj-87k" firstAttribute="bottom" secondItem="drI-YP-d4p" secondAttribute="bottom" constant="-258" id="4BM-Jn-xBr"/>
-                            <constraint firstItem="drI-YP-d4p" firstAttribute="leading" secondItem="pa3-uj-87k" secondAttribute="leading" id="6zf-d5-wsV"/>
-                            <constraint firstItem="pa3-uj-87k" firstAttribute="trailing" secondItem="drI-YP-d4p" secondAttribute="trailing" id="Jsf-Q2-mQJ"/>
-                            <constraint firstItem="drI-YP-d4p" firstAttribute="top" secondItem="pa3-uj-87k" secondAttribute="top" constant="-146" id="vJK-f8-IhO"/>
+                            <constraint firstItem="Mof-US-Wli" firstAttribute="leading" secondItem="pa3-uj-87k" secondAttribute="leading" id="O2X-Fh-x4d"/>
+                            <constraint firstItem="pa3-uj-87k" firstAttribute="trailing" secondItem="Mof-US-Wli" secondAttribute="trailing" id="ck4-PN-ihg"/>
+                            <constraint firstItem="pa3-uj-87k" firstAttribute="bottom" secondItem="Mof-US-Wli" secondAttribute="bottom" id="ssP-aT-cA1"/>
+                            <constraint firstItem="Mof-US-Wli" firstAttribute="top" secondItem="pa3-uj-87k" secondAttribute="top" constant="-125" id="uc7-wz-zVm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qeF-nq-U0u"/>
                     <connections>
-                        <outlet property="gView" destination="drI-YP-d4p" id="D74-sM-XZ0"/>
+                        <outlet property="gView" destination="Mof-US-Wli" id="rlF-Fi-CUt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOt-Fa-5T4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -166,7 +166,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -12,6 +12,7 @@ import FirebaseAuth
 import Lottie
 
 
+
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
     
 
@@ -29,7 +30,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     private var userInfo = UserManager.shared.userInfo
     
-    private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
+    private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     
     var curerentUser = Auth.auth().currentUser
@@ -58,15 +59,16 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             
             self.curerentUser = Auth.auth().currentUser
         }
-        
         lottie()
     }
     
     func lottie() {
-        var waveLottieView: AnimationView = {
+      var waveLottieView: AnimationView = {
+        
             let view = AnimationView(name: "49908-bike-ride")
+            
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
+            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 350)
             view.contentMode = .scaleAspectFit
             view.play()
             self.view.addSubview(view)
@@ -74,6 +76,35 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         }()
     }
     
+    @IBAction func goToPrivacyPage(_ sender: UIButton) {
+        
+        guard let policyVC = UIStoryboard.policy.instantiateViewController(
+            identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
+        
+        policyVC.policy = .privacy
+        
+        present(policyVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToEulaPage(_ sender: Any) {
+        
+        guard let policyVC = UIStoryboard.policy.instantiateViewController(
+            identifier: PolicyViewController.identifier) as? PolicyViewController else { return }
+        
+        policyVC.policy = .eula
+        
+        present(policyVC, animated: true, completion: nil)
+    }
+    
+    
+//      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
+
+    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
     func setUpSignInButton() {
         
         view.addSubview(loginButton)
@@ -84,7 +115,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         NSLayoutConstraint.activate([
             
-            loginButton.heightAnchor.constraint(equalToConstant: 36),
+            loginButton.heightAnchor.constraint(equalToConstant: 45),
             
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             
@@ -147,16 +178,35 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         return hashString
     }
     
-    
     @IBOutlet weak var emailbtn: UIButton!
     
-    
-    
-    
+    @objc func popUpEmailSignIn() {
+        
+        if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController{
+            self.modalPresentationStyle = .fullScreen
+            self.present(nextVC, animated: true, completion: .none)
+        }
+        
+    }
     func loginButtonFadeIn () {
         
         self.loginButton.alpha = 0.0
         self.emailbtn.alpha = 0.0
+        self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 17.5)
+        self.emailbtn.addTarget(self, action: #selector(popUpEmailSignIn), for: .touchUpInside)
+        
+        emailbtn.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            emailbtn.heightAnchor.constraint(equalToConstant: 45),
+            
+            emailbtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
+            emailbtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            
+            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30)
+            
+        ])
         
         //        self.agreementStackView.alpha = 0.0
         
@@ -215,6 +265,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
+        
+        
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userId = credential.user
             let fullname = credential.fullName
@@ -225,6 +277,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             print("---------\(fullname)")
             print("---------\(email)")
             print("---------\(idToken)")
+            
+            
+            
             //                   guard let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else { return }
             //                   vc.modalPresentationStyle = .fullScreen
             //                   self.present(vc, animated: true)
@@ -263,9 +318,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                    
                     let uid = authResult?.user.uid {
                     
+                    LKProgressHUD.show()
+                    
                     if isNewUser {
                         
                         self.userInfo.uid = uid
+                        
+//                        se
                         
                         UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                             
@@ -278,8 +337,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                 self.fetchUserInfo(uid: uid)
                                 
                                 
-                                
                                 print("User Sign up successfully")
+                                
+                                LKProgressHUD.show()
                                 
                             case .failure(let error):
                                 
@@ -290,6 +350,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     } else {
                         
                         self.fetchUserInfo(uid: uid)
+                        
+                        LKProgressHUD.show()
                     }
                 }
             }

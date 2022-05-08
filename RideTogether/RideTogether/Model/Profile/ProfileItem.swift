@@ -41,6 +41,7 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
             return "帳戶設定"
         case .saveRoutes:
             return "收藏路線"
+    
         }
         
     }
@@ -48,18 +49,21 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
     var backgroundColor: UIColor? {
         
         switch self {
+            
         case .routeRecord:
-            return UIColor.orange
+            return .B5
         case .recommendMap:
-            return UIColor.orange
+            return .B5
         case .userAccount:
-            return UIColor.orange
+            return .B5
         case .saveRoutes:
-            return UIColor.orange
+            return .B5
+            
         }
     }
     
     var image: UIImage? {
+        
         switch self {
         case .routeRecord:
             return UIImage.init(systemName: "bicycle.circle")
@@ -70,5 +74,6 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
         case .saveRoutes:
             return UIImage.init(systemName: "heart")
         }
+        
     }
 }

@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,38 +20,41 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-uR-RZZ">
-                        <rect key="frame" x="7" y="8" width="330" height="93"/>
+                        <rect key="frame" x="50" y="8" width="245" height="93"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mm7-gj-Y9P">
-                                <rect key="frame" x="10" y="10" width="48" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mm7-gj-Y9P">
+                                <rect key="frame" x="20" y="10" width="195" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="B2"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg3-cf-vG5">
-                                <rect key="frame" x="10" y="54" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHY-j8-y75">
-                                <rect key="frame" x="274.5" y="10" width="45.5" height="73"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHY-j8-y75">
+                                <rect key="frame" x="189.5" y="10" width="45.5" height="73"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
                                     <backgroundConfiguration key="background"/>
                                 </buttonConfiguration>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg3-cf-vG5">
+                                <rect key="frame" x="20" y="46" width="195" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="B2"/>
+                                <color key="highlightedColor" systemColor="systemRedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" name="B2"/>
+                        <color key="backgroundColor" name="B5"/>
                         <constraints>
+                            <constraint firstItem="DHY-j8-y75" firstAttribute="trailing" secondItem="Mm7-gj-Y9P" secondAttribute="trailing" constant="20" id="34w-aX-Gfe"/>
                             <constraint firstAttribute="bottom" secondItem="DHY-j8-y75" secondAttribute="bottom" constant="10" id="4HB-Uq-cWb"/>
-                            <constraint firstItem="yg3-cf-vG5" firstAttribute="top" secondItem="Mm7-gj-Y9P" secondAttribute="bottom" constant="20" id="6U2-8a-T4N"/>
                             <constraint firstAttribute="trailing" secondItem="DHY-j8-y75" secondAttribute="trailing" constant="10" id="7c5-Dh-w63"/>
-                            <constraint firstItem="yg3-cf-vG5" firstAttribute="leading" secondItem="OGf-uR-RZZ" secondAttribute="leading" constant="10" id="7eW-8G-kO3"/>
                             <constraint firstItem="Mm7-gj-Y9P" firstAttribute="top" secondItem="OGf-uR-RZZ" secondAttribute="top" constant="10" id="826-Gm-g1R"/>
                             <constraint firstItem="DHY-j8-y75" firstAttribute="top" secondItem="OGf-uR-RZZ" secondAttribute="top" constant="10" id="EyI-uT-UVh"/>
-                            <constraint firstItem="Mm7-gj-Y9P" firstAttribute="leading" secondItem="OGf-uR-RZZ" secondAttribute="leading" constant="10" id="aMb-o5-F72"/>
+                            <constraint firstItem="DHY-j8-y75" firstAttribute="trailing" secondItem="yg3-cf-vG5" secondAttribute="trailing" constant="20" id="Gxg-ir-B92"/>
+                            <constraint firstItem="yg3-cf-vG5" firstAttribute="top" secondItem="Mm7-gj-Y9P" secondAttribute="bottom" constant="12" id="Img-Wn-0eC"/>
+                            <constraint firstItem="yg3-cf-vG5" firstAttribute="leading" secondItem="OGf-uR-RZZ" secondAttribute="leading" constant="20" id="Wmy-Ji-i0F"/>
+                            <constraint firstItem="Mm7-gj-Y9P" firstAttribute="leading" secondItem="OGf-uR-RZZ" secondAttribute="leading" constant="20" id="h9L-OX-vwu"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -66,10 +70,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="OGf-uR-RZZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="HJG-5B-AEu"/>
+                    <constraint firstItem="OGf-uR-RZZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="HJG-5B-AEu"/>
                     <constraint firstAttribute="bottom" secondItem="OGf-uR-RZZ" secondAttribute="bottom" constant="8" id="rXK-7Z-df9"/>
                     <constraint firstItem="OGf-uR-RZZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="vkt-gD-Y7i"/>
-                    <constraint firstAttribute="trailing" secondItem="OGf-uR-RZZ" secondAttribute="trailing" constant="8" id="wyT-BT-aNr"/>
+                    <constraint firstAttribute="trailing" secondItem="OGf-uR-RZZ" secondAttribute="trailing" constant="50" id="wyT-BT-aNr"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -84,7 +88,16 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <namedColor name="B2">
-            <color red="1" green="0.96899998188018799" blue="0.81199997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98431372549019602" green="0.99607843137254903" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="B5">
+            <color red="0.25490196078431371" green="0.32156862745098042" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

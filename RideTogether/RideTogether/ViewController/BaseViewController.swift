@@ -64,6 +64,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         
         if isHideNavigationBar {
@@ -79,6 +80,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             
             IQKeyboardManager.shared.enable = true
         }
+        
     }
     
     @objc func popToPreviousPage(_ sender: UIButton) {
@@ -99,9 +101,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
             
-            //            UserManager.shared.blockUser(blockUserId: uid)
+                        UserManager.shared.blockUser(blockUserId: uid)
             
-            //            UserManager.shared.userInfo.blockList?.append(uid)
+                        UserManager.shared.userInfo.blockList?.append(uid)
         }
         
         controller.addAction(cancelAction)
@@ -133,12 +135,16 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
-        let image = UIImage(named: "hat")
+        let image = UIImage(systemName: "chevron.left",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light ))
         // 改圖片
+        leftButton.backgroundColor = .B5
         
-        leftButton.setImage(image, for: .normal)
+        leftButton.tintColor = .B2
+        
+        leftButton.setImage(image, for: .normal) 
         
         leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
         

@@ -13,9 +13,9 @@ import Firebase
 import Lottie
 import MessageUI
 import SwiftUI
+import JGProgressHUD
 
-
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond{
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
     
     func sendRouteTwice(map: DrawRoute) {
@@ -23,15 +23,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     var mapData: DrawRoute?
     
+    private let buttonPanelView = ButtonPanelView()
+    
     var routeVc =  RouteSelectionViewController()
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
     @IBOutlet weak var map: GPXMapView!
-    
-    @IBOutlet weak var tempView: UIView!
-    
-    @IBOutlet weak var tempText: UILabel!
     
     var directionsResponse =  MKDirections.Response()
     
@@ -81,7 +79,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
             case .notStarted:
                 
-                trackerButton.setTitle("Start", for: .normal)
+                trackerButton.setTitle("開始", for: .normal)
                 
                 stopWatch.reset()
                 
@@ -99,7 +97,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 
             case .tracking:
                 
-                trackerButton.setTitle("Pause", for: .normal)
+                trackerButton.setTitle("暫停", for: .normal)
                 
                 self.stopWatch.start()
                 
@@ -108,11 +106,10 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 waveLottieView.play()
                 
                 bikeLottieView.play()
-        
                 
             case .paused:
                 
-                self.trackerButton.setTitle("Resume", for: .normal)
+                self.trackerButton.setTitle("繼續", for: .normal)
                 
                 self.stopWatch.stop()
                 
@@ -147,32 +144,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
     }
-    
-    private lazy var guideButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        let image = UIImage(named: "information", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        return button
-    }()
-    
-    private lazy var sendSMSButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        let image = UIImage(systemName: "message",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 24
-        return button
-    }()
-    
+
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
+        button.backgroundColor = .B5
+        button.tintColor = .B2
+        button.setTitle("開始", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 18)
         button.titleLabel?.textAlignment = .center
         return button
@@ -181,7 +159,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var resetButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Reset", for: .normal)
+        button.backgroundColor = .B5
+        button.tintColor = .B2
+        button.setTitle("重置", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
@@ -191,16 +171,44 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Save", for: .normal)
+        button.backgroundColor = .B5
+        button.tintColor = .B2
+        button.setTitle("儲存", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
         return button
     }()
     
-    private lazy var followUserButton: UIButton = {
+    private lazy var weatherBtn: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .clear
+        button.tintColor = .B5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
+        let image = UIImage(systemName: "info.circle",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
+    
+    private lazy var sendSMSButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .B5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
+        let image = UIImage(systemName: "message",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
+        return button
+    }()
+    
+    private lazy var followUserButton: UIButton = {
+        
+        let button = UIButton()
+        button.tintColor = .B5
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let image = UIImage(systemName: "location.fill",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
@@ -208,10 +216,10 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }()
     
     private lazy var pinButton: UIButton = {
-      
         let button = UIButton()
         button.layer.cornerRadius = 24.0
-        button.backgroundColor = .clear
+        button.tintColor = .B5
+        button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         let mappinHighlighted = UIImage(systemName: "mappin.and.ellipse",
@@ -231,37 +239,26 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }
     
     // MARK: 長按功能_ UILongPressGestureRecognizer
+    
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
             print("Adding Pin map Long Press Gesture")
-            
             map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
             map.addWaypointAtViewPoint(point)
-            //Allows save and reset
             self.hasWaypoints = true
         }
     }
-    
     var hasWaypoints: Bool = false
-    
-    private lazy var waitBar: AnimationView = {
-        let view = AnimationView(name: "wait-processbar")
-        view.loopMode = .playOnce
-        view.frame = CGRect(x: UIScreen.width / 2 - 50, y: UIScreen.height / 2  - 50 , width: 200  , height: 200)
-        view.contentMode = .scaleAspectFit
-        self.view.addSubview(view)
-        self.view.bringSubviewToFront(leftStackView)
-        return view
-    }()
 
     private lazy var waveLottieView: AnimationView = {
-        let view = AnimationView(name: "95671-wave-animation")
+        let view = AnimationView(name: "circle")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0, width: 100 , height: 100)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         view.center = leftStackView.center
         view.contentMode = .scaleAspectFit
         view.play()
+        
         self.view.addSubview(view)
         self.view.bringSubviewToFront(leftStackView)
         return view
@@ -269,7 +266,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     private lazy var buttonStackView: UIStackView = {
  
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, guideButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, weatherBtn])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -286,10 +283,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         view.spacing = 8
         view.distribution = .equalSpacing
         view.alignment = .center
-//        view.centerXAnchor.
         return view
     }()
-    
     
     // MARK: 之後再改字體
     
@@ -297,8 +292,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.regular(size: 20)
-        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.textColor = UIColor.B5
         return label
     }()
     
@@ -306,16 +301,16 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.font = UIFont.regular(size: 30)
-        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.textColor = UIColor.B5
         return label
     }()
     
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = UIFont.bold(size: 40)
-        label.textColor = UIColor.black
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.textColor = UIColor.B5
         label.text = "00:00"
         return label
     }()
@@ -323,8 +318,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var totalTrackedDistanceLabel: DistanceLabel = {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
-        distaneLabel.font = UIFont.regular(size: 26)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        distaneLabel.textColor = UIColor.B5
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -332,8 +327,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     private lazy var currentSegmentDistanceLabel: DistanceLabel = {
         let distaneLabel = DistanceLabel()
         distaneLabel.textAlignment = .right
-        distaneLabel.font = UIFont.regular(size: 18)
-        distaneLabel.textColor = UIColor.black
+        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        distaneLabel.textColor = UIColor.B5
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
@@ -343,6 +338,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        LKProgressHUD.dismiss()
         
         locationManager.delegate = self
         
@@ -368,61 +365,77 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         routeVc.delegate = self
         
+        mapViewDelegate.route.polyline.title = "two"
+        
+//        buttonPanelView.delegate = self
+//
+//        view.addSubview(buttonPanelView)
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if gpxTrackingStatus == .tracking {
+            bikeLottieView.play()
+            waveLottieView.play()
+        }
+    }
+    
+    private func addConstraints() {
+      buttonPanelView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+      buttonPanelView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     private lazy var bikeLottieView: AnimationView = {
-            
             let view = AnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width - 100, y: UIScreen.height - 150, width: 80, height: 80)
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 100),
+            view.heightAnchor.constraint(equalToConstant: 100),
+            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+        ])
             view.contentMode = .scaleAspectFit
             view.play()
-            self.view.addSubview(view)
+            
             return view
         }()
     
-    
     func addSegment() {
-        let segmentControl = UISegmentedControl(items: ["hybrid", "standard" ])
-        segmentControl.tintColor = UIColor.black
-        segmentControl.backgroundColor = UIColor.lightGray
+        let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
+        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B5], for: .normal)
+        segmentControl.backgroundColor = UIColor.B5
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
-        segmentControl.frame.size = CGSize(
-            width: 150, height: 30)
-        segmentControl.center = CGPoint(
-            x: 80,
-            y: 65)
+        segmentControl.frame.size = CGSize(width: 150, height: 30)
+        segmentControl.center = CGPoint(x: 80, y: 65)
         self.view.addSubview(segmentControl)
     }
-    
-    
     // 切換選項時執行動作的方法
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0 :
             map.mapType = .mutedStandard
             map.showsTraffic = true
-            speedLabel.textColor = .black
-            timeLabel.textColor = .black
-            altitudeLabel.textColor = .black
-            currentSegmentDistanceLabel.textColor = .black
-            totalTrackedDistanceLabel.textColor = .black
+            speedLabel.textColor = .B5
+            timeLabel.textColor = .B5
+            altitudeLabel.textColor = .B5
+            currentSegmentDistanceLabel.textColor = .B5
+            totalTrackedDistanceLabel.textColor = .B5
         case 1 :
             map.mapType = .hybridFlyover
             map.showsTraffic = true
-            speedLabel.textColor = .white
-            timeLabel.textColor = .white
-            altitudeLabel.textColor = .white
-            currentSegmentDistanceLabel.textColor = .white
-            totalTrackedDistanceLabel.textColor = .white
+            speedLabel.textColor = .B2
+            timeLabel.textColor = .B2
+            altitudeLabel.textColor = .B2
+            currentSegmentDistanceLabel.textColor = .B2
+            totalTrackedDistanceLabel.textColor = .B2
         default :
             map.mapType = .standard
         }
     }
-    
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -435,7 +448,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         sendSMSButton.roundCorners(cornerRadius: otherRadius)
         
-        guideButton.roundCorners(cornerRadius: otherRadius)
+        weatherBtn.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
@@ -444,20 +457,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         resetButton.roundCorners(cornerRadius: otherRadius)
         
         pinButton.roundCorners(cornerRadius: otherRadius)
-        
-        trackerButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#C4E0F8"),.orange],
-            direction: .leftSkewed)
-        
-        saveButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#F3F9A7"),
-                     UIColor.hexStringToUIColor(hex: "#1273DE")],
-            direction: .leftSkewed)
-        
-        resetButton.applyButtonGradient(
-            colors: [UIColor.hexStringToUIColor(hex: "#e1eec3"),
-                     UIColor.hexStringToUIColor(hex: "#FCCB00")],
-            direction: .leftSkewed)
     }
     
     // MARK: - Action
@@ -495,12 +494,14 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
-        
+    
         self.view.addSubview(map)
         
     }
     
     @objc func sendSMS() {
+        
+        LKProgressHUD.show()
         
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
@@ -512,8 +513,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         // Present the view controller modally.
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
-          
+            LKProgressHUD.dismiss()
         }
+        
        
     }
     
@@ -548,7 +550,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(), .large()]
+                presentVc.detents = [.large(), .medium()]
             self.navigationController?.present(navBar, animated: true, completion: .none)
            }
         }
@@ -610,9 +612,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         if gpxTrackingStatus == .notStarted { return }
         
-        let cancelOption = UIAlertAction(title: "CANCEL", style: .cancel)
+        let cancelOption = UIAlertAction(title: "取消", style: .cancel)
         
-        let resetOption = UIAlertAction(title: "RESET", style: .destructive) { _ in
+        let resetOption = UIAlertAction(title: "重置", style: .destructive) { _ in
             self.gpxTrackingStatus = .notStarted
             
             UIView.animate(withDuration: 0.3) {
@@ -629,27 +631,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         self.followUser = !self.followUser
     }
     
-    //原本放在folder button 裡面
     
-    @objc func openOfflineMap() {
-        addRoute()
-    }
-    
-    
-    // MARK: 離線地圖
-    func addRoute() {
-        guard let points = Park.plist("Taipei1") as? [String] else { return }
-        
-        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
-        let coords = cgPoints.map { CLLocationCoordinate2D(
-            latitude: CLLocationDegrees($0.x),
-            longitude: CLLocationDegrees($0.y))
-        }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        print ("===========Pleaseprint")
-        map.addOverlay(myPolyline)
-        
-    }
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -728,7 +710,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             map.removeOverlay(overlay)
             
             map.addOverlay(overlay)
-            
         }
     }
     
@@ -743,7 +724,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 120),
             // widthAnchor.constraint = UIScreen.width * 0.85
-            buttonStackView.widthAnchor.constraint(equalToConstant: 220),
+            buttonStackView.widthAnchor.constraint(equalToConstant: 230),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
@@ -761,7 +742,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         buttonStackView.addArrangedSubview(followUserButton)
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
-        buttonStackView.addArrangedSubview(guideButton)
+        buttonStackView.addArrangedSubview(weatherBtn)
         
         leftStackView.addArrangedSubview(saveButton)
         leftStackView.addArrangedSubview(trackerButton)
@@ -779,13 +760,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             pinButton.widthAnchor.constraint(equalToConstant: 50),
             
-            sendSMSButton.widthAnchor.constraint(equalToConstant: 70),
+            sendSMSButton.widthAnchor.constraint(equalToConstant: 50),
             
             sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
             
-            guideButton.widthAnchor.constraint(equalToConstant: 50),
+            weatherBtn.widthAnchor.constraint(equalToConstant: 50),
             
-            guideButton.heightAnchor.constraint(equalToConstant: 50),
+            weatherBtn.heightAnchor.constraint(equalToConstant: 50),
             
             trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
@@ -810,13 +791,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
-        guideButton.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
+        weatherBtn.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
     }
     
     func setUpLabels() {
         
         map.addSubview( altitudeLabel)
-        ////         座標 - 改成時速
+        // 座標 - 改成時速
         altitudeLabel.frame = CGRect(x: 10, y: 80, width: 200, height: 100)
         
         map.addSubview(speedLabel)
@@ -825,25 +806,23 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         map.addSubview(timeLabel)
         // 時間
-        timeLabel.frame = CGRect(x: UIScreen.width - 100, y: 40, width: 80, height: 80)
+        timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
         
         map.addSubview(totalTrackedDistanceLabel)
         // 距離
-        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 90, width: 80, height: 30)
+        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
         
-        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 100, y: 120, width: 80, height: 30)
+        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 120, width: 100, height: 30)
     }
     
 }
-
 // MARK: - StopWatchDelegate methods
-
 extension JourneyViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
-        timeLabel.text = elapsedTimeString
+        timeLabel.text = "時間 : \(elapsedTimeString)"
     }
 }
 // MARK: - CLLocationManager Delegate -
@@ -858,7 +837,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         let altitude = newLocation.altitude.toAltitude()
         
-        let text = "Altitude : \(altitude)"
+        let text = "高度 : \(altitude)"
         
         altitudeLabel.text = text
         
@@ -866,9 +845,10 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         //  MARK: Update_speed
         
-        speedLabel.text = "speed : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
+        speedLabel.text = "時速 : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
         if followUser {
+            
             map.setCenter(newLocation.coordinate, animated: true)
         }
         
@@ -881,13 +861,10 @@ extension JourneyViewController: CLLocationManagerDelegate {
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
     }
-    
     //   Pin direction
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         map.heading = newHeading // updates heading variable
         map.updateHeading() // updates heading view's rotation
     }
-    
 }
-

@@ -16,6 +16,7 @@ struct UserInfo: Codable {
     var totalFriends: Int
     var totalGroups: Int
     var blockList: [String]?
+    var saveMaps: [String]?
     
     enum CodingKeys: String, CodingKey {
         case uid
@@ -25,6 +26,7 @@ struct UserInfo: Codable {
         case totalFriends = "total_friends"
         case totalGroups = "total_groups"
         case blockList = "block_list"
+        case saveMaps = "save_maps"
     }
     
     init() {
@@ -35,6 +37,7 @@ struct UserInfo: Codable {
         self.totalFriends = 0
         self.totalGroups = 0
         self.blockList = []
+        self.saveMaps = []
     }
     
 }

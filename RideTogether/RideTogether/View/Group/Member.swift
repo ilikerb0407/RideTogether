@@ -50,14 +50,12 @@ class Member: UITableViewCell {
         
         groupNameLabel.isHidden = true
         
-//        let image = UIImage(named: "block")
-//
-//        rejectButton.setImage(image, for: .normal)
-//
-//        rejectButton.backgroundColor = .white
-        
-        rejectButton.isHidden = true
-//
+        let image = UIImage(named: "block")
+
+        rejectButton.setImage(image, for: .normal)
+
+        rejectButton.backgroundColor = .B2
+
         if userInfo.uid == UserManager.shared.userId {
 
             rejectButton.isHidden = true
@@ -71,9 +69,13 @@ class Member: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.backgroundColor = .clear
+        
         viewOfBackground.layer.cornerRadius = 10
+        
         viewOfBackground.layer.masksToBounds = true
+        
         selectionStyle = .none
     }
 
@@ -86,9 +88,11 @@ class Member: UITableViewCell {
     override func layoutSubviews() {
         
         acceptButton.layer.cornerRadius = acceptButton.frame.height / 2
+        
         acceptButton.layer.masksToBounds = true
         
         rejectButton.layer.cornerRadius = rejectButton.frame.height / 2
+        
         rejectButton.layer.masksToBounds = true
         
         userImage.cornerRadius = userImage.frame.height / 2

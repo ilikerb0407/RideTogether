@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
+import AVFoundation
 
 class SaveMapsViewController: BaseViewController {
     
@@ -19,10 +20,9 @@ class SaveMapsViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .orange],
-                locations: [0.0, 3.0], direction: .leftSkewed)
-//            gView.alpha = 0.85
-            // 不會把資料覆蓋住
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -61,6 +61,7 @@ class SaveMapsViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
+        
         tabBarController?.tabBar.isHidden = false
         
     }
@@ -89,12 +90,10 @@ class SaveMapsViewController: BaseViewController {
     
     func setUptableView() {
         
-        setNavigationBar(title: "Personal Collection")
+        setNavigationBar(title: "收藏路線")
         
         tableView = UITableView()
         // 借用同一個tableViewcell
-        
-       
         
         tableView.registerCellWithNib(identifier: SaveMaps.identifier, bundle: nil)
         
@@ -119,6 +118,18 @@ class SaveMapsViewController: BaseViewController {
         
     }
     
+    func deleteMapsFromUser(uid: String, savemaps: String) {
+        
+        MapsManager.shared.deleteMapFromUser(uid: userId) { result in
+            switch result {
+            case .success:
+                print ("success")
+            case .failure(let error):
+                print ("\(error)")
+            }
+        }
+    }
+    
     
 
 }
@@ -129,15 +140,12 @@ extension SaveMapsViewController: UITableViewDelegate {
         100
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
             if editingStyle == .delete {
               
-                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { result in
+                MapsManager.shared.deleteDbRecords(recordId: records[indexPath.row].recordId) { [self] result in
                     
                     switch result {
                         
@@ -155,7 +163,6 @@ extension SaveMapsViewController: UITableViewDelegate {
                 }
             }
         }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

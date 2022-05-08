@@ -15,15 +15,14 @@ class NextPageButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .B5
         
-        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-//        let image = UIImage(systemName: "bike",
-//                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))
+        let image = UIImage(systemName: "bicycle",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))
         
         self.setImage(image, for: .normal)
         
-        self.tintColor = .B1
+        self.tintColor = .B2
     }
     
     required init?(coder aDecoder: NSCoder) {

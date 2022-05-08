@@ -103,6 +103,7 @@ extension UIView {
         
         case topToBottom = 0
         case leftSkewed
+        case rightSkewed
     }
     
     func applyGradient( // caution: removeAll is not available for UIStoryBoard VC
@@ -123,6 +124,9 @@ extension UIView {
         case .leftSkewed:
             gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
             gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        case .rightSkewed:
+            gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
+            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
             
         }
         

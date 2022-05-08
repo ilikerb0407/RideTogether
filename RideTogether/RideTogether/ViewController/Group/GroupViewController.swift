@@ -28,8 +28,9 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .B1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -105,9 +106,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView.mj_header = header
         
-//        view.applyGradient(colors: [.B2, .U2], locations: [0.0, 1.0], direction: .leftSkewed)
-//        view.backgroundColor = .U2
-        
         table?.delegate = self
         
         VC.delegate = self
@@ -115,8 +113,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         addRequestListener()
+        
     }
     
     func addRequestListener() {
@@ -175,22 +175,23 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
-        
+        button.setTitleColor(.B5, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
+        
     }
     
     @objc func creatGroup() {
-        
         
 //       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.medium(), .large() ]
+                presentVc.detents = [ .large(), .medium() ]
                 rootVC.delegate = self
             self.navigationController?.present(navBar, animated: true, completion: .none)
-        }
+            }
         }
     }
     // MARK: 確定時間有沒有過期
@@ -337,7 +338,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             
             headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
             
-            headerView.heightAnchor.constraint(equalToConstant: 100)
+            headerView.heightAnchor.constraint(equalToConstant: 80)
         ])
         
           headerView.resquestsBell.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
@@ -388,9 +389,13 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         tableView.reloadData()
     }
     
+    
+    
     func setUpTableView() {
         
         tableView = UITableView()
+        
+        tableView.backgroundColor = .clear
         
         tableView.registerCellWithNib(identifier: GroupInfo.identifier, bundle: nil)
         
@@ -398,22 +403,19 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         setBuildTeamButton()
         
-        
-        tableView.backgroundColor = .clear
-        
         tableView.separatorStyle = .none
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     // 查詢團名
@@ -426,11 +428,15 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         return fitledGroups
     }
+    
+  
 
 }
 // MARK: - SearchBar Delegate -
 
 extension GroupViewController: UITableViewDelegate {
+    
+   
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -442,15 +448,14 @@ extension GroupViewController: UITableViewDelegate {
             animations: {
                 cell.alpha = 1
             })
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+       200
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -523,7 +528,6 @@ extension GroupViewController: UITableViewDataSource {
         
       cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
 
-        
         return cell
     }
 }

@@ -22,11 +22,23 @@ class GroupMemberViewController: BaseViewController {
             tableView.dataSource = self
         }
     }
+    
+    @IBOutlet weak var gView: UIView! {
+        didSet{
+            gView.applyGradient(
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView = UITableView()
+        
+        tableView.backgroundColor = .clear
         
         tableView.registerCellWithNib(identifier: Member.identifier, bundle: nil)
         
@@ -46,6 +58,7 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard let num =  groupInfo?.userIds.count else { fatalError() }
+        
         return num
     }
     
@@ -54,13 +67,15 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
         let cell: Member = tableView.dequeueCell(for: indexPath)
         
         if let group = groupInfo,
+           
            let userInfo = cache?[group.userIds[indexPath.row]] {
             
             cell.setUpCell(group: group, userInfo: userInfo)
             
-//            cell.rejectButton.addTarget(self, action: #selector(blockUser), for: .touchUpInside)
-//            
-//            cell.rejectButton.tag = indexPath.row
+            cell.rejectButton.addTarget(self, action: #selector(blockUser), for: .touchUpInside)
+            
+            cell.rejectButton.tag = indexPath.row
+            
         }
         
         return cell
@@ -74,4 +89,3 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
 }
-

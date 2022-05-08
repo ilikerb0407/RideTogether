@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         UserManager.shared.userInfo = userInfo
                         
                         guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                            
                             identifier: TabBarController.identifier) as? TabBarController else { return }
                         
                         self.window?.rootViewController = tabbarVC

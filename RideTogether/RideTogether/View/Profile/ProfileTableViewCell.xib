@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHW-XH-DJz">
-                        <rect key="frame" x="12" y="8" width="334" height="89"/>
+                        <rect key="frame" x="50" y="4" width="258" height="35"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-OS-FqU">
-                                <rect key="frame" x="103" y="0.0" width="198" height="89"/>
+                                <rect key="frame" x="43" y="0.0" width="182" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="B2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bicycle.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-MR-yTP">
-                                <rect key="frame" x="8" y="8" width="82" height="73"/>
-                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <rect key="frame" x="8" y="8" width="22" height="19"/>
+                                <color key="tintColor" name="B2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="CYs-bK-hef"/>
                                     <constraint firstAttribute="width" secondItem="dIq-MR-yTP" secondAttribute="height" multiplier="41:37" id="IdS-BK-afu"/>
@@ -53,10 +54,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oHW-XH-DJz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Dd5-Ly-Otg"/>
-                    <constraint firstAttribute="bottom" secondItem="oHW-XH-DJz" secondAttribute="bottom" constant="8" id="fTr-Sa-Fdd"/>
-                    <constraint firstAttribute="trailing" secondItem="oHW-XH-DJz" secondAttribute="trailing" constant="12" id="mpy-8J-rYY"/>
-                    <constraint firstItem="oHW-XH-DJz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="t6Q-mI-qHa"/>
+                    <constraint firstItem="oHW-XH-DJz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="Dd5-Ly-Otg"/>
+                    <constraint firstAttribute="bottom" secondItem="oHW-XH-DJz" secondAttribute="bottom" constant="4" id="Qml-8g-Mg5"/>
+                    <constraint firstItem="oHW-XH-DJz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Ylq-k7-2m3"/>
+                    <constraint firstAttribute="trailing" secondItem="oHW-XH-DJz" secondAttribute="trailing" constant="50" id="mpy-8J-rYY"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -71,11 +72,11 @@
     </objects>
     <resources>
         <image name="bicycle.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="B2">
+            <color red="0.98431372549019602" green="0.99607843137254903" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

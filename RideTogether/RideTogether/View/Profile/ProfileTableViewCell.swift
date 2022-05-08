@@ -37,13 +37,13 @@ class ProfileTableViewCell: UITableViewCell {
         
         contentView.backgroundColor = .clear
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .B2
         
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        itemBackground.layer.cornerRadius = 30
+        itemBackground.layer.cornerRadius = 20
     }
 }

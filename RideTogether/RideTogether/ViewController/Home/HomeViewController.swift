@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import QuartzCore
 
 class HomeViewController: BaseViewController {
     
@@ -45,17 +46,15 @@ class HomeViewController: BaseViewController {
 //            return view
 //        }()
     
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        navigationController?.isNavigationBarHidden = false
+//
+//        tabBarController?.tabBar.isHidden = false
+//
+//        navigationItem.hidesBackButton = false
         
-        navigationController?.isNavigationBarHidden = true
         
         NotificationCenter.default.addObserver(
             self,
@@ -64,31 +63,22 @@ class HomeViewController: BaseViewController {
             object: nil
         )
         
-        
         setUpTableView()
         
         fetchTrailData()
         
-        
-        
-        
 //        bikelottie.play()
         
     }
+    
     
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .U1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-//        bikelottie.play()
     }
     
     func setUpTableView() {
@@ -102,7 +92,7 @@ class HomeViewController: BaseViewController {
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
-
+        
     }
     
     @objc func updateUserInfo(notification: Notification) {
@@ -165,7 +155,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        400
+        270
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -200,7 +190,6 @@ extension HomeViewController: UITableViewDelegate {
             }
         }
     }
-    
 }
 
 // MARK: - TableView Data Source -
@@ -220,7 +209,7 @@ extension HomeViewController: UITableViewDataSource {
             routetitle: RoutesType.allCases[indexPath.row].rawValue,
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
     
-        
         return cell
     }
+    
 }

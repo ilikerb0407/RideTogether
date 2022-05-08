@@ -16,16 +16,14 @@ import Lottie
 class RouteViewController: BaseViewController {
     
     
-    
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .U1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
-    
-   
     
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
@@ -43,7 +41,6 @@ class RouteViewController: BaseViewController {
     private var snapshot = DataSourceSnapshot()
     
     let routesCollectionCell = Routes()
-    
     
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
@@ -103,19 +100,22 @@ class RouteViewController: BaseViewController {
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
+        
+        let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
+        button.backgroundColor = .B5
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
+        
     }
+    
     
     @objc func popToPreviosPage(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        
+        self.navigationController?.popToRootViewController(animated: true)
+        
     }
     
-    
     func setUpTableView() {
-
-        setNavigationBar(title: "Routes")
 
         tableView = UITableView()
 
@@ -131,7 +131,7 @@ class RouteViewController: BaseViewController {
 
         NSLayoutConstraint.activate([
 
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
 
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 
@@ -142,13 +142,12 @@ class RouteViewController: BaseViewController {
 
     }
   
-    
     private func setupCollectionView() {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         
 //        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
-        
+    
         collectionView.lk_registerCellWithNib(identifier: "Routes", bundle: nil)
         
         view.stickSubView(collectionView)
@@ -190,39 +189,47 @@ class RouteViewController: BaseViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-//        setUpTableView()
+        setUpTableView()
         
-        setupCollectionView()
+        setNavigationBar(title: "探索路線")
         
-        configureDataSource()
+//        setupCollectionView()
+        
+//        backButton()
+        
+//        configureDataSource()
 //
-        configureSnapshot()
+//        configureSnapshot()
         
         setUpThemeTag()
         
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        navigationController?.isNavigationBarHidden = false
-        
-        tabBarController?.tabBar.isHidden = false
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        LKProgressHUD.dismiss()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        super.viewWillAppear(animated)
+//
+//        navigationController?.isNavigationBarHidden = true
+//
+//        navigationItem.hidesBackButton = true
+//
+//    }
     
     func setUpThemeTag() {
         
-        let view = UIView(frame: CGRect(x: -20, y: 40, width: UIScreen.width / 2 + 10, height: 40))
+        let view = UIView(frame: CGRect(x: -20, y: 80, width: UIScreen.width / 2 + 10, height: 40))
         
-        let label = UILabel(frame: CGRect(x: 20, y: 43, width: 120, height: 35))
+        let label = UILabel(frame: CGRect(x: 20, y: 80 , width: 120, height: 35))
         
-        view.backgroundColor = .U2
+        view.backgroundColor = .B5
         
         view.layer.cornerRadius = 20
         
@@ -230,15 +237,19 @@ class RouteViewController: BaseViewController {
         
         label.text = themeLabel
         
-        label.textColor = .black
+        label.textColor = .B2
         
         label.textAlignment = .center
         
         label.font = UIFont.regular(size: 18)
         
-        collectionView.addSubview(view)
+//        collectionView.addSubview(view)
         
-        collectionView.addSubview(label)
+//        collectionView.addSubview(label)
+        
+        self.view.addSubview(view)
+        
+        self.view.addSubview(label)
     }
     
 }
@@ -246,24 +257,33 @@ class RouteViewController: BaseViewController {
 extension RouteViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        150
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
-            navigationController?.pushViewController(journeyViewController, animated: true)
-            journeyViewController.routes = routes[indexPath.row]
-        }
-
+        
+        
     }
 
 }
 //
 extension RouteViewController: UITableViewDataSource {
+    
+    @objc func goToRide(_ sender: UIButton) {
+        
+        LKProgressHUD.show()
+        
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
+            
+            journeyViewController.routes = routes[sender.tag]
+            
+            navigationController?.pushViewController(journeyViewController, animated: true)
+            
+            }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         routes.count
@@ -274,6 +294,10 @@ extension RouteViewController: UITableViewDataSource {
         let cell: RoutesTableViewCell = tableView.dequeueCell(for: indexPath)
 
         cell.setUpCell(model: self.routes[indexPath.row])
+        
+        cell.rideBtn.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
+        
+        cell.rideBtn.tag = indexPath.row
 
         return cell
     }
@@ -359,7 +383,7 @@ extension RouteViewController {
                 
                 cell.setUpCell(model: model)
                 
-                cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
+//                cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
                 
                 cell.rideButton.tag = indexPath.row
                 
@@ -371,13 +395,8 @@ extension RouteViewController {
             })
     }
     
-    @objc func goToRide(_ sender: UIButton) {
-        
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
-                    navigationController?.pushViewController(journeyViewController, animated: true)
-            journeyViewController.routes = routes[sender.tag]
-                }
-    }
+    
+    
     
     func configureSnapshot() {
         

@@ -30,22 +30,32 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
     var directionsResponse =  MKDirections.Response()
-    var route = MKRoute()
     
-    var polyLineRenderer = MKPolylineRenderer()
+    var route = MKRoute()
+//
+//    var polyLineRenderer = MKPolylineRenderer()
+    
+    
     
     var step: [String] = []
-    
-    
+//    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
         
         if overlay is MKPolyline {
             
-            var polyLineRenderer = MKPolylineRenderer(overlay: overlay)
+            let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
             
             polyLineRenderer.alpha = 0.8
             
-            polyLineRenderer.strokeColor = .orange
+            polyLineRenderer.strokeColor = UIColor.B5
+            
+            if overlay.title == "one"{
+                polyLineRenderer.strokeColor = UIColor.orange
+            } else
+            if overlay.title == "two" {
+              polyLineRenderer.strokeColor = UIColor.B6
+            }
             
             polyLineRenderer.lineWidth = 3
             
@@ -53,8 +63,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         }
         
         return MKOverlayRenderer()
+        
     }
-    
+
     var destination: CLPlacemark?
     
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -78,13 +89,15 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         let directions = MKDirections(request: request)
         
         directions.calculate { [self]  response ,error in
+            
             if error == nil {
+                
                 self.directionsResponse = response!
                 
                 self.route = self.directionsResponse.routes[0]
-                // route.step
                 
-                //                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+//                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                
             } else {
                 print("\(error)")
             }
@@ -121,18 +134,24 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
         //
-        let deleteButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        //        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
-        deleteButton.setImage(UIImage(named: "information"), for: UIControl.State())
+        let rightbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightbtn.clipsToBounds = true
+        rightbtn.tintColor = .B5
+        let rightImg = UIImage(systemName: "info.circle",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
+        rightbtn.setImage(rightImg, for: .normal)
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        deleteButton.tag = kDeleteWaypointAccesoryButtonTag
-        annotationView.rightCalloutAccessoryView = deleteButton
+        rightbtn.tag = kDeleteWaypointAccesoryButtonTag
+        annotationView.rightCalloutAccessoryView = rightbtn
         //        annotationView.pinTintColor = .red
-        let editButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        editButton.setImage(UIImage(named: "edit"), for: UIControl.State())
+        let leftbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        leftbtn.tintColor = .B5
+        let leftImg = UIImage(systemName: "pencil.circle",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
+        leftbtn.setImage(leftImg, for: .normal)
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        editButton.tag = kEditWaypointAccesoryButtonTag
-        annotationView.leftCalloutAccessoryView = editButton
+        leftbtn.tag = kEditWaypointAccesoryButtonTag
+        annotationView.leftCalloutAccessoryView = leftbtn
         
         return annotationView
     }
@@ -142,18 +161,14 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     let kEditWaypointAccesoryButtonTag = 333
     
     
-    
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         weatherManger.delegate = self
-        
         print("calloutAccesoryControlTapped ")
-        guard let waypoint = view.annotation as? GPXWaypoint else { return }
         
-        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!)
-        guard let weatherdata = weatherdata else { return }
-
+       
+        
         guard let button = control as? UIButton else { return }
         
         guard let map = mapView as? GPXMapView else { return }
@@ -163,73 +178,95 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         for (index, item) in self.route.steps.enumerated() {
             routeStep = "\(item.instructions)"
         }
-        switch button.tag {
+        
+        guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
-        case kDeleteWaypointAccesoryButtonTag:
-            print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
-            //            map.removeWaypoint(waypoint)
-            //            guide(mapView, didSelect: view)
+            self?.weatherdata = result
             
-            let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
+            DispatchQueue.main.async {
+                markMarkers()
+            }
             
-            let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in
-
+        }
+       
+        func markMarkers() {
+            guard let weatherdata = weatherdata else { return }
+            
+            switch button.tag {
                 
-            }
-            
-            let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
-                map.removeWaypoint(waypoint)
-                map.removeOverlays(map.overlays)
-            }
-            
-            let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
-            let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
-            
-            let routeName = UIAlertAction(title: "Destionation = \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
+            case kDeleteWaypointAccesoryButtonTag:
+                print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
+                //            map.removeWaypoint(waypoint)
+                //            guide(mapView, didSelect: view)
                 
-                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+               
+                let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
+                let distance = "\(self.route.distance.toDistance())"
+                let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
+                let weather = "\(weatherdata.weather[0].main)"
                 
+                let sheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
+                
+//                let weather = UIAlertAction(title: " 天氣 = \(weatherdata.weather[0].main) ", style: .default) { _ in
+//                }
+                
+                let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
+                    map.removeWaypoint(waypoint)
+                    map.removeOverlays(map.overlays)
+                }
+                
+//                let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
+                
+//                let time = UIAlertAction(title: "時間 = ", style: .default)
+                
+                let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
+                   
+                    self.route.polyline.title = "one"
+                    map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                    
+                }
+                
+                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
+                
+//                sheet.addAction(distance)
+//                sheet.addAction(time)
+                sheet.addAction(routeName)
+                sheet.addAction(removeOption)
+                sheet.addAction(cancelAction)
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
+                
+            case kEditWaypointAccesoryButtonTag:
+                print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
+                
+                let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
+                
+        
+                let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
+                
+                alertController.addTextField { (textField) in
+                    textField.text = waypoint.title
+                    textField.tintColor = .B5
+                    textField.clearButtonMode = .always
+                }
+                let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
+                    print("Edit waypoint alert view")
+                    self.waypointBeingEdited.title = alertController.textFields?[0].text
+                    //                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
+                }
+                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+                
+                alertController.addAction(saveAction)
+                alertController.addAction(cancelAction)
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
+                
+                self.waypointBeingEdited = waypoint
+                
+            default:
+                print("[calloutAccesoryControlTapped ERROR] unknown control")
             }
-            
-            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
-            
-            sheet.addAction(distance)
-            sheet.addAction(time)
-            sheet.addAction(routeName)
-            sheet.addAction(weather)
-            sheet.addAction(removeOption)
-            sheet.addAction(cancelAction)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
-            
-        case kEditWaypointAccesoryButtonTag:
-            print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
-            
-            let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
-            
-    
-            let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
-            
-            alertController.addTextField { (textField) in
-                textField.text = waypoint.title
-                textField.clearButtonMode = .always
-            }
-            let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
-                print("Edit waypoint alert view")
-                self.waypointBeingEdited.title = alertController.textFields?[0].text
-                //                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
-            }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
-            
-            alertController.addAction(saveAction)
-            alertController.addAction(cancelAction)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
-            
-            self.waypointBeingEdited = waypoint
-            
-        default:
-            print("[calloutAccesoryControlTapped ERROR] unknown control")
         }
     }
     
@@ -247,6 +284,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             num += 1
             let annotationView = object as MKAnnotationView
             guide(gpxMapView, didSelect: annotationView)
+            
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
                 if gpxMapView.headingImageView == nil {
@@ -257,6 +295,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                                                                 width: image.size.width,
                                                                 height: image.size.height)
                     annotationView.insertSubview(gpxMapView.headingImageView!, at: 0)
+                    
                     gpxMapView.headingImageView!.isHidden = true
                 }
                 continue
@@ -273,7 +312,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             let interval: TimeInterval = 0.04 * 1.1
             
-            UIView.animate(withDuration: 0.5, delay: interval, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, delay: interval, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
                 annotationView.frame = endFrame
                 
             }, completion: { (finished) -> Void in
@@ -340,3 +379,5 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         }
     }
 }
+
+

@@ -22,7 +22,7 @@ class Routes: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.backgroundColor = .U1
+        self.backgroundColor = .B5
         
         self.contentView.backgroundColor = .clear
     }

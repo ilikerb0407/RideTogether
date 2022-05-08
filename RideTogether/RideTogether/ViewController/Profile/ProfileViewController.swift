@@ -63,8 +63,10 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .orange],
-                locations: [0.0, 3.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+        
+            gView.alpha = 0.85
         }
     }
     
@@ -74,9 +76,11 @@ class ProfileViewController: BaseViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.backgroundColor = .clear
-            tableView.isScrollEnabled = true
+            tableView.isScrollEnabled = false
         }
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +93,7 @@ class ProfileViewController: BaseViewController {
 //        UserManager.shared.deleteUserSharemaps(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
-//          UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
+//        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -98,9 +102,6 @@ class ProfileViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    override func viewDidLayoutSubviews() {
-        
-    }
     
     func updateUserInfo(name: String) {
         
@@ -146,11 +147,11 @@ class ProfileViewController: BaseViewController {
 extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        20
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -170,8 +171,7 @@ extension ProfileViewController : UITableViewDelegate {
                 self.deleteAccount()
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
-            showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [logOut, removeAccount, cancel])
-            
+            showAlertAction(title: nil, message: nil, preferredStyle: .alert, actions: [logOut, removeAccount, cancel])
             
         case 3:
             let segueId = ProfileSegue.allCases[indexPath.row].rawValue
@@ -259,11 +259,6 @@ extension ProfileViewController: UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.backgroundColor = .clear
-        
-    }
     
 }
 
@@ -333,7 +328,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         
         UIView.animate(withDuration: 0.2) {
+            
             self.profileView.userPhoto.image = image
+            
         }
         
         updateUserInfo(imageData: imageData)

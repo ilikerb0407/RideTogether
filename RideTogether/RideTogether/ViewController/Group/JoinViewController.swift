@@ -13,8 +13,9 @@ class JoinViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .B1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -56,16 +57,15 @@ class JoinViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpDimmingView()
+//        setUpDimmingView()
         
         setUpTableView()
         
-        setUpDismissButton()
+//        setUpDismissButton()
         
         configureDataSource()
         
         configureSnapshot()
-        
         
     }
     
@@ -205,7 +205,7 @@ class JoinViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
@@ -223,7 +223,7 @@ class JoinViewController: BaseViewController {
         
         button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         
-        view.addSubview(button)
+//        view.addSubview(button)
     }
     
     func setUpDimmingView() {
@@ -283,4 +283,3 @@ extension JoinViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
-

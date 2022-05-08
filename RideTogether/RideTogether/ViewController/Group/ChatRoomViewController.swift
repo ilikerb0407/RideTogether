@@ -17,8 +17,9 @@ class ChatRoomViewController: BaseViewController {
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
-                colors: [.white, .B1],
-                locations: [0.0, 2.0], direction: .leftSkewed)
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.85
         }
     }
     
@@ -33,13 +34,15 @@ class ChatRoomViewController: BaseViewController {
     private var headerView: RequestTableViewCell?
     
     private var tableView: UITableView! {
+        
         didSet {
             tableView.delegate = self
         }
+        
     }
     
     private lazy var leaveLottieView: AnimationView = {
-        let view = AnimationView(name: "delete")
+        let view = AnimationView(name: "leave")
         view.loopMode = .loop
         view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
         view.contentMode = .scaleAspectFit
@@ -48,11 +51,8 @@ class ChatRoomViewController: BaseViewController {
         return view
     }()
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .U2
         
         checkUserStatus()
         
@@ -98,6 +98,7 @@ class ChatRoomViewController: BaseViewController {
     }
     
     func fetchMemberDate() {
+        
         groupInfo?.userIds.forEach { fetchUserData(uid: $0) }
     
     }
@@ -118,7 +119,6 @@ class ChatRoomViewController: BaseViewController {
             }
         })
     }
-    
     
     @objc func didTapButton () {
         
@@ -147,6 +147,7 @@ class ChatRoomViewController: BaseViewController {
             
             headerView?.gButton.setTitle("已送出申請", for: .normal)
             
+            
             headerView?.gButton.isEnabled = false
             
         case .isInGroup:
@@ -165,7 +166,6 @@ class ChatRoomViewController: BaseViewController {
             case .success:
                 
                 showAlertAction(title: "編輯成功")
-                
                 
             case .failure(let error):
                 
@@ -217,7 +217,6 @@ class ChatRoomViewController: BaseViewController {
                     
                     self.navigationController?.popViewController(animated: true)
                     
-                    
                 case .failure(let error):
                     
                     print("leave group failure: \(error)")
@@ -226,10 +225,8 @@ class ChatRoomViewController: BaseViewController {
             }
             self.leaveLottieView.play()
         }
-       
-
+    
         showAlertAction(title: "確認退出", message: nil, actions: [cancelAction, leaveAction])
-       
        
     }
     
@@ -237,7 +234,7 @@ class ChatRoomViewController: BaseViewController {
         
         setNavigationBar(title: "\(groupInfo?.groupName ?? "揪團隊伍")")
         
-        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         let infoImage = UIImage(systemName: "info")
         

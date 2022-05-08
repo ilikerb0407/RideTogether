@@ -31,7 +31,17 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             chartView.delegate = self
         }
     }
-
+    
+    
+    @IBOutlet weak var gView: UIView! {
+        
+        didSet {
+            gView.applyGradient(
+                colors: [.white, .B3],
+                locations: [0.0, 1.0], direction: .leftSkewed)
+            gView.alpha = 0.5
+        }
+    }
     
     private let mapViewDelegate = MapViewDelegate()
     
@@ -44,7 +54,9 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     func setUp() {
         
-        navigationController?.isNavigationBarHidden = true
+        //        navigationController?.isNavigationBarHidden = false
+        
+        setNavigationBar(title: "騎乘紀錄")
         
         map.delegate = mapViewDelegate
         
@@ -52,7 +64,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         tabBarController?.tabBar.isHidden = true
         
-        backButton()
+        //        backButton()
         
         praseGPXFile()
         
@@ -95,7 +107,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         let dataSet = LineChartDataSet(entries: dataEntries, label: "")
         
-        dataSet.colors = [.U1 ?? .systemGray]
+        dataSet.colors = [.C1 ?? .systemGray]
         dataSet.drawFilledEnabled = true
         dataSet.drawCirclesEnabled = false
         dataSet.drawValuesEnabled = false
@@ -132,25 +144,25 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         chartView.animate(xAxisDuration: 2.0)
     }
     
-    
     func backToJourneyButton() {
-        let button = NextPageButton(frame: CGRect(x: 270 , y: 50, width: 80, height: 80))
+        
+        let button = NextPageButton(frame: CGRect(x: UIScreen.width - 60 , y: 460 , width: 50, height: 50))
         button.addTarget(self, action: #selector(push), for: .touchUpInside)
         view.addSubview(button)
+        
     }
     
     @objc func push(_ sender: UIButton) {
-        
+         
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)
             journeyViewController.record = record
             // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
         }
-        print ("push")
     }
     
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 50, width: 50, height: 50))
+        let button = PreviousPageButton(frame: CGRect(x: 15, y: 25, width: 40, height: 40))
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
@@ -253,7 +265,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             trackInfo.elevationDiff = maxValue - minValue
         }
     }
-   
+    
     // MARK: - Polyline -
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -276,9 +288,10 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         setUp()
         
+        LKProgressHUD.dismiss()
     }
     
-    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue 
+    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
             if let nextVC = segue.destination as? FollowJourneyViewController {

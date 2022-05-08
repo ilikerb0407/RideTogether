@@ -58,8 +58,11 @@ class HomeHeader: UITableViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
+        
         contentView.backgroundColor = .clear
+        
         self.backgroundColor = .clear
+        
         selectionStyle = .none
         
     }

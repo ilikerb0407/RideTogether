@@ -43,13 +43,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         return String(describing: self)
     }
-    
-    private let tabs: [Tab] = [ .journey, .home , .group , .profile]
+     
+    private let tabs: [Tab] = [ .journey, .group , .home , .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = tabs.map{ $0.controller() }
+        viewControllers = tabs.map { $0.controller() }
         
         self.delegate = self
         
@@ -60,6 +60,19 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.layer.cornerRadius = 10
         
         self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.tintColor = UIColor.B5
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor :  UIColor.B5]
+        
+        if #available(iOS 15.0, *) {
+                   let appearance = UITabBarAppearance()
+                   appearance.configureWithOpaqueBackground()
+//                 appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#A2BDC6")
+                   appearance.backgroundColor = UIColor.white
+
+                   self.tabBar.standardAppearance = appearance
+                   self.tabBar.scrollEdgeAppearance = appearance
+                }
     }
 }
-

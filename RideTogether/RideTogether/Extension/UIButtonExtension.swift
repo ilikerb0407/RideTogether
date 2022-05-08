@@ -212,6 +212,12 @@ extension UIButton {
             gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
             
             gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+            
+        case .rightSkewed:
+            
+            gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
+            
+            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
         }
         
         self.layer.insertSublayer(gradientLayer, at: 0)

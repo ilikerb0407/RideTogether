@@ -33,6 +33,10 @@
 		231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB60280739AD00DE2343 /* Taipei1.plist */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
+		233206C92826483D0017864C /* Noto_Sans_TC in Resources */ = {isa = PBXBuildFile; fileRef = 233206C82826483D0017864C /* Noto_Sans_TC */; };
+		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
+		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
+		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
 		237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279A2817ED2C004F039F /* PickPhotoButton.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
 		237A27A328182FE4004F039F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A228182FE4004F039F /* ProfileView.swift */; };
@@ -50,7 +54,6 @@
 		2397D46028203F820018FC5E /* cloud.json in Resources */ = {isa = PBXBuildFile; fileRef = 2397D45F28203F820018FC5E /* cloud.json */; };
 		23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */; };
 		23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */; };
-		23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A712811673100DD8D39 /* 95671-wave-animation.json */; };
 		23A84A752811AE2300DD8D39 /* GroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A732811AE2300DD8D39 /* GroupInfo.swift */; };
 		23A84A762811AE2300DD8D39 /* GroupInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A742811AE2300DD8D39 /* GroupInfo.xib */; };
 		23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A772812E63800DD8D39 /* JoinViewController.swift */; };
@@ -64,7 +67,6 @@
 		23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C41D281E9C810020237C /* HomeHeader.swift */; };
 		23C0C420281E9C810020237C /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C41E281E9C810020237C /* HomeHeader.xib */; };
 		23C0C422281EA4870020237C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C421281EA4870020237C /* Notification.swift */; };
-		23C0C424281ECAF10020237C /* delete.json in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C423281ECAF10020237C /* delete.json */; };
 		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
 		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
 		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
@@ -142,6 +144,9 @@
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
+		23EC04632822FC2A0063523F /* expanBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC04622822FC2A0063523F /* expanBtn.swift */; };
+		23EC046D2823F1230063523F /* circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046C2823F1230063523F /* circle.json */; };
+		23EC046F2823F41B0063523F /* leave.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046E2823F41B0063523F /* leave.json */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 /* End PBXBuildFile section */
@@ -173,6 +178,10 @@
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		233206C82826483D0017864C /* Noto_Sans_TC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto_Sans_TC; sourceTree = "<group>"; };
+		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
+		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
+		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		237A279A2817ED2C004F039F /* PickPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPhotoButton.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		237A27A228182FE4004F039F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -190,7 +199,6 @@
 		2397D45F28203F820018FC5E /* cloud.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cloud.json; sourceTree = "<group>"; };
 		23A84A6D2811584C00DD8D39 /* GroupHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderCell.swift; sourceTree = "<group>"; };
 		23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupHeaderCell.xib; sourceTree = "<group>"; };
-		23A84A712811673100DD8D39 /* 95671-wave-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "95671-wave-animation.json"; sourceTree = "<group>"; };
 		23A84A732811AE2300DD8D39 /* GroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfo.swift; sourceTree = "<group>"; };
 		23A84A742811AE2300DD8D39 /* GroupInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupInfo.xib; sourceTree = "<group>"; };
 		23A84A772812E63800DD8D39 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +212,6 @@
 		23C0C41D281E9C810020237C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		23C0C41E281E9C810020237C /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		23C0C421281EA4870020237C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		23C0C423281ECAF10020237C /* delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = delete.json; sourceTree = "<group>"; };
 		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
 		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
@@ -285,6 +292,9 @@
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFilesTableViewController.swift; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
+		23EC04622822FC2A0063523F /* expanBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expanBtn.swift; sourceTree = "<group>"; };
+		23EC046C2823F1230063523F /* circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = circle.json; sourceTree = "<group>"; };
+		23EC046E2823F41B0063523F /* leave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = leave.json; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +362,7 @@
 			children = (
 				23CB74BF28177CAC00DED822 /* LoginViewController.swift */,
 				237A279C28181A60004F039F /* SignUpViewController.swift */,
+				2360C67528254EA900EF21D3 /* PolicyViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -413,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
+				23EC04622822FC2A0063523F /* expanBtn.swift */,
 				2304FF49280891AF00C6B1BF /* NextPageButton.swift */,
 				2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */,
 				2314F212280B5AE500425F8A /* SendSMSbutton.swift */,
@@ -461,15 +473,16 @@
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
 				2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */,
-				23A84A712811673100DD8D39 /* 95671-wave-animation.json */,
 				23129C30281CF43D001DE91D /* bike-city-rider.json */,
 				23129C36281D0E60001DE91D /* waiting-pigeon.json */,
 				23C0C41B281E7B320020237C /* wait-processbar.json */,
-				23C0C423281ECAF10020237C /* delete.json */,
+				23EC046C2823F1230063523F /* circle.json */,
 				2397D453281F095E0018FC5E /* rain.json */,
+				23EC046E2823F41B0063523F /* leave.json */,
 				2397D455281F106B0018FC5E /* sun.json */,
 				2397D457281F14170018FC5E /* otherweather.json */,
 				2397D45F28203F820018FC5E /* cloud.json */,
+				233206C82826483D0017864C /* Noto_Sans_TC */,
 				23CE42A0280E571700C4C9F1 /* Resource */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				23D1B76D28006187000EDA70 /* Extension */,
@@ -535,6 +548,7 @@
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23CB74C9281787B400DED822 /* Login.storyboard */,
+				2360C6772825562E00EF21D3 /* Policy.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23C887192814285A00E3319A /* Home */,
 				23A84A682811570600DD8D39 /* Group */,
@@ -648,6 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B7F8280561D3000EDA70 /* MJRefresher.swift */,
+				2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
@@ -733,17 +748,20 @@
 				2397D454281F095E0018FC5E /* rain.json in Resources */,
 				2397D46028203F820018FC5E /* cloud.json in Resources */,
 				23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */,
+				23EC046F2823F41B0063523F /* leave.json in Resources */,
 				23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */,
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				23C8872328149ECC00E3319A /* Routes.xib in Resources */,
-				23C0C424281ECAF10020237C /* delete.json in Resources */,
 				23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */,
 				2397D456281F106B0018FC5E /* sun.json in Resources */,
+				23EC046D2823F1230063523F /* circle.json in Resources */,
 				2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */,
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
 				23CB74CA281787B400DED822 /* Login.storyboard in Resources */,
+				2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */,
+				233206C92826483D0017864C /* Noto_Sans_TC in Resources */,
 				2397D458281F14170018FC5E /* otherweather.json in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypes.xib in Resources */,
 				23A84A7D2812EFFE00DD8D39 /* RouteSelectionViewController.xib in Resources */,
@@ -753,7 +771,6 @@
 				237A27AC281AEC82004F039F /* Member.xib in Resources */,
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
-				23A84A722811673100DD8D39 /* 95671-wave-animation.json in Resources */,
 				23C0C420281E9C810020237C /* HomeHeader.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
@@ -846,6 +863,7 @@
 				23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
+				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
@@ -865,6 +883,7 @@
 				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
+				2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
@@ -885,6 +904,7 @@
 				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
+				23EC04632822FC2A0063523F /* expanBtn.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,

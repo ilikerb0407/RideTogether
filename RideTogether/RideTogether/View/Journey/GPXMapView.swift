@@ -14,6 +14,14 @@ import CoreGPX
 
 class GPXMapView: MKMapView {
     
+    func provideWeather(weather: ResponseBody) {
+        weatherdata = weather
+    }
+    
+    var weatherdata : ResponseBody?
+    
+    let weatherManger = WeatherManager()
+    
     ///
     let coreDataHelper = CoreDataHelper()
 
@@ -125,9 +133,13 @@ class GPXMapView: MKMapView {
             }
         }
     }
+    //        weatherManger.delegate =
+            //        self.weatherManger.getGroupAPI(latitude: waypoint.latitude ?? 25.1, longitude: waypoint.longitude ?? 121.12)
+            //        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!)
     
     // MARK: 長按建立座標的 method
     func addWaypointAtViewPoint(_ point: CGPoint) {
+        
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         let waypoint = GPXWaypoint(coordinate: coords)
         addWaypoint(waypoint)
@@ -140,6 +152,7 @@ class GPXMapView: MKMapView {
         session.addWaypoint(waypoint)
         addAnnotation(waypoint)
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
+        
         print("\(waypoint)")
     }
     
