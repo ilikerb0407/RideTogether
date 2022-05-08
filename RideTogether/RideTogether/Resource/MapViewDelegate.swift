@@ -200,19 +200,27 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 //            map.removeWaypoint(waypoint)
                 //            guide(mapView, didSelect: view)
                 
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("Information", comment: "no comment"), preferredStyle: .actionSheet)
+               
+                let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
+                let distance = "\(self.route.distance.toDistance())"
+                let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
+                let weather = "\(weatherdata.weather[0].main)"
                 
-                let weather = UIAlertAction(title: "Weather = \(weatherdata.weather[0].main) ", style: .default) { _ in }
+                let sheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
+                
+//                let weather = UIAlertAction(title: " 天氣 = \(weatherdata.weather[0].main) ", style: .default) { _ in
+//                }
                 
                 let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                     map.removeWaypoint(waypoint)
                     map.removeOverlays(map.overlays)
                 }
                 
-                let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
-                let time = UIAlertAction(title: "Time = \((self.route.expectedTravelTime/3).tohmsTimeFormat())", style: .default)
+//                let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
                 
-                let routeName = UIAlertAction(title: "Destionation = \(destination?.thoroughfare ?? "鄉間小路")", style: .default) {_ in
+//                let time = UIAlertAction(title: "時間 = ", style: .default)
+                
+                let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
                    
                     self.route.polyline.title = "one"
                     map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
@@ -221,10 +229,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
                 
-                sheet.addAction(distance)
-                sheet.addAction(time)
+//                sheet.addAction(distance)
+//                sheet.addAction(time)
                 sheet.addAction(routeName)
-                sheet.addAction(weather)
                 sheet.addAction(removeOption)
                 sheet.addAction(cancelAction)
                 

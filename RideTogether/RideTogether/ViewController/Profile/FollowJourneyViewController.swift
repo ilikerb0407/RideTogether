@@ -397,6 +397,8 @@ class FollowJourneyViewController: BaseViewController {
         
         setUpLabels()
         
+        LKProgressHUD.dismiss()
+        
 //        backButton()
 
 //        navigationController?.isNavigationBarHidden = true

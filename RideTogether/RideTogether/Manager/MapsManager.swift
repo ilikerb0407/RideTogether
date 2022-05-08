@@ -262,7 +262,7 @@ class MapsManager {
                 
             } else {
                 
-                print("User leave group successfully")
+                print("Save map to User successfully")
                 
                 completion(.success("Success"))
             }
