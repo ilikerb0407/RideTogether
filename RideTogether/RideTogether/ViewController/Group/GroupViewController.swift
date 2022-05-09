@@ -12,6 +12,7 @@ import MASegmentedControl
 import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation
+import FirebaseCrashlytics
 
 class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
     
@@ -90,6 +91,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             tableView.dataSource = self
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,6 +222,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func rearrangeMyGroup(groups: [Group]) {
         
         var expiredGroup = [Group]()
+        
         var unexpiredGroup = [Group]()
         
         for group in groups {
@@ -260,9 +264,14 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                 
                 self.myGroups = filteredGroups.filter {
                     $0.userIds.contains(self.userInfo.uid)
+                    
                 }
                 
+//                self.inActivityGroup = filteredGroups.sorted { $0.date.seconds < $1.date.seconds  }
+                
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
+                
+//                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
                 
                 self.rearrangeMyGroup(groups: self.myGroups)
                 
