@@ -96,11 +96,11 @@ class ProfileViewController: BaseViewController {
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
         
-        let button = UIButton(type: .roundedRect)
-             button.frame = CGRect(x: 20, y: 80, width: 100, height: 30)
-             button.setTitle("Test Crash", for: [])
-             button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
-             view.addSubview(button)
+//        let button = UIButton(type: .roundedRect)
+//             button.frame = CGRect(x: 20, y: 80, width: 100, height: 30)
+//             button.setTitle("Test Crash", for: [])
+//             button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
+//             view.addSubview(button)
 //
     }
     
