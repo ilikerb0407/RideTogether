@@ -167,8 +167,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         weatherManger.delegate = self
         print("calloutAccesoryControlTapped ")
         
-       
-        
         guard let button = control as? UIButton else { return }
         
         guard let map = mapView as? GPXMapView else { return }
@@ -236,6 +234,17 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 sheet.addAction(cancelAction)
                 
                 UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
+                
+                // iPad specific code
+                sheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view
+                        
+                let xOrigin = (UIApplication.shared.keyWindow?.rootViewController?.view.bounds.width)! / 2
+                        
+                        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+                        
+                        sheet.popoverPresentationController?.sourceRect = popoverRect
+                        
+                sheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
             case kEditWaypointAccesoryButtonTag:
                 print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")

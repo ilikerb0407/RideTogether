@@ -624,6 +624,22 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }
         
         showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
+        let sheet = UIAlertController(title: "請選擇", preferredStyle: .actionSheet)
+       
+        
+        // iPad specific code
+        
+        
+        
+        show.popoverPresentationController?.sourceView = self.view
+                
+        let xOrigin = self.view / 2
+                
+                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+                
+                sheet.popoverPresentationController?.sourceRect = popoverRect
+                
+        sheet.popoverPresentationController?.permittedArrowDirections = .unknown
     }
     
     @objc func followButtonTroggler() {

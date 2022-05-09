@@ -520,6 +520,17 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             }
             
             showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
+            
+            // iPad specific code
+//            RouteRideViewController.popoverPresentationController?.sourceView = self.view
+//                    
+//                    let xOrigin = self.view / 2
+//                    
+//                    let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+//                    
+//                    sheet.popoverPresentationController?.sourceRect = popoverRect
+//                    
+//                    sheet.popoverPresentationController?.permittedArrowDirections = .up
         }
         
         @objc func followButtonTroggler() {
