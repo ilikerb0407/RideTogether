@@ -88,7 +88,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds / 3600) - 458872
+        let hour = (seconds / 3600) - 458896
         
         let minute = (seconds % 3600) / 60
         
@@ -102,7 +102,6 @@ extension Double {
         
         timeString += minute.description
         
-        
         return timeString
     }
     
@@ -110,7 +109,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds / 3600) - 458884
+        let hour = (seconds / 3600) - 458908
         
         let minute = (seconds % 3600) / 60
         

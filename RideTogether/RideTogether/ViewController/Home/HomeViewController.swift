@@ -46,15 +46,25 @@ class HomeViewController: BaseViewController {
 //            return view
 //        }()
     
+//    @objc func crashButtonTapped(_ sender: AnyObject) {
+//        
+//          let numbers = [0]
+//          let _ = numbers[1]
+//        
+//        print ("test crash")
+//        
+//      }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
 //        navigationController?.isNavigationBarHidden = false
 //
 //        tabBarController?.tabBar.isHidden = false
 //
 //        navigationItem.hidesBackButton = false
-        
         
         NotificationCenter.default.addObserver(
             self,
@@ -83,6 +93,8 @@ class HomeViewController: BaseViewController {
     
     func setUpTableView() {
         
+        
+        
         tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
@@ -92,6 +104,7 @@ class HomeViewController: BaseViewController {
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
+        
         
     }
     
@@ -147,11 +160,11 @@ extension HomeViewController: UITableViewDelegate {
         
         let headerView: HomeHeader = .loadFromNib()
         
-        self.headerView = headerView
         
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
         
         return self.headerView
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
