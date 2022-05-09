@@ -822,7 +822,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
 extension JourneyViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
-        timeLabel.text = "時間 : \(elapsedTimeString)"
+        timeLabel.text = "\(elapsedTimeString)"
     }
 }
 // MARK: - CLLocationManager Delegate -
