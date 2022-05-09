@@ -20,8 +20,8 @@ target 'RideTogether' do
   pod 'CoreGPX'
   pod 'Charts'
   pod 'RSKPlaceholderTextView'
-  pod 'Firebase/Crashlytics'
   pod 'lottie-ios'
   pod 'JGProgressHUD'
+  pod 'Firebase/Crashlytics'
 
 end

@@ -217,6 +217,18 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
         self.present(sheet, animated: true) {
             print("Loaded actionSheet")
         }
+        
+        // iPad specific code
+        
+        sheet.popoverPresentationController?.sourceView = self.view
+                
+        let xOrigin = self.view.bounds.width / 2
+        
+        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+            
+        sheet.popoverPresentationController?.sourceRect = popoverRect
+                
+        sheet.popoverPresentationController?.permittedArrowDirections = .up
     }
 
     // MARK: UITableView delegate methods
