@@ -160,6 +160,8 @@ extension HomeViewController: UITableViewDelegate {
         
         let headerView: HomeHeader = .loadFromNib()
         
+        self.headerView = headerView
+
         
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
         
