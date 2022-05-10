@@ -302,7 +302,7 @@
                                     <constraint firstAttribute="bottom" secondItem="ZmX-Q9-cqd" secondAttribute="bottom" constant="16.5" id="o2w-rf-Py1"/>
                                 </constraints>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CY4-04-0aW" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CY4-04-0aW" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
                                 <rect key="frame" x="20" y="93" width="388" height="392"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="392" id="sie-7h-nCN"/>
@@ -335,7 +335,7 @@
                         <outlet property="avgSpeed" destination="khF-RV-TcL" id="Yp1-6a-vRH"/>
                         <outlet property="chartView" destination="tyF-2L-WcT" id="OsU-wm-xyZ"/>
                         <outlet property="gView" destination="G62-vk-MyL" id="IaG-ei-k4u"/>
-                        <outlet property="map" destination="CY4-04-0aW" id="9fB-no-Grz"/>
+                        <outlet property="map" destination="CY4-04-0aW" id="bcf-xw-fxc"/>
                         <outlet property="totalDistance" destination="n0k-TM-9Qi" id="u3Q-75-ib6"/>
                         <outlet property="totalTime" destination="9XN-CP-ull" id="M9C-Yg-860"/>
                     </connections>
@@ -352,7 +352,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXT-W7-lli" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXT-W7-lli" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                             </mapView>
                         </subviews>
@@ -369,7 +369,7 @@
                     <navigationItem key="navigationItem" id="Kfo-I4-isS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="map2" destination="SXT-W7-lli" id="TQH-OV-yJA"/>
+                        <outlet property="map2" destination="SXT-W7-lli" id="aGf-VI-eU1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGy-Qx-OGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -21,7 +21,9 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         timeLabel.text = elapsedTimeString
     }
     
-
+    
+    let userName = UserManager.shared.userInfo.userName!
+    
     @IBOutlet weak var map3: GPXMapView!
     
     
@@ -29,7 +31,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
     
         private var isDisplayingLocationServicesDenied: Bool = false
-        
         
         /// Name of the last file that was saved (without extension)
         var lastGpxFilename: String = ""
@@ -419,8 +420,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             //   If user long presses the map, it will add a Pin (waypoint) at that point
             
-            map3.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-                                                                   action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
+//            map3.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
+//                                                                   action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
             
             self.view.addSubview(map3)
             
@@ -459,7 +460,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
             
-            let defaultFileName = "\(time)"
+            let defaultFileName = "\(userName) 紀錄了從..."
             
             let alertController = UIAlertController(title: "Save Record",
                                                     message: "Please enter the title",

@@ -108,12 +108,16 @@ class GPXMapView: MKMapView {
     func importFromGPXRoot(_ gpx: GPXRoot) {
 //        clearMap()
         addTrackSegments(for: gpx)
+        
+
     }
 
     private func addTrackSegments(for gpx: GPXRoot) {
+        
         session.tracks = gpx.tracks
         
         session.waypoints = gpx.waypoints
+        
         for pin in session.waypoints {
             addWaypoint(pin)
         }
@@ -133,15 +137,15 @@ class GPXMapView: MKMapView {
             }
         }
     }
-    //        weatherManger.delegate =
-            //        self.weatherManger.getGroupAPI(latitude: waypoint.latitude ?? 25.1, longitude: waypoint.longitude ?? 121.12)
-            //        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!)
+ 
     
     // MARK: 長按建立座標的 method
     func addWaypointAtViewPoint(_ point: CGPoint) {
         
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
+        
         let waypoint = GPXWaypoint(coordinate: coords)
+        
         addWaypoint(waypoint)
     }
     
@@ -149,8 +153,11 @@ class GPXMapView: MKMapView {
     
     
     func addWaypoint(_ waypoint: GPXWaypoint) {
+        
         session.addWaypoint(waypoint)
+        
         addAnnotation(waypoint)
+        
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
         
         print("\(waypoint)")
@@ -161,6 +168,7 @@ class GPXMapView: MKMapView {
         guard let heading = heading else { return }
         
         headingImageView?.isHidden = false
+        
         let rotation = CGFloat((heading.trueHeading - camera.heading)/180 * Double.pi)
         
         var newRotation = rotation
@@ -185,6 +193,7 @@ class GPXMapView: MKMapView {
             return
         }
         removeAnnotation(waypoint)
+        
         session.waypoints.remove(at: index!)
         
     }

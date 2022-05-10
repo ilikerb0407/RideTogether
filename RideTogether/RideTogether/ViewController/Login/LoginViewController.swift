@@ -96,7 +96,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         present(policyVC, animated: true, completion: nil)
     }
     
-    
 //      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
 
                             
