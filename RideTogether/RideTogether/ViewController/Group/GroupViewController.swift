@@ -92,6 +92,12 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         }
     }
     
+    @IBAction func tapToHideKeyboard(_ sender: Any) {
+    
+        self.groupHeaderCell?.searchBar.resignFirstResponder()
+    }
+    
+    
     
     
     override func viewDidLoad() {
