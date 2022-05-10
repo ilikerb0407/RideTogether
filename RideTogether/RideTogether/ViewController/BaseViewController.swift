@@ -117,7 +117,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         title: String?,
         message: String? = "",
         preferredStyle: UIAlertController.Style = .alert,
-        actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel)] ) {
+        actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel)] ) -> UIAlertController {
             
             let controller = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
             
@@ -126,6 +126,8 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             }
             
             self.present(controller, animated: true, completion: nil)
+            
+            return controller
         }
     
     // 前一頁的button
