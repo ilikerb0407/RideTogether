@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import AVFoundation
 import Kingfisher
+import FirebaseCrashlytics
 
 class ProfileViewController: BaseViewController {
     
@@ -94,8 +95,20 @@ class ProfileViewController: BaseViewController {
 //        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
+        
+//        let button = UIButton(type: .roundedRect)
+//             button.frame = CGRect(x: 20, y: 80, width: 100, height: 30)
+//             button.setTitle("Test Crash", for: [])
+//             button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
+//             view.addSubview(button)
 //
     }
+    
+    @objc func crashButtonTapped(_ sender: AnyObject) {
+          let numbers = [0]
+          let _ = numbers[1]
+      }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -318,6 +331,20 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         ))
         
         present(actionSheet, animated: true, completion: nil)
+        
+        // iPad specific code
+        
+        actionSheet.popoverPresentationController?.sourceView = self.view
+                
+        let xOrigin = self.view.bounds.width / 2
+        
+        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+            
+        actionSheet.popoverPresentationController?.sourceRect = popoverRect
+                
+        actionSheet.popoverPresentationController?.permittedArrowDirections = .up
+        
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
