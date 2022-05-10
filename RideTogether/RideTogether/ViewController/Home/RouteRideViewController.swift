@@ -360,7 +360,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
             navigationController?.isNavigationBarHidden = false
             
-            self.locationManager.requestAlwaysAuthorization()
+//            self.locationManager.requestAlwaysAuthorization()
             
             praseGPXFile()
             
@@ -392,13 +392,13 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         func setUpMap() {
             
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
+//            locationManager.delegate = self
+//            locationManager.startUpdatingLocation()
+//            locationManager.startUpdatingHeading()
             
             map3.delegate = mapViewDelegate
             
-            map3.showsUserLocation = true
+//            map3.showsUserLocation = true
             
             // 移動 map 的方式
             
@@ -410,12 +410,12 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             map3.rotationGesture.delegate = self
             
-            let center = locationManager.location?.coordinate ??
-            CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-            let region = MKCoordinateRegion(center: center, span: span)
-            
-            map3.setRegion(region, animated: true)
+//            let center = locationManager.location?.coordinate ??
+//            CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
+//            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+//            let region = MKCoordinateRegion(center: center, span: span)
+//            
+//            map3.setRegion(region, animated: true)
             
             //   If user long presses the map, it will add a Pin (waypoint) at that point
             
