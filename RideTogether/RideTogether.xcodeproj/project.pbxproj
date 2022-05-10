@@ -208,6 +208,7 @@
 		23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		23A84A8B2813FA9B00DD8D39 /* RouteTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTypes.swift; sourceTree = "<group>"; };
 		23A84A8C2813FA9B00DD8D39 /* RouteTypes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTypes.xib; sourceTree = "<group>"; };
+		23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherRelease.entitlements; sourceTree = "<group>"; };
 		23C0C41B281E7B320020237C /* wait-processbar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "wait-processbar.json"; sourceTree = "<group>"; };
 		23C0C41D281E9C810020237C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		23C0C41E281E9C810020237C /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
@@ -468,6 +469,7 @@
 		23D1B72D280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXGroup;
 			children = (
+				23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */,
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
@@ -1160,6 +1162,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RideTogether/RideTogetherRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

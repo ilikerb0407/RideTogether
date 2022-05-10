@@ -415,6 +415,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         segmentControl.center = CGPoint(x: 80, y: 65)
         self.view.addSubview(segmentControl)
     }
+    
     // 切換選項時執行動作的方法
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
