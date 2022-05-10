@@ -74,10 +74,12 @@ class FollowJourneyViewController: BaseViewController {
     }
     
     func praseGPXFile() {
+        
 //       if let inputUrl = URL(string: inputUrlString)
         if let inputUrl = URL(string: record.recordRef) {
             
             print("FollowDetail=======:\(inputUrl)======")
+            
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)
@@ -383,7 +385,7 @@ class FollowJourneyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationBar(title: "繼續騎乘")
+        setNavigationBar(title: "查看路線")
         
         locationManager.delegate = self
         
@@ -402,7 +404,6 @@ class FollowJourneyViewController: BaseViewController {
 //        backButton()
 
 //        navigationController?.isNavigationBarHidden = true
-        
         
         self.locationManager.requestAlwaysAuthorization()
         
@@ -433,7 +434,9 @@ class FollowJourneyViewController: BaseViewController {
     func setUpMap() {
         
         locationManager.delegate = self
+        
         locationManager.startUpdatingLocation()
+        
         locationManager.startUpdatingHeading()
         
         map2.delegate = mapViewDelegate

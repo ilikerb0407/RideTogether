@@ -146,6 +146,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         authorizationController.performRequests()
         
+        authorizationController.presentationContextProvider = self
+        
         let nonce = randomNonceString()
         
         request.nonce = sha256(nonce)
