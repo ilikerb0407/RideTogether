@@ -312,8 +312,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         })
     }
     
-
-    
     // MARK: header
     
     @objc func headerRefresh() {
