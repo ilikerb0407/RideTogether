@@ -106,7 +106,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
-        loginButton.addTarget(self, action: #selector(handleSignInWithAppleTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(self.handleSignInWithAppleTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             
@@ -122,17 +122,9 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         loginButton.alpha = 0.0
     }
     
-    
-    
-    
     // MARK: - Methods -
     
     @objc func handleSignInWithAppleTapped() {
-        
-        performSignIn()
-    }
-    
-    func performSignIn() -> ASAuthorizationAppleIDRequest {
         
         let provider = ASAuthorizationAppleIDProvider()
         
@@ -154,7 +146,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         currentNonce = nonce
         
-        return request
     }
     
     //    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {

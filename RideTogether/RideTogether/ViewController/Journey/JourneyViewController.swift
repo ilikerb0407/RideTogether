@@ -17,6 +17,7 @@ import JGProgressHUD
 
 class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
+    let userName = UserManager.shared.userInfo.userName!
     
     func sendRouteTwice(map: DrawRoute) {
         mapData = map
@@ -564,7 +565,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
         
-        let defaultFileName = "\(time)"
+        // MARK: 要改
+        let defaultFileName = "\(userName) 紀錄了從..."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",
@@ -642,7 +644,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         self.followUser = !self.followUser
     }
-    
     
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {

@@ -216,11 +216,7 @@ class SignUpViewController: BaseViewController {
                             
                         }
                     }
-                    
-                    
                     //Go to the HomeViewController if the login is sucessful
-                    
-                    
                     
                 } else {
                     
