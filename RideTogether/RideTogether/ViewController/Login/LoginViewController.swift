@@ -99,12 +99,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
 //      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
 
-    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
+                            
     func setUpSignInButton() {
         
         view.addSubview(loginButton)
@@ -137,13 +132,18 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         performSignIn()
     }
     
-    func performSignIn() {
+    func performSignIn() -> ASAuthorizationAppleIDRequest {
         
         let provider = ASAuthorizationAppleIDProvider()
+        
         let request = provider.createRequest()
+        
         request.requestedScopes = [.fullName, .email]
+        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        
         authorizationController.delegate = self
+        
         authorizationController.performRequests()
         
         let nonce = randomNonceString()
@@ -152,6 +152,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         currentNonce = nonce
         
+        return request
     }
     
     //    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
@@ -183,7 +184,9 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     @objc func popUpEmailSignIn() {
         
         if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController{
+            
             self.modalPresentationStyle = .fullScreen
+            
             self.present(nextVC, animated: true, completion: .none)
         }
         

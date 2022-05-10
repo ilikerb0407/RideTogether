@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jTf-tD-i06">
-    <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -16,7 +16,7 @@
                     <tabBarItem key="tabBarItem" title="群組" image="rectangle.3.group.bubble.left" catalog="system" id="sIG-BA-I9Z"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GmV-8A-G56">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,11 +32,11 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="GroupViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-pb-RDi">
-                                <rect key="frame" x="0.0" y="-18" width="1024" height="1334"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -68,11 +68,11 @@
             <objects>
                 <viewController storyboardIdentifier="ChatRoomViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ogp-fI-TYw" customClass="ChatRoomViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9hz-GR-aOP">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-0A-VKy">
-                                <rect key="frame" x="0.0" y="-18" width="1024" height="1334"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -99,11 +99,11 @@
             <objects>
                 <viewController storyboardIdentifier="GroupMemberViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="csi-wI-tAG" customClass="GroupMemberViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TQH-2T-Osn">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Zk-2ZQ">
-                                <rect key="frame" x="0.0" y="-90" width="1024" height="1456"/>
+                                <rect key="frame" x="0.0" y="-66" width="428" height="958"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -129,18 +129,18 @@
             <objects>
                 <viewController storyboardIdentifier="CreateGroupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fUb-I6-lgJ" customClass="CreateGroupViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6l5-j7-j2v">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWG-bG-FmO">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LQ0-jB-qu9">
-                                <rect key="frame" x="47.5" y="211.5" width="929" height="258"/>
+                                <rect key="frame" x="47.666666666666657" y="235.33333333333337" width="333" height="258"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="NS3-FJ-Cak">
-                                        <rect key="frame" x="0.0" y="0.0" width="929" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="團名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jip-K4-Ni4">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -153,7 +153,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kUW-i0-HXB">
-                                                <rect key="frame" x="83" y="0.0" width="846" height="30"/>
+                                                <rect key="frame" x="83" y="0.0" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="fLf-7o-GDc"/>
                                                 </constraints>
@@ -163,10 +163,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="t6b-Il-X7J">
-                                        <rect key="frame" x="0.0" y="40" width="929" height="30"/>
+                                        <rect key="frame" x="0.0" y="39.999999999999972" width="333" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43g-8k-qpF">
-                                                <rect key="frame" x="0.0" y="0.0" width="702" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="zHu-Gs-AkI"/>
                                                 </constraints>
@@ -175,7 +175,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="sjP-rp-Jhy">
-                                                <rect key="frame" x="709" y="0.0" width="220" height="30"/>
+                                                <rect key="frame" x="113" y="0.0" width="220" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="M8O-0L-iRv"/>
                                                     <constraint firstAttribute="width" constant="220" id="edx-X6-hbw"/>
@@ -188,7 +188,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="SzD-w0-Fyj">
-                                        <rect key="frame" x="0.0" y="80" width="929" height="30"/>
+                                        <rect key="frame" x="0.0" y="79.999999999999972" width="333" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="路線" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M26-Su-yH1">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -201,7 +201,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-Gh-WHt">
-                                                <rect key="frame" x="83" y="0.0" width="846" height="30"/>
+                                                <rect key="frame" x="83" y="0.0" width="250" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="199" id="KSV-kG-dSg"/>
                                                     <constraint firstAttribute="height" constant="30" id="UOf-YR-HGx"/>
@@ -212,7 +212,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="bzo-el-1KF">
-                                        <rect key="frame" x="0.0" y="120" width="929" height="30"/>
+                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人數" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dK-lb-mC6">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -225,7 +225,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yAf-KD-Vlr">
-                                                <rect key="frame" x="84" y="0.0" width="845" height="30"/>
+                                                <rect key="frame" x="84" y="0.0" width="249" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="199" id="MbU-c2-uaM"/>
                                                     <constraint firstAttribute="height" constant="30" id="mBf-IP-r4N"/>
@@ -236,7 +236,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7ZP-sH-3bV">
-                                        <rect key="frame" x="0.0" y="160" width="929" height="98"/>
+                                        <rect key="frame" x="0.0" y="159.99999999999997" width="333" height="98.000000000000028"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="備註" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-dS-u5X">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -267,7 +267,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="groups" translatesAutoresizingMaskIntoConstraints="NO" id="xAj-aN-dXk">
-                                <rect key="frame" x="47.5" y="51.5" width="929" height="140"/>
+                                <rect key="frame" x="47.666666666666657" y="75.333333333333314" width="333" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="n2m-6E-rKS"/>
                                 </constraints>
@@ -281,13 +281,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cuj-cd-zRs">
-                                <rect key="frame" x="47.5" y="481.5" width="929" height="31"/>
+                                <rect key="frame" x="47.666666666666657" y="505.33333333333326" width="333" height="31"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="騎車愛地球"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="建立活動" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ln-lf-Qfs">
-                                <rect key="frame" x="47.5" y="15" width="929" height="26.5"/>
+                                <rect key="frame" x="47.666666666666657" y="39" width="333" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
@@ -328,6 +328,7 @@
                         <outlet property="notes" destination="bP0-ug-6HB" id="ap7-7v-y5W"/>
                         <outlet property="routeName" destination="9ba-Gh-WHt" id="UXA-a0-zhW"/>
                         <outlet property="sendData" destination="Cuj-cd-zRs" id="1Gi-3g-TXb"/>
+                        <outlet property="teamView" destination="LQ0-jB-qu9" id="chU-v5-rMR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOy-4J-kJ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -339,11 +340,11 @@
             <objects>
                 <viewController id="fUT-qe-iBH" customClass="JoinViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nT1-23-nwm">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzi-nN-kcJ">
-                                <rect key="frame" x="0.0" y="-18" width="1024" height="1417"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
