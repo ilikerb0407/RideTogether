@@ -19,7 +19,7 @@ class GroupHeaderCell: UITableViewCell {
     @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
             segment.setTitle("活動中", forSegmentAt: 0)
-            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white], for: .normal)
+//            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white], for: .normal)
             segment.setTitle("個人活動", forSegmentAt: 1)
 //            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white ], for: .selected)
             
@@ -63,8 +63,9 @@ class GroupHeaderCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white], for: .normal)
-        
+        segment.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
+
         segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white ], for: .selected)
     }
+    
 }

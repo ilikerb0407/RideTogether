@@ -17,6 +17,7 @@ import JGProgressHUD
 
 class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
+    let userName = UserManager.shared.userInfo.userName!
     
     func sendRouteTwice(map: DrawRoute) {
         mapData = map
@@ -404,8 +405,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }()
     
     func addSegment() {
-        let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
-        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B5], for: .normal)
+        let segmentControl = UISegmentedControl(items: ["一般", "衛星"])
+        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
+        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B5], for: .selected)
         segmentControl.backgroundColor = UIColor.B5
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
@@ -413,6 +415,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         segmentControl.center = CGPoint(x: 80, y: 65)
         self.view.addSubview(segmentControl)
     }
+    
     // 切換選項時執行動作的方法
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -564,7 +567,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
         
-        let defaultFileName = "\(time)"
+        // MARK: 要改
+        let defaultFileName = "\(userName) 紀錄了從..."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",
@@ -642,7 +646,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         self.followUser = !self.followUser
     }
-    
     
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {

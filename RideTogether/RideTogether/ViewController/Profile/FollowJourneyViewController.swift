@@ -74,10 +74,12 @@ class FollowJourneyViewController: BaseViewController {
     }
     
     func praseGPXFile() {
+        
 //       if let inputUrl = URL(string: inputUrlString)
         if let inputUrl = URL(string: record.recordRef) {
             
             print("FollowDetail=======:\(inputUrl)======")
+            
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)
@@ -383,7 +385,7 @@ class FollowJourneyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationBar(title: "繼續騎乘")
+        setNavigationBar(title: "查看路線")
         
         locationManager.delegate = self
         
@@ -402,7 +404,6 @@ class FollowJourneyViewController: BaseViewController {
 //        backButton()
 
 //        navigationController?.isNavigationBarHidden = true
-        
         
         self.locationManager.requestAlwaysAuthorization()
         
@@ -432,35 +433,37 @@ class FollowJourneyViewController: BaseViewController {
     
     func setUpMap() {
         
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-        locationManager.startUpdatingHeading()
+//        locationManager.delegate = self
+//
+//        locationManager.startUpdatingLocation()
+//
+//        locationManager.startUpdatingHeading()
         
         map2.delegate = mapViewDelegate
         
-        map2.showsUserLocation = true
+//        map2.showsUserLocation = false
         
         // 移動 map 的方式
         
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
-        
-        panGesture.delegate = self
-        
-        map2.addGestureRecognizer(panGesture)
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
+//
+//        panGesture.delegate = self
+//
+//        map2.addGestureRecognizer(panGesture)
         
         map2.rotationGesture.delegate = self
         
-        let center = locationManager.location?.coordinate ??
-        CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        let region = MKCoordinateRegion(center: center, span: span)
+//        let center = locationManager.location?.coordinate ??
+//        CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
+//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+//        let region = MKCoordinateRegion(center: center, span: span)
         
-        map2.setRegion(region, animated: true)
+//        map2.setRegion(region, animated: true)
         
         //   If user long presses the map, it will add a Pin (waypoint) at that point
         
-        map2.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-                                                               action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
+//        map2.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
+//                                                               action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map2)
         

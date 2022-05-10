@@ -389,4 +389,3 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     }
 }
 
-

@@ -107,6 +107,15 @@ class TracksViewController: BaseViewController {
         self.tableView.mj_header?.endRefreshing()
     }
     
+    func showLongPressNotify() {
+        let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以分享", comment: "no comment"), preferredStyle: .alert)
+        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+            }
+        sheet.addAction(okOption)
+        present(sheet, animated: true, completion: nil)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,6 +132,8 @@ class TracksViewController: BaseViewController {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
         
         tableView.addGestureRecognizer(longPress)
+        
+        showLongPressNotify()
         
     }
     
@@ -202,6 +213,7 @@ extension TracksViewController: UITableViewDelegate {
         if editingStyle == .delete {
             RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
                 switch result {
+                    
                 case .success(_):
                     self.records.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .left)
