@@ -405,8 +405,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }()
     
     func addSegment() {
-        let segmentControl = UISegmentedControl(items: ["standard", "hybrid" ])
-        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B5], for: .normal)
+        let segmentControl = UISegmentedControl(items: ["一般", "衛星"])
+        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
+        segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B5], for: .selected)
         segmentControl.backgroundColor = UIColor.B5
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
