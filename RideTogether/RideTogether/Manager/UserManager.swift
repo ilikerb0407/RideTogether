@@ -89,6 +89,7 @@ class UserManager {
             
             if let error = error {
                 
+                print ("\(error)")
                 
             } else {
                 
@@ -103,9 +104,11 @@ class UserManager {
     
     func deleteUserSharemaps (uid: String) {
         
-        let uid = uid
+        let uid = userInfo.uid
         
-        let document = dataBase.collection(shareCollection).whereField("uid", isEqualTo: uid).getDocuments { (querySnapshot, error) in
+        let document = dataBase.collection(shareCollection).whereField("uid", isEqualTo: uid)
+            
+            document.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
             

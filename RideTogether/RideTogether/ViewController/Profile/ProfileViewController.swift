@@ -91,7 +91,7 @@ class ProfileViewController: BaseViewController {
         setUpProfileView()
         
         
-//        UserManager.shared.deleteUserSharemaps(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
+        UserManager.shared.deleteUserSharemaps(uid: "TYVH8NFOD1XPVQlcZHamJkEJ65q1")
 //        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
@@ -153,10 +153,10 @@ class ProfileViewController: BaseViewController {
             action: #selector(self.textFieldDidChange(_:)),
             for: .editingChanged)
     }
-    
-    
-    
+
 }
+
+
 extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

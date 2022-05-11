@@ -22,7 +22,9 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
     }
     
     
-    let userName = UserManager.shared.userInfo.userName!
+    var userName = UserManager.shared.userInfo.userName!
+    
+//    var userName = Auth.auth().currentUser?.displayName
     
     @IBOutlet weak var map3: GPXMapView!
     
