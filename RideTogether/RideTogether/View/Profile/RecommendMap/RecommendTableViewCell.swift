@@ -19,6 +19,9 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var heart: UIButton!
     
+    @IBOutlet weak var userPhoto: UIImageView!
+    
+    
     var likes : Bool = false
     
     var sendIsLike : ((_ isSelected: Bool) ->())?
@@ -64,7 +67,10 @@ class RecommendTableViewCell: UITableViewCell {
         mapTitle.text = model.recordName
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
         
-        
+//        guard let ref = userInfo.pictureRef else { return }
+//        
+//        userPhoto.loadImage(ref)
+//        
     }
     
 }

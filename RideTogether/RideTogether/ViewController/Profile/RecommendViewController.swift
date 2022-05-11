@@ -294,6 +294,7 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
+        
         cell.heart.tag = indexPath.row
         
         cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)

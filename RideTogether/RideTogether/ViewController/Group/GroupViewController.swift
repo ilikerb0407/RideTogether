@@ -91,14 +91,20 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             tableView.dataSource = self
         }
     }
-    
-    @IBAction func tapToHideKeyboard(_ sender: Any) {
-    
-        self.groupHeaderCell?.searchBar.resignFirstResponder()
+    func tapAndDismiss() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+        tap.delegate = self
+                //shouldReceiveTouch on UITableViewCellContentView
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
-    
-    
+    @objc func dismissKeyBoard() {
+        
+        groupHeaderCell?.searchBar.resignFirstResponder()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +124,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         table?.delegate = self
         
         VC.delegate = self
+        
+        tapAndDismiss()
         
     }
     
@@ -403,7 +411,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
     
-    
     func setUpTableView() {
         
         tableView = UITableView()
@@ -441,6 +448,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         return fitledGroups
     }
+    
+    
     
   
 

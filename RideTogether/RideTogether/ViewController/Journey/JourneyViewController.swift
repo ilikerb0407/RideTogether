@@ -592,8 +592,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             self.lastGpxFilename = fileName!
             
-                        if let fileName = fileName {
-                            GPXFileManager.save( fileName, gpxContents: gpxString)
+            if let fileName = fileName {
+                
+                GPXFileManager.save( fileName, gpxContents: gpxString)
             
             print ("2\(fileName)2")
                         }

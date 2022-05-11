@@ -103,7 +103,6 @@ class GPXFileManager {
         
         let length = gpx.tracksLength
     
-        
         UserManager.shared.updateUserTrackLength(length: length)
     }
     
@@ -129,6 +128,7 @@ class GPXFileManager {
     /// Gets the list of `.gpx` files in Documents directory ordered by modified date
     ///
     class var fileList: [GPXFileInfo] {
+        
         var GPXFiles: [GPXFileInfo] = []
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]

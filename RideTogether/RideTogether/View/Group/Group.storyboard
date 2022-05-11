@@ -38,6 +38,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qm-pb-RDi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -52,9 +53,6 @@
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-88" id="l5h-ZR-HSI"/>
                             <constraint firstItem="0qm-pb-RDi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="qTy-7e-QJ1"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="diu-Th-TF0" appends="YES" id="0aA-xO-zoo"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="群組" id="rIF-tM-mUp"/>
                     <connections>
@@ -64,11 +62,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="diu-Th-TF0">
-                    <connections>
-                        <action selector="tapToHideKeyboard:" destination="Y6W-OH-hqX" id="Von-hJ-fJh"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="124.6376811594203" y="40.848214285714285"/>
         </scene>
