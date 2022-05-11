@@ -21,7 +21,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     var weatherdata : ResponseBody?
     
     let weatherManger = WeatherManager()
-    
+
     
     /// Current session of GPX location logging. Handles all background tasks and recording.
     let session = GPXSession()
@@ -160,11 +160,16 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     
     let kEditWaypointAccesoryButtonTag = 333
     
+
+    
+
+    
     
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         weatherManger.delegate = self
+        
         print("calloutAccesoryControlTapped ")
         
         guard let button = control as? UIButton else { return }
@@ -178,6 +183,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         }
         
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
+        
         self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
             self?.weatherdata = result
@@ -189,7 +195,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         }
        
         func markMarkers() {
-            guard let weatherdata = weatherdata else { return }
             
             switch button.tag {
                 
@@ -198,13 +203,14 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 //            map.removeWaypoint(waypoint)
                 //            guide(mapView, didSelect: view)
                 
-               
+                guard let weatherdata = weatherdata else { return }
+                
                 let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
                 let distance = "\(self.route.distance.toDistance())"
                 let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
                 let weather = "\(weatherdata.weather[0].main)"
                 
-                let sheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
+                let alertsheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
                 
 //                let weather = UIAlertAction(title: " 天氣 = \(weatherdata.weather[0].main) ", style: .default) { _ in
 //                }
@@ -225,26 +231,36 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                     
                 }
                 
-                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel)
+                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
                 
 //                sheet.addAction(distance)
 //                sheet.addAction(time)
-                sheet.addAction(routeName)
-                sheet.addAction(removeOption)
-                sheet.addAction(cancelAction)
+                alertsheet.addAction(routeName)
+                alertsheet.addAction(removeOption)
+                alertsheet.addAction(cancelAction)
                 
-                UIApplication.shared.keyWindow?.rootViewController?.present(sheet, animated: true)
                 
+                let keyWindow = UIApplication.shared.connectedScenes
+                        .filter({$0.activationState == .foregroundActive})
+                        .compactMap({$0 as? UIWindowScene})
+                        .first?.windows
+                        .filter({$0.isKeyWindow}).first
+        
+                
+                keyWindow?.endEditing(true)
+                
+                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true)
                 // iPad specific code
-                sheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view
-                        
+                
+                alertsheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view
+
                 let xOrigin = (UIApplication.shared.keyWindow?.rootViewController?.view.bounds.width)! / 2
-                        
-                        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-                        
-                        sheet.popoverPresentationController?.sourceRect = popoverRect
-                        
-                sheet.popoverPresentationController?.permittedArrowDirections = .unknown
+
+                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+
+                alertsheet.popoverPresentationController?.sourceRect = popoverRect
+
+                alertsheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
             case kEditWaypointAccesoryButtonTag:
                 print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
@@ -262,7 +278,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
                     print("Edit waypoint alert view")
                     self.waypointBeingEdited.title = alertController.textFields?[0].text
-                    //                map.coreDataHelper.update(toCoreData: self.waypointBeingEdited, from: indexofEditedWaypoint!)
                 }
                 let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
                 
@@ -385,6 +400,16 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             }
             
             self.fetchNextRoute()
+        }
+    }
+}
+
+extension UIWindow {
+    static var key: UIWindow? {
+        if #available(iOS 13, *) {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.keyWindow
         }
     }
 }

@@ -368,6 +368,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         mapViewDelegate.route.polyline.title = "two"
         
+        
 //        buttonPanelView.delegate = self
 //
 //        view.addSubview(buttonPanelView)
@@ -552,10 +553,14 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
-            if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.large(), .medium()]
-            self.navigationController?.present(navBar, animated: true, completion: .none)
-           }
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.large(), .medium()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -669,13 +674,17 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         if !CLLocationManager.locationServicesEnabled() {
             
             displayLocationServicesDisabledAlert()
-            
-            return
-        }
-        
-        if !([.authorizedAlways, .authorizedWhenInUse]
-                .contains(locationManager.authorizationStatus)) {
-            
+            if #available(iOS 14.0, *) {
+                if !([.authorizedAlways, .authorizedWhenInUse]
+                        .contains(locationManager.authorizationStatus)) {
+                    
+                    displayLocationServicesDeniedAlert()
+                    
+                    return
+                }
+            } else {
+                // Fallback on earlier versions
+            }   
             displayLocationServicesDeniedAlert()
             
             return

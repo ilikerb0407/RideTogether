@@ -627,12 +627,16 @@ class FollowJourneyViewController: BaseViewController {
             return
         }
         
-        if !([.authorizedAlways, .authorizedWhenInUse]
-                .contains(locationManager.authorizationStatus)) {
-            
-            displayLocationServicesDeniedAlert()
-            
-            return
+        if #available(iOS 14.0, *) {
+            if !([.authorizedAlways, .authorizedWhenInUse]
+                    .contains(locationManager.authorizationStatus)) {
+                
+                displayLocationServicesDeniedAlert()
+                
+                return
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
     

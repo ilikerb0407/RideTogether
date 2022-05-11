@@ -204,10 +204,14 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 //       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
-            if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [ .large(), .medium() ]
-                rootVC.delegate = self
-            self.navigationController?.present(navBar, animated: true, completion: .none)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [ .large(), .medium() ]
+                    rootVC.delegate = self
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                // Fallback on earlier versions
             }
         }
     }
