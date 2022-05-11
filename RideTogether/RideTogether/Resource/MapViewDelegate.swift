@@ -160,10 +160,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     
     let kEditWaypointAccesoryButtonTag = 333
     
-
-    
-
-    
     
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -212,17 +208,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let alertsheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
                 
-//                let weather = UIAlertAction(title: " 天氣 = \(weatherdata.weather[0].main) ", style: .default) { _ in
-//                }
-                
                 let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
                     map.removeWaypoint(waypoint)
                     map.removeOverlays(map.overlays)
                 }
-                
-//                let distance = UIAlertAction(title: "Distance = \(self.route.distance.toDistance())", style: .default)
-                
-//                let time = UIAlertAction(title: "時間 = ", style: .default)
                 
                 let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
                    
@@ -233,8 +222,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
                 
-//                sheet.addAction(distance)
-//                sheet.addAction(time)
                 alertsheet.addAction(routeName)
                 alertsheet.addAction(removeOption)
                 alertsheet.addAction(cancelAction)
