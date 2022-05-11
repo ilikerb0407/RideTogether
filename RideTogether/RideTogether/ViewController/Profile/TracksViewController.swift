@@ -29,6 +29,8 @@ class TracksViewController: BaseViewController {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
+    
     private let header = MJRefreshNormalHeader()
     
     private var tableView: UITableView! {
@@ -238,6 +240,8 @@ extension TracksViewController: UITableViewDelegate {
         record.recordName = fileName
         
         record.recordRef = fileURL.absoluteString
+        
+        record.pictureRef = userPhoto
         
         do {
             

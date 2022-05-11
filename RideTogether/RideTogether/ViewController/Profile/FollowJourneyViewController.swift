@@ -88,7 +88,6 @@ class FollowJourneyViewController: BaseViewController {
             
             didLoadGPXFile(gpxRoot: gpx)
             
-            
         }
     }
     

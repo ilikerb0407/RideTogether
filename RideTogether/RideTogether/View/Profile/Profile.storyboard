@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHO-FC-rc5">
-                                <rect key="frame" x="0.0" y="0.0" width="721" height="843"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opy-dE-Pdx" customClass="ProfileView" customModule="RideTogether" customModuleProvider="target">
@@ -93,15 +93,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C27-Ud-r1N">
-                                        <rect key="frame" x="325" y="242" width="40" height="31"/>
-                                        <color key="tintColor" name="B6"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system"/>
-                                        <connections>
-                                            <action selector="editName:" destination="3J9-PV-Y8M" eventType="touchUpInside" id="Uf5-SB-Aq7"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPE-yp-ZV1">
                                         <rect key="frame" x="55" y="285" width="319" height="1"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -109,6 +100,15 @@
                                             <constraint firstAttribute="height" constant="1" id="7IH-cd-Dsg"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C27-Ud-r1N">
+                                        <rect key="frame" x="335" y="242" width="45" height="31"/>
+                                        <color key="tintColor" name="B6"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="editName:" destination="3J9-PV-Y8M" eventType="touchUpInside" id="Uf5-SB-Aq7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -126,8 +126,9 @@
                                     <constraint firstItem="Zna-nX-YeG" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" id="Zlx-lJ-5on"/>
                                     <constraint firstAttribute="trailing" secondItem="fIf-KK-V4D" secondAttribute="trailing" constant="110" id="aRI-IR-zfy"/>
                                     <constraint firstAttribute="trailing" secondItem="ANH-ae-BB8" secondAttribute="trailing" constant="90" id="aV3-4q-FtB"/>
-                                    <constraint firstItem="C27-Ud-r1N" firstAttribute="centerX" secondItem="nc9-Cr-rVu" secondAttribute="centerX" constant="1" id="cxT-E4-xtl"/>
+                                    <constraint firstItem="C27-Ud-r1N" firstAttribute="centerX" secondItem="nc9-Cr-rVu" secondAttribute="centerX" id="cxT-E4-xtl"/>
                                     <constraint firstItem="ANH-ae-BB8" firstAttribute="leading" secondItem="Opy-dE-Pdx" secondAttribute="leading" constant="90" id="fYm-DC-Msy"/>
+                                    <constraint firstItem="C27-Ud-r1N" firstAttribute="top" secondItem="nc9-Cr-rVu" secondAttribute="bottom" constant="12" id="oKz-zI-MCt"/>
                                     <constraint firstItem="C27-Ud-r1N" firstAttribute="top" secondItem="fIf-KK-V4D" secondAttribute="bottom" constant="-35" id="wVq-Vn-QYj"/>
                                 </constraints>
                                 <connections>
@@ -140,14 +141,21 @@
                         <viewLayoutGuide key="safeArea" id="qxy-Gs-kTX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tHO-FC-rc5" firstAttribute="trailing" secondItem="qxy-Gs-kTX" secondAttribute="trailing" constant="293" id="4AK-16-mR1"/>
-                            <constraint firstItem="tHO-FC-rc5" firstAttribute="top" secondItem="C1b-Qo-W94" secondAttribute="topMargin" constant="-88" id="Cax-Im-Xyy"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="top" secondItem="C1b-Qo-W94" secondAttribute="top" id="1ur-JA-w9t"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="trailing" secondItem="qxy-Gs-kTX" secondAttribute="trailing" id="4AK-16-mR1"/>
                             <constraint firstItem="Opy-dE-Pdx" firstAttribute="bottom" secondItem="tHO-FC-rc5" secondAttribute="bottom" id="DPZ-DQ-PwN"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="bottom" secondItem="qxy-Gs-kTX" secondAttribute="bottom" id="Naq-3p-QrU"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="trailing" secondItem="qxy-Gs-kTX" secondAttribute="trailing" id="RLd-YT-zbq"/>
                             <constraint firstItem="qxy-Gs-kTX" firstAttribute="bottom" secondItem="tHO-FC-rc5" secondAttribute="bottom" id="RRv-sM-JdN"/>
                             <constraint firstItem="Opy-dE-Pdx" firstAttribute="top" secondItem="qxy-Gs-kTX" secondAttribute="top" constant="-47" id="Rb2-uy-DTM"/>
-                            <constraint firstItem="Opy-dE-Pdx" firstAttribute="trailing" secondItem="tHO-FC-rc5" secondAttribute="trailing" constant="-293" id="TW8-A8-ug0"/>
+                            <constraint firstItem="Opy-dE-Pdx" firstAttribute="trailing" secondItem="tHO-FC-rc5" secondAttribute="trailing" id="TW8-A8-ug0"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="X1j-Uq-Btq"/>
                             <constraint firstItem="Opy-dE-Pdx" firstAttribute="leading" secondItem="tHO-FC-rc5" secondAttribute="leading" id="b1Q-uj-bih"/>
-                            <constraint firstAttribute="trailing" secondItem="tHO-FC-rc5" secondAttribute="trailing" constant="-293" id="mYc-Nb-n0z"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="d6N-oY-n3n"/>
+                            <constraint firstAttribute="trailing" secondItem="tHO-FC-rc5" secondAttribute="trailing" id="mYc-Nb-n0z"/>
+                            <constraint firstAttribute="trailing" secondItem="tHO-FC-rc5" secondAttribute="trailing" id="tXm-n5-IYY"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="top" secondItem="C1b-Qo-W94" secondAttribute="top" id="wFB-8d-8PM"/>
+                            <constraint firstItem="tHO-FC-rc5" firstAttribute="bottom" secondItem="qxy-Gs-kTX" secondAttribute="bottom" id="xsu-fb-he4"/>
                             <constraint firstItem="tHO-FC-rc5" firstAttribute="bottom" secondItem="qxy-Gs-kTX" secondAttribute="bottom" id="xtG-Q2-gfx"/>
                             <constraint firstItem="Opy-dE-Pdx" firstAttribute="leading" secondItem="C1b-Qo-W94" secondAttribute="leading" id="yVi-Ew-Y3T"/>
                             <constraint firstItem="tHO-FC-rc5" firstAttribute="leading" secondItem="qxy-Gs-kTX" secondAttribute="leading" id="yja-bx-kPO"/>
@@ -166,7 +174,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrk-gs-Yjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="94W-RV-Prh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-91.304347826086968" y="97.767857142857139"/>
+            <point key="canvasLocation" x="-92.523364485981304" y="97.192224622030238"/>
         </scene>
         <!--Tracks View Controller-->
         <scene sceneID="TC8-NO-X9b">
@@ -234,7 +242,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="km/hr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khF-RV-TcL">
-                                                        <rect key="frame" x="248.66666666666671" y="0.0" width="94.333333333333343" height="20.333333333333332"/>
+                                                        <rect key="frame" x="248.66666666666674" y="0.0" width="94.333333333333343" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -257,7 +265,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyQ-Ud-udY">
-                                                        <rect key="frame" x="248.66666666666671" y="0.0" width="94.333333333333343" height="20.333333333333332"/>
+                                                        <rect key="frame" x="248.66666666666674" y="0.0" width="94.333333333333343" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
