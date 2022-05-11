@@ -16,6 +16,8 @@ class ProfileViewController: BaseViewController {
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
+    var userId: String { UserManager.shared.userInfo.uid }
+    
     private var textInTextfield: String = ""
     
     
@@ -91,7 +93,7 @@ class ProfileViewController: BaseViewController {
         setUpProfileView()
         
         
-        UserManager.shared.deleteUserSharemaps(uid: "TYVH8NFOD1XPVQlcZHamJkEJ65q1")
+//        UserManager.shared.deleteUserSharemaps(uid: "TYVH8NFOD1XPVQlcZHamJkEJ65q1")
 //        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
 //        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
 //        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
@@ -181,9 +183,11 @@ extension ProfileViewController : UITableViewDelegate {
                 self.signOut()
             }
             let removeAccount = UIAlertAction(title: AccountActionSheet.allCases[1].rawValue, style: .destructive) { _ in
+                
                 self.deleteAccount()
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
+            
             showAlertAction(title: nil, message: nil, preferredStyle: .alert, actions: [logOut, removeAccount, cancel])
             
         case 3:
@@ -197,22 +201,23 @@ extension ProfileViewController : UITableViewDelegate {
     
     func deleteAccount() {
         
-        let user = Auth.auth().currentUser
+        let currentuser = Auth.auth().currentUser
 
-        user?.delete { error in
+        currentuser?.delete { error in
+            
           if let error = error {
-              
+
             print ("\(error)")
-              
+
           } else {
-              
+
               print ("delete success")
               
-              UserManager.shared.deleteUserInfo(uid: user!.uid)
-              UserManager.shared.deleteUserSharemaps(uid: user!.uid)
-              UserManager.shared.deleteUserRequests(uid: user!.uid)
-              UserManager.shared.deleteUserFromGroup(uid: user!.uid)
-              
+              UserManager.shared.deleteUserInfo(uid: currentuser!.uid)
+              UserManager.shared.deleteUserSharemaps(uid: currentuser!.uid)
+              UserManager.shared.deleteUserRequests(uid: currentuser!.uid)
+              UserManager.shared.deleteUserFromGroup(uid: currentuser!.uid)
+
               }
           }
         
