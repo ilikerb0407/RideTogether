@@ -54,7 +54,8 @@ class Member: UITableViewCell {
 
         rejectButton.setImage(image, for: .normal)
 
-        rejectButton.backgroundColor = .B2
+        rejectButton.backgroundColor = .B5
+        
 
         if userInfo.uid == UserManager.shared.userId {
 

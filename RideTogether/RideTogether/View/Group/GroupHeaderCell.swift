@@ -12,7 +12,7 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
         
     @IBOutlet weak var resquestsBell: UIButton! {
         didSet {
-            resquestsBell.backgroundColor = .darkGray
+            resquestsBell.backgroundColor = .B5
         }
     }
     
