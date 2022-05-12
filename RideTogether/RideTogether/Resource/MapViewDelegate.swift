@@ -160,6 +160,9 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     
     let kEditWaypointAccesoryButtonTag = 333
     
+
+    
+    
     
     // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -223,19 +226,13 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 alertsheet.addAction(cancelAction)
                 
                 
-                let keyWindow = UIApplication.shared.connectedScenes
-                        .filter({$0.activationState == .foregroundActive})
-                        .compactMap({$0 as? UIWindowScene})
-                        .first?.windows
-                        .filter({$0.isKeyWindow}).first
-        
-                keyWindow?.endEditing(true)
+                let firstView = UIApplication.shared.windows.first { $0.isKeyWindow }
                 
-                let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                firstView?.rootViewController?.present(alertsheet, animated: true, completion: nil)
+//                firstView?.present(alertsheet, animated: true)
                 
-                window?.rootViewController?.present(alertsheet, animated: true, completion: nil)
-//                UIApplication.shared.windows.rootViewController?.present(alertsheet, animated: true)
-//                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true)
+//                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true, completion: nil)
+//
                 // iPad specific code
                 
                 alertsheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view
@@ -270,7 +267,8 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 alertController.addAction(saveAction)
                 alertController.addAction(cancelAction)
                 
-                UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true)
+                let firstView = UIApplication.shared.windows.first
+                firstView!.rootViewController?.present(alertController, animated: true)
                 
                 self.waypointBeingEdited = waypoint
                 

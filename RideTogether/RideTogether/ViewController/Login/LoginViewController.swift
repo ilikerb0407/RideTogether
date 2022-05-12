@@ -12,7 +12,6 @@ import FirebaseAuth
 import Lottie
 
 
-
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
     
 
@@ -347,12 +346,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 }
                 
                 if let error = error as? NSError {
+                    
                     print (error)
                     guard let errorCode = AuthErrorCode(rawValue: error.code) else {
                         print ("登入錯誤，請稍後再試")
                         return
                     }
                     LKProgressHUD.showFailure(text: "登入失敗，請確定網路品質")
+                    
                 }
                 
             }

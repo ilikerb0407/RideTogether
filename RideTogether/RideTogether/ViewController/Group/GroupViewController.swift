@@ -115,6 +115,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         addRequestListener()
         
+        
         setUpTableView()
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
