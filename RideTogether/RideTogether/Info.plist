@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>您的相片將會用於個人資訊/ 分享地圖頁面</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -16,7 +14,7 @@
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
 	<key>Privacy - Location usage description</key>
-	<string>請允許&quot;RideTogether&quot;使用您的定位，進行紀錄自行車路線的功能</string>
+	<string>請允許"RideTogether"使用您的定位，進行紀錄自行車路線的功能</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

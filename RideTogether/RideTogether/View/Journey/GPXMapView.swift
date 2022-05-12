@@ -138,15 +138,21 @@ class GPXMapView: MKMapView {
         }
     }
  
-    
     // MARK: 長按建立座標的 method
     func addWaypointAtViewPoint(_ point: CGPoint) {
         
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         
         let waypoint = GPXWaypoint(coordinate: coords)
+//    latitude: 25.042393, longitude: 121.56496
+        if waypoint.coordinate.latitude > 25 || waypoint.coordinate.longitude > 122 {
+            LKProgressHUD.showFailure(text: "無法導航")
+        } else if waypoint.coordinate.latitude < 22 || waypoint.coordinate.longitude < 119 {
+            LKProgressHUD.showFailure(text: "無法導航")
+        } else {
+            addWaypoint(waypoint)
+        }
         
-        addWaypoint(waypoint)
     }
     
   //MARK: Parameters: The waypoint to add to the map.

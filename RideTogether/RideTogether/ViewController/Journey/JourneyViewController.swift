@@ -246,6 +246,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             print("Adding Pin map Long Press Gesture")
             map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
+            
             map.addWaypointAtViewPoint(point)
             self.hasWaypoints = true
         }

@@ -208,7 +208,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let alertsheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
                 
-                let removeOption = UIAlertAction(title: NSLocalizedString("Remove", comment: "no comment"), style: .destructive) { _ in
+                let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
                     map.removeWaypoint(waypoint)
                     map.removeOverlays(map.overlays)
                 }
@@ -220,7 +220,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                     
                 }
                 
-                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+                let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
                 
                 alertsheet.addAction(routeName)
                 alertsheet.addAction(removeOption)
@@ -255,18 +255,18 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
                 
         
-                let alertController = UIAlertController(title: "Edit Location Name", message: nil, preferredStyle: .alert)
+                let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
                 
                 alertController.addTextField { (textField) in
                     textField.text = waypoint.title
                     textField.tintColor = .B5
                     textField.clearButtonMode = .always
                 }
-                let saveAction = UIAlertAction(title: NSLocalizedString("SAVE", comment: "no comment"), style: .default) { _ in
+                let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { _ in
                     print("Edit waypoint alert view")
                     self.waypointBeingEdited.title = alertController.textFields?[0].text
                 }
-                let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "no comment"), style: .cancel) { _ in }
+                let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
                 
                 alertController.addAction(saveAction)
                 alertController.addAction(cancelAction)
