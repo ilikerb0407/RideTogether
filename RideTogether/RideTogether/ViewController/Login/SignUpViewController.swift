@@ -94,6 +94,7 @@ class SignUpViewController: BaseViewController {
                         } else {
                             
                             self.fetchUserInfo(uid: uid)
+                        
                         }
                         
                     }

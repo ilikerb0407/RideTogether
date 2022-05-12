@@ -20,6 +20,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         fetchGroupData()
         
+        tableView.reloadData()
+        
     }
     
     var table: UITableView?
@@ -114,7 +116,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         setUpHeaderView()
         
         addRequestListener()
-        
         
         setUpTableView()
         
@@ -256,9 +257,9 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
        
-        unexpiredGroup.sort { $0.date.seconds > $1.date.seconds }
+        unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
         
-        expiredGroup.sort { $0.date.seconds > $1.date.seconds }
+        expiredGroup.sort { $0.date.seconds < $1.date.seconds }
         
         myGroups =  unexpiredGroup + expiredGroup
     }
@@ -281,18 +282,17 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                     filteredGroups.append(group)
                 }
                 
-                self.myGroups = filteredGroups.filter {
-                    $0.userIds.contains(self.userInfo.uid)
-                    
-                }
+                self.myGroups = filteredGroups.filter { $0.userIds.contains(self.userInfo.uid) }
+                
+                self.rearrangeMyGroup(groups: self.myGroups)
                 
 //                self.inActivityGroup = filteredGroups.sorted { $0.date.seconds < $1.date.seconds  }
                 
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
                 
-//                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
+                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
                 
-                self.rearrangeMyGroup(groups: self.myGroups)
+//                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
                 
                 filteredGroups.forEach { group in
                     
@@ -309,6 +309,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             case .failure(let error):
                 
                 print("fetchData.failure: \(error)")
+                
+                LKProgressHUD.showFailure(text: "讀取資料失敗")
             }
         }
     }

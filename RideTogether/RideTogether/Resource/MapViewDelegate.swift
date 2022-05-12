@@ -13,6 +13,7 @@ import SwiftUI
 
 class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
     
+    let baseVC = BaseViewController()
     
     func provideWeather(weather: ResponseBody) {
         weatherdata = weather
@@ -225,7 +226,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                     } else {
                         map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
                     }
-            
+                    
                 }
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
@@ -238,6 +239,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 let firstView = UIApplication.shared.windows.first { $0.isKeyWindow }
                 
                 firstView?.rootViewController?.present(alertsheet, animated: true, completion: nil)
+                
 //                firstView?.present(alertsheet, animated: true)
                 
 //                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true, completion: nil)

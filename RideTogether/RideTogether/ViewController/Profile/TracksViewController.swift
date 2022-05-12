@@ -112,8 +112,7 @@ class TracksViewController: BaseViewController {
     @objc func showLongPressNotify() {
         
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以分享", comment: "no comment"), preferredStyle: .alert)
-        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
-            }
+        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in }
         sheet.addAction(okOption)
         present(sheet, animated: true, completion: nil)
         
