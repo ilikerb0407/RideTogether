@@ -172,11 +172,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         
         guard let map = mapView as? GPXMapView else { return }
         
-        var routeStep = ""
-        
-        for (index, item) in self.route.steps.enumerated() {
-            routeStep = "\(item.instructions)"
-        }
+        guard let polyLine = route.polyline as? MKPolyline else { return }
         
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
         
@@ -216,7 +212,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
                    
                     self.route.polyline.title = "one"
-                    map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
+                    map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
                     
                 }
                 
@@ -233,10 +229,13 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                         .first?.windows
                         .filter({$0.isKeyWindow}).first
         
-                
                 keyWindow?.endEditing(true)
                 
-                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true)
+                let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                
+                window?.rootViewController?.present(alertsheet, animated: true, completion: nil)
+//                UIApplication.shared.windows.rootViewController?.present(alertsheet, animated: true)
+//                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true)
                 // iPad specific code
                 
                 alertsheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view

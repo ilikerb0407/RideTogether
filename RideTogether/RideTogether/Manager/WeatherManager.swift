@@ -31,6 +31,7 @@ class WeatherManager {
             } catch {
                 print(error)
             }
+            
         }) .resume()
     }
     

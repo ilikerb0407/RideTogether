@@ -145,9 +145,9 @@ class GPXMapView: MKMapView {
         
         let waypoint = GPXWaypoint(coordinate: coords)
 //    latitude: 25.042393, longitude: 121.56496
-        if waypoint.coordinate.latitude > 25 || waypoint.coordinate.longitude > 122 {
+        if waypoint.coordinate.latitude > 25.5 || waypoint.coordinate.longitude > 122 {
             LKProgressHUD.showFailure(text: "無法導航")
-        } else if waypoint.coordinate.latitude < 22 || waypoint.coordinate.longitude < 119 {
+        } else if waypoint.coordinate.latitude < 21 || waypoint.coordinate.longitude < 119 {
             LKProgressHUD.showFailure(text: "無法導航")
         } else {
             addWaypoint(waypoint)
