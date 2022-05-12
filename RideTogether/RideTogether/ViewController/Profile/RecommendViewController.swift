@@ -171,13 +171,28 @@ class RecommendViewController: BaseViewController {
         self.tableView.mj_header?.endRefreshing()
     }
     
-    func showLongPressNotify() {
+    @objc func showLongPressNotify() {
         
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以收藏/封鎖", comment: "no comment"), preferredStyle: .alert)
         let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
             }
         sheet.addAction(okOption)
         present(sheet, animated: true, completion: nil)
+        
+    }
+    
+    func setNotify() {
+        
+        
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        
+        let infoImage = UIImage(systemName: "info")
+        
+        rightButton.setImage(infoImage, for: .normal)
+        
+        rightButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
     }
     
     override func viewDidLoad() {
@@ -197,6 +212,8 @@ class RecommendViewController: BaseViewController {
         tableView.addGestureRecognizer(longPress)
         
 //        showLongPressNotify()
+        
+        setNotify()
         
     }
     
