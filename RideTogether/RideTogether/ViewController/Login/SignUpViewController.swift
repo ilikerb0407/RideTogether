@@ -51,7 +51,7 @@ class SignUpViewController: BaseViewController {
                             
                             self.userInfo.uid = uid
                             
-                            self.userInfo.userName = "破風手你好"
+                            self.userInfo.userName = "破風手"
                             // upload mock photo url to get url
                             self.userInfo.pictureRef = ""
                             
@@ -94,6 +94,7 @@ class SignUpViewController: BaseViewController {
                         } else {
                             
                             self.fetchUserInfo(uid: uid)
+                        
                         }
                         
                     }

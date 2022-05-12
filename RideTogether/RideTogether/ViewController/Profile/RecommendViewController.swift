@@ -13,6 +13,7 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
 import SwiftUI
+import Kingfisher
 
 
 // MARK: Recommend-Route
@@ -38,6 +39,8 @@ class RecommendViewController: BaseViewController {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
+    
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
 //    @objc var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
@@ -47,6 +50,14 @@ class RecommendViewController: BaseViewController {
     lazy var storageRef = storage.reference()
     
     lazy var dataBase = Firestore.firestore()
+    
+//    func setUpPhoto(userInfo: UserInfo) {
+//
+//        tableViewCell.userPhoto.loadImage(userInfo.pictureRef)
+//
+//        tableViewCell.userPhoto.cornerRadius = 25
+//
+//    }
     
     
     private var tableView: UITableView! {
@@ -85,7 +96,7 @@ class RecommendViewController: BaseViewController {
         
     }
     
-    func uploadRecordToSavemaps(fileName: String, fileRef: String) {
+    func uploadRecordToSavemaps(fileName: String, fileRef: String, userPhoto: String ) {
         
         let document = dataBase.collection(saveCollection).document()
         
@@ -98,6 +109,8 @@ class RecommendViewController: BaseViewController {
         record.recordName = fileName
         
         record.recordRef = fileRef
+        
+        record.pictureRef = userPhoto
         
         do {
             
@@ -158,13 +171,28 @@ class RecommendViewController: BaseViewController {
         self.tableView.mj_header?.endRefreshing()
     }
     
-    func showLongPressNotify() {
+    @objc func showLongPressNotify() {
         
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以收藏/封鎖", comment: "no comment"), preferredStyle: .alert)
         let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
             }
         sheet.addAction(okOption)
         present(sheet, animated: true, completion: nil)
+        
+    }
+    
+    func setNotify() {
+        
+        
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        
+        let infoImage = UIImage(systemName: "info")
+        
+        rightButton.setImage(infoImage, for: .normal)
+        
+        rightButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
     }
     
     override func viewDidLoad() {
@@ -183,7 +211,9 @@ class RecommendViewController: BaseViewController {
         
         tableView.addGestureRecognizer(longPress)
         
-        showLongPressNotify()
+//        showLongPressNotify()
+        
+        setNotify()
         
     }
     
@@ -212,7 +242,6 @@ class RecommendViewController: BaseViewController {
     }()
     
     
-    
 }
 
 extension RecommendViewController: UITableViewDelegate {
@@ -224,8 +253,9 @@ extension RecommendViewController: UITableViewDelegate {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 
                 let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
-                        self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-
+                    
+                    
+                    self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef: records[indexPath.row].recordRef, userPhoto: records[indexPath.row].pictureRef ?? "")
 
                         waitlottie.isHidden = true
                     }
@@ -294,16 +324,23 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-        cell.heart.tag = indexPath.row
+//        cell.heart.tag = indexPath.row
+//
+//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
+            
+        cell.userPhoto.loadImage(self.records[indexPath.row].pictureRef)
         
-        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
+//        cell.userPhoto.loadImage(self.records[indexPath.row].pictureRef)
+            
+        cell.userPhoto.cornerRadius = 15
+            
         
         return cell
     }
     
     @objc func savemaps(_ sender: UIButton) {
         
-        self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
+//        self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
         self.savemapsToUser(uid: userId, savemaps: records[sender.tag].recordId)
         
     }

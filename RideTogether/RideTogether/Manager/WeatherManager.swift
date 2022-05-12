@@ -15,7 +15,6 @@ protocol weatherProvider {
 class WeatherManager {
     
     var delegate: weatherProvider?
-
     
     func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (ResponseBody) -> Void) {
         
@@ -32,6 +31,7 @@ class WeatherManager {
             } catch {
                 print(error)
             }
+            
         }) .resume()
     }
     

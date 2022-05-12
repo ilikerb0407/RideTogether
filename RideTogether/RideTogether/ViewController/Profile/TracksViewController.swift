@@ -29,6 +29,8 @@ class TracksViewController: BaseViewController {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
+    
     private let header = MJRefreshNormalHeader()
     
     private var tableView: UITableView! {
@@ -107,13 +109,27 @@ class TracksViewController: BaseViewController {
         self.tableView.mj_header?.endRefreshing()
     }
     
-    func showLongPressNotify() {
+    @objc func showLongPressNotify() {
+        
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以分享", comment: "no comment"), preferredStyle: .alert)
-        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
-            }
+        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in }
         sheet.addAction(okOption)
         present(sheet, animated: true, completion: nil)
         
+    }
+    
+    func setNotify() {
+        
+        
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        
+        let infoImage = UIImage(systemName: "info")
+        
+        rightButton.setImage(infoImage, for: .normal)
+        
+        rightButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
     }
     
     override func viewDidLoad() {
@@ -133,7 +149,8 @@ class TracksViewController: BaseViewController {
         
         tableView.addGestureRecognizer(longPress)
         
-        showLongPressNotify()
+//        showLongPressNotify()
+        setNotify()
         
     }
     
@@ -145,7 +162,6 @@ class TracksViewController: BaseViewController {
         navigationController?.isNavigationBarHidden = false
         
         tabBarController?.tabBar.isHidden = false
-        
         
     }
     
@@ -238,6 +254,8 @@ extension TracksViewController: UITableViewDelegate {
         record.recordName = fileName
         
         record.recordRef = fileURL.absoluteString
+        
+        record.pictureRef = userPhoto
         
         do {
             

@@ -84,7 +84,7 @@ class GroupManager {
         
     }
     
-    func requestListener (completion: @escaping(Result<[Request], Error>) -> ()) -> Void {
+    func requestListener (completion: @escaping(Result<[Request], Error>) -> () ) -> Void {
         
         dataBase.collection(requestsCollection).whereField("host_id", isEqualTo: userId).addSnapshotListener { (querySnapshot, error) in
             

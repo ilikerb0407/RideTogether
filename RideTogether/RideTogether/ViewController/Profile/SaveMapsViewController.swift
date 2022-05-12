@@ -13,6 +13,7 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
 import AVFoundation
+import Kingfisher
 
 class SaveMapsViewController: BaseViewController {
     
@@ -189,6 +190,11 @@ extension SaveMapsViewController: UITableViewDataSource {
         let cell: SaveMaps = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(model: self.records[indexPath.row])
+        
+        cell.userPhoto.loadImage(self.records[indexPath.row].pictureRef)
+            
+        cell.userPhoto.cornerRadius = 15
+        
         
         
         return cell

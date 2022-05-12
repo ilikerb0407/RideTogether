@@ -18,6 +18,8 @@ class RecordManager {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
+    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
+    
     lazy var storage = Storage.storage()
     
     static let shared = RecordManager()
@@ -99,6 +101,8 @@ class RecordManager {
         record.recordName = fileName
         
         record.recordRef = fileURL.absoluteString
+        
+        record.pictureRef = userPhoto
         
         do {
             

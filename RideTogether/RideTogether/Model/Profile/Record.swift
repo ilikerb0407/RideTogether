@@ -17,6 +17,7 @@ struct Record: Codable, Hashable {
     var recordId: String
     var recordName: String
     var recordRef: String
+    var pictureRef: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -25,6 +26,7 @@ struct Record: Codable, Hashable {
         case recordId = "record_id"
         case recordName = "record_name"
         case recordRef = "record_ref"
+        case pictureRef = "picture_ref"
     }
     
     init() {
@@ -33,5 +35,6 @@ struct Record: Codable, Hashable {
         self.recordId = ""
         self.recordName = ""
         self.recordRef = ""
+        self.pictureRef = ""
     }
 }

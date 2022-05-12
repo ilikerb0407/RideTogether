@@ -12,12 +12,13 @@ import SwiftUI
 
 class RecommendTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var mapTitle: UILabel!
     
     @IBOutlet weak var mapTime: UILabel!
     
     @IBOutlet weak var heart: UIButton!
+    
+    @IBOutlet weak var userPhoto: UIImageView!
     
     var likes : Bool = false
     
@@ -32,7 +33,6 @@ class RecommendTableViewCell: UITableViewCell {
         likes.toggle()
 
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,9 +62,13 @@ class RecommendTableViewCell: UITableViewCell {
     func setUpCell(model : Record) {
         
         mapTitle.text = model.recordName
+        
         mapTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
         
-        
+//        guard let ref = userInfo.pictureRef else { return }
+//        
+//        userPhoto.loadImage(ref)
+//        
     }
     
 }

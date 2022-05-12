@@ -23,6 +23,10 @@ class FollowJourneyViewController: BaseViewController {
     
     var record = Record()
     
+    let session = GPXSession()
+    
+    let userName = UserManager.shared.userInfo.userName!
+
     //    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
@@ -83,6 +87,7 @@ class FollowJourneyViewController: BaseViewController {
             guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
             
             didLoadGPXFile(gpxRoot: gpx)
+            
         }
     }
     
@@ -91,7 +96,9 @@ class FollowJourneyViewController: BaseViewController {
         map2.importFromGPXRoot(gpxRoot)
         
         map2.regionToGPXExtent()
+        
     }
+    
 
     // MARK: - Polyline -
     
@@ -502,7 +509,7 @@ class FollowJourneyViewController: BaseViewController {
         
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
         
-        let defaultFileName = "\(time)"
+        let defaultFileName = "\(userName) 紀錄了從..."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",
@@ -620,12 +627,16 @@ class FollowJourneyViewController: BaseViewController {
             return
         }
         
-        if !([.authorizedAlways, .authorizedWhenInUse]
-                .contains(locationManager.authorizationStatus)) {
-            
-            displayLocationServicesDeniedAlert()
-            
-            return
+        if #available(iOS 14.0, *) {
+            if !([.authorizedAlways, .authorizedWhenInUse]
+                    .contains(locationManager.authorizationStatus)) {
+                
+                displayLocationServicesDeniedAlert()
+                
+                return
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
     

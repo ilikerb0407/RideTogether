@@ -172,24 +172,28 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-
-                    let success = UIAlertAction(title: "Success", style: .default) { _ in
-                        
+//                    let success = UIAlertAction(title: "Success", style: .default) { _ in}
+                    
+                    let okOption = UIAlertAction(title: "完成", style: .cancel) { _ in
                         self.delegate?.reload()
-                    
+                        self.dismiss(animated: true, completion: nil)
                     }
+                    let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
                     
-                    showAlertAction(title: "開啟揪團囉", message: nil, actions: [success])
-                    
+                    sheet.addAction(okOption)
+                    present(sheet, animated: true, completion: nil)
                     
                     delegate?.reload()
                     
                 case .failure(let error):
                     
                     print("build team failure: \(error)")
+                    
+                    LKProgressHUD.showFailure(text: "新增資料失敗")
                 }
             }
-            self.dismiss(animated: true, completion: nil)
+            
+            
         }
     }
     
@@ -219,9 +223,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         
         guard let text = textView.text,
-              !text.isEmpty else {
-                  return
-              }
+              !text.isEmpty else { return }
         
         group.note = text
         checkTextsFilled()

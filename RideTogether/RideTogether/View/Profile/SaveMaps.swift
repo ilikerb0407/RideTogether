@@ -14,12 +14,15 @@ class SaveMaps: UITableViewCell {
     
     @IBOutlet weak var time: UILabel!
     
+    @IBOutlet weak var userPhoto: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         selectionStyle = .none
         
         self.backgroundColor = .clear
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

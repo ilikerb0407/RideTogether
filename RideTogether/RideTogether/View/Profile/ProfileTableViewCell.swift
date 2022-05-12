@@ -45,5 +45,6 @@ class ProfileTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         itemBackground.layer.cornerRadius = 20
+        
     }
 }

@@ -17,7 +17,7 @@ import JGProgressHUD
 
 class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
-    let userName = UserManager.shared.userInfo.userName!
+    var userName: String { UserManager.shared.userInfo.userName ?? ""}
     
     func sendRouteTwice(map: DrawRoute) {
         mapData = map
@@ -246,6 +246,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             print("Adding Pin map Long Press Gesture")
             map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
+            
             map.addWaypointAtViewPoint(point)
             self.hasWaypoints = true
         }
@@ -367,6 +368,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         routeVc.delegate = self
         
         mapViewDelegate.route.polyline.title = "two"
+        
         
 //        buttonPanelView.delegate = self
 //
@@ -552,10 +554,14 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
-            if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [.large(), .medium()]
-            self.navigationController?.present(navBar, animated: true, completion: .none)
-           }
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.large(), .medium()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -568,7 +574,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
         
         // MARK: 要改
-        let defaultFileName = "\(userName) 紀錄了從..."
+//        let defaultFileName = "\(userName)紀錄了從..."
+        
+        let defaultFileName = "\(userName)紀錄了從..."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",
@@ -592,8 +600,9 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             
             self.lastGpxFilename = fileName!
             
-                        if let fileName = fileName {
-                            GPXFileManager.save( fileName, gpxContents: gpxString)
+            if let fileName = fileName {
+                
+                GPXFileManager.save( fileName, gpxContents: gpxString)
             
             print ("2\(fileName)2")
                         }
@@ -666,13 +675,17 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         if !CLLocationManager.locationServicesEnabled() {
             
             displayLocationServicesDisabledAlert()
-            
-            return
-        }
-        
-        if !([.authorizedAlways, .authorizedWhenInUse]
-                .contains(locationManager.authorizationStatus)) {
-            
+            if #available(iOS 14.0, *) {
+                if !([.authorizedAlways, .authorizedWhenInUse]
+                        .contains(locationManager.authorizationStatus)) {
+                    
+                    displayLocationServicesDeniedAlert()
+                    
+                    return
+                }
+            } else {
+                // Fallback on earlier versions
+            }   
             displayLocationServicesDeniedAlert()
             
             return

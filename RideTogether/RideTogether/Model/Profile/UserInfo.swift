@@ -19,6 +19,7 @@ struct UserInfo: Codable {
     var saveMaps: [String]?
     
     enum CodingKeys: String, CodingKey {
+        
         case uid
         case userName = "user_name"
         case pictureRef = "picture_ref"

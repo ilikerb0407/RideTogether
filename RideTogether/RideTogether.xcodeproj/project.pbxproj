@@ -1056,7 +1056,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1111,7 +1111,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1134,15 +1134,18 @@
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "上傳照片";
+				INFOPLIST_KEY_NSCameraUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "上傳照片";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "請允許\"RideTogether\"使用您的定位，進行紀錄自行車路線的功能";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1169,15 +1172,18 @@
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "上傳照片";
+				INFOPLIST_KEY_NSCameraUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "上傳照片";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "請允許\"RideTogether\"使用您的定位，進行紀錄自行車路線的功能";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
