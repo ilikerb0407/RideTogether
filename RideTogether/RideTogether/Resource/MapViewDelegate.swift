@@ -88,7 +88,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         
         let directions = MKDirections(request: request)
         
-        directions.calculate { [self]  response ,error in
+        directions.calculate { [self]  response, error in
             
             if error == nil {
                 
@@ -100,6 +100,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
             } else {
                 print("\(error)")
+                
+                LKProgressHUD.showFailure(text: "無法導航")
+                
+                
             }
         }
         let ceo: CLGeocoder = CLGeocoder()
@@ -215,8 +219,13 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
                    
                     self.route.polyline.title = "one"
-                    map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
                     
+                    if polyLine == nil {
+                        LKProgressHUD.showFailure(text: "別鬧喔，快回家洗洗睡")
+                    } else {
+                        map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
+                    }
+            
                 }
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
