@@ -135,16 +135,16 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         authorizationController.delegate = self
         
-        authorizationController.performRequests()
-        
         authorizationController.presentationContextProvider = self
         
+        authorizationController.performRequests()
+        
         let nonce = randomNonceString()
-        
+
         request.nonce = sha256(nonce)
-        
+
         currentNonce = nonce
-        
+//
     }
     
     //    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
@@ -261,7 +261,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
         
-        
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userId = credential.user
             let fullname = credential.fullName
@@ -319,8 +318,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                         
                         self.userInfo.uid = uid
                         
-//                        se
-                        
                         UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                             
                             switch result {
@@ -330,7 +327,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                 print ("\(credential.idToken)")
                                 
                                 self.fetchUserInfo(uid: uid)
-                                
                                 
                                 print("User Sign up successfully")
                                 
@@ -349,6 +345,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                         LKProgressHUD.show()
                     }
                 }
+                
+                if let error = error as? NSError {
+                    print (error)
+                    guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                        print ("登入錯誤，請稍後再試")
+                        return
+                    }
+                    LKProgressHUD.showFailure(text: "登入失敗，請確定網路品質")
+                }
+                
             }
         }
     }
@@ -356,7 +362,24 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         
         print("Sign in with Apple errored: \(error)")
+        
+        switch error {
+        case ASAuthorizationError.canceled:
+            LKProgressHUD.showFailure(text: "取消登入")
+        case ASAuthorizationError.failed:
+            LKProgressHUD.showFailure(text: "授權請求失敗")
+        case ASAuthorizationError.invalidResponse:
+            LKProgressHUD.showFailure(text: "授權請求無回應")
+        case ASAuthorizationError.notHandled:
+            LKProgressHUD.showFailure(text: "授權請求未處理")
+        case ASAuthorizationError.unknown:
+            LKProgressHUD.showFailure(text: "網路連線不佳")
+        default:
+            break
+        }
+        
     }
+    
     
     func fetchUserInfo (uid: String) {
         

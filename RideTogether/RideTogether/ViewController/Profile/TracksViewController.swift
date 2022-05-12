@@ -135,7 +135,7 @@ class TracksViewController: BaseViewController {
         
         tableView.addGestureRecognizer(longPress)
         
-        showLongPressNotify()
+//        showLongPressNotify()
         
     }
     

@@ -196,7 +196,7 @@ class RecommendViewController: BaseViewController {
         
         tableView.addGestureRecognizer(longPress)
         
-        showLongPressNotify()
+//        showLongPressNotify()
         
     }
     
