@@ -404,7 +404,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
             let subtitle = "可還車位置 :\(bike.bemp), 可租車數量 :\(bike.sbi)"
 
             let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
-        
+            
             map2.addAnnotation(annotation)
         }
 

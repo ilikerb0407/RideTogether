@@ -17,11 +17,18 @@ class BikeView: NSObject, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+//        let identifier = "Pin"
+//        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         if annotation.isKind(of: MKUserLocation.self) { return nil }
+        
         let annotationView = MKPinAnnotationView()
-
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
+        
+        annotationView.pinTintColor = .B3
+       
+      
+        
        
         return annotationView
     }
