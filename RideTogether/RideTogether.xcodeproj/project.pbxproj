@@ -144,6 +144,9 @@
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B80E2805C2E8000EDA70 /* GPXFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
+		23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E71282D764B00FC001E /* UbikeManager.swift */; };
+		23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E73282D84EA00FC001E /* BikeItems.swift */; };
+		23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E75282D87BC00FC001E /* BikeVM.swift */; };
 		23EC04632822FC2A0063523F /* expanBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC04622822FC2A0063523F /* expanBtn.swift */; };
 		23EC046D2823F1230063523F /* circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046C2823F1230063523F /* circle.json */; };
 		23EC046F2823F41B0063523F /* leave.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046E2823F41B0063523F /* leave.json */; };
@@ -293,6 +296,9 @@
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80D2805C2E8000EDA70 /* GPXFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFilesTableViewController.swift; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
+		23E86E71282D764B00FC001E /* UbikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeManager.swift; sourceTree = "<group>"; };
+		23E86E73282D84EA00FC001E /* BikeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeItems.swift; sourceTree = "<group>"; };
+		23E86E75282D87BC00FC001E /* BikeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeVM.swift; sourceTree = "<group>"; };
 		23EC04622822FC2A0063523F /* expanBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expanBtn.swift; sourceTree = "<group>"; };
 		23EC046C2823F1230063523F /* circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = circle.json; sourceTree = "<group>"; };
 		23EC046E2823F41B0063523F /* leave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = leave.json; sourceTree = "<group>"; };
@@ -331,6 +337,8 @@
 				23D1B765280060A6000EDA70 /* Record.swift */,
 				23D1B7E6280428B3000EDA70 /* ProfileItem.swift */,
 				23FC48A3280AB8C200EAD314 /* TrackInfo.swift */,
+				23E86E73282D84EA00FC001E /* BikeItems.swift */,
+				23E86E75282D87BC00FC001E /* BikeVM.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -606,6 +614,7 @@
 				23D1B78928006396000EDA70 /* UserManager.swift */,
 				23838789280FCBFF00E9F4F4 /* GroupManager.swift */,
 				23C8871E281444B100E3319A /* WeatherManager.swift */,
+				23E86E71282D764B00FC001E /* UbikeManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -875,6 +884,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
+				23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */,
 				23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */,
 				231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */,
 				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
@@ -951,6 +961,7 @@
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				23C8872228149ECC00E3319A /* Routes.swift in Sources */,
+				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
 				23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
@@ -970,6 +981,7 @@
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
+				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
 				2314F213280B5AE500425F8A /* SendSMSbutton.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */,
 				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,

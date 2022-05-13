@@ -15,12 +15,15 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class FollowJourneyViewController: BaseViewController {
+class FollowJourneyViewController: BaseViewController, bikeProvider {
     
-//    func sendData(_ inputRecord: Record) {
-//        self.record = inputRecord
-//    }
+    func provideBike(bike: Bike) {
+        bikeData = bike
+    }
+    var bikeData : Bike?
     
+    var bikeManager = BikeManager()
+
     var record = Record()
     
     let session = GPXSession()
@@ -414,7 +417,13 @@ class FollowJourneyViewController: BaseViewController {
         
         self.locationManager.requestAlwaysAuthorization()
         
+        bikeManager.delegate = self
+        
+        bikeManager.getBikeAPI { [ weak self ] result in
+            self?.bikeData = result
+        }
     }
+    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

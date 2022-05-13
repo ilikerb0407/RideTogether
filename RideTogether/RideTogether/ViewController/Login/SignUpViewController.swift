@@ -135,6 +135,8 @@ class SignUpViewController: BaseViewController {
             case .failure(let error):
                 
                 print("Fetch user info failure: \(error)")
+                
+                LKProgressHUD.showFailure(text: "讀取使用者資料失敗")
             }
         }
     }
