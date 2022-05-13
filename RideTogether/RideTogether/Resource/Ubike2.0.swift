@@ -15,27 +15,42 @@ import SwiftUI
 class BikeView: NSObject, MKMapViewDelegate {
     
     
-    /// Current session of GPX location logging. Handles all background tasks and recording.
-    let session = GPXSession()
-    
-    /// The Waypoint is being edited (if there is any)
-    var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
-    
- 
-    
-    // MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if annotation.isKind(of: MKUserLocation.self) {
-            return nil
-        }
+        if annotation.isKind(of: MKUserLocation.self) { return nil }
         let annotationView = MKPinAnnotationView()
 
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
        
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        
+        if overlay is MKPolyline {
+            
+            let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
+            
+            polyLineRenderer.alpha = 0.8
+            
+            polyLineRenderer.strokeColor = UIColor.B5
+            
+            if overlay.title == "one"{
+                polyLineRenderer.strokeColor = UIColor.orange
+            } else
+            if overlay.title == "two" {
+              polyLineRenderer.strokeColor = UIColor.B6
+            }
+            
+            polyLineRenderer.lineWidth = 3
+            
+            return polyLineRenderer
+        }
+        
+        return MKOverlayRenderer()
+        
     }
     
 
