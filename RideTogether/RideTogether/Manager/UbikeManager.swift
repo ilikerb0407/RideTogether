@@ -22,6 +22,8 @@ class BikeManager {
     
     func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
         
+        var bikes : [Bike] = []
+        
         let firstDataRequest = URLRequest(url: URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")!)
         
         URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
@@ -30,7 +32,13 @@ class BikeManager {
             do {
                 
                 let bikeData = try decoder.decode(Array<Bike>.self, from: data)
+                
                 completion(bikeData)
+                
+              
+//                for count in 0..<20 {
+//                    bikes.append(bikeData[count]) }
+//                completion(bikes)
                 print ("BikeData=================\(bikeData)===================")
                 LKProgressHUD.showSuccess(text: "讀取成功")
                
@@ -41,6 +49,8 @@ class BikeManager {
             
         }) .resume()
     }
+    
+    
     
 //    func addBikeAnnotation(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
 //    

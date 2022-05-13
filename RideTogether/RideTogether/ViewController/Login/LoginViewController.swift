@@ -34,7 +34,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     var currentUser = Auth.auth().currentUser
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +43,10 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         if let user = Auth.auth().currentUser {
             print("\(user.uid) login")
+            LKProgressHUD.showSuccess(text: "已經登入")
         } else {
             print("not login")
+            LKProgressHUD.showFailure(text: "未登入")
         }
         
         Auth.auth().addStateDidChangeListener { auth, user in

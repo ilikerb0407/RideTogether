@@ -393,6 +393,14 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     // MARK: - View Life Cycle
     
+//    func GetDistance(latitude: Double, longitude: Double) -> Double {
+//        let selectedCoordinate = CLLocation(latitude: latitude, longitude: longitude)
+//        let busStopCoordinate = CLLocation(latitude: Double(self.latitude), longitude: self.longitude)
+//
+//        return busStopCoordinate.distance(from: selectedCoordinate)
+//    }
+    
+//
     func layOutBike() {
         
         for bike in bikeData {
@@ -404,8 +412,15 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
             let subtitle = "可還車位置 :\(bike.bemp), 可租車數量 :\(bike.sbi)"
 
             let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
-            
-            map2.addAnnotation(annotation)
+
+            let usersCoordinate = CLLocation(latitude: map2.userLocation.coordinate.latitude, longitude: map2.userLocation.coordinate.longitude)
+            let bikeStopCoordinate = CLLocation(latitude: Double(bike.lat), longitude: Double(bike.lng))
+
+            let distance = usersCoordinate.distance(from: bikeStopCoordinate)
+       
+                    if  distance < 1000 {
+                        map2.addAnnotation(annotation)
+                    }
         }
 
     }
@@ -439,9 +454,10 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         
         bikeManager.getBikeAPI { [ weak self ] result in
             
-            self?.bikeData = result
+        self?.bikeData = result
             
-            self?.layOutBike()
+        self?.layOutBike()
+            
         }
         
     }
