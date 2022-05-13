@@ -67,13 +67,17 @@ class RouteViewController: BaseViewController {
                 
             case 0:
                 
-                themeLabel = RoutesType.recommendOne.rawValue
+                themeLabel = RoutesType.userOne.rawValue
                 
             case 1:
                 
-                themeLabel = RoutesType.riverOne.rawValue
+                themeLabel = RoutesType.recommendOne.rawValue
                 
             case 2:
+                
+                themeLabel = RoutesType.riverOne.rawValue
+                
+            case 3:
                 
                 themeLabel = RoutesType.mountainOne.rawValue
                 
@@ -107,7 +111,6 @@ class RouteViewController: BaseViewController {
         view.addSubview(button)
         
     }
-    
     
     @objc func popToPreviosPage(_ sender: UIButton) {
         
@@ -165,15 +168,15 @@ class RouteViewController: BaseViewController {
         
         record.routeId = document.documentID
         
-        record.routeTypes = 2
+        record.routeTypes = 0
         
-        record.routeInfo = ""
+        record.routeInfo = "熱門路線"
         
-        record.routeLength = ""
+        record.routeLength = "30 Km"
         
-        record.routeMap = ""
+        record.routeMap = "https://firebasestorage.googleapis.com/v0/b/bikeproject-59c89.appspot.com/o/records%2F2022-04-18_10-59?alt=media&token=604f82b6-ffbd-49e7-8f29-86e3084cf30e"
         
-        record.routeName = ""
+        record.routeName = "破風車手"
         
         do {
             
@@ -187,7 +190,6 @@ class RouteViewController: BaseViewController {
         print("sucessfully")
     }
     
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -196,7 +198,13 @@ class RouteViewController: BaseViewController {
         
         setNavigationBar(title: "探索路線")
         
-//        setupCollectionView()
+        let textAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear ]
+        
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        // 改顏色
+        
+//        setupCollectionView()z
         
 //        backButton()
         

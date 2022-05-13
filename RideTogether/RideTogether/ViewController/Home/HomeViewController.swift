@@ -20,6 +20,8 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    var userOne = [Route]()
+    
     var recommendOne = [Route]()
     
     var riverOne = [Route]()
@@ -120,11 +122,14 @@ class HomeViewController: BaseViewController {
         for route in routes {
             
             switch route.routeTypes {
+                
             case 0 :
-                recommendOne.append(route)
+                userOne.append(route)
             case 1 :
-                riverOne.append(route)
+                recommendOne.append(route)
             case 2 :
+                riverOne.append(route)
+            case 3 :
                 mountainOne.append(route)
             default:
                 return
@@ -162,7 +167,6 @@ extension HomeViewController: UITableViewDelegate {
         
         self.headerView = headerView
 
-        
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
         
         return self.headerView
@@ -183,10 +187,12 @@ extension HomeViewController: UITableViewDelegate {
         
         switch indexPath.row {
         case 0 :
-            sender = recommendOne
+            sender = userOne
         case 1 :
-            sender = riverOne
+            sender = recommendOne
         case 2 :
+            sender = riverOne
+        case 3 :
             sender = mountainOne
         default:
             return

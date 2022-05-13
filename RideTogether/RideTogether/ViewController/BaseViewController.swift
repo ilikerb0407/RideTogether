@@ -151,6 +151,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
         
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
+    
     }
     
     
