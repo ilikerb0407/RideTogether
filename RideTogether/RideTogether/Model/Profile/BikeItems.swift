@@ -14,21 +14,19 @@ class BikeAnnotation: NSObject, MKAnnotation {
     // 站名
     let title: String?
     
+    let subtitle: String?
+    
     let coordinate: CLLocationCoordinate2D
+
     
-    let canRent: Int?
-    
-    let canDocks: Int?
-    
-    init(title: String, coordinate: CLLocationCoordinate2D, canRent: Int, canDocks: Int) {
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
         
         self.title = title
         
+        self.subtitle = subtitle
+        
         self.coordinate = coordinate
-        
-        self.canRent = canRent
-        
-        self.canDocks = canRent
+      
         
     }
 }

@@ -510,7 +510,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-
+        
         // Configure the fields of the interface.
         composeVC.recipients = ["請輸入電話號碼"]
         composeVC.body = "傳送我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
@@ -520,10 +520,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             self.present(composeVC, animated: true, completion: nil)
             LKProgressHUD.dismiss()
         }
-        
-       
     }
-    
     
     @objc func trackerButtonTapped() {
         

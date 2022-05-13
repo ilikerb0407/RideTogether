@@ -103,8 +103,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 print("\(error)")
                 
                 LKProgressHUD.showFailure(text: "無法導航")
-                
-                
             }
         }
         let ceo: CLGeocoder = CLGeocoder()

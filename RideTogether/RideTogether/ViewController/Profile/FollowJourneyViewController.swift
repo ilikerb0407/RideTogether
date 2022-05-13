@@ -18,11 +18,12 @@ import JGProgressHUD
 class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     func provideBike(bike: Bike) {
-        bikeData = bike
+        bikeData = [bike]
     }
-    var bikeData : Bike?
+    var bikeData : [Bike] = []
     
     var bikeManager = BikeManager()
+    
 
     var record = Record()
     
@@ -143,7 +144,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         return manager
     }()
     
-    private let mapViewDelegate = MapViewDelegate()
+    private let mapViewDelegate = BikeView()
     
     enum GpxTrackingStatus {
         
@@ -392,6 +393,23 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     // MARK: - View Life Cycle
     
+    func layOutBike() {
+        
+        for bike in bikeData {
+            
+            let coordinate = CLLocationCoordinate2D(latitude: bike.lat, longitude: bike.lng)
+            
+            let title = bike.sna
+            
+            let subtitle = "可還車位置 :\(bike.bemp), 可租車數量 :\(bike.sbi)"
+
+            let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
+        
+            map2.addAnnotation(annotation)
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -420,8 +438,12 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         bikeManager.delegate = self
         
         bikeManager.getBikeAPI { [ weak self ] result in
+            
             self?.bikeData = result
+            
+            self?.layOutBike()
         }
+        
     }
     
     
@@ -449,37 +471,13 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     func setUpMap() {
         
-//        locationManager.delegate = self
-//
-//        locationManager.startUpdatingLocation()
-//
-//        locationManager.startUpdatingHeading()
+
         
         map2.delegate = mapViewDelegate
         
-//        map2.showsUserLocation = false
-        
-        // 移動 map 的方式
-        
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
-//
-//        panGesture.delegate = self
-//
-//        map2.addGestureRecognizer(panGesture)
-        
         map2.rotationGesture.delegate = self
         
-//        let center = locationManager.location?.coordinate ??
-//        CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-//        let region = MKCoordinateRegion(center: center, span: span)
         
-//        map2.setRegion(region, animated: true)
-        
-        //   If user long presses the map, it will add a Pin (waypoint) at that point
-        
-//        map2.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-//                                                               action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map2)
         

@@ -32,7 +32,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     
-    var curerentUser = Auth.auth().currentUser
+    var currentUser = Auth.auth().currentUser
     
     
     override func viewDidLoad() {
@@ -56,8 +56,10 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
                 print("not login")
             }
             
-            self.curerentUser = Auth.auth().currentUser
+            self.currentUser = Auth.auth().currentUser
         }
+        
+        
         lottie()
     }
     
@@ -344,7 +346,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     
                 }
             }
-                LKProgressHUD.showFailure(text: "註冊失敗")
         }
     }
     
@@ -353,6 +354,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print("Sign in with Apple errored: \(error)")
         
         switch error {
+            
         case ASAuthorizationError.canceled:
             LKProgressHUD.showFailure(text: "取消登入")
         case ASAuthorizationError.failed:

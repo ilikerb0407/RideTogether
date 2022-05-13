@@ -20,7 +20,7 @@ class BikeManager {
     
     var delegate : bikeProvider?
     
-    func getBikeAPI(completion: @escaping (Bike) -> Void) {
+    func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
         
         let firstDataRequest = URLRequest(url: URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")!)
         
@@ -28,7 +28,8 @@ class BikeManager {
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
-                let bikeData = try decoder.decode(Bike.self, from: data)
+                
+                let bikeData = try decoder.decode(Array<Bike>.self, from: data)
                 completion(bikeData)
                 print ("BikeData=================\(bikeData)===================")
                 LKProgressHUD.showSuccess(text: "讀取成功")
@@ -41,17 +42,17 @@ class BikeManager {
         }) .resume()
     }
     
-    func addBikeAnnotation(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+//    func addBikeAnnotation(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+//    
+//    }
     
-    }
+    
 }
 
 
 // MARK: - BikeElement
 
-typealias Bike = [BikeElement]
-
-struct BikeElement: Codable {
+struct Bike: Codable {
     let sno, sna: String
     let tot, sbi: Int
     let sarea, mday: String

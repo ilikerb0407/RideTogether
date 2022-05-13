@@ -34,6 +34,7 @@
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
 		233206C92826483D0017864C /* Noto_Sans_TC in Resources */ = {isa = PBXBuildFile; fileRef = 233206C82826483D0017864C /* Noto_Sans_TC */; };
+		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
@@ -182,6 +183,7 @@
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		233206C82826483D0017864C /* Noto_Sans_TC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto_Sans_TC; sourceTree = "<group>"; };
+		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B782280062E9000EDA70 /* MapViewDelegate.swift */,
+				23395D27282E447A00192563 /* Ubike2.0.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
+				23395D28282E447A00192563 /* Ubike2.0.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23C887272815450500E3319A /* RouteRideViewController.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
