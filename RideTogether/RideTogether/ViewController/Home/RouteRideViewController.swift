@@ -462,7 +462,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
             
-            let defaultFileName = "\(userName) 紀錄了從..."
+            let defaultFileName = "\(userName) 紀錄了從..到.."
             
             let alertController = UIAlertController(title: "Save Record",
                                                     message: "Please enter the title",

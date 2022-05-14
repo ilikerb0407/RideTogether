@@ -20,9 +20,9 @@ protocol RoutesPhoto {
 
 enum RoutesType: String, RoutesPhoto, CaseIterable {
     
-    case userOne = "熱門路線"
+    case userOne = "朋友路線"
     
-    case recommendOne = "城市路線"
+    case recommendOne = "推薦路線"
     
     case riverOne = "河堤路線"
     

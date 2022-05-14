@@ -14,6 +14,7 @@ import Lottie
 
 
 class RouteViewController: BaseViewController {
+
     
     
     @IBOutlet weak var gView: UIView! {
@@ -160,35 +161,35 @@ class RouteViewController: BaseViewController {
     }
     
     // MARK: 新增路線資料
-    func uploadRecordToDb() {
-        
-        let document = dataBase.collection("Routes").document()
-        
-        var record = Route()
-        
-        record.routeId = document.documentID
-        
-        record.routeTypes = 0
-        
-        record.routeInfo = "熱門路線"
-        
-        record.routeLength = "30 Km"
-        
-        record.routeMap = "https://firebasestorage.googleapis.com/v0/b/bikeproject-59c89.appspot.com/o/records%2F2022-04-18_10-59?alt=media&token=604f82b6-ffbd-49e7-8f29-86e3084cf30e"
-        
-        record.routeName = "破風車手"
-        
-        do {
-            
-            try document.setData(from: record)
-            
-        } catch {
-            
-            print("error")
-        }
-        
-        print("sucessfully")
-    }
+//    func uploadRecordToDb() {
+//        
+//        let document = dataBase.collection("Routes").document()
+//        
+//        var record = Route()
+//        
+//        record.routeId = document.documentID
+//        
+//        record.routeTypes = 0
+//        
+//        record.routeInfo = "熱門路線"
+//        
+//        record.routeLength = "30 Km"
+//        
+//        record.routeMap = "https://firebasestorage.googleapis.com/v0/b/bikeproject-59c89.appspot.com/o/records%2F2022-04-18_10-59?alt=media&token=604f82b6-ffbd-49e7-8f29-86e3084cf30e"
+//        
+//        record.routeName = "破風車手"
+//        
+//        do {
+//            
+//            try document.setData(from: record)
+//            
+//        } catch {
+//            
+//            print("error")
+//        }
+//        
+//        print("sucessfully")
+//    }
     
     override func viewDidLoad() {
         
@@ -198,9 +199,9 @@ class RouteViewController: BaseViewController {
         
         setNavigationBar(title: "探索路線")
         
-        let textAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear ]
+//        let textAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear ]
         
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+//        navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         // 改顏色
         
@@ -272,7 +273,6 @@ extension RouteViewController: UITableViewDelegate {
         true
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
     }
 

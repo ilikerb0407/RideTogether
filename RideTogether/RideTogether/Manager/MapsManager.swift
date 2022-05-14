@@ -158,7 +158,7 @@ class MapsManager {
         
     }
     
-    func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ){
+    func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void ) {
         
         let collection = dataBase.collection(routeCollection)
         
@@ -171,7 +171,7 @@ class MapsManager {
                 var routes = [Route]()
                 for document in querySnapshot.documents {
                     do {
-                        if let route = try document.data(as: Route.self, decoder: Firestore.Decoder()){
+                        if let route = try document.data(as: Route.self, decoder: Firestore.Decoder()) {
                             routes.append(route)
                         }
                     }
@@ -179,6 +179,8 @@ class MapsManager {
                         completion(.failure(error))
                     }
                 }
+                routes.sort { $0.createdTime.seconds > $1.createdTime.seconds }
+                
                 completion(.success(routes))
             }
             

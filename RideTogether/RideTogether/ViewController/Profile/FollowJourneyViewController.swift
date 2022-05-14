@@ -24,7 +24,6 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     var bikeManager = BikeManager()
     
-
     var record = Record()
     
     let session = GPXSession()
@@ -42,7 +41,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     var lastGpxFilename: String = ""
     
     
-    //MARK: =========
+    // MARK: == === ====
 
 //    func showMap() {
 //        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
@@ -532,7 +531,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
         
-        let defaultFileName = "\(userName) 紀錄了從..."
+        let defaultFileName = "\(userName) 紀錄了從..到.."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",

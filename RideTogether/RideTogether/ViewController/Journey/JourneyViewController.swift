@@ -573,7 +573,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         // MARK: 要改
 //        let defaultFileName = "\(userName)紀錄了從..."
         
-        let defaultFileName = "\(userName)紀錄了從..."
+        let defaultFileName = "從..到.."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",
