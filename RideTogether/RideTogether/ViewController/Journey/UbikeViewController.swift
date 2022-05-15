@@ -69,7 +69,7 @@ class UbikeViewController: BaseViewController, bikeProvider, CLLocationManagerDe
         
         bikemap.setRegion(region, animated: true)
         
-        self.title = "附近的 Ubike"
+        self.title = "附近的 Ubike 2.0"
         
         view.backgroundColor = .B2
 

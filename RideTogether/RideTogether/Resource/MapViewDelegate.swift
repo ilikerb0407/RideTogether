@@ -304,16 +304,26 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
+                
                 if gpxMapView.headingImageView == nil {
+                    
                     let image = UIImage(named: "heading")!
+    
                     gpxMapView.headingImageView = UIImageView(image: image)
+                    
+                    gpxMapView.headingImageView?.layer.cornerRadius = 20
+                    
+                    gpxMapView.headingImageView?.layer.masksToBounds = true
+                    
+                    gpxMapView.headingImageView?.loadImage(UserManager.shared.userInfo.pictureRef, placeHolder: image)
+                    
                     gpxMapView.headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - image.size.width)/2,
                                                                 y: (annotationView.frame.size.height - image.size.height)/2,
                                                                 width: image.size.width,
                                                                 height: image.size.height)
                     annotationView.insertSubview(gpxMapView.headingImageView!, at: 0)
                     
-                    gpxMapView.headingImageView!.isHidden = true
+//                    gpxMapView.headingImageView!.isHidden = true
                 }
                 continue
             }
@@ -406,4 +416,3 @@ extension UIWindow {
         }
     }
 }
-

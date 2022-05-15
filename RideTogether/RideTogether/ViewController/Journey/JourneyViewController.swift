@@ -892,6 +892,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         map.heading = newHeading // updates heading variable
-        map.updateHeading() // updates heading view's rotation
+//        map.updateHeading() // updates heading view's rotation
     }
 }

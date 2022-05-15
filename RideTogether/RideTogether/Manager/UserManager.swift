@@ -320,6 +320,7 @@ class UserManager {
             if let error = error {
                 
                 print("Error updating document: \(error)")
+                LKProgressHUD.showFailure(text: "無法封鎖，因為不是使用者提供的路線")
                 
             } else {
                 

@@ -198,7 +198,7 @@ extension TracksViewController: UITableViewDelegate {
                             print ("\(url)")
                             self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
                             
-                            self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url)
+                            self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url, userPhoto: userPhoto)
                             
                             delegate?.reload()
                             //
@@ -291,7 +291,7 @@ extension TracksViewController: UITableViewDelegate {
     }
     
     
-    func uploadRecordToPopular(fileName: String, fileURL: URL) {
+    func uploadRecordToPopular(fileName: String, fileURL: URL, userPhoto: String ) {
         
         let document = dataBase.collection(routeCollection).document()
         
@@ -306,6 +306,8 @@ extension TracksViewController: UITableViewDelegate {
         route.routeMap = fileURL.absoluteString
         
         route.routeInfo = "\(userName) 分享了路線"
+        
+        route.pictureRef = userPhoto
         
         let inputURL = fileURL
         
@@ -324,7 +326,7 @@ extension TracksViewController: UITableViewDelegate {
         } catch {
             
             print("error")
-            LKProgressHUD.showSuccess(text: "新增資料失敗")
+            LKProgressHUD.showFailure(text: "新增資料失敗")
         }
         
         print("sucessfully")

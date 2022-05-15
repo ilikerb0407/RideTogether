@@ -190,6 +190,30 @@ class RouteViewController: BaseViewController {
 //        
 //        print("sucessfully")
 //    }
+    
+    @objc func showLongPressNotify() {
+        
+        let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以收藏/封鎖", comment: "no comment"), preferredStyle: .alert)
+        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+            }
+        sheet.addAction(okOption)
+        present(sheet, animated: true, completion: nil)
+        
+    }
+    
+    func setNotify() {
+        
+        
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        
+        let infoImage = UIImage(systemName: "info")
+        
+        rightButton.setImage(infoImage, for: .normal)
+        
+        rightButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
+    }
   
     
     override func viewDidLoad() {
@@ -199,6 +223,12 @@ class RouteViewController: BaseViewController {
         setUpTableView()
         
         setNavigationBar(title: "探索路線")
+        
+        setNotify()
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        
+        tableView.addGestureRecognizer(longPress)
         
 //        let textAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear ]
         
@@ -262,10 +292,72 @@ class RouteViewController: BaseViewController {
         
         self.view.addSubview(label)
     }
+    private let saveCollection = Collection.savemaps.rawValue // Profile
+    var userId: String { UserManager.shared.userInfo.uid }
+    
+    func uploadRecordToSavemaps(fileName: String, fileRef: String,  userPhoto: String ) {
+        
+        let document = dataBase.collection(saveCollection).document()
+        
+        var record = Record()
+        
+        record.uid = userId
+        
+        record.recordId = document.documentID
+        
+        record.recordName = fileName
+        
+        record.recordRef = fileRef
+        
+        record.pictureRef = userPhoto
+        
+        do {
+            
+            try document.setData(from: record)
+            
+        } catch {
+            
+            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
+            print("error")
+        }
+        
+        print("sucessfully")
+    }
+    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
     
 }
 
 extension RouteViewController: UITableViewDelegate {
+    
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+                 let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
+                    
+                    
+                self.uploadRecordToSavemaps(fileName: routes[indexPath.row].routeName, fileRef: routes[indexPath.row].routeMap, userPhoto: userPhoto)
+                       
+                }
+                
+                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
+                    
+                    UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
+
+                    UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
+                    
+                }
+                
+                let cancelOption = UIAlertAction(title: "取消", style: .cancel){ _ in}
+                
+                showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
+                
+            }
+        }
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         150

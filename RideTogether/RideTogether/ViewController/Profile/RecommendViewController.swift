@@ -118,6 +118,7 @@ class RecommendViewController: BaseViewController {
             
         } catch {
             
+            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
             print("error")
         }
         
@@ -252,13 +253,13 @@ extension RecommendViewController: UITableViewDelegate {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 
-                let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
+                 let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
                     
                     
                     self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef: records[indexPath.row].recordRef, userPhoto: records[indexPath.row].pictureRef ?? "")
 
                         waitlottie.isHidden = true
-                    }
+                }
                 
                 let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
                     

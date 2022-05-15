@@ -12,6 +12,7 @@ struct Route: Codable, Hashable {
     
     var uid: String? // for UGC
     var createdTime: Timestamp
+    var pictureRef: String?
     var routeId: String
     var routeName: String
     var routeTypes: Int
@@ -24,6 +25,7 @@ struct Route: Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case uid   // for UGC
         case createdTime = "created_time"
+        case pictureRef = "picture_ref"
         case routeId = "route_id"
         case routeName = "route_name"
         case routeTypes = "route_types"
@@ -36,6 +38,7 @@ struct Route: Codable, Hashable {
         
         self.uid = "" // for UGC
         self.createdTime = Timestamp()
+        self.pictureRef = ""
         self.routeId = ""
         self.routeName = ""
         self.routeTypes = 0
