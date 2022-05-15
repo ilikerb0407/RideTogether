@@ -15,14 +15,14 @@ class NextPageButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .B5
+        self.backgroundColor = .B2?.withAlphaComponent(0.75)
         
         let image = UIImage(systemName: "bicycle",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         
         self.setImage(image, for: .normal)
         
-        self.tintColor = .B2
+        self.tintColor = .B5
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,6 +38,36 @@ class NextPageButton: UIButton {
         self.layer.masksToBounds = true
     }
 }
+
+
+class UbikeBtn: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = .B2?.withAlphaComponent(0.75)
+        
+        let image = UIImage(named: "ubikeIcon")
+        
+        self.setImage(image, for: .normal)
+        
+        self.tintColor = .B5
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = 15
+        
+        self.layer.masksToBounds = true
+    }
+}
+
 
 class DismissButton: UIButton {
     

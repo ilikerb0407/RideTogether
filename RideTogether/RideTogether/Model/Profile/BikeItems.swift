@@ -17,6 +17,8 @@ class BikeAnnotation: NSObject, MKAnnotation {
     let subtitle: String?
     
     let coordinate: CLLocationCoordinate2D
+    
+//    let image : UIImage
 
     
     init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {

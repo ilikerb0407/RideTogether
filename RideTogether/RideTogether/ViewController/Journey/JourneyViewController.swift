@@ -122,7 +122,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
     }
-    
     private var followUser: Bool = true {
         
         didSet {
@@ -186,8 +185,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .B2?.withAlphaComponent(0.75)
-        let image = UIImage(systemName: "info.circle",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        let image = UIImage(systemName: "info.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 24
         return button
@@ -198,8 +196,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .B2?.withAlphaComponent(0.75)
-        let image = UIImage(systemName: "message",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        let image = UIImage(systemName: "message", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 24
         return button
@@ -210,8 +207,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         let button = UIButton()
         button.tintColor = .B5
         button.backgroundColor = .B2?.withAlphaComponent(0.75)
-        let image = UIImage(systemName: "location.fill",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        let image = UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         return button
     }()
@@ -334,7 +330,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -369,11 +364,25 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         mapViewDelegate.route.polyline.title = "two"
         
+        backToJourneyButton()
         
-//        buttonPanelView.delegate = self
-//
-//        view.addSubview(buttonPanelView)
-        
+    }
+    
+    func backToJourneyButton() {
+        let button = UbikeBtn(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
+        button.addTarget(self, action: #selector(presentBike), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func presentBike(_ sender: UIButton) {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UbikeViewController") as? UbikeViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else { }}
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -383,7 +392,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             waveLottieView.play()
         }
     }
-    
     private func addConstraints() {
       buttonPanelView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
       buttonPanelView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -395,17 +403,16 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         self.view.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 100),
-            view.heightAnchor.constraint(equalToConstant: 100),
-            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
-            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            view.widthAnchor.constraint(equalToConstant: 60),
+            view.heightAnchor.constraint(equalToConstant: 60),
+            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45)
         ])
             view.contentMode = .scaleAspectFit
             view.play()
             
             return view
         }()
-    
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["一般", "衛星"])
         segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
@@ -546,14 +553,13 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         }
     }
     
-    
     @objc func searchLocation() {
         
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if #available(iOS 15.0, *) {
                 if let presentVc = navBar.sheetPresentationController {
-                    presentVc.detents = [.large(), .medium()]
+                    presentVc.detents = [ .medium(), .large()]
                     self.navigationController?.present(navBar, animated: true, completion: .none)
                 }
             } else {
@@ -575,8 +581,8 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         let defaultFileName = "從..到.."
         
-        let alertController = UIAlertController(title: "Save Record",
-                                                message: "Please enter the title",
+        let alertController = UIAlertController(title: "儲存路線",
+                                                message: "路線標題",
                                                 preferredStyle: .alert)
         
         alertController.addTextField(configurationHandler: { (textField) in
@@ -586,7 +592,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             textField.text =  defaultFileName
         })
         
-        let saveAction = UIAlertAction(title: "Save",
+        let saveAction = UIAlertAction(title: "儲存",
                                        style: .default) { _ in
             
             let gpxString = self.map.exportToGPXString()
@@ -609,7 +615,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         
         alertController.addAction(saveAction)
         
@@ -697,9 +703,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
                 UIApplication.shared.open(url, options: [:])
             }
         }
-        
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-        
         showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
     }
     
@@ -737,7 +741,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             map.addOverlay(overlay)
         }
     }
-    
     // MARK: - UI Settings -
     
     func setUpButtonsStackView() {
@@ -818,7 +821,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         weatherBtn.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
     }
-    
     func setUpLabels() {
         
         map.addSubview( altitudeLabel)

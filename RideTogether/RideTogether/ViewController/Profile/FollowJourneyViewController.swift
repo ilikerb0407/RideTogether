@@ -485,14 +485,10 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     // MARK: - Action
     
     func setUpMap() {
-        
-
-        
+    
         map2.delegate = mapViewDelegate
         
         map2.rotationGesture.delegate = self
-        
-        
         
         self.view.addSubview(map2)
         

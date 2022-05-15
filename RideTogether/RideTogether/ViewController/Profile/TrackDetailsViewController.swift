@@ -68,7 +68,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         praseGPXFile()
         
-        backToJourneyButton()
+//        backToJourneyButton()
         
         updateInfo(data: trackInfo)
         

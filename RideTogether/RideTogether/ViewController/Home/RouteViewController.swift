@@ -190,6 +190,7 @@ class RouteViewController: BaseViewController {
 //        
 //        print("sucessfully")
 //    }
+  
     
     override func viewDidLoad() {
         
@@ -214,6 +215,7 @@ class RouteViewController: BaseViewController {
 //        configureSnapshot()
         
         setUpThemeTag()
+        
         
     }
     
@@ -282,7 +284,7 @@ extension RouteViewController: UITableViewDataSource {
     
     @objc func goToRide(_ sender: UIButton) {
         
-        LKProgressHUD.show()
+        LKProgressHUD.showSuccess(text: "下載資料中")
         
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
             

@@ -17,6 +17,8 @@ import JGProgressHUD
 
 class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocationManagerDelegate {
     
+
+    
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         timeLabel.text = elapsedTimeString
     }
@@ -341,8 +343,27 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
+    
         
         // MARK: - View Life Cycle
+    
+    
+    func backToJourneyButton() {
+        let button = UbikeBtn(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
+        button.addTarget(self, action: #selector(presentBike), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func presentBike(_ sender: UIButton) {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UbikeViewController") as? UbikeViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else { }}
+    }
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -368,6 +389,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             praseGPXFile()
             
             LKProgressHUD.dismiss()
+            
+            backToJourneyButton()
             
         }
         

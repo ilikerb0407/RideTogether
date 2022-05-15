@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9ko-J6-rRR">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9ko-J6-rRR">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +16,7 @@
                     <tabBarItem key="tabBarItem" title="探索" image="magnifyingglass.circle" catalog="system" id="FL8-VV-mhN"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U0r-ac-xeW">
-                        <rect key="frame" x="0.0" y="24" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -31,11 +32,11 @@
             <objects>
                 <viewController id="fkg-3r-rE9" customClass="HomeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lJc-D8-mmk">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLN-Ba-dr0">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1301"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -63,11 +64,11 @@
             <objects>
                 <viewController id="nnY-XE-OqT" customClass="RouteViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QsF-sT-lgP">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-US-Wli">
-                                <rect key="frame" x="0.0" y="-51" width="1024" height="1352"/>
+                                <rect key="frame" x="0.0" y="-37" width="428" height="880"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -110,11 +111,11 @@
             <objects>
                 <viewController id="aBK-17-zew" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UTj-Gq-Xq1">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAf-FY-AQe">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5HQ-H1-1cP"/>
@@ -137,11 +138,11 @@
             <objects>
                 <viewController storyboardIdentifier="RouteRideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ix-zW-c0i" customClass="RouteRideViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jIo-K7-egm">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLL-gu-c4f" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1301"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c1r-xa-IaX"/>
@@ -163,6 +164,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="niL-H0-BHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094" y="86"/>
+        </scene>
+        <!--Ubike View Controller-->
+        <scene sceneID="zoB-jH-eXg">
+            <objects>
+                <viewController storyboardIdentifier="UbikeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mp1-VN-gNM" customClass="UbikeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTj-rK-98U">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-HP-r8V">
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FcP-Nm-Mki"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QOb-HP-r8V" firstAttribute="top" secondItem="FcP-Nm-Mki" secondAttribute="top" id="Usi-zv-yJf"/>
+                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="bottom" secondItem="QOb-HP-r8V" secondAttribute="bottom" id="Yev-Wa-QQS"/>
+                            <constraint firstItem="QOb-HP-r8V" firstAttribute="leading" secondItem="FcP-Nm-Mki" secondAttribute="leading" id="njB-Pq-PIR"/>
+                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="trailing" secondItem="QOb-HP-r8V" secondAttribute="trailing" id="uDv-IV-QAa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bikemap" destination="QOb-HP-r8V" id="ZyG-JO-pJo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TjM-vq-nDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1304" y="884"/>
         </scene>
     </scenes>
     <resources>

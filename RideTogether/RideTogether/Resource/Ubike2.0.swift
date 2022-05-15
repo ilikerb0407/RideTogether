@@ -22,13 +22,12 @@ class BikeView: NSObject, MKMapViewDelegate {
         if annotation.isKind(of: MKUserLocation.self) { return nil }
         
         let annotationView = MKPinAnnotationView()
+        
         annotationView.canShowCallout = true
+        
         annotationView.isDraggable = true
         
         annotationView.pinTintColor = .B3
-       
-      
-        
        
         return annotationView
     }

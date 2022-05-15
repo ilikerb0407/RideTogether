@@ -44,7 +44,7 @@ extension Double {
     }
     
     func toKilometersPerHour() -> String {
-        return String(format: "%.1f 公里/小時", toKilometersPerHour() as Double)
+        return String(format: "%.1f 里/時", toKilometersPerHour() as Double)
     }
     
     func toSpeed() -> String {
@@ -88,7 +88,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds % 3600) % 60 / 10
+        let hour = (seconds % 3600) % 60 / 10 + 1
 //        1652389852
         let minute = (seconds % 3600) / 60
         
@@ -107,7 +107,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds % 3600) % 60 % 24 / 3
+        let hour = (seconds % 3600) % 60 % 24 / 3  + 3
         
         let minute = (seconds % 3600) / 60
         
