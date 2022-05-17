@@ -228,34 +228,21 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 alertSheet.addAction(removeOption)
                 alertSheet.addAction(cancelAction)
                 
-                let firstView = UIApplication.shared.windows.first { $0.isKeyWindow }
                 
                 let VC = UIViewController.getLastPresentedViewController()
                 VC?.present(alertSheet, animated: true)
-                
-//                firstView?.rootViewController?.present(alertSheet, animated: true, completion: nil)
-                
-                
-                //  Optional<UIViewController>
-//                ▿ some : <RideTogether.LoginViewController: 0x108942150>
-          
-                
-                // ▿ Optional<UIViewController>
-//                ▿ some : <RideTogether.TabBarController: 0x12982c800>
-                
-                
+    
                 // iPad specific code
                 
-//                alertSheet.popoverPresentationController?.sourceView = firstView?.rootViewController?.view
-//
-//                let xOrigin = (firstView?.rootViewController?.view.bounds.width)! / 2
-//
-//                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-//
-//                alertSheet.popoverPresentationController?.sourceRect = popoverRect
-//
-//                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
-                
+                alertSheet.popoverPresentationController?.sourceView = VC?.view
+
+                let xOrigin = (VC?.view.bounds.width)! / 2
+
+                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+
+                alertSheet.popoverPresentationController?.sourceRect = popoverRect
+
+                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
             case kEditWaypointButtonTag:
                 print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
@@ -279,8 +266,8 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 alertController.addAction(saveAction)
                 alertController.addAction(cancelAction)
                 
-                let firstView = UIApplication.shared.windows.first
-                firstView!.rootViewController?.present(alertController, animated: true)
+                let VC = UIViewController.getLastPresentedViewController()
+                VC?.present(alertController, animated: true)
                 
                 self.waypointBeingEdited = waypoint
                 

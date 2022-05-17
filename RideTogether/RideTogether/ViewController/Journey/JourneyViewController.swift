@@ -15,26 +15,14 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate {
     
     var userName: String { UserManager.shared.userInfo.userName ?? ""}
-    
-    func sendRouteTwice(map: DrawRoute) {
-        mapData = map
-    }
-    var mapData: DrawRoute?
-    
-    private let buttonPanelView = ButtonPanelView()
-    
-    var routeVc =  RouteSelectionViewController()
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
     @IBOutlet weak var map: GPXMapView!
     
-    var directionsResponse =  MKDirections.Response()
-    
-    var route = MKRoute()
     
     let completer = MKLocalSearchCompleter()
     
@@ -42,7 +30,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     
     private var stopWatch = StopWatch()
     
-    private var lastLocation: CLLocation?
     
     private let locationManager: CLLocationManager = {
         
@@ -360,8 +347,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         
         completer.region = map.region
         
-        routeVc.delegate = self
-        
         mapViewDelegate.route.polyline.title = "two"
         
         backToJourneyButton()
@@ -392,10 +377,6 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
             bikeLottieView.play()
             waveLottieView.play()
         }
-    }
-    private func addConstraints() {
-      buttonPanelView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-      buttonPanelView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     private lazy var bikeLottieView: AnimationView = {
