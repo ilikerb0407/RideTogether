@@ -228,14 +228,17 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 alertSheet.addAction(removeOption)
                 alertSheet.addAction(cancelAction)
                 
-                guard let firstView = UIApplication.shared.windows.first else {
-                    return LKProgressHUD.showFailure(text: "無法顯示")
-                }
+                let firstView = UIApplication.shared.windows.first { $0.isKeyWindow }
+                
+                let VC = UIViewController.getLastPresentedViewController()
+                VC?.present(alertSheet, animated: true)
+                
+//                firstView?.rootViewController?.present(alertSheet, animated: true, completion: nil)
+                
                 
                 //  Optional<UIViewController>
 //                ▿ some : <RideTogether.LoginViewController: 0x108942150>
-                
-                firstView.rootViewController?.present(alertSheet, animated: true, completion: nil)
+          
                 
                 // ▿ Optional<UIViewController>
 //                ▿ some : <RideTogether.TabBarController: 0x12982c800>
@@ -243,15 +246,15 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 // iPad specific code
                 
-                alertSheet.popoverPresentationController?.sourceView = firstView.rootViewController?.view
-
-                let xOrigin = (firstView.rootViewController?.view.bounds.width)! / 2
-
-                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-
-                alertSheet.popoverPresentationController?.sourceRect = popoverRect
-
-                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
+//                alertSheet.popoverPresentationController?.sourceView = firstView?.rootViewController?.view
+//
+//                let xOrigin = (firstView?.rootViewController?.view.bounds.width)! / 2
+//
+//                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+//
+//                alertSheet.popoverPresentationController?.sourceRect = popoverRect
+//
+//                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
                 
             case kEditWaypointButtonTag:
@@ -415,5 +418,17 @@ extension UIWindow {
         } else {
             return UIApplication.shared.keyWindow
         }
+    }
+}
+
+extension UIViewController {
+    static func getLastPresentedViewController() -> UIViewController? {
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        let window = sceneDelegate?.window
+        var presentedViewController = window?.rootViewController
+        while presentedViewController?.presentedViewController != nil {
+            presentedViewController = presentedViewController?.presentedViewController
+        }
+        return presentedViewController
     }
 }

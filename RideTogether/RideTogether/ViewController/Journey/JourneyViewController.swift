@@ -15,7 +15,7 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond, weatherProvider {
+class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate, sendRouteSecond {
     
     var userName: String { UserManager.shared.userInfo.userName ?? ""}
     
@@ -62,179 +62,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
     }()
     
     private let mapViewDelegate = MapView()
-    
-    func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
-    }
-    
-    var weatherdata : ResponseBody?
-    
-    let weatherManger = WeatherManager()
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if annotation.isKind(of: MKUserLocation.self) {
-            return nil
-        }
-        let annotationView = MKPinAnnotationView()
-
-        //  let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
-        annotationView.canShowCallout = true
-        annotationView.isDraggable = true
-        //
-        let rightbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        rightbtn.clipsToBounds = true
-        rightbtn.tintColor = .B5
-        let rightImg = UIImage(systemName: "info.circle",
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        rightbtn.setImage(rightImg, for: .normal)
-        //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        rightbtn.tag = kDeleteWaypointButtonTag
-        annotationView.rightCalloutAccessoryView = rightbtn
-        //        annotationView.pinTintColor = .red
-        let leftbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        leftbtn.tintColor = .B5
-        let leftImg = UIImage(systemName: "pencil.circle",
-            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        leftbtn.setImage(leftImg, for: .normal)
-        //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        leftbtn.tag = kEditWaypointButtonTag
-        annotationView.leftCalloutAccessoryView = leftbtn
-        
-        return annotationView
-    }
-    
-    let kDeleteWaypointButtonTag = 666
-    
-    let kEditWaypointButtonTag = 333
-    
-    var destination: CLPlacemark?
-    
-    var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        weatherManger.delegate = self
-        
-        guard let button = control as? UIButton else { return }
-        
-        guard let map = mapView as? GPXMapView else { return }
-        
-        guard let polyLine = route.polyline as? MKPolyline else { return }
-        
-        guard let waypoint = view.annotation as? GPXWaypoint else { return }
-        
-        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
-            
-            self?.weatherdata = result
-            
-            DispatchQueue.main.async {
-                markMarkers()
-            }
-            
-        }
-    func markMarkers() {
-        
-        switch button.tag {
-            
-        case kDeleteWaypointButtonTag:
-            
-            guard let weatherdata = weatherdata else { return }
-            
-            let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
-            let distance = "\(self.route.distance.toDistance())"
-            let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
-            let weather = "\(weatherdata.weather[0].main)"
-            
-            let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
-            
-            let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
-                map.removeWaypoint(waypoint)
-                map.removeOverlays(map.overlays)
-            }
-            
-            let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
-               
-                self.route.polyline.title = "one"
-                
-                if polyLine == nil {
-                    LKProgressHUD.showFailure(text: "別鬧喔，快回家洗洗睡")
-                } else {
-                    map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
-                }
-                
-            }
-            
-            let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
-            
-            alertSheet.addAction(routeName)
-            alertSheet.addAction(removeOption)
-            alertSheet.addAction(cancelAction)
-            
-            
-            guard let firstView = UIApplication.shared.windows.first else {
-                return LKProgressHUD.showFailure(text: "無法顯示")
-            }
-            
-            //  Optional<UIViewController>
-//                ▿ some : <RideTogether.LoginViewController: 0x108942150>
-            
-            self.present(alertSheet, animated: true, completion: nil)
-           
-            present(alertSheet, animated: true, completion: nil)
-//            showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [routeName, removeOption, cancelAction])
-            
-            // ▿ Optional<UIViewController>
-//                ▿ some : <RideTogether.TabBarController: 0x12982c800>
-            
-            
-            // iPad specific code
-            
-            alertSheet.popoverPresentationController?.sourceView = firstView.rootViewController?.view
-
-            let xOrigin = (firstView.rootViewController?.view.bounds.width)! / 2
-
-            let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-
-            alertSheet.popoverPresentationController?.sourceRect = popoverRect
-
-            alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
-            
-            
-        case kEditWaypointButtonTag:
-            print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
-            
-            let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
-            
-    
-            let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
-            
-            alertController.addTextField { (textField) in
-                textField.text = waypoint.title
-                textField.tintColor = .B5
-                textField.clearButtonMode = .always
-            }
-            let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { _ in
-                print("Edit waypoint alert view")
-                self.waypointBeingEdited.title = alertController.textFields?[0].text
-            }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
-            
-            alertController.addAction(saveAction)
-            alertController.addAction(cancelAction)
-            
-            let firstView = UIApplication.shared.windows.first
-//            firstView!.rootViewController?.present(alertController, animated: true)
-            present(alertController, animated: true, completion: nil)
-            self.waypointBeingEdited = waypoint
-            
-        default:
-            print("[calloutAccesoryControlTapped ERROR] unknown control")
-            LKProgressHUD.showFailure(text: "網路問題，無法顯示")
-        }
-     }
-    }
-    
+  
     enum GPXTrackingStatus {
         
         case notStarted
@@ -537,6 +365,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate,
         mapViewDelegate.route.polyline.title = "two"
         
         backToJourneyButton()
+        
         
     }
     
