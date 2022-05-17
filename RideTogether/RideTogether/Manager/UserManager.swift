@@ -325,6 +325,7 @@ class UserManager {
             } else {
                 
                 print("Block list successfully updated")
+                LKProgressHUD.showSuccess(text: "封鎖成功")
             }
         }
     }

@@ -98,7 +98,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             return manager
         }()
         
-        private let mapViewDelegate = MapViewDelegate()
+        private let mapViewDelegate = MapView()
         
         enum GpxTrackingStatus {
             

@@ -143,7 +143,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         return manager
     }()
     
-    private let mapViewDelegate = BikeView()
+    private let bikeViewDelegate = BikeView()
     
     enum GpxTrackingStatus {
         
@@ -342,8 +342,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         return view
     }()
     
-        
-        // MARK: 之後再改字體
+    // MARK: 之後再改字體
         
     var altitudeLabel: UILabel = {
         let label = UILabel()
@@ -486,7 +485,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     func setUpMap() {
     
-        map2.delegate = mapViewDelegate
+        map2.delegate = bikeViewDelegate
         
         map2.rotationGesture.delegate = self
         
@@ -592,7 +591,6 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         }
         
         let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
-        
         
         // iPad specific code
         
@@ -849,12 +847,9 @@ extension FollowJourneyViewController: StopWatchDelegate {
 // MARK: - CLLocationManager Delegate -
 
 extension FollowJourneyViewController: CLLocationManagerDelegate {
-    
-    //   Pin direction
+  
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         map2.heading = newHeading // updates heading variable
         map2.updateHeading() // updates heading view's rotation
     }
-    // MARK: 選擇路線後導航 (有時間在做)
 }
-

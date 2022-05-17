@@ -87,6 +87,8 @@ class GPXFileManager {
                 
                 GPXFileManager.removeFileFromURL(fileURL)
                 
+                LKProgressHUD.showSuccess(text: "儲存成功")
+                
                 
             case .failure(let error):
                 

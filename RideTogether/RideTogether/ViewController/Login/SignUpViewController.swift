@@ -215,6 +215,7 @@ class SignUpViewController: BaseViewController {
                             
                             tabbarVC.modalPresentationStyle = .fullScreen
                             
+                            
                             self.present(tabbarVC, animated: true, completion: nil)
                             
                         }

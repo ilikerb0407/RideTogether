@@ -61,6 +61,7 @@ class ProfileViewController: BaseViewController {
     @IBAction func editPhoto(_ sender: UIButton) {
         
         showPickerController()
+    
         
     }
     @IBOutlet weak var gView: UIView! {
@@ -82,8 +83,6 @@ class ProfileViewController: BaseViewController {
             tableView.isScrollEnabled = false
         }
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +131,7 @@ class ProfileViewController: BaseViewController {
             case .success:
                 
                 print("Upload user picture successfully")
+                LKProgressHUD.showSuccess(text: "更新資料成功")
                 
             case .failure(let error):
                 
@@ -267,16 +267,12 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : ProfileTableViewCell = tableView.dequeueCell(for: indexPath)
-        
         cell.backgroundColor = .clear
-        //        cell.backgroundView = UIView()
-        //        cell.selectedBackgroundView = UIView()
         cell.setUpCell(indexPath: indexPath)
         
         return cell
         
     }
-    
     
 }
 

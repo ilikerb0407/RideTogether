@@ -41,7 +41,6 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
             return "帳戶設定"
         case .saveRoutes:
             return "收藏路線"
-    
         }
         
     }
@@ -49,7 +48,6 @@ enum ProfileItemType : ProfileItemContent, CaseIterable {
     var backgroundColor: UIColor? {
         
         switch self {
-            
         case .routeRecord:
             return .B5
         case .recommendMap:

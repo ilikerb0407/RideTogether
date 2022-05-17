@@ -43,7 +43,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         }
     }
     
-    private let mapViewDelegate = MapViewDelegate()
+    private let mapViewDelegate = MapView()
     
     // 只會有一筆
     var record = Record()

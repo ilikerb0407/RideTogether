@@ -11,7 +11,8 @@ import MapKit
 import CoreLocation
 import SwiftUI
 
-class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
+class MapView: NSObject, MKMapViewDelegate, weatherProvider {
+    
     
     let baseVC = BaseViewController()
     
@@ -144,7 +145,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
         rightbtn.setImage(rightImg, for: .normal)
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        rightbtn.tag = kDeleteWaypointAccesoryButtonTag
+        rightbtn.tag = kDeleteWaypointButtonTag
         annotationView.rightCalloutAccessoryView = rightbtn
         //        annotationView.pinTintColor = .red
         let leftbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -153,26 +154,23 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
         leftbtn.setImage(leftImg, for: .normal)
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        leftbtn.tag = kEditWaypointAccesoryButtonTag
+        leftbtn.tag = kEditWaypointButtonTag
         annotationView.leftCalloutAccessoryView = leftbtn
         
         return annotationView
     }
     
-    let kDeleteWaypointAccesoryButtonTag = 666
+    let kDeleteWaypointButtonTag = 666
     
-    let kEditWaypointAccesoryButtonTag = 333
+    let kEditWaypointButtonTag = 333
     
 
-    
-    
-    
+
     // MARK: 刪除 Pin
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         weatherManger.delegate = self
-        
-        print("calloutAccesoryControlTapped ")
         
         guard let button = control as? UIButton else { return }
         
@@ -196,10 +194,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             switch button.tag {
                 
-            case kDeleteWaypointAccesoryButtonTag:
-                print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
-                //            map.removeWaypoint(waypoint)
-                //            guide(mapView, didSelect: view)
+            case kDeleteWaypointButtonTag:
                 
                 guard let weatherdata = weatherdata else { return }
                 
@@ -208,7 +203,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
                 let weather = "\(weatherdata.weather[0].main)"
                 
-                let alertsheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
+                let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
                 
                 let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
                     map.removeWaypoint(waypoint)
@@ -220,7 +215,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                     self.route.polyline.title = "one"
                     
                     if polyLine == nil {
-                        LKProgressHUD.showFailure(text: "別鬧喔，快回家洗洗睡")
+                        LKProgressHUD.showFailure(text: "無法導航")
                     } else {
                         map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
                     }
@@ -229,32 +224,37 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
                 
-                alertsheet.addAction(routeName)
-                alertsheet.addAction(removeOption)
-                alertsheet.addAction(cancelAction)
+                alertSheet.addAction(routeName)
+                alertSheet.addAction(removeOption)
+                alertSheet.addAction(cancelAction)
+                
+                guard let firstView = UIApplication.shared.windows.first else {
+                    return LKProgressHUD.showFailure(text: "無法顯示")
+                }
+                
+                //  Optional<UIViewController>
+//                ▿ some : <RideTogether.LoginViewController: 0x108942150>
+                
+                firstView.rootViewController?.present(alertSheet, animated: true, completion: nil)
+                
+                // ▿ Optional<UIViewController>
+//                ▿ some : <RideTogether.TabBarController: 0x12982c800>
                 
                 
-                let firstView = UIApplication.shared.windows.first { $0.isKeyWindow }
-                
-                firstView?.rootViewController?.present(alertsheet, animated: true, completion: nil)
-                
-//                firstView?.present(alertsheet, animated: true)
-                
-//                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true, completion: nil)
-//
                 // iPad specific code
                 
-                alertsheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view
+                alertSheet.popoverPresentationController?.sourceView = firstView.rootViewController?.view
 
-                let xOrigin = (UIApplication.shared.keyWindow?.rootViewController?.view.bounds.width)! / 2
+                let xOrigin = (firstView.rootViewController?.view.bounds.width)! / 2
 
                 let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
 
-                alertsheet.popoverPresentationController?.sourceRect = popoverRect
+                alertSheet.popoverPresentationController?.sourceRect = popoverRect
 
-                alertsheet.popoverPresentationController?.permittedArrowDirections = .unknown
+                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
-            case kEditWaypointAccesoryButtonTag:
+                
+            case kEditWaypointButtonTag:
                 print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
                 
                 let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
@@ -283,6 +283,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
             default:
                 print("[calloutAccesoryControlTapped ERROR] unknown control")
+                LKProgressHUD.showFailure(text: "網路問題，無法顯示")
             }
         }
     }

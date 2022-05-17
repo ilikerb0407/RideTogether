@@ -129,7 +129,6 @@ class TracksViewController: BaseViewController {
     
     func setNotify() {
         
-        
         let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         let infoImage = UIImage(systemName: "info")
@@ -202,12 +201,12 @@ extension TracksViewController: UITableViewDelegate {
                             
                             delegate?.reload()
                             //
-                            LKProgressHUD.showSuccess(text: "新增成功")
+                            LKProgressHUD.showSuccess(text: "分享成功")
                             
                         case .failure(let error) :
 //                            completion(.failure(error))
                             print ("\(error)")
-                            LKProgressHUD.showFailure(text: "新增失敗")
+                            LKProgressHUD.showFailure(text: "網路不佳，分享失敗")
                         }
                     }
                 }
@@ -249,6 +248,8 @@ extension TracksViewController: UITableViewDelegate {
                     self.records.remove(at: indexPath.row)
                     
                     self.tableView.deleteRows(at: [indexPath], with: .left)
+                    
+                    LKProgressHUD.showSuccess(text: "刪除成功")
 
                 case .failure(let error):
                     print ("delete error: \(error)")
