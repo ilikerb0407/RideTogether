@@ -135,6 +135,9 @@ class JourneyViewController: BaseViewController {
         button.titleLabel?.font = UIFont.regular(size: 18)
         button.titleLabel?.textAlignment = .center
         button.cornerRadius = 35
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 70),
+        button.widthAnchor.constraint(equalToConstant: 70)])
         return button
     }()
     
@@ -148,6 +151,9 @@ class JourneyViewController: BaseViewController {
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
         button.cornerRadius = 25
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.widthAnchor.constraint(equalToConstant: 50)])
         return button
     }()
     
@@ -161,6 +167,9 @@ class JourneyViewController: BaseViewController {
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
         button.cornerRadius = 25
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.widthAnchor.constraint(equalToConstant: 50)])
         return button
     }()
     
@@ -177,6 +186,9 @@ class JourneyViewController: BaseViewController {
         let image = UIImage(systemName: "info.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 24
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.widthAnchor.constraint(equalToConstant: 50)])
         return button
     }()
     
@@ -188,6 +200,9 @@ class JourneyViewController: BaseViewController {
         let image = UIImage(systemName: "message", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 24
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.widthAnchor.constraint(equalToConstant: 50)])
         return button
     }()
     
@@ -199,6 +214,9 @@ class JourneyViewController: BaseViewController {
         let image = UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
         button.layer.cornerRadius = 24
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.widthAnchor.constraint(equalToConstant: 50)])
         return button
     }()
     
@@ -214,6 +232,9 @@ class JourneyViewController: BaseViewController {
         button.setImage(mappin, for: UIControl.State())
         button.setImage(mappinHighlighted, for: .highlighted)
         button.addTarget(self, action: #selector(addPinAtMyLocation), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+        button.heightAnchor.constraint(equalToConstant: 50),
+        button.widthAnchor.constraint(equalToConstant: 50)])
         return button
     }()
     
@@ -592,6 +613,7 @@ class JourneyViewController: BaseViewController {
             
             self.followUser = false
         }
+        
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
@@ -703,43 +725,7 @@ class JourneyViewController: BaseViewController {
         leftStackView.addArrangedSubview(trackerButton)
         leftStackView.addArrangedSubview(resetButton)
         
-        // MARK: - button constraint -
-        
-        NSLayoutConstraint.activate([
-            
-            
-            followUserButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            followUserButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            pinButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            pinButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            sendSMSButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            presentViewControllerButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            presentViewControllerButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            showBike.widthAnchor.constraint(equalToConstant: 50),
-            
-            showBike.heightAnchor.constraint(equalToConstant: 50),
-            
-            trackerButton.heightAnchor.constraint(equalToConstant: 70),
-            
-            trackerButton.widthAnchor.constraint(equalToConstant: 70),
-            
-            saveButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            saveButton.widthAnchor.constraint(equalToConstant: 50),
-            
-            resetButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            resetButton.widthAnchor.constraint(equalToConstant: 50)
-        ])
+        // MARK: - button method -
         
         trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
         

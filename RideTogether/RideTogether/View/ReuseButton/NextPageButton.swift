@@ -77,6 +77,10 @@ class UBikeButton: UIButton {
         
         self.setImage(image, for: .normal)
         
+        NSLayoutConstraint.activate([
+        self.heightAnchor.constraint(equalToConstant: 50),
+        self.widthAnchor.constraint(equalToConstant: 50)])
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -88,7 +92,7 @@ class UBikeButton: UIButton {
         super.layoutSubviews()
         
         layer.cornerRadius = 12
-        
+ 
         self.layer.masksToBounds = true
     }
 }
