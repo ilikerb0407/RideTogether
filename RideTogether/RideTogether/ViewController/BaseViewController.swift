@@ -127,6 +127,18 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             
             self.present(controller, animated: true, completion: nil)
             
+            // MARK: - iPad Present Code -
+            
+            controller.popoverPresentationController?.sourceView = self.view
+            
+            let xOrigin = self.view.bounds.width / 2
+            
+            let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+            
+            controller.popoverPresentationController?.sourceRect = popoverRect
+            
+            controller.popoverPresentationController?.permittedArrowDirections = .up
+            
             return controller
         }
     

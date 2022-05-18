@@ -46,27 +46,23 @@ class NormalButton: UIButton {
         super .init(frame: frame)
         self.backgroundColor = .B2?.withAlphaComponent(0.75)
         
-        
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
     }
     
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        
-        
         
     }
     
     
     
 }
-
-
 
 
 class UBikeButton: UIButton {
@@ -80,7 +76,7 @@ class UBikeButton: UIButton {
                             with: UIImage.SymbolConfiguration(pointSize: 10, weight: .medium))
         
         self.setImage(image, for: .normal)
- 
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

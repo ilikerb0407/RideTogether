@@ -11,7 +11,9 @@ import MapKit
 
 
 protocol bikeProvider {
+    
     func provideBike(bike : Bike)
+    
 }
 
 class BikeManager {
@@ -35,7 +37,6 @@ class BikeManager {
                 
                 completion(bikeData)
                 
-              
 //                for count in 0..<20 {
 //                    bikes.append(bikeData[count]) }
 //                completion(bikes)
@@ -50,15 +51,36 @@ class BikeManager {
         }) .resume()
     }
     
-    
-    
-//    func addBikeAnnotation(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-//    
-//    }
+    func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
+        let firstDataRequest = URLRequest(url: URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")!)
+        
+        URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
+            guard let data = data else { return }
+            let decoder = JSONDecoder()
+            do {
+                
+                let tBikeData = try decoder.decode(TaichungBike.self, from: data)
+                
+                completion(tBikeData)
+                
+//                for count in 0..<20 {
+//                    bikes.append(bikeData[count]) }
+//                completion(bikes)
+                print ("\(tBikeData)")
+                LKProgressHUD.showSuccess(text: "讀取成功")
+               
+            } catch {
+                print(error)
+                LKProgressHUD.showFailure(text: "目前僅提供台北市的資料，陸續增加中")
+            }
+            
+        }) .resume()
+        
+        
+    }
     
     
 }
-
 
 // MARK: - BikeElement
 
@@ -71,5 +93,19 @@ struct Bike: Codable {
     let bemp: Int
     let act, srcUpdateTime, updateTime, infoTime: String
     let infoDate: String
+}
+
+
+struct TaichungBike: Codable {
+    let retCode: Int
+    let retVal: [String: TBike] 
+}
+
+// MARK: - RetVal
+struct TBike: Codable {
+    let sno, sna, tot, sbi: String
+    let sarea, mday, lat, lng: String
+    let ar, sareaen, snaen, aren: String
+    let bemp, act: String
 }
 

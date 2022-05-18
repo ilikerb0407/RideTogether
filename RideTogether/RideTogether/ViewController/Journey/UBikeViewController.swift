@@ -15,12 +15,12 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class UBikeViewController: BaseViewController, bikeProvider, CLLocationManagerDelegate {
+class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     
-    func provideBike(bike: Bike) {
-        bikeData = [bike]
-    }
+
     var bikeData : [Bike] = []
+    
+    var taichungBikeData : TaichungBike?
     
     var bikeManager = BikeManager()
     
@@ -51,14 +51,26 @@ class UBikeViewController: BaseViewController, bikeProvider, CLLocationManagerDe
         
         self.locationManager.requestAlwaysAuthorization()
         
-        bikeManager.delegate = self
-        
         bikeManager.getBikeAPI { [ weak self ] result in
+            
+            LKProgressHUD.showSuccess(text: "讀取資料中")
+            
             
         self?.bikeData = result
             
-        self?.layOutBike()
+        self?.layOutTaipeiBike()
             
+        }
+        
+        bikeManager.getTCAPI { [weak self] result in
+            
+            
+            LKProgressHUD.showSuccess(text: "讀取資料中")
+            
+            self?.taichungBikeData = result
+            
+            self?.layOutTaichungBike()
+
         }
         
         let center = locationManager.location?.coordinate ??
@@ -76,7 +88,7 @@ class UBikeViewController: BaseViewController, bikeProvider, CLLocationManagerDe
     }
     
     // MARK: - show bikes
-    func layOutBike() {
+    func layOutTaipeiBike() {
         
         for bike in bikeData {
             
@@ -97,7 +109,34 @@ class UBikeViewController: BaseViewController, bikeProvider, CLLocationManagerDe
                     if  distance < 1000 {
                         bikemap.addAnnotation(annotation)
                     }
+            
         }
-
+        
     }
+    
+    func layOutTaichungBike() {
+        
+        for bike in taichungBikeData!.retVal {
+            
+            let coordinate = CLLocationCoordinate2D(latitude: Double(bike.value.lat) ?? 0.0, longitude: Double(bike.value.lng) ?? 0.0)
+            
+            let title = bike.value.sna
+             
+            let subtitle = "可還數量:\(bike.value.bemp), 可租數量 :\(bike.value.sbi)"
+            
+            let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
+
+            let usersCoordinate = CLLocation(latitude: bikemap.userLocation.coordinate.latitude, longitude: bikemap.userLocation.coordinate.longitude)
+            
+            let bikeStopCoordinate = CLLocation(latitude: Double(bike.value.lat) ?? 0.0, longitude: Double(bike.value.lng) ?? 0.0 )
+            
+            let distance = usersCoordinate.distance(from: bikeStopCoordinate)
+
+                    if  distance < 1000 {
+                        bikemap.addAnnotation(annotation)
+                    }
+        }
+        
+    }
+    
 }

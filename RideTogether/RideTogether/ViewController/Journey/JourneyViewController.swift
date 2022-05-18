@@ -134,6 +134,7 @@ class JourneyViewController: BaseViewController {
         button.setTitle("開始", for: .normal)
         button.titleLabel?.font = UIFont.regular(size: 18)
         button.titleLabel?.textAlignment = .center
+        button.cornerRadius = 35
         return button
     }()
     
@@ -146,6 +147,7 @@ class JourneyViewController: BaseViewController {
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
+        button.cornerRadius = 25
         return button
     }()
     
@@ -158,6 +160,7 @@ class JourneyViewController: BaseViewController {
         button.titleLabel?.font = UIFont.regular(size: 16)
         button.titleLabel?.textAlignment = .center
         button.alpha = 0.5
+        button.cornerRadius = 25
         return button
     }()
     
@@ -165,7 +168,6 @@ class JourneyViewController: BaseViewController {
         let button = UBikeButton()
         return button
     }()
-    
     
     private lazy var presentViewControllerButton: UIButton = {
         let button = UIButton()
@@ -196,6 +198,7 @@ class JourneyViewController: BaseViewController {
         button.backgroundColor = .B2?.withAlphaComponent(0.75)
         let image = UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 24
         return button
     }()
     
@@ -414,33 +417,10 @@ class JourneyViewController: BaseViewController {
         default :
             map.mapType = .standard
         }
+        
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        let trakerRadius = trackerButton.frame.height / 2
-        
-        let otherRadius = saveButton.frame.height / 2
-        
-        followUserButton.roundCorners(cornerRadius: otherRadius)
-        
-        sendSMSButton.roundCorners(cornerRadius: otherRadius)
-        
-        presentViewControllerButton.roundCorners(cornerRadius: otherRadius)
-        
-        pinButton.roundCorners(cornerRadius: otherRadius)
-        
-        trackerButton.roundCorners(cornerRadius: trakerRadius)
-        
-        saveButton.roundCorners(cornerRadius: otherRadius)
-        
-        resetButton.roundCorners(cornerRadius: otherRadius)
-        
-       
-    }
-    
-    // MARK: - Action
+    // MARK: - Action -
     
     fileprivate func setBeginningRegion() {
         let center = locationManager.location?.coordinate ??
@@ -597,24 +577,14 @@ class JourneyViewController: BaseViewController {
             }
         }
         
-        let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
+       showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
         
-        sheet.popoverPresentationController?.sourceView = self.view
-        
-        let xOrigin = self.view.bounds.width / 2
-        
-        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-        
-        sheet.popoverPresentationController?.sourceRect = popoverRect
-        
-        sheet.popoverPresentationController?.permittedArrowDirections = .up
     }
     
     @objc func followButtonToggle() {
         
         self.followUser = !self.followUser
     }
-    
     
     @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
         
@@ -660,7 +630,9 @@ class JourneyViewController: BaseViewController {
             }
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        
         showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
+        
     }
     
     func displayLocationServicesDeniedAlert() {
@@ -670,11 +642,9 @@ class JourneyViewController: BaseViewController {
         let settingsAction = UIAlertAction(title: "設定",
                                            style: .default) { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url, options: [:])
-            }
+                UIApplication.shared.open(url, options: [:]) }
         }
-        let cancelAction = UIAlertAction(title: "取消",
-                                         style: .cancel)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         
         showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
         
@@ -733,9 +703,10 @@ class JourneyViewController: BaseViewController {
         leftStackView.addArrangedSubview(trackerButton)
         leftStackView.addArrangedSubview(resetButton)
         
-        // MARK: button constraint
+        // MARK: - button constraint -
         
         NSLayoutConstraint.activate([
+            
             
             followUserButton.heightAnchor.constraint(equalToConstant: 50),
             
