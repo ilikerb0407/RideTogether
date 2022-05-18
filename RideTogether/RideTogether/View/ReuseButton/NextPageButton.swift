@@ -36,22 +36,17 @@ class NextPageButton: UIButton {
         layer.cornerRadius = self.frame.height / 2
         
         self.layer.masksToBounds = true
+        
     }
 }
 
-
-class UBikeButton: UIButton {
+class NormalButton: UIButton {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override init (frame: CGRect) {
+        super .init(frame: frame)
         self.backgroundColor = .B2?.withAlphaComponent(0.75)
         
-        let image = UIImage(named: "ubikeIcon")
         
-        self.setImage(image, for: .normal)
-        
-        self.tintColor = .B5
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,7 +57,41 @@ class UBikeButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.cornerRadius = 15
+        
+        
+        
+    }
+    
+    
+    
+}
+
+
+
+
+class UBikeButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = .B2?.withAlphaComponent(0.75)
+        
+        let image = UIImage(named: "ubike2.0", in: nil,
+                            with: UIImage.SymbolConfiguration(pointSize: 10, weight: .medium))
+        
+        self.setImage(image, for: .normal)
+ 
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = 12
         
         self.layer.masksToBounds = true
     }

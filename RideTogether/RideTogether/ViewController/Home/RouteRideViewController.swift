@@ -355,7 +355,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
     }
     
     @objc func showBike(_ sender: UIButton) {
-        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UbikeViewController") as? UbikeViewController {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if #available(iOS 15.0, *) {
                 if let presentVc = navBar.sheetPresentationController {

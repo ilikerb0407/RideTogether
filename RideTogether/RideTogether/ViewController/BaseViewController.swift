@@ -153,23 +153,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     
     }
+ 
     
     
-    
-    
-    
-    
-    
-    // MARK: customize tarbar button
-    //        let button = UIButton.init(type: .custom)
-    //        //set image for button
-    //        button.setImage(UIImage(named: "hat"), for: .normal)
-    //        //add function for button
-    //        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-    //        button.layer.cornerRadius = button.frame.width / 2
-    //        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
-    //        //set frame
-    //        let barButton = UIBarButtonItem(customView: button)
-    //        self.navigationItem.leftBarButtonItem = barButton
 }
-

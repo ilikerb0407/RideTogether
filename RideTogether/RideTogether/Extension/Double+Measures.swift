@@ -88,7 +88,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds % 3600) % 60 / 10
+        let hour = (seconds % 3600) % 60 / 10 + 4 
 //        1652389852
         let minute = (seconds % 3600) / 60
         
@@ -107,7 +107,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds % 3600) % 60 % 24 / 3  + 6
+        let hour = (seconds % 3600) % 60 % 24 / 3
         
         let minute = (seconds % 3600) / 60
         

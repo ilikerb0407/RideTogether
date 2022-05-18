@@ -161,6 +161,12 @@ class JourneyViewController: BaseViewController {
         return button
     }()
     
+    private lazy var showBike: UIButton = {
+        let button = UBikeButton()
+        return button
+    }()
+    
+    
     private lazy var presentViewControllerButton: UIButton = {
         let button = UIButton()
         button.tintColor = .B5
@@ -245,7 +251,7 @@ class JourneyViewController: BaseViewController {
     
     private lazy var buttonStackView: UIStackView = {
         
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, presentViewControllerButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, presentViewControllerButton, showBike])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -337,25 +343,20 @@ class JourneyViewController: BaseViewController {
         
         mapViewDelegate.route.polyline.title = "two"
         
-        showUBikeButton()
         
     }
     
-    func showUBikeButton() {
-        let button = UBikeButton(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
-        button.addTarget(self, action: #selector(showBike), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func showBike(_ sender: UIButton) {
-        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UbikeViewController") as? UbikeViewController {
+    @objc func showBikeViewController() {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if #available(iOS 15.0, *) {
                 if let presentVc = navBar.sheetPresentationController {
                     presentVc.detents = [.medium(), .large()]
                     self.navigationController?.present(navBar, animated: true, completion: .none)
                 }
-            } else { }}
+            } else {
+                LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
+            }}
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -394,12 +395,10 @@ class JourneyViewController: BaseViewController {
         self.view.addSubview(segmentControl)
     }
     
-    // 切換選項時執行動作的方法
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0 :
             map.mapType = .mutedStandard
-            map.showsTraffic = true
             speedLabel.textColor = .B5
             timeLabel.textColor = .B5
             altitudeLabel.textColor = .B5
@@ -407,7 +406,6 @@ class JourneyViewController: BaseViewController {
             totalTrackedDistanceLabel.textColor = .B5
         case 1 :
             map.mapType = .hybridFlyover
-            map.showsTraffic = true
             speedLabel.textColor = .B2
             timeLabel.textColor = .B2
             altitudeLabel.textColor = .B2
@@ -431,13 +429,15 @@ class JourneyViewController: BaseViewController {
         
         presentViewControllerButton.roundCorners(cornerRadius: otherRadius)
         
+        pinButton.roundCorners(cornerRadius: otherRadius)
+        
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
         saveButton.roundCorners(cornerRadius: otherRadius)
         
         resetButton.roundCorners(cornerRadius: otherRadius)
         
-        pinButton.roundCorners(cornerRadius: otherRadius)
+       
     }
     
     // MARK: - Action
@@ -474,10 +474,7 @@ class JourneyViewController: BaseViewController {
         map.rotationGesture.delegate = self
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-                                                               action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
-        
-//        self.view.addSubview(map)
-        
+                                                               action: #selector(addPinAtTappedLocation(_:))))
     }
     
     @objc func sendSMS() {
@@ -602,8 +599,6 @@ class JourneyViewController: BaseViewController {
         
         let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
         
-        // iPad specific code
-        
         sheet.popoverPresentationController?.sourceView = self.view
         
         let xOrigin = self.view.bounds.width / 2
@@ -711,9 +706,9 @@ class JourneyViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             
-            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 120),
-            // widthAnchor.constraint = UIScreen.width * 0.85
-            buttonStackView.widthAnchor.constraint(equalToConstant: 230),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 150),
+            
+            buttonStackView.widthAnchor.constraint(equalToConstant: 280),
             
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             
@@ -732,6 +727,7 @@ class JourneyViewController: BaseViewController {
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
         buttonStackView.addArrangedSubview(presentViewControllerButton)
+        buttonStackView.addArrangedSubview(showBike)
         
         leftStackView.addArrangedSubview(saveButton)
         leftStackView.addArrangedSubview(trackerButton)
@@ -757,6 +753,10 @@ class JourneyViewController: BaseViewController {
             
             presentViewControllerButton.heightAnchor.constraint(equalToConstant: 50),
             
+            showBike.widthAnchor.constraint(equalToConstant: 50),
+            
+            showBike.heightAnchor.constraint(equalToConstant: 50),
+            
             trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
             trackerButton.widthAnchor.constraint(equalToConstant: 70),
@@ -781,11 +781,13 @@ class JourneyViewController: BaseViewController {
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
         presentViewControllerButton.addTarget(self, action: #selector(presentRouteSelectionViewController), for: .touchUpInside)
+        
+        showBike.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
     }
     func setUpLabels() {
         
         map.addSubview( altitudeLabel)
-        // 座標 - 改成時速
+        
         altitudeLabel.frame = CGRect(x: 10, y: 80, width: 200, height: 100)
         
         map.addSubview(speedLabel)
@@ -793,11 +795,11 @@ class JourneyViewController: BaseViewController {
         speedLabel.frame = CGRect(x: 10, y: 50, width: 200, height: 100)
         
         map.addSubview(timeLabel)
-        // 時間
+ 
         timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
         
         map.addSubview(totalTrackedDistanceLabel)
-        // 距離
+       
         totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
@@ -817,8 +819,6 @@ extension JourneyViewController: StopWatchDelegate {
 
 extension JourneyViewController: CLLocationManagerDelegate {
     
-    //MARK: 桌面更新資料
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
@@ -830,8 +830,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
         altitudeLabel.text = text
         
         let rUnknownSpeedText = "0.00"
-        
-        //  MARK: Update_speed
         
         speedLabel.text = "時速 : \((newLocation.speed < 0) ? rUnknownSpeedText : newLocation.speed.toSpeed())"
         
@@ -849,10 +847,10 @@ extension JourneyViewController: CLLocationManagerDelegate {
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
     }
-    //   Pin direction
+ 
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
-        map.heading = newHeading // updates heading variable
-        //        map.updateHeading() // updates heading view's rotation
+        map.heading = newHeading
+        map.updateHeading()
     }
 }

@@ -39,12 +39,12 @@ class BikeManager {
 //                for count in 0..<20 {
 //                    bikes.append(bikeData[count]) }
 //                completion(bikes)
-                print ("BikeData=================\(bikeData)===================")
+                
                 LKProgressHUD.showSuccess(text: "讀取成功")
                
             } catch {
                 print(error)
-                LKProgressHUD.showFailure(text: "讀取失敗")
+                LKProgressHUD.showFailure(text: "目前僅提供台北市的資料，陸續增加中")
             }
             
         }) .resume()

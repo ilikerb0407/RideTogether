@@ -1,5 +1,5 @@
 //
-//  UbikeViewController.swift
+//  UBikeViewController.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/5/14.
@@ -15,7 +15,7 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class UbikeViewController: BaseViewController, bikeProvider, CLLocationManagerDelegate {
+class UBikeViewController: BaseViewController, bikeProvider, CLLocationManagerDelegate {
     
     func provideBike(bike: Bike) {
         bikeData = [bike]

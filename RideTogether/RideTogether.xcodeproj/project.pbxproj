@@ -150,7 +150,7 @@
 		23EC04632822FC2A0063523F /* expanBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC04622822FC2A0063523F /* expanBtn.swift */; };
 		23EC046D2823F1230063523F /* circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046C2823F1230063523F /* circle.json */; };
 		23EC046F2823F41B0063523F /* leave.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046E2823F41B0063523F /* leave.json */; };
-		23FB56EE282FD7C1007DAB89 /* UbikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UbikeViewController.swift */; };
+		23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 /* End PBXBuildFile section */
@@ -303,7 +303,7 @@
 		23EC04622822FC2A0063523F /* expanBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expanBtn.swift; sourceTree = "<group>"; };
 		23EC046C2823F1230063523F /* circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = circle.json; sourceTree = "<group>"; };
 		23EC046E2823F41B0063523F /* leave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = leave.json; sourceTree = "<group>"; };
-		23FB56ED282FD7C1007DAB89 /* UbikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeViewController.swift; sourceTree = "<group>"; };
+		23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
@@ -626,7 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
-				23FB56ED282FD7C1007DAB89 /* UbikeViewController.swift */,
+				23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */,
 				23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */,
 				23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */,
 			);
@@ -944,7 +944,7 @@
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
-				23FB56EE282FD7C1007DAB89 /* UbikeViewController.swift in Sources */,
+				23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */,
 				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23129C43281D5BB8001DE91D /* RouteCollectionViewCell.swift in Sources */,
