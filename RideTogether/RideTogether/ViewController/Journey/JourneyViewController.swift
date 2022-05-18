@@ -161,7 +161,7 @@ class JourneyViewController: BaseViewController {
         return button
     }()
     
-    private lazy var weatherButton: UIButton = {
+    private lazy var presentViewControllerButton: UIButton = {
         let button = UIButton()
         button.tintColor = .B5
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -230,7 +230,6 @@ class JourneyViewController: BaseViewController {
         }
     }
     
-    
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "circle")
         view.loopMode = .loop
@@ -246,7 +245,7 @@ class JourneyViewController: BaseViewController {
     
     private lazy var buttonStackView: UIStackView = {
         
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, weatherButton])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, presentViewControllerButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -333,8 +332,6 @@ class JourneyViewController: BaseViewController {
         setUpLabels()
         
         navigationController?.isNavigationBarHidden = true
-        
-        self.locationManager.requestAlwaysAuthorization()
         
         addSegment()
         
@@ -432,7 +429,7 @@ class JourneyViewController: BaseViewController {
         
         sendSMSButton.roundCorners(cornerRadius: otherRadius)
         
-        weatherButton.roundCorners(cornerRadius: otherRadius)
+        presentViewControllerButton.roundCorners(cornerRadius: otherRadius)
         
         trackerButton.roundCorners(cornerRadius: trakerRadius)
         
@@ -479,7 +476,7 @@ class JourneyViewController: BaseViewController {
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
-        self.view.addSubview(map)
+//        self.view.addSubview(map)
         
     }
     
@@ -489,12 +486,10 @@ class JourneyViewController: BaseViewController {
         
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-        
-        // Configure the fields of the interface.
+
         composeVC.recipients = ["請輸入電話號碼"]
-        composeVC.body = "傳送我的位置 經度 :\(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+        composeVC.body = "傳送我的位置 經度 : \(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
         
-        // Present the view controller modally.
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
             LKProgressHUD.dismiss()
@@ -525,7 +520,7 @@ class JourneyViewController: BaseViewController {
         }
     }
     
-    @objc func searchLocation() {
+    @objc func presentRouteSelectionViewController() {
         
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
@@ -535,7 +530,7 @@ class JourneyViewController: BaseViewController {
                     self.navigationController?.present(navBar, animated: true, completion: .none)
                 }
             } else {
-                // Fallback on earlier versions
+                LKProgressHUD.showFailure(text: "網路問題，無法跳出")
             }
         }
     }
@@ -567,16 +562,13 @@ class JourneyViewController: BaseViewController {
             let gpxString = self.map.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text
-            // "2022-04-10_04-21"
-            print ("1\(fileName)1")
-            
+
             self.lastGPXFilename = fileName!
             
             if let fileName = fileName {
                 
                 GPXFileManager.save( fileName, gpxContents: gpxString)
                 
-                print ("2\(fileName)2")
             }
             
             if withReset {
@@ -739,7 +731,7 @@ class JourneyViewController: BaseViewController {
         buttonStackView.addArrangedSubview(followUserButton)
         buttonStackView.addArrangedSubview(pinButton)
         buttonStackView.addArrangedSubview(sendSMSButton)
-        buttonStackView.addArrangedSubview(weatherButton)
+        buttonStackView.addArrangedSubview(presentViewControllerButton)
         
         leftStackView.addArrangedSubview(saveButton)
         leftStackView.addArrangedSubview(trackerButton)
@@ -761,9 +753,9 @@ class JourneyViewController: BaseViewController {
             
             sendSMSButton.heightAnchor.constraint(equalToConstant: 50),
             
-            weatherButton.widthAnchor.constraint(equalToConstant: 50),
+            presentViewControllerButton.widthAnchor.constraint(equalToConstant: 50),
             
-            weatherButton.heightAnchor.constraint(equalToConstant: 50),
+            presentViewControllerButton.heightAnchor.constraint(equalToConstant: 50),
             
             trackerButton.heightAnchor.constraint(equalToConstant: 70),
             
@@ -788,7 +780,7 @@ class JourneyViewController: BaseViewController {
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
-        weatherButton.addTarget(self, action: #selector(searchLocation), for: .touchUpInside)
+        presentViewControllerButton.addTarget(self, action: #selector(presentRouteSelectionViewController), for: .touchUpInside)
     }
     func setUpLabels() {
         
