@@ -445,7 +445,18 @@ class JourneyViewController: BaseViewController {
     
     // MARK: - Action
     
+    fileprivate func setBeginningRegion() {
+        let center = locationManager.location?.coordinate ??
+        CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
+        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+        let region = MKCoordinateRegion(center: center, span: span)
+        
+        map.setRegion(region, animated: true)
+    }
+    
     func setUpMap() {
+        
+        setBeginningRegion()
         
         locationManager.delegate = self
         
@@ -457,8 +468,6 @@ class JourneyViewController: BaseViewController {
         
         map.showsUserLocation = true
         
-        // 移動 map 的方式
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
         
         panGesture.delegate = self
@@ -466,15 +475,6 @@ class JourneyViewController: BaseViewController {
         map.addGestureRecognizer(panGesture)
         
         map.rotationGesture.delegate = self
-        
-        let center = locationManager.location?.coordinate ??
-        CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-        
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
-        let region = MKCoordinateRegion(center: center, span: span)
-        
-        map.setRegion(region, animated: true)
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
