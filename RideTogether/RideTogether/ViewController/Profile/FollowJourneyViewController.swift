@@ -605,7 +605,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         sheet.popoverPresentationController?.permittedArrowDirections = .up
     }
     
-    @objc func followButtonTroggler() {
+    @objc func followButtonToggle() {
         
         self.followUser = !self.followUser
     }
@@ -756,7 +756,7 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
         
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
-        followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         

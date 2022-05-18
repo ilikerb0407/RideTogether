@@ -123,6 +123,7 @@ class GPXMapView: MKMapView {
         }
         
         for oneTrack in session.tracks {
+            
             session.totalTrackedDistance += oneTrack.length
 
             for segment in oneTrack.segments {

@@ -15,21 +15,13 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate {
-    
-    var userName: String { UserManager.shared.userInfo.userName ?? ""}
-    
-    private var isDisplayingLocationServicesDenied: Bool = false
+class JourneyViewController: BaseViewController {
     
     @IBOutlet weak var map: GPXMapView!
     
+    private var isDisplayingLocationServicesDenied: Bool = false
     
-    let completer = MKLocalSearchCompleter()
-    
-    var lastGpxFilename: String = ""
-    
-    private var stopWatch = StopWatch()
-    
+    private var lastGPXFilename: String = ""
     
     private let locationManager: CLLocationManager = {
         
@@ -48,8 +40,10 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         return manager
     }()
     
+    private var stopWatch = StopWatch()
+    
     private let mapViewDelegate = MapView()
-  
+    
     enum GPXTrackingStatus {
         
         case notStarted
@@ -59,11 +53,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         case paused
     }
     
-    private var gpxTrackingStatus: GPXTrackingStatus = GPXTrackingStatus.notStarted {
+    private var trackingStatus: GPXTrackingStatus = GPXTrackingStatus.notStarted {
         
         didSet {
             
-            switch gpxTrackingStatus {
+            switch trackingStatus {
                 
             case .notStarted:
                 
@@ -114,7 +108,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         didSet {
             
             if followUser {
-                // MARK: 定位的符號
+                
                 let image = UIImage(systemName: "location.fill",
                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
                 
@@ -131,7 +125,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
             }
         }
     }
-
+    
     private lazy var trackerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -210,9 +204,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
                                         withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         button.setImage(mappin, for: UIControl.State())
         button.setImage(mappinHighlighted, for: .highlighted)
-        button.addTarget(self, action: #selector(JourneyViewController.addPinAtMyLocation), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addPinAtMyLocation), for: .touchUpInside)
         return button
     }()
+    
+    private var hasWaypoints: Bool = false
     
     @objc func addPinAtMyLocation() {
         print("Adding Pin at my location")
@@ -229,13 +225,12 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
             print("Adding Pin map Long Press Gesture")
             map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
-            
             map.addWaypointAtViewPoint(point)
             self.hasWaypoints = true
         }
     }
-    var hasWaypoints: Bool = false
-
+    
+    
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "circle")
         view.loopMode = .loop
@@ -250,7 +245,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     }()
     
     private lazy var buttonStackView: UIStackView = {
- 
+        
         let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, weatherButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
@@ -261,7 +256,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     }()
     
     private lazy var leftStackView: UIStackView = {
-    
+        
         let view = UIStackView(arrangedSubviews: [saveButton, trackerButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
@@ -273,7 +268,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     
     // MARK: 之後再改字體
     
-    var altitudeLabel: UILabel = {
+    private var altitudeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -282,7 +277,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         return label
     }()
     
-    var speedLabel: UILabel = {
+    private var speedLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -291,7 +286,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         return label
     }()
     
-    var timeLabel: UILabel = {
+    private var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.font = UIFont.boldSystemFont(ofSize: 30)
@@ -301,21 +296,21 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     }()
     
     private lazy var totalTrackedDistanceLabel: DistanceLabel = {
-        let distaneLabel = DistanceLabel()
-        distaneLabel.textAlignment = .right
-        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        distaneLabel.textColor = UIColor.B5
-        distaneLabel.distance = 0.00
-        return distaneLabel
+        let distanceLabel = DistanceLabel()
+        distanceLabel.textAlignment = .right
+        distanceLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        distanceLabel.textColor = UIColor.B5
+        distanceLabel.distance = 0.00
+        return distanceLabel
     }()
     
     private lazy var currentSegmentDistanceLabel: DistanceLabel = {
-        let distaneLabel = DistanceLabel()
-        distaneLabel.textAlignment = .right
-        distaneLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        distaneLabel.textColor = UIColor.B5
-        distaneLabel.distance = 0.00
-        return distaneLabel
+        let distanceLabel = DistanceLabel()
+        distanceLabel.textAlignment = .right
+        distanceLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        distanceLabel.textColor = UIColor.B5
+        distanceLabel.distance = 0.00
+        return distanceLabel
     }()
     // MARK: - View Life Cycle
     
@@ -343,24 +338,19 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         
         addSegment()
         
-        completer.delegate = self
-        
-        completer.region = map.region
-        
         mapViewDelegate.route.polyline.title = "two"
         
-        backToJourneyButton()
-        
+        showUBikeButton()
         
     }
     
-    func backToJourneyButton() {
-        let button = UbikeBtn(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
-        button.addTarget(self, action: #selector(presentBike), for: .touchUpInside)
+    func showUBikeButton() {
+        let button = UBikeButton(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
+        button.addTarget(self, action: #selector(showBike), for: .touchUpInside)
         view.addSubview(button)
     }
     
-    @objc func presentBike(_ sender: UIButton) {
+    @objc func showBike(_ sender: UIButton) {
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UbikeViewController") as? UbikeViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if #available(iOS 15.0, *) {
@@ -373,15 +363,15 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if gpxTrackingStatus == .tracking {
+        if trackingStatus == .tracking {
             bikeLottieView.play()
             waveLottieView.play()
         }
     }
     
     private lazy var bikeLottieView: AnimationView = {
-            let view = AnimationView(name: "49908-bike-ride")
-            view.loopMode = .loop
+        let view = AnimationView(name: "49908-bike-ride")
+        view.loopMode = .loop
         self.view.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -390,11 +380,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
             view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45)
         ])
-            view.contentMode = .scaleAspectFit
-            view.play()
-            
-            return view
-        }()
+        view.contentMode = .scaleAspectFit
+        view.play()
+        
+        return view
+    }()
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["一般", "衛星"])
         segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
@@ -488,7 +478,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         
         map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
-    
+        
         self.view.addSubview(map)
         
     }
@@ -513,7 +503,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     
     @objc func trackerButtonTapped() {
         
-        switch gpxTrackingStatus {
+        switch trackingStatus {
             
         case .notStarted:
             
@@ -523,15 +513,15 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
                 self.resetButton.alpha = 1.0
             }
             
-            gpxTrackingStatus = .tracking
+            trackingStatus = .tracking
             
         case .tracking:
             
-            gpxTrackingStatus = .paused
+            trackingStatus = .paused
             
         case .paused:
             
-            gpxTrackingStatus = .tracking
+            trackingStatus = .tracking
         }
     }
     
@@ -552,14 +542,11 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     
     @objc func saveButtonTapped(withReset: Bool = false) {
         
-        if gpxTrackingStatus == .notStarted && !self.hasWaypoints { return }
+        if trackingStatus == .notStarted && !self.hasWaypoints { return }
         
         let date = Date()
         
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
-        
-        // MARK: 要改
-//        let defaultFileName = "\(userName)紀錄了從..."
         
         let defaultFileName = "從..到.."
         
@@ -583,17 +570,17 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
             // "2022-04-10_04-21"
             print ("1\(fileName)1")
             
-            self.lastGpxFilename = fileName!
+            self.lastGPXFilename = fileName!
             
             if let fileName = fileName {
                 
                 GPXFileManager.save( fileName, gpxContents: gpxString)
-            
-            print ("2\(fileName)2")
-                        }
+                
+                print ("2\(fileName)2")
+            }
             
             if withReset {
-                self.gpxTrackingStatus = .notStarted
+                self.trackingStatus = .notStarted
             }
         }
         
@@ -608,12 +595,12 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
     
     @objc func resetButtonTapped() {
         
-        if gpxTrackingStatus == .notStarted { return }
+        if trackingStatus == .notStarted { return }
         
         let cancelOption = UIAlertAction(title: "取消", style: .cancel)
         
         let resetOption = UIAlertAction(title: "重置", style: .destructive) { _ in
-            self.gpxTrackingStatus = .notStarted
+            self.trackingStatus = .notStarted
             
             UIView.animate(withDuration: 0.3) {
                 self.saveButton.alpha = 0.5
@@ -626,17 +613,17 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         // iPad specific code
         
         sheet.popoverPresentationController?.sourceView = self.view
-                
+        
         let xOrigin = self.view.bounds.width / 2
         
         let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-            
+        
         sheet.popoverPresentationController?.sourceRect = popoverRect
-                
+        
         sheet.popoverPresentationController?.permittedArrowDirections = .up
     }
     
-    @objc func followButtonTroggler() {
+    @objc func followButtonToggle() {
         
         self.followUser = !self.followUser
     }
@@ -662,7 +649,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
             displayLocationServicesDisabledAlert()
             if #available(iOS 14.0, *) {
                 if !([.authorizedAlways, .authorizedWhenInUse]
-                        .contains(locationManager.authorizationStatus)) {
+                    .contains(locationManager.authorizationStatus)) {
                     
                     displayLocationServicesDeniedAlert()
                     
@@ -670,7 +657,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
                 }
             } else {
                 // Fallback on earlier versions
-            }   
+            }
             displayLocationServicesDeniedAlert()
             
             return
@@ -797,7 +784,7 @@ class JourneyViewController: BaseViewController, MKLocalSearchCompleterDelegate 
         
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
-        followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
@@ -861,7 +848,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
             map.setCenter(newLocation.coordinate, animated: true)
         }
         
-        if gpxTrackingStatus == .tracking {
+        if trackingStatus == .tracking {
             
             map.addPointToCurrentTrackSegmentAtLocation(newLocation)
             
@@ -874,6 +861,6 @@ extension JourneyViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         map.heading = newHeading // updates heading variable
-//        map.updateHeading() // updates heading view's rotation
+        //        map.updateHeading() // updates heading view's rotation
     }
 }

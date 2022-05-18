@@ -349,8 +349,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
     
     
     func backToJourneyButton() {
-        let button = UbikeBtn(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
-        button.addTarget(self, action: #selector(presentBike), for: .touchUpInside)
+        let button = UBikeButton(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
+        button.addTarget(self, action: #selector(showBike), for: .touchUpInside)
         view.addSubview(button)
     }
     
@@ -559,7 +559,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             sheet.popoverPresentationController?.permittedArrowDirections = .up
         }
         
-        @objc func followButtonTroggler() {
+        @objc func followButtonToggle() {
             
             self.followUser = !self.followUser
         }
@@ -697,7 +697,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
-        followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         

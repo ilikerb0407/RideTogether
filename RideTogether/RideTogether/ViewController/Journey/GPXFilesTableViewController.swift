@@ -16,21 +16,11 @@ import CoreGPX
 ///
 protocol GPXFilesTableViewControllerDelegate: class {
   
-    ///
-    /// GPXFilesTableView controller will be dismissed after calling this method
-    ///
-    /// - Parameters:
-    ///       - gpxFile: is the name of the file to load without extension
-    ///       - gpxRoot: is a object with the contents of
-    ///
-    ///  - Seealso:
-    ///     - [iOS-GPX-Framework](https://github.com/merlos/iOS-GPX-Framework)
-    ///
     func didLoadGPXFileWithName(_ gpxFilename: String, gpxRoot: GPXRoot)
     
 }
 
-/// Text displayed when there are no GPX files in the folder.
+
 let kNoFiles = NSLocalizedString("NO_FILES", comment: "no comment")
 
 // MARK: CoreData會用到的TableViewController
@@ -50,29 +40,19 @@ class GPXFilesTableViewController: UITableViewController, UINavigationBarDelegat
         }
     }
 
-    /// List of strings with the filenames.
     var fileList: NSMutableArray = [kNoFiles] 
-     
-    /// Is there any GPX file in the directory?
+
     var gpxFilesFound = false
+
     
-    /// Temporary variable to manage.
     var selectedRowIndex = -1
     
     weak var delegate: GPXFilesTableViewControllerDelegate?
     
-    ///
-    /// Setups the view controller.
-    ///
-    /// 1. Sets the title
-    /// 2. Adds the "Done" button
-    /// 3. Loads existing GPX File list.
-    ///
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchRecords()
-        
         
         let navBarFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64)
         self.tableView.frame = CGRect(x: navBarFrame.width + 1, y: 0, width: self.view.frame.width, height:

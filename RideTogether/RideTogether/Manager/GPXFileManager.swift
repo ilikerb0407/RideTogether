@@ -11,8 +11,6 @@ import CoreGPX
 let kFileExt = ["gpx", "GPX"]
 
 
-//MARK: 處理 GPX 檔案
-
 class GPXFileManager {
     
     class var GPXFilesFolderURL: URL {
@@ -82,13 +80,12 @@ class GPXFileManager {
             case .success:
                 
                 uploadTrackLengthToDb(fileURL: fileURL)
-               // _url : //file:///var/mobile/Containers/Data/Application/16976C4B-1C87-4E0D-B5A6-E5077D978007/D//ocuments/2022-04-10_04-21.gpx
+                
                 print("save to Firebase successfully")
                 
                 GPXFileManager.removeFileFromURL(fileURL)
                 
                 LKProgressHUD.showSuccess(text: "儲存成功")
-                
                 
             case .failure(let error):
                 
@@ -127,8 +124,6 @@ class GPXFileManager {
         GPXFileManager.removeFileFromURL(fileURL)
     }
     
-    /// Gets the list of `.gpx` files in Documents directory ordered by modified date
-    ///
     class var fileList: [GPXFileInfo] {
         
         var GPXFiles: [GPXFileInfo] = []

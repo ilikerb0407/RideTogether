@@ -75,6 +75,7 @@ class UbikeViewController: BaseViewController, bikeProvider, CLLocationManagerDe
 
     }
     
+    // MARK: - show bikes
     func layOutBike() {
         
         for bike in bikeData {

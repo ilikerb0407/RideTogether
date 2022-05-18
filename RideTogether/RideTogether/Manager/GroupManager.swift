@@ -255,7 +255,4 @@ class GroupManager {
             }
     }
     
-    
-    
-    
 }

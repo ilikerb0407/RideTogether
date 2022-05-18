@@ -40,7 +40,7 @@ class NextPageButton: UIButton {
 }
 
 
-class UbikeBtn: UIButton {
+class UBikeButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

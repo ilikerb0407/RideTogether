@@ -11,15 +11,11 @@ import MapKit
 
 class BikeAnnotation: NSObject, MKAnnotation {
     
-    // 站名
     let title: String?
     
     let subtitle: String?
     
     let coordinate: CLLocationCoordinate2D
-    
-//    let image : UIImage
-
     
     init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
         
@@ -29,7 +25,5 @@ class BikeAnnotation: NSObject, MKAnnotation {
         
         self.coordinate = coordinate
       
-        
     }
 }
-

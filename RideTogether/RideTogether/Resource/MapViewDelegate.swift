@@ -17,30 +17,23 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
     let baseVC = BaseViewController()
     
     func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
+        weatherData = weather
     }
     
-    var weatherdata : ResponseBody?
+    var weatherData : ResponseBody?
     
     let weatherManger = WeatherManager()
 
-    
-    /// Current session of GPX location logging. Handles all background tasks and recording.
     let session = GPXSession()
-    
-    /// The Waypoint is being edited (if there is any)
+
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
     var directionsResponse =  MKDirections.Response()
     
     var route = MKRoute()
-//
-//    var polyLineRenderer = MKPolylineRenderer()
-    
-    
     
     var step: [String] = []
-//    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         
@@ -98,8 +91,6 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 self.route = self.directionsResponse.routes[0]
                 
-//                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
-                
             } else {
                 print("\(error)")
                 
@@ -138,24 +129,24 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
         //
-        let rightbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        rightbtn.clipsToBounds = true
-        rightbtn.tintColor = .B5
-        let rightImg = UIImage(systemName: "info.circle",
+        let rightButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightButton.clipsToBounds = true
+        rightButton.tintColor = .B5
+        let rightImage = UIImage(systemName: "info.circle",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        rightbtn.setImage(rightImg, for: .normal)
+        rightButton.setImage(rightImage, for: .normal)
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        rightbtn.tag = kDeleteWaypointButtonTag
-        annotationView.rightCalloutAccessoryView = rightbtn
+        rightButton.tag = kDeleteWaypointButtonTag
+        annotationView.rightCalloutAccessoryView = rightButton
         //        annotationView.pinTintColor = .red
-        let leftbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        leftbtn.tintColor = .B5
+        let leftButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        leftButton.tintColor = .B5
         let leftImg = UIImage(systemName: "pencil.circle",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        leftbtn.setImage(leftImg, for: .normal)
+        leftButton.setImage(leftImg, for: .normal)
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        leftbtn.tag = kEditWaypointButtonTag
-        annotationView.leftCalloutAccessoryView = leftbtn
+        leftButton.tag = kEditWaypointButtonTag
+        annotationView.leftCalloutAccessoryView = leftButton
         
         return annotationView
     }
@@ -182,12 +173,11 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
         
         self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
-            self?.weatherdata = result
+            self?.weatherData = result
             
             DispatchQueue.main.async {
                 markMarkers()
             }
-            
         }
        
         func markMarkers() {
@@ -196,12 +186,12 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 
             case kDeleteWaypointButtonTag:
                 
-                guard let weatherdata = weatherdata else { return }
+                guard let weatherData = weatherData else { return }
                 
                 let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
                 let distance = "\(self.route.distance.toDistance())"
                 let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
-                let weather = "\(weatherdata.weather[0].main)"
+                let weather = "\(weatherData.weather[0].main)"
                 
                 let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
                 
