@@ -16,6 +16,9 @@ import Lottie
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
     
+  
+    let stopWatch = StopWatch()
+    
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         
         self.dismiss(animated: true, completion: nil)
@@ -165,6 +168,35 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     
     }
+    
+    @objc func showBikeViewController() {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
+            }}
+    }
+    
+    @objc func presentRouteSelectionViewController() {
+        
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [ .medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                LKProgressHUD.showFailure(text: "網路問題，無法跳出")
+            }
+        }
+    }
+    
  
     
     

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2304FF4A280891AF00C6B1BF /* NextPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF49280891AF00C6B1BF /* NextPageButton.swift */; };
+		2304FF4A280891AF00C6B1BF /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF49280891AF00C6B1BF /* Button.swift */; };
 		2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */; };
 		2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */; };
 		23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C30281CF43D001DE91D /* bike-city-rider.json */; };
@@ -18,7 +18,6 @@
 		23129C3F281D5B11001DE91D /* RouteCarLenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C3E281D5B11001DE91D /* RouteCarLenViewController.swift */; };
 		23129C43281D5BB8001DE91D /* RouteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C42281D5BB8001DE91D /* RouteCollectionViewCell.swift */; };
 		2314F20E280AFC6500425F8A /* RecordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F20D280AFC6500425F8A /* RecordInfo.swift */; };
-		2314F213280B5AE500425F8A /* SendSMSbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2314F212280B5AE500425F8A /* SendSMSbutton.swift */; };
 		231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* ShareMap.swift */; };
 		231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2F280671DE00DE2343 /* RecommendViewController.swift */; };
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
@@ -35,6 +34,7 @@
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
 		233206C92826483D0017864C /* Noto_Sans_TC in Resources */ = {isa = PBXBuildFile; fileRef = 233206C82826483D0017864C /* Noto_Sans_TC */; };
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
+		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
@@ -118,7 +118,6 @@
 		23D1B76428006092000EDA70 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B76328006092000EDA70 /* UserInfo.swift */; };
 		23D1B766280060A6000EDA70 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B765280060A6000EDA70 /* Record.swift */; };
 		23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B768280060EC000EDA70 /* DistanceLabel.swift */; };
-		23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B76B28006127000EDA70 /* PreviousPageButton.swift */; };
 		23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */; };
 		23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B772280061D5000EDA70 /* Double+Measures.swift */; };
 		23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B774280061F2000EDA70 /* UIButtonExtension.swift */; };
@@ -147,7 +146,6 @@
 		23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E71282D764B00FC001E /* UbikeManager.swift */; };
 		23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E73282D84EA00FC001E /* BikeItems.swift */; };
 		23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E75282D87BC00FC001E /* BikeVM.swift */; };
-		23EC04632822FC2A0063523F /* expanBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EC04622822FC2A0063523F /* expanBtn.swift */; };
 		23EC046D2823F1230063523F /* circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046C2823F1230063523F /* circle.json */; };
 		23EC046F2823F41B0063523F /* leave.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046E2823F41B0063523F /* leave.json */; };
 		23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */; };
@@ -156,7 +154,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2304FF49280891AF00C6B1BF /* NextPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPageButton.swift; sourceTree = "<group>"; };
+		2304FF49280891AF00C6B1BF /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowJourneyViewController.swift; sourceTree = "<group>"; };
 		2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffLineMapButton.swift; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 		23129C3E281D5B11001DE91D /* RouteCarLenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCarLenViewController.swift; sourceTree = "<group>"; };
 		23129C42281D5BB8001DE91D /* RouteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollectionViewCell.swift; sourceTree = "<group>"; };
 		2314F20D280AFC6500425F8A /* RecordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInfo.swift; sourceTree = "<group>"; };
-		2314F212280B5AE500425F8A /* SendSMSbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSMSbutton.swift; sourceTree = "<group>"; };
 		231BCB2D28066C3B00DE2343 /* ShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMap.swift; sourceTree = "<group>"; };
 		231BCB2F280671DE00DE2343 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
@@ -184,6 +181,7 @@
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		233206C82826483D0017864C /* Noto_Sans_TC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto_Sans_TC; sourceTree = "<group>"; };
 		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
+		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		23D1B76328006092000EDA70 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		23D1B765280060A6000EDA70 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		23D1B768280060EC000EDA70 /* DistanceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceLabel.swift; sourceTree = "<group>"; };
-		23D1B76B28006127000EDA70 /* PreviousPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPageButton.swift; sourceTree = "<group>"; };
 		23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		23D1B772280061D5000EDA70 /* Double+Measures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Measures.swift"; sourceTree = "<group>"; };
 		23D1B774280061F2000EDA70 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -300,7 +297,6 @@
 		23E86E71282D764B00FC001E /* UbikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeManager.swift; sourceTree = "<group>"; };
 		23E86E73282D84EA00FC001E /* BikeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeItems.swift; sourceTree = "<group>"; };
 		23E86E75282D87BC00FC001E /* BikeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeVM.swift; sourceTree = "<group>"; };
-		23EC04622822FC2A0063523F /* expanBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expanBtn.swift; sourceTree = "<group>"; };
 		23EC046C2823F1230063523F /* circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = circle.json; sourceTree = "<group>"; };
 		23EC046E2823F41B0063523F /* leave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = leave.json; sourceTree = "<group>"; };
 		23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
@@ -435,11 +431,8 @@
 		23CE42A5280E5F0A00C4C9F1 /* ReuseButton */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B76B28006127000EDA70 /* PreviousPageButton.swift */,
-				23EC04622822FC2A0063523F /* expanBtn.swift */,
-				2304FF49280891AF00C6B1BF /* NextPageButton.swift */,
+				2304FF49280891AF00C6B1BF /* Button.swift */,
 				2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */,
-				2314F212280B5AE500425F8A /* SendSMSbutton.swift */,
 				23CE42BF280FB77400C4C9F1 /* CreateGroupButton.swift */,
 				237A279A2817ED2C004F039F /* PickPhotoButton.swift */,
 			);
@@ -561,6 +554,7 @@
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23CB74C9281787B400DED822 /* Login.storyboard */,
+				235CB8E428354A1E0018101B /* ReuseLabel.swift */,
 				2360C6772825562E00EF21D3 /* Policy.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23C887192814285A00E3319A /* Home */,
@@ -905,6 +899,7 @@
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
+				235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */,
 				23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */,
@@ -939,7 +934,6 @@
 				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
-				23EC04632822FC2A0063523F /* expanBtn.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
@@ -972,7 +966,7 @@
 				2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */,
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
-				2304FF4A280891AF00C6B1BF /* NextPageButton.swift in Sources */,
+				2304FF4A280891AF00C6B1BF /* Button.swift in Sources */,
 				23129C3F281D5B11001DE91D /* RouteCarLenViewController.swift in Sources */,
 				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
@@ -986,9 +980,7 @@
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
-				2314F213280B5AE500425F8A /* SendSMSbutton.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */,
-				23D1B76C28006127000EDA70 /* PreviousPageButton.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,

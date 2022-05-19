@@ -77,7 +77,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         // MARK: =========
         
-        private var stopWatch = StopWatch()
         
         private var lastLocation: CLLocation?
         

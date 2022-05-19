@@ -122,7 +122,6 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     
     // MARK: =========
     
-    private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
     

@@ -244,12 +244,14 @@ class RecordManager {
                     case .success:
 
                         print("save to Firebase successfully")
+                        LKProgressHUD.showSuccess(text: "偵測檔案上傳成功")
 
                         GPXFileManager.removeFileFromURL(file)
 
                     case .failure(let error):
 
                         print("save to Firebase failure: \(error)")
+                        LKProgressHUD.showFailure(text: "偵測檔案上傳")
                     }
                 }
             }

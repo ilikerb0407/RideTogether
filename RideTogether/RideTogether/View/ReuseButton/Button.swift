@@ -6,23 +6,26 @@
 //
 
 import UIKit
-import SwiftUI
+
 
 // 下一頁的button
 
-class NextPageButton: UIButton {
+class PreviousPageButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .B2?.withAlphaComponent(0.75)
+        self.backgroundColor = .B5
+        self.tintColor = .B2
         
-        let image = UIImage(systemName: "bicycle",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        let image = UIImage(systemName: "chevron.left",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .light))
+
+        
         
         self.setImage(image, for: .normal)
         
-        self.tintColor = .B5
+      
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,28 +43,75 @@ class NextPageButton: UIButton {
     }
 }
 
-class NormalButton: UIButton {
+class NextPageButton: UIButton {
     
-    override init (frame: CGRect) {
-        super .init(frame: frame)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
         self.backgroundColor = .B2?.withAlphaComponent(0.75)
         
+        let image = UIImage(systemName: "bicycle",
+                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        
+        self.setImage(image, for: .normal)
+        
+        self.tintColor = .B5
+        
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        layer.cornerRadius = self.frame.height / 2
+        
+        self.layer.masksToBounds = true
+        
+    }
+}
+
+class BottomButton: UIButton {
+    
+    override init (frame: CGRect) {
+        super .init(frame: frame)
+        self.tintColor = .B5
+        self.backgroundColor = .B2?.withAlphaComponent(0.75)
+        self.layer.cornerRadius = 24
+        NSLayoutConstraint.activate([
+        self.heightAnchor.constraint(equalToConstant: 50), self.widthAnchor.constraint(equalToConstant: 50)])
+        
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+
+class LeftButton: UIButton {
+    override init (frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .B5
+        self.tintColor = .B2
+        self.alpha = 0.5
+        self.cornerRadius = 25
+        NSLayoutConstraint.activate([
+        self.heightAnchor.constraint(equalToConstant: 50),
+        self.widthAnchor.constraint(equalToConstant: 50)])
+        self.titleLabel?.font = UIFont.regular(size: 16)
+        self.titleLabel?.textAlignment = .center
+        
+    }
     
-    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 }
 
 
@@ -97,7 +147,6 @@ class UBikeButton: UIButton {
     }
 }
 
-
 class DismissButton: UIButton {
     
     override init(frame: CGRect) {
@@ -130,4 +179,6 @@ class DismissButton: UIButton {
         
         self.tintColor = .white
     }
+    
+  
 }
