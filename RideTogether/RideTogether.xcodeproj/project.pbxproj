@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2304FF4A280891AF00C6B1BF /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF49280891AF00C6B1BF /* Button.swift */; };
+		2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF49280891AF00C6B1BF /* ReuseButton.swift */; };
 		2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */; };
-		2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */; };
 		23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C30281CF43D001DE91D /* bike-city-rider.json */; };
 		23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C36281D0E60001DE91D /* waiting-pigeon.json */; };
 		23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C38281D11C7001DE91D /* SaveMapsViewController.swift */; };
@@ -38,7 +37,6 @@
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
-		237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279A2817ED2C004F039F /* PickPhotoButton.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
 		237A27A328182FE4004F039F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A228182FE4004F039F /* ProfileView.swift */; };
 		237A27A728199F2A004F039F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A628199F2A004F039F /* UIImageView.swift */; };
@@ -96,7 +94,6 @@
 		23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */; };
 		23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */; };
 		23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */; };
-		23CE42C0280FB77400C4C9F1 /* CreateGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42BF280FB77400C4C9F1 /* CreateGroupButton.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B736280033FB000EDA70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B734280033FB000EDA70 /* Main.storyboard */; };
@@ -154,9 +151,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2304FF49280891AF00C6B1BF /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		2304FF49280891AF00C6B1BF /* ReuseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseButton.swift; sourceTree = "<group>"; };
 		2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowJourneyViewController.swift; sourceTree = "<group>"; };
-		2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffLineMapButton.swift; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
 		23129C36281D0E60001DE91D /* waiting-pigeon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waiting-pigeon.json"; sourceTree = "<group>"; };
 		23129C38281D11C7001DE91D /* SaveMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMapsViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +181,6 @@
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
-		237A279A2817ED2C004F039F /* PickPhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPhotoButton.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		237A27A228182FE4004F039F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		237A27A628199F2A004F039F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -244,7 +239,6 @@
 		23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
 		23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
-		23CE42BF280FB77400C4C9F1 /* CreateGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupButton.swift; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -428,15 +422,13 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		23CE42A5280E5F0A00C4C9F1 /* ReuseButton */ = {
+		23CE42A5280E5F0A00C4C9F1 /* Reuse Element */ = {
 			isa = PBXGroup;
 			children = (
-				2304FF49280891AF00C6B1BF /* Button.swift */,
-				2304FF4F2808AED200C6B1BF /* OffLineMapButton.swift */,
-				23CE42BF280FB77400C4C9F1 /* CreateGroupButton.swift */,
-				237A279A2817ED2C004F039F /* PickPhotoButton.swift */,
+				2304FF49280891AF00C6B1BF /* ReuseButton.swift */,
+				235CB8E428354A1E0018101B /* ReuseLabel.swift */,
 			);
-			path = ReuseButton;
+			path = "Reuse Element";
 			sourceTree = "<group>";
 		};
 		23CE42BE280FB74700C4C9F1 /* Group */ = {
@@ -554,12 +546,11 @@
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23CB74C9281787B400DED822 /* Login.storyboard */,
-				235CB8E428354A1E0018101B /* ReuseLabel.swift */,
 				2360C6772825562E00EF21D3 /* Policy.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23C887192814285A00E3319A /* Home */,
 				23A84A682811570600DD8D39 /* Group */,
-				23CE42A5280E5F0A00C4C9F1 /* ReuseButton */,
+				23CE42A5280E5F0A00C4C9F1 /* Reuse Element */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
 			);
@@ -894,7 +885,6 @@
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
-				237A279B2817ED2C004F039F /* PickPhotoButton.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
@@ -953,7 +943,6 @@
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
-				23CE42C0280FB77400C4C9F1 /* CreateGroupButton.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
@@ -963,10 +952,9 @@
 				23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapViewDelegate.swift in Sources */,
-				2304FF502808AED200C6B1BF /* OffLineMapButton.swift in Sources */,
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
-				2304FF4A280891AF00C6B1BF /* Button.swift in Sources */,
+				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
 				23129C3F281D5B11001DE91D /* RouteCarLenViewController.swift in Sources */,
 				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,

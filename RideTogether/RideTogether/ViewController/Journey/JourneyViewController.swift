@@ -18,7 +18,7 @@ class JourneyViewController: BaseViewController {
     
     @IBOutlet weak var map: GPXMapView!
     
-    private var isDisplayingLocationServicesDenied: Bool = false
+    private var hasWaypoints: Bool = false
     
     private let locationManager: CLLocationManager = {
         
@@ -37,8 +37,7 @@ class JourneyViewController: BaseViewController {
         return manager
     }()
     
-    
-    private let mapViewDelegate = MapView()
+    private let mapView = MapView()
     
     enum GPXTrackingStatus {
         
@@ -122,40 +121,27 @@ class JourneyViewController: BaseViewController {
         }
     }
     
+    // MARK: - UIButton Setting -
+    
+    
+    private lazy var saveButton: UIButton = {
+        let button = LeftButton()
+        button.setTitle("儲存", for: .normal)
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var trackerButton: UIButton = {
         let button = LeftButton()
         button.setTitle("開始", for: .normal)
+        button.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var resetButton: UIButton = {
         let button = LeftButton()
         button.setTitle("重置", for: .normal)
-        return button
-    }()
-    
-    private lazy var saveButton: UIButton = {
-        let button = LeftButton()
-        button.setTitle("儲存", for: .normal)
-        return button
-    }()
-    
-    private lazy var showBike: UIButton = {
-        let button = UBikeButton()
-        return button
-    }()
-    
-    private lazy var presentViewControllerButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "info.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
-        return button
-    }()
-    
-    private lazy var sendSMSButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "message", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -163,6 +149,29 @@ class JourneyViewController: BaseViewController {
         let button = BottomButton()
         let image = UIImage(systemName: "location.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
         button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var showBike: UIButton = {
+        let button = UBikeButton()
+        button.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var presentViewControllerButton: UIButton = {
+        let button = BottomButton()
+        let image = UIImage(systemName: "info.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(presentRouteSelectionViewController), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var sendSMSButton: UIButton = {
+        let button = BottomButton()
+        let image = UIImage(systemName: "message", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         return button
     }()
     
@@ -170,35 +179,28 @@ class JourneyViewController: BaseViewController {
         let button = BottomButton()
         let mappin = UIImage(systemName: "mappin.and.ellipse",
                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
-        let mappinHighlighted = UIImage(systemName: "mappin.and.ellipse",
-                                        withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium ))
         button.setImage(mappin, for: UIControl.State())
-        button.setImage(mappinHighlighted, for: .highlighted)
         button.addTarget(self, action: #selector(addPinAtMyLocation), for: .touchUpInside)
         return button
     }()
     
-    private var hasWaypoints: Bool = false
-    
     @objc func addPinAtMyLocation() {
-        print("Adding Pin at my location")
         let altitude = locationManager.location?.altitude
         let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
         map.addWaypoint(waypoint)
         self.hasWaypoints = true
     }
     
-    // MARK: - UILongPressGestureRecognizer -
-    
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
-            print("Adding Pin map Long Press Gesture")
             map.clearOverlays()
             let point: CGPoint = gesture.location(in: self.map)
             map.addWaypointAtViewPoint(point)
             self.hasWaypoints = true
         }
     }
+    
+    // MARK: - View -
     
     private lazy var waveLottieView: AnimationView = {
         let view = AnimationView(name: "circle")
@@ -210,6 +212,23 @@ class JourneyViewController: BaseViewController {
         
         self.view.addSubview(view)
         self.view.bringSubviewToFront(leftStackView)
+        return view
+    }()
+    
+    private lazy var bikeLottieView: AnimationView = {
+        let view = AnimationView(name: "49908-bike-ride")
+        view.loopMode = .loop
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 60),
+            view.heightAnchor.constraint(equalToConstant: 60),
+            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45)
+        ])
+        view.contentMode = .scaleAspectFit
+        view.play()
+        
         return view
     }()
     
@@ -248,41 +267,20 @@ class JourneyViewController: BaseViewController {
     }()
     
     private var timeLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .right
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textColor = UIColor.B5
-        label.text = "00:00"
+        let label = RightLabel()
         return label
     }()
     
     private lazy var totalTrackedDistanceLabel: DistanceLabel = {
         let distanceLabel = DistanceLabel()
-        distanceLabel.textAlignment = .right
-        distanceLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        distanceLabel.textColor = UIColor.B5
-        distanceLabel.distance = 0.00
         return distanceLabel
     }()
     
     private lazy var currentSegmentDistanceLabel: DistanceLabel = {
         let distanceLabel = DistanceLabel()
-        distanceLabel.textAlignment = .right
-        distanceLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        distanceLabel.textColor = UIColor.B5
-        distanceLabel.distance = 0.00
         return distanceLabel
     }()
-    // MARK: - View Life Cycle
-    
-    fileprivate func setUpLocationManager() {
-        
-        locationManager.delegate = self
-        
-        locationManager.startUpdatingLocation()
-        
-        locationManager.startUpdatingHeading()
-    }
+    // MARK: - View Life Cycle -
     
     override func viewDidLoad() {
         
@@ -298,16 +296,15 @@ class JourneyViewController: BaseViewController {
         
         setUpMap()
         
-        setUpButtonsStackView()
-        
         setUpLabels()
         
-        navigationController?.isNavigationBarHidden = true
+        setUpButtonsStackView()
         
         addSegment()
         
-        mapViewDelegate.route.polyline.title = "two"
+        mapView.route.polyline.title = "two"
         
+        navigationController?.isNavigationBarHidden = true
         
     }
     
@@ -319,22 +316,15 @@ class JourneyViewController: BaseViewController {
         }
     }
     
-    private lazy var bikeLottieView: AnimationView = {
-        let view = AnimationView(name: "49908-bike-ride")
-        view.loopMode = .loop
-        self.view.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 60),
-            view.heightAnchor.constraint(equalToConstant: 60),
-            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45)
-        ])
-        view.contentMode = .scaleAspectFit
-        view.play()
+    func setUpLocationManager() {
         
-        return view
-    }()
+        locationManager.delegate = self
+        
+        locationManager.startUpdatingLocation()
+        
+        locationManager.startUpdatingHeading()
+    }
+    
     func addSegment() {
         let segmentControl = UISegmentedControl(items: ["一般", "衛星"])
         segmentControl.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
@@ -384,7 +374,7 @@ class JourneyViewController: BaseViewController {
         
         setBeginningRegion()
         
-        map.delegate = mapViewDelegate
+        map.delegate = mapView
         
         map.showsUserLocation = true
         
@@ -406,7 +396,7 @@ class JourneyViewController: BaseViewController {
         
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
-
+        
         composeVC.recipients = ["請輸入電話號碼"]
         composeVC.body = "傳送我的位置 經度 : \(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
         
@@ -503,7 +493,7 @@ class JourneyViewController: BaseViewController {
             }
         }
         
-       showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
+        showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
         
     }
     
@@ -546,36 +536,6 @@ class JourneyViewController: BaseViewController {
             
             return
         }
-    }
-    
-    func displayLocationServicesDisabledAlert() {
-        
-        let settingsAction = UIAlertAction(title: "設定", style: .default) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                
-                UIApplication.shared.open(url, options: [:])
-            }
-        }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-        
-        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
-        
-    }
-    
-    func displayLocationServicesDeniedAlert() {
-        
-        if isDisplayingLocationServicesDenied { return }
-        
-        let settingsAction = UIAlertAction(title: "設定",
-                                           style: .default) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url, options: [:]) }
-        }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-        
-        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
-        
-        isDisplayingLocationServicesDenied = false
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -621,30 +581,20 @@ class JourneyViewController: BaseViewController {
         ] )
         
         buttonStackView.addArrangedSubview(followUserButton)
+        
         buttonStackView.addArrangedSubview(pinButton)
+        
         buttonStackView.addArrangedSubview(sendSMSButton)
+        
         buttonStackView.addArrangedSubview(presentViewControllerButton)
+        
         buttonStackView.addArrangedSubview(showBike)
         
         leftStackView.addArrangedSubview(saveButton)
+        
         leftStackView.addArrangedSubview(trackerButton)
+        
         leftStackView.addArrangedSubview(resetButton)
-        
-        // MARK: - button method -
-        
-        trackerButton.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
-        
-        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
-        
-        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
-        
-        followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
-        
-        sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
-         
-        presentViewControllerButton.addTarget(self, action: #selector(presentRouteSelectionViewController), for: .touchUpInside)
-        
-        showBike.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
     }
     func setUpLabels() {
         
@@ -657,11 +607,11 @@ class JourneyViewController: BaseViewController {
         speedLabel.frame = CGRect(x: 10, y: 50, width: 200, height: 100)
         
         map.addSubview(timeLabel)
- 
+        
         timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
         
         map.addSubview(totalTrackedDistanceLabel)
-       
+        
         totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
         
         map.addSubview(currentSegmentDistanceLabel)
@@ -709,7 +659,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
             currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
         }
     }
- 
+    
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
         map.heading = newHeading

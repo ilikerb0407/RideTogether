@@ -22,10 +22,8 @@ class PreviousPageButton: UIButton {
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .light))
 
         
-        
         self.setImage(image, for: .normal)
         
-      
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +70,35 @@ class NextPageButton: UIButton {
         self.layer.masksToBounds = true
         
     }
+}
+class CreatGroupButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let width = UIScreen.width
+        let height = UIScreen.height
+        self.frame = CGRect(x: width * 0.8, y: height * 0.8, width: 70, height: 70)
+        self.backgroundColor = .B2?.withAlphaComponent(0.75)
+        self.setTitle("揪團", for: .normal)
+        self.setTitleColor(.B5, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = self.frame.height / 2
+        
+        self.layer.masksToBounds = true
+    }
+    
 }
 
 class BottomButton: UIButton {
@@ -179,6 +206,60 @@ class DismissButton: UIButton {
         
         self.tintColor = .white
     }
+}
+
+class ImagePikerButton: UIButton {
     
-  
+     var delegate: ImagePickerDelegate?
+    
+    required init?( coder aDecoder :NSCoder) {
+        super .init(coder: aDecoder)
+        
+        addTarget(self, action: #selector(pickImage), for: .touchUpInside)
+    }
+    
+    @objc func pickImage(sender: UIButton) {
+        
+        delegate?.presentImagePicker()
+        
+    }
+    
+}
+
+class RequestButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let width = UIScreen.width
+        let height = UIScreen.height
+        self.frame = CGRect(x: width * 0.8, y: height * 0.6, width: 70, height: 70)
+        
+        self.backgroundColor = .white
+        
+        let image = UIImage(named: "bike", in: nil, with: UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        
+        self.setImage(image, for: .normal)
+        
+        self.tintColor = .C4
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = self.frame.height / 2
+        
+        self.layer.masksToBounds = true
+    }
+    
+}
+
+protocol ImagePickerDelegate {
+    func presentImagePicker()
 }

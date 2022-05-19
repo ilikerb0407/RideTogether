@@ -12,12 +12,41 @@ import MessageUI
 import Lottie
 
 
-
-
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
     
-  
     let stopWatch = StopWatch()
+    
+    private var isDisplayingLocationServicesDenied: Bool = false
+    
+    func displayLocationServicesDisabledAlert() {
+        
+        let settingsAction = UIAlertAction(title: "設定", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        
+        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
+        
+    }
+    
+    func displayLocationServicesDeniedAlert() {
+        
+        if isDisplayingLocationServicesDenied { return }
+        
+        let settingsAction = UIAlertAction(title: "設定",
+                                           style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: [:]) }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        
+        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
+        
+        isDisplayingLocationServicesDenied = false
+    }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         
@@ -196,8 +225,5 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             }
         }
     }
-    
- 
-    
     
 }
