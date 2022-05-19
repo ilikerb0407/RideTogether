@@ -13,10 +13,11 @@ import Firebase
 import Lottie
 import MessageUI
 import JGProgressHUD
+ //
 
 class JourneyViewController: BaseViewController {
     
-    @IBOutlet weak var map: GPXMapView!
+    @IBOutlet weak var mapView: GPXMapView!
     
     private var hasWaypoints: Bool = false
     
@@ -37,7 +38,7 @@ class JourneyViewController: BaseViewController {
         return manager
     }()
     
-    private let mapView = MapView()
+    private let mapPin = MapPin()
     
     enum GPXTrackingStatus {
         
@@ -46,6 +47,7 @@ class JourneyViewController: BaseViewController {
         case tracking
         
         case paused
+        
     }
     
     private var trackingStatus: GPXTrackingStatus = GPXTrackingStatus.notStarted {
@@ -66,11 +68,11 @@ class JourneyViewController: BaseViewController {
                 
                 timeLabel.text = stopWatch.elapsedTimeString
                 
-                map.clearMap()
+                mapView.clearMap()
                 
-                totalTrackedDistanceLabel.distance = (map.session.totalTrackedDistance)
+                totalTrackedDistanceLabel.distance = (mapView.session.totalTrackedDistance)
                 
-                currentSegmentDistanceLabel.distance = (map.session.currentSegmentDistance)
+                currentSegmentDistanceLabel.distance = (mapView.session.currentSegmentDistance)
                 
             case .tracking:
                 
@@ -94,7 +96,7 @@ class JourneyViewController: BaseViewController {
                 
                 bikeLottieView.stop()
                 
-                self.map.startNewTrackSegment()
+                self.mapView.startNewTrackSegment()
             }
         }
     }
@@ -109,7 +111,7 @@ class JourneyViewController: BaseViewController {
                 
                 followUserButton.setImage(image, for: .normal)
                 
-                map.setCenter((map.userLocation.coordinate), animated: true)
+                mapView.setCenter((mapView.userLocation.coordinate), animated: true)
                 
             } else {
                 
@@ -122,7 +124,7 @@ class JourneyViewController: BaseViewController {
     }
     
     // MARK: - UIButton Setting -
-    
+    //
     
     private lazy var saveButton: UIButton = {
         let button = LeftButton()
@@ -132,7 +134,7 @@ class JourneyViewController: BaseViewController {
     }()
     
     private lazy var trackerButton: UIButton = {
-        let button = LeftButton()
+        let button = TrackButton()
         button.setTitle("開始", for: .normal)
         button.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
         return button
@@ -186,16 +188,17 @@ class JourneyViewController: BaseViewController {
     
     @objc func addPinAtMyLocation() {
         let altitude = locationManager.location?.altitude
-        let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? map.userLocation.coordinate, altitude: altitude)
-        map.addWaypoint(waypoint)
+        let waypoint = GPXWaypoint(coordinate: locationManager.location?.coordinate ?? mapView.userLocation.coordinate, altitude: altitude)
+        mapView.addWaypoint(waypoint)
         self.hasWaypoints = true
+        
     }
     
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == UIGestureRecognizer.State.began {
-            map.clearOverlays()
-            let point: CGPoint = gesture.location(in: self.map)
-            map.addWaypointAtViewPoint(point)
+            mapView.clearOverlays()
+            let point: CGPoint = gesture.location(in: self.mapView)
+            mapView.addWaypointAtViewPoint(point)
             self.hasWaypoints = true
         }
     }
@@ -256,30 +259,16 @@ class JourneyViewController: BaseViewController {
     
     // MARK: - Label -
     
-    private var altitudeLabel: UILabel = {
-        let label = LeftLabel()
-        return label
-    }()
+    private var altitudeLabel = LeftLabel()
+       
+    private var speedLabel = LeftLabel()
     
-    private var speedLabel: UILabel = {
-        let label = LeftLabel()
-        return label
-    }()
+    private var timeLabel = RightLabel()
+       
+    private var totalTrackedDistanceLabel = DistanceLabel()
     
-    private var timeLabel: UILabel = {
-        let label = RightLabel()
-        return label
-    }()
-    
-    private lazy var totalTrackedDistanceLabel: DistanceLabel = {
-        let distanceLabel = DistanceLabel()
-        return distanceLabel
-    }()
-    
-    private lazy var currentSegmentDistanceLabel: DistanceLabel = {
-        let distanceLabel = DistanceLabel()
-        return distanceLabel
-    }()
+    private lazy var currentSegmentDistanceLabel = DistanceLabel()
+   
     // MARK: - View Life Cycle -
     
     override func viewDidLoad() {
@@ -292,7 +281,7 @@ class JourneyViewController: BaseViewController {
         
         stopWatch.delegate = self
         
-        RecordManager.shared.detectDeviceAndUpload()
+//        RecordManager.shared.detectDeviceAndUpload()
         
         setUpMap()
         
@@ -302,7 +291,7 @@ class JourneyViewController: BaseViewController {
         
         addSegment()
         
-        mapView.route.polyline.title = "two"
+        mapPin.route.polyline.title = "two"
         
         navigationController?.isNavigationBarHidden = true
         
@@ -340,21 +329,21 @@ class JourneyViewController: BaseViewController {
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0 :
-            map.mapType = .mutedStandard
+            mapView.mapType = .mutedStandard
             speedLabel.textColor = .B5
             timeLabel.textColor = .B5
             altitudeLabel.textColor = .B5
             currentSegmentDistanceLabel.textColor = .B5
             totalTrackedDistanceLabel.textColor = .B5
         case 1 :
-            map.mapType = .hybridFlyover
+            mapView.mapType = .hybridFlyover
             speedLabel.textColor = .B2
             timeLabel.textColor = .B2
             altitudeLabel.textColor = .B2
             currentSegmentDistanceLabel.textColor = .B2
             totalTrackedDistanceLabel.textColor = .B2
         default :
-            map.mapType = .standard
+            mapView.mapType = .standard
         }
         
     }
@@ -362,31 +351,32 @@ class JourneyViewController: BaseViewController {
     // MARK: - Action -
     
     fileprivate func setBeginningRegion() {
+        //
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
         let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         let region = MKCoordinateRegion(center: center, span: span)
         
-        map.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
     }
     
     func setUpMap() {
         
         setBeginningRegion()
         
-        map.delegate = mapView
+        mapView.delegate = mapPin
         
-        map.showsUserLocation = true
+        mapView.showsUserLocation = true
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
         
         panGesture.delegate = self
         
-        map.addGestureRecognizer(panGesture)
+        mapView.addGestureRecognizer(panGesture)
         
-        map.rotationGesture.delegate = self
+        mapView.rotationGesture.delegate = self
         
-        map.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
+        mapView.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
                                                                action: #selector(addPinAtTappedLocation(_:))))
     }
     
@@ -454,7 +444,7 @@ class JourneyViewController: BaseViewController {
         let saveAction = UIAlertAction(title: "儲存",
                                        style: .default) { _ in
             
-            let gpxString = self.map.exportToGPXString()
+            let gpxString = self.mapView.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text
             
@@ -547,11 +537,11 @@ class JourneyViewController: BaseViewController {
     
     func updatePolylineColor() {
         
-        for overlay in map.overlays where overlay is MKPolyline {
+        for overlay in mapView.overlays where overlay is MKPolyline {
             
-            map.removeOverlay(overlay)
+            mapView.removeOverlay(overlay)
             
-            map.addOverlay(overlay)
+            mapView.addOverlay(overlay)
         }
     }
     // MARK: - UI Settings -
@@ -598,23 +588,23 @@ class JourneyViewController: BaseViewController {
     }
     func setUpLabels() {
         
-        map.addSubview(altitudeLabel)
+        mapView.addSubview(altitudeLabel)
         
         altitudeLabel.frame = CGRect(x: 10, y: 80, width: 200, height: 100)
         
-        map.addSubview(speedLabel)
+        mapView.addSubview(speedLabel)
         
         speedLabel.frame = CGRect(x: 10, y: 50, width: 200, height: 100)
         
-        map.addSubview(timeLabel)
+        mapView.addSubview(timeLabel)
         
         timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
         
-        map.addSubview(totalTrackedDistanceLabel)
+        mapView.addSubview(totalTrackedDistanceLabel)
         
         totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
         
-        map.addSubview(currentSegmentDistanceLabel)
+        mapView.addSubview(currentSegmentDistanceLabel)
         
         currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 120, width: 100, height: 30)
     }
@@ -647,22 +637,22 @@ extension JourneyViewController: CLLocationManagerDelegate {
         
         if followUser {
             
-            map.setCenter(newLocation.coordinate, animated: true)
+            mapView.setCenter(newLocation.coordinate, animated: true)
         }
         
         if trackingStatus == .tracking {
             
-            map.addPointToCurrentTrackSegmentAtLocation(newLocation)
+            mapView.addPointToCurrentTrackSegmentAtLocation(newLocation)
             
-            totalTrackedDistanceLabel.distance = map.session.totalTrackedDistance
+            totalTrackedDistanceLabel.distance = mapView.session.totalTrackedDistance
             
-            currentSegmentDistanceLabel.distance = map.session.currentSegmentDistance
+            currentSegmentDistanceLabel.distance = mapView.session.currentSegmentDistance
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         
-        map.heading = newHeading
-        map.updateHeading()
+        mapView.heading = newHeading
+        mapView.updateHeading()
     }
 }

@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import SwiftUI
 
-class MapView: NSObject, MKMapViewDelegate, weatherProvider {
+class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     
     
     let baseVC = BaseViewController()
@@ -19,7 +19,6 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
     func provideWeather(weather: ResponseBody) {
         weatherData = weather
     }
-    
     var weatherData : ResponseBody?
     
     let weatherManger = WeatherManager()
@@ -155,9 +154,7 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
     
     let kEditWaypointButtonTag = 333
     
-
-
-    // MARK: 刪除 Pin
+    // MARK: - map Annotation -
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
@@ -218,15 +215,14 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 alertSheet.addAction(removeOption)
                 alertSheet.addAction(cancelAction)
                 
-                
-                let VC = UIViewController.getLastPresentedViewController()
-                VC?.present(alertSheet, animated: true)
+                let lastVC = UIViewController.getLastPresentedViewController()
+                lastVC?.present(alertSheet, animated: true)
     
                 // iPad specific code
                 
-                alertSheet.popoverPresentationController?.sourceView = VC?.view
+                alertSheet.popoverPresentationController?.sourceView = lastVC?.view
 
-                let xOrigin = (VC?.view.bounds.width)! / 2
+                let xOrigin = (lastVC?.view.bounds.width)! / 2
 
                 let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
 
@@ -235,11 +231,7 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
             case kEditWaypointButtonTag:
-                print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
                 
-                let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
-                
-        
                 let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
                 
                 alertController.addTextField { (textField) in
@@ -262,7 +254,6 @@ class MapView: NSObject, MKMapViewDelegate, weatherProvider {
                 self.waypointBeingEdited = waypoint
                 
             default:
-                print("[calloutAccesoryControlTapped ERROR] unknown control")
                 LKProgressHUD.showFailure(text: "網路問題，無法顯示")
             }
         }

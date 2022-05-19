@@ -133,7 +133,26 @@ class LeftButton: UIButton {
         self.widthAnchor.constraint(equalToConstant: 50)])
         self.titleLabel?.font = UIFont.regular(size: 16)
         self.titleLabel?.textAlignment = .center
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+class TrackButton: UIButton {
+    override init (frame: CGRect) {
+        super.init(frame: frame)
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .B5
+        self.tintColor = .B2
+        self.alpha = 0.5
+        self.cornerRadius = 35
+        NSLayoutConstraint.activate([
+        self.heightAnchor.constraint(equalToConstant: 70),
+        self.widthAnchor.constraint(equalToConstant: 70)])
+        self.titleLabel?.font = UIFont.regular(size: 16)
+        self.titleLabel?.textAlignment = .center
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -87,8 +87,8 @@ extension Double {
     func sunrise () -> String {
         
         let seconds = Int(self)
-        
-        let hour = (seconds % 3600) % 60 / 10 + 4 
+   
+        let hour = (seconds % 3600) % 7
 //        1652389852
         let minute = (seconds % 3600) / 60
         
@@ -96,7 +96,7 @@ extension Double {
         
         timeString += hour.description
         
-        timeString += ":"
+        timeString += ":0"
         
         timeString += minute.description
         
@@ -107,7 +107,7 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds % 3600) % 60 % 24 / 3
+        let hour = (seconds % 3600) % 7
         
         let minute = (seconds % 3600) / 60
         

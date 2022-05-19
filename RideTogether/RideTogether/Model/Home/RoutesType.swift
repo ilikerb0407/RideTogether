@@ -17,7 +17,6 @@ protocol RoutesPhoto {
     
 }
 
-
 enum RoutesType: String, RoutesPhoto, CaseIterable {
     
     case userOne = "朋友路線"

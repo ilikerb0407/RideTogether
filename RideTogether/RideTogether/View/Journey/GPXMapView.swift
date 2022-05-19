@@ -22,7 +22,6 @@ class GPXMapView: MKMapView {
     
     let weatherManger = WeatherManager()
     
-    ///
     let coreDataHelper = CoreDataHelper()
 
     let session = GPXSession()
