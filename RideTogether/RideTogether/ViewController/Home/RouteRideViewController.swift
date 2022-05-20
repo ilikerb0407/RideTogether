@@ -17,11 +17,17 @@ import JGProgressHUD
 
 class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocationManagerDelegate {
     
+
+    
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         timeLabel.text = elapsedTimeString
     }
     
-
+    
+    var userName = UserManager.shared.userInfo.userName!
+    
+//    var userName = Auth.auth().currentUser?.displayName
+    
     @IBOutlet weak var map3: GPXMapView!
     
     
@@ -29,7 +35,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
     
         private var isDisplayingLocationServicesDenied: Bool = false
-        
         
         /// Name of the last file that was saved (without extension)
         var lastGpxFilename: String = ""
@@ -72,7 +77,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         // MARK: =========
         
-        private var stopWatch = StopWatch()
         
         private var lastLocation: CLLocation?
         
@@ -93,7 +97,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             return manager
         }()
         
-        private let mapViewDelegate = MapViewDelegate()
+        private let mapViewDelegate = MapPin()
         
         enum GpxTrackingStatus {
             
@@ -338,8 +342,27 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
+    
         
         // MARK: - View Life Cycle
+    
+    
+    func backToJourneyButton() {
+        let button = UBikeButton(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
+        button.addTarget(self, action: #selector(showBike), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func showBike(_ sender: UIButton) {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else { }}
+    }
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -365,6 +388,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             praseGPXFile()
             
             LKProgressHUD.dismiss()
+            
+            backToJourneyButton()
             
         }
         
@@ -419,8 +444,8 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             //   If user long presses the map, it will add a Pin (waypoint) at that point
             
-            map3.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-                                                                   action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
+//            map3.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
+//                                                                   action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
             
             self.view.addSubview(map3)
             
@@ -459,7 +484,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
             
-            let defaultFileName = "\(time)"
+            let defaultFileName = "\(userName) 紀錄了從..到.."
             
             let alertController = UIAlertController(title: "Save Record",
                                                     message: "Please enter the title",
@@ -533,7 +558,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             sheet.popoverPresentationController?.permittedArrowDirections = .up
         }
         
-        @objc func followButtonTroggler() {
+        @objc func followButtonToggle() {
             
             self.followUser = !self.followUser
         }
@@ -560,46 +585,19 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
                 return
             }
             
-            if !([.authorizedAlways, .authorizedWhenInUse]
-                    .contains(locationManager.authorizationStatus)) {
-                
-                displayLocationServicesDeniedAlert()
-                
-                return
-            }
-        }
-        
-        func displayLocationServicesDisabledAlert() {
-            
-            let settingsAction = UIAlertAction(title: "設定", style: .default) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
+            if #available(iOS 14.0, *) {
+                if !([.authorizedAlways, .authorizedWhenInUse]
+                        .contains(locationManager.authorizationStatus)) {
                     
-                    UIApplication.shared.open(url, options: [:])
+                    displayLocationServicesDeniedAlert()
+                    
+                    return
                 }
+            } else {
+                // Fallback on earlier versions
             }
-            
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-            
-            showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
         }
         
-        func displayLocationServicesDeniedAlert() {
-            
-            if isDisplayingLocationServicesDenied { return }
-            
-            let settingsAction = UIAlertAction(title: "設定",
-                                               style: .default) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:])
-                }
-            }
-            let cancelAction = UIAlertAction(title: "取消",
-                                             style: .cancel)
-            
-            showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
-            
-            isDisplayingLocationServicesDenied = false
-        }
         
 
         // MARK: - UI Settings -
@@ -667,7 +665,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
-        followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         

@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseFirestore
-// + Hashable
 
 struct Group: Codable {
     
@@ -23,6 +22,7 @@ struct Group: Codable {
     var isExpired: Bool?
     
     enum CodingKeys: String, CodingKey {
+        
         case groupId = "group_id"
         case groupName = "group_name"
         case hostId = "host_id"
@@ -47,11 +47,5 @@ struct Group: Codable {
         self.userIds = []
         self.isExpired = false
     }
-    
-    
-    
+        
 }
-
-
-
-

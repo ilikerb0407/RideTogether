@@ -9,7 +9,13 @@ import UIKit
 import Lottie
 import QuartzCore
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, Reload {
+    
+    func reload() {
+        
+    }
+    
+    var trackVC = TracksViewController()
     
     
     private var headerView: HomeHeader?
@@ -19,6 +25,8 @@ class HomeViewController: BaseViewController {
             manageRouteData()
         }
     }
+    
+    var userOne = [Route]()
     
     var recommendOne = [Route]()
     
@@ -58,8 +66,6 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
 //        navigationController?.isNavigationBarHidden = false
 //
 //        tabBarController?.tabBar.isHidden = false
@@ -75,12 +81,21 @@ class HomeViewController: BaseViewController {
         
         setUpTableView()
         
-        fetchTrailData()
+        
+        
+//
+//        reload()
         
 //        bikelottie.play()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchTrailData()
+        
+    }
     
     @IBOutlet weak var gView: UIView! {
         didSet {
@@ -94,7 +109,6 @@ class HomeViewController: BaseViewController {
     func setUpTableView() {
         
         
-        
         tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
@@ -104,7 +118,6 @@ class HomeViewController: BaseViewController {
         tableView.backgroundColor = .clear
         
         tableView.separatorStyle = .none
-        
         
     }
     
@@ -117,14 +130,25 @@ class HomeViewController: BaseViewController {
     
     func manageRouteData() {
         
+        userOne = []
+        
+        recommendOne = []
+        
+        riverOne = []
+        
+        mountainOne = []
+        
         for route in routes {
             
             switch route.routeTypes {
+                
             case 0 :
-                recommendOne.append(route)
+                userOne.append(route)
             case 1 :
-                riverOne.append(route)
+                recommendOne.append(route)
             case 2 :
+                riverOne.append(route)
+            case 3 :
                 mountainOne.append(route)
             default:
                 return
@@ -134,6 +158,7 @@ class HomeViewController: BaseViewController {
     }
     
     func fetchTrailData() {
+        
         MapsManager.shared.fetchRoutes { result in
             
             switch result {
@@ -141,6 +166,8 @@ class HomeViewController: BaseViewController {
             case .success(let routes):
                 
                 self.routes = routes
+                
+                self.tableView.reloadData()
                 
             case .failure(let error):
                 
@@ -162,7 +189,6 @@ extension HomeViewController: UITableViewDelegate {
         
         self.headerView = headerView
 
-        
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
         
         return self.headerView
@@ -183,10 +209,12 @@ extension HomeViewController: UITableViewDelegate {
         
         switch indexPath.row {
         case 0 :
-            sender = recommendOne
+            sender = userOne
         case 1 :
-            sender = riverOne
+            sender = recommendOne
         case 2 :
+            sender = riverOne
+        case 3 :
             sender = mountainOne
         default:
             return
@@ -196,10 +224,10 @@ extension HomeViewController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.route.rawValue {
-            if let routeListVC = segue.destination as? RouteViewController{
+            
+            if let routeListVC = segue.destination as? RouteViewController {
                 
                 if let routes = sender as? [Route] {
-                    
                     routeListVC.routes = routes
                 }
             }

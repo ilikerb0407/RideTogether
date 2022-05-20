@@ -15,7 +15,8 @@ protocol weatherProvider {
 class WeatherManager {
     
     var delegate: weatherProvider?
-
+    
+//"https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json"
     
     func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (ResponseBody) -> Void) {
         
@@ -32,6 +33,7 @@ class WeatherManager {
             } catch {
                 print(error)
             }
+            
         }) .resume()
     }
     

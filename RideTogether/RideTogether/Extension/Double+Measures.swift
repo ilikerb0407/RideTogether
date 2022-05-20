@@ -18,11 +18,11 @@ extension Double {
     }
     
     func toKilometers() -> String {
-        return String(format: "%.2fkm", toKilometers() as Double)
+        return String(format: "%.2f 公里", toKilometers() as Double)
     }
     
     func toMeters() -> String {
-        return String(format: "%.0fm", self as Double)
+        return String(format: "%.0f 公尺", self as Double)
     }
     
     func toDistance() -> String {
@@ -44,7 +44,7 @@ extension Double {
     }
     
     func toKilometersPerHour() -> String {
-        return String(format: "%.1fkm/h", toKilometersPerHour() as Double)
+        return String(format: "%.1f 里/時", toKilometersPerHour() as Double)
     }
     
     func toSpeed() -> String {
@@ -87,18 +87,16 @@ extension Double {
     func sunrise () -> String {
         
         let seconds = Int(self)
-        
-        let hour = (seconds / 3600) - 458920
-        
+   
+        let hour = (seconds % 3600) % 7
+//        1652389852
         let minute = (seconds % 3600) / 60
-        
-        let second = (seconds % 3600) % 60
         
         var timeString = ""
         
         timeString += hour.description
         
-        timeString += ":"
+        timeString += ":0"
         
         timeString += minute.description
         
@@ -109,11 +107,9 @@ extension Double {
         
         let seconds = Int(self)
         
-        let hour = (seconds / 3600) - 458932
+        let hour = (seconds % 3600) % 7
         
         let minute = (seconds % 3600) / 60
-        
-        let second = (seconds % 3600) % 60
         
         var timeString = ""
         

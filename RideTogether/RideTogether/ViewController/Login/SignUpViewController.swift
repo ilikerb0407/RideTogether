@@ -51,7 +51,7 @@ class SignUpViewController: BaseViewController {
                             
                             self.userInfo.uid = uid
                             
-                            self.userInfo.userName = "破風手你好"
+                            self.userInfo.userName = "破風手"
                             // upload mock photo url to get url
                             self.userInfo.pictureRef = ""
                             
@@ -94,6 +94,7 @@ class SignUpViewController: BaseViewController {
                         } else {
                             
                             self.fetchUserInfo(uid: uid)
+                        
                         }
                         
                     }
@@ -134,6 +135,8 @@ class SignUpViewController: BaseViewController {
             case .failure(let error):
                 
                 print("Fetch user info failure: \(error)")
+                
+                LKProgressHUD.showFailure(text: "讀取使用者資料失敗")
             }
         }
     }
@@ -211,6 +214,7 @@ class SignUpViewController: BaseViewController {
                                 identifier: TabBarController.identifier) as? TabBarController else { return }
                             
                             tabbarVC.modalPresentationStyle = .fullScreen
+                            
                             
                             self.present(tabbarVC, animated: true, completion: nil)
                             

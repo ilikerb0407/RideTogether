@@ -24,4 +24,9 @@ target 'RideTogether' do
   pod 'JGProgressHUD'
   pod 'Firebase/Crashlytics'
 
+  target 'RideTogetherTests' do
+        inherit! :search_paths
+        pod 'Firebase'
+    end
+
 end

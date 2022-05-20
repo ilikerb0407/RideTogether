@@ -20,6 +20,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         fetchGroupData()
         
+        tableView.reloadData()
+        
     }
     
     var table: UITableView?
@@ -91,8 +93,20 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             tableView.dataSource = self
         }
     }
+    func tapAndDismiss() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+        tap.delegate = self
+                //shouldReceiveTouch on UITableViewCellContentView
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
     
-    
+    @objc func dismissKeyBoard() {
+        
+        groupHeaderCell?.searchBar.resignFirstResponder()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +126,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         table?.delegate = self
         
         VC.delegate = self
+        
+        tapAndDismiss()
         
     }
     
@@ -178,22 +194,23 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
-        button.setTitleColor(.B5, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
         
     }
     
     @objc func creatGroup() {
-        
-//       performSegue(withIdentifier: SegueIdentifier.buildTeam.rawValue, sender: nil)
+ 
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController {
             let navBar = UINavigationController.init(rootViewController: rootVC)
-            if let presentVc = navBar.sheetPresentationController {
-                presentVc.detents = [ .large(), .medium() ]
-                rootVC.delegate = self
-            self.navigationController?.present(navBar, animated: true, completion: .none)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [ .large(), .medium() ]
+                    rootVC.delegate = self
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                LKProgressHUD.showFailure(text: "無法創建活動")
             }
         }
     }
@@ -237,9 +254,9 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
        
-        unexpiredGroup.sort { $0.date.seconds > $1.date.seconds }
+        unexpiredGroup.sort { $0.date.seconds < $1.date.seconds }
         
-        expiredGroup.sort { $0.date.seconds > $1.date.seconds }
+        expiredGroup.sort { $0.date.seconds < $1.date.seconds }
         
         myGroups =  unexpiredGroup + expiredGroup
     }
@@ -262,18 +279,17 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                     filteredGroups.append(group)
                 }
                 
-                self.myGroups = filteredGroups.filter {
-                    $0.userIds.contains(self.userInfo.uid)
-                    
-                }
+                self.myGroups = filteredGroups.filter { $0.userIds.contains(self.userInfo.uid) }
+                
+                self.rearrangeMyGroup(groups: self.myGroups)
                 
 //                self.inActivityGroup = filteredGroups.sorted { $0.date.seconds < $1.date.seconds  }
                 
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
                 
-//                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
+                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
                 
-                self.rearrangeMyGroup(groups: self.myGroups)
+//                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
                 
                 filteredGroups.forEach { group in
                     
@@ -290,6 +306,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             case .failure(let error):
                 
                 print("fetchData.failure: \(error)")
+                
+                LKProgressHUD.showFailure(text: "讀取資料失敗")
             }
         }
     }
@@ -397,7 +415,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
     
-    
     func setUpTableView() {
         
         tableView = UITableView()
@@ -435,6 +452,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         return fitledGroups
     }
+    
+    
     
   
 

@@ -26,7 +26,6 @@ class ProfileTableViewCell: UITableViewCell {
         
         itemImage.image = ProfileItemType.allCases[indexPath.item].image
     
-        
     }
     
     override func awakeFromNib() {
@@ -45,5 +44,6 @@ class ProfileTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         itemBackground.layer.cornerRadius = 20
+        
     }
 }

@@ -15,7 +15,8 @@ struct TrackInfo: Codable {
     var spentTime: TimeInterval
     var avgSpeed: Double
     
-    // 目前用不到的資料
+// 目前用不到的資料
+    
     var elevationDiff: Double
     var totalClimb: Double
     var totalDrop: Double
@@ -34,7 +35,9 @@ struct TrackInfo: Codable {
 // ChartView
 
 struct TrackChartData {
+    
     var elevation: [Double] = []
     var time: [Double] = []
     var distance: [Double] = []
+    
 }

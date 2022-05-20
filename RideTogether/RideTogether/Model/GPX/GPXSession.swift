@@ -10,8 +10,8 @@ import CoreGPX
 import CoreLocation
 
 #if os(iOS)
-/// GPX creator identifier. Used on generated files identify this app created them.
-let kGPXCreatorString = "Open GPX Tracker for iOS"
+
+let kGPXCreatorString = "RideTogether for iOS"
 
 #endif
 

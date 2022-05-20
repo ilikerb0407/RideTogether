@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9ko-J6-rRR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9ko-J6-rRR">
     <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -163,6 +164,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="niL-H0-BHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094" y="86"/>
+        </scene>
+        <!--Bike View Controller-->
+        <scene sceneID="zoB-jH-eXg">
+            <objects>
+                <viewController storyboardIdentifier="UbikeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mp1-VN-gNM" customClass="UBikeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTj-rK-98U">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-HP-r8V">
+                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FcP-Nm-Mki"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QOb-HP-r8V" firstAttribute="top" secondItem="FcP-Nm-Mki" secondAttribute="top" id="Usi-zv-yJf"/>
+                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="bottom" secondItem="QOb-HP-r8V" secondAttribute="bottom" id="Yev-Wa-QQS"/>
+                            <constraint firstItem="QOb-HP-r8V" firstAttribute="leading" secondItem="FcP-Nm-Mki" secondAttribute="leading" id="njB-Pq-PIR"/>
+                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="trailing" secondItem="QOb-HP-r8V" secondAttribute="trailing" id="uDv-IV-QAa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bikemap" destination="QOb-HP-r8V" id="ZyG-JO-pJo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TjM-vq-nDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1304" y="884"/>
         </scene>
     </scenes>
     <resources>

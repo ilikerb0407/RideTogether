@@ -432,11 +432,15 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                 delegate?.sendRouteTwice(map: route)
                 
 //                self.present(viewController, animated: true)
-                if let presentVc = viewController.sheetPresentationController {
-                    
-                    presentVc.detents = [ .large(), .medium() ]
-                    
-                self.navigationController?.present(viewController, animated: true, completion: .none)
+                if #available(iOS 15.0, *) {
+                    if let presentVc = viewController.sheetPresentationController {
+                        
+                        presentVc.detents = [ .large(), .medium() ]
+                        
+                        self.navigationController?.present(viewController, animated: true, completion: .none)
+                    }
+                } else {
+                    // Fallback on earlier versions
                 }
                 
                 

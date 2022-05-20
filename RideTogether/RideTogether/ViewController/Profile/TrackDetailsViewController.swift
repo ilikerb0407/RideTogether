@@ -43,7 +43,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         }
     }
     
-    private let mapViewDelegate = MapViewDelegate()
+    private let mapViewDelegate = MapPin()
     
     // 只會有一筆
     var record = Record()
@@ -68,7 +68,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         praseGPXFile()
         
-        backToJourneyButton()
+//        backToJourneyButton()
         
         updateInfo(data: trackInfo)
         

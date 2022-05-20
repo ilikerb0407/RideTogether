@@ -8,11 +8,11 @@
 import UIKit
 import MASegmentedControl
 
-class GroupHeaderCell: UITableViewCell {
+class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
         
     @IBOutlet weak var resquestsBell: UIButton! {
         didSet {
-            resquestsBell.backgroundColor = .darkGray
+            resquestsBell.backgroundColor = .B5
         }
     }
     
@@ -34,9 +34,22 @@ class GroupHeaderCell: UITableViewCell {
             self.searchBar.searchTextField.font = UIFont.regular(size: 20)
             
             self.searchBar.placeholder = "查詢路線"
+            
+//            self.searchBar.showsCancelButton = true
+//
+//            self.searchBar.endEditing(true)
         }
         
     }
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        self.searchBar.resignFirstResponder()
+//    }
+//    
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        self.searchBar.text = ""
+//        self.searchBar.resignFirstResponder()
+//    }
     
     override func awakeFromNib() {
         
@@ -57,6 +70,8 @@ class GroupHeaderCell: UITableViewCell {
         searchBar.clipsToBounds = true
         
         selectionStyle = .none
+        
+       
         
     }
     
