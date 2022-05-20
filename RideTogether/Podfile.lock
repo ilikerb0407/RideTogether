@@ -223,6 +223,8 @@ PODS:
   - Charts/Core (4.0.2):
     - SwiftAlgorithms (~> 1.0)
   - CoreGPX (0.9.0)
+  - Firebase (6.34.0):
+    - Firebase/Core (= 6.34.0)
   - Firebase/Auth (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.9.2)
@@ -359,6 +361,7 @@ PODS:
 DEPENDENCIES:
   - Charts
   - CoreGPX
+  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Crashlytics
@@ -446,6 +449,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
 
-PODFILE CHECKSUM: 3caec732e3183a5f44f58636eb097827e666b658
+PODFILE CHECKSUM: a51d035d1117788a23d713888387e010ff098c7b
 
 COCOAPODS: 1.11.2

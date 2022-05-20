@@ -382,12 +382,12 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 
                 UserManager.shared.userInfo = userInfo
                 
-                guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                guard let tabBarVC = UIStoryboard.main.instantiateViewController(
                     identifier: TabBarController.identifier) as? TabBarController else { return }
                 
-                tabbarVC.modalPresentationStyle = .fullScreen
+                tabBarVC.modalPresentationStyle = .fullScreen
                 
-                self.present(tabbarVC, animated: true, completion: nil)
+                self.present(tabBarVC, animated: true, completion: nil)
                 
             case .failure(let error):
                 

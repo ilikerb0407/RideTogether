@@ -124,7 +124,6 @@ class JourneyViewController: BaseViewController {
     }
     
     // MARK: - UIButton Setting -
-    //
     
     private lazy var saveButton: UIButton = {
         let button = LeftButton()

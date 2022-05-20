@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseFirestore
-// + Hashable
 
 struct Group: Codable {
     
@@ -50,4 +49,3 @@ struct Group: Codable {
     }
         
 }
-

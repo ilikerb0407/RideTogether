@@ -66,8 +66,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         
         let annotationView = MKPinAnnotationView()
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
-        guard let map = mapView as? GPXMapView else { return }
-        let renderer = MKPolylineRenderer()
         let targetCoordinate = annotationView.annotation?.coordinate
         let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
         let targetItem = MKMapItem(placemark: targetPlacemark)

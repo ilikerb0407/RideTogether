@@ -34,6 +34,10 @@
 		233206C92826483D0017864C /* Noto_Sans_TC in Resources */ = {isa = PBXBuildFile; fileRef = 233206C82826483D0017864C /* Noto_Sans_TC */; };
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
+		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
+		234A167E2837568D00E09F09 /* RideTogetherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A167D2837568D00E09F09 /* RideTogetherUITests.swift */; };
+		234A16802837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A167F2837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift */; };
+		234A168D2837656900E09F09 /* RideTogetherMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A168C2837656900E09F09 /* RideTogetherMapTests.swift */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
@@ -149,9 +153,35 @@
 		23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
+		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		234A1672283738E200E09F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23D1B723280033FB000EDA70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
+			remoteInfo = RideTogether;
+		};
+		234A16812837568D00E09F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23D1B723280033FB000EDA70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
+			remoteInfo = RideTogether;
+		};
+		234A168E2837656900E09F09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23D1B723280033FB000EDA70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
+			remoteInfo = RideTogether;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2304FF49280891AF00C6B1BF /* ReuseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseButton.swift; sourceTree = "<group>"; };
 		2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowJourneyViewController.swift; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
@@ -179,6 +209,13 @@
 		233206C82826483D0017864C /* Noto_Sans_TC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto_Sans_TC; sourceTree = "<group>"; };
 		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
+		234A167B2837568D00E09F09 /* RideTogetherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		234A167D2837568D00E09F09 /* RideTogetherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherUITests.swift; sourceTree = "<group>"; };
+		234A167F2837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		234A168A2837656900E09F09 /* RideTogetherMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		234A168C2837656900E09F09 /* RideTogetherMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherMapTests.swift; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
@@ -300,10 +337,34 @@
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
+		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
+		A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		234A166B283738E200E09F09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234A16782837568D00E09F09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234A16872837656900E09F09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23D1B728280033FB000EDA70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +419,31 @@
 				23C887262815450500E3319A /* RouteRideViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		234A166F283738E200E09F09 /* RideTogetherTests */ = {
+			isa = PBXGroup;
+			children = (
+				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
+			);
+			path = RideTogetherTests;
+			sourceTree = "<group>";
+		};
+		234A167C2837568D00E09F09 /* RideTogetherUITests */ = {
+			isa = PBXGroup;
+			children = (
+				234A167D2837568D00E09F09 /* RideTogetherUITests.swift */,
+				234A167F2837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift */,
+			);
+			path = RideTogetherUITests;
+			sourceTree = "<group>";
+		};
+		234A168B2837656900E09F09 /* RideTogetherMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				234A168C2837656900E09F09 /* RideTogetherMapTests.swift */,
+			);
+			path = RideTogetherMapTests;
 			sourceTree = "<group>";
 		};
 		237A27A8281A6948004F039F /* Login */ = {
@@ -450,6 +536,9 @@
 			children = (
 				23D1B7F7280561D3000EDA70 /* Third Party Wrapper */,
 				23D1B72D280033FB000EDA70 /* RideTogether */,
+				234A166F283738E200E09F09 /* RideTogetherTests */,
+				234A167C2837568D00E09F09 /* RideTogetherUITests */,
+				234A168B2837656900E09F09 /* RideTogetherMapTests */,
 				23D1B72C280033FB000EDA70 /* Products */,
 				B8861B4BB71FEA4F16110C05 /* Pods */,
 				280213B7E321F791376F648A /* Frameworks */,
@@ -460,6 +549,9 @@
 			isa = PBXGroup;
 			children = (
 				23D1B72B280033FB000EDA70 /* RideTogether.app */,
+				234A166E283738E200E09F09 /* RideTogetherTests.xctest */,
+				234A167B2837568D00E09F09 /* RideTogetherUITests.xctest */,
+				234A168A2837656900E09F09 /* RideTogetherMapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -673,6 +765,7 @@
 			isa = PBXGroup;
 			children = (
 				E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */,
+				1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -682,6 +775,8 @@
 			children = (
 				6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */,
 				406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */,
+				A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */,
+				8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -689,6 +784,62 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		234A166D283738E200E09F09 /* RideTogetherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234A1676283738E200E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherTests" */;
+			buildPhases = (
+				F3E1A4C9CBC11DE417BE7CEC /* [CP] Check Pods Manifest.lock */,
+				234A166A283738E200E09F09 /* Sources */,
+				234A166B283738E200E09F09 /* Frameworks */,
+				234A166C283738E200E09F09 /* Resources */,
+				61F5865EDF66E42E3651D260 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				234A1673283738E200E09F09 /* PBXTargetDependency */,
+			);
+			name = RideTogetherTests;
+			productName = RideTogetherTests;
+			productReference = 234A166E283738E200E09F09 /* RideTogetherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		234A167A2837568D00E09F09 /* RideTogetherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234A16852837568D00E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherUITests" */;
+			buildPhases = (
+				234A16772837568D00E09F09 /* Sources */,
+				234A16782837568D00E09F09 /* Frameworks */,
+				234A16792837568D00E09F09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				234A16822837568D00E09F09 /* PBXTargetDependency */,
+			);
+			name = RideTogetherUITests;
+			productName = RideTogetherUITests;
+			productReference = 234A167B2837568D00E09F09 /* RideTogetherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		234A16892837656900E09F09 /* RideTogetherMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 234A16902837656900E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherMapTests" */;
+			buildPhases = (
+				234A16862837656900E09F09 /* Sources */,
+				234A16872837656900E09F09 /* Frameworks */,
+				234A16882837656900E09F09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				234A168F2837656900E09F09 /* PBXTargetDependency */,
+			);
+			name = RideTogetherMapTests;
+			productName = RideTogetherMapTests;
+			productReference = 234A168A2837656900E09F09 /* RideTogetherMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		23D1B72A280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23D1B73F280033FC000EDA70 /* Build configuration list for PBXNativeTarget "RideTogether" */;
@@ -717,9 +868,21 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					234A166D283738E200E09F09 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 23D1B72A280033FB000EDA70;
+					};
+					234A167A2837568D00E09F09 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 23D1B72A280033FB000EDA70;
+					};
+					234A16892837656900E09F09 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 23D1B72A280033FB000EDA70;
+					};
 					23D1B72A280033FB000EDA70 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -739,11 +902,35 @@
 			projectRoot = "";
 			targets = (
 				23D1B72A280033FB000EDA70 /* RideTogether */,
+				234A166D283738E200E09F09 /* RideTogetherTests */,
+				234A167A2837568D00E09F09 /* RideTogetherUITests */,
+				234A16892837656900E09F09 /* RideTogetherMapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		234A166C283738E200E09F09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234A16792837568D00E09F09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234A16882837656900E09F09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23D1B729280033FB000EDA70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -828,6 +1015,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		61F5865EDF66E42E3651D260 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -843,6 +1047,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E1A4C9CBC11DE417BE7CEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RideTogetherTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F574E762906D9DDDD3A80B66 /* [CP] Check Pods Manifest.lock */ = {
@@ -870,6 +1096,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		234A166A283738E200E09F09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234A16772837568D00E09F09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234A16802837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift in Sources */,
+				234A167E2837568D00E09F09 /* RideTogetherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		234A16862837656900E09F09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234A168D2837656900E09F09 /* RideTogetherMapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23D1B727280033FB000EDA70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -984,6 +1235,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		234A1673283738E200E09F09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
+			targetProxy = 234A1672283738E200E09F09 /* PBXContainerItemProxy */;
+		};
+		234A16822837568D00E09F09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
+			targetProxy = 234A16812837568D00E09F09 /* PBXContainerItemProxy */;
+		};
+		234A168F2837656900E09F09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
+			targetProxy = 234A168E2837656900E09F09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		23D1B734280033FB000EDA70 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1004,6 +1273,120 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		234A1674283738E200E09F09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RideTogether.app/RideTogether";
+			};
+			name = Debug;
+		};
+		234A1675283738E200E09F09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RideTogether.app/RideTogether";
+			};
+			name = Release;
+		};
+		234A16832837568D00E09F09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RideTogether;
+			};
+			name = Debug;
+		};
+		234A16842837568D00E09F09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RideTogether;
+			};
+			name = Release;
+		};
+		234A16912837656900E09F09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RideTogether.app/RideTogether";
+			};
+			name = Debug;
+		};
+		234A16922837656900E09F09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RideTogether.app/RideTogether";
+			};
+			name = Release;
+		};
 		23D1B73D280033FC000EDA70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1150,7 +1533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1188,7 +1571,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1200,6 +1583,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		234A1676283738E200E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234A1674283738E200E09F09 /* Debug */,
+				234A1675283738E200E09F09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		234A16852837568D00E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234A16832837568D00E09F09 /* Debug */,
+				234A16842837568D00E09F09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		234A16902837656900E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				234A16912837656900E09F09 /* Debug */,
+				234A16922837656900E09F09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		23D1B726280033FB000EDA70 /* Build configuration list for PBXProject "RideTogether" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

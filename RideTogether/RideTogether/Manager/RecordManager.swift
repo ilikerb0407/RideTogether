@@ -39,11 +39,7 @@ class RecordManager {
         do {
 
             let data: Data = try Data(contentsOf: fileURL)
-            //▿ 302 bytes
-            //- count : 302
-            //▿ pointer : 0x000000013510ace0
-            //  - pointerValue : 5185252576
-            // 還未辨識userId
+ 
             let recordRef = storageRef.child("records").child(userId)
 //            let recordRef = storageRef.child("records")
             //  gs://bikeproject-59c89.appspot.com/records
@@ -151,8 +147,7 @@ class RecordManager {
     func fetchOneRecord(completion: @escaping (Result<Record,Error>) -> Void) {
         
         let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
-        
-//        let collection = dataBase.collection(recordsCollection)
+
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
