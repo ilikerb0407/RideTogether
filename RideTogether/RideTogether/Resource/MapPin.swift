@@ -11,35 +11,28 @@ import MapKit
 import CoreLocation
 import SwiftUI
 
-class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
+class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
+    
     
     let baseVC = BaseViewController()
     
     func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
+        weatherData = weather
     }
-    
-    var weatherdata : ResponseBody?
+    var weatherData : ResponseBody?
     
     let weatherManger = WeatherManager()
 
-    
-    /// Current session of GPX location logging. Handles all background tasks and recording.
     let session = GPXSession()
-    
-    /// The Waypoint is being edited (if there is any)
+
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
     var directionsResponse =  MKDirections.Response()
     
     var route = MKRoute()
-//
-//    var polyLineRenderer = MKPolylineRenderer()
-    
-    
     
     var step: [String] = []
-//    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         
@@ -73,8 +66,6 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         
         let annotationView = MKPinAnnotationView()
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
-        guard let map = mapView as? GPXMapView else { return }
-        let renderer = MKPolylineRenderer()
         let targetCoordinate = annotationView.annotation?.coordinate
         let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
         let targetItem = MKMapItem(placemark: targetPlacemark)
@@ -97,14 +88,10 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 self.route = self.directionsResponse.routes[0]
                 
-//                map.addOverlay(self.route.polyline, level: MKOverlayLevel.aboveRoads)
-                
             } else {
                 print("\(error)")
                 
                 LKProgressHUD.showFailure(text: "無法導航")
-                
-                
             }
         }
         let ceo: CLGeocoder = CLGeocoder()
@@ -139,42 +126,37 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         annotationView.canShowCallout = true
         annotationView.isDraggable = true
         //
-        let rightbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        rightbtn.clipsToBounds = true
-        rightbtn.tintColor = .B5
-        let rightImg = UIImage(systemName: "info.circle",
+        let rightButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightButton.clipsToBounds = true
+        rightButton.tintColor = .B5
+        let rightImage = UIImage(systemName: "info.circle",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        rightbtn.setImage(rightImg, for: .normal)
+        rightButton.setImage(rightImage, for: .normal)
         //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        rightbtn.tag = kDeleteWaypointAccesoryButtonTag
-        annotationView.rightCalloutAccessoryView = rightbtn
+        rightButton.tag = kDeleteWaypointButtonTag
+        annotationView.rightCalloutAccessoryView = rightButton
         //        annotationView.pinTintColor = .red
-        let leftbtn: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        leftbtn.tintColor = .B5
+        let leftButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        leftButton.tintColor = .B5
         let leftImg = UIImage(systemName: "pencil.circle",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        leftbtn.setImage(leftImg, for: .normal)
+        leftButton.setImage(leftImg, for: .normal)
         //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        leftbtn.tag = kEditWaypointAccesoryButtonTag
-        annotationView.leftCalloutAccessoryView = leftbtn
+        leftButton.tag = kEditWaypointButtonTag
+        annotationView.leftCalloutAccessoryView = leftButton
         
         return annotationView
     }
     
-    let kDeleteWaypointAccesoryButtonTag = 666
+    let kDeleteWaypointButtonTag = 666
     
-    let kEditWaypointAccesoryButtonTag = 333
+    let kEditWaypointButtonTag = 333
     
-
+    // MARK: - map Annotation -
     
-    
-    
-    // MARK: 刪除 Pin
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         weatherManger.delegate = self
-        
-        print("calloutAccesoryControlTapped ")
         
         guard let button = control as? UIButton else { return }
         
@@ -186,31 +168,27 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
         
         self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
-            self?.weatherdata = result
+            self?.weatherData = result
             
             DispatchQueue.main.async {
                 markMarkers()
             }
-            
         }
        
         func markMarkers() {
             
             switch button.tag {
                 
-            case kDeleteWaypointAccesoryButtonTag:
-                print("[calloutAccesoryControlTapped: DELETE button] deleting waypoint with name \(waypoint.name ?? "''")")
-                //            map.removeWaypoint(waypoint)
-                //            guide(mapView, didSelect: view)
+            case kDeleteWaypointButtonTag:
                 
-                guard let weatherdata = weatherdata else { return }
+                guard let weatherData = weatherData else { return }
                 
                 let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
                 let distance = "\(self.route.distance.toDistance())"
                 let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
-                let weather = "\(weatherdata.weather[0].main)"
+                let weather = "\(weatherData.weather[0].main)"
                 
-                let alertsheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
+                let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
                 
                 let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
                     map.removeWaypoint(waypoint)
@@ -222,7 +200,7 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                     self.route.polyline.title = "one"
                     
                     if polyLine == nil {
-                        LKProgressHUD.showFailure(text: "別鬧喔，快回家洗洗睡")
+                        LKProgressHUD.showFailure(text: "無法導航")
                     } else {
                         map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
                     }
@@ -231,37 +209,27 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
                 
-                alertsheet.addAction(routeName)
-                alertsheet.addAction(removeOption)
-                alertsheet.addAction(cancelAction)
+                alertSheet.addAction(routeName)
+                alertSheet.addAction(removeOption)
+                alertSheet.addAction(cancelAction)
                 
-                
-                let firstView = UIApplication.shared.windows.first { $0.isKeyWindow }
-                
-                firstView?.rootViewController?.present(alertsheet, animated: true, completion: nil)
-                
-//                firstView?.present(alertsheet, animated: true)
-                
-//                UIApplication.shared.keyWindow?.rootViewController?.present(alertsheet, animated: true, completion: nil)
-//
+                let lastVC = UIViewController.getLastPresentedViewController()
+                lastVC?.present(alertSheet, animated: true)
+    
                 // iPad specific code
                 
-                alertsheet.popoverPresentationController?.sourceView = UIApplication.shared.keyWindow?.rootViewController?.view
+                alertSheet.popoverPresentationController?.sourceView = lastVC?.view
 
-                let xOrigin = (UIApplication.shared.keyWindow?.rootViewController?.view.bounds.width)! / 2
+                let xOrigin = (lastVC?.view.bounds.width)! / 2
 
                 let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
 
-                alertsheet.popoverPresentationController?.sourceRect = popoverRect
+                alertSheet.popoverPresentationController?.sourceRect = popoverRect
 
-                alertsheet.popoverPresentationController?.permittedArrowDirections = .unknown
+                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
-            case kEditWaypointAccesoryButtonTag:
-                print("[calloutAccesoryControlTapped: EDIT] editing waypoint with name \(waypoint.name ?? "''")")
+            case kEditWaypointButtonTag:
                 
-                let indexofEditedWaypoint = map.session.waypoints.firstIndex(of: waypoint)
-                
-        
                 let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
                 
                 alertController.addTextField { (textField) in
@@ -278,13 +246,13 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
                 alertController.addAction(saveAction)
                 alertController.addAction(cancelAction)
                 
-                let firstView = UIApplication.shared.windows.first
-                firstView!.rootViewController?.present(alertController, animated: true)
+                let VC = UIViewController.getLastPresentedViewController()
+                VC?.present(alertController, animated: true)
                 
                 self.waypointBeingEdited = waypoint
                 
             default:
-                print("[calloutAccesoryControlTapped ERROR] unknown control")
+                LKProgressHUD.showFailure(text: "網路問題，無法顯示")
             }
         }
     }
@@ -306,16 +274,26 @@ class MapViewDelegate: NSObject, MKMapViewDelegate, weatherProvider {
             
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
+                
                 if gpxMapView.headingImageView == nil {
+                    
                     let image = UIImage(named: "heading")!
+    
                     gpxMapView.headingImageView = UIImageView(image: image)
+                    
+                    gpxMapView.headingImageView?.layer.cornerRadius = 20
+                    
+                    gpxMapView.headingImageView?.layer.masksToBounds = true
+                    
+                    gpxMapView.headingImageView?.loadImage(UserManager.shared.userInfo.pictureRef, placeHolder: image)
+                    
                     gpxMapView.headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - image.size.width)/2,
                                                                 y: (annotationView.frame.size.height - image.size.height)/2,
                                                                 width: image.size.width,
                                                                 height: image.size.height)
                     annotationView.insertSubview(gpxMapView.headingImageView!, at: 0)
                     
-                    gpxMapView.headingImageView!.isHidden = true
+//                    gpxMapView.headingImageView!.isHidden = true
                 }
                 continue
             }
@@ -409,3 +387,14 @@ extension UIWindow {
     }
 }
 
+extension UIViewController {
+    static func getLastPresentedViewController() -> UIViewController? {
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        let window = sceneDelegate?.window
+        var presentedViewController = window?.rootViewController
+        while presentedViewController?.presentedViewController != nil {
+            presentedViewController = presentedViewController?.presentedViewController
+        }
+        return presentedViewController
+    }
+}

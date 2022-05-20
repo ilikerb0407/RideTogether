@@ -18,6 +18,7 @@ struct Record: Codable, Hashable {
     var recordName: String
     var recordRef: String
     var pictureRef: String?
+    var routeTypes: Int?
     
     enum CodingKeys: String, CodingKey {
         
@@ -27,6 +28,7 @@ struct Record: Codable, Hashable {
         case recordName = "record_name"
         case recordRef = "record_ref"
         case pictureRef = "picture_ref"
+        case routeTypes = "route_types"
     }
     
     init() {
@@ -36,5 +38,6 @@ struct Record: Codable, Hashable {
         self.recordName = ""
         self.recordRef = ""
         self.pictureRef = ""
+        self.routeTypes = 0
     }
 }

@@ -14,6 +14,7 @@ import Lottie
 
 
 class RouteViewController: BaseViewController {
+
     
     
     @IBOutlet weak var gView: UIView! {
@@ -67,13 +68,17 @@ class RouteViewController: BaseViewController {
                 
             case 0:
                 
-                themeLabel = RoutesType.recommendOne.rawValue
+                themeLabel = RoutesType.userOne.rawValue
                 
             case 1:
                 
-                themeLabel = RoutesType.riverOne.rawValue
+                themeLabel = RoutesType.recommendOne.rawValue
                 
             case 2:
+                
+                themeLabel = RoutesType.riverOne.rawValue
+                
+            case 3:
                 
                 themeLabel = RoutesType.mountainOne.rawValue
                 
@@ -107,7 +112,6 @@ class RouteViewController: BaseViewController {
         view.addSubview(button)
         
     }
-    
     
     @objc func popToPreviosPage(_ sender: UIButton) {
         
@@ -157,36 +161,60 @@ class RouteViewController: BaseViewController {
     }
     
     // MARK: 新增路線資料
-    func uploadRecordToDb() {
+//    func uploadRecordToDb() {
+//        
+//        let document = dataBase.collection("Routes").document()
+//        
+//        var record = Route()
+//        
+//        record.routeId = document.documentID
+//        
+//        record.routeTypes = 0
+//        
+//        record.routeInfo = "熱門路線"
+//        
+//        record.routeLength = "30 Km"
+//        
+//        record.routeMap = "https://firebasestorage.googleapis.com/v0/b/bikeproject-59c89.appspot.com/o/records%2F2022-04-18_10-59?alt=media&token=604f82b6-ffbd-49e7-8f29-86e3084cf30e"
+//        
+//        record.routeName = "破風車手"
+//        
+//        do {
+//            
+//            try document.setData(from: record)
+//            
+//        } catch {
+//            
+//            print("error")
+//        }
+//        
+//        print("sucessfully")
+//    }
+    
+    @objc func showLongPressNotify() {
         
-        let document = dataBase.collection("Routes").document()
+        let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以收藏/封鎖", comment: "no comment"), preferredStyle: .alert)
+        let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+            }
+        sheet.addAction(okOption)
+        present(sheet, animated: true, completion: nil)
         
-        var record = Route()
-        
-        record.routeId = document.documentID
-        
-        record.routeTypes = 2
-        
-        record.routeInfo = ""
-        
-        record.routeLength = ""
-        
-        record.routeMap = ""
-        
-        record.routeName = ""
-        
-        do {
-            
-            try document.setData(from: record)
-            
-        } catch {
-            
-            print("error")
-        }
-        
-        print("sucessfully")
     }
     
+    func setNotify() {
+        
+        
+        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        
+        let infoImage = UIImage(systemName: "info")
+        
+        rightButton.setImage(infoImage, for: .normal)
+        
+        rightButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
+    }
+  
     
     override func viewDidLoad() {
         
@@ -196,7 +224,19 @@ class RouteViewController: BaseViewController {
         
         setNavigationBar(title: "探索路線")
         
-//        setupCollectionView()
+        setNotify()
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        
+        tableView.addGestureRecognizer(longPress)
+        
+//        let textAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear ]
+        
+//        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        // 改顏色
+        
+//        setupCollectionView()z
         
 //        backButton()
         
@@ -205,6 +245,7 @@ class RouteViewController: BaseViewController {
 //        configureSnapshot()
         
         setUpThemeTag()
+        
         
     }
     
@@ -251,10 +292,72 @@ class RouteViewController: BaseViewController {
         
         self.view.addSubview(label)
     }
+    private let saveCollection = Collection.savemaps.rawValue // Profile
+    var userId: String { UserManager.shared.userInfo.uid }
+    
+    func uploadRecordToSavemaps(fileName: String, fileRef: String,  userPhoto: String ) {
+        
+        let document = dataBase.collection(saveCollection).document()
+        
+        var record = Record()
+        
+        record.uid = userId
+        
+        record.recordId = document.documentID
+        
+        record.recordName = fileName
+        
+        record.recordRef = fileRef
+        
+        record.pictureRef = userPhoto
+        
+        do {
+            
+            try document.setData(from: record)
+            
+        } catch {
+            
+            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
+            print("error")
+        }
+        
+        print("sucessfully")
+    }
+    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
     
 }
 
 extension RouteViewController: UITableViewDelegate {
+    
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+                 let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
+                    
+                    
+                self.uploadRecordToSavemaps(fileName: routes[indexPath.row].routeName, fileRef: routes[indexPath.row].routeMap, userPhoto: userPhoto)
+                       
+                }
+                
+                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
+                    
+                    UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
+
+                    UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
+                    
+                }
+                
+                let cancelOption = UIAlertAction(title: "取消", style: .cancel){ _ in}
+                
+                showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
+                
+            }
+        }
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         150
@@ -265,7 +368,6 @@ extension RouteViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
     }
 
 }
@@ -274,7 +376,7 @@ extension RouteViewController: UITableViewDataSource {
     
     @objc func goToRide(_ sender: UIButton) {
         
-        LKProgressHUD.show()
+        LKProgressHUD.showSuccess(text: "下載資料中")
         
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
             

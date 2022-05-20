@@ -11,6 +11,20 @@ import MapKit
 
 open class DistanceLabel: UILabel {
     
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.textAlignment = .right
+        self.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        self.textColor = UIColor.B5
+        self.distance = 0.00
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
     private var _distance = 0.0
 
     open var distance: CLLocationDistance {
@@ -20,7 +34,7 @@ open class DistanceLabel: UILabel {
         set {
             _distance = newValue
             text = newValue.toDistance()
-            
+            print("\(newValue)")
         }
     }
 }

@@ -10,6 +10,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import Firebase
 import Accelerate
+import FirebaseFirestore
 
 class GroupManager {
     
@@ -254,8 +255,5 @@ class GroupManager {
                 }
             }
     }
-    
-    
-    
     
 }

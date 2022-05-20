@@ -32,8 +32,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     
-    var curerentUser = Auth.auth().currentUser
-    
+    var currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +43,10 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         
         if let user = Auth.auth().currentUser {
             print("\(user.uid) login")
+            LKProgressHUD.showSuccess(text: "已經登入")
         } else {
             print("not login")
+            LKProgressHUD.showFailure(text: "未登入")
         }
         
         Auth.auth().addStateDidChangeListener { auth, user in
@@ -56,8 +57,10 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
                 print("not login")
             }
             
-            self.curerentUser = Auth.auth().currentUser
+            self.currentUser = Auth.auth().currentUser
         }
+        
+        
         lottie()
     }
     
@@ -260,23 +263,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
         
-        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let userId = credential.user
-            let fullname = credential.fullName
-            let email = credential.email
-            let idToken = credential.identityToken
-            
-            print("---------\(userId)")
-            print("---------\(fullname)")
-            print("---------\(email)")
-            print("---------\(idToken)")
-            
-            
-            
-            //                   guard let vc = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController else { return }
-            //                   vc.modalPresentationStyle = .fullScreen
-            //                   self.present(vc, animated: true)
-        }
+//        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+//            let userId = credential.user
+//            let fullname = credential.fullName
+//            let email = credential.email
+//            let idToken = credential.identityToken
+//
+//        } else { }
         
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             
@@ -285,12 +278,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             guard let nonce = currentNonce else {
                 
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
+                LKProgressHUD.showFailure(text: "登入請求未送出")
             }
             
             guard let appleIDToken = appleIDCredential.identityToken else {
                 
                 print("Unable to fetch identity token")
-                
+                LKProgressHUD.showFailure(text: "登入失敗")
                 return
                 
             }
@@ -298,6 +292,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                LKProgressHUD.showFailure(text: "登入失敗")
                 return
             }
             
@@ -323,25 +318,21 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                 
                             case .success:
                                 
-                                print ("\(credential.idToken)")
-                                
                                 self.fetchUserInfo(uid: uid)
-                                
-                                print("User Sign up successfully")
-                                
-                                LKProgressHUD.show()
+                            
+                                LKProgressHUD.showSuccess(text: "註冊成功")
                                 
                             case .failure(let error):
                                 
-                                print("Sign up failure: \(error)")
+                                LKProgressHUD.showFailure(text: "註冊失敗")
+                                
                             }
                         }
                         
                     } else {
                         
                         self.fetchUserInfo(uid: uid)
-                        
-                        LKProgressHUD.show()
+                        LKProgressHUD.showSuccess(text: "登入成功")
                     }
                 }
                 
@@ -355,7 +346,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     LKProgressHUD.showFailure(text: "登入失敗，請確定網路品質")
                     
                 }
-                
             }
         }
     }
@@ -365,6 +355,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print("Sign in with Apple errored: \(error)")
         
         switch error {
+            
         case ASAuthorizationError.canceled:
             LKProgressHUD.showFailure(text: "取消登入")
         case ASAuthorizationError.failed:
@@ -376,11 +367,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         case ASAuthorizationError.unknown:
             LKProgressHUD.showFailure(text: "網路連線不佳")
         default:
-            break
+            LKProgressHUD.showFailure(text: "登入失敗，原因不明")
         }
         
     }
-    
     
     func fetchUserInfo (uid: String) {
         
@@ -392,18 +382,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 
                 UserManager.shared.userInfo = userInfo
                 
-                print("Fetch user info successfully")
-                
-                guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                guard let tabBarVC = UIStoryboard.main.instantiateViewController(
                     identifier: TabBarController.identifier) as? TabBarController else { return }
                 
-                tabbarVC.modalPresentationStyle = .fullScreen
+                tabBarVC.modalPresentationStyle = .fullScreen
                 
-                self.present(tabbarVC, animated: true, completion: nil)
+                self.present(tabBarVC, animated: true, completion: nil)
                 
             case .failure(let error):
                 
-                print("Fetch user info failure: \(error)")
+                LKProgressHUD.showFailure(text: "讀取資料失敗")
             }
         }
     }

@@ -103,15 +103,10 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         
         setUpButton()
         
-//        view.backgroundColor = .B5
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-//        headerView.applyGradient(colors: [.C4, .B2], locations: [0.0, 1.0], direction: .topToBottom)
-//
-//        headerView.roundCornersTop(cornerRadius: 15)
         
         setUpTextView()
         
@@ -171,8 +166,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                 switch result {
                     
                 case .success:
-                    
-//                    let success = UIAlertAction(title: "Success", style: .default) { _ in}
                     
                     let okOption = UIAlertAction(title: "完成", style: .cancel) { _ in
                         self.delegate?.reload()

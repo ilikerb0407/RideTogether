@@ -22,7 +22,6 @@ class GPXMapView: MKMapView {
     
     let weatherManger = WeatherManager()
     
-    ///
     let coreDataHelper = CoreDataHelper()
 
     let session = GPXSession()
@@ -123,6 +122,7 @@ class GPXMapView: MKMapView {
         }
         
         for oneTrack in session.tracks {
+            
             session.totalTrackedDistance += oneTrack.length
 
             for segment in oneTrack.segments {

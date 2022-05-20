@@ -24,7 +24,6 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         }
     }
     
-    
     @IBOutlet weak var numberOfPeople: UITextField! {
         didSet {
             numberOfPeople.delegate = self

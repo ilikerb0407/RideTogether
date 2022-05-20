@@ -135,6 +135,8 @@ class SignUpViewController: BaseViewController {
             case .failure(let error):
                 
                 print("Fetch user info failure: \(error)")
+                
+                LKProgressHUD.showFailure(text: "讀取使用者資料失敗")
             }
         }
     }
@@ -212,6 +214,7 @@ class SignUpViewController: BaseViewController {
                                 identifier: TabBarController.identifier) as? TabBarController else { return }
                             
                             tabbarVC.modalPresentationStyle = .fullScreen
+                            
                             
                             self.present(tabbarVC, animated: true, completion: nil)
                             

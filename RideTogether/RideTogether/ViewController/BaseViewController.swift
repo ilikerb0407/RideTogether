@@ -12,9 +12,41 @@ import MessageUI
 import Lottie
 
 
-
-
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
+    
+    let stopWatch = StopWatch()
+    
+    private var isDisplayingLocationServicesDenied: Bool = false
+    
+    func displayLocationServicesDisabledAlert() {
+        
+        let settingsAction = UIAlertAction(title: "設定", style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        
+        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
+        
+    }
+    
+    func displayLocationServicesDeniedAlert() {
+        
+        if isDisplayingLocationServicesDenied { return }
+        
+        let settingsAction = UIAlertAction(title: "設定",
+                                           style: .default) { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: [:]) }
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        
+        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
+        
+        isDisplayingLocationServicesDenied = false
+    }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         
@@ -127,6 +159,18 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             
             self.present(controller, animated: true, completion: nil)
             
+            // MARK: - iPad Present Code -
+            
+            controller.popoverPresentationController?.sourceView = self.view
+            
+            let xOrigin = self.view.bounds.width / 2
+            
+            let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+            
+            controller.popoverPresentationController?.sourceRect = popoverRect
+            
+            controller.popoverPresentationController?.permittedArrowDirections = .up
+            
             return controller
         }
     
@@ -151,24 +195,35 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
         
         self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
+    
     }
     
+    @objc func showBikeViewController() {
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [.medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
+            }}
+    }
     
+    @objc func presentRouteSelectionViewController() {
+        
+        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
+            let navBar = UINavigationController.init(rootViewController: rootVC)
+            if #available(iOS 15.0, *) {
+                if let presentVc = navBar.sheetPresentationController {
+                    presentVc.detents = [ .medium(), .large()]
+                    self.navigationController?.present(navBar, animated: true, completion: .none)
+                }
+            } else {
+                LKProgressHUD.showFailure(text: "網路問題，無法跳出")
+            }
+        }
+    }
     
-    
-    
-    
-    
-    // MARK: customize tarbar button
-    //        let button = UIButton.init(type: .custom)
-    //        //set image for button
-    //        button.setImage(UIImage(named: "hat"), for: .normal)
-    //        //add function for button
-    //        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-    //        button.layer.cornerRadius = button.frame.width / 2
-    //        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
-    //        //set frame
-    //        let barButton = UIBarButtonItem(customView: button)
-    //        self.navigationItem.leftBarButtonItem = barButton
 }
-

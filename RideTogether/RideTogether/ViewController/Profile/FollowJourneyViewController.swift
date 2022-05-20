@@ -15,11 +15,14 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class FollowJourneyViewController: BaseViewController {
+class FollowJourneyViewController: BaseViewController, bikeProvider {
     
-//    func sendData(_ inputRecord: Record) {
-//        self.record = inputRecord
-//    }
+    func provideBike(bike: Bike) {
+        bikeData = [bike]
+    }
+    var bikeData : [Bike] = []
+    
+    var bikeManager = BikeManager()
     
     var record = Record()
     
@@ -38,7 +41,7 @@ class FollowJourneyViewController: BaseViewController {
     var lastGpxFilename: String = ""
     
     
-    //MARK: =========
+    // MARK: == === ====
 
 //    func showMap() {
 //        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
@@ -119,7 +122,6 @@ class FollowJourneyViewController: BaseViewController {
     
     // MARK: =========
     
-    private var stopWatch = StopWatch()
     
     private var lastLocation: CLLocation?
     
@@ -140,7 +142,7 @@ class FollowJourneyViewController: BaseViewController {
         return manager
     }()
     
-    private let mapViewDelegate = MapViewDelegate()
+    private let bikeViewDelegate = BikeView()
     
     enum GpxTrackingStatus {
         
@@ -339,8 +341,7 @@ class FollowJourneyViewController: BaseViewController {
         return view
     }()
     
-        
-        // MARK: 之後再改字體
+    // MARK: 之後再改字體
         
     var altitudeLabel: UILabel = {
         let label = UILabel()
@@ -389,6 +390,38 @@ class FollowJourneyViewController: BaseViewController {
     
     // MARK: - View Life Cycle
     
+//    func GetDistance(latitude: Double, longitude: Double) -> Double {
+//        let selectedCoordinate = CLLocation(latitude: latitude, longitude: longitude)
+//        let busStopCoordinate = CLLocation(latitude: Double(self.latitude), longitude: self.longitude)
+//
+//        return busStopCoordinate.distance(from: selectedCoordinate)
+//    }
+    
+//
+    func layOutBike() {
+        
+        for bike in bikeData {
+            
+            let coordinate = CLLocationCoordinate2D(latitude: bike.lat, longitude: bike.lng)
+            
+            let title = bike.sna
+            
+            let subtitle = "可還車位置 :\(bike.bemp), 可租車數量 :\(bike.sbi)"
+
+            let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
+
+            let usersCoordinate = CLLocation(latitude: map2.userLocation.coordinate.latitude, longitude: map2.userLocation.coordinate.longitude)
+            let bikeStopCoordinate = CLLocation(latitude: Double(bike.lat), longitude: Double(bike.lng))
+
+            let distance = usersCoordinate.distance(from: bikeStopCoordinate)
+       
+                    if  distance < 1000 {
+                        map2.addAnnotation(annotation)
+                    }
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -414,7 +447,18 @@ class FollowJourneyViewController: BaseViewController {
         
         self.locationManager.requestAlwaysAuthorization()
         
+        bikeManager.delegate = self
+        
+        bikeManager.getBikeAPI { [ weak self ] result in
+            
+        self?.bikeData = result
+            
+        self?.layOutBike()
+            
+        }
+        
     }
+    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -439,38 +483,10 @@ class FollowJourneyViewController: BaseViewController {
     // MARK: - Action
     
     func setUpMap() {
-        
-//        locationManager.delegate = self
-//
-//        locationManager.startUpdatingLocation()
-//
-//        locationManager.startUpdatingHeading()
-        
-        map2.delegate = mapViewDelegate
-        
-//        map2.showsUserLocation = false
-        
-        // 移動 map 的方式
-        
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
-//
-//        panGesture.delegate = self
-//
-//        map2.addGestureRecognizer(panGesture)
+    
+        map2.delegate = bikeViewDelegate
         
         map2.rotationGesture.delegate = self
-        
-//        let center = locationManager.location?.coordinate ??
-//        CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-//        let region = MKCoordinateRegion(center: center, span: span)
-        
-//        map2.setRegion(region, animated: true)
-        
-        //   If user long presses the map, it will add a Pin (waypoint) at that point
-        
-//        map2.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-//                                                               action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
         
         self.view.addSubview(map2)
         
@@ -509,7 +525,7 @@ class FollowJourneyViewController: BaseViewController {
         
         let time = TimeFormater.preciseTimeForFilename.dateToString(time: date)
         
-        let defaultFileName = "\(userName) 紀錄了從..."
+        let defaultFileName = "\(userName) 紀錄了從..到.."
         
         let alertController = UIAlertController(title: "Save Record",
                                                 message: "Please enter the title",
@@ -575,7 +591,6 @@ class FollowJourneyViewController: BaseViewController {
         
         let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [cancelOption, resetOption])
         
-        
         // iPad specific code
         
         sheet.popoverPresentationController?.sourceView = self.view
@@ -589,7 +604,7 @@ class FollowJourneyViewController: BaseViewController {
         sheet.popoverPresentationController?.permittedArrowDirections = .up
     }
     
-    @objc func followButtonTroggler() {
+    @objc func followButtonToggle() {
         
         self.followUser = !self.followUser
     }
@@ -638,38 +653,6 @@ class FollowJourneyViewController: BaseViewController {
         } else {
             // Fallback on earlier versions
         }
-    }
-    
-    func displayLocationServicesDisabledAlert() {
-        
-        let settingsAction = UIAlertAction(title: "設定", style: .default) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                
-                UIApplication.shared.open(url, options: [:])
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-        
-        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
-    }
-    
-    func displayLocationServicesDeniedAlert() {
-        
-        if isDisplayingLocationServicesDenied { return }
-        
-        let settingsAction = UIAlertAction(title: "設定",
-                                           style: .default) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url, options: [:])
-            }
-        }
-        let cancelAction = UIAlertAction(title: "取消",
-                                         style: .cancel)
-        
-        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
-        
-        isDisplayingLocationServicesDenied = false
     }
     
 
@@ -740,7 +723,7 @@ class FollowJourneyViewController: BaseViewController {
         
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
-        followUserButton.addTarget(self, action: #selector(followButtonTroggler), for: .touchUpInside)
+        followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         
@@ -831,12 +814,9 @@ extension FollowJourneyViewController: StopWatchDelegate {
 // MARK: - CLLocationManager Delegate -
 
 extension FollowJourneyViewController: CLLocationManagerDelegate {
-    
-    //   Pin direction
+  
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         map2.heading = newHeading // updates heading variable
         map2.updateHeading() // updates heading view's rotation
     }
-    // MARK: 選擇路線後導航 (有時間在做)
 }
-

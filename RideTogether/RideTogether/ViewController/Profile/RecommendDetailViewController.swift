@@ -21,7 +21,7 @@ class RecommendDetailViewController: UIViewController {
     
     @IBOutlet weak var map2: GPXMapView!
     
-    private let mapViewDelegate = MapViewDelegate()
+    private let mapViewDelegate = MapPin()
     
     // 只會有一筆
     var record = Record()

@@ -11,17 +11,24 @@ import SwiftUI
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import CoreGPX
 
 
 //MARK: User Record
 
 class TracksViewController: BaseViewController {
     
+    var delegate: Reload?
+    
     lazy var storage = Storage.storage()
+    
     lazy var storageRef = storage.reference()
+    
     lazy var dataBase = Firestore.firestore()
     
     private let sharedRecordsCollection = Collection.sharedmaps.rawValue
+    
+    private let routeCollection = Collection.routes.rawValue // Home
     
     var indexOfRoute:Int = 0
     
@@ -30,6 +37,8 @@ class TracksViewController: BaseViewController {
     var userId: String { UserManager.shared.userInfo.uid }
     
     var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
+    
+    var userName: String {UserManager.shared.userInfo.userName ?? ""}
     
     private let header = MJRefreshNormalHeader()
     
@@ -120,7 +129,6 @@ class TracksViewController: BaseViewController {
     
     func setNotify() {
         
-        
         let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         let infoImage = UIImage(systemName: "info")
@@ -188,11 +196,17 @@ extension TracksViewController: UITableViewDelegate {
         //                    completion(.success(url))
                             print ("\(url)")
                             self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
+                            
+                            self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url, userPhoto: userPhoto)
+                            
+                            delegate?.reload()
                             //
-                            LKProgressHUD.dismiss()
+                            LKProgressHUD.showSuccess(text: "分享成功")
+                            
                         case .failure(let error) :
-        //                    completion(.failure(error))
+//                            completion(.failure(error))
                             print ("\(error)")
+                            LKProgressHUD.showFailure(text: "網路不佳，分享失敗")
                         }
                     }
                 }
@@ -232,7 +246,10 @@ extension TracksViewController: UITableViewDelegate {
                     
                 case .success(_):
                     self.records.remove(at: indexPath.row)
+                    
                     self.tableView.deleteRows(at: [indexPath], with: .left)
+                    
+                    LKProgressHUD.showSuccess(text: "刪除成功")
 
                 case .failure(let error):
                     print ("delete error: \(error)")
@@ -257,6 +274,8 @@ extension TracksViewController: UITableViewDelegate {
         
         record.pictureRef = userPhoto
         
+        record.routeTypes = 0
+        
         do {
             
             try document.setData(from: record)
@@ -264,10 +283,58 @@ extension TracksViewController: UITableViewDelegate {
         } catch {
             
             print("error")
+            
+            LKProgressHUD.showSuccess(text: "新增資料失敗")
         }
         
         print("sucessfully")
+        LKProgressHUD.showSuccess(text: "新增資料成功")
     }
+    
+    
+    func uploadRecordToPopular(fileName: String, fileURL: URL, userPhoto: String ) {
+        
+        let document = dataBase.collection(routeCollection).document()
+        
+        var route = Route()
+        
+        route.uid = userId
+        
+        route.routeId = document.documentID
+        
+        route.routeName = fileName
+        
+        route.routeMap = fileURL.absoluteString
+        
+        route.routeInfo = "\(userName) 分享了路線"
+        
+        route.pictureRef = userPhoto
+        
+        let inputURL = fileURL
+        
+            guard let gpx = GPXParser(withURL: inputURL)?.parsedData() else { return }
+        
+        let length = gpx.tracksLength
+        
+        route.routeLength = "距離 : \(length.toDistance())"
+        
+        route.routeTypes = 0
+        
+        do {
+            
+            try document.setData(from: route)
+            
+        } catch {
+            
+            print("error")
+            LKProgressHUD.showFailure(text: "新增資料失敗")
+        }
+        
+        print("sucessfully")
+        LKProgressHUD.showSuccess(text: "新增資料成功")
+    }
+    
+    
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
