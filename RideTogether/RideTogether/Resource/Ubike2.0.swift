@@ -16,16 +16,12 @@ class BikeView: NSObject, MKMapViewDelegate {
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-//        let identifier = "Pin"
-//        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+
         if annotation.isKind(of: MKUserLocation.self) { return nil }
         
         let annotationView = MKPinAnnotationView()
         
         annotationView.canShowCallout = true
-        
-        annotationView.isDraggable = true
         
         annotationView.pinTintColor = .B3
        
@@ -33,7 +29,6 @@ class BikeView: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
         
         if overlay is MKPolyline {
             
@@ -43,10 +38,10 @@ class BikeView: NSObject, MKMapViewDelegate {
             
             polyLineRenderer.strokeColor = UIColor.B5
             
-            if overlay.title == "one"{
+            if overlay.title == "guide"{
                 polyLineRenderer.strokeColor = UIColor.orange
             } else
-            if overlay.title == "two" {
+            if overlay.title == "ride" {
               polyLineRenderer.strokeColor = UIColor.B6
             }
             

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF49280891AF00C6B1BF /* ReuseButton.swift */; };
-		2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */; };
+		2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4B280895F200C6B1BF /* RideViewController.swift */; };
 		23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C30281CF43D001DE91D /* bike-city-rider.json */; };
 		23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C36281D0E60001DE91D /* waiting-pigeon.json */; };
 		23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C38281D11C7001DE91D /* SaveMapsViewController.swift */; };
@@ -35,9 +35,6 @@
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
-		234A167E2837568D00E09F09 /* RideTogetherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A167D2837568D00E09F09 /* RideTogetherUITests.swift */; };
-		234A16802837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A167F2837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift */; };
-		234A168D2837656900E09F09 /* RideTogetherMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A168C2837656900E09F09 /* RideTogetherMapTests.swift */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
@@ -164,26 +161,12 @@
 			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
 			remoteInfo = RideTogether;
 		};
-		234A16812837568D00E09F09 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 23D1B723280033FB000EDA70 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
-			remoteInfo = RideTogether;
-		};
-		234A168E2837656900E09F09 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 23D1B723280033FB000EDA70 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
-			remoteInfo = RideTogether;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2304FF49280891AF00C6B1BF /* ReuseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseButton.swift; sourceTree = "<group>"; };
-		2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowJourneyViewController.swift; sourceTree = "<group>"; };
+		2304FF4B280895F200C6B1BF /* RideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewController.swift; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
 		23129C36281D0E60001DE91D /* waiting-pigeon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waiting-pigeon.json"; sourceTree = "<group>"; };
 		23129C38281D11C7001DE91D /* SaveMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMapsViewController.swift; sourceTree = "<group>"; };
@@ -211,11 +194,6 @@
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
-		234A167B2837568D00E09F09 /* RideTogetherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		234A167D2837568D00E09F09 /* RideTogetherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherUITests.swift; sourceTree = "<group>"; };
-		234A167F2837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		234A168A2837656900E09F09 /* RideTogetherMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		234A168C2837656900E09F09 /* RideTogetherMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherMapTests.swift; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
@@ -351,20 +329,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		234A16782837568D00E09F09 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		234A16872837656900E09F09 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		23D1B728280033FB000EDA70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -427,23 +391,6 @@
 				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
 			);
 			path = RideTogetherTests;
-			sourceTree = "<group>";
-		};
-		234A167C2837568D00E09F09 /* RideTogetherUITests */ = {
-			isa = PBXGroup;
-			children = (
-				234A167D2837568D00E09F09 /* RideTogetherUITests.swift */,
-				234A167F2837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift */,
-			);
-			path = RideTogetherUITests;
-			sourceTree = "<group>";
-		};
-		234A168B2837656900E09F09 /* RideTogetherMapTests */ = {
-			isa = PBXGroup;
-			children = (
-				234A168C2837656900E09F09 /* RideTogetherMapTests.swift */,
-			);
-			path = RideTogetherMapTests;
 			sourceTree = "<group>";
 		};
 		237A27A8281A6948004F039F /* Login */ = {
@@ -537,8 +484,6 @@
 				23D1B7F7280561D3000EDA70 /* Third Party Wrapper */,
 				23D1B72D280033FB000EDA70 /* RideTogether */,
 				234A166F283738E200E09F09 /* RideTogetherTests */,
-				234A167C2837568D00E09F09 /* RideTogetherUITests */,
-				234A168B2837656900E09F09 /* RideTogetherMapTests */,
 				23D1B72C280033FB000EDA70 /* Products */,
 				B8861B4BB71FEA4F16110C05 /* Pods */,
 				280213B7E321F791376F648A /* Frameworks */,
@@ -550,8 +495,6 @@
 			children = (
 				23D1B72B280033FB000EDA70 /* RideTogether.app */,
 				234A166E283738E200E09F09 /* RideTogetherTests.xctest */,
-				234A167B2837568D00E09F09 /* RideTogetherUITests.xctest */,
-				234A168A2837656900E09F09 /* RideTogetherMapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -720,7 +663,7 @@
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
-				2304FF4B280895F200C6B1BF /* FollowJourneyViewController.swift */,
+				2304FF4B280895F200C6B1BF /* RideViewController.swift */,
 				23129C38281D11C7001DE91D /* SaveMapsViewController.swift */,
 				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
@@ -804,42 +747,6 @@
 			productReference = 234A166E283738E200E09F09 /* RideTogetherTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		234A167A2837568D00E09F09 /* RideTogetherUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 234A16852837568D00E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherUITests" */;
-			buildPhases = (
-				234A16772837568D00E09F09 /* Sources */,
-				234A16782837568D00E09F09 /* Frameworks */,
-				234A16792837568D00E09F09 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				234A16822837568D00E09F09 /* PBXTargetDependency */,
-			);
-			name = RideTogetherUITests;
-			productName = RideTogetherUITests;
-			productReference = 234A167B2837568D00E09F09 /* RideTogetherUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		234A16892837656900E09F09 /* RideTogetherMapTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 234A16902837656900E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherMapTests" */;
-			buildPhases = (
-				234A16862837656900E09F09 /* Sources */,
-				234A16872837656900E09F09 /* Frameworks */,
-				234A16882837656900E09F09 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				234A168F2837656900E09F09 /* PBXTargetDependency */,
-			);
-			name = RideTogetherMapTests;
-			productName = RideTogetherMapTests;
-			productReference = 234A168A2837656900E09F09 /* RideTogetherMapTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		23D1B72A280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23D1B73F280033FC000EDA70 /* Build configuration list for PBXNativeTarget "RideTogether" */;
@@ -875,14 +782,6 @@
 						CreatedOnToolsVersion = 13.3.1;
 						TestTargetID = 23D1B72A280033FB000EDA70;
 					};
-					234A167A2837568D00E09F09 = {
-						CreatedOnToolsVersion = 13.3.1;
-						TestTargetID = 23D1B72A280033FB000EDA70;
-					};
-					234A16892837656900E09F09 = {
-						CreatedOnToolsVersion = 13.3.1;
-						TestTargetID = 23D1B72A280033FB000EDA70;
-					};
 					23D1B72A280033FB000EDA70 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -903,28 +802,12 @@
 			targets = (
 				23D1B72A280033FB000EDA70 /* RideTogether */,
 				234A166D283738E200E09F09 /* RideTogetherTests */,
-				234A167A2837568D00E09F09 /* RideTogetherUITests */,
-				234A16892837656900E09F09 /* RideTogetherMapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		234A166C283738E200E09F09 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		234A16792837568D00E09F09 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		234A16882837656900E09F09 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1104,23 +987,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		234A16772837568D00E09F09 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				234A16802837568D00E09F09 /* RideTogetherUITestsLaunchTests.swift in Sources */,
-				234A167E2837568D00E09F09 /* RideTogetherUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		234A16862837656900E09F09 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				234A168D2837656900E09F09 /* RideTogetherMapTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		23D1B727280033FB000EDA70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1223,7 +1089,7 @@
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
-				2304FF4C280895F200C6B1BF /* FollowJourneyViewController.swift in Sources */,
+				2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
@@ -1240,16 +1106,6 @@
 			isa = PBXTargetDependency;
 			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
 			targetProxy = 234A1672283738E200E09F09 /* PBXContainerItemProxy */;
-		};
-		234A16822837568D00E09F09 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
-			targetProxy = 234A16812837568D00E09F09 /* PBXContainerItemProxy */;
-		};
-		234A168F2837656900E09F09 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
-			targetProxy = 234A168E2837656900E09F09 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1305,80 +1161,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RideTogether.app/RideTogether";
-			};
-			name = Release;
-		};
-		234A16832837568D00E09F09 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BP43NW7P4;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RideTogether;
-			};
-			name = Debug;
-		};
-		234A16842837568D00E09F09 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BP43NW7P4;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RideTogether;
-			};
-			name = Release;
-		};
-		234A16912837656900E09F09 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BP43NW7P4;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherMapTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RideTogether.app/RideTogether";
-			};
-			name = Debug;
-		};
-		234A16922837656900E09F09 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BP43NW7P4;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogetherMapTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1588,24 +1370,6 @@
 			buildConfigurations = (
 				234A1674283738E200E09F09 /* Debug */,
 				234A1675283738E200E09F09 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		234A16852837568D00E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				234A16832837568D00E09F09 /* Debug */,
-				234A16842837568D00E09F09 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		234A16902837656900E09F09 /* Build configuration list for PBXNativeTarget "RideTogetherMapTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				234A16912837656900E09F09 /* Debug */,
-				234A16922837656900E09F09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

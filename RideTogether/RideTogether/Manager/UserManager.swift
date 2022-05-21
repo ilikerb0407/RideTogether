@@ -47,8 +47,7 @@ class UserManager {
                 
                 if let err = err {
                     print("Error removing document: \(err)")
-                    
-//                    - some : Error Domain=FIRFirestoreErrorDomain Code=7 "Missing or insufficient permissions." UserInfo={NSLocalizedDescription=Missing or insufficient permissions.}
+
                 } else {
                     print("Document successfully removed!")
                     print ("uid ========= \(uid)")
@@ -57,9 +56,9 @@ class UserManager {
         }
         
     }
-    func deleteUserFromGroup(uid : String) {
+    func deleteUserFromGroup(uid: String) {
        
-        let docRef = dataBase.collection(groupsCollection).whereField("user_ids", arrayContains: uid).getDocuments { (querySnapshot, error) in
+    dataBase.collection(groupsCollection).whereField("user_ids", arrayContains: uid).getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
             
@@ -106,12 +105,8 @@ class UserManager {
     
     func deleteUserSharemaps (uid: String) {
         
-//        let uid = userInfo.uid
-        
         let document = dataBase.collection(shareCollection).whereField("uid", isEqualTo: uid)
             
-//        (lldb) po uid
-//        "7FIqyPir7jV0x1oCNr6EWKDWh7r2"
             document.getDocuments { (querySnapshot, error) in
                 print(querySnapshot?.count)
             

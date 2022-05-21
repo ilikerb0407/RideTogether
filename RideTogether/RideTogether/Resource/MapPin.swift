@@ -14,24 +14,18 @@ import SwiftUI
 class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     
     
-    let baseVC = BaseViewController()
-    
     func provideWeather(weather: ResponseBody) {
         weatherData = weather
     }
-    var weatherData : ResponseBody?
+    var weatherData: ResponseBody?
     
     let weatherManger = WeatherManager()
-
-    let session = GPXSession()
 
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
     var directionsResponse =  MKDirections.Response()
     
     var route = MKRoute()
-    
-    var step: [String] = []
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
@@ -44,10 +38,10 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
             
             polyLineRenderer.strokeColor = UIColor.B5
             
-            if overlay.title == "one"{
+            if overlay.title == "guide"{
                 polyLineRenderer.strokeColor = UIColor.orange
             } else
-            if overlay.title == "two" {
+            if overlay.title == "ride" {
               polyLineRenderer.strokeColor = UIColor.B6
             }
             
@@ -89,7 +83,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                 self.route = self.directionsResponse.routes[0]
                 
             } else {
-                print("\(error)")
                 
                 LKProgressHUD.showFailure(text: "無法導航")
             }
@@ -99,13 +92,12 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         
         let locale = Locale(identifier: "zh_TW")
         if #available(iOS 11.0, *) {
-            ceo.reverseGeocodeLocation(loc, preferredLocale: locale) {
-                (placemarks, error) in
+            ceo.reverseGeocodeLocation(loc, preferredLocale: locale) {(placemarks, error) in
                 if error == nil {
-                    let pm = placemarks! as [CLPlacemark]
-                    if pm.count > 0 {
-                        let pm = placemarks![0]
-                        self.destination = pm
+                    let placemarks = placemarks! as [CLPlacemark]
+                    if placemarks.count > 0 {
+                        let placemark = placemarks[0]
+                        self.destination = placemark
                     }
                 }
             }
@@ -113,44 +105,39 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         
     }
     
-    // MARK:  Displays a pin with whose annotation (bubble) will include delete buttons.
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
-        let annotationView = MKPinAnnotationView()
-
-        //  let annotationView: MKPinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "mapping")
+        let annotationView = MKMarkerAnnotationView()
+        
         annotationView.canShowCallout = true
-        annotationView.isDraggable = true
-        //
+    
         let rightButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         rightButton.clipsToBounds = true
         rightButton.tintColor = .B5
         let rightImage = UIImage(systemName: "info.circle",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
         rightButton.setImage(rightImage, for: .normal)
-        //        deleteButton.setImage(UIImage(named: "deleteHigh"), for: .highlighted)
-        rightButton.tag = kDeleteWaypointButtonTag
+
+        rightButton.tag = informationButtonTag
         annotationView.rightCalloutAccessoryView = rightButton
-        //        annotationView.pinTintColor = .red
         let leftButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         leftButton.tintColor = .B5
         let leftImg = UIImage(systemName: "pencil.circle",
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
         leftButton.setImage(leftImg, for: .normal)
-        //        editButton.setImage(UIImage(systemName: "pencil.circle.fill"), for: .highlighted)
-        leftButton.tag = kEditWaypointButtonTag
+
+        leftButton.tag = editButtonTag
         annotationView.leftCalloutAccessoryView = leftButton
         
         return annotationView
     }
     
-    let kDeleteWaypointButtonTag = 666
+    let informationButtonTag = 0
     
-    let kEditWaypointButtonTag = 333
+    let editButtonTag = 1
     
     // MARK: - map Annotation -
     
@@ -179,7 +166,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
             
             switch button.tag {
                 
-            case kDeleteWaypointButtonTag:
+            case informationButtonTag:
                 
                 guard let weatherData = weatherData else { return }
                 
@@ -197,7 +184,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                 
                 let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
                    
-                    self.route.polyline.title = "one"
+                    self.route.polyline.title = "guide"
                     
                     if polyLine == nil {
                         LKProgressHUD.showFailure(text: "無法導航")
@@ -212,6 +199,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                 alertSheet.addAction(routeName)
                 alertSheet.addAction(removeOption)
                 alertSheet.addAction(cancelAction)
+               
                 
                 let lastVC = UIViewController.getLastPresentedViewController()
                 lastVC?.present(alertSheet, animated: true)
@@ -228,17 +216,16 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
 
                 alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
                 
-            case kEditWaypointButtonTag:
+            case editButtonTag:
                 
                 let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
                 
                 alertController.addTextField { (textField) in
                     textField.text = waypoint.title
-                    textField.tintColor = .B5
                     textField.clearButtonMode = .always
                 }
                 let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { _ in
-                    print("Edit waypoint alert view")
+                    
                     self.waypointBeingEdited.title = alertController.textFields?[0].text
                 }
                 let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
@@ -257,15 +244,14 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         }
     }
     
-    //MARK:  Adds the pin to the map with an animation (comes from the top of the screen)
+    //MARK: - userPin -
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         
         var num = 0
-        // swiftlint:disable force_cast
-//        guard let gpxMapView = mapView as? GPXMapView else { return }
-        let gpxMapView = mapView as! GPXMapView
-        var hasImpacted = false
+        
+        guard let gpxMapView = mapView as? GPXMapView else { return }
+
         //adds the pins with an animation
         for object in views {
             num += 1
@@ -275,10 +261,11 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
                 
+                
                 if gpxMapView.headingImageView == nil {
                     
                     let image = UIImage(named: "heading")!
-    
+                    
                     gpxMapView.headingImageView = UIImageView(image: image)
                     
                     gpxMapView.headingImageView?.layer.cornerRadius = 20
@@ -286,14 +273,9 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                     gpxMapView.headingImageView?.layer.masksToBounds = true
                     
                     gpxMapView.headingImageView?.loadImage(UserManager.shared.userInfo.pictureRef, placeHolder: image)
-                    
-                    gpxMapView.headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - image.size.width)/2,
-                                                                y: (annotationView.frame.size.height - image.size.height)/2,
-                                                                width: image.size.width,
-                                                                height: image.size.height)
+   
                     annotationView.insertSubview(gpxMapView.headingImageView!, at: 0)
                     
-//                    gpxMapView.headingImageView!.isHidden = true
                 }
                 continue
             }
@@ -307,7 +289,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                                           
                                           width: annotationView.frame.size.width, height: annotationView.frame.size.height)
             
-            let interval: TimeInterval = 0.04 * 1.1
+            let interval: TimeInterval = 0.04
             
             UIView.animate(withDuration: 0.3, delay: interval, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
                 annotationView.frame = endFrame
@@ -329,52 +311,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         }
     }
     
-    private var mapRoutes: [MKRoute] = []
-    
-    var routes: DrawRoute?
-    
-    private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
-    
-    private func groupAndRequestDirections() {
-        guard let firstStop = routes!.stops.first else {
-            return
-        }
-        
-        groupedRoutes.append((routes!.origin, firstStop))
-        
-        if routes!.stops.count == 2 {
-            let secondStop = routes!.stops[1]
-            
-            groupedRoutes.append((firstStop, secondStop))
-            
-            groupedRoutes.append((secondStop, routes!.origin))
-        }
-        
-        fetchNextRoute()
-    }
-    
-    private func fetchNextRoute() {
-        guard !groupedRoutes.isEmpty else {
-            return
-        }
-        
-        let nextGroup = groupedRoutes.removeFirst()
-        let request = MKDirections.Request()
-        
-        request.source = nextGroup.startItem
-        request.destination = nextGroup.endItem
-        request.transportType = .walking
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculate { [self] response, error in
-            guard let mapRoute = response?.routes.first else {
-                return
-            }
-            
-            self.fetchNextRoute()
-        }
-    }
 }
 
 extension UIWindow {

@@ -12,8 +12,6 @@ import CoreLocation
 import Firebase
 import Lottie
 import MessageUI
-import JGProgressHUD
- //
 
 class JourneyViewController: BaseViewController {
     
@@ -280,8 +278,6 @@ class JourneyViewController: BaseViewController {
         
         stopWatch.delegate = self
         
-//        RecordManager.shared.detectDeviceAndUpload()
-        
         setUpMap()
         
         setUpLabels()
@@ -290,7 +286,7 @@ class JourneyViewController: BaseViewController {
         
         addSegment()
         
-        mapPin.route.polyline.title = "two"
+        mapPin.route.polyline.title = "ride"
         
         navigationController?.isNavigationBarHidden = true
         

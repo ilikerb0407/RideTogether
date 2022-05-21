@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 extension UITableView {
     
     func registerCellWithNib(identifier: String, bundle: Bundle?) {

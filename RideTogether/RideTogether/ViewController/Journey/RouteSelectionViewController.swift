@@ -19,27 +19,25 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     let weatherManger = WeatherManager()
     
-    @IBOutlet weak var feelslikeTemp: UILabel!
+    @IBOutlet weak var feelsLikeTempLabel: UILabel!
     
-    @IBOutlet weak var humidity: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
     
-    @IBOutlet weak var showtemp: UILabel!
+    @IBOutlet weak var showtempLabel: UILabel!
     
-    @IBOutlet weak var sunrise: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
     
-    @IBOutlet weak var sunset: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
     
-    @IBOutlet weak var wind: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
     
-    @IBOutlet weak var cloud: UILabel!
-    
-    @IBOutlet weak var lefttop: UILabel!
+//    @IBOutlet weak var lefttop: UILabel!
     
     
-    func setUp() {
-        lefttop.translatesAutoresizingMaskIntoConstraints = false
-        lefttop.cornerRadius = 30
-    }
+//    func setUp() {
+//        lefttop.translatesAutoresizingMaskIntoConstraints = false
+//        lefttop.cornerRadius = 30
+//    }
     
     func weather() {
         
@@ -55,12 +53,12 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         func showWeatherInfo() {
             
             guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-            feelslikeTemp.text = "\(feelslike) °C"
+            feelsLikeTempLabel.text = "\(feelslike) °C"
             guard let humiditydata = weatherdata?.main.humidity else { return }
-            humidity.text = "\(humiditydata) %"
+            humidityLabel.text = "\(humiditydata) %"
             
             guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-            showtemp.text = "\(tempdata) °C"
+            showtempLabel.text = "\(tempdata) °C"
             
             
             guard let ssunrise = weatherdata?.sys.sunrise else { return }
@@ -68,7 +66,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
 //
 //            let myDate = NSDate(timeIntervalSince1970: epocTime)
 //            print ("=====++++\(myDate)")
-            sunrise.text = "\(epocTime.sunrise()) AM"
+            sunriseLabel.text = "\(epocTime.sunrise()) AM"
             
             guard let ssunset = weatherdata?.sys.sunset else { return }
             var sunsetTime = TimeInterval(ssunset)
@@ -76,16 +74,16 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
 //            let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
 //            print ("=====++++\(sunsetDate)")
             
-            sunset.text = "\(sunsetTime.sunset()) PM"
+            sunsetLabel.text = "\(sunsetTime.sunset()) PM"
             
             guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-            wind.text = "\(swind) km/h"
+            windLabel.text = "\(swind) km/h"
             
 //            let weather = "Sun"
             guard let weather = weatherdata?.weather[0].main else { return }
 //
             if weather == "Rain" {
-                cloud.text = "雨天"
+                
                 rainLottieView.isHidden = false
                 rainLottieView.play()
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
@@ -97,7 +95,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             }
             
             if weather == "Clouds" {
-                cloud.text = "多雲"
                 cloudsLottieView.isHidden = false
                 cloudsLottieView.play()
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分!", comment: "no comment"), preferredStyle: .alert)
@@ -108,7 +105,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             }
             
             if weather == "Drizzle" {
-                cloud.text = "細雨"
+                
                 rainLottieView.isHidden = false
                 rainLottieView.play()
                 let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
@@ -120,7 +117,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             }
             
             if weather == "Sun" {
-                cloud.text = "晴天"
+               
                 sunLottieView.isHidden = false
                 sunLottieView.play()
                 
@@ -193,7 +190,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     }
     
     override func viewDidLayoutSubviews() {
-        setUp()
+//        setUp()
         
         inputContainerView.cornerRadius = 30
     }

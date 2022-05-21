@@ -28,10 +28,11 @@ class WeatherManager {
             do {
                 let firstData = try decoder.decode(ResponseBody.self, from: data)
                 completion(firstData)
-                print ("=================\(firstData)===================")
+                
+                LKProgressHUD.showSuccess(text: "讀取成功")
                
             } catch {
-                print(error)
+                LKProgressHUD.showFailure(text: "網路問題，無法讀取")
             }
             
         }) .resume()

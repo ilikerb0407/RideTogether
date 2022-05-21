@@ -1,5 +1,5 @@
 //
-//  FollowJourneyViewController.swift
+//  RideViewController.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/15.
@@ -15,7 +15,7 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class FollowJourneyViewController: BaseViewController, bikeProvider {
+class RideViewController: BaseViewController, bikeProvider {
     
     func provideBike(bike: Bike) {
         bikeData = [bike]
@@ -25,8 +25,6 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
     var bikeManager = BikeManager()
     
     var record = Record()
-    
-    let session = GPXSession()
     
     let userName = UserManager.shared.userInfo.userName!
 
@@ -543,23 +541,13 @@ class FollowJourneyViewController: BaseViewController, bikeProvider {
             
             let gpxString = self.map2.exportToGPXString()
             
-            let fileName = alertController.textFields?[0].text
-            // "2022-04-10_04-21"
-            print ("1\(fileName)1")
-            
-            self.lastGpxFilename = fileName!
-            
-            //            if let fileName = fileName {
-            GPXFileManager.save( fileName!, gpxContents: gpxString)
-            self.lastGpxFilename = fileName!
-            
-            self.map2.coreDataHelper.coreDataDeleteAll(of: CDRoot.self)
-            //deleteCDRootFromCoreData()
-            self.map2.coreDataHelper.clearAllExceptWaypoints()
-            self.map2.coreDataHelper.add(toCoreData: fileName!, willContinueAfterSave: true)
-            print ("2\(fileName)2")
-            //            }
-            
+            guard let fileName = alertController.textFields?[0].text else { return }
+
+            self.lastGpxFilename = fileName
+  
+            GPXFileManager.save( fileName, gpxContents: gpxString)
+            self.lastGpxFilename = fileName
+     
             if withReset {
                 self.gpxTrackingStatus = .notStarted
             }
@@ -805,7 +793,7 @@ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:
 }
 // MARK: - StopWatchDelegate methods
 
-extension FollowJourneyViewController: StopWatchDelegate {
+extension RideViewController: StopWatchDelegate {
     func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         
         timeLabel.text = elapsedTimeString
@@ -813,7 +801,7 @@ extension FollowJourneyViewController: StopWatchDelegate {
 }
 // MARK: - CLLocationManager Delegate -
 
-extension FollowJourneyViewController: CLLocationManagerDelegate {
+extension RideViewController: CLLocationManagerDelegate {
   
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         map2.heading = newHeading // updates heading variable

@@ -37,10 +37,6 @@ class BikeManager {
                 
                 completion(bikeData)
                 
-//                for count in 0..<20 {
-//                    bikes.append(bikeData[count]) }
-//                completion(bikes)
-                
                 LKProgressHUD.showSuccess(text: "讀取成功")
                
             } catch {

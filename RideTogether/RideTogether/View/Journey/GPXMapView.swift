@@ -14,15 +14,6 @@ import CoreGPX
 
 class GPXMapView: MKMapView {
     
-    func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
-    }
-    
-    var weatherdata : ResponseBody?
-    
-    let weatherManger = WeatherManager()
-    
-    let coreDataHelper = CoreDataHelper()
 
     let session = GPXSession()
     
@@ -33,15 +24,11 @@ class GPXMapView: MKMapView {
     var extent: GPXExtentCoordinates = GPXExtentCoordinates()
 
     var headingOffset: CGFloat?
-    
-    /// Heading of device
+   
     var heading: CLHeading?
-    
-    /// Arrow image to display heading (orientation of the device)
-    /// initialized on MapViewDelegate
+   
     var headingImageView: UIImageView?
-    
-    /// Gesture for heading arrow to be updated in realtime during user's map interactions
+
     var rotationGesture = UIRotationGestureRecognizer()
     
     required init?(coder aDecoder: NSCoder) {
@@ -144,14 +131,7 @@ class GPXMapView: MKMapView {
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         
         let waypoint = GPXWaypoint(coordinate: coords)
-//    latitude: 25.042393, longitude: 121.56496
-//        if waypoint.coordinate.latitude > 25.5 || waypoint.coordinate.longitude > 122 {
-//            LKProgressHUD.showFailure(text: "無法導航")
-//        } else if waypoint.coordinate.latitude < 21 || waypoint.coordinate.longitude < 119 {
-//            LKProgressHUD.showFailure(text: "無法導航")
-//        } else {
-//            addWaypoint(waypoint)
-//        }
+
         addWaypoint(waypoint)
     }
     
