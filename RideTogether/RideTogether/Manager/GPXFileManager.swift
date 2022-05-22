@@ -69,6 +69,8 @@ class GPXFileManager {
     
     class func save(_ filename: String, gpxContents: String) {
         
+        LKProgressHUD.show()
+        
         let fileURL: URL = self.URLForFilename(filename)
         
         GPXFileManager.saveToURL(fileURL: fileURL, gpxContents: gpxContents)

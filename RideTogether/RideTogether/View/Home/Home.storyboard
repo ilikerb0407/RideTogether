@@ -90,22 +90,6 @@
             </objects>
             <point key="canvasLocation" x="1211.5942028985507" y="67.633928571428569"/>
         </scene>
-        <!--Journey-->
-        <scene sceneID="R5B-ob-qzC">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Journey" id="a5D-R9-owi" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dVQ-kz-Iv9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3014" y="-19"/>
-        </scene>
-        <!--Group-->
-        <scene sceneID="3CQ-h5-hIp">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Group" id="NMc-Bl-QNx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmM-H7-Guc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3543" y="297"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="o9d-CD-zYe">
             <objects>
@@ -133,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="3013" y="-386"/>
         </scene>
-        <!--Route Ride View Controller-->
+        <!--Go To Ride View Controller-->
         <scene sceneID="XBk-i9-Odi">
             <objects>
-                <viewController storyboardIdentifier="RouteRideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ix-zW-c0i" customClass="RouteRideViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoToRideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ix-zW-c0i" customClass="GoToRideViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jIo-K7-egm">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

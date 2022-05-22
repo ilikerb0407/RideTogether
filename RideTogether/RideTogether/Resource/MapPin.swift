@@ -61,8 +61,8 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         let annotationView = MKPinAnnotationView()
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
         let targetCoordinate = annotationView.annotation?.coordinate
-        let targetPlacemark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
-        let targetItem = MKMapItem(placemark: targetPlacemark)
+        let targetPlaceMark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
+        let targetItem = MKMapItem(placemark: targetPlaceMark)
         let userMapItem = MKMapItem.forCurrentLocation()
         
         let request = MKDirections.Request()
@@ -87,17 +87,18 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                 LKProgressHUD.showFailure(text: "無法導航")
             }
         }
-        let ceo: CLGeocoder = CLGeocoder()
-        let loc: CLLocation = CLLocation(latitude: targetPlacemark.coordinate.latitude, longitude: targetPlacemark.coordinate.longitude)
+        let geoCoder: CLGeocoder = CLGeocoder()
+        
+        let location: CLLocation = CLLocation(latitude: targetPlaceMark.coordinate.latitude, longitude: targetPlaceMark.coordinate.longitude)
         
         let locale = Locale(identifier: "zh_TW")
         if #available(iOS 11.0, *) {
-            ceo.reverseGeocodeLocation(loc, preferredLocale: locale) {(placemarks, error) in
+            geoCoder.reverseGeocodeLocation(location, preferredLocale: locale) {(placeMarks, error) in
                 if error == nil {
-                    let placemarks = placemarks! as [CLPlacemark]
-                    if placemarks.count > 0 {
-                        let placemark = placemarks[0]
-                        self.destination = placemark
+                    let placeMarks = placeMarks! as [CLPlacemark]
+                    if placeMarks.count > 0 {
+                        let placeMark = placeMarks[0]
+                        self.destination = placeMark
                     }
                 }
             }

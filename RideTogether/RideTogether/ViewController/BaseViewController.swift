@@ -53,7 +53,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     static var identifier: String {
         
         return String(describing: self)
@@ -225,5 +224,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             }
         }
     }
+    
+    
     
 }

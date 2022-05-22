@@ -112,7 +112,7 @@ class RecordManager {
         print("sucessfully")
     }
     
-    func fetchRecords(completion: @escaping (Result<[Record],Error>) -> Void) {
+    func fetchRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
         
         let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
         
@@ -144,7 +144,7 @@ class RecordManager {
         
     }
     
-    func fetchOneRecord(completion: @escaping (Result<Record,Error>) -> Void) {
+    func fetchOneRecord(completion: @escaping (Result<Record, Error>) -> Void) {
         
         let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
 

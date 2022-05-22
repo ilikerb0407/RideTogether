@@ -68,11 +68,7 @@ class GPXMapView: MKMapView {
             currentSegmentOverlay = MKPolyline()
         }
     }
-    
-    func finishCurrentSegment() {
-        startNewTrackSegment()
-    }
-    
+
     func clearMap() {
         session.reset()
         removeOverlays(overlays)
@@ -92,7 +88,7 @@ class GPXMapView: MKMapView {
     }
     
     func importFromGPXRoot(_ gpx: GPXRoot) {
-//        clearMap()
+        
         addTrackSegments(for: gpx)
         
 

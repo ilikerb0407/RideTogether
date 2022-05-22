@@ -160,36 +160,6 @@ class RouteViewController: BaseViewController {
         
     }
     
-    // MARK: 新增路線資料
-//    func uploadRecordToDb() {
-//        
-//        let document = dataBase.collection("Routes").document()
-//        
-//        var record = Route()
-//        
-//        record.routeId = document.documentID
-//        
-//        record.routeTypes = 0
-//        
-//        record.routeInfo = "熱門路線"
-//        
-//        record.routeLength = "30 Km"
-//        
-//        record.routeMap = "https://firebasestorage.googleapis.com/v0/b/bikeproject-59c89.appspot.com/o/records%2F2022-04-18_10-59?alt=media&token=604f82b6-ffbd-49e7-8f29-86e3084cf30e"
-//        
-//        record.routeName = "破風車手"
-//        
-//        do {
-//            
-//            try document.setData(from: record)
-//            
-//        } catch {
-//            
-//            print("error")
-//        }
-//        
-//        print("sucessfully")
-//    }
     
     @objc func showLongPressNotify() {
         
@@ -215,6 +185,7 @@ class RouteViewController: BaseViewController {
         self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
     }
   
+    //MARK: - View Life Cycle -
     
     override func viewDidLoad() {
         
@@ -229,23 +200,8 @@ class RouteViewController: BaseViewController {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
         
         tableView.addGestureRecognizer(longPress)
-        
-//        let textAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.clear ]
-        
-//        navigationController?.navigationBar.titleTextAttributes = textAttributes
-        
-        // 改顏色
-        
-//        setupCollectionView()z
-        
-//        backButton()
-        
-//        configureDataSource()
-//
-//        configureSnapshot()
-        
+
         setUpThemeTag()
-        
         
     }
     
@@ -253,17 +209,7 @@ class RouteViewController: BaseViewController {
         super.viewDidAppear(animated)
         LKProgressHUD.dismiss()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        super.viewWillAppear(animated)
-//
-//        navigationController?.isNavigationBarHidden = true
-//
-//        navigationItem.hidesBackButton = true
-//
-//    }
-    
+ 
     func setUpThemeTag() {
         
         let view = UIView(frame: CGRect(x: -20, y: 80, width: UIScreen.width / 2 + 10, height: 40))
@@ -283,10 +229,6 @@ class RouteViewController: BaseViewController {
         label.textAlignment = .center
         
         label.font = UIFont.regular(size: 18)
-        
-//        collectionView.addSubview(view)
-        
-//        collectionView.addSubview(label)
         
         self.view.addSubview(view)
         
@@ -328,7 +270,6 @@ class RouteViewController: BaseViewController {
 }
 
 extension RouteViewController: UITableViewDelegate {
-    
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         
@@ -373,19 +314,7 @@ extension RouteViewController: UITableViewDelegate {
 }
 //
 extension RouteViewController: UITableViewDataSource {
-    
-    @objc func goToRide(_ sender: UIButton) {
-        
-        LKProgressHUD.showSuccess(text: "下載資料中")
-        
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RouteRideViewController") as? RouteRideViewController {
-            
-            journeyViewController.routes = routes[sender.tag]
-            
-            navigationController?.pushViewController(journeyViewController, animated: true)
-            
-            }
-    }
+  
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         routes.count
@@ -402,6 +331,18 @@ extension RouteViewController: UITableViewDataSource {
         cell.rideBtn.tag = indexPath.row
 
         return cell
+    }
+    
+    @objc func goToRide(_ sender: UIButton) {
+        
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
+            
+            journeyViewController.routes = routes[sender.tag]
+            
+            navigationController?.pushViewController(journeyViewController, animated: true)
+            
+            
+            }
     }
 
 }

@@ -30,7 +30,7 @@ enum RoutesType: String, RoutesPhoto, CaseIterable {
     var image: UIImage? {
         
         switch self {
-            // 394 * 204 圖片好的畫質 上傳前注意
+            
         case .userOne:
             return UIImage(named: "type0")
         case .recommendOne:

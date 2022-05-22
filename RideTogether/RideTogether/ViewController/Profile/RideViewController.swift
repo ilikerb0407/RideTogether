@@ -85,7 +85,8 @@ class RideViewController: BaseViewController, bikeProvider {
             
             print("FollowDetail=======:\(inputUrl)======")
             
-            guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
+            guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
+            }
             
             didLoadGPXFile(gpxRoot: gpx)
             
@@ -476,7 +477,6 @@ class RideViewController: BaseViewController, bikeProvider {
         resetButton.roundCorners(cornerRadius: otherRadius)
         
     }
-    
     
     // MARK: - Action
     
