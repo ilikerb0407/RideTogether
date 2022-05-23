@@ -430,8 +430,6 @@ class RideViewController: BaseViewController, bikeProvider {
         
         stopWatch.delegate = self
         
-        RecordManager.shared.detectDeviceAndUpload()
-        
         setUpMap()
         
         setUpButtonsStackView()

@@ -9,10 +9,6 @@ import Foundation
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
-//import FirebaseStorageSwift
-
-
-//MARK: 紀錄路線的Manager
 
 class RecordManager {
     
@@ -32,8 +28,6 @@ class RecordManager {
     
     private let recordsCollection = Collection.records.rawValue
     
-    // 傳資料到Storage
-    
     func uploadRecord(fileName: String, fileURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
 
         do {
@@ -41,8 +35,7 @@ class RecordManager {
             let data: Data = try Data(contentsOf: fileURL)
  
             let recordRef = storageRef.child("records").child(userId)
-//            let recordRef = storageRef.child("records")
-            //  gs://bikeproject-59c89.appspot.com/records
+
             let spaceRef = recordRef.child(fileName)
 
             spaceRef.putData(data, metadata: nil) { result in
@@ -58,10 +51,8 @@ class RecordManager {
                         case .success(let url):
 
                             completion(.success(url))
-                            // 上傳到FireBase DataBase
+                  
                             self.uploadRecordToDb(fileName: fileName, fileURL: url)
-                            // 在save的時候就已經先upload length了
-//                            GPXFileManager.uploadTrackLengthToDb(fileURL: url)
 
                         case .failure(let error):
 
@@ -217,37 +208,6 @@ class RecordManager {
                 for document in querySnapshot.documents {
                     
                     document.reference.delete()
-                }
-            }
-        }
-    }
-    
-    func detectDeviceAndUpload() {
-
-        let files = GPXFileManager.gpxFilesInDevice
-
-        if files.count != 0 {
-
-            for file in files {
-
-                let fileName = (file.absoluteString as NSString).lastPathComponent.removeFileSuffix()
-
-                uploadRecord(fileName: fileName, fileURL: file) { result in
-
-                    switch result {
-
-                    case .success:
-
-                        print("save to Firebase successfully")
-                        LKProgressHUD.showSuccess(text: "偵測檔案上傳成功")
-
-                        GPXFileManager.removeFileFromURL(file)
-
-                    case .failure(let error):
-
-                        print("save to Firebase failure: \(error)")
-                        LKProgressHUD.showFailure(text: "偵測檔案上傳")
-                    }
                 }
             }
         }

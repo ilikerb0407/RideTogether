@@ -361,8 +361,6 @@ class GoToRideViewController: BaseViewController, StopWatchDelegate, CLLocationM
             
             stopWatch.delegate = self
             
-            RecordManager.shared.detectDeviceAndUpload()
-            
             setUpMap()
             
             setUpButtonsStackView()

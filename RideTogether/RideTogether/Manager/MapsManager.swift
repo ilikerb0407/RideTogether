@@ -39,7 +39,6 @@ class MapsManager {
     
     private let userCollection = Collection.users.rawValue // Profile
     
-    
     func fetchRecords(completion: @escaping  (Result<[Record],Error>) -> Void){
         
         let collection = dataBase.collection(shareCollection)

@@ -53,6 +53,4 @@ class BikeView: NSObject, MKMapViewDelegate {
         return MKOverlayRenderer()
         
     }
-    
-
 }

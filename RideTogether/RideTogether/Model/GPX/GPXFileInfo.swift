@@ -7,11 +7,7 @@
 
 import Foundation
 
-///
-/// A handy way of getting info of a GPX file.
-///
-/// It gets info like filename, modified date, filesize
-///
+
 class GPXFileInfo: NSObject {
     
     /// file URL
@@ -57,10 +53,9 @@ class GPXFileInfo: NSObject {
     
 }
 
-/// Extension to display humanized filesizes
 extension Int {
     
-    /// Returns the integer as file size humanized (for instance: 1024 -> "1 KB" )
+    // Returns the integer as file size humanized (for instance: 1024 -> "1 KB" )
     func asFileSize() -> String {
         let bcf = ByteCountFormatter()
         bcf.allowedUnits = [.useAll]

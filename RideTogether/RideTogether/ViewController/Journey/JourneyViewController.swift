@@ -612,3 +612,4 @@ extension JourneyViewController: CLLocationManagerDelegate {
         mapView.updateHeading()
     }
 }
+
