@@ -46,7 +46,6 @@ class HomeViewController: BaseViewController, Reload {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateUserInfo),
@@ -94,6 +93,7 @@ class HomeViewController: BaseViewController, Reload {
         guard let headerView = headerView else { return }
         
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
+    
     }
     
     func manageRouteData() {

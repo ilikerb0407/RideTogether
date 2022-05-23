@@ -23,9 +23,6 @@
 		231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */; };
 		231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */; };
 		231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3828067DBD00DE2343 /* MapsManager.swift */; };
-		231BCB3F28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */; };
-		231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB402806A37B00DE2343 /* CoredataHelper.swift */; };
-		231BCB432806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB422806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift */; };
 		231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5028070BF500DE2343 /* Taiwan.swift */; };
 		231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */; };
 		231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB60280739AD00DE2343 /* Taipei1.plist */; };
@@ -181,9 +178,6 @@
 		231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = "<group>"; };
 		231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
 		231BCB3828067DBD00DE2343 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
-		231BCB3E28069EDF00DE2343 /* OpenGpxTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OpenGpxTracker.xcdatamodel; sourceTree = "<group>"; };
-		231BCB402806A37B00DE2343 /* CoredataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataHelper.swift; sourceTree = "<group>"; };
-		231BCB422806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataHelper+FetchRequests.swift"; sourceTree = "<group>"; };
 		231BCB5028070BF500DE2343 /* Taiwan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taiwan.swift; sourceTree = "<group>"; };
 		231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanMapOverlay.swift; sourceTree = "<group>"; };
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
@@ -545,7 +539,6 @@
 		23D1B74B28005D9B000EDA70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */,
 				23D1B78B28006663000EDA70 /* Constant.swift */,
 				231BCB5028070BF500DE2343 /* Taiwan.swift */,
 				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
@@ -571,8 +564,6 @@
 				23D1B75B28005FC9000EDA70 /* StopWatch.swift */,
 				23D1B75D28005FE1000EDA70 /* StopWatchDelegate.swift */,
 				23D1B80F2805D29E000EDA70 /* Date+Time.swift */,
-				231BCB402806A37B00DE2343 /* CoredataHelper.swift */,
-				231BCB422806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift */,
 			);
 			path = GPX;
 			sourceTree = "<group>";
@@ -994,7 +985,6 @@
 				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
 				23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */,
 				23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */,
-				231BCB412806A37B00DE2343 /* CoredataHelper.swift in Sources */,
 				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
 				23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */,
@@ -1038,7 +1028,6 @@
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
 				23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
-				231BCB432806A56B00DE2343 /* CoreDataHelper+FetchRequests.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
 				23129C3C281D30CF001DE91D /* SaveMaps.swift in Sources */,
@@ -1084,7 +1073,6 @@
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23C887272815450500E3319A /* GoToRideViewController.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
-				231BCB3F28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
@@ -1393,19 +1381,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		231BCB3D28069EDF00DE2343 /* OpenGpxTracker.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				231BCB3E28069EDF00DE2343 /* OpenGpxTracker.xcdatamodel */,
-			);
-			currentVersion = 231BCB3E28069EDF00DE2343 /* OpenGpxTracker.xcdatamodel */;
-			path = OpenGpxTracker.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 23D1B723280033FB000EDA70 /* Project object */;
 }
