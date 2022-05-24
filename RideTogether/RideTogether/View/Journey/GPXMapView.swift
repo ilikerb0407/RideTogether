@@ -11,10 +11,8 @@ import MapKit
 import CoreLocation
 import CoreGPX
 
-
 class GPXMapView: MKMapView {
     
-
     let session = GPXSession()
     
     var waypoints: [GPXWaypoint] = []
@@ -54,12 +52,13 @@ class GPXMapView: MKMapView {
     }
 
     func addPointToCurrentTrackSegmentAtLocation(_ location: CLLocation) {
+        
         session.addPointToCurrentTrackSegmentAtLocation(location)
-
         removeOverlay(currentSegmentOverlay)
         currentSegmentOverlay = session.currentSegment.overlay
         addOverlay(currentSegmentOverlay)
         extent.extendAreaToIncludeLocation(location.coordinate)
+        
     }
 
     func startNewTrackSegment() {
@@ -120,8 +119,7 @@ class GPXMapView: MKMapView {
             }
         }
     }
- 
-    // MARK: 長按建立座標的 method
+
     func addWaypointAtViewPoint(_ point: CGPoint) {
         
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
@@ -131,9 +129,6 @@ class GPXMapView: MKMapView {
         addWaypoint(waypoint)
     }
     
-  //MARK: Parameters: The waypoint to add to the map.
-    
-    
     func addWaypoint(_ waypoint: GPXWaypoint) {
         
         session.addWaypoint(waypoint)
@@ -142,10 +137,8 @@ class GPXMapView: MKMapView {
         
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
         
-        print("\(waypoint)")
     }
     
- //MARK: 磁鐵
     func updateHeading() {
         guard let heading = heading else { return }
         
@@ -163,8 +156,6 @@ class GPXMapView: MKMapView {
             self.headingImageView?.transform = CGAffineTransform(rotationAngle: newRotation)
         }
     }
-    
-    //MARK:  移除座標
     
     func removeWaypoint(_ waypoint: GPXWaypoint) {
         

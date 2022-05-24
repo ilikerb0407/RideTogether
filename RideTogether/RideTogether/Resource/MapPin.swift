@@ -13,7 +13,6 @@ import SwiftUI
 
 class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     
-    
     func provideWeather(weather: ResponseBody) {
         weatherData = weather
     }

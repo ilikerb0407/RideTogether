@@ -104,7 +104,6 @@ class JourneyViewController: BaseViewController {
         }
     }
     
-    
     // MARK: - UIButton Setting -
     
     private lazy var saveButton: UIButton = {
@@ -217,8 +216,6 @@ class JourneyViewController: BaseViewController {
         return view
     }()
     
-    
-    
     private lazy var buttonStackView: UIStackView = {
         let buttonArray = [followUserButton, pinButton, sendSMSButton, presentViewControllerButton, showBike]
         let view = UIStackView(arrangedSubviews: buttonArray)
@@ -326,7 +323,7 @@ class JourneyViewController: BaseViewController {
     // MARK: - Action -
     
    func setBeginningRegion() {
-        // give default latitude & lontitude when user didn't accept tracking privacy
+        // give default latitude & longtitude when user didn't accept tracking privacy
         let center = locationManager.location?.coordinate ??
         CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
         let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
@@ -358,13 +355,13 @@ class JourneyViewController: BaseViewController {
         
         LKProgressHUD.show()
         
-        let composeVC = MFMessageComposeViewController()
-        composeVC.messageComposeDelegate = self
+        let msgViewController = MFMessageComposeViewController()
+        msgViewController.messageComposeDelegate = self
         
-        composeVC.recipients = ["請輸入電話號碼"]
-        composeVC.body = "傳送我的位置 經度 : \(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
+        msgViewController.recipients = ["請輸入電話號碼"]
+        msgViewController.body = "傳送我的位置 經度 : \(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
         if MFMessageComposeViewController.canSendText() {
-            self.present(composeVC, animated: true, completion: nil)
+            self.present(msgViewController, animated: true, completion: nil)
             LKProgressHUD.dismiss()
         }
     }
@@ -414,7 +411,6 @@ class JourneyViewController: BaseViewController {
             let gpxString = self.mapView.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text
-            
             
             if let fileName = fileName {
                 
@@ -611,5 +607,5 @@ extension JourneyViewController: CLLocationManagerDelegate {
         mapView.heading = newHeading
         mapView.updateHeading()
     }
+    
 }
-

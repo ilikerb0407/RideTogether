@@ -28,7 +28,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         
-        
         showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
         
     }
@@ -225,7 +224,5 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             }
         }
     }
-    
-    
     
 }

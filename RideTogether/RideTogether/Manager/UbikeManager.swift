@@ -25,9 +25,12 @@ class BikeManager {
         
         var bikes: [Bike] = []
         
-        let firstDataRequest = URLRequest(url: URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")!)
+        let urlString = URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")
         
-        URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { (data, response, error) in
+        guard let urlString = urlString else { return }
+        let url = URLRequest(url: urlString)
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
@@ -48,9 +51,13 @@ class BikeManager {
     
     func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
         
-        let firstDataRequest = URLRequest(url: URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")!)
         
-        URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { (data, response, error) in
+        let urlString = URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")
+        
+        guard let urlString = urlString else { return }
+        let url = URLRequest(url: urlString)
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, _) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
