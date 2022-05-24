@@ -98,5 +98,4 @@ class GPXFileManager {
         GPXFileManager.removeFileFromURL(fileURL)
     }
     
-    
 }

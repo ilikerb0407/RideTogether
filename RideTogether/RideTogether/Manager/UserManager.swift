@@ -43,14 +43,15 @@ class UserManager {
         let document = dataBase.collection(usersCollection).document(uid)
         
         do {
-            try document.delete { err in
+            document.delete { err in
                 
                 if let err = err {
                     print("Error removing document: \(err)")
+                    LKProgressHUD.showFailure(text: "刪除失敗")
 
                 } else {
-                    print("Document successfully removed!")
-                    print ("uid ========= \(uid)")
+                    LKProgressHUD.showSuccess(text: "刪除成功")
+                    print ("uid=========\(uid)")
                 }
             }
         }
@@ -58,13 +59,13 @@ class UserManager {
     }
     func deleteUserFromGroup(uid: String) {
        
-    dataBase.collection(groupsCollection).whereField("user_ids", arrayContains: uid).getDocuments { (querySnapshot, error) in
+        dataBase.collection(groupsCollection).whereField("user_ids", arrayContains: uid).getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
             
-            if let error = error {
+            if error != nil {
                 
-                print ("\(error)")
+                LKProgressHUD.showFailure(text: "刪除失敗")
                 
             } else {
                 
@@ -84,13 +85,13 @@ class UserManager {
     
         let uid = userInfo.uid
       
-        let document = dataBase.collection(requestsCollection).whereField("request_id", isEqualTo: uid ).getDocuments { (querySnapshot, error) in
+        dataBase.collection(requestsCollection).whereField("request_id", isEqualTo: uid ).getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
             
-            if let error = error {
+            if error != nil {
                 
-                print ("\(error)")
+                LKProgressHUD.showFailure(text: "刪除失敗")
                 
             } else {
                 
@@ -108,7 +109,6 @@ class UserManager {
         let document = dataBase.collection(shareCollection).whereField("uid", isEqualTo: uid)
             
             document.getDocuments { (querySnapshot, error) in
-                print(querySnapshot?.count)
             
             guard let querySnapshot = querySnapshot else { return }
                 
@@ -183,7 +183,7 @@ class UserManager {
 
             switch result {
 
-            case .success(_):
+            case .success:
 
                 spaceRef.downloadURL { result in
 

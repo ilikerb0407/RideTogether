@@ -10,8 +10,7 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-// MARK:  準備改成線上地圖
-// MARK:  Offline Map 的架構
+// MARK:  - Offline Map -
 
 class MapsManager {
     
@@ -39,7 +38,7 @@ class MapsManager {
     
     private let userCollection = Collection.users.rawValue // Profile
     
-    func fetchRecords(completion: @escaping  (Result<[Record],Error>) -> Void){
+    func fetchRecords(completion: @escaping(Result<[Record],Error>) -> Void){
         
         let collection = dataBase.collection(shareCollection)
         collection.getDocuments { (querySnapshot, error) in
@@ -57,6 +56,7 @@ class MapsManager {
                         if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
+                        
                     }
                     catch {
                         completion(.failure(error))
@@ -85,6 +85,7 @@ class MapsManager {
                         if let route = try document.data(as: Route.self, decoder: Firestore.Decoder()) {
                             routes.append(route)
                         }
+                        
                     }
                     catch {
                         completion(.failure(error))
@@ -118,6 +119,7 @@ class MapsManager {
                                 if let record = try document.data(as: Record.self , decoder: Firestore.Decoder()) {
                                     records.append(record)
                                 }
+                                
                             }
                             catch {
                                 completion(.failure(error))
