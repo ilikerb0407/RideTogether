@@ -55,7 +55,6 @@ class HomeViewController: BaseViewController, Reload {
         
         setUpTableView()
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
