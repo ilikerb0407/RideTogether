@@ -310,7 +310,7 @@ class UserManager {
         
         docRef.updateData([
             "block_list": FieldValue.arrayUnion([blockUserId])
-        ]) {error in
+        ]) { error in
             
             if let error = error {
                 
@@ -320,7 +320,7 @@ class UserManager {
             } else {
                 
                 print("Block list successfully updated")
-                LKProgressHUD.showSuccess(text: "封鎖成功")
+                LKProgressHUD.showSuccess(text: "封鎖成功，請回到首頁")
             }
         }
     }

@@ -15,26 +15,16 @@ import MessageUI
 import SwiftUI
 import JGProgressHUD
 
-class RideViewController: BaseViewController, bikeProvider {
-    
-    func provideBike(bike: Bike) {
-        bikeData = [bike]
-    }
-    var bikeData : [Bike] = []
-    
-    var bikeManager = BikeManager()
+class RideViewController: BaseViewController {
     
     var record = Record()
     
     let userName = UserManager.shared.userInfo.userName!
-
-    //    let userId = { UserManager.shared.userInfo }
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
     
     @IBOutlet weak var mapView: GPXMapView!
-    
     
     func backButton() {
         
@@ -44,7 +34,6 @@ class RideViewController: BaseViewController, bikeProvider {
         
     }
     
-
     @objc func popToPreviosPage(_ sender: UIButton) {
         let count = self.navigationController!.viewControllers.count
         if let preController = self.navigationController?.viewControllers[count-1] {
@@ -117,15 +106,12 @@ class RideViewController: BaseViewController, bikeProvider {
     
     private let bikeViewDelegate = BikeView()
     
-    
-  
-    
     private var followUser: Bool = true {
         
         didSet {
             
             if followUser {
-                // MARK: 定位的符號
+               
                 let image = UIImage(systemName: "location.fill",
                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
                 
@@ -144,7 +130,6 @@ class RideViewController: BaseViewController, bikeProvider {
     }
  
     
-    
     private lazy var sendSMSButton: UIButton = {
         let button = BottomButton()
         let image = UIImage(systemName: "message",
@@ -162,8 +147,6 @@ class RideViewController: BaseViewController, bikeProvider {
         button.setImage(image, for: .normal)
         return button
     }()
-    
-    var hasWaypoints: Bool = false
 
     private lazy var showBikeButton: UIButton = {
         let button = UBikeButton()
@@ -183,40 +166,6 @@ class RideViewController: BaseViewController, bikeProvider {
         return view
     }()
     
-    // MARK: - View Life Cycle
-    
-//    func GetDistance(latitude: Double, longitude: Double) -> Double {
-//        let selectedCoordinate = CLLocation(latitude: latitude, longitude: longitude)
-//        let busStopCoordinate = CLLocation(latitude: Double(self.latitude), longitude: self.longitude)
-//
-//        return busStopCoordinate.distance(from: selectedCoordinate)
-//    }
-    
-//
-    func layOutBike() {
-        
-        for bike in bikeData {
-            
-            let coordinate = CLLocationCoordinate2D(latitude: bike.lat, longitude: bike.lng)
-            
-            let title = bike.sna
-            
-            let subtitle = "可還車位置 :\(bike.bemp), 可租車數量 :\(bike.sbi)"
-
-            let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
-
-            let usersCoordinate = CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude)
-            let bikeStopCoordinate = CLLocation(latitude: Double(bike.lat), longitude: Double(bike.lng))
-
-            let distance = usersCoordinate.distance(from: bikeStopCoordinate)
-       
-                    if  distance < 1000 {
-                        mapView.addAnnotation(annotation)
-                    }
-        }
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -230,21 +179,7 @@ class RideViewController: BaseViewController, bikeProvider {
         
         LKProgressHUD.dismiss()
         
-//        backButton()
-
-//        navigationController?.isNavigationBarHidden = true
-        
         self.locationManager.requestAlwaysAuthorization()
-        
-        bikeManager.delegate = self
-        
-        bikeManager.getBikeAPI { [ weak self ] result in
-            
-        self?.bikeData = result
-            
-        self?.layOutBike()
-            
-        }
         
     }
     
