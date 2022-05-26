@@ -284,9 +284,19 @@ extension RouteViewController: UITableViewDelegate {
                 
                 let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
                     
-                    UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
+                    if userId == routes[indexPath.row].uid {
+                        LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
+                    } else if routes[indexPath.row].uid == nil {
+                        
+                        LKProgressHUD.showFailure(text: "無法封鎖預設的地圖")
+                        
+                    } else {
+                        UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
 
-                    UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
+                        UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
+                        
+                        
+                    }
                     
                 }
                 

@@ -17,8 +17,9 @@ class HomeViewController: BaseViewController, Reload {
     
     var trackVC = TracksViewController()
     
-    
     private var headerView: HomeHeader?
+    
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
     
     var routes = [Route]() {
         didSet {
@@ -132,7 +133,13 @@ class HomeViewController: BaseViewController, Reload {
                 
             case .success(let routes):
                 
-                self.routes = routes
+                var filterroutes = [Route]()
+                
+                for maps in routes where self.userInfo.blockList?.contains(maps.uid ?? "") == false {
+                    
+                    filterroutes.append(maps)
+                }
+                self.routes = filterroutes
                 
                 self.tableView.reloadData()
                 

@@ -89,8 +89,7 @@ class GPXMapView: MKMapView {
     func importFromGPXRoot(_ gpx: GPXRoot) {
         
         addTrackSegments(for: gpx)
-        
-
+    
     }
 
     private func addTrackSegments(for gpx: GPXRoot) {

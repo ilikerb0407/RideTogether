@@ -253,13 +253,18 @@ extension RecommendViewController: UITableViewDelegate {
                 
                 let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
                     
-                    UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
+                    if userId == records[indexPath.row].uid {
+                        LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
+                    } else {
+                        UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
 
-                    UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
-                    
-                    self.fetchRecords()
-                    
-                    self.waitlottie.isHidden = true
+                        UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
+                        
+                        self.fetchRecords()
+                        
+                        self.waitlottie.isHidden = true
+                        
+                    }
                 }
                 
                 let cancelOption = UIAlertAction(title: "取消", style: .cancel){ _ in

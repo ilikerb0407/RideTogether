@@ -18,38 +18,10 @@ class BikeView: NSObject, MKMapViewDelegate {
 
         if annotation.isKind(of: MKUserLocation.self) { return nil }
         
-        let annotationView = MKPinAnnotationView()
+        let annotationView = MKMarkerAnnotationView()
         
         annotationView.canShowCallout = true
-        
-        annotationView.pinTintColor = .B3
        
         return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
-        if overlay is MKPolyline {
-            
-            let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
-            
-            polyLineRenderer.alpha = 0.8
-            
-            polyLineRenderer.strokeColor = UIColor.B5
-            
-            if overlay.title == "guide"{
-                polyLineRenderer.strokeColor = UIColor.orange
-            } else
-            if overlay.title == "ride" {
-              polyLineRenderer.strokeColor = UIColor.B6
-            }
-            
-            polyLineRenderer.lineWidth = 3
-            
-            return polyLineRenderer
-        }
-        
-        return MKOverlayRenderer()
-        
     }
 }

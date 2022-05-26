@@ -376,7 +376,7 @@
                     <navigationItem key="navigationItem" id="Kfo-I4-isS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="map2" destination="SXT-W7-lli" id="aGf-VI-eU1"/>
+                        <outlet property="mapView" destination="SXT-W7-lli" id="uDA-jw-qwE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGy-Qx-OGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -442,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYO-NY-QaB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4130" y="1685"/>
+            <point key="canvasLocation" x="2298" y="1052"/>
         </scene>
         <!--Save Maps View Controller-->
         <scene sceneID="M6I-Zv-DPX">
@@ -474,6 +474,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUL-XW-W6V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="160.86956521739131" y="983.70535714285711"/>
+        </scene>
+        <!--Bike View Controller-->
+        <scene sceneID="G4X-LL-Zix">
+            <objects>
+                <viewController storyboardIdentifier="UBikeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Wc-ou-f7H" customClass="UBikeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ryj-gh-qnv">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqD-Ey-lUn">
+                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nIV-lp-KMP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nIV-lp-KMP" firstAttribute="trailing" secondItem="ZqD-Ey-lUn" secondAttribute="trailing" id="Jrt-T4-xeq"/>
+                            <constraint firstItem="ZqD-Ey-lUn" firstAttribute="leading" secondItem="nIV-lp-KMP" secondAttribute="leading" id="MhI-yJ-7Pq"/>
+                            <constraint firstItem="nIV-lp-KMP" firstAttribute="bottom" secondItem="ZqD-Ey-lUn" secondAttribute="bottom" id="YcZ-05-WLg"/>
+                            <constraint firstItem="ZqD-Ey-lUn" firstAttribute="top" secondItem="nIV-lp-KMP" secondAttribute="top" id="iw1-8q-Sup"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bikeMapView" destination="ZqD-Ey-lUn" id="l3X-Na-vIP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bB3-yK-0RH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3064" y="870"/>
         </scene>
     </scenes>
     <resources>
