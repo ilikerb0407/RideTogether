@@ -78,3 +78,24 @@ class Park {
     return CLLocationCoordinate2D()
   }
 }
+
+// MARK: - Give user offline map in the near future -
+
+//    func showMap() {
+//        let button = ShowMapButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+//        button.addTarget(self, action: #selector(addRoute), for: .touchUpInside)
+//        view.addSubview(button)
+//    }
+//
+//    @objc func addRoute() {
+//        guard let points = Park.plist("Taipei1") as? [String] else { return }
+//
+//        let cgPoints = points.map { NSCoder.cgPoint(for: $0) }
+//        let coords = cgPoints.map { CLLocationCoordinate2D(
+//            latitude: CLLocationDegrees($0.x),
+//            longitude: CLLocationDegrees($0.y))
+//        }
+//        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+//        print ("===========Pleaseprint")
+//        map2.addOverlay(myPolyline)
+//    }
