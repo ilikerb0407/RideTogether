@@ -38,7 +38,6 @@ class RideViewController: BaseViewController, bikeProvider {
     /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
-    
     // MARK: == === ====
 
 //    func showMap() {

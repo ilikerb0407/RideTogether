@@ -9,7 +9,6 @@ import UIKit
 import CoreGPX
 import MapKit
 import CoreLocation
-import SwiftUI
 
 class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     

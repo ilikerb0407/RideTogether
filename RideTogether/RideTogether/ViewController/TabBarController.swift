@@ -100,7 +100,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                 
                 self.requests = filtedRequests
                 
-                self.tabBar.items?[2].badgeValue = "\(self.requests)"
+                self.tabBar.items?[2].badgeValue = "\(self.requests.count)"
                 
                 self.tabBar.items?[2].badgeColor = .red
                 
@@ -111,9 +111,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    
 }
 extension Notification.Name {
     static let didUpdateBuyItemList = Notification.Name("didUpdateBuyItemList")
 }
-

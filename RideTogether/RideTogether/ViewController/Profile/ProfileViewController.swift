@@ -20,7 +20,6 @@ class ProfileViewController: BaseViewController {
     
     private var textInTextfield: String = ""
     
-    
     @IBOutlet weak var profileView: ProfileView!
     
     @IBAction func editName(_ sender: UIButton) {
