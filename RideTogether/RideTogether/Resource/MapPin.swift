@@ -27,7 +27,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-        
         if overlay is MKPolyline {
             
             let polyLineRenderer = MKPolylineRenderer(overlay: overlay)

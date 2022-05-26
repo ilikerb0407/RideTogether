@@ -19,12 +19,12 @@ class BikeManager {
     
     static let shared = BikeManager()
     
+    var bikes: [Bike] = []
+    
     var delegate: bikeProvider?
     
     func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
-        
-        var bikes: [Bike] = []
-        
+      
         let urlString = URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")
         
         guard let urlString = urlString else { return }

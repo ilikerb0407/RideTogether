@@ -35,7 +35,6 @@ class RideViewController: BaseViewController, bikeProvider {
     
     @IBOutlet weak var map2: GPXMapView!
     
-    /// Name of the last file that was saved (without extension)
     var lastGpxFilename: String = ""
     
     // MARK: == === ====

@@ -9,11 +9,6 @@ import UIKit
 import MapKit
 import CoreGPX
 import CoreLocation
-import Firebase
-import Lottie
-import MessageUI
-import SwiftUI
-import JGProgressHUD
 
 class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     
@@ -36,7 +31,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         bikeManager.getBikeAPI { [ weak self ] result in
             
-            LKProgressHUD.showSuccess(text: "讀取資料成功")
+            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
         self?.bikeData = result
             
@@ -46,7 +41,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         bikeManager.getTCAPI { [weak self] result in
             
-            LKProgressHUD.showSuccess(text: "讀取資料成功")
+            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
             self?.taichungBikeData = result
             
@@ -62,7 +57,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         bikeMapView.setRegion(region, animated: true)
         
-        self.title = "附近的 Ubike 2.0"
+        self.title = "附近的 UBike 2.0"
         
         view.backgroundColor = .B2
 

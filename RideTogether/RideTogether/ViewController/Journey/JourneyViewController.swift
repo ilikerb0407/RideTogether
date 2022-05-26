@@ -40,7 +40,7 @@ class JourneyViewController: BaseViewController {
                 
             case .notStarted:
                 
-//                trackerButton.setTitle("開始", for: .normal)
+                trackerButton.setTitle("開始", for: .normal)
                 
                 stopWatch.reset()
                 
