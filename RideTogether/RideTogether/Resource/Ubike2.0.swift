@@ -24,4 +24,22 @@ class BikeView: NSObject, MKMapViewDelegate {
        
         return annotationView
     }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        if overlay is MKPolyline {
+
+            let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
+
+            polyLineRenderer.alpha = 0.8
+
+            polyLineRenderer.strokeColor = UIColor.B5
+
+            polyLineRenderer.lineWidth = 3
+
+            return polyLineRenderer
+        }
+
+        return MKOverlayRenderer()
+
+    }
 }
