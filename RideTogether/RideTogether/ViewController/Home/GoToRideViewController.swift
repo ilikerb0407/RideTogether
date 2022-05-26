@@ -1,5 +1,5 @@
 //
-//  RouteRideViewController.swift
+//  GoToRideViewController.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/24.
@@ -12,10 +12,8 @@ import CoreLocation
 import Firebase
 import Lottie
 import MessageUI
-import SwiftUI
-import JGProgressHUD
 
-class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocationManagerDelegate {
+class GoToRideViewController: BaseViewController, StopWatchDelegate, CLLocationManagerDelegate {
     
 
     
@@ -35,8 +33,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
 
     
         private var isDisplayingLocationServicesDenied: Bool = false
-        
-        /// Name of the last file that was saved (without extension)
+   
         var lastGpxFilename: String = ""
     
         func praseGPXFile() {
@@ -44,7 +41,11 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             if let inputUrl = URL(string: routes.routeMap) {
                 
                 print("FollowDetail=======:\(inputUrl)======")
-                guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return }
+                
+                LKProgressHUD.show(type: .success("下載資料完成"))
+                guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
+                    
+                }
                 
                 didLoadGPXFile(gpxRoot: gpx)
                 
@@ -74,10 +75,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
                 map3.addOverlay(overlay)
             }
         }
-        
-        // MARK: =========
-        
-        
+                
         private var lastLocation: CLLocation?
         
         private let locationManager: CLLocationManager = {
@@ -295,9 +293,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         return view
     }()
     
-        
-        // MARK: 之後再改字體
-        
     var altitudeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -342,11 +337,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
         distaneLabel.distance = 0.00
         return distaneLabel
     }()
-    
-        
-        // MARK: - View Life Cycle
-    
-    
     func backToJourneyButton() {
         let button = UBikeButton(frame: CGRect(x: 245, y: 550, width: 50, height: 50) )
         button.addTarget(self, action: #selector(showBike), for: .touchUpInside)
@@ -371,8 +361,6 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             
             stopWatch.delegate = self
             
-            RecordManager.shared.detectDeviceAndUpload()
-            
             setUpMap()
             
             setUpButtonsStackView()
@@ -392,6 +380,7 @@ class RouteRideViewController: BaseViewController, StopWatchDelegate, CLLocation
             backToJourneyButton()
             
         }
+ 
         
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

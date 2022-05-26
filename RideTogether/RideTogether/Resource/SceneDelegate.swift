@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        
         if Auth.auth().currentUser != nil {
             
             if let uid = Auth.auth().currentUser?.uid {
@@ -45,14 +44,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             
         } else {
-            // 初始畫面
+            
             guard let loginVC = UIStoryboard.login.instantiateViewController(
                 
                 identifier: LoginViewController.identifier) as? LoginViewController else { return }
             
             self.window?.rootViewController = loginVC
         }
-        //
+        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

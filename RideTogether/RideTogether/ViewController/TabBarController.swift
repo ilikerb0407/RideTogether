@@ -38,7 +38,7 @@ private enum Tab {
 }
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
-    
+  
     static var identifier: String {
         
         return String(describing: self)
@@ -50,6 +50,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         viewControllers = tabs.map { $0.controller() }
+        
+        addRequestListener()
         
         self.delegate = self
         
@@ -63,7 +65,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.B5
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor :  UIColor.B5]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.B5]
         
         if #available(iOS 15.0, *) {
                    let appearance = UITabBarAppearance()
@@ -74,5 +76,42 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                    self.tabBar.standardAppearance = appearance
                    self.tabBar.scrollEdgeAppearance = appearance
                 }
+         
+
     }
+    
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
+    private lazy var requests = [Request]()
+    
+    func addRequestListener() {
+        
+        GroupManager.shared.addRequestListener { result in
+            
+            switch result {
+                
+            case .success(let requests):
+                
+                var filtedRequests = [Request]()
+                
+                for request in requests where self.userInfo.blockList?.contains(request.requestId) == false {
+                    
+                    filtedRequests.append(request)
+                }
+                
+                self.requests = filtedRequests
+                
+                self.tabBar.items?[2].badgeValue = "\(self.requests.count)"
+                
+                self.tabBar.items?[2].badgeColor = .red
+                
+            case .failure(let error):
+                
+                print("fetchData.failure: \(error)")
+            }
+        }
+    }
+    
+}
+extension Notification.Name {
+    static let didUpdateBuyItemList = Notification.Name("didUpdateBuyItemList")
 }

@@ -19,29 +19,27 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     let weatherManger = WeatherManager()
     
-    @IBOutlet weak var feelslikeTemp: UILabel!
+    @IBOutlet weak var feelsLikeTempLabel: UILabel!
     
-    @IBOutlet weak var humidity: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
     
-    @IBOutlet weak var showtemp: UILabel!
+    @IBOutlet weak var showtempLabel: UILabel!
     
-    @IBOutlet weak var sunrise: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
     
-    @IBOutlet weak var sunset: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
     
-    @IBOutlet weak var wind: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
     
-    @IBOutlet weak var cloud: UILabel!
-    
-    @IBOutlet weak var lefttop: UILabel!
+//    @IBOutlet weak var lefttop: UILabel!
     
     
-    func setUp() {
-        lefttop.translatesAutoresizingMaskIntoConstraints = false
-        lefttop.cornerRadius = 30
-    }
+//    func setUp() {
+//        lefttop.translatesAutoresizingMaskIntoConstraints = false
+//        lefttop.cornerRadius = 30
+//    }
     
-    func weather() {
+    func weather(){
         
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
             
@@ -52,44 +50,37 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             
         }
         
-        func showWeatherInfo() {
+        func showWeatherInfo(){
             
             guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-            feelslikeTemp.text = "\(feelslike) °C"
+            feelsLikeTempLabel.text = "\(feelslike) °C"
             guard let humiditydata = weatherdata?.main.humidity else { return }
-            humidity.text = "\(humiditydata) %"
+            humidityLabel.text = "\(humiditydata) %"
             
             guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-            showtemp.text = "\(tempdata) °C"
-            
+            showtempLabel.text = "\(tempdata) °C"
             
             guard let ssunrise = weatherdata?.sys.sunrise else { return }
-            var epocTime = TimeInterval(ssunrise)
-//
-//            let myDate = NSDate(timeIntervalSince1970: epocTime)
-//            print ("=====++++\(myDate)")
-            sunrise.text = "\(epocTime.sunrise()) AM"
+            let epocTime = TimeInterval(ssunrise)
+            
+            sunriseLabel.text = "\(epocTime.sunrise()) AM"
             
             guard let ssunset = weatherdata?.sys.sunset else { return }
-            var sunsetTime = TimeInterval(ssunset)
+            let sunsetTime = TimeInterval(ssunset)
             
-//            let sunsetDate = NSDate(timeIntervalSince1970: sunsetTime)
-//            print ("=====++++\(sunsetDate)")
-            
-            sunset.text = "\(sunsetTime.sunset()) PM"
+            sunsetLabel.text = "\(sunsetTime.sunset()) PM"
             
             guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-            wind.text = "\(swind) km/h"
+            windLabel.text = "\(swind) km/h"
             
-//            let weather = "Sun"
             guard let weather = weatherdata?.weather[0].main else { return }
-//
+            
             if weather == "Rain" {
-                cloud.text = "雨天"
+                
                 rainLottieView.isHidden = false
                 rainLottieView.play()
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+                let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in
                 }
                 
                 sheet.addAction(okOption)
@@ -97,21 +88,21 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             }
             
             if weather == "Clouds" {
-                cloud.text = "多雲"
                 cloudsLottieView.isHidden = false
                 cloudsLottieView.play()
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分!", comment: "no comment"), preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
-                    }
+                
+                let sheet = UIAlertController(title: nil, message: "記得補充水分!", preferredStyle: .alert)
+                
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
                 sheet.addAction(okOption)
                 present(sheet, animated: true, completion: nil)
             }
             
             if weather == "Drizzle" {
-                cloud.text = "細雨"
+                
                 rainLottieView.isHidden = false
                 rainLottieView.play()
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("下雨天騎車小心！", comment: "no comment"), preferredStyle: .alert)
+                let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
                 let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
                     rainLottieView.isHidden = true
                 }
@@ -120,12 +111,13 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             }
             
             if weather == "Sun" {
-                cloud.text = "晴天"
+               
                 sunLottieView.isHidden = false
                 sunLottieView.play()
                 
-                let sheet = UIAlertController(title: nil, message: NSLocalizedString("記得補充水分!", comment: "no comment"), preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
+                let sheet = UIAlertController(title: nil, message: "記得補充水分!", preferredStyle: .alert)
+                
+                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in
                     }
                 sheet.addAction(okOption)
                 present(sheet, animated: true, completion: nil)
@@ -135,7 +127,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
         }
         
-    
     func sendRoute(map: DrawRoute) {
         mapdata = map
         delegate?.sendRouteTwice(map: mapdata!)
@@ -146,7 +137,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     var directionsVC : DirectionsViewController?
     
     var delegate: sendRouteSecond?
-    
     
     @IBOutlet private var inputContainerView: UIView!
     @IBOutlet private var originTextField: UITextField!
@@ -193,7 +183,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     }
     
     override func viewDidLayoutSubviews() {
-        setUp()
+//        setUp()
         
         inputContainerView.cornerRadius = 30
     }
@@ -243,9 +233,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         super.viewDidAppear(animated)
         weather()
     }
-    
-    
-    // MARK: - Helpers
+
+    // MARK: - Gestures -
     
     private func configureGestures() {
         view.addGestureRecognizer(
@@ -300,8 +289,7 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         }
     }
     
-    private func hideSuggestionView(animated: Bool) {
-        suggestionContainerTopConstraint.constant = -1 * (suggestionContainerView.bounds.height + 1)
+    private func hideSuggestionView(animated: Bool) {suggestionContainerTopConstraint.constant = -1 * (suggestionContainerView.bounds.height + 1)
         
         guard animated else {
             view.layoutIfNeeded()
@@ -443,7 +431,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                     // Fallback on earlier versions
                 }
                 
-                
             case .failure(let error):
                 let errorMessage: String
                 
@@ -513,8 +500,10 @@ extension RouteSelectionViewController: CLLocationManagerDelegate {
             return
         }
         
-        let commonDelta: CLLocationDegrees = 25 / 111 // 1/111 = 1 latitude km
+        let commonDelta: CLLocationDegrees = 25 / 111
+        
         let span = MKCoordinateSpan(latitudeDelta: commonDelta, longitudeDelta: commonDelta)
+        
         let region = MKCoordinateRegion(center: firstLocation.coordinate, span: span)
         
         currentRegion = region
@@ -549,4 +538,5 @@ extension RouteSelectionViewController: MKLocalSearchCompleterDelegate {
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         print("Error suggesting a location: \(error.localizedDescription)")
     }
+    
 }

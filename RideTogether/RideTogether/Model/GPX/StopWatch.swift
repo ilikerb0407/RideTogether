@@ -43,9 +43,8 @@ class StopWatch: NSObject {
         
         self.startedTime = Date.timeIntervalSinceReferenceDate
         
-        timer = Timer.scheduledTimer(timeInterval: timeInterval,
-                                     target: self, selector: #selector(StopWatch.updateElapsedTime),
-                                     userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(StopWatch.updateElapsedTime),
+            userInfo: nil, repeats: true)
     }
     
     func stop() {

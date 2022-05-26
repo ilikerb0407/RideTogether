@@ -9,11 +9,6 @@ import Foundation
 import CoreGPX
 import CoreLocation
 
-#if os(iOS)
-
-let kGPXCreatorString = "RideTogether for iOS"
-
-#endif
 
 class GPXSession {
     
@@ -41,7 +36,8 @@ class GPXSession {
             
             let prevPoint = self.currentSegment.points[self.currentSegment.points.count-2]
             
-            guard let latitude = prevPoint.latitude, let longitude = prevPoint.longitude else { return }
+            guard let latitude = prevPoint.latitude,
+                  let longitude = prevPoint.longitude else { return }
             let prevPtLoc = CLLocation(latitude: latitude, longitude: longitude)
             
             let distance = prevPtLoc.distance(from: location)

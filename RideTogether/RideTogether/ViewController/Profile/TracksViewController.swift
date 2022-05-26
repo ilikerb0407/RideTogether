@@ -104,7 +104,8 @@ class TracksViewController: BaseViewController {
             case .success(let records):
                 self?.records = records
                 self?.tableView.reloadData()
-            case .failure(let error): print ("fetchData Failure: \(error)")
+            case .failure(_):
+                LKProgressHUD.showFailure(text: "無法讀取資料")
             }
         }
     }

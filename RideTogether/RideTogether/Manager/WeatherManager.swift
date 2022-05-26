@@ -9,34 +9,36 @@ import Foundation
 import CoreLocation
 
 protocol weatherProvider {
-    func provideWeather(weather : ResponseBody)
+    func provideWeather(weather: ResponseBody)
 }
 
 class WeatherManager {
     
     var delegate: weatherProvider?
     
-//"https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json"
-    
     func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (ResponseBody) -> Void) {
         
-        let firstDataRequest = URLRequest(url: URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=d11fc33a5a4003b6bac4bb9d50f25d15&units=metric")!)
+        let urlString = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=d11fc33a5a4003b6bac4bb9d50f25d15&units=metric")
         
-        URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
+        guard let urlString = urlString else { return }
+        let url = URLRequest(url: urlString)
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, _) in
+            
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
                 let firstData = try decoder.decode(ResponseBody.self, from: data)
                 completion(firstData)
-                print ("=================\(firstData)===================")
+                
+                LKProgressHUD.showSuccess(text: "讀取成功")
                
             } catch {
-                print(error)
+                LKProgressHUD.showFailure(text: "網路問題，無法讀取")
             }
             
         }) .resume()
     }
-    
     
 }
 

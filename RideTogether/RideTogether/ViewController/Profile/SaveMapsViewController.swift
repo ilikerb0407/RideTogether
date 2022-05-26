@@ -118,19 +118,7 @@ class SaveMapsViewController: BaseViewController {
         ])
         
     }
-    
-    func deleteMapsFromUser(uid: String, savemaps: String) {
-        
-        MapsManager.shared.deleteMapFromUser(uid: userId) { result in
-            switch result {
-            case .success:
-                print ("success")
-            case .failure(let error):
-                print ("\(error)")
-            }
-        }
-    }
-    
+
     
 
 }
@@ -168,7 +156,7 @@ extension SaveMapsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
 
-            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+            if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]}
             

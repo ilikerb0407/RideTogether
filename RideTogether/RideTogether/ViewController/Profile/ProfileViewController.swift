@@ -20,7 +20,6 @@ class ProfileViewController: BaseViewController {
     
     private var textInTextfield: String = ""
     
-    
     @IBOutlet weak var profileView: ProfileView!
     
     @IBAction func editName(_ sender: UIButton) {
@@ -90,33 +89,16 @@ class ProfileViewController: BaseViewController {
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
         
         setUpProfileView()
-        
-        
-//        UserManager.shared.deleteUserSharemaps(uid: "TYVH8NFOD1XPVQlcZHamJkEJ65q1")
-//        UserManager.shared.deleteUserRequests(uid: "OtJQvsFgBkPbaTcndvKDhcs8NZF2")
-//        UserManager.shared.deleteUserRequests(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
-//        UserManager.shared.deleteUserFromGroup(uid: "9aF98NFhLHQhIqalvFBmaPUgItD3")
-        
-//        let button = UIButton(type: .roundedRect)
-//             button.frame = CGRect(x: 20, y: 80, width: 100, height: 30)
-//             button.setTitle("Test Crash", for: [])
-//             button.addTarget(self, action: #selector(self.crashButtonTapped(_:)), for: .touchUpInside)
-//             view.addSubview(button)
-//
+
     }
     
-    @objc func crashButtonTapped(_ sender: AnyObject) {
-          let numbers = [0]
-          let _ = numbers[1]
-      }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = false
     }
-    
-    
+
     func updateUserInfo(name: String) {
         
         UserManager.shared.updateUserName(name: name)

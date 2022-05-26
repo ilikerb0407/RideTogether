@@ -11,19 +11,8 @@ import MapKit
 import CoreLocation
 import CoreGPX
 
-
 class GPXMapView: MKMapView {
     
-    func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
-    }
-    
-    var weatherdata : ResponseBody?
-    
-    let weatherManger = WeatherManager()
-    
-    let coreDataHelper = CoreDataHelper()
-
     let session = GPXSession()
     
     var waypoints: [GPXWaypoint] = []
@@ -33,15 +22,11 @@ class GPXMapView: MKMapView {
     var extent: GPXExtentCoordinates = GPXExtentCoordinates()
 
     var headingOffset: CGFloat?
-    
-    /// Heading of device
+   
     var heading: CLHeading?
-    
-    /// Arrow image to display heading (orientation of the device)
-    /// initialized on MapViewDelegate
+   
     var headingImageView: UIImageView?
-    
-    /// Gesture for heading arrow to be updated in realtime during user's map interactions
+
     var rotationGesture = UIRotationGestureRecognizer()
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,12 +52,13 @@ class GPXMapView: MKMapView {
     }
 
     func addPointToCurrentTrackSegmentAtLocation(_ location: CLLocation) {
+        
         session.addPointToCurrentTrackSegmentAtLocation(location)
-
         removeOverlay(currentSegmentOverlay)
         currentSegmentOverlay = session.currentSegment.overlay
         addOverlay(currentSegmentOverlay)
         extent.extendAreaToIncludeLocation(location.coordinate)
+        
     }
 
     func startNewTrackSegment() {
@@ -81,11 +67,7 @@ class GPXMapView: MKMapView {
             currentSegmentOverlay = MKPolyline()
         }
     }
-    
-    func finishCurrentSegment() {
-        startNewTrackSegment()
-    }
-    
+
     func clearMap() {
         session.reset()
         removeOverlays(overlays)
@@ -105,7 +87,7 @@ class GPXMapView: MKMapView {
     }
     
     func importFromGPXRoot(_ gpx: GPXRoot) {
-//        clearMap()
+        
         addTrackSegments(for: gpx)
         
 
@@ -137,26 +119,15 @@ class GPXMapView: MKMapView {
             }
         }
     }
- 
-    // MARK: 長按建立座標的 method
+
     func addWaypointAtViewPoint(_ point: CGPoint) {
         
         let coords: CLLocationCoordinate2D = convert(point, toCoordinateFrom: self)
         
         let waypoint = GPXWaypoint(coordinate: coords)
-//    latitude: 25.042393, longitude: 121.56496
-//        if waypoint.coordinate.latitude > 25.5 || waypoint.coordinate.longitude > 122 {
-//            LKProgressHUD.showFailure(text: "無法導航")
-//        } else if waypoint.coordinate.latitude < 21 || waypoint.coordinate.longitude < 119 {
-//            LKProgressHUD.showFailure(text: "無法導航")
-//        } else {
-//            addWaypoint(waypoint)
-//        }
+
         addWaypoint(waypoint)
     }
-    
-  //MARK: Parameters: The waypoint to add to the map.
-    
     
     func addWaypoint(_ waypoint: GPXWaypoint) {
         
@@ -166,10 +137,8 @@ class GPXMapView: MKMapView {
         
         extent.extendAreaToIncludeLocation(waypoint.coordinate)
         
-        print("\(waypoint)")
     }
     
- //MARK: 磁鐵
     func updateHeading() {
         guard let heading = heading else { return }
         
@@ -187,8 +156,6 @@ class GPXMapView: MKMapView {
             self.headingImageView?.transform = CGAffineTransform(rotationAngle: newRotation)
         }
     }
-    
-    //MARK:  移除座標
     
     func removeWaypoint(_ waypoint: GPXWaypoint) {
         

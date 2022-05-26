@@ -167,13 +167,15 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-                    let okOption = UIAlertAction(title: "完成", style: .cancel) { _ in
+                    let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
+                    
+                    let successOption = UIAlertAction(title: "完成", style: .cancel) { _ in
                         self.delegate?.reload()
                         self.dismiss(animated: true, completion: nil)
                     }
-                    let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
+                 
                     
-                    sheet.addAction(okOption)
+                    sheet.addAction(successOption)
                     present(sheet, animated: true, completion: nil)
                     
                     delegate?.reload()
