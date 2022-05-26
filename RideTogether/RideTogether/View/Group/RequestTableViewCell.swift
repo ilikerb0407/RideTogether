@@ -155,7 +155,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             
             guard counts != upperlimit else {
                 
-                gButton.setTitle("人滿～～為患", for: .normal)
+                gButton.setTitle("已經額滿", for: .normal)
                 
                 gButton.isEnabled = false
                 
@@ -181,7 +181,7 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         setUpTextView()
         
         setUpTextField()
-//      ===== 改成 isediting = false
+
         trailName.isEnabled = false
         
         numberOfPeople.isEnabled =  false
@@ -244,7 +244,6 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         hostName.font = UIFont.systemFont(ofSize: 15, weight: .light)
         
     }
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

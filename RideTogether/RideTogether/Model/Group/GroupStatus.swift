@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum GroupStatus: String {
     
     case ishost
@@ -17,5 +16,3 @@ enum GroupStatus: String {
     case isInGroup 
 
 }
-
-

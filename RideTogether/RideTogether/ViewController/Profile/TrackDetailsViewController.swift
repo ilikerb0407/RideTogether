@@ -154,7 +154,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     @objc func push(_ sender: UIButton) {
          
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
+        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
             navigationController?.pushViewController(journeyViewController, animated: true)
             journeyViewController.record = record
             // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
@@ -294,7 +294,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
-            if let nextVC = segue.destination as? FollowJourneyViewController {
+            if let nextVC = segue.destination as? RideViewController {
                 if let record = sender as? Record {
                     nextVC.record = record
                     

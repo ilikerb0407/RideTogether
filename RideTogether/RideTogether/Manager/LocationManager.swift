@@ -6,5 +6,26 @@
 //
 
 import Foundation
+import CoreGPX
+import CoreLocation
 
-
+class LocationManager: CLLocationManager {
+    
+    func setUpLocationManager() {
+        
+        self.startUpdatingLocation()
+        
+        self.startUpdatingHeading()
+        
+        self.requestAlwaysAuthorization()
+        
+        self.desiredAccuracy = kCLLocationAccuracyBest
+        
+        self.distanceFilter = 2 // meters
+        
+        self.pausesLocationUpdatesAutomatically = false
+        
+        self.allowsBackgroundLocationUpdates = false
+    }
+  
+}

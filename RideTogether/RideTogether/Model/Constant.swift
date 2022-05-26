@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 enum SegueIdentifier: String {
 
@@ -27,7 +26,6 @@ enum SegueIdentifier: String {
     case recommendMaps = "toRecommendMaps"
 }
 
-
 enum ProfileSegue: String, CaseIterable {
     
     case record = "toRecord"
@@ -44,22 +42,15 @@ enum ProfileSegue: String, CaseIterable {
 
 enum Collection: String {
     
-    //MARK:  左邊是 storage 的文件名稱 右邊是 firebase database 的文件名稱
-    
     case groups = "Groups"
     
     case messages = "Messages"
     
     case records = "Records"
-    
-    // Trails 是推薦路線
-    
+  
     case routes = "Routes"
-    
-    // 塗鴉牆
+
     case sharedmaps = "Sharemaps"
-    
-    // 收藏路線
     
     case savemaps = "Savemaps"
     
@@ -67,7 +58,6 @@ enum Collection: String {
     
     case users = "Users"
     
-    // maps 是離線地圖
     
     case maps = "Maps"
     

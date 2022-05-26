@@ -26,7 +26,6 @@ class GroupManager {
     
     private let requestsCollection = Collection.requests.rawValue
     
-    
     func buildTeam(group: inout Group, completion: (Result<String, Error>) -> Void) {
         
         let document = dataBase.collection(groupsCollection).document()
@@ -73,6 +72,7 @@ class GroupManager {
                             }
                             groups.append(group)
                         }
+                        
                     }
                     catch {
                         completion(.failure(error))
@@ -85,7 +85,7 @@ class GroupManager {
         
     }
     
-    func requestListener (completion: @escaping(Result<[Request], Error>) -> () ) -> Void {
+    func requestListener (completion: @escaping(Result<[Request], Error>) -> Void) {
         
         dataBase.collection(requestsCollection).whereField("host_id", isEqualTo: userId).addSnapshotListener { (querySnapshot, error) in
             
@@ -135,7 +135,6 @@ class GroupManager {
         completion(.success("Success"))
     }
     
-    
     func sendRequest(request: Request, completion: (Result<String, Error>) -> Void) {
         
         let document = dataBase.collection(requestsCollection).document()
@@ -170,7 +169,6 @@ class GroupManager {
         }
     }
     
- 
     func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) {
         
         dataBase.collection(requestsCollection)

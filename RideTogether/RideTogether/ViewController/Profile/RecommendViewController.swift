@@ -151,17 +151,7 @@ class RecommendViewController: BaseViewController {
         }
     }
     
-    func savemapsToUser(uid: String, savemaps: String) {
-        
-        MapsManager.shared.saveMapToUser(uid: uid, savemaps: savemaps) { result in
-            switch result {
-            case .success:
-                print ("success")
-            case .failure(let error):
-                print ("\(error)")
-            }
-        }
-    }
+
     
     @objc func headerRefresh() {
         
@@ -290,24 +280,11 @@ extension RecommendViewController: UITableViewDelegate {
         
         LKProgressHUD.show()
         
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "FollowJourneyViewController") as? FollowJourneyViewController {
-            navigationController?.pushViewController(journeyViewController, animated: true)
-            journeyViewController.record = records[indexPath.row]
+        if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
+            navigationController?.pushViewController(nextViewController, animated: true)
+            nextViewController.record = records[indexPath.row]
             
         }
-  
-        //        tableViewCell.likes.toggle()
-        //        if tableViewCell.heart.isSelected == true {
-        //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-        //        }
-        //        if tableViewCell.likes == true {
-        //            // 加到 使用者的 savemaps
-        //            self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef : records[indexPath.row].recordRef)
-        //        } else {
-        //            // 將savemaps 從使用者中刪除
-        //            self.updateSavemaps()
-        //        }
-        
         
     }
     
@@ -325,24 +302,11 @@ extension RecommendViewController: UITableViewDataSource {
         
         cell.setUpCell(model: self.records[indexPath.row])
         
-//        cell.heart.tag = indexPath.row
-//
-//        cell.heart.addTarget(self, action: #selector(savemaps), for: .touchUpInside)
-            
         cell.userPhoto.loadImage(self.records[indexPath.row].pictureRef)
-        
-//        cell.userPhoto.loadImage(self.records[indexPath.row].pictureRef)
-            
+
         cell.userPhoto.cornerRadius = 15
             
-        
         return cell
     }
     
-    @objc func savemaps(_ sender: UIButton) {
-        
-//        self.uploadRecordToSavemaps(fileName: records[sender.tag].recordName, fileRef : records[sender.tag].recordRef)
-        self.savemapsToUser(uid: userId, savemaps: records[sender.tag].recordId)
-        
-    }
 }

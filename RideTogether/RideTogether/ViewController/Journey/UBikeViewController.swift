@@ -9,41 +9,19 @@ import UIKit
 import MapKit
 import CoreGPX
 import CoreLocation
-import Firebase
-import Lottie
-import MessageUI
-import SwiftUI
-import JGProgressHUD
 
 class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     
-
-    var bikeData : [Bike] = []
+    var bikeData: [Bike] = []
     
-    var taichungBikeData : TaichungBike?
+    var taichungBikeData: TaichungBike?
     
     var bikeManager = BikeManager()
     
-    @IBOutlet weak var bikemap: MKMapView!
+    @IBOutlet weak var bikeMapView: MKMapView!
     
-    private let locationManager: CLLocationManager = {
-        
-        let manager = CLLocationManager()
-        
-        manager.requestAlwaysAuthorization()
-        
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        manager.distanceFilter = 2 // meters
-        
-        manager.pausesLocationUpdatesAutomatically = false
-        
-        manager.allowsBackgroundLocationUpdates = true
-        
-        return manager
-    }()
+    private let locationManager = LocationManager()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,8 +31,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         bikeManager.getBikeAPI { [ weak self ] result in
             
-            LKProgressHUD.showSuccess(text: "讀取資料中")
-            
+            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
         self?.bikeData = result
             
@@ -64,8 +41,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         bikeManager.getTCAPI { [weak self] result in
             
-            
-            LKProgressHUD.showSuccess(text: "讀取資料中")
+            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
             self?.taichungBikeData = result
             
@@ -79,15 +55,16 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
         let region = MKCoordinateRegion(center: center, span: span)
         
-        bikemap.setRegion(region, animated: true)
+        bikeMapView.setRegion(region, animated: true)
         
-        self.title = "附近的 Ubike 2.0"
+        self.title = "附近的 UBike 2.0"
         
         view.backgroundColor = .B2
 
     }
     
-    // MARK: - show bikes
+    // MARK: - show bikes -
+    
     func layOutTaipeiBike() {
         
         for bike in bikeData {
@@ -100,14 +77,14 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
             
             let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
 
-            let usersCoordinate = CLLocation(latitude: bikemap.userLocation.coordinate.latitude, longitude: bikemap.userLocation.coordinate.longitude)
+            let usersCoordinate = CLLocation(latitude: bikeMapView.userLocation.coordinate.latitude, longitude: bikeMapView.userLocation.coordinate.longitude)
             
             let bikeStopCoordinate = CLLocation(latitude: Double(bike.lat), longitude: Double(bike.lng))
 
             let distance = usersCoordinate.distance(from: bikeStopCoordinate)
        
                     if  distance < 1000 {
-                        bikemap.addAnnotation(annotation)
+                        bikeMapView.addAnnotation(annotation)
                     }
             
         }
@@ -126,14 +103,14 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
             
             let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
 
-            let usersCoordinate = CLLocation(latitude: bikemap.userLocation.coordinate.latitude, longitude: bikemap.userLocation.coordinate.longitude)
+            let usersCoordinate = CLLocation(latitude: bikeMapView.userLocation.coordinate.latitude, longitude: bikeMapView.userLocation.coordinate.longitude)
             
             let bikeStopCoordinate = CLLocation(latitude: Double(bike.value.lat) ?? 0.0, longitude: Double(bike.value.lng) ?? 0.0 )
             
             let distance = usersCoordinate.distance(from: bikeStopCoordinate)
 
                     if  distance < 1000 {
-                        bikemap.addAnnotation(annotation)
+                        bikeMapView.addAnnotation(annotation)
                     }
         }
         

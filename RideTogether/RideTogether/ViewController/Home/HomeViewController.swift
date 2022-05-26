@@ -43,34 +43,8 @@ class HomeViewController: BaseViewController, Reload {
         }
     }
 
-//        private lazy var bikelottie : AnimationView = {
-//            let view = AnimationView(name: "bike-city-rider")
-//            view.loopMode = .loop
-//            view.frame = CGRect(x: UIScreen.width / 8 , y: 50 , width: 200 , height: 180)
-//            view.cornerRadius = 20
-//            view.contentMode = .scaleToFill
-//            view.play()
-//            self.view.addSubview(view)
-//            return view
-//        }()
-    
-//    @objc func crashButtonTapped(_ sender: AnyObject) {
-//        
-//          let numbers = [0]
-//          let _ = numbers[1]
-//        
-//        print ("test crash")
-//        
-//      }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        navigationController?.isNavigationBarHidden = false
-//
-//        tabBarController?.tabBar.isHidden = false
-//
-//        navigationItem.hidesBackButton = false
         
         NotificationCenter.default.addObserver(
             self,
@@ -80,14 +54,7 @@ class HomeViewController: BaseViewController, Reload {
         )
         
         setUpTableView()
-        
-        
-        
-//
-//        reload()
-        
-//        bikelottie.play()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +75,6 @@ class HomeViewController: BaseViewController, Reload {
     
     func setUpTableView() {
         
-        
         tableView = UITableView(frame: .zero, style: .grouped)
         
         tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
@@ -126,6 +92,7 @@ class HomeViewController: BaseViewController, Reload {
         guard let headerView = headerView else { return }
         
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
+    
     }
     
     func manageRouteData() {

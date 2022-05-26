@@ -9,10 +9,9 @@ import Foundation
 import CoreLocation
 import MapKit
 
-
 protocol bikeProvider {
     
-    func provideBike(bike : Bike)
+    func provideBike(bike: Bike)
     
 }
 
@@ -20,15 +19,18 @@ class BikeManager {
     
     static let shared = BikeManager()
     
-    var delegate : bikeProvider?
+    var bikes: [Bike] = []
+    
+    var delegate: bikeProvider?
     
     func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
+      
+        let urlString = URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")
         
-        var bikes : [Bike] = []
+        guard let urlString = urlString else { return }
+        let url = URLRequest(url: urlString)
         
-        let firstDataRequest = URLRequest(url: URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")!)
-        
-        URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
@@ -36,10 +38,6 @@ class BikeManager {
                 let bikeData = try decoder.decode(Array<Bike>.self, from: data)
                 
                 completion(bikeData)
-                
-//                for count in 0..<20 {
-//                    bikes.append(bikeData[count]) }
-//                completion(bikes)
                 
                 LKProgressHUD.showSuccess(text: "讀取成功")
                
@@ -52,9 +50,14 @@ class BikeManager {
     }
     
     func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
-        let firstDataRequest = URLRequest(url: URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")!)
         
-        URLSession.shared.dataTask(with: firstDataRequest, completionHandler: { [self] (data, response, error) in
+        
+        let urlString = URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")
+        
+        guard let urlString = urlString else { return }
+        let url = URLRequest(url: urlString)
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, _) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
@@ -66,7 +69,7 @@ class BikeManager {
 //                for count in 0..<20 {
 //                    bikes.append(bikeData[count]) }
 //                completion(bikes)
-                print ("\(tBikeData)")
+                print("\(tBikeData)")
                 LKProgressHUD.showSuccess(text: "讀取成功")
                
             } catch {
@@ -76,9 +79,7 @@ class BikeManager {
             
         }) .resume()
         
-        
     }
-    
     
 }
 
@@ -95,7 +96,6 @@ struct Bike: Codable {
     let infoDate: String
 }
 
-
 struct TaichungBike: Codable {
     let retCode: Int
     let retVal: [String: TBike] 
@@ -108,4 +108,3 @@ struct TBike: Codable {
     let ar, sareaen, snaen, aren: String
     let bemp, act: String
 }
-

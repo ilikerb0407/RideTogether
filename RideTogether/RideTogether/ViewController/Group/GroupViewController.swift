@@ -108,6 +108,8 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
     }
     
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,7 +131,22 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tapAndDismiss()
         
+        checkRequestsNum()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(handleDidCreate), name: .didUpdateBuyItemList, object: nil)
+//
+//        NotificationCenter.default.post(name: .didUpdateBuyItemList, object: self, userInfo: nil)
+        
     }
+    
+//    @objc func handleDidCreate(notification: Notification) {
+//
+//        addRequestListener()
+//        tabBarController?.tabBar.items?[2].badgeValue = "\(requests.count)"
+//        tabBarController?.tabBar.items?[2].badgeColor = .red
+//    }
+    
+  
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -155,13 +172,15 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                 
                 self.requests = filtedRequests
                 
+                self.tabBarController?.tabBar.items?[2].badgeValue = "\(requests.count)"
+                self.tabBarController?.tabBar.items?[2].badgeColor = .red
+                
             case .failure(let error):
                 
                 print("fetchData.failure: \(error)")
             }
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -189,8 +208,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         }
     }
     
-    
-    
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
@@ -214,8 +231,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
     }
-    // MARK: 確定時間有沒有過期
-    
+
     func updateUserHistory() {
         
         var numOfGroups = 0
@@ -234,7 +250,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
     }
-    
     
     func rearrangeMyGroup(groups: [Group]) {
         
@@ -261,9 +276,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         myGroups =  unexpiredGroup + expiredGroup
     }
     
-    // MARK: 抓資料
-    
-
     func fetchGroupData() {
         
         GroupManager.shared.fetchGroups { [self] result in
@@ -311,7 +323,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
     }
-    
     
     func fetchUserData(uid: String) {
         
@@ -390,14 +401,13 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         if requests.count == 0 {
             
-            
         } else {
             
             groupHeaderCell.resquestsBell.shake()
             
         }
     }
-    
+
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
@@ -413,8 +423,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         }
         tableView.reloadData()
     }
-    
-    
+        
     func setUpTableView() {
         
         tableView = UITableView()
@@ -453,16 +462,10 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         return fitledGroups
     }
     
-    
-    
-  
-
 }
 // MARK: - SearchBar Delegate -
 
 extension GroupViewController: UITableViewDelegate {
-    
-   
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -475,13 +478,11 @@ extension GroupViewController: UITableViewDelegate {
                 cell.alpha = 1
             })
         
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        200
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -585,4 +586,3 @@ extension GroupViewController : UISearchBarDelegate {
     }
     
 }
-

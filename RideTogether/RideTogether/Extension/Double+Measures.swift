@@ -52,7 +52,7 @@ extension Double {
     }
     
     func toAltitude() -> String {
-        return String(format: "%.1fm", self)
+        return String(format: "%.1f公尺", self)
     }
     
     func toAccuracy(useImperial: Bool = false) -> String {
@@ -121,7 +121,6 @@ extension Double {
         
         return timeString
     }
-    
     
     
     func roundDouble() -> String {
