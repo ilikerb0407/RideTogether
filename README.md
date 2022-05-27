@@ -7,9 +7,6 @@ RideTogether is an app allows users to record routes and to share with friends. 
 Below is code :
 
 ˋˋˋSwift 
-import CoreGPX
-import MapKit
-import CoreLocation
 
 class MapPin {
 
