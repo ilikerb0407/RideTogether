@@ -42,28 +42,49 @@ An app allows users to record routes and to share with friends. Moreover, users 
 - Imported MessageUI which allow users to send location to others in case of emergency.
 
 
+## Screenshots
 
 
-## How to use (screenshot)
+<p align="left">
+
+  <img src="https://s27.aconvert.com/convert/p3r68-cdx67/2y3oh-4qfz9.gif" width="200"/>
+
+</p>
+
+
+<p align="left">
+
+  <img src="https://user-images.githubusercontent.com/57937550/170674710-3db79636-f273-4eac-b606-06f13fb772b7.png
+" width=""/>
+
+</p>
+
+<p align="left">
+
+  <img src="https://user-images.githubusercontent.com/57937550/170675258-d5b57bec-0d61-40a4-8c26-14ae90cd6a64.png
+" width=""/>
+
+</p>
+
+
+<p align="left">
+
+  <img src="https://user-images.githubusercontent.com/57937550/170675692-9cfc0cbd-ffd6-4bbe-ab31-e4d67f22e6e1.png
+" width=""/>
+
+</p>
+
 
 ## Three-party Libraries 
 
-* Kingfisher - 善用快取的方式處理網路圖片並呈現在 App
-* IQKeyboardManager - 解決鍵盤彈起時遮住輸入框的工具
-* KeychainAccess - 針對用戶 id 加密
-* MJRefresh - 下拉功能套件
-* Alamofire - 協助網路API流程的第三方工具
-* SwiftLint - Check codingstyle and structure
-* AuthenticationServices - Registration of Apple, Apple Sign in / Sign out
-- MapKit 
-- MJRefresh
-- 
+  * [lottie-ios](https://github.com/airbnb/lottie-ios)
+  * [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
+  * [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
+  * [IQKeyboardManagerSwift](https://github.com/hackiftekhar/IQKeyboardManager)
+  * [SwiftLint](https://github.com/realm/SwiftLint)
+  * [Crashlytics](https://firebase.google.com/products/crashlytics?hl=en)
 
-
-
-
-
-## Images
+## Contribution
 
 <p align="center">
 
@@ -109,4 +130,3 @@ Copyright 2022 Kai Fu Jhuang
 License under MIT license. 
 See
 [License](https://github.com/ilikerb0407/RideTogether/blob/main/LICENSE) for detail.
-
