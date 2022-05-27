@@ -14,6 +14,13 @@
 An app allows users to record routes and to share with friends. Moreover, users can handily create or join groups to enjoy cycling.
 </p>
 
+<p> </p>
+<p align= "center">
+<nobr><img src="https://img.shields.io/badge/platform-ios-lightgrey.svg">
+<img src="http://img.shields.io/badge/License-MIT-green.svg?style=flat">
+<img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat"></nobr>
+</p>
+
 
 ## Features
 
