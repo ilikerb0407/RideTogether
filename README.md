@@ -7,9 +7,7 @@ RideTogether is an app allows users to record routes and to share with friends. 
 Below is code :
 
 ˋˋˋSwift 
-
 class MapPin {
-
     func guide(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         let annotationView = MKPinAnnotationView()
