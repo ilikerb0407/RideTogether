@@ -15,9 +15,24 @@ An app allows users to record routes and to share with friends. Moreover, users 
 </p>
 
 
-
 ## Features
- - Implemented MapKit, Core Location and CoreGPX to draw line of navigation for users to follow.
+
+ - Draw lines of navigation for users to follow.
+ - Recorded users' route when cycling and shared it to other users.
+ - Diverse types of routes for you to browse, follow as well as collect.
+ - Search several interesting groups or routes and send requests to join if you like.
+ 
+ 
+## Technologies Used
+
+- Used CoreGPX to parse GPX file and calculate users route's records.
+- Implemented MapKit, Core Location and CoreGPX to draw line of navigation for users to follow. 
+- Utilized MapKit and Core Location framework to enhance accessibility for user to find the nearby bikes. 
+- Established project from OpenWeather APIs and notify users about local weather condition.
+- Applied CRUD operations that allow users to modify the detail information about activities.
+- Handled Notification Center to monitor users' requests and provide users options to join or not.
+- Made use of CABasicAnimation to remind users of invalid input.
+- Imported MessageUI which allow users to send location to others in case of emergency.
 
 
 
