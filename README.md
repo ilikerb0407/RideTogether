@@ -45,33 +45,17 @@ An app allows users to record routes and to share with friends. Moreover, users 
 ## Screenshots
 
 
-<p align="left">
 
-  <img src="https://s27.aconvert.com/convert/p3r68-cdx67/2y3oh-4qfz9.gif" width="200"/>
-
+  <p align="center">
+   <img src="https://user-images.githubusercontent.com/57937550/170674710-3db79636-f273-4eac-b606-06f13fb772b7.png" width="550" />
 </p>
 
-
-<p align="left">
-
-  <img src="https://user-images.githubusercontent.com/57937550/170674710-3db79636-f273-4eac-b606-06f13fb772b7.png
-" width=""/>
-
+ <p align="center">
+   <img src="https://user-images.githubusercontent.com/57937550/170675258-d5b57bec-0d61-40a4-8c26-14ae90cd6a64.png" width="550" />
 </p>
 
-<p align="left">
-
-  <img src="https://user-images.githubusercontent.com/57937550/170675258-d5b57bec-0d61-40a4-8c26-14ae90cd6a64.png
-" width=""/>
-
-</p>
-
-
-<p align="left">
-
-  <img src="https://user-images.githubusercontent.com/57937550/170675692-9cfc0cbd-ffd6-4bbe-ab31-e4d67f22e6e1.png
-" width=""/>
-
+ <p align="center">
+   <img src="https://user-images.githubusercontent.com/57937550/170675692-9cfc0cbd-ffd6-4bbe-ab31-e4d67f22e6e1.png" width="550" />
 </p>
 
 
