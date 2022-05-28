@@ -12,11 +12,9 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFirestoreSwift
 import Lottie
-import AVFoundation
 import Kingfisher
 
 class SaveMapsViewController: BaseViewController {
-    
     
     @IBOutlet weak var gView: UIView! {
         didSet {

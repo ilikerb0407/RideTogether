@@ -28,7 +28,7 @@ class MapsManager {
     
     var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
     
-    private let mapsCollection = Collection.maps.rawValue // 離線地圖
+    private let mapsCollection = Collection.maps.rawValue
     
     private let routeCollection = Collection.routes.rawValue // Home
     
@@ -36,9 +36,9 @@ class MapsManager {
     
     private let saveCollection = Collection.savemaps.rawValue // Profile
     
-    private let userCollection = Collection.users.rawValue // Profile
+    private let userCollection = Collection.users.rawValue //
     
-    func fetchRecords(completion: @escaping(Result<[Record],Error>) -> Void){
+    func fetchRecords(completion: @escaping(Result<[Record], Error>) -> Void) {
         
         let collection = dataBase.collection(shareCollection)
         collection.getDocuments { (querySnapshot, error) in
@@ -116,11 +116,10 @@ class MapsManager {
                         
                         for document in querySnapshot.documents {
                             do {
-                                if let record = try document.data(as: Record.self , decoder: Firestore.Decoder()) {
+                                if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
                                     records.append(record)
                                 }
-                                
-                            }
+                                }
                             catch {
                                 completion(.failure(error))
                             }

@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseFirestore
 
-// 使用者個人騎乘紀錄
 
 struct Record: Codable, Hashable {
     

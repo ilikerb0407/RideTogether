@@ -60,7 +60,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             self.currentUser = Auth.auth().currentUser
         }
         
-        
         lottie()
     }
     
@@ -100,7 +99,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
 //      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
 
-                            
     func setUpSignInButton() {
         
         view.addSubview(loginButton)

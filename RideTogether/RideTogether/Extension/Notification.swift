@@ -12,6 +12,8 @@ extension Notification.Name {
     static let userInfoDidChanged = Notification.Name("userInfoDidChanged")
     
     static let checkGroupDidTaped = Notification.Name("checkGroupDidTaped")
+    
+    static let didUpdateBuyItemList = Notification.Name("didUpdateBuyItemList")
 }
 
 extension NSNotification {

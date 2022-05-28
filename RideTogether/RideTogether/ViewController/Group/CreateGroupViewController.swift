@@ -167,7 +167,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-                    let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
+                let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
                     
                     let successOption = UIAlertAction(title: "完成", style: .cancel) { _ in
                         self.delegate?.reload()
@@ -252,9 +252,4 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         checkTextsFilled()
     }
 }
-
-
-
-
-
 

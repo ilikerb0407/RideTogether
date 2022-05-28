@@ -11,13 +11,7 @@ import UIKit
 import SwiftUI
 
 
-protocol RoutesPhoto {
-    
-    var image : UIImage? { get }
-    
-}
-
-enum RoutesType: String, RoutesPhoto, CaseIterable {
+enum RoutesType: String, CaseIterable {
     
     case userOne = "朋友路線"
     

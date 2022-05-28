@@ -52,7 +52,7 @@ class SignUpViewController: BaseViewController {
                             self.userInfo.uid = uid
                             
                             self.userInfo.userName = "破風手"
-                            // upload mock photo url to get url
+                            
                             self.userInfo.pictureRef = ""
                             
                             self.userInfo.saveMaps = []

@@ -16,7 +16,6 @@ import SwiftUI
 import Kingfisher
 
 
-// MARK: Recommend-Route
 class RecommendViewController: BaseViewController {
     
     @IBOutlet weak var gView: UIView! {
@@ -27,7 +26,6 @@ class RecommendViewController: BaseViewController {
             gView.alpha = 0.85
         }
     }
-    
     
     var records = [Record]()
     

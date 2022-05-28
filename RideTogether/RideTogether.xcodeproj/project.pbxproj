@@ -440,8 +440,6 @@
 			children = (
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
-				23D1B782280062E9000EDA70 /* MapPin.swift */,
-				23395D27282E447A00192563 /* Ubike2.0.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -523,10 +521,10 @@
 				23D1B74828005C16000EDA70 /* BaseViewController.swift */,
 				23CB74C52817803300DED822 /* TabBarController.swift */,
 				237A27A8281A6948004F039F /* Login */,
-				23CE42BE280FB74700C4C9F1 /* Group */,
-				231BCB6B2808593E00DE2343 /* Home */,
-				23D1B7E12803C21E000EDA70 /* Profile */,
 				23D1B7912800B08D000EDA70 /* Journey */,
+				231BCB6B2808593E00DE2343 /* Home */,
+				23CE42BE280FB74700C4C9F1 /* Group */,
+				23D1B7E12803C21E000EDA70 /* Profile */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -565,16 +563,18 @@
 		23D1B767280060E0000EDA70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23D1B782280062E9000EDA70 /* MapPin.swift */,
+				23395D27282E447A00192563 /* Ubike2.0.swift */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23CB74C9281787B400DED822 /* Login.storyboard */,
 				2360C6772825562E00EF21D3 /* Policy.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
+				23D1B76A28006116000EDA70 /* Journey */,
 				23C887192814285A00E3319A /* Home */,
 				23A84A682811570600DD8D39 /* Group */,
-				23CE42A5280E5F0A00C4C9F1 /* Reuse Element */,
-				23D1B76A28006116000EDA70 /* Journey */,
 				23D1B7E828042C88000EDA70 /* Profile */,
+				23CE42A5280E5F0A00C4C9F1 /* Reuse Element */,
 			);
 			path = View;
 			sourceTree = "<group>";

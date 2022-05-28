@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseFirestore
 
-
 struct SharedMap: Codable, Hashable {
     
     var uid: String
@@ -17,7 +16,6 @@ struct SharedMap: Codable, Hashable {
     var recordName: String
     var recordRef: String
 
-    
     enum CodingKeys: String, CodingKey {
         
         case uid
