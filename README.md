@@ -10,6 +10,8 @@
     <a href="https://apps.apple.com/tw/app/ridetogether/id1619743048"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"></a>
 </p>
 
+
+
 <p align="center" style="margin:0px 50px 0px 60px">
 An app allows users to record routes and to share with friends. Moreover, users can handily create or join groups to enjoy cycling.
 </p>
@@ -18,8 +20,11 @@ An app allows users to record routes and to share with friends. Moreover, users 
 <p align= "center">
 <nobr><img src="https://img.shields.io/badge/platform-ios-lightgrey.svg">
 <img src="http://img.shields.io/badge/License-MIT-green.svg?style=flat">
-<img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat"></nobr>
+<img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat"></nobr>
 </p>
+
+
+
 
 
 ## Features
@@ -42,41 +47,46 @@ An app allows users to record routes and to share with friends. Moreover, users 
 - Imported MessageUI which allow users to send location to others in case of emergency.
 
 
+## Demo 
+
+
+  <img src="https://user-images.githubusercontent.com/57937550/170717983-a34588bf-c18f-4995-8753-66cde0167ebf.gif
+  " width=""/>
+  
+  
 ## Screenshots
 
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/57937550/170806645-e4e4a286-fc63-40c2-b386-10d1b3f2c64a.png
+" width=""/>
 
-
-  <p align="center">
-   <img src="https://user-images.githubusercontent.com/57937550/170674710-3db79636-f273-4eac-b606-06f13fb772b7.png" width="550" />
 </p>
 
- <p align="center">
-   <img src="https://user-images.githubusercontent.com/57937550/170675258-d5b57bec-0d61-40a4-8c26-14ae90cd6a64.png" width="550" />
+<p align="left">
+
+  <img src="https://user-images.githubusercontent.com/57937550/170806649-794580cd-428f-4fc7-b2d4-8beadf3e1162.png
+" width=""/>
 </p>
 
- <p align="center">
-   <img src="https://user-images.githubusercontent.com/57937550/170675692-9cfc0cbd-ffd6-4bbe-ab31-e4d67f22e6e1.png" width="550" />
+
+<p align="left">
+
+  <img src="https://user-images.githubusercontent.com/57937550/170806652-b4ec3647-0cbc-4e02-a7cf-6d4c40336cfc.png
+" width=""/>
+
 </p>
 
 
 ## Three-party Libraries 
-
+    
   * [lottie-ios](https://github.com/airbnb/lottie-ios)
   * [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
   * [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
   * [IQKeyboardManagerSwift](https://github.com/hackiftekhar/IQKeyboardManager)
   * [SwiftLint](https://github.com/realm/SwiftLint)
   * [Crashlytics](https://firebase.google.com/products/crashlytics?hl=en)
-
-## Contribution
-
-<p align="center">
-
-  <img src="https://activity-graph.herokuapp.com/graph?username=ilikerb0407&theme=minimal" width="1000"/>
-
-</p>
-
-
+  * [MapKit](https://www.raywenderlich.com/7738344-mapkit-tutorial-getting-started)
+  * [CoreLocation](https://developer.apple.com/documentation/corelocation/cllocationmanager)
 
 
 ## Update History
