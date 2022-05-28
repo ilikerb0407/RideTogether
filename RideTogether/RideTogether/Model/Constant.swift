@@ -58,7 +58,6 @@ enum Collection: String {
     
     case users = "Users"
     
-    
     case maps = "Maps"
     
 }

@@ -8,12 +8,8 @@
 import UIKit
 import WebKit
 
-protocol policy {
-    
-    var url: String { get }
-}
 
-enum PolicyType: String, policy {
+enum PolicyType: String {
     
     case privacy
     

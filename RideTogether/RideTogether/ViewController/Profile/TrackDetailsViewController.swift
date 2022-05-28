@@ -45,7 +45,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
     private let mapViewDelegate = MapPin()
     
-    // 只會有一筆
     var record = Record()
     
     lazy var trackInfo = TrackInfo()
@@ -53,8 +52,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     lazy var trackChartData = TrackChartData()
     
     func setUp() {
-        
-        //        navigationController?.isNavigationBarHidden = false
         
         setNavigationBar(title: "騎乘紀錄")
         
@@ -64,11 +61,11 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         tabBarController?.tabBar.isHidden = true
         
-        //        backButton()
+        
         
         praseGPXFile()
         
-//        backToJourneyButton()
+        
         
         updateInfo(data: trackInfo)
         
@@ -92,7 +89,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         var dataEntries: [ChartDataEntry] = []
         
-        //        chartView.noDataText = "Can not get track record!"
+        chartView.noDataText = "Can not get track record!"
         
         for index in 0..<trackChartData.elevation.count {
             
@@ -142,23 +139,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         chartView.rightAxis.enabled = false
         
         chartView.animate(xAxisDuration: 2.0)
-    }
-    
-    func backToJourneyButton() {
-        
-        let button = NextPageButton(frame: CGRect(x: UIScreen.width - 60 , y: 460 , width: 50, height: 50))
-        button.addTarget(self, action: #selector(push), for: .touchUpInside)
-        view.addSubview(button)
-        
-    }
-    
-    @objc func push(_ sender: UIButton) {
-         
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
-            navigationController?.pushViewController(journeyViewController, animated: true)
-            journeyViewController.record = record
-            // 這一頁宣告的變數, 是下一頁的變數 (可以改用closesure傳看看)
-        }
     }
     
     func backButton() {
@@ -291,7 +271,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         LKProgressHUD.dismiss()
     }
     
-    // 改成 instantiate storybroad 然後改寫成 closure 的方式把資料傳過去, 去看作業的 passValue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
             if let nextVC = segue.destination as? RideViewController {

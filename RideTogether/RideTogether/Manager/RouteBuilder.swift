@@ -20,7 +20,7 @@ enum RouteBuilder {
   typealias PlaceCompletionBlock = (MKPlacemark?) -> Void
   typealias RouteCompletionBlock = (Result<DrawRoute, RouteError>) -> Void
 
-  private static let routeQueue = DispatchQueue(label: "com.raywenderlich.RWRouter.route-builder")
+  private static let routeQueue = DispatchQueue(label: "route-builder")
 
     static func buildRoute(origin: Segment, stops: [Segment], within region: MKCoordinateRegion?, completion: @escaping RouteCompletionBlock) {
     routeQueue.async {

@@ -15,24 +15,24 @@ import FirebaseStorageSwift
 // MARK: 之後登入用得到
 
 class UserManager {
-//    
+    
     let userId = Auth.auth().currentUser?.uid
-//    
+    
     var userInfo = UserInfo()
-//    
+    
     static let shared = UserManager()
-//    
+    
     private init() { }
-//    
+    
     lazy var storageRef = Storage.storage().reference()
-//    
+    
     lazy var dataBase = Firestore.firestore()
-//    
+    
     let usersCollection = Collection.users.rawValue
     
     let requestsCollection = Collection.requests.rawValue
     
-    let shareCollection = Collection.sharedmaps.rawValue // Profile
+    let shareCollection = Collection.sharedmaps.rawValue
     
     let groupsCollection = Collection.groups.rawValue
     
@@ -51,7 +51,7 @@ class UserManager {
 
                 } else {
                     LKProgressHUD.showSuccess(text: "刪除成功")
-                    print ("uid=========\(uid)")
+                    print ("delete uid=========\(uid)")
                 }
             }
         }
@@ -126,7 +126,7 @@ class UserManager {
             }
         }
     }
-//    
+    
     func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
         
         let uid = userInfo.uid
@@ -276,7 +276,7 @@ class UserManager {
             }
         }
     }
-//    
+    
     func updateUserTrackLength(length: Double) {
         
         userInfo.totalLength += length
