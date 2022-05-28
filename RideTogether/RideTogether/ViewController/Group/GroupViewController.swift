@@ -67,7 +67,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     
     private var groupHeaderCell: GroupHeaderCell?
     
-    // Search Bar 查詢 Groups
     private var searchGroups = [Group]()
     
     private var isSearching = false
@@ -97,7 +96,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
         tap.delegate = self
-                //shouldReceiveTouch on UITableViewCellContentView
+        
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
@@ -109,7 +108,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,22 +130,11 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         tapAndDismiss()
         
         checkRequestsNum()
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleDidCreate), name: .didUpdateBuyItemList, object: nil)
-//
-//        NotificationCenter.default.post(name: .didUpdateBuyItemList, object: self, userInfo: nil)
+
         
     }
     
-//    @objc func handleDidCreate(notification: Notification) {
-//
-//        addRequestListener()
-//        tabBarController?.tabBar.items?[2].badgeValue = "\(requests.count)"
-//        tabBarController?.tabBar.items?[2].badgeColor = .red
-//    }
-    
   
-    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)

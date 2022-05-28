@@ -19,8 +19,6 @@ class JoinViewController: BaseViewController {
         }
     }
     
-    
-    
     // MARK: - DataSource & DataSourceSnapshot typelias -
     
     typealias DataSource = UITableViewDiffableDataSource<Section, Request>

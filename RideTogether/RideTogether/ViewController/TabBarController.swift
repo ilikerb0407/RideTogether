@@ -76,8 +76,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                    self.tabBar.standardAppearance = appearance
                    self.tabBar.scrollEdgeAppearance = appearance
                 }
-         
-
+        
     }
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
@@ -111,7 +110,4 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-}
-extension Notification.Name {
-    static let didUpdateBuyItemList = Notification.Name("didUpdateBuyItemList")
 }

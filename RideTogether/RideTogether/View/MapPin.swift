@@ -259,7 +259,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
             //The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
                 
-                
                 if gpxMapView.headingImageView == nil {
                     
                     let image = UIImage(named: "heading")!

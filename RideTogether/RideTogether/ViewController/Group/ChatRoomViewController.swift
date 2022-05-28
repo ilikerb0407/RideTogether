@@ -75,8 +75,6 @@ class ChatRoomViewController: BaseViewController {
 //        configureDataSource()
     }
     
-   
-    
     func checkUserStatus() {
         
         guard let groupInfo = groupInfo else { return }

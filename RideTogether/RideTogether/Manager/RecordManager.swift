@@ -73,8 +73,6 @@ class RecordManager {
         }
     }
     
-    // 上傳到FireBase DataBase
-    
     func uploadRecordToDb(fileName: String, fileURL: URL) {
         
         let document = dataBase.collection(recordsCollection).document()
@@ -107,7 +105,6 @@ class RecordManager {
         
         let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
         
-//        let collection = dataBase.collection(recordsCollection)
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
@@ -171,8 +168,6 @@ class RecordManager {
     func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         let recordRef = storageRef.child("records").child(userId)
-        
-//        let recordRef = storageRef.child("records")
         
         let spaceRef = recordRef.child(fileName)
         
