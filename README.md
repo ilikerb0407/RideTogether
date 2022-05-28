@@ -12,7 +12,6 @@
 
 
 
-
 <p align="center" style="margin:0px 50px 0px 60px">
 An app allows users to record routes and to share with friends. Moreover, users can handily create or join groups to enjoy cycling.
 </p>
@@ -51,7 +50,7 @@ An app allows users to record routes and to share with friends. Moreover, users 
 ## Demo 
 
 
-  <img src="https://user-images.githubusercontent.com/57937550/170808726-08fdf415-926f-4c28-a3c8-964843a5b69d.gif" width=""/>
+  <img src="https://user-images.githubusercontent.com/57937550/170809130-5ed054ef-92cc-4157-a88b-d66adca311ac.gif" width=""/>
   
   
 ## Screenshots
