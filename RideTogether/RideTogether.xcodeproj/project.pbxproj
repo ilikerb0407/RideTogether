@@ -535,10 +535,10 @@
 				23D1B78B28006663000EDA70 /* Constant.swift */,
 				231BCB5028070BF500DE2343 /* Taiwan.swift */,
 				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
-				23CB74B82816C7FE00DED822 /* Group */,
 				231BCB6A280858D700DE2343 /* Home */,
-				23D1B74E28005DE1000EDA70 /* GPX */,
+				23CB74B82816C7FE00DED822 /* Group */,
 				231BCB69280858C800DE2343 /* Profile */,
+				23D1B74E28005DE1000EDA70 /* GPX */,
 			);
 			path = Model;
 			sourceTree = "<group>";
