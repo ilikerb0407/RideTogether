@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-
 enum RoutesType: String, CaseIterable {
     
     case userOne = "朋友路線"

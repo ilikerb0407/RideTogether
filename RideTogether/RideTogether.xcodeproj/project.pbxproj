@@ -330,6 +330,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2309B8F72842255D0020D6FE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				231BCB5028070BF500DE2343 /* Taiwan.swift */,
+				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		231BCB352806724F00DE2343 /* RecommendMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,13 +444,21 @@
 			path = Group;
 			sourceTree = "<group>";
 		};
-		23CE42A0280E571700C4C9F1 /* Resource */ = {
+		23CE42A0280E571700C4C9F1 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
-				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */,
+				23129C30281CF43D001DE91D /* bike-city-rider.json */,
+				23129C36281D0E60001DE91D /* waiting-pigeon.json */,
+				23C0C41B281E7B320020237C /* wait-processbar.json */,
+				23EC046C2823F1230063523F /* circle.json */,
+				2397D453281F095E0018FC5E /* rain.json */,
+				23EC046E2823F41B0063523F /* leave.json */,
+				2397D455281F106B0018FC5E /* sun.json */,
+				2397D457281F14170018FC5E /* otherweather.json */,
+				2397D45F28203F820018FC5E /* cloud.json */,
 			);
-			path = Resource;
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		23CE42A5280E5F0A00C4C9F1 /* Reuse Element */ = {
@@ -494,23 +511,16 @@
 				23D1B73C280033FC000EDA70 /* Info.plist */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
-				2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */,
-				23129C30281CF43D001DE91D /* bike-city-rider.json */,
-				23129C36281D0E60001DE91D /* waiting-pigeon.json */,
-				23C0C41B281E7B320020237C /* wait-processbar.json */,
-				23EC046C2823F1230063523F /* circle.json */,
-				2397D453281F095E0018FC5E /* rain.json */,
-				23EC046E2823F41B0063523F /* leave.json */,
-				2397D455281F106B0018FC5E /* sun.json */,
-				2397D457281F14170018FC5E /* otherweather.json */,
-				2397D45F28203F820018FC5E /* cloud.json */,
-				233206C82826483D0017864C /* Noto_Sans_TC */,
-				23CE42A0280E571700C4C9F1 /* Resource */,
-				23D1B7842800632F000EDA70 /* Manager */,
-				23D1B76D28006187000EDA70 /* Extension */,
-				23D1B74A28005CF1000EDA70 /* ViewController */,
-				23D1B767280060E0000EDA70 /* View */,
+				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
+				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B74B28005D9B000EDA70 /* Model */,
+				23D1B767280060E0000EDA70 /* View */,
+				23D1B74A28005CF1000EDA70 /* ViewController */,
+				23D1B76D28006187000EDA70 /* Extension */,
+				23CE42A0280E571700C4C9F1 /* Lottie */,
+				233206C82826483D0017864C /* Noto_Sans_TC */,
+				23D1B7842800632F000EDA70 /* Manager */,
+				2309B8F72842255D0020D6FE /* Resource */,
 			);
 			path = RideTogether;
 			sourceTree = "<group>";
@@ -533,8 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				23D1B78B28006663000EDA70 /* Constant.swift */,
-				231BCB5028070BF500DE2343 /* Taiwan.swift */,
-				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23CB74B82816C7FE00DED822 /* Group */,
 				231BCB69280858C800DE2343 /* Profile */,
