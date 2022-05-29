@@ -11,7 +11,6 @@ import Kingfisher
 
 class ProfileView: UIView {
 
-   
     @IBOutlet weak var userPhoto: UIImageView!
     
     @IBOutlet weak var userName: UITextField!
