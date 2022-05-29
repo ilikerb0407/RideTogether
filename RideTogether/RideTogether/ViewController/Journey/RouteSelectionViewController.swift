@@ -31,15 +31,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     
     @IBOutlet weak var windLabel: UILabel!
     
-//    @IBOutlet weak var lefttop: UILabel!
     
-    
-//    func setUp() {
-//        lefttop.translatesAutoresizingMaskIntoConstraints = false
-//        lefttop.cornerRadius = 30
-//    }
-    
-    func weather(){
+    func weather() {
         
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
             
@@ -183,7 +176,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
     }
     
     override func viewDidLayoutSubviews() {
-//        setUp()
         
         inputContainerView.cornerRadius = 30
     }

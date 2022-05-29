@@ -178,6 +178,10 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
         
         func setUpMap() {
             
+            DispatchQueue.main.async {
+                self.praseGPXFile()
+                LKProgressHUD.show()
+            }
             map3.delegate = mapViewDelegate
             
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
@@ -189,9 +193,7 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
             map3.rotationGesture.delegate = self
             
             self.view.addSubview(map3)
-            
-            praseGPXFile()
-            
+        
         }
     
         @objc func followButtonToggle() {
