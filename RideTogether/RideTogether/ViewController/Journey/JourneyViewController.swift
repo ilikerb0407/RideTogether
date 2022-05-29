@@ -62,6 +62,8 @@ class JourneyViewController: BaseViewController {
                 
                 self.stopWatch.start()
                 
+                locationManager.allowsBackgroundLocationUpdates = true
+                
                 waveLottieView.isHidden = false
                 
                 waveLottieView.play()
@@ -72,6 +74,7 @@ class JourneyViewController: BaseViewController {
                 
                 trackerButton.setTitle("繼續", for: .normal)
                 
+                locationManager.allowsBackgroundLocationUpdates = false
                 self.stopWatch.stop()
                 
                 waveLottieView.isHidden = true
