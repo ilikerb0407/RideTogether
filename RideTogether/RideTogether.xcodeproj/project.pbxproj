@@ -19,7 +19,6 @@
 		231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2F280671DE00DE2343 /* RecommendViewController.swift */; };
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
 		231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */; };
-		231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */; };
 		231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3828067DBD00DE2343 /* MapsManager.swift */; };
 		231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5028070BF500DE2343 /* Taiwan.swift */; };
 		231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */; };
@@ -170,7 +169,6 @@
 		231BCB2F280671DE00DE2343 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = "<group>"; };
-		231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
 		231BCB3828067DBD00DE2343 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
 		231BCB5028070BF500DE2343 /* Taiwan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taiwan.swift; sourceTree = "<group>"; };
 		231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanMapOverlay.swift; sourceTree = "<group>"; };
@@ -672,7 +670,6 @@
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
 				23129C38281D11C7001DE91D /* SaveMapsViewController.swift */,
 				2304FF4B280895F200C6B1BF /* RideViewController.swift */,
-				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1055,7 +1052,6 @@
 				23129C43281D5BB8001DE91D /* RouteCollectionViewCell.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
 				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
-				231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */,
 				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,
 				23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */,
 				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
