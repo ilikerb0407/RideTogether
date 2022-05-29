@@ -21,7 +21,6 @@ struct Route: Codable, Hashable {
     var routeMap: String
     // URL(String: record.reference)
     
-    
     enum CodingKeys: String, CodingKey {
         case uid   // for UGC
         case createdTime = "created_time"

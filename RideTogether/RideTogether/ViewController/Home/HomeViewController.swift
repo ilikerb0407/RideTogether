@@ -63,6 +63,7 @@ class HomeViewController: BaseViewController, Reload {
         
         fetchTrailData()
         
+        
     }
     
     @IBOutlet weak var gView: UIView! {

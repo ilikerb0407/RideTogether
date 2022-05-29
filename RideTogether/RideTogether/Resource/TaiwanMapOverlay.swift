@@ -13,7 +13,8 @@ class ParkMapOverlay: NSObject, MKOverlay {
   let boundingMapRect: MKMapRect
 
   init(park: Park) {
-    boundingMapRect = park.overlayBoundingMapRect
     coordinate = park.midCoordinate
+    boundingMapRect = park.overlayBoundingMapRect
+    
   }
 }

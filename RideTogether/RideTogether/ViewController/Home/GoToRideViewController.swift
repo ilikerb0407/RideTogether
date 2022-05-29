@@ -31,8 +31,8 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     
         func praseGPXFile() {
             
+            
             if let inputUrl = URL(string: routes.routeMap) {
-                
                 print("FollowDetail=======:\(inputUrl)======")
                 
                 LKProgressHUD.show(type: .success("下載資料完成"))
@@ -136,8 +136,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     
     var hasWaypoints: Bool = false
 
-        
-    
     private lazy var buttonStackView: UIStackView = {
  
         let view = UIStackView(arrangedSubviews: [followUserButton, sendSMSButton, showBikeButton])
@@ -168,33 +166,19 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
 
             navigationController?.isNavigationBarHidden = false
             
-            praseGPXFile()
-            
-            LKProgressHUD.dismiss()
             
         }
- 
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        LKProgressHUD.dismiss()
     }
-        
-        
+
         // MARK: - Action
         
         func setUpMap() {
             
-//            locationManager.delegate = self
-//            locationManager.startUpdatingLocation()
-//            locationManager.startUpdatingHeading()
-            
             map3.delegate = mapViewDelegate
-            
-//            map3.showsUserLocation = true
-            
-            // 移動 map 的方式
             
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
             
@@ -204,27 +188,12 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
             
             map3.rotationGesture.delegate = self
             
-//            let center = locationManager.location?.coordinate ??
-//            CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
-//            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-//            let region = MKCoordinateRegion(center: center, span: span)
-//            
-//            map3.setRegion(region, animated: true)
-            
-            //   If user long presses the map, it will add a Pin (waypoint) at that point
-            
-//            map3.addGestureRecognizer(UILongPressGestureRecognizer( target: self,
-//                                                                   action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
-            
             self.view.addSubview(map3)
             
             praseGPXFile()
             
         }
-  
     
-        
-        
         @objc func followButtonToggle() {
             
             self.followUser = !self.followUser
@@ -265,8 +234,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
             }
         }
         
-        
-
         // MARK: - UI Settings -
         
     func setUpButtonsStackView() {
@@ -303,7 +270,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
                 
         ])
         
-        
         followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
@@ -329,12 +295,10 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
         }
     }
 
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let newLocation = locations.first!
       
-        
         if followUser {
             
             map3.setCenter(newLocation.coordinate, animated: true)
