@@ -9,19 +9,8 @@ import Foundation
 import UIKit
 import Charts
 
-// 個人Pofile 頁面的TableViewCell 呈現資料
 
-protocol ProfileItemContent {
-
-    var title: String { get }
-    
-    var backgroundColor: UIColor? { get }
-    
-    var image: UIImage? { get }
-
-}
-
-enum ProfileItemType : ProfileItemContent, CaseIterable {
+enum ProfileItemType:  CaseIterable {
     
     case routeRecord
     

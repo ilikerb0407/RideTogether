@@ -202,11 +202,8 @@ class RouteViewController: BaseViewController {
         setUpThemeTag()
         
     }
+
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        LKProgressHUD.dismiss()
-    }
  
     func setUpThemeTag() {
         
@@ -315,12 +312,10 @@ extension RouteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
 
 }
-//
+
+
 extension RouteViewController: UITableViewDataSource {
   
 
@@ -343,12 +338,13 @@ extension RouteViewController: UITableViewDataSource {
     
     @objc func goToRide(_ sender: UIButton) {
         
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
-            
-            journeyViewController.routes = routes[sender.tag]
-            
-            navigationController?.pushViewController(journeyViewController, animated: true)
-            
+        LKProgressHUD.showSuccess(text: "讀取資料")
+        
+        if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
+        
+            nextViewController.routes = routes[sender.tag]
+          
+            navigationController?.pushViewController(nextViewController, animated: true)
             
             }
     }

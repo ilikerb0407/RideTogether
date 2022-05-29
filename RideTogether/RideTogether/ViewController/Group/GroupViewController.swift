@@ -26,7 +26,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     
     var table: UITableView?
     
-    var VC = CreateGroupViewController()
+    var createdVC = CreateGroupViewController()
     
     @IBOutlet weak var gView: UIView! {
         didSet {
@@ -125,7 +125,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         table?.delegate = self
         
-        VC.delegate = self
+        createdVC.delegate = self
         
         tapAndDismiss()
         

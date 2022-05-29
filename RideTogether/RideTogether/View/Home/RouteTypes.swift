@@ -13,7 +13,6 @@ class RouteTypes: UITableViewCell {
     
     @IBOutlet weak var routePhoto: UIImageView!
     
-    
     func setUpCell(routetitle: String, routephoto: UIImage) {
         
         routeTitle.text = routetitle
