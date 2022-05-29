@@ -338,7 +338,7 @@ extension RouteViewController: UITableViewDataSource {
     
     @objc func goToRide(_ sender: UIButton) {
         
-        LKProgressHUD.showSuccess(text: "讀取資料")
+        LKProgressHUD.show()
         
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
         
@@ -442,9 +442,6 @@ extension RouteViewController {
             })
     }
     
-    
-    
-    
     func configureSnapshot() {
         
         snapshot.appendSections([.section])
@@ -454,4 +451,3 @@ extension RouteViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
-

@@ -15,6 +15,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     func provideWeather(weather: ResponseBody) {
         weatherData = weather
     }
+    
     var weatherData: ResponseBody?
     
     let weatherManger = WeatherManager()
@@ -283,8 +284,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
             let endFrame: CGRect = annotationView.frame
             
             annotationView.frame = CGRect(x: annotationView.frame.origin.x, y: annotationView.frame.origin.y - mapView.superview!.frame.size.height,
-                                          
-                                          width: annotationView.frame.size.width, height: annotationView.frame.size.height)
+                width: annotationView.frame.size.width, height: annotationView.frame.size.height)
             
             let interval: TimeInterval = 0.04
             
@@ -297,7 +297,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                         
                         annotationView.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 0.8, tx: 0, ty: annotationView.frame.size.height*0.1)
                         
-                    }, completion: { _ -> Void in
+                    },completion: { _ -> Void in
                         UIView.animate(withDuration: 0.1, animations: { () -> Void in
                             annotationView.transform = CGAffineTransform.identity
                         })
