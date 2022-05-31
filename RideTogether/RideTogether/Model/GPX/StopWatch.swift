@@ -34,7 +34,7 @@ class StopWatch: NSObject {
         
         self.status = StopWatchStatus.stopped
         
-        super.init()
+//        super.init()
     }
     
     func start() {

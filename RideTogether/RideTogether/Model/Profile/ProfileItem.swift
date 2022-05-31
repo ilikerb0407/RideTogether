@@ -10,7 +10,17 @@ import UIKit
 import Charts
 
 
-enum ProfileItemType:  CaseIterable {
+protocol ProfileItemContent {
+
+    var title: String { get }
+    
+    var backgroundColor: UIColor? { get }
+    
+    var image: UIImage? { get }
+
+}
+
+enum ProfileItemType: ProfileItemContent, CaseIterable {
     
     case routeRecord
     
@@ -34,20 +44,7 @@ enum ProfileItemType:  CaseIterable {
         
     }
     
-    var backgroundColor: UIColor? {
-        
-        switch self {
-        case .routeRecord:
-            return .B5
-        case .recommendMap:
-            return .B5
-        case .userAccount:
-            return .B5
-        case .saveRoutes:
-            return .B5
-            
-        }
-    }
+    var backgroundColor: UIColor? {.B5}
     
     var image: UIImage? {
         

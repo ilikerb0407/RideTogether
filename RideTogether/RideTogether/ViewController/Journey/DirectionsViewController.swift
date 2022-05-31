@@ -3,14 +3,9 @@
 import UIKit
 import MapKit
 
-protocol sendRoutefirst {
-    func sendRoute( map: DrawRoute)
-}
 
 class DirectionsViewController: UIViewController {
     
- 
- var delegate: sendRoutefirst?
     
   @IBOutlet private var mapView: MKMapView!
     

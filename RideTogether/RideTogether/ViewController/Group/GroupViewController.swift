@@ -81,7 +81,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     
     var onlyUserGroup = false
     
-    private var groupInfo: GroupInfo?
+    private var groupInfo: GroupInfoTableViewCell?
     
     private let header = MJRefreshNormalHeader()
     
@@ -417,7 +417,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView.backgroundColor = .clear
         
-        tableView.registerCellWithNib(identifier: GroupInfo.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: GroupInfoTableViewCell.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
@@ -520,7 +520,7 @@ extension GroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: GroupInfo = tableView.dequeueCell(for: indexPath)
+        let cell: GroupInfoTableViewCell = tableView.dequeueCell(for: indexPath)
         
         var group = Group()
         

@@ -66,19 +66,20 @@ class RouteViewController: BaseViewController {
                 
             case 0:
                 
-                themeLabel = RoutesType.userOne.rawValue
+                themeLabel = RoutesTypeTest.userOne.title
                 
             case 1:
                 
-                themeLabel = RoutesType.recommendOne.rawValue
+                themeLabel = RoutesTypeTest
+                    .recommendOne.title
                 
             case 2:
                 
-                themeLabel = RoutesType.riverOne.rawValue
+                themeLabel = RoutesTypeTest.riverOne.title
                 
             case 3:
                 
-                themeLabel = RoutesType.mountainOne.rawValue
+                themeLabel = RoutesTypeTest.mountainOne.title
                 
             default:
                 return
@@ -337,7 +338,7 @@ extension RouteViewController: UITableViewDataSource {
     }
     
     @objc func goToRide(_ sender: UIButton) {
-        
+        print("time1:\(CFAbsoluteTimeGetCurrent())")
         LKProgressHUD.show()
         
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {

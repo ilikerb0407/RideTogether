@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RouteTypes: UITableViewCell {
+class RouteTypesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var routeTitle: UILabel!
     

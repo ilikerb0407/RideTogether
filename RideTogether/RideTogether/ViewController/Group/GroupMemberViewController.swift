@@ -40,7 +40,7 @@ class GroupMemberViewController: BaseViewController {
         
         tableView.backgroundColor = .clear
         
-        tableView.registerCellWithNib(identifier: Member.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: MemberTableViewCell.identifier, bundle: nil)
         
         view.stickSubView(tableView)
         
@@ -64,7 +64,7 @@ extension GroupMemberViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: Member = tableView.dequeueCell(for: indexPath)
+        let cell: MemberTableViewCell = tableView.dequeueCell(for: indexPath)
         
         if let group = groupInfo,
            
