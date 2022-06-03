@@ -35,22 +35,10 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
             
             self.searchBar.placeholder = "查詢路線"
             
-//            self.searchBar.showsCancelButton = true
-//
-//            self.searchBar.endEditing(true)
         }
         
     }
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.resignFirstResponder()
-//    }
-//    
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.text = ""
-//        self.searchBar.resignFirstResponder()
-//    }
-    
+
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -70,8 +58,6 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
         searchBar.clipsToBounds = true
         
         selectionStyle = .none
-        
-       
         
     }
     

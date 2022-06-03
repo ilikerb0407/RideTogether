@@ -80,6 +80,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
+    
     private lazy var requests = [Request]()
     
     func addRequestListener() {

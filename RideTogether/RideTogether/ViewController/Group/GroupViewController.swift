@@ -16,6 +16,7 @@ import FirebaseCrashlytics
 
 class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
     
+   
     func reload() {
         
         fetchGroupData()
@@ -24,9 +25,12 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
     }
     
+    
     var table: UITableView?
     
     var createdVC = CreateGroupViewController()
+    
+    var groupDetailVC = GroupDetailViewController()
     
     @IBOutlet weak var gView: UIView! {
         didSet {
@@ -81,7 +85,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     
     var onlyUserGroup = false
     
-    private var groupInfo: GroupInfo?
+    private var groupInfo: GroupInfoTableViewCell?
     
     private let header = MJRefreshNormalHeader()
     
@@ -107,7 +111,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
     }
     
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,16 +134,22 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         checkRequestsNum()
 
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchGroupData()
     }
     
   
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        
         addRequestListener()
         
     }
+    
     
     func addRequestListener() {
         
@@ -172,7 +181,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == SegueIdentifier.groupChat.rawValue {
-            if let chatRoomVC = segue.destination as? ChatRoomViewController {
+            if let chatRoomVC = segue.destination as? GroupDetailViewController {
                 
                 if let groupInfo = sender as? Group {
                     
@@ -218,6 +227,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
     }
+    
 
     func updateUserHistory() {
         
@@ -270,7 +280,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             switch result {
                 
             case .success(let groups):
-                
+            
                 var filteredGroups = [Group]()
                 
                 for group in groups where self.userInfo.blockList?.contains(group.hostId) == false {
@@ -296,11 +306,14 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                         
                         self.fetchUserData(uid: group.hostId)
                         
-                        self.table?.reloadData()
+//                        self.table?.reloadData()
                         
                         return
                     }
+                    
                 }
+                
+                tableView.reloadData()
                 
             case .failure(let error):
                 
@@ -417,7 +430,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         
         tableView.backgroundColor = .clear
         
-        tableView.registerCellWithNib(identifier: GroupInfo.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: GroupInfoTableViewCell.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
@@ -520,7 +533,8 @@ extension GroupViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: GroupInfo = tableView.dequeueCell(for: indexPath)
+        let cell: GroupInfoTableViewCell = tableView.dequeueCell(for: indexPath)
+        
         
         var group = Group()
         

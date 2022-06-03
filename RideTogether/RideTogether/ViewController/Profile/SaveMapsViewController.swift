@@ -94,7 +94,7 @@ class SaveMapsViewController: BaseViewController {
         tableView = UITableView()
         // 借用同一個tableViewcell
         
-        tableView.registerCellWithNib(identifier: SaveMaps.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: SaveMapsTableViewCell.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
@@ -173,7 +173,7 @@ extension SaveMapsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: SaveMaps = tableView.dequeueCell(for: indexPath)
+        let cell: SaveMapsTableViewCell = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(model: self.records[indexPath.row])
         

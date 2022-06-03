@@ -1,5 +1,5 @@
 //
-//  Routes.swift
+//  RoutesCollectionViewCell.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Routes: UICollectionViewCell {
+class RoutesCollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var routeName: UILabel!

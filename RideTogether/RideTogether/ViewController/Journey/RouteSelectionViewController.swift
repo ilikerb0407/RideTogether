@@ -5,11 +5,9 @@ import MapKit
 import CoreLocation
 import Lottie
 
-protocol sendRouteSecond {
-    func sendRouteTwice(map: DrawRoute)
-}
 
-class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherProvider {
+
+class RouteSelectionViewController: UIViewController, weatherProvider {
     
     func provideWeather(weather: ResponseBody) {
         weatherdata = weather
@@ -119,17 +117,8 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             }
     
         }
-        
-    func sendRoute(map: DrawRoute) {
-        mapdata = map
-        delegate?.sendRouteTwice(map: mapdata!)
-    }
-    
-    var mapdata : DrawRoute?
     
     var directionsVC : DirectionsViewController?
-    
-    var delegate: sendRouteSecond?
     
     @IBOutlet private var inputContainerView: UIView!
     @IBOutlet private var originTextField: UITextField!
@@ -168,7 +157,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         attemptLocationAccess()
         hideSuggestionView(animated: false)
         
-        directionsVC?.delegate = self
         weatherManger.delegate = self
         
         weather()
@@ -407,9 +395,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
                 
                 let viewController = DirectionsViewController(route: route)
                 
-                viewController.delegate = self
-                
-                delegate?.sendRouteTwice(map: route)
                 
 //                self.present(viewController, animated: true)
                 if #available(iOS 15.0, *) {

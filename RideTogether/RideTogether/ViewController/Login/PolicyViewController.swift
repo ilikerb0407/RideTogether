@@ -82,13 +82,6 @@ class PolicyViewController: BaseViewController, WKNavigationDelegate {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        tabBarController?.tabBar.isHidden = true
-        
-    }
-    
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print(error.localizedDescription)
     }

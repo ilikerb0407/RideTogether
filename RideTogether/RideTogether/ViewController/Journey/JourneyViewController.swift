@@ -356,17 +356,20 @@ class JourneyViewController: BaseViewController {
     
     @objc func sendSMS() {
         
-        LKProgressHUD.show()
         
         let msgViewController = MFMessageComposeViewController()
         msgViewController.messageComposeDelegate = self
-        
+//        25.042393 121.56496
         msgViewController.recipients = ["請輸入電話號碼"]
-        msgViewController.body = "傳送我的位置 經度 : \(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
-        if MFMessageComposeViewController.canSendText() {
+       
+            msgViewController.body = "傳送我的位置 經度 : \(locationManager.location?.coordinate.longitude), 緯度: \(locationManager.location?.coordinate.latitude)"
+        if !MFMessageComposeViewController.canSendText() {
+            print("SMS services are not available")
+            LKProgressHUD.showFailure(text: "請開啟定位")
+        } else {
             self.present(msgViewController, animated: true, completion: nil)
-            LKProgressHUD.dismiss()
         }
+        
     }
     
     @objc func trackerButtonTapped() {

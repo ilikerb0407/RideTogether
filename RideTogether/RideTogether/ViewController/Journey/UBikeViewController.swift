@@ -86,7 +86,6 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
                     if  distance < 1000 {
                         bikeMapView.addAnnotation(annotation)
                     }
-            
         }
         
     }
