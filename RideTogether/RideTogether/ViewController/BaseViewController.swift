@@ -225,4 +225,14 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         }
     }
     
+   
+    
+    func push(withIdentifier: String){
+        
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: withIdentifier) {
+   
+               navigationController?.pushViewController(viewController, animated: true)
+           }
+       }
+    
 }

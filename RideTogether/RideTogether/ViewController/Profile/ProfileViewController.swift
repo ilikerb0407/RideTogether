@@ -151,11 +151,22 @@ extension ProfileViewController : UITableViewDelegate {
         60
     }
     
+   
+//    func push() {
+//
+//        if let tracksViewController = storyboard?.instantiateViewController(withIdentifier: "TracksViewController") as? TracksViewController {
+//
+//            navigationController?.pushViewController(tracksViewController, animated: true)
+//        }
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0 :
-            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
-            performSegue(withIdentifier: segueId, sender: nil)
+           
+          push(withIdentifier: "TracksViewController")
+//            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
+//            performSegue(withIdentifier: segueId, sender: nil)
         case 1 :
             let segueId = ProfileSegue.allCases[indexPath.row].rawValue
             performSegue(withIdentifier: segueId, sender: nil)

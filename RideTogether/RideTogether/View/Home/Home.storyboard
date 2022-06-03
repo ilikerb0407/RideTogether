@@ -52,7 +52,6 @@
                     <navigationItem key="navigationItem" title="探索路線" id="oG9-91-4Jy"/>
                     <connections>
                         <outlet property="gView" destination="XLN-Ba-dr0" id="Qf2-9A-wrL"/>
-                        <segue destination="nnY-XE-OqT" kind="show" identifier="routeList" id="W6M-cr-gbH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBR-fS-vRe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -68,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-US-Wli">
-                                <rect key="frame" x="0.0" y="-37" width="428" height="880"/>
+                                <rect key="frame" x="0.0" y="-81" width="428" height="973"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
