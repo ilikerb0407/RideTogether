@@ -11,13 +11,18 @@ import QuartzCore
 
 class HomeViewController: BaseViewController, Reload {
     
+    func reloadDetail() {
+        
+    }
+    
+    
     func reload() {
         
     }
     
     var trackVC = TracksViewController()
     
-    private var headerView: HomeHeader?
+    private var headerView: HomeHeaderTableViewCell?
     
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     
@@ -79,7 +84,7 @@ class HomeViewController: BaseViewController, Reload {
         
         tableView = UITableView(frame: .zero, style: .grouped)
         
-        tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: RouteTypesTableViewCell.identifier, bundle: nil)
         
         view.stickSubView(tableView)
         
@@ -160,7 +165,8 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView: HomeHeader = .loadFromNib()
+        let headerView: HomeHeaderTableViewCell = .loadFromNib()
+        
         
         self.headerView = headerView
 
@@ -221,11 +227,11 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: RouteTypes = tableView.dequeueCell(for: indexPath)
+        let cell: RouteTypesTableViewCell = tableView.dequeueCell(for: indexPath)
         
         cell.setUpCell(
-            routetitle: RoutesType.allCases[indexPath.row].rawValue,
-            routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!)
+            routetitle: RoutesTypeTest.allCases[indexPath.row].title,
+            routephoto: RoutesTypeTest.allCases[indexPath.row].image ?? UIImage(named: "routesPhoto")!)
     
         return cell
     }

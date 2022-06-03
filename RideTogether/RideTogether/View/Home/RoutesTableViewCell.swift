@@ -18,15 +18,12 @@ class RoutesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rideBtn: UIButton!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         selectionStyle = .none
         
         self.backgroundColor = .clear
-        
-        self.contentView.backgroundColor = .clear
         
     }
     
@@ -36,7 +33,6 @@ class RoutesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
     func setUpCell(model : Route) {
         
         routeTitle.text = model.routeName

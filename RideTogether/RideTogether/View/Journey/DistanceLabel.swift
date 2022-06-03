@@ -11,7 +11,6 @@ import MapKit
 
 open class DistanceLabel: UILabel {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.textAlignment = .right

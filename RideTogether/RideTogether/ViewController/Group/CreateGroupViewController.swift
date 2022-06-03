@@ -26,9 +26,8 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     
     var delegate: Reload?
     
-    
     @IBOutlet weak var sendData: UIButton! {
-        didSet{
+        didSet {
             sendData.isUserInteractionEnabled = false
             sendData.alpha = 0.9
             sendData.backgroundColor = .B5
@@ -36,7 +35,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             sendData.cornerRadius = 15
         }
     }
-    
     
     @IBOutlet weak var gView: UIView! {
         didSet {
@@ -79,6 +77,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
             limitPeople.setLeftPaddingPoints(8)
         }
     }
+    
     @IBOutlet weak var notes: UITextView!
     
     @IBOutlet weak var note: UITextField! {
@@ -167,7 +166,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     
                 case .success:
                     
-                let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
+                    let sheet = UIAlertController(title: "成功揪團囉", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
                     
                     let successOption = UIAlertAction(title: "完成", style: .cancel) { _ in
                         self.delegate?.reload()
@@ -187,8 +186,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                     LKProgressHUD.showFailure(text: "新增資料失敗")
                 }
             }
-            
-            
         }
     }
     
@@ -196,7 +193,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
 
 // MARK: - TextField & TextView Delegate -
 
- extension CreateGroupViewController :  UITextViewDelegate {
+extension CreateGroupViewController :  UITextViewDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -252,4 +249,3 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         checkTextsFilled()
     }
 }
-

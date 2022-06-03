@@ -7,8 +7,7 @@
 
 import UIKit
 
-class LeftLabel : UILabel {
-    
+class LeftLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +27,6 @@ class LeftLabel : UILabel {
 
 class RightLabel : UILabel {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -44,4 +42,3 @@ class RightLabel : UILabel {
         
     }
 }
-

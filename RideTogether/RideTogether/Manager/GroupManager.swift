@@ -15,7 +15,7 @@ import FirebaseFirestore
 class GroupManager {
     
     var userId: String { UserManager.shared.userInfo.uid }
-    
+    //靜態宣告
     static let shared = GroupManager()
     
     private init() {}

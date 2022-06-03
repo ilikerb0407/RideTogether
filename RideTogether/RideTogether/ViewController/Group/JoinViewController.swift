@@ -193,7 +193,7 @@ class JoinViewController: BaseViewController {
         
         tableView = UITableView()
         
-        tableView.registerCellWithNib(identifier: Member.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: MemberTableViewCell.identifier, bundle: nil)
         
         view.addSubview(tableView)
         
@@ -251,7 +251,7 @@ extension JoinViewController {
     func configureDataSource() {
         dataSource = DataSource(tableView: tableView) { ( tableView, indexPath, model) -> UITableViewCell? in
             
-            let cell: Member = tableView.dequeueCell(for: indexPath)
+            let cell: MemberTableViewCell = tableView.dequeueCell(for: indexPath)
             
             if let user = self.cache[self.requests[indexPath.row].requestId] {
                 

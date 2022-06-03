@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeHeader: UITableViewCell {
+class HomeHeaderTableViewCell: UITableViewCell {
     
     var lengthStartValue: Double = 0.0
     

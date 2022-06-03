@@ -67,7 +67,7 @@ class GPXFileManager {
             }
         }
     }
-    // 長度
+    
     class func uploadTrackLengthToDb(fileURL: URL) {
         
         let inputURL = fileURL

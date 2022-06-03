@@ -1,5 +1,5 @@
 //
-//  GroupInfo.swift
+//  GroupInfoTableViewCell.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GroupInfo: UITableViewCell {
+class GroupInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var hostMarker: UIImageView!
     

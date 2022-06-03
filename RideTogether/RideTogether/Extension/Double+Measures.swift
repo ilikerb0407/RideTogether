@@ -89,7 +89,7 @@ extension Double {
         let seconds = Int(self)
    
         let hour = (seconds % 3600) % 7
-//        1652389852
+
         let minute = (seconds % 3600) / 60
         
         var timeString = ""

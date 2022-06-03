@@ -39,7 +39,7 @@ class RouteViewController: BaseViewController {
     
     private var snapshot = DataSourceSnapshot()
     
-    let routesCollectionCell = Routes()
+    let routesCollectionCell = RoutesCollectionViewCell()
     
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
@@ -66,19 +66,20 @@ class RouteViewController: BaseViewController {
                 
             case 0:
                 
-                themeLabel = RoutesType.userOne.rawValue
+                themeLabel = RoutesTypeTest.userOne.title
                 
             case 1:
                 
-                themeLabel = RoutesType.recommendOne.rawValue
+                themeLabel = RoutesTypeTest
+                    .recommendOne.title
                 
             case 2:
                 
-                themeLabel = RoutesType.riverOne.rawValue
+                themeLabel = RoutesTypeTest.riverOne.title
                 
             case 3:
                 
-                themeLabel = RoutesType.mountainOne.rawValue
+                themeLabel = RoutesTypeTest.mountainOne.title
                 
             default:
                 return
@@ -150,7 +151,7 @@ class RouteViewController: BaseViewController {
         
 //        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
     
-        collectionView.lk_registerCellWithNib(identifier: "Routes", bundle: nil)
+        collectionView.lk_registerCellWithNib(identifier: "RoutesCollectionViewCell", bundle: nil)
         
         view.stickSubView(collectionView)
         
@@ -337,7 +338,7 @@ extension RouteViewController: UITableViewDataSource {
     }
     
     @objc func goToRide(_ sender: UIButton) {
-        
+        print("time1:\(CFAbsoluteTimeGetCurrent())")
         LKProgressHUD.show()
         
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
@@ -426,7 +427,7 @@ extension RouteViewController {
             collectionView: collectionView,
             cellProvider: { [self] (collectionView, indexPath, model) -> UICollectionViewCell? in
                 
-                let cell: Routes = collectionView.dequeueCell(for: indexPath)
+                let cell: RoutesCollectionViewCell = collectionView.dequeueCell(for: indexPath)
                 
                 cell.setUpCell(model: model)
                 
