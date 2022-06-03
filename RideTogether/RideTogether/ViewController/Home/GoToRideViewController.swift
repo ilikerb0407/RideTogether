@@ -29,19 +29,19 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     var lastGPXFilename: String = ""
     
     func parseGPXFile() {
-        
-        
-        if let inputUrl = URL(string: routes.routeMap) {
-            print("FollowDetail=======:\(inputUrl)======")
-            
-            LKProgressHUD.show(type: .success("下載資料完成"))
-            
-            guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
+
+            if let inputUrl = URL(string: self.routes.routeMap) {
+                print("FollowDetail=======:\(inputUrl)======")
                 
-            }
-            
-            didLoadGPXFile(gpxRoot: gpx)
-            
+                guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
+                    
+                }
+                DispatchQueue.main.async {
+                    self.didLoadGPXFile(gpxRoot: gpx)
+//                time3:675762963.180959
+                }
+                print("time3:\(CFAbsoluteTimeGetCurrent())")
+//                675762887.290653 no main
         }
     }
     
@@ -165,21 +165,23 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
         setNavigationBar(title: "探索路線")
         
         navigationController?.isNavigationBarHidden = false
-        
+//        self.parseGPXFile()
+//        LKProgressHUD.show()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        LKProgressHUD.dismiss()
+//        LKProgressHUD.dismiss()
     }
     
     // MARK: - Action
     
+    let group: DispatchGroup = DispatchGroup()
     func setUpMap() {
         
         DispatchQueue.main.async {
             self.parseGPXFile()
-            LKProgressHUD.show()
+            LKProgressHUD.showSuccess(text: "下載成功")
         }
            
         map3.delegate = mapViewDelegate
@@ -193,6 +195,7 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
         map3.rotationGesture.delegate = self
         
         self.view.addSubview(map3)
+        
         print("time2:\(CFAbsoluteTimeGetCurrent())")
         
     }

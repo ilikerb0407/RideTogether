@@ -83,7 +83,9 @@ class GPXMapView: MKMapView {
     }
    
     func regionToGPXExtent() {
+        
         setRegion(extent.region, animated: true)
+        
     }
     
     func importFromGPXRoot(_ gpx: GPXRoot) {

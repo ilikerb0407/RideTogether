@@ -1,5 +1,5 @@
 //
-//  SaveMaps.swift
+//  SaveMapsTableViewCell.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/30.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SaveMaps: UITableViewCell {
+class SaveMapsTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var title: UILabel!

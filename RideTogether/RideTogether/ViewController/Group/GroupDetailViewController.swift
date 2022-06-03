@@ -1,5 +1,5 @@
 //
-//  ChatRoomViewController.swift
+//  GroupDetailViewController.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/25.
@@ -10,9 +10,11 @@ import FirebaseFirestore
 import FirebaseAuth
 import Lottie
 
+protocol ReloadGroupDetail: AnyObject {
+    func reloadDetail()
+}
 
-class ChatRoomViewController: BaseViewController {
-    
+class GroupDetailViewController: BaseViewController {
     
     @IBOutlet weak var gView: UIView! {
         didSet {
@@ -118,6 +120,8 @@ class ChatRoomViewController: BaseViewController {
         })
     }
     
+    var delegate1: Reload?
+    
     @objc func didTapButton () {
         
         switch userStatus {
@@ -130,6 +134,7 @@ class ChatRoomViewController: BaseViewController {
                 
                 headerView?.gButton.setTitle("完成編輯", for: .normal)
                 
+                
             } else {
                 
                 headerView?.gButton.setTitle("編輯資訊", for: .normal)
@@ -137,6 +142,8 @@ class ChatRoomViewController: BaseViewController {
                 if let group = headerView?.groupInfo {
                     
                     editGroupInfo(groupInfo: group)
+                    
+                    
                 }
             }
         case .notInGroup:
@@ -144,7 +151,6 @@ class ChatRoomViewController: BaseViewController {
             sendJoinRequest()
             
             headerView?.gButton.setTitle("已送出申請", for: .normal)
-            
             
             headerView?.gButton.isEnabled = false
             
@@ -163,12 +169,26 @@ class ChatRoomViewController: BaseViewController {
                 
             case .success:
                 
-                showAlertAction(title: "編輯成功")
+                
+                let sheet = UIAlertController(title: "編輯成功", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
+                    
+                    let successOption = UIAlertAction(title: "完成", style: .cancel) { _ in
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                 
+                    
+                    sheet.addAction(successOption)
+                    present(sheet, animated: true, completion: nil)
+                    
+                    
+                
                 
             case .failure(let error):
                 
                 print("edit group failure: \(error)")
             }
+            
         })
     }
     
@@ -176,11 +196,7 @@ class ChatRoomViewController: BaseViewController {
         
         guard let groupInfo = groupInfo else { return }
         
-        let joinRequest = Request( groupId: groupInfo.groupId,
-                                  groupName: groupInfo.groupName,
-                                  hostId: groupInfo.hostId,
-                                  requestId: userInfo.uid,
-                                  createdTime: Timestamp())
+        let joinRequest = Request( groupId: groupInfo.groupId,groupName: groupInfo.groupName,hostId: groupInfo.hostId, requestId: userInfo.uid,createdTime: Timestamp())
         
         GroupManager.shared.sendRequest(request: joinRequest) { result in
             
@@ -290,7 +306,7 @@ class ChatRoomViewController: BaseViewController {
     
 }
 
-extension ChatRoomViewController: UITableViewDelegate {
+extension GroupDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView : RequestTableViewCell = .loadFromNib()

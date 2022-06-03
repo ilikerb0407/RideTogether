@@ -11,6 +11,11 @@ import QuartzCore
 
 class HomeViewController: BaseViewController, Reload {
     
+    func reloadDetail() {
+        
+    }
+    
+    
     func reload() {
         
     }
@@ -161,6 +166,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView: HomeHeaderTableViewCell = .loadFromNib()
+        
         
         self.headerView = headerView
 

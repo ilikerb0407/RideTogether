@@ -39,7 +39,7 @@ class RouteViewController: BaseViewController {
     
     private var snapshot = DataSourceSnapshot()
     
-    let routesCollectionCell = Routes()
+    let routesCollectionCell = RoutesCollectionViewCell()
     
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
@@ -151,7 +151,7 @@ class RouteViewController: BaseViewController {
         
 //        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
     
-        collectionView.lk_registerCellWithNib(identifier: "Routes", bundle: nil)
+        collectionView.lk_registerCellWithNib(identifier: "RoutesCollectionViewCell", bundle: nil)
         
         view.stickSubView(collectionView)
         
@@ -427,7 +427,7 @@ extension RouteViewController {
             collectionView: collectionView,
             cellProvider: { [self] (collectionView, indexPath, model) -> UICollectionViewCell? in
                 
-                let cell: Routes = collectionView.dequeueCell(for: indexPath)
+                let cell: RoutesCollectionViewCell = collectionView.dequeueCell(for: indexPath)
                 
                 cell.setUpCell(model: model)
                 
