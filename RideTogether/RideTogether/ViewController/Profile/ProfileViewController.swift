@@ -154,11 +154,9 @@ extension ProfileViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0 :
-            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
-            performSegue(withIdentifier: segueId, sender: nil)
+            push(withIdentifier: "TracksViewController")
         case 1 :
-            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
-            performSegue(withIdentifier: segueId, sender: nil)
+            push(withIdentifier: "RecommendViewController")
         case 2 :
             
             let logOut = UIAlertAction(title: AccountActionSheet.allCases[0].rawValue, style: .default) { _ in
@@ -173,8 +171,7 @@ extension ProfileViewController : UITableViewDelegate {
             showAlertAction(title: nil, message: nil, preferredStyle: .alert, actions: [logOut, removeAccount, cancel])
             
         case 3:
-            let segueId = ProfileSegue.allCases[indexPath.row].rawValue
-            performSegue(withIdentifier: segueId, sender: nil)
+            push(withIdentifier: "SaveMapsViewController")
             
         default :
             return

@@ -141,7 +141,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         fetchGroupData()
     }
     
-  
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
@@ -149,7 +148,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         addRequestListener()
         
     }
-    
     
     func addRequestListener() {
         

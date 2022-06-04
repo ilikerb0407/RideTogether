@@ -303,11 +303,14 @@ class RideViewController: BaseViewController {
         // Configure the fields of the interface.
         composeVC.recipients = ["請輸入電話號碼"]
         
-        composeVC.body = "傳送我的位置 經度 : \(locationManager.location?.coordinate.longitude), 緯度: \(locationManager.location?.coordinate.latitude)"
+        let lng = locationManager.location?.coordinate.longitude
+        let lat = locationManager.location?.coordinate.latitude
+        composeVC.body = "傳送我的位置 經度 : \(lng ?? 25.04), 緯度: \( lat ?? 121.56)"
     if !MFMessageComposeViewController.canSendText() {
         print("SMS services are not available")
         LKProgressHUD.showFailure(text: "請開啟定位")
     } else {
+        LKProgressHUD.dismiss()
         self.present(composeVC, animated: true, completion: nil)
     }
     }

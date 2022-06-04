@@ -14,7 +14,6 @@ import Lottie
 
 class RouteViewController: BaseViewController {
 
-
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
