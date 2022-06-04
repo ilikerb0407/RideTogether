@@ -36,7 +36,6 @@ enum ProfileSegue: String, CaseIterable {
     
     case savemaps = "toSavemaps"
     
-    
 }
 
 enum Collection: String {

@@ -60,15 +60,17 @@ class HomeViewController: BaseViewController, Reload {
         )
         
         setUpTableView()
-
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchTrailData()
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     @IBOutlet weak var gView: UIView! {
@@ -200,18 +202,17 @@ extension HomeViewController: UITableViewDelegate {
         default:
             return
         }
-        performSegue(withIdentifier: SegueIdentifier.route.rawValue, sender: sender)
+        push(sender: sender)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.route.rawValue {
+    func push(sender: Any?) {
+        
+        if let routeViewController = storyboard?.instantiateViewController(withIdentifier: "RouteViewController") as? RouteViewController {
             
-            if let routeListVC = segue.destination as? RouteViewController {
-                
-                if let routes = sender as? [Route] {
-                    routeListVC.routes = routes
-                }
+            if let routes = sender as? [Route] {
+                routeViewController.routes = routes
             }
+            navigationController?.pushViewController(routeViewController, animated: true)
         }
     }
 }
