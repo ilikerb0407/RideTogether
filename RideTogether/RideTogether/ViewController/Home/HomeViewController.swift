@@ -60,15 +60,17 @@ class HomeViewController: BaseViewController, Reload {
         )
         
         setUpTableView()
-
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchTrailData()
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     @IBOutlet weak var gView: UIView! {

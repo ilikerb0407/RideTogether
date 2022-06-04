@@ -171,7 +171,7 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        LKProgressHUD.dismiss()
+        LKProgressHUD.dismiss()
     }
     
     // MARK: - Action
@@ -291,13 +291,17 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
         
         // Configure the fields of the interface.
         composeVC.recipients = ["請輸入電話號碼"]
+        let lng = locationManager.location?.coordinate.longitude
+        let lat = locationManager.location?.coordinate.latitude
+        composeVC.body = "傳送我的位置 經度 : \(lng ?? 25.04), 緯度: \( lat ?? 121.56)"
         
-        composeVC.body = "傳送我的位置 經度 : \(locationManager.location?.coordinate.longitude), 緯度: \(locationManager.location?.coordinate.latitude)"
+        self.present(composeVC, animated: true, completion: nil)
         if !MFMessageComposeViewController.canSendText() {
             print("SMS services are not available")
             LKProgressHUD.showFailure(text: "請開啟定位")
         } else {
             self.present(composeVC, animated: true, completion: nil)
+            LKProgressHUD.dismiss()
         }
     }
     
