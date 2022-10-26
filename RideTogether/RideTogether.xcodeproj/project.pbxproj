@@ -79,7 +79,6 @@
 		23CB74C62817803300DED822 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C52817803300DED822 /* TabBarController.swift */; };
 		23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C72817824000DED822 /* UIStorybroad.swift */; };
 		23CB74CA281787B400DED822 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74C9281787B400DED822 /* Login.storyboard */; };
-		23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
@@ -142,6 +141,7 @@
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
+		C51FAD2429092BC600264854 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C51FAD2329092BC600264854 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,7 +230,6 @@
 		23CB74C72817824000DED822 /* UIStorybroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStorybroad.swift; sourceTree = "<group>"; };
 		23CB74C9281787B400DED822 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
-		23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteBuilder.swift; sourceTree = "<group>"; };
@@ -299,6 +298,7 @@
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C51FAD2329092BC600264854 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -520,7 +520,7 @@
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
-				23CE42A3280E588D00C4C9F1 /* GoogleService-Info.plist */,
+				C51FAD2329092BC600264854 /* GoogleService-Info.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B74B28005D9B000EDA70 /* Model */,
@@ -836,13 +836,13 @@
 				23A84A8E2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
-				23CE42A4280E588D00C4C9F1 /* GoogleService-Info.plist in Resources */,
 				237A27AC281AEC82004F039F /* MemberTableViewCell.xib in Resources */,
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23C0C420281E9C810020237C /* HomeHeaderTableViewCell.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
+				C51FAD2429092BC600264854 /* GoogleService-Info.plist in Resources */,
 				23C0C41C281E7B320020237C /* wait-processbar.json in Resources */,
 				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */,
@@ -1304,6 +1304,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.6;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1323,6 +1324,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
@@ -1342,6 +1344,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.6;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
