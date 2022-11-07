@@ -33,13 +33,16 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
             if let inputUrl = URL(string: self.routes.routeMap) {
                 print("FollowDetail=======:\(inputUrl)======")
                 
-                guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
-                    
+                DispatchQueue.global().async {
+                    guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
+                    }
+                    DispatchQueue.main.async {
+                        self.didLoadGPXFile(gpxRoot: gpx)
+    //                time3:675762963.180959
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.didLoadGPXFile(gpxRoot: gpx)
-//                time3:675762963.180959
-                }
+                
+               
                 print("time3:\(CFAbsoluteTimeGetCurrent())")
 //                675762887.290653 no main
         }
