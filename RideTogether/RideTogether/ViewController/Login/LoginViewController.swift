@@ -31,7 +31,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
-    
     var currentUser = Auth.auth().currentUser
     
     override func viewDidLoad() {
@@ -60,10 +59,10 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             self.currentUser = Auth.auth().currentUser
         }
         
-        lottie()
+        showAnimation()
     }
     
-    func lottie() {
+    func showAnimation() {
       var waveLottieView: AnimationView = {
         
             let view = AnimationView(name: "49908-bike-ride")

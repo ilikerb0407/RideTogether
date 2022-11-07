@@ -84,10 +84,11 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
             let distance = usersCoordinate.distance(from: bikeStopCoordinate)
        
                     if  distance < 1000 {
-                        bikeMapView.addAnnotation(annotation)
+                        DispatchQueue.main.async {
+                            self.bikeMapView.addAnnotation(annotation)
+                        }
                     }
         }
-        
     }
     
     func layOutTaichungBike() {

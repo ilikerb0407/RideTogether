@@ -142,6 +142,18 @@
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
 		C51FAD2429092BC600264854 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C51FAD2329092BC600264854 /* GoogleService-Info.plist */; };
+		C51FAD2B2909368B00264854 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2A2909368B00264854 /* WidgetKit.framework */; };
+		C51FAD2D2909368B00264854 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2C2909368B00264854 /* SwiftUI.framework */; };
+		C51FAD302909368C00264854 /* BikeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD2F2909368C00264854 /* BikeWidget.swift */; };
+		C51FAD322909368C00264854 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51FAD312909368C00264854 /* Assets.xcassets */; };
+		C51FAD362909368C00264854 /* BikeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C51FAD292909368B00264854 /* BikeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C51FAD3D290939FF00264854 /* BikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD3C290939FF00264854 /* BikeModel.swift */; };
+		C51FAD3E29093A0200264854 /* BikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD3C290939FF00264854 /* BikeModel.swift */; };
+		C51FAD4129093AAD00264854 /* WidgetLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD3F29093AAA00264854 /* WidgetLocationManager.swift */; };
+		C51FADDE29134EED00264854 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FADDD29134EED00264854 /* Station.swift */; };
+		C51FADDF29134EED00264854 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FADDD29134EED00264854 /* Station.swift */; };
+		C51FADE129135E2900264854 /* MapWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FADE029135E2900264854 /* MapWidgetEntryView.swift */; };
+		C51FADE229135E2900264854 /* MapWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FADE029135E2900264854 /* MapWidgetEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,7 +164,28 @@
 			remoteGlobalIDString = 23D1B72A280033FB000EDA70;
 			remoteInfo = RideTogether;
 		};
+		C51FAD342909368C00264854 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23D1B723280033FB000EDA70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C51FAD282909368B00264854;
+			remoteInfo = BikeWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C51FAD372909368D00264854 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C51FAD362909368C00264854 /* BikeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +332,17 @@
 		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C51FAD2329092BC600264854 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C51FAD292909368B00264854 /* BikeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51FAD2A2909368B00264854 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C51FAD2C2909368B00264854 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C51FAD2F2909368C00264854 /* BikeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeWidget.swift; sourceTree = "<group>"; };
+		C51FAD312909368C00264854 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C51FAD332909368C00264854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C51FAD3C290939FF00264854 /* BikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeModel.swift; sourceTree = "<group>"; };
+		C51FAD3F29093AAA00264854 /* WidgetLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLocationManager.swift; sourceTree = "<group>"; };
+		C51FAD4229093B3A00264854 /* BikeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeWidgetExtension.entitlements; sourceTree = "<group>"; };
+		C51FADDD29134EED00264854 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		C51FADE029135E2900264854 /* MapWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWidgetEntryView.swift; sourceTree = "<group>"; };
 		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -316,6 +360,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C8872E2815C05F00E3319A /* Pods_RideTogether.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C51FAD262909368B00264854 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51FAD2D2909368B00264854 /* SwiftUI.framework in Frameworks */,
+				C51FAD2B2909368B00264854 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,9 +548,11 @@
 		23D1B722280033FB000EDA70 = {
 			isa = PBXGroup;
 			children = (
+				C51FAD4229093B3A00264854 /* BikeWidgetExtension.entitlements */,
 				23D1B7F7280561D3000EDA70 /* Third Party Wrapper */,
 				23D1B72D280033FB000EDA70 /* RideTogether */,
 				234A166F283738E200E09F09 /* RideTogetherTests */,
+				C51FAD2E2909368C00264854 /* BikeWidget */,
 				23D1B72C280033FB000EDA70 /* Products */,
 				B8861B4BB71FEA4F16110C05 /* Pods */,
 				280213B7E321F791376F648A /* Frameworks */,
@@ -509,6 +564,7 @@
 			children = (
 				23D1B72B280033FB000EDA70 /* RideTogether.app */,
 				234A166E283738E200E09F09 /* RideTogetherTests.xctest */,
+				C51FAD292909368B00264854 /* BikeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -553,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B78B28006663000EDA70 /* Constant.swift */,
+				C51FAD3C290939FF00264854 /* BikeModel.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23CB74B82816C7FE00DED822 /* Group */,
 				231BCB69280858C800DE2343 /* Profile */,
@@ -706,6 +763,8 @@
 			children = (
 				E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */,
 				1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */,
+				C51FAD2A2909368B00264854 /* WidgetKit.framework */,
+				C51FAD2C2909368B00264854 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -719,6 +778,19 @@
 				8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C51FAD2E2909368C00264854 /* BikeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				C51FAD2F2909368C00264854 /* BikeWidget.swift */,
+				C51FADE029135E2900264854 /* MapWidgetEntryView.swift */,
+				C51FAD3F29093AAA00264854 /* WidgetLocationManager.swift */,
+				C51FAD312909368C00264854 /* Assets.xcassets */,
+				C51FAD332909368C00264854 /* Info.plist */,
+				C51FADDD29134EED00264854 /* Station.swift */,
+			);
+			path = BikeWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -755,15 +827,34 @@
 				A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */,
 				23D1B79D280195E3000EDA70 /* swift lint */,
 				2312FBA52828DF4A00F0F271 /* Run Script */,
+				C51FAD372909368D00264854 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C51FAD352909368C00264854 /* PBXTargetDependency */,
 			);
 			name = RideTogether;
 			productName = RideTogether;
 			productReference = 23D1B72B280033FB000EDA70 /* RideTogether.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C51FAD282909368B00264854 /* BikeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C51FAD3A2909368D00264854 /* Build configuration list for PBXNativeTarget "BikeWidgetExtension" */;
+			buildPhases = (
+				C51FAD252909368B00264854 /* Sources */,
+				C51FAD262909368B00264854 /* Frameworks */,
+				C51FAD272909368B00264854 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BikeWidgetExtension;
+			productName = BikeWidgetExtension;
+			productReference = C51FAD292909368B00264854 /* BikeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -772,7 +863,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					234A166D283738E200E09F09 = {
@@ -781,6 +872,9 @@
 					};
 					23D1B72A280033FB000EDA70 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					C51FAD282909368B00264854 = {
+						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
@@ -799,6 +893,7 @@
 			targets = (
 				23D1B72A280033FB000EDA70 /* RideTogether */,
 				234A166D283738E200E09F09 /* RideTogetherTests */,
+				C51FAD282909368B00264854 /* BikeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -850,6 +945,14 @@
 				231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */,
 				23A84A762811AE2300DD8D39 /* GroupInfoTableViewCell.xib in Resources */,
 				23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C51FAD272909368B00264854 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51FAD322909368C00264854 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1109,7 @@
 				234A1626283636ED00E09F09 /* LocationManager.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */,
+				C51FADDE29134EED00264854 /* Station.swift in Sources */,
 				23CB74BC2816DB5800DED822 /* GroupDetailViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */,
@@ -1079,11 +1183,25 @@
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */,
+				C51FAD3D290939FF00264854 /* BikeModel.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,
+				C51FADE129135E2900264854 /* MapWidgetEntryView.swift in Sources */,
 				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C51FAD252909368B00264854 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51FAD3E29093A0200264854 /* BikeModel.swift in Sources */,
+				C51FAD4129093AAD00264854 /* WidgetLocationManager.swift in Sources */,
+				C51FADDF29134EED00264854 /* Station.swift in Sources */,
+				C51FADE229135E2900264854 /* MapWidgetEntryView.swift in Sources */,
+				C51FAD302909368C00264854 /* BikeWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,6 +1212,11 @@
 			isa = PBXTargetDependency;
 			target = 23D1B72A280033FB000EDA70 /* RideTogether */;
 			targetProxy = 234A1672283738E200E09F09 /* PBXContainerItemProxy */;
+		};
+		C51FAD352909368C00264854 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C51FAD282909368B00264854 /* BikeWidgetExtension */;
+			targetProxy = C51FAD342909368C00264854 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1278,6 +1401,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RideTogether/RideTogetherDebug.entitlements;
@@ -1303,7 +1427,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1317,6 +1441,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RideTogether/RideTogetherRelease.entitlements;
@@ -1343,10 +1468,70 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C51FAD382909368D00264854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = BikeWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BikeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BikeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether.BikeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C51FAD392909368D00264854 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = BikeWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5BP43NW7P4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BikeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BikeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KaiFu.RideTogether.BikeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1379,6 +1564,15 @@
 			buildConfigurations = (
 				23D1B740280033FC000EDA70 /* Debug */,
 				23D1B741280033FC000EDA70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C51FAD3A2909368D00264854 /* Build configuration list for PBXNativeTarget "BikeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C51FAD382909368D00264854 /* Debug */,
+				C51FAD392909368D00264854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
