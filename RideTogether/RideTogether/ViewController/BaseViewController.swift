@@ -15,7 +15,6 @@ import Lottie
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
     
     let stopWatch = StopWatch()
-    let jjj: UIButton()
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
