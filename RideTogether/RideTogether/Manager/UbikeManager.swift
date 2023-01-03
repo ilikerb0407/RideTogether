@@ -9,21 +9,11 @@ import Foundation
 import CoreLocation
 import MapKit
 
-protocol bikeProvider {
-    
-    func provideBike(bike: Bike)
-    
-}
-
-class BikeManager {
-    
-    static let shared = BikeManager()
+final class BikeManager {
     
     var bikes: [Bike] = []
     
-    var delegate: bikeProvider?
-    
-    func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
+    class func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
       
         let urlString = URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")
         
@@ -49,7 +39,7 @@ class BikeManager {
         }) .resume()
     }
     
-    func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
+    class func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
         
         let urlString = URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")
         

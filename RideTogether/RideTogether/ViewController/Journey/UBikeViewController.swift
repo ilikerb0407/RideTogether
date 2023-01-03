@@ -16,8 +16,6 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     
     var taichungBikeData: TaichungBike?
     
-    var bikeManager = BikeManager()
-    
     @IBOutlet weak var bikeMapView: MKMapView!
     
     private let locationManager = LocationManager()
@@ -29,7 +27,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         self.locationManager.requestAlwaysAuthorization()
         
-        bikeManager.getBikeAPI { [ weak self ] result in
+        BikeManager.getBikeAPI { [ weak self ] result in
             
             LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
@@ -39,7 +37,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
             
         }
         
-        bikeManager.getTCAPI { [weak self] result in
+        BikeManager.getTCAPI { [weak self] result in
             
             LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
