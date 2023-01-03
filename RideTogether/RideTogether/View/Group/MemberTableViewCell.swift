@@ -9,7 +9,6 @@ import UIKit
 
 class MemberTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var userImage: UIImageView!
     
     @IBOutlet weak var requestNameLabel: UILabel!
@@ -24,7 +23,7 @@ class MemberTableViewCell: UITableViewCell {
     
     @IBOutlet weak var groupNameLabel: UILabel!
     
-    //Join Request
+    // Join Request
     
     func setUpCell(model: Request, userInfo: UserInfo) {
         
@@ -55,7 +54,6 @@ class MemberTableViewCell: UITableViewCell {
         rejectButton.setImage(image, for: .normal)
 
         rejectButton.backgroundColor = .B5
-        
 
         if userInfo.uid == UserManager.shared.userId {
 

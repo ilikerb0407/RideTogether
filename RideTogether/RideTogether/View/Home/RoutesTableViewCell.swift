@@ -9,7 +9,6 @@ import UIKit
 
 class RoutesTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var routeTitle: UILabel!
     
     @IBOutlet weak var routeType: UILabel!
@@ -33,7 +32,7 @@ class RoutesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setUpCell(model : Route) {
+    func setUpCell(model: Route) {
         
         routeTitle.text = model.routeName
         

@@ -33,7 +33,6 @@ class HomeHeaderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userName: UILabel!
     
-    
     func updateUserInfo(user: UserInfo) {
         
         let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))

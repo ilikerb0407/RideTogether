@@ -9,7 +9,6 @@ import UIKit
 
 class RoutesCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var routeName: UILabel!
     
     @IBOutlet weak var routeLength: UILabel!

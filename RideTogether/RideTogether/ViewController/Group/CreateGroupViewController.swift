@@ -172,7 +172,6 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
                         self.delegate?.reload()
                         self.dismiss(animated: true, completion: nil)
                     }
-                 
                     
                     sheet.addAction(successOption)
                     present(sheet, animated: true, completion: nil)
@@ -193,7 +192,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
 
 // MARK: - TextField & TextView Delegate -
 
-extension CreateGroupViewController :  UITextViewDelegate {
+extension CreateGroupViewController: UITextViewDelegate {
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,

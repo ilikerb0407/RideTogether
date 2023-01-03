@@ -15,7 +15,6 @@ import AVFoundation
 import FirebaseCrashlytics
 
 class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
-    
    
     func reload() {
         
@@ -24,7 +23,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         tableView.reloadData()
         
     }
-    
     
     var table: UITableView?
     
@@ -41,7 +39,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         }
     }
     
-    
     private lazy var cache = [String: UserInfo]() {
         
         didSet {
@@ -54,7 +51,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             checkRequestsNum()
         }
     }
-
     
     // MARK: Class Properties
     
@@ -205,7 +201,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     func setBuildTeamButton() {
         
         let button = CreatGroupButton()
-        button.addTarget(self, action:  #selector(creatGroup), for: .touchUpInside)
+        button.addTarget(self, action: #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
         
     }
@@ -225,7 +221,6 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             }
         }
     }
-    
 
     func updateUserHistory() {
         
@@ -413,7 +408,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         case 0:
             onlyUserGroup = false
             
-        case 1 :
+        case 1: 
             onlyUserGroup = true
             
         default:
@@ -533,7 +528,6 @@ extension GroupViewController: UITableViewDataSource {
         
         let cell: GroupInfoTableViewCell = tableView.dequeueCell(for: indexPath)
         
-        
         var group = Group()
         
         if isSearching {
@@ -558,7 +552,7 @@ extension GroupViewController: UITableViewDataSource {
     }
 }
 
-extension GroupViewController : UISearchBarDelegate {
+extension GroupViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         

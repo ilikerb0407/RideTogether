@@ -13,7 +13,6 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
     
     var groupInfo: Group?
     
-    
     @IBOutlet weak var hostButton: UIButton!
     
     @IBOutlet weak var trailName: UITextField! {
@@ -29,7 +28,6 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             numberOfPeople.delegate = self
         }
     }
-    
     
     @IBOutlet weak var note: UITextView! {
         didSet {
@@ -266,13 +264,13 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
         
         switch textField {
             
-        case trailName :
+        case trailName: 
             
             trailName.text = text
             
             groupInfo?.routeName = text
             
-        case numberOfPeople :
+        case numberOfPeople: 
             
             numberOfPeople.text = text
             
@@ -284,8 +282,5 @@ class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDele
             
         }
     }
-    
-    
-    
     
 }

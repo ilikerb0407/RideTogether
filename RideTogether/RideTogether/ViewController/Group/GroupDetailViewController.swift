@@ -46,7 +46,7 @@ class GroupDetailViewController: BaseViewController {
     private lazy var leaveLottieView: AnimationView = {
         let view = AnimationView(name: "leave")
         view.loopMode = .loop
-        view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 400)
+        view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200, width: 400, height: 400)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
@@ -134,7 +134,6 @@ class GroupDetailViewController: BaseViewController {
                 
                 headerView?.gButton.setTitle("完成編輯", for: .normal)
                 
-                
             } else {
                 
                 headerView?.gButton.setTitle("編輯資訊", for: .normal)
@@ -142,7 +141,6 @@ class GroupDetailViewController: BaseViewController {
                 if let group = headerView?.groupInfo {
                     
                     editGroupInfo(groupInfo: group)
-                    
                     
                 }
             }
@@ -169,20 +167,15 @@ class GroupDetailViewController: BaseViewController {
                 
             case .success:
                 
-                
                 let sheet = UIAlertController(title: "編輯成功", message: NSLocalizedString("", comment: "no comment"), preferredStyle: .alert)
                     
                     let successOption = UIAlertAction(title: "完成", style: .cancel) { _ in
                         
                         self.dismiss(animated: true, completion: nil)
                     }
-                 
                     
                     sheet.addAction(successOption)
                     present(sheet, animated: true, completion: nil)
-                    
-                    
-                
                 
             case .failure(let error):
                 
@@ -196,7 +189,7 @@ class GroupDetailViewController: BaseViewController {
         
         guard let groupInfo = groupInfo else { return }
         
-        let joinRequest = Request( groupId: groupInfo.groupId,groupName: groupInfo.groupName,hostId: groupInfo.hostId, requestId: userInfo.uid,createdTime: Timestamp())
+        let joinRequest = Request( groupId: groupInfo.groupId, groupName: groupInfo.groupName, hostId: groupInfo.hostId, requestId: userInfo.uid, createdTime: Timestamp())
         
         GroupManager.shared.sendRequest(request: joinRequest) { result in
             
@@ -309,7 +302,7 @@ class GroupDetailViewController: BaseViewController {
 extension GroupDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView : RequestTableViewCell = .loadFromNib()
+        let headerView: RequestTableViewCell = .loadFromNib()
         
         self.headerView = headerView
         

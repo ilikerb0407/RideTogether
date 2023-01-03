@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-
 enum RoutesTypeTest: CaseIterable {
     
     case userOne
@@ -49,7 +48,6 @@ enum RoutesTypeTest: CaseIterable {
         
         }
     }
-    
     
 }
 

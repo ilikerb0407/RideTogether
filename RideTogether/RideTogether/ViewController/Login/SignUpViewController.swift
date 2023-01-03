@@ -10,7 +10,6 @@ import Firebase
 import FirebaseAuth
 import Lottie
 
-
 class SignUpViewController: BaseViewController {
     
     @IBOutlet weak var signUpEmail: UITextField!
@@ -22,7 +21,6 @@ class SignUpViewController: BaseViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     private var userInfo = UserManager.shared.userInfo
-    
     
     @objc func signUp() {
         
@@ -84,7 +82,6 @@ class SignUpViewController: BaseViewController {
                                             self.present(alertController, animated: true, completion: nil)
                                         }
                                     }
-                                   
                                     
                                 case .failure(let error):
                                     
@@ -99,8 +96,7 @@ class SignUpViewController: BaseViewController {
                         
                     }
                     
-                }
-                else {
+                } else {
                         let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                         
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -141,11 +137,9 @@ class SignUpViewController: BaseViewController {
         }
     }
     
-    
     @objc func loginwithFB() {
         
         if self.signUpEmail.text == "" || self.signUpPassword.text == "" {
-            
             
             let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
             
@@ -160,9 +154,9 @@ class SignUpViewController: BaseViewController {
                 
                 if error == nil {
                     
-                    //Print into the console if successfully logged in
+                    // Print into the console if successfully logged in
                     print("You have successfully logged in")
-                    if let isNewUser = user?.additionalUserInfo?.isNewUser ,
+                    if let isNewUser = user?.additionalUserInfo?.isNewUser,
                        
                        let uid = user?.user.uid {
                         
@@ -173,7 +167,6 @@ class SignUpViewController: BaseViewController {
                             self.userInfo.userName = "新使用者"
                             
                             self.userInfo.blockList = []
-                            
                             
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
                                 
@@ -215,16 +208,15 @@ class SignUpViewController: BaseViewController {
                             
                             tabbarVC.modalPresentationStyle = .fullScreen
                             
-                            
                             self.present(tabbarVC, animated: true, completion: nil)
                             
                         }
                     }
-                    //Go to the HomeViewController if the login is sucessful
+                    // Go to the HomeViewController if the login is sucessful
                     
                 } else {
                     
-                    //Tells the user that there is an error and then gets firebase to tell them the error
+                    // Tells the user that there is an error and then gets firebase to tell them the error
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

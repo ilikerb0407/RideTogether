@@ -13,8 +13,7 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 import CoreGPX
 
-
-//MARK: User Record
+// MARK: User Record
 
 class TracksViewController: BaseViewController {
     
@@ -30,7 +29,7 @@ class TracksViewController: BaseViewController {
     
     private let routeCollection = Collection.routes.rawValue // Home
     
-    var indexOfRoute:Int = 0
+    var indexOfRoute: Int = 0
     
     var records = [Record]()
     
@@ -104,7 +103,7 @@ class TracksViewController: BaseViewController {
             case .success(let records):
                 self?.records = records
                 self?.tableView.reloadData()
-            case .failure(_):
+            case .failure:
                 LKProgressHUD.showFailure(text: "無法讀取資料")
             }
         }
@@ -163,7 +162,6 @@ class TracksViewController: BaseViewController {
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -193,9 +191,9 @@ extension TracksViewController: UITableViewDelegate {
 
                     spaceRef.downloadURL { [self] result in
                         switch result {
-                        case .success(let url) :
+                        case .success(let url): 
         //                    completion(.success(url))
-                            print ("\(url)")
+                            print("\(url)")
                             self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
                             
                             self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url, userPhoto: userPhoto)
@@ -204,9 +202,9 @@ extension TracksViewController: UITableViewDelegate {
                             //
                             LKProgressHUD.showSuccess(text: "分享成功")
                             
-                        case .failure(let error) :
+                        case .failure(let error): 
 //                            completion(.failure(error))
-                            print ("\(error)")
+                            print("\(error)")
                             LKProgressHUD.showFailure(text: "網路不佳，分享失敗")
                         }
                     }
@@ -214,7 +212,7 @@ extension TracksViewController: UITableViewDelegate {
                 
                 let cancelOption = UIAlertAction(title: "取消", style: .default) { _ in }
                 
-                let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [ shareOption,cancelOption])
+                let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [ shareOption, cancelOption])
                 
                 // iPad specific code
                 
@@ -245,7 +243,7 @@ extension TracksViewController: UITableViewDelegate {
             RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
                 switch result {
                     
-                case .success(_):
+                case .success:
                     self.records.remove(at: indexPath.row)
                     
                     self.tableView.deleteRows(at: [indexPath], with: .left)
@@ -253,7 +251,7 @@ extension TracksViewController: UITableViewDelegate {
                     LKProgressHUD.showSuccess(text: "刪除成功")
 
                 case .failure(let error):
-                    print ("delete error: \(error)")
+                    print("delete error: \(error)")
                 }
             }
         }
@@ -291,7 +289,6 @@ extension TracksViewController: UITableViewDelegate {
         print("sucessfully")
         LKProgressHUD.showSuccess(text: "新增資料成功")
     }
-    
     
     func uploadRecordToPopular(fileName: String, fileURL: URL, userPhoto: String ) {
         
@@ -334,15 +331,12 @@ extension TracksViewController: UITableViewDelegate {
         print("sucessfully")
         LKProgressHUD.showSuccess(text: "新增資料成功")
     }
-    
-    
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         LKProgressHUD.show()
         
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
-        
         
     }
     

@@ -17,7 +17,6 @@ class PreviousPageButton: UIButton {
         
         let image = UIImage(systemName: "chevron.left",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .light))
-
         
         self.setImage(image, for: .normal)
         
@@ -115,7 +114,6 @@ class BottomButton: UIButton {
     }
 }
 
-
 class LeftButton: UIButton {
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -156,7 +154,6 @@ class TrackButton: UIButton {
         super.init(coder: aDecoder)
     }
 }
-
 
 class UBikeButton: UIButton {
     
@@ -228,7 +225,7 @@ class ImagePikerButton: UIButton {
     
      var delegate: ImagePickerDelegate?
     
-    required init?( coder aDecoder :NSCoder) {
+    required init?( coder aDecoder: NSCoder) {
         super .init(coder: aDecoder)
         
         addTarget(self, action: #selector(pickImage), for: .touchUpInside)

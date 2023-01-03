@@ -31,7 +31,7 @@ struct Provider: TimelineProvider {
         SimpleEntry(date: Date(), nearestStations: Provider.emptyLocationSet, userLocation: Provider.sampleUserLocation, image: UIImage(systemName: "map")!)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         guard !context.isPreview else {
             let mapEntry = SimpleEntry(date: Date(), nearestStations: Provider.emptyLocationSet, userLocation: Provider.sampleUserLocation, image: UIImage(systemName: "map")!)
             
@@ -55,7 +55,7 @@ struct Provider: TimelineProvider {
         WidgetLocationManager.shared.fetchLocation(handler: updateCompletionAfterFetchUserLocation)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         let updateCompletionAfterFetchUserLocation: (CLLocation) -> Void = { userLocation in
             loadNearestLocations(userLocation: userLocation) { nearbyStations in
                 contentUpdate(context: context,
@@ -76,7 +76,7 @@ struct Provider: TimelineProvider {
     }
     
     // MARK: Helpers
-    private func contentUpdate(context: TimelineProvider.Context, locations: [Bike], updatedUserLocation: CLLocation,  completionHandler: @escaping (SimpleEntry) -> Void) {
+    private func contentUpdate(context: TimelineProvider.Context, locations: [Bike], updatedUserLocation: CLLocation, completionHandler: @escaping (SimpleEntry) -> Void) {
         let region = MKCoordinateRegion(center: updatedUserLocation.coordinate, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
         let mapSnapshotter = makeSnapshotter(for: region, with: context.displaySize)
         
@@ -89,7 +89,6 @@ struct Provider: TimelineProvider {
                 
                 let userLocationIconName = "person.crop.circle.fill"
                 let nearestStationIconName = "bicycle.circle.fill"
-                
 
                 addAnnotation(snapshot: useableSnapShot, imageName: userLocationIconName, latitude: updatedUserLocation.coordinate.latitude, lontitude: updatedUserLocation.coordinate.longitude)
                 
@@ -120,7 +119,7 @@ struct Provider: TimelineProvider {
         guard let urlString = urlString else { return }
         let url = URLRequest(url: urlString)
         
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
@@ -158,7 +157,7 @@ struct Provider: TimelineProvider {
     }
     
     private func addAnnotation(snapshot: MKMapSnapshotter.Snapshot, imageName: String, latitude: CLLocationDegrees, lontitude: CLLocationDegrees) {
-        let pinView = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+        let pinView = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: nil)
         
         pinView.image = UIImage(systemName: imageName)
         
@@ -192,7 +191,7 @@ struct Provider: TimelineProvider {
         }
         
         let closestStationDistancesToUser = allDistancesToUser.sorted(by: { $0.0 < $1.0 })
-        let closestStationsToUser = closestStationDistancesToUser.map({ (accurateDistance, station) -> Bike in
+        let closestStationsToUser = closestStationDistancesToUser.map({ (_, station) -> Bike in
             
             let updatedStationWithDistance = Bike(sno: station.sno,
                                                   sna: station.sna, tot: station.tot, sbi: station.sbi,
@@ -216,7 +215,7 @@ struct SimpleEntry: TimelineEntry {
     let image: UIImage
 }
 
-struct BikeWidgetEntryView : View {
+struct BikeWidgetEntryView: View {
     
     @State var entry: SimpleEntry
     private var upperLimitOnNearbyStations: Int {

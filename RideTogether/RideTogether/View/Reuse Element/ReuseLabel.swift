@@ -25,7 +25,7 @@ class LeftLabel: UILabel {
     }
 }
 
-class RightLabel : UILabel {
+class RightLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

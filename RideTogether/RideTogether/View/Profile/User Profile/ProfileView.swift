@@ -8,7 +8,6 @@
 import UIKit
 import Kingfisher
 
-
 class ProfileView: UIView {
 
     @IBOutlet weak var userPhoto: UIImageView!

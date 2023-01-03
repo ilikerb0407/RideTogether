@@ -15,7 +15,6 @@ import MessageUI
 
 class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     
-    
     var userName = UserManager.shared.userInfo.userName!
     
     //    var userName = Auth.auth().currentUser?.displayName
@@ -41,7 +40,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     //                time3:675762963.180959
                     }
                 }
-                
                
                 print("time3:\(CFAbsoluteTimeGetCurrent())")
 //                675762887.290653 no main
@@ -93,7 +91,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     
     private let mapViewDelegate = MapPin()
     
-    
     private var followUser: Bool = true {
         
         didSet {
@@ -116,7 +113,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
     
     private lazy var sendSMSButton: UIButton = {
         let button = BottomButton()

@@ -14,7 +14,6 @@ class TrackTableViewCell: UITableViewCell {
     
     @IBOutlet weak var trackTime: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,7 +29,7 @@ class TrackTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpCell(model : Record) {
+    func setUpCell(model: Record) {
         
         trackTitle.text = model.recordName
         trackTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)

@@ -15,7 +15,6 @@ import Lottie
 import SwiftUI
 import Kingfisher
 
-
 class RecommendViewController: BaseViewController {
     
     @IBOutlet weak var gView: UIView! {
@@ -56,7 +55,6 @@ class RecommendViewController: BaseViewController {
 //        tableViewCell.userPhoto.cornerRadius = 25
 //
 //    }
-    
     
     private var tableView: UITableView! {
         
@@ -123,8 +121,6 @@ class RecommendViewController: BaseViewController {
         print("sucessfully")
     }
     
-    
-    
     func fetchRecords() {
         
         MapsManager.shared.fetchRecords { [weak self] result in
@@ -144,12 +140,10 @@ class RecommendViewController: BaseViewController {
                 
                 self?.tableView.reloadData()
                 
-            case .failure(let error): print ("fetchData Failure: \(error)")
+            case .failure(let error): print("fetchData Failure: \(error)")
             }
         }
     }
-    
-
     
     @objc func headerRefresh() {
         
@@ -171,7 +165,6 @@ class RecommendViewController: BaseViewController {
     }
     
     func setNotify() {
-        
         
         let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
@@ -219,17 +212,16 @@ class RecommendViewController: BaseViewController {
         waitlottie.isHidden = true
     }
     
-    private lazy var waitlottie : AnimationView = {
+    private lazy var waitlottie: AnimationView = {
         let view = AnimationView(name: "waiting-pigeon")
         view.loopMode = .loop
-        view.frame = CGRect(x: UIScreen.width / 8 , y: UIScreen.height / 6  , width: 300 , height: 300)
+        view.frame = CGRect(x: UIScreen.width / 8, y: UIScreen.height / 6, width: 300, height: 300)
         view.cornerRadius = 20
         view.contentMode = .scaleToFill
         view.play()
         self.view.addSubview(view)
         return view
     }()
-    
     
 }
 
@@ -242,7 +234,6 @@ extension RecommendViewController: UITableViewDelegate {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 
                  let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
-                    
                     
                     self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef: records[indexPath.row].recordRef, userPhoto: records[indexPath.row].pictureRef ?? "")
 
@@ -265,7 +256,7 @@ extension RecommendViewController: UITableViewDelegate {
                     }
                 }
                 
-                let cancelOption = UIAlertAction(title: "取消", style: .cancel){ _ in
+                let cancelOption = UIAlertAction(title: "取消", style: .cancel) { _ in
                     self.waitlottie.isHidden = true
                 }
                 

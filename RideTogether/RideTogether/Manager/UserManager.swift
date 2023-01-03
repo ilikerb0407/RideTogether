@@ -51,7 +51,7 @@ class UserManager {
 
                 } else {
                     LKProgressHUD.showSuccess(text: "刪除成功")
-                    print ("delete uid=========\(uid)")
+                    print("delete uid=========\(uid)")
                 }
             }
         }

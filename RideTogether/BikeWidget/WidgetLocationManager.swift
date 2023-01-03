@@ -48,4 +48,3 @@ class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
         print(error)
     }
 }
-

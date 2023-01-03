@@ -11,9 +11,7 @@ import CryptoKit
 import FirebaseAuth
 import Lottie
 
-
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
-    
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         
@@ -48,7 +46,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             LKProgressHUD.showFailure(text: "未登入")
         }
         
-        Auth.auth().addStateDidChangeListener { auth, user in
+        Auth.auth().addStateDidChangeListener { _, user in
             
             if let user = user {
                 print("\(user.uid) login")
@@ -68,7 +66,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             let view = AnimationView(name: "49908-bike-ride")
             
             view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200 , width: 400 , height: 350)
+            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200, width: 400, height: 350)
             view.contentMode = .scaleAspectFit
             view.play()
             self.view.addSubview(view)
@@ -174,7 +172,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     @objc func popUpEmailSignIn() {
         
-        if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController{
+        if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
             
             self.modalPresentationStyle = .fullScreen
             
@@ -259,7 +257,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
-        
 //        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
 //            let userId = credential.user
 //            let fullname = credential.fullName
@@ -335,9 +332,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 
                 if let error = error as? NSError {
                     
-                    print (error)
+                    print(error)
                     guard let errorCode = AuthErrorCode(rawValue: error.code) else {
-                        print ("登入錯誤，請稍後再試")
+                        print("登入錯誤，請稍後再試")
                         return
                     }
                     LKProgressHUD.showFailure(text: "登入失敗，請確定網路品質")

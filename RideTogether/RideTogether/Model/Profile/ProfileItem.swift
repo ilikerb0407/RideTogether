@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import Charts
 
-
 protocol ProfileItemContent {
 
     var title: String { get }

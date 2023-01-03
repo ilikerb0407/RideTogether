@@ -10,7 +10,7 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-// MARK:  - Offline Map -
+// MARK: - Offline Map -
 
 class MapsManager {
     
@@ -57,8 +57,7 @@ class MapsManager {
                             records.append(record)
                         }
                         
-                    }
-                    catch {
+                    } catch {
                         completion(.failure(error))
                     }
                 }
@@ -73,7 +72,7 @@ class MapsManager {
         
         let collection = dataBase.collection(routeCollection)
         
-        collection.getDocuments{ (querySnapshot, error) in
+        collection.getDocuments { (querySnapshot, error) in
             guard let querySnapshot = querySnapshot else { return }
             
             if let error = error {
@@ -86,8 +85,7 @@ class MapsManager {
                             routes.append(route)
                         }
                         
-                    }
-                    catch {
+                    } catch {
                         completion(.failure(error))
                     }
                 }
@@ -100,7 +98,7 @@ class MapsManager {
         
     }
     
-    func fetchSavemaps (completion: @escaping (Result<[Record],Error>) -> Void) {
+    func fetchSavemaps (completion: @escaping (Result<[Record], Error>) -> Void) {
         
         let collection = dataBase.collection(saveCollection).whereField("uid", isEqualTo: userId)
                 collection.getDocuments { (querySnapshot, error) in
@@ -119,8 +117,7 @@ class MapsManager {
                                 if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
                                     records.append(record)
                                 }
-                                }
-                            catch {
+                                } catch {
                                 completion(.failure(error))
                             }
                         }

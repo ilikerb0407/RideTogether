@@ -50,7 +50,6 @@ class GroupInfoTableViewCell: UITableViewCell {
             hostMarker.isHidden = true
         }
         
-        
         if group.isExpired == true {
             
             isOver.isHidden = false

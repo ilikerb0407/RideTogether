@@ -44,7 +44,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         return String(describing: self)
     }
      
-    private let tabs: [Tab] = [.journey, .home,.group, .profile]
+    private let tabs: [Tab] = [.journey, .home, .group, .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.B5
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.B5]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.B5]
         
         if #available(iOS 15.0, *) {
                    let appearance = UITabBarAppearance()

@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 
-
 enum PolicyType: String {
     
     case privacy
@@ -27,13 +26,11 @@ enum PolicyType: String {
     }
 }
 
-
-
 class PolicyViewController: BaseViewController, WKNavigationDelegate {
     
     var policy: PolicyType?
     
-    private lazy var webView : WKWebView = {
+    private lazy var webView: WKWebView = {
         
         let website = WKWebView()
         

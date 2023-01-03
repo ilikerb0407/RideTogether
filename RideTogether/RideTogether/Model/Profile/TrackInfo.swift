@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct TrackInfo: Codable {
     
     var distance: Double

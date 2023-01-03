@@ -198,7 +198,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                 alertSheet.addAction(routeName)
                 alertSheet.addAction(removeOption)
                 alertSheet.addAction(cancelAction)
-               
                 
                 let lastVC = UIViewController.getLastPresentedViewController()
                 lastVC?.present(alertSheet, animated: true)
@@ -243,7 +242,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         }
     }
     
-    //MARK: - userPin -
+    // MARK: - userPin -
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         
@@ -251,13 +250,13 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         
         guard let gpxMapView = mapView as? GPXMapView else { return }
 
-        //adds the pins with an animation
+        // adds the pins with an animation
         for object in views {
             num += 1
             let annotationView = object as MKAnnotationView
             guide(gpxMapView, didSelect: annotationView)
             
-            //The only exception is the user location, we add to this the heading icon.
+            // The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {
                 
                 if gpxMapView.headingImageView == nil {
@@ -297,7 +296,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
                         
                         annotationView.transform = CGAffineTransform(a: 1.0, b: 0, c: 0, d: 0.8, tx: 0, ty: annotationView.frame.size.height*0.1)
                         
-                    },completion: { _ -> Void in
+                    }, completion: { _ -> Void in
                         UIView.animate(withDuration: 0.1, animations: { () -> Void in
                             annotationView.transform = CGAffineTransform.identity
                         })

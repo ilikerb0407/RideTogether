@@ -8,8 +8,6 @@
 import UIKit
 import SwiftUI
 
-
-
 class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mapTitle: UILabel!
@@ -20,9 +18,9 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userPhoto: UIImageView!
     
-    var likes : Bool = false
+    var likes: Bool = false
     
-    var sendIsLike : ((_ isSelected: Bool) ->())?
+    var sendIsLike: ((_ isSelected: Bool) -> Void)?
     
     @objc func heartTapped(_ sender: UIButton) {
         
@@ -59,7 +57,7 @@ class RecommendTableViewCell: UITableViewCell {
         
     }
     
-    func setUpCell(model : Record) {
+    func setUpCell(model: Record) {
         
         mapTitle.text = model.recordName
         

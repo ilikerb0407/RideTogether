@@ -8,13 +8,12 @@
 import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
-
    
-    @IBOutlet weak var itemImage : UIImageView!
+    @IBOutlet weak var itemImage: UIImageView!
     
-    @IBOutlet weak var itemTitle : UILabel!
+    @IBOutlet weak var itemTitle: UILabel!
     
-    @IBOutlet weak var itemBackground : UIView!
+    @IBOutlet weak var itemBackground: UIView!
     
     func setUpCell(indexPath: IndexPath) {
         

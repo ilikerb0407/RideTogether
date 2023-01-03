@@ -15,7 +15,6 @@ class HomeViewController: BaseViewController, Reload {
         
     }
     
-    
     func reload() {
         
     }
@@ -118,13 +117,13 @@ class HomeViewController: BaseViewController, Reload {
             
             switch route.routeTypes {
                 
-            case 0 :
+            case 0: 
                 userOne.append(route)
-            case 1 :
+            case 1: 
                 recommendOne.append(route)
-            case 2 :
+            case 2: 
                 riverOne.append(route)
-            case 3 :
+            case 3: 
                 mountainOne.append(route)
             default:
                 return
@@ -169,7 +168,6 @@ extension HomeViewController: UITableViewDelegate {
         
         let headerView: HomeHeaderTableViewCell = .loadFromNib()
         
-        
         self.headerView = headerView
 
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
@@ -191,13 +189,13 @@ extension HomeViewController: UITableViewDelegate {
         var sender = [Route]()
         
         switch indexPath.row {
-        case 0 :
+        case 0: 
             sender = userOne
-        case 1 :
+        case 1: 
             sender = recommendOne
-        case 2 :
+        case 2: 
             sender = riverOne
-        case 3 :
+        case 3: 
             sender = mountainOne
         default:
             return

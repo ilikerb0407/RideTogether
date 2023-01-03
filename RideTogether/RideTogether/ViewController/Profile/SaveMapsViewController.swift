@@ -29,8 +29,6 @@ class SaveMapsViewController: BaseViewController {
     
     var records = [Record]()
     
-    
-    
     private var tableView: UITableView! {
         
         didSet {
@@ -51,7 +49,6 @@ class SaveMapsViewController: BaseViewController {
         tableView.mj_header = header
         
         header.setRefreshingTarget(self, refreshingAction: #selector(self.headerRefresh))
-        
         
     }
     
@@ -82,7 +79,7 @@ class SaveMapsViewController: BaseViewController {
             case .success(let records):
                 self?.records = records
                 self?.tableView.reloadData()
-            case .failure(let error): print ("fetchData Failure: \(error)")
+            case .failure(let error): print("fetchData Failure: \(error)")
             }
         }
     }
@@ -117,8 +114,6 @@ class SaveMapsViewController: BaseViewController {
         
     }
 
-    
-
 }
 
 extension SaveMapsViewController: UITableViewDelegate {
@@ -126,7 +121,6 @@ extension SaveMapsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }
-    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -136,31 +130,27 @@ extension SaveMapsViewController: UITableViewDelegate {
                     
                     switch result {
                         
-                    case .success(_):
+                    case .success:
                         
                         self.records.remove(at: indexPath.row)
                         
                         self.tableView.deleteRows(at: [indexPath], with: .left)
                         
-                        
                     case .failure(let error):
                         
-                        print ("delete error: \(error)")
+                        print("delete error: \(error)")
                     }
                 }
             }
         }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
 
             if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
                 navigationController?.pushViewController(journeyViewController, animated: true)
                 journeyViewController.record = records[indexPath.row]}
-            
   
     }
-    
     
 }
 
@@ -169,7 +159,6 @@ extension SaveMapsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         records.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -181,10 +170,7 @@ extension SaveMapsViewController: UITableViewDataSource {
             
         cell.userPhoto.cornerRadius = 15
         
-        
-        
         return cell
     }
-    
     
 }

@@ -121,8 +121,7 @@ class RecordManager {
                             records.append(record)
                         }
                         
-                    }
-                    catch {
+                    } catch {
                         completion(.failure(error))
                     }
                 }
@@ -153,8 +152,7 @@ class RecordManager {
                             records.recordRef.append(record.recordRef)
                         }
                         
-                    }
-                    catch {
+                    } catch {
                         completion(.failure(error))
                     }
                 }

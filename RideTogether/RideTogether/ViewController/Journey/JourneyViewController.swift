@@ -190,8 +190,8 @@ class JourneyViewController: BaseViewController {
     
     // MARK: - View -
     
-    private lazy var waveLottieView: AnimationView = {
-        let view = AnimationView(name: "circle")
+    private lazy var waveLottieView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "circle")
         view.loopMode = .loop
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         view.center = leftStackView.center
@@ -202,8 +202,8 @@ class JourneyViewController: BaseViewController {
         return view
     }()
     
-    private lazy var bikeLottieView: AnimationView = {
-        let view = AnimationView(name: "49908-bike-ride")
+    private lazy var bikeLottieView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "49908-bike-ride")
         view.loopMode = .loop
         self.view.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -301,24 +301,24 @@ class JourneyViewController: BaseViewController {
         segmentControl.center = CGPoint(x: 80, y: 65)
         self.view.addSubview(segmentControl)
     }
-    
+    // TODO: test something
     @objc func onChange(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0 :
+        case 0: 
             mapView.mapType = .mutedStandard
             speedLabel.textColor = .B5
             timeLabel.textColor = .B5
             altitudeLabel.textColor = .B5
             currentSegmentDistanceLabel.textColor = .B5
             totalTrackedDistanceLabel.textColor = .B5
-        case 1 :
+        case 1: 
             mapView.mapType = .hybridFlyover
             speedLabel.textColor = .B2
             timeLabel.textColor = .B2
             altitudeLabel.textColor = .B2
             currentSegmentDistanceLabel.textColor = .B2
             totalTrackedDistanceLabel.textColor = .B2
-        default :
+        default: 
             mapView.mapType = .standard
         }
         

@@ -158,7 +158,6 @@ class RouteViewController: BaseViewController {
         
     }
     
-    
     @objc func showLongPressNotify() {
         
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以收藏/封鎖", comment: "no comment"), preferredStyle: .alert)
@@ -171,7 +170,6 @@ class RouteViewController: BaseViewController {
     
     func setNotify() {
         
-        
         let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         let infoImage = UIImage(systemName: "info")
@@ -183,7 +181,7 @@ class RouteViewController: BaseViewController {
         self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
     }
   
-    //MARK: - View Life Cycle -
+    // MARK: - View Life Cycle -
     
     override func viewDidLoad() {
         
@@ -202,14 +200,12 @@ class RouteViewController: BaseViewController {
         setUpThemeTag()
         
     }
-
-    
  
     func setUpThemeTag() {
         
         let view = UIView(frame: CGRect(x: -20, y: 80, width: UIScreen.width / 2 + 10, height: 40))
         
-        let label = UILabel(frame: CGRect(x: 20, y: 80 , width: 120, height: 35))
+        let label = UILabel(frame: CGRect(x: 20, y: 80, width: 120, height: 35))
         
         view.backgroundColor = .B5
         
@@ -232,7 +228,7 @@ class RouteViewController: BaseViewController {
     private let saveCollection = Collection.savemaps.rawValue // Profile
     var userId: String { UserManager.shared.userInfo.uid }
     
-    func uploadRecordToSavemaps(fileName: String, fileRef: String,  userPhoto: String ) {
+    func uploadRecordToSavemaps(fileName: String, fileRef: String, userPhoto: String ) {
         
         let document = dataBase.collection(saveCollection).document()
         
@@ -274,7 +270,6 @@ extension RouteViewController: UITableViewDelegate {
                 
                  let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
                     
-                    
                 self.uploadRecordToSavemaps(fileName: routes[indexPath.row].routeName, fileRef: routes[indexPath.row].routeMap, userPhoto: userPhoto)
                        
                 }
@@ -292,12 +287,11 @@ extension RouteViewController: UITableViewDelegate {
 
                         UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
                         
-                        
                     }
                     
                 }
                 
-                let cancelOption = UIAlertAction(title: "取消", style: .cancel){ _ in}
+                let cancelOption = UIAlertAction(title: "取消", style: .cancel) { _ in}
                 
                 showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
                 
@@ -315,9 +309,7 @@ extension RouteViewController: UITableViewDelegate {
 
 }
 
-
 extension RouteViewController: UITableViewDataSource {
-  
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         routes.count

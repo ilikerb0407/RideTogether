@@ -24,14 +24,13 @@ class GroupMemberViewController: BaseViewController {
     }
     
     @IBOutlet weak var gView: UIView! {
-        didSet{
+        didSet {
             gView.applyGradient(
                 colors: [.white, .B3],
                 locations: [0.0, 1.0], direction: .leftSkewed)
             gView.alpha = 0.85
         }
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +46,6 @@ class GroupMemberViewController: BaseViewController {
         setNavigationBar(title: "\(groupInfo?.groupName ?? "揪團") - 成員")
 
     }
-    
 
 }
 

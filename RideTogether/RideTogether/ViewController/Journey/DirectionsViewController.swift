@@ -1,11 +1,7 @@
-
-
 import UIKit
 import MapKit
 
-
 class DirectionsViewController: UIViewController {
-    
     
   @IBOutlet private var mapView: MKMapView!
     
@@ -21,9 +17,7 @@ class DirectionsViewController: UIViewController {
 
   private var mapRoutes: [MKRoute] = []
     
-    
   private var groupedRoutes: [(startItem: MKMapItem, endItem: MKMapItem)] = []
-
     
   private let route: DrawRoute
     
@@ -53,8 +47,6 @@ class DirectionsViewController: UIViewController {
   }
 
   // MARK: - Helpers
-
-
 
   private func groupAndRequestDirections() {
     guard let firstStop = route.stops.first else {
@@ -89,11 +81,10 @@ class DirectionsViewController: UIViewController {
 
     let directions = MKDirections(request: request)
 
-      directions.calculate { [self] response, error in
+      directions.calculate { [self] response, _ in
       guard let mapRoute = response?.routes.first else {
         return
       }
-        
         
       self.updateView(with: mapRoute)
     

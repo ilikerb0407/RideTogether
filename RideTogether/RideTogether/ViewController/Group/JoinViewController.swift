@@ -9,7 +9,6 @@ import UIKit
 
 class JoinViewController: BaseViewController {
     
-    
     @IBOutlet weak var gView: UIView! {
         didSet {
             gView.applyGradient(
@@ -237,7 +236,7 @@ class JoinViewController: BaseViewController {
     
 }
 
-extension JoinViewController : UITableViewDelegate {
+extension JoinViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         300

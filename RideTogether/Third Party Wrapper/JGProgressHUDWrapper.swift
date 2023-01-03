@@ -25,7 +25,6 @@ class LKProgressHUD {
 
     var view: UIView {
         
-        
         let viewController = UIApplication.shared.windows.first!.rootViewController
         return (viewController?.view)!
         
@@ -117,4 +116,3 @@ class LKProgressHUD {
         shared.hud.dismiss()
     }
 }
-

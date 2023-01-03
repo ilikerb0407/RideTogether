@@ -30,7 +30,7 @@ class BikeManager {
         guard let urlString = urlString else { return }
         let url = URLRequest(url: urlString)
         
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
@@ -50,7 +50,6 @@ class BikeManager {
     }
     
     func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
-        
         
         let urlString = URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")
         
@@ -82,5 +81,3 @@ class BikeManager {
     }
     
 }
-
-

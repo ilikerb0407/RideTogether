@@ -9,7 +9,6 @@ import UIKit
 
 class SaveMapsTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var title: UILabel!
     
     @IBOutlet weak var time: UILabel!
@@ -31,11 +30,10 @@ class SaveMapsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpCell(model : Record) {
+    func setUpCell(model: Record) {
         
         title.text = model.recordName
         time.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }
-    
     
 }

@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseFirestore
 
-
 struct Record: Codable, Hashable {
     
     var uid: String

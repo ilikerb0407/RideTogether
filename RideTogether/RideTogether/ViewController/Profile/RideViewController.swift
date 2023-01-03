@@ -23,7 +23,6 @@ class RideViewController: BaseViewController {
     
     private var isDisplayingLocationServicesDenied: Bool = false
     
-    
     @IBOutlet weak var mapView: GPXMapView!
     
     func backButton() {
@@ -128,7 +127,6 @@ class RideViewController: BaseViewController {
             }
         }
     }
- 
     
     private lazy var sendSMSButton: UIButton = {
         let button = BottomButton()
@@ -153,7 +151,6 @@ class RideViewController: BaseViewController {
         button.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
         return button
     }()
-        
     
     private lazy var buttonStackView: UIStackView = {
  
@@ -247,7 +244,6 @@ class RideViewController: BaseViewController {
             // Fallback on earlier versions
         }
     }
-    
 
     // MARK: - UI Settings -
     
@@ -286,7 +282,6 @@ class RideViewController: BaseViewController {
                 
         ])
         
-        
         followUserButton.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         
         sendSMSButton.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
@@ -314,16 +309,12 @@ class RideViewController: BaseViewController {
         self.present(composeVC, animated: true, completion: nil)
     }
     }
-    
 
 func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
     let newLocation = locations.first!
     
-   
-    
-    
-    //  MARK: Update_speed
+    // MARK: Update_speed
     
     if followUser {
         
@@ -333,7 +324,6 @@ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:
 }
     
 }
-
 
 // MARK: - CLLocationManager Delegate -
 

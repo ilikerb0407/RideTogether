@@ -1,11 +1,7 @@
-
-
 import UIKit
 import MapKit
 import CoreLocation
 import Lottie
-
-
 
 class RouteSelectionViewController: UIViewController, weatherProvider {
     
@@ -13,7 +9,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
         weatherdata = weather
     }
     
-    var weatherdata : ResponseBody?
+    var weatherdata: ResponseBody?
     
     let weatherManger = WeatherManager()
     
@@ -29,7 +25,6 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     
     @IBOutlet weak var windLabel: UILabel!
     
-    
     func weather() {
         
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
@@ -41,7 +36,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
             
         }
         
-        func showWeatherInfo(){
+        func showWeatherInfo() {
             
             guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
             feelsLikeTempLabel.text = "\(feelslike) °C"
@@ -118,7 +113,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     
         }
     
-    var directionsVC : DirectionsViewController?
+    var directionsVC: DirectionsViewController?
     
     @IBOutlet private var inputContainerView: UIView!
     @IBOutlet private var originTextField: UITextField!
@@ -143,7 +138,6 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         suggestionContainerView.addBorder()
         inputContainerView.addBorder()
@@ -171,7 +165,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     private lazy var cloudsLottieView: AnimationView = {
         let view = AnimationView(name: "cloud")
         view.loopMode = .loop
-        view.frame = CGRect(x: -30, y: -150 , width: 400 , height: 400)
+        view.frame = CGRect(x: -30, y: -150, width: 400, height: 400)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
@@ -181,7 +175,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     private lazy var rainLottieView: AnimationView = {
         let view = AnimationView(name: "rain")
         view.loopMode = .loop
-        view.frame = CGRect(x: UIScreen.width / 2 - 100, y: -25 , width: 200 , height: 200)
+        view.frame = CGRect(x: UIScreen.width / 2 - 100, y: -25, width: 200, height: 200)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
@@ -191,7 +185,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     private lazy var sunLottieView: AnimationView = {
         let view = AnimationView(name: "sun")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0 , width: 150 , height: 150)
+        view.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
@@ -201,13 +195,12 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     private lazy var otherLottieView: AnimationView = {
         let view = AnimationView(name: "otherweather")
         view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0 , width: 150 , height: 150)
+        view.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         view.contentMode = .scaleAspectFit
         view.play()
         self.view.addSubview(view)
         return view
     }()
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -394,7 +387,6 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
             case .success(let route):
                 
                 let viewController = DirectionsViewController(route: route)
-                
                 
 //                self.present(viewController, animated: true)
                 if #available(iOS 15.0, *) {

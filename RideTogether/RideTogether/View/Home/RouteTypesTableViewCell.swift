@@ -25,8 +25,6 @@ class RouteTypesTableViewCell: UITableViewCell {
         
         self.routePhoto.cornerRadius = 20
         
-        
-        
     }
     
     override func awakeFromNib() {
@@ -38,7 +36,6 @@ class RouteTypesTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         
         self.selectionStyle = .none
-      
         
     }
     

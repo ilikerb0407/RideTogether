@@ -9,7 +9,6 @@ import Foundation
 import CoreGPX
 import CoreLocation
 
-
 class GPXSession {
     
     var waypoints: [GPXWaypoint] = []

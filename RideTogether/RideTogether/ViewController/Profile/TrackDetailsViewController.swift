@@ -13,7 +13,7 @@ import CoreGPX
 import CoreLocation
 import Charts
 
-//MARK: User Record detail
+// MARK: User Record detail
 
 class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     
@@ -25,13 +25,11 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
     @IBOutlet weak var totalDistance: UILabel!
     @IBOutlet weak var avgSpeed: UILabel!
     
-    
     @IBOutlet weak var chartView: LineChartView! {
         didSet {
             chartView.delegate = self
         }
     }
-    
     
     @IBOutlet weak var gView: UIView! {
         
@@ -61,11 +59,7 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         
         tabBarController?.tabBar.isHidden = true
         
-        
-        
         praseGPXFile()
-        
-        
         
         updateInfo(data: trackInfo)
         
@@ -83,7 +77,6 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
         avgSpeed.text = speed.toSpeed()
         
     }
-    
     
     func setChart(xValues: [Double], yValues: [Double]) {
         

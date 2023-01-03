@@ -10,9 +10,7 @@ import CoreGPX
 import MapKit
 import CoreLocation
 
-
 class BikeView: NSObject, MKMapViewDelegate {
-    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 

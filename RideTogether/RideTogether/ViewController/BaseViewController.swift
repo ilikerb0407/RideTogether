@@ -11,7 +11,6 @@ import Kingfisher
 import MessageUI
 import Lottie
 
-
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
     
     let stopWatch = StopWatch()
@@ -225,7 +224,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         }
     }
     
-    func push(withIdentifier: String){
+    func push(withIdentifier: String) {
         
         if let viewController = storyboard?.instantiateViewController(withIdentifier: withIdentifier) {
    

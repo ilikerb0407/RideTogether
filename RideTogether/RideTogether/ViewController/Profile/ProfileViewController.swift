@@ -60,7 +60,6 @@ class ProfileViewController: BaseViewController {
     @IBAction func editPhoto(_ sender: UIButton) {
         
         showPickerController()
-    
         
     }
     @IBOutlet weak var gView: UIView! {
@@ -91,7 +90,6 @@ class ProfileViewController: BaseViewController {
         setUpProfileView()
 
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -140,8 +138,7 @@ class ProfileViewController: BaseViewController {
 
 }
 
-
-extension ProfileViewController : UITableViewDelegate {
+extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         20
@@ -153,11 +150,11 @@ extension ProfileViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0 :
+        case 0: 
             push(withIdentifier: "TracksViewController")
-        case 1 :
+        case 1: 
             push(withIdentifier: "RecommendViewController")
-        case 2 :
+        case 2: 
             
             let logOut = UIAlertAction(title: AccountActionSheet.allCases[0].rawValue, style: .default) { _ in
                 self.signOut()
@@ -173,7 +170,7 @@ extension ProfileViewController : UITableViewDelegate {
         case 3:
             push(withIdentifier: "SaveMapsViewController")
             
-        default :
+        default: 
             return
         }
     }
@@ -186,11 +183,11 @@ extension ProfileViewController : UITableViewDelegate {
             
           if let error = error {
 
-            print ("\(error)")
+            print("\(error)")
 
           } else {
 
-              print ("delete success")
+              print("delete success")
               
               UserManager.shared.deleteUserInfo(uid: currentuser!.uid)
               UserManager.shared.deleteUserSharemaps(uid: currentuser!.uid)
@@ -208,15 +205,14 @@ extension ProfileViewController : UITableViewDelegate {
         present(loginVC, animated: true, completion: nil)
     }
     
-    
     func signOut() {
         
         let firebaseAuth = Auth.auth()
         
         do {
-            print ("current user uid ======= \(firebaseAuth.currentUser?.uid)===========")
+            print("current user uid ======= \(firebaseAuth.currentUser?.uid)===========")
             try firebaseAuth.signOut()
-            print ("sign out current user uid ======= \(firebaseAuth.currentUser?.uid)===========")
+            print("sign out current user uid ======= \(firebaseAuth.currentUser?.uid)===========")
 //            UserDefaults.standard.removeObject(forKey: )
         } catch let signOutError as NSError {
             
@@ -245,7 +241,7 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell : ProfileTableViewCell = tableView.dequeueCell(for: indexPath)
+        let cell: ProfileTableViewCell = tableView.dequeueCell(for: indexPath)
         cell.backgroundColor = .clear
         cell.setUpCell(indexPath: indexPath)
         
@@ -265,7 +261,6 @@ extension ProfileViewController: UITextFieldDelegate {
     }
 }
 // MARK: - ImagePicker Delegate -
-
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -323,7 +318,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         actionSheet.popoverPresentationController?.sourceRect = popoverRect
                 
         actionSheet.popoverPresentationController?.permittedArrowDirections = .up
-        
         
     }
     
