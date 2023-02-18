@@ -17,7 +17,7 @@ class RecordManager {
     var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
     
     lazy var storage = Storage.storage()
-    
+
     static let shared = RecordManager()
     
     private init() { }

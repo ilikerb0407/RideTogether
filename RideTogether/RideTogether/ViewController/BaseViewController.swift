@@ -11,7 +11,7 @@ import Kingfisher
 import MessageUI
 import Lottie
 
-class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
+internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
     
     let stopWatch = StopWatch()
     
@@ -53,18 +53,21 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
     }
     
     static var identifier: String {
-        
-        return String(describing: self)
+        get {
+            String(describing: self)
+        }
     }
     
     var isHideNavigationBar: Bool {
-        
-        return false
+        get {
+            false
+        }
     }
     
     var isEnableIQKeyboard: Bool {
-        
-        return true
+        get {
+            true
+        }
     }
     
     override func viewDidLoad() {

@@ -10,19 +10,15 @@ import CoreGPX
 import MapKit
 import CoreLocation
 
-class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
-    
-    func provideWeather(weather: ResponseBody) {
-        weatherData = weather
-    }
+internal class MapPin: NSObject, MKMapViewDelegate {
     
     var weatherData: ResponseBody?
     
     let weatherManger = WeatherManager()
 
-    var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
+    var waypointBeingEdited = GPXWaypoint()
     
-    var directionsResponse =  MKDirections.Response()
+    var directionsResponse = MKDirections.Response()
     
     var route = MKRoute()
     
@@ -141,8 +137,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     // MARK: - map Annotation -
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        weatherManger.delegate = self
+
         
         guard let button = control as? UIButton else { return }
         
@@ -152,7 +147,7 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
         
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
         
-        self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
+        self.weatherManger.getWeatherInfo(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
             self?.weatherData = result
             

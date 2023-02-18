@@ -140,8 +140,10 @@
 		23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
+		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
+		3BDF086F299F7FA400766110 /* OverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF086E299F7FA400766110 /* OverrideViewController.swift */; };
+		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
-		C51FAD2429092BC600264854 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C51FAD2329092BC600264854 /* GoogleService-Info.plist */; };
 		C51FAD2B2909368B00264854 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2A2909368B00264854 /* WidgetKit.framework */; };
 		C51FAD2D2909368B00264854 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2C2909368B00264854 /* SwiftUI.framework */; };
 		C51FAD302909368C00264854 /* BikeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD2F2909368C00264854 /* BikeWidget.swift */; };
@@ -327,11 +329,13 @@
 		23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
+		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3BDF086E299F7FA400766110 /* OverrideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewController.swift; sourceTree = "<group>"; };
+		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C51FAD2329092BC600264854 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C51FAD292909368B00264854 /* BikeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51FAD2A2909368B00264854 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C51FAD2C2909368B00264854 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -433,6 +437,7 @@
 				231BCB2D28066C3B00DE2343 /* ShareMap.swift */,
 				23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */,
 				23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */,
+				3BDF087229A0692500766110 /* ResponseBody.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
+				3BDF086E299F7FA400766110 /* OverrideViewController.swift */,
 			);
 			path = RideTogetherTests;
 			sourceTree = "<group>";
@@ -574,9 +580,9 @@
 			children = (
 				23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */,
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
+				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
-				C51FAD2329092BC600264854 /* GoogleService-Info.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B74B28005D9B000EDA70 /* Model */,
@@ -937,7 +943,7 @@
 				23C0C420281E9C810020237C /* HomeHeaderTableViewCell.xib in Resources */,
 				23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */,
 				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
-				C51FAD2429092BC600264854 /* GoogleService-Info.plist in Resources */,
+				3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */,
 				23C0C41C281E7B320020237C /* wait-processbar.json in Resources */,
 				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */,
@@ -1082,6 +1088,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BDF086F299F7FA400766110 /* OverrideViewController.swift in Sources */,
 				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1090,6 +1097,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BDF087329A0692500766110 /* ResponseBody.swift in Sources */,
 				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
 				23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */,
 				23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */,

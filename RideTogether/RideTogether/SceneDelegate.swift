@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     

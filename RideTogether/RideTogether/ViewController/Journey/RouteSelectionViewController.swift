@@ -3,11 +3,7 @@ import MapKit
 import CoreLocation
 import Lottie
 
-class RouteSelectionViewController: UIViewController, weatherProvider {
-    
-    func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
-    }
+class RouteSelectionViewController: UIViewController {
     
     var weatherdata: ResponseBody?
     
@@ -27,7 +23,7 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
     
     func weather() {
         
-        weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
+        weatherManger.getWeatherInfo(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
             
             self?.weatherdata = result
             DispatchQueue.main.async {
@@ -150,8 +146,6 @@ class RouteSelectionViewController: UIViewController, weatherProvider {
         configureTextFields()
         attemptLocationAccess()
         hideSuggestionView(animated: false)
-        
-        weatherManger.delegate = self
         
         weather()
         

@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:90965039479:ios:595f6c3342f44c0c9d6972</string>
+	<key>DATABASE_URL</key>
+	<string>https://bikeproject-59c89-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

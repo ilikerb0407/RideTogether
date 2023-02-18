@@ -2,15 +2,142 @@ excluded:
   - Pods
 disabled_rules:
   - trailing_whitespace
+  - trailing_comma
+  - inclusive_language
 identifier_name:
   excluded: # excluded via string array
     - id
     - URL
     - url
     - app
+# 開啟 option 的 rule
+opt_in_rules:
+  - xct_specific_matcher
+  - weak_delegate
+  - unused_import
+  - unused_declaration
+  - untyped_error_in_catch
+  - unowned_variable_capture
+  - unneeded_parentheses_in_closure_argument
+  - unavailable_function
+  - typesafe_array_init
+  - toggle_bool
+  - test_case_accessibility
+  - static_operator
+  - sorted_first_last
+  - single_test_class
+  - return_value_from_void_function
+  - required_enum_case
+  - redundant_type_annotation
+  - redundant_nil_coalescing
+  - reduce_into
+  - raw_value_for_camel_cased_codable_enum
+  - prohibited_super_call
+  - private_subject
+  - private_action
+  - prefer_self_type_over_type_of_self
+  - prefer_self_in_static_references
+  - override_in_extension
+  - overridden_super_call
+  - multiline_parameters_brackets
+  - multiline_parameters
+  - multiline_literal_brackets
+  - multiline_function_chains
+  - multiline_arguments
+  - lower_acl_than_parent
+  - legacy_multiple
+  - last_where
+  - joined_default_parameter
+  - implicitly_unwrapped_optional
+  - identical_operands
+  - function_default_parameter_at_end
+  - force_unwrapping
+  - flatmap_over_map_reduce
+  - file_types_order
+  - file_name_no_space
+  - file_name
+  - fallthrough
+  - explicit_top_level_acl
+  - empty_xctest_method
+  - empty_string
+  - empty_collection_literal
+  - discouraged_optional_boolean
+  - discouraged_object_literal
+  - contains_over_range_nil_comparison
+  - contains_over_first_not_nil
+  - contains_over_filter_is_empty
+  - contains_over_filter_count
+  - collection_alignment
+  - closure_spacing
+  - closure_end_indentation
+  - attributes
+  - anyobject_protocol
+  - inert_defer
+  - enum_case_associated_values_count
+  - closure_body_length # 必須開啟設定的長度才會生效
+  - explicit_type_interface # 可忽略因 optional binding 的 if let 造成的誤判 -> 已修改，下版再確認
+  - modifier_order
+  - strict_fileprivate
+  - explicit_init
+  - fatal_error_message
+  - implicit_return
+  - strong_iboutlet
+  - yoda_condition
+  - missing_docs
+  - switch_case_on_newline
+
+# 檔案長度
 file_length:
-  warning: 500
-  error: 800
+  warning: 800
+  error: 1200
+  ignore_comment_only_lines: true # comment, 空白換行, scope 的 } 會被忽略不計算
+
+# function 長度 - 只看 {} 內的總行數減掉 comment 與空白換行
+function_body_length:
+  warning: 80
+  error: 120
+
+# closure 長度
+closure_body_length:
+  warning: 80
+  error: 120
+
+# function 傳入參數上限
+function_parameter_count:
+  warning: 5
+  error: 6
+
+# tuple item 上限
+large_tuple:
+  warning: 3
+  error: 4
+
+# enum case with associate value 參數上限
+enum_case_associated_values_count:
+  warning: 4
+  error: 5
+
+# 宣告型別 scope 行數上限
 type_body_length:
-  - 500 # warning
-  - 700 # error
+  warning: 300
+  error: 400
+
+# 型別命名規則
+type_name:
+  min_length: 4
+  max_length:
+    warning: 25
+    error: 30
+
+# compute property get 和 set 的順序
+computed_accessors_order:
+  severity: error
+
+# 檢核 available 已不再使用的舊版本
+# Deployment Target 要配合專案的 Minimum Target -> 需配合專案更新
+deployment_target:
+  iOS_deployment_target: 13
+
+anyobject_protocol:
+  severity: error
+
