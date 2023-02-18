@@ -172,6 +172,15 @@ class TracksViewController: BaseViewController {
         
     }
     
+    func recordmanager() -> RecordManager {
+        return RecordManager.shared
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        recordmanager().track(event: "viewDidAppear - \(type(of: self))")
+    }
+    
 }
 
 extension TracksViewController: UITableViewDelegate {

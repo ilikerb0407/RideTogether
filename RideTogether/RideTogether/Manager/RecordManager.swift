@@ -10,7 +10,7 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-class RecordManager {
+internal class RecordManager {
     
     var userId: String { UserManager.shared.userInfo.uid }
     
@@ -18,9 +18,18 @@ class RecordManager {
     
     lazy var storage = Storage.storage()
 
+    // 用 Overrider的方式 寫測試方法
     static let shared = RecordManager()
-    
-    private init() { }
+
+    func track(event: String) {
+        print(">>" + event)
+
+        if self !== RecordManager.shared {
+            print(">> .... Not the RecordManger Singleton")
+        }
+    }
+
+    init() { }
     
     lazy var storageRef = storage.reference()
     

@@ -141,8 +141,8 @@
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
-		3BDF086F299F7FA400766110 /* OverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF086E299F7FA400766110 /* OverrideViewController.swift */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
+		3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */; };
 		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
 		C51FAD2B2909368B00264854 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2A2909368B00264854 /* WidgetKit.framework */; };
 		C51FAD2D2909368B00264854 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2C2909368B00264854 /* SwiftUI.framework */; };
@@ -330,8 +330,8 @@
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3BDF086E299F7FA400766110 /* OverrideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewController.swift; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
+		3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewControllerTests.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
-				3BDF086E299F7FA400766110 /* OverrideViewController.swift */,
+				3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */,
 			);
 			path = RideTogetherTests;
 			sourceTree = "<group>";
@@ -1088,7 +1088,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDF086F299F7FA400766110 /* OverrideViewController.swift in Sources */,
+				3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */,
 				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
