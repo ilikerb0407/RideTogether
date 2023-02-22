@@ -38,26 +38,14 @@
                BlueprintName = "RideTogetherTests"
                ReferencedContainer = "container:RideTogether.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "234A167A2837568D00E09F09"
-               BuildableName = "RideTogetherUITests.xctest"
-               BlueprintName = "RideTogetherUITests"
-               ReferencedContainer = "container:RideTogether.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "234A16892837656900E09F09"
-               BuildableName = "RideTogetherMapTests.xctest"
-               BlueprintName = "RideTogetherMapTests"
-               ReferencedContainer = "container:RideTogether.xcodeproj">
-            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "OverrideViewControllerTests">
+               </Test>
+               <Test
+                  Identifier = "RideTogetherTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

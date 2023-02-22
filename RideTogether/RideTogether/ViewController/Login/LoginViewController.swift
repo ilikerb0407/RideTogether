@@ -168,9 +168,11 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         return hashString
     }
     
-    @IBOutlet weak var emailbtn: UIButton!
+    @IBOutlet private(set) var emailbtn: UIButton!
     
     @objc func popUpEmailSignIn() {
+
+        print(">>>> Button tapped ")
         
         if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
             

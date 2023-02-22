@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2v5-cM-9tM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2v5-cM-9tM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsPointsOfInterest="NO" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsTraffic="YES" showsPointsOfInterest="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-sy-owc" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </mapView>
                         </subviews>
@@ -33,7 +33,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vOJ-58-azY"/>
                     <connections>
-                        <outlet property="mapView" destination="jJ6-sy-owc" id="vQz-qg-IUf"/>
+                        <outlet property="mapView" destination="jJ6-sy-owc" id="AMB-qy-ZxS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -49,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g4x-l8-Wjd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="woJ-g6-GgN"/>
@@ -233,7 +233,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9R-Xf-fu4">
-                                <rect key="frame" x="50" y="99" width="314" height="170"/>
+                                <rect key="frame" x="50" y="103" width="314" height="170"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="b1P-I6-bW0">
                                         <rect key="frame" x="18" y="10" width="290" height="150"/>
@@ -404,7 +404,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天氣" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="031-th-q2z">
-                                <rect key="frame" x="60" y="64" width="294" height="26.5"/>
+                                <rect key="frame" x="60" y="68" width="294" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" name="B5"/>
                                 <nil key="highlightedColor"/>
@@ -469,17 +469,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYH-Rx-Ye4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="469"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" showsBuildings="NO" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYH-Rx-Ye4">
+                                <rect key="frame" x="0.0" y="48" width="414" height="469"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="469" id="rZU-01-e7k"/>
                                 </constraints>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-qu-9WZ">
-                                <rect key="frame" x="0.0" y="578" width="414" height="284"/>
+                                <rect key="frame" x="0.0" y="582" width="414" height="280"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HW5-WO-Yoe">
-                                <rect key="frame" x="0.0" y="521" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="525" width="414" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPD-Hg-cWf">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="26.5"/>
@@ -538,7 +538,7 @@
                     <tabBarItem key="tabBarItem" title="騎乘" image="bicycle" catalog="system" id="1oW-XG-2nx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ub-cz-m99">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

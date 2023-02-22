@@ -28,17 +28,31 @@ class GPXMapView: MKMapView {
     var headingImageView: UIImageView?
 
     var rotationGesture = UIRotationGestureRecognizer()
-    
+
+    init() {
+        waypoints = .init()
+        currentSegmentOverlay = .init()
+        headingOffset = .init()
+        heading = .init()
+        headingImageView = .init()
+        super.init(frame: .zero)
+    }
+
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+
+
     required init?(coder aDecoder: NSCoder) {
-        
+
         var tmpCoords: [CLLocationCoordinate2D] = []
-        
+
         currentSegmentOverlay = MKPolyline(coordinates: &tmpCoords, count: 0)
-        
+//        fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
 
         isUserInteractionEnabled = true
-        
+
         isMultipleTouchEnabled = true
     }
     
