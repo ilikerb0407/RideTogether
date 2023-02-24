@@ -144,6 +144,8 @@
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012D7129A605C00088363C /* ButtonTappedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D7029A605C00088363C /* ButtonTappedTests.swift */; };
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
+		3B012DB929A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */; };
+		3B012DBB29A8ADC50088363C /* ViewControllerPresentationSpy.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */; };
@@ -180,6 +182,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3B012DBA29A8ADB00088363C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				3B012DBB29A8ADC50088363C /* ViewControllerPresentationSpy.xcframework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C51FAD372909368D00264854 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +348,7 @@
 		3B012D1C29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletConnectionsViewControllerTests.swift; sourceTree = "<group>"; };
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B012D7029A605C00088363C /* ButtonTappedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTappedTests.swift; sourceTree = "<group>"; };
+		3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ViewControllerPresentationSpy.xcframework; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewControllerTests.swift; sourceTree = "<group>"; };
@@ -363,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */,
+				3B012DB929A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +476,7 @@
 		234A166F283738E200E09F09 /* RideTogetherTests */ = {
 			isa = PBXGroup;
 			children = (
+				3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */,
 				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
 				3B012D1C29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift */,
 				3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */,
@@ -821,6 +836,7 @@
 				234A166B283738E200E09F09 /* Frameworks */,
 				234A166C283738E200E09F09 /* Resources */,
 				61F5865EDF66E42E3651D260 /* [CP] Embed Pods Frameworks */,
+				3B012DBA29A8ADB00088363C /* CopyFiles */,
 			);
 			buildRules = (
 			);

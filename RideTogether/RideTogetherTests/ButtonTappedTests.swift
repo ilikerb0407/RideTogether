@@ -17,6 +17,4 @@ final class ButtonTappedTests: XCTestCase {
         sut.loadViewIfNeeded()
         tap(sut.emailbtn)
     }
-
-
 }
