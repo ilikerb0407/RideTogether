@@ -1,0 +1,73 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ViewControllerPresentationSpy
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import Swift
+import UIKit
+@_exported import ViewControllerPresentationSpy
+import XCTest
+import _Concurrency
+import _StringProcessing
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @objc(QCOPresentationVerifier) public class PresentationVerifier : ObjectiveC.NSObject {
+  @objc @_Concurrency.MainActor public var presentedCount: Swift.Int
+  @objc @_Concurrency.MainActor public var presentedViewController: UIKit.UIViewController?
+  @objc @_Concurrency.MainActor public var presentingViewController: UIKit.UIViewController?
+  @objc @_Concurrency.MainActor public var animated: Swift.Bool
+  @objc @_Concurrency.MainActor public var capturedCompletion: (() -> Swift.Void)?
+  @objc @_Concurrency.MainActor public var testCompletion: (() -> Swift.Void)?
+  @_Concurrency.MainActor @objc override dynamic public init()
+  @objc deinit
+}
+extension ViewControllerPresentationSpy.PresentationVerifier {
+  @discardableResult
+  @_Concurrency.MainActor public func verify<VC>(animated: Swift.Bool, presentingViewController: UIKit.UIViewController? = nil, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> VC? where VC : UIKit.UIViewController
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @objc(QCOAlertVerifier) public class AlertVerifier : ObjectiveC.NSObject {
+  @objc @_Concurrency.MainActor public var presentedCount: Swift.Int
+  @objc @_Concurrency.MainActor public var presentingViewController: UIKit.UIViewController?
+  @objc @_Concurrency.MainActor public var animated: Swift.Bool
+  @objc @_Concurrency.MainActor public var title: Swift.String?
+  @objc @_Concurrency.MainActor public var message: Swift.String?
+  @objc @_Concurrency.MainActor public var preferredStyle: UIKit.UIAlertController.Style
+  @objc @_Concurrency.MainActor public var actions: [UIKit.UIAlertAction]
+  @objc @_Concurrency.MainActor public var preferredAction: UIKit.UIAlertAction?
+  @objc @_Concurrency.MainActor public var popover: UIKit.UIPopoverPresentationController?
+  @objc @_Concurrency.MainActor public var textFields: [UIKit.UITextField]?
+  @objc @_Concurrency.MainActor public var capturedCompletion: (() -> Swift.Void)?
+  @objc @_Concurrency.MainActor public var testCompletion: (() -> Swift.Void)?
+  @_Concurrency.MainActor @objc override dynamic public init()
+  @objc deinit
+  @objc(executeActionForButton:andReturnError:) @_Concurrency.MainActor public func executeAction(forButton title: Swift.String) throws
+}
+extension ViewControllerPresentationSpy.AlertVerifier {
+  @_Concurrency.MainActor public func verify(title: Swift.String?, message: Swift.String?, animated: Swift.Bool, actions: [ViewControllerPresentationSpy.AlertVerifier.Action], preferredStyle: UIKit.UIAlertController.Style = .alert, presentingViewController: UIKit.UIViewController? = nil, file: Swift.StaticString = #file, line: Swift.UInt = #line)
+}
+extension ViewControllerPresentationSpy.AlertVerifier {
+  public enum Action : Swift.Equatable {
+    case `default`(Swift.String?)
+    case cancel(Swift.String?)
+    case destructive(Swift.String?)
+    public static func == (a: ViewControllerPresentationSpy.AlertVerifier.Action, b: ViewControllerPresentationSpy.AlertVerifier.Action) -> Swift.Bool
+  }
+}
+extension ViewControllerPresentationSpy.AlertVerifier.Action : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor @objc(QCODismissalVerifier) public class DismissalVerifier : ObjectiveC.NSObject {
+  @objc @_Concurrency.MainActor public var dismissedCount: Swift.Int
+  @objc @_Concurrency.MainActor public var dismissedViewController: UIKit.UIViewController?
+  @objc @_Concurrency.MainActor public var animated: Swift.Bool
+  @objc @_Concurrency.MainActor public var capturedCompletion: (() -> Swift.Void)?
+  @objc @_Concurrency.MainActor public var testCompletion: (() -> Swift.Void)?
+  @_Concurrency.MainActor @objc override dynamic public init()
+  @objc deinit
+}
+extension ViewControllerPresentationSpy.DismissalVerifier {
+  @_Concurrency.MainActor public func verify(animated: Swift.Bool, dismissedViewController: UIKit.UIViewController? = nil, file: Swift.StaticString = #file, line: Swift.UInt = #line)
+}
+extension ViewControllerPresentationSpy.PresentationVerifier : Swift.Sendable {}
+extension ViewControllerPresentationSpy.AlertVerifier : Swift.Sendable {}
+extension ViewControllerPresentationSpy.DismissalVerifier : Swift.Sendable {}

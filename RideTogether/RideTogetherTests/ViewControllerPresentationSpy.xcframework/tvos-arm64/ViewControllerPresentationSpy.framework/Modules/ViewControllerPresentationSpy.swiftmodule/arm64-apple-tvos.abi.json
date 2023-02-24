@@ -1,0 +1,3813 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "XCTest",
+        "printedName": "XCTest",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DismissalVerifier",
+        "printedName": "DismissalVerifier",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "dismissedCount",
+            "printedName": "dismissedCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(py)dismissedCount",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14dismissedCountSivp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)dismissedCount",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14dismissedCountSivg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)setDismissedCount:",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14dismissedCountSivs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy17DismissalVerifierC14dismissedCountSivM",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14dismissedCountSivM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "dismissedViewController",
+            "printedName": "dismissedViewController",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(py)dismissedViewController",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC09dismissedaB0So06UIViewB0CSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)dismissedViewController",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC09dismissedaB0So06UIViewB0CSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)setDismissedViewController:",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC09dismissedaB0So06UIViewB0CSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy17DismissalVerifierC09dismissedaB0So06UIViewB0CSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC09dismissedaB0So06UIViewB0CSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "animated",
+            "printedName": "animated",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(py)animated",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC8animatedSbvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)animated",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC8animatedSbvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)setAnimated:",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC8animatedSbvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy17DismissalVerifierC8animatedSbvM",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC8animatedSbvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "capturedCompletion",
+            "printedName": "capturedCompletion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(py)capturedCompletion",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC18capturedCompletionyycSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)capturedCompletion",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC18capturedCompletionyycSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)setCapturedCompletion:",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC18capturedCompletionyycSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy17DismissalVerifierC18capturedCompletionyycSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC18capturedCompletionyycSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "testCompletion",
+            "printedName": "testCompletion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(py)testCompletion",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14testCompletionyycSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)testCompletion",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14testCompletionyycSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)setTestCompletion:",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14testCompletionyycSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy17DismissalVerifierC14testCompletionyycSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC14testCompletionyycSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DismissalVerifier",
+                "printedName": "ViewControllerPresentationSpy.DismissalVerifier",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier(im)init",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierCACycfc",
+            "moduleName": "ViewControllerPresentationSpy",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "verify",
+            "printedName": "verify(animated:dismissedViewController:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:29ViewControllerPresentationSpy17DismissalVerifierC6verify8animated09dismissedaB04file4lineySb_So06UIViewB0CSgs12StaticStringVSutF",
+            "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC6verify8animated09dismissedaB04file4lineySb_So06UIViewB0CSgs12StaticStringVSutF",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "Custom",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCODismissalVerifier",
+        "mangledName": "$s29ViewControllerPresentationSpy17DismissalVerifierC",
+        "moduleName": "ViewControllerPresentationSpy",
+        "objc_name": "QCODismissalVerifier",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "Custom",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "XCTest",
+        "printedName": "XCTest",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AlertVerifier",
+        "printedName": "AlertVerifier",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "presentedCount",
+            "printedName": "presentedCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)presentedCount",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14presentedCountSivp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)presentedCount",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14presentedCountSivg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setPresentedCount:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14presentedCountSivs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC14presentedCountSivM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14presentedCountSivM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "presentingViewController",
+            "printedName": "presentingViewController",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)presentingViewController",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC010presentingaB0So06UIViewB0CSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)presentingViewController",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC010presentingaB0So06UIViewB0CSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setPresentingViewController:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC010presentingaB0So06UIViewB0CSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC010presentingaB0So06UIViewB0CSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC010presentingaB0So06UIViewB0CSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "animated",
+            "printedName": "animated",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)animated",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC8animatedSbvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)animated",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC8animatedSbvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setAnimated:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC8animatedSbvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC8animatedSbvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC8animatedSbvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "title",
+            "printedName": "title",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)title",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC5titleSSSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)title",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC5titleSSSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setTitle:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC5titleSSSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC5titleSSSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC5titleSSSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "message",
+            "printedName": "message",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)message",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7messageSSSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)message",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7messageSSSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setMessage:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7messageSSSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC7messageSSSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7messageSSSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "preferredStyle",
+            "printedName": "preferredStyle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Style",
+                "printedName": "UIKit.UIAlertController.Style",
+                "usr": "c:@E@UIAlertControllerStyle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)preferredStyle",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14preferredStyleSo07UIAlertbH0Vvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Style",
+                    "printedName": "UIKit.UIAlertController.Style",
+                    "usr": "c:@E@UIAlertControllerStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)preferredStyle",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14preferredStyleSo07UIAlertbH0Vvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Style",
+                    "printedName": "UIKit.UIAlertController.Style",
+                    "usr": "c:@E@UIAlertControllerStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setPreferredStyle:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14preferredStyleSo07UIAlertbH0Vvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC14preferredStyleSo07UIAlertbH0VvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14preferredStyleSo07UIAlertbH0VvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "actions",
+            "printedName": "actions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[UIKit.UIAlertAction]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIAlertAction",
+                    "printedName": "UIKit.UIAlertAction",
+                    "usr": "c:objc(cs)UIAlertAction"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)actions",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7actionsSaySo13UIAlertActionCGvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[UIKit.UIAlertAction]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIAlertAction",
+                        "printedName": "UIKit.UIAlertAction",
+                        "usr": "c:objc(cs)UIAlertAction"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)actions",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7actionsSaySo13UIAlertActionCGvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[UIKit.UIAlertAction]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIAlertAction",
+                        "printedName": "UIKit.UIAlertAction",
+                        "usr": "c:objc(cs)UIAlertAction"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setActions:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7actionsSaySo13UIAlertActionCGvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC7actionsSaySo13UIAlertActionCGvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC7actionsSaySo13UIAlertActionCGvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "preferredAction",
+            "printedName": "preferredAction",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIAlertAction?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIAlertAction",
+                    "printedName": "UIKit.UIAlertAction",
+                    "usr": "c:objc(cs)UIAlertAction"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)preferredAction",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC15preferredActionSo07UIAlertH0CSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIAlertAction?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIAlertAction",
+                        "printedName": "UIKit.UIAlertAction",
+                        "usr": "c:objc(cs)UIAlertAction"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)preferredAction",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC15preferredActionSo07UIAlertH0CSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIAlertAction?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIAlertAction",
+                        "printedName": "UIKit.UIAlertAction",
+                        "usr": "c:objc(cs)UIAlertAction"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setPreferredAction:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC15preferredActionSo07UIAlertH0CSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC15preferredActionSo07UIAlertH0CSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC15preferredActionSo07UIAlertH0CSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "textFields",
+            "printedName": "textFields",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[UIKit.UITextField]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[UIKit.UITextField]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UITextField",
+                        "printedName": "UIKit.UITextField",
+                        "usr": "c:objc(cs)UITextField"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)textFields",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC10textFieldsSaySo11UITextFieldCGSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[UIKit.UITextField]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[UIKit.UITextField]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UITextField",
+                            "printedName": "UIKit.UITextField",
+                            "usr": "c:objc(cs)UITextField"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)textFields",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC10textFieldsSaySo11UITextFieldCGSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[UIKit.UITextField]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[UIKit.UITextField]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UITextField",
+                            "printedName": "UIKit.UITextField",
+                            "usr": "c:objc(cs)UITextField"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setTextFields:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC10textFieldsSaySo11UITextFieldCGSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC10textFieldsSaySo11UITextFieldCGSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC10textFieldsSaySo11UITextFieldCGSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "capturedCompletion",
+            "printedName": "capturedCompletion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)capturedCompletion",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC18capturedCompletionyycSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)capturedCompletion",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC18capturedCompletionyycSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setCapturedCompletion:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC18capturedCompletionyycSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC18capturedCompletionyycSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC18capturedCompletionyycSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "testCompletion",
+            "printedName": "testCompletion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(py)testCompletion",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14testCompletionyycSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)testCompletion",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14testCompletionyycSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)setTestCompletion:",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14testCompletionyycSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC14testCompletionyycSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC14testCompletionyycSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AlertVerifier",
+                "printedName": "ViewControllerPresentationSpy.AlertVerifier",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)init",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierCACycfc",
+            "moduleName": "ViewControllerPresentationSpy",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "executeAction",
+            "printedName": "executeAction(forButton:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier(im)executeActionForButton:andReturnError:",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC13executeAction9forButtonySS_tKF",
+            "moduleName": "ViewControllerPresentationSpy",
+            "objc_name": "executeActionForButton:andReturnError:",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "verify",
+            "printedName": "verify(title:message:animated:actions:preferredStyle:presentingViewController:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[ViewControllerPresentationSpy.AlertVerifier.Action]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Action",
+                    "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                    "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Style",
+                "printedName": "UIKit.UIAlertController.Style",
+                "hasDefaultArg": true,
+                "usr": "c:@E@UIAlertControllerStyle"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6verify5title7message8animated7actions14preferredStyle010presentingaB04file4lineySSSg_AMSbSayAC6ActionOGSo07UIAlertbM0VSo06UIViewB0CSgs12StaticStringVSutF",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6verify5title7message8animated7actions14preferredStyle010presentingaB04file4lineySSSg_AMSbSayAC6ActionOGSo07UIAlertbM0VSo06UIViewB0CSgs12StaticStringVSutF",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "Action",
+            "printedName": "Action",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "default",
+                "printedName": "default",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ViewControllerPresentationSpy.AlertVerifier.Action.Type) -> (Swift.String?) -> ViewControllerPresentationSpy.AlertVerifier.Action",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.String?) -> ViewControllerPresentationSpy.AlertVerifier.Action",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Action",
+                            "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Action",
+                            "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO7defaultyAESSSgcAEmF",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO7defaultyAESSSgcAEmF",
+                "moduleName": "ViewControllerPresentationSpy"
+              },
+              {
+                "kind": "Var",
+                "name": "cancel",
+                "printedName": "cancel",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ViewControllerPresentationSpy.AlertVerifier.Action.Type) -> (Swift.String?) -> ViewControllerPresentationSpy.AlertVerifier.Action",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.String?) -> ViewControllerPresentationSpy.AlertVerifier.Action",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Action",
+                            "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Action",
+                            "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO6cancelyAESSSgcAEmF",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO6cancelyAESSSgcAEmF",
+                "moduleName": "ViewControllerPresentationSpy"
+              },
+              {
+                "kind": "Var",
+                "name": "destructive",
+                "printedName": "destructive",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ViewControllerPresentationSpy.AlertVerifier.Action.Type) -> (Swift.String?) -> ViewControllerPresentationSpy.AlertVerifier.Action",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.String?) -> ViewControllerPresentationSpy.AlertVerifier.Action",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Action",
+                            "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Action",
+                            "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO11destructiveyAESSSgcAEmF",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO11destructiveyAESSSgcAEmF",
+                "moduleName": "ViewControllerPresentationSpy"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Action",
+                    "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                    "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Action",
+                    "printedName": "ViewControllerPresentationSpy.AlertVerifier.Action",
+                    "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO2eeoiySbAE_AEtFZ",
+                "moduleName": "ViewControllerPresentationSpy",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "description",
+                "printedName": "description",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO11descriptionSSvp",
+                "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO11descriptionSSvp",
+                "moduleName": "ViewControllerPresentationSpy",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "isFromExtension": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO11descriptionSSvg",
+                    "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO11descriptionSSvg",
+                    "moduleName": "ViewControllerPresentationSpy",
+                    "isFromExtension": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:29ViewControllerPresentationSpy13AlertVerifierC6ActionO",
+            "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC6ActionO",
+            "moduleName": "ViewControllerPresentationSpy",
+            "isFromExtension": true,
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "CustomStringConvertible",
+                "printedName": "CustomStringConvertible",
+                "usr": "s:s23CustomStringConvertibleP",
+                "mangledName": "$ss23CustomStringConvertibleP"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOAlertVerifier",
+        "mangledName": "$s29ViewControllerPresentationSpy13AlertVerifierC",
+        "moduleName": "ViewControllerPresentationSpy",
+        "objc_name": "QCOAlertVerifier",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "Custom",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "XCTest",
+        "printedName": "XCTest",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "XCTest",
+        "printedName": "XCTest",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PresentationVerifier",
+        "printedName": "PresentationVerifier",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "presentedCount",
+            "printedName": "presentedCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(py)presentedCount",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14presentedCountSivp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)presentedCount",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14presentedCountSivg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)setPresentedCount:",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14presentedCountSivs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy0C8VerifierC14presentedCountSivM",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14presentedCountSivM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "presentedViewController",
+            "printedName": "presentedViewController",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(py)presentedViewController",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC09presentedaB0So06UIViewB0CSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)presentedViewController",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC09presentedaB0So06UIViewB0CSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)setPresentedViewController:",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC09presentedaB0So06UIViewB0CSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy0C8VerifierC09presentedaB0So06UIViewB0CSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC09presentedaB0So06UIViewB0CSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "presentingViewController",
+            "printedName": "presentingViewController",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(py)presentingViewController",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC010presentingaB0So06UIViewB0CSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)presentingViewController",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC010presentingaB0So06UIViewB0CSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIViewController?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIViewController",
+                        "printedName": "UIKit.UIViewController",
+                        "usr": "c:objc(cs)UIViewController"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)setPresentingViewController:",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC010presentingaB0So06UIViewB0CSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy0C8VerifierC010presentingaB0So06UIViewB0CSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC010presentingaB0So06UIViewB0CSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "animated",
+            "printedName": "animated",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(py)animated",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC8animatedSbvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)animated",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC8animatedSbvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)setAnimated:",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC8animatedSbvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy0C8VerifierC8animatedSbvM",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC8animatedSbvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "capturedCompletion",
+            "printedName": "capturedCompletion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(py)capturedCompletion",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC18capturedCompletionyycSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)capturedCompletion",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC18capturedCompletionyycSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)setCapturedCompletion:",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC18capturedCompletionyycSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy0C8VerifierC18capturedCompletionyycSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC18capturedCompletionyycSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "testCompletion",
+            "printedName": "testCompletion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(py)testCompletion",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14testCompletionyycSgvp",
+            "moduleName": "ViewControllerPresentationSpy",
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)testCompletion",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14testCompletionyycSgvg",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(() -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "() -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)setTestCompletion:",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14testCompletionyycSgvs",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:29ViewControllerPresentationSpy0C8VerifierC14testCompletionyycSgvM",
+                "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC14testCompletionyycSgvM",
+                "moduleName": "ViewControllerPresentationSpy",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PresentationVerifier",
+                "printedName": "ViewControllerPresentationSpy.PresentationVerifier",
+                "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier(im)init",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierCACycfc",
+            "moduleName": "ViewControllerPresentationSpy",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "verify",
+            "printedName": "verify(animated:presentingViewController:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "τ_0_0?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:29ViewControllerPresentationSpy0C8VerifierC6verify8animated010presentingaB04file4linexSgSb_So06UIViewB0CSgs12StaticStringVSutAKRbzlF",
+            "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC6verify8animated010presentingaB04file4linexSgSb_So06UIViewB0CSgs12StaticStringVSutAKRbzlF",
+            "moduleName": "ViewControllerPresentationSpy",
+            "genericSig": "<τ_0_0 where τ_0_0 : UIKit.UIViewController>",
+            "sugared_genericSig": "<VC where VC : UIKit.UIViewController>",
+            "declAttributes": [
+              "Custom",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@ViewControllerPresentationSpy@objc(cs)QCOPresentationVerifier",
+        "mangledName": "$s29ViewControllerPresentationSpy0C8VerifierC",
+        "moduleName": "ViewControllerPresentationSpy",
+        "objc_name": "QCOPresentationVerifier",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "Custom",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ViewControllerPresentationSpy"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIAlertAction+Mocking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1453,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIAlertAction+Mocking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1467,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIAlertAction+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 1319,
+      "length": 28,
+      "value": "\"ViewControllerPresentationSpy.UIAlertActionExtraProperties\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/DismissalVerifier.swift",
+      "kind": "IntegerLiteral",
+      "offset": 696,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/DismissalVerifier.swift",
+      "kind": "BooleanLiteral",
+      "offset": 801,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/DismissalVerifier.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1122,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/AlertVerifier.swift",
+      "kind": "IntegerLiteral",
+      "offset": 689,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/AlertVerifier.swift",
+      "kind": "BooleanLiteral",
+      "offset": 795,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/AlertVerifier.swift",
+      "kind": "Array",
+      "offset": 993,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/AlertVerifier.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1233,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/ClosureContainer.swift",
+      "kind": "StringLiteral",
+      "offset": 245,
+      "length": 16,
+      "value": "\"ViewControllerPresentationSpy.ClosureContainer\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/PresentationVerifier.swift",
+      "kind": "IntegerLiteral",
+      "offset": 731,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/PresentationVerifier.swift",
+      "kind": "BooleanLiteral",
+      "offset": 901,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/PresentationVerifier.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1231,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIAlertController+Mocking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2805,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIAlertController+Mocking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2819,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIAlertController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 2667,
+      "length": 32,
+      "value": "\"ViewControllerPresentationSpy.UIAlertControllerExtraProperties\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIViewController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 268,
+      "length": 29,
+      "value": "\"presentingViewControllerKey\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIViewController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 316,
+      "length": 13,
+      "value": "\"animatedKey\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIViewController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 350,
+      "length": 15,
+      "value": "\"completionKey\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIViewController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 456,
+      "length": 25,
+      "value": "\"viewControllerPresented\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIViewController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 542,
+      "length": 25,
+      "value": "\"viewControllerDismissed\""
+    },
+    {
+      "filePath": "\/Users\/jmreid\/Developer\/ViewControllerPresentationSpy\/Source\/ViewControllerPresentationSpy\/UIViewController+Mocking.swift",
+      "kind": "StringLiteral",
+      "offset": 629,
+      "length": 26,
+      "value": "\"alertControllerPresented\""
+    }
+  ]
+}
