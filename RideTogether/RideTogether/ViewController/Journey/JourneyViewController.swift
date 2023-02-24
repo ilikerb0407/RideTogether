@@ -59,7 +59,7 @@ class JourneyViewController: BaseViewController {
             case .tracking:
                 
                 trackerButton.setTitle("暫停", for: .normal)
-                
+
                 self.stopWatch.start()
                 
                 locationManager.allowsBackgroundLocationUpdates = true
@@ -108,15 +108,15 @@ class JourneyViewController: BaseViewController {
     }
     
     // MARK: - UIButton Setting -
-    
-    private lazy var saveButton: UIButton = {
+    //
+    private(set) lazy var saveButton: UIButton = {
         let button = LeftButton()
         button.setTitle("儲存", for: .normal)
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private lazy var trackerButton: UIButton = {
+    private(set) lazy var trackerButton: UIButton = {
         let button = TrackButton()
         button.setTitle("開始", for: .normal)
         button.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
@@ -417,7 +417,8 @@ class JourneyViewController: BaseViewController {
         
         let saveAction = UIAlertAction(title: "儲存",
                                        style: .default) { _ in
-            
+
+            print(">>>>> 儲存")
             let gpxString = self.mapView.exportToGPXString()
             
             let fileName = alertController.textFields?[0].text

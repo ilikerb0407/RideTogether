@@ -146,6 +146,7 @@
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012DB929A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */; };
 		3B012DBB29A8ADC50088363C /* ViewControllerPresentationSpy.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3B012DBD29A8AE3E0088363C /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012DBC29A8AE3E0088363C /* AlertTests.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */; };
@@ -349,6 +350,7 @@
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B012D7029A605C00088363C /* ButtonTappedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTappedTests.swift; sourceTree = "<group>"; };
 		3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ViewControllerPresentationSpy.xcframework; sourceTree = "<group>"; };
+		3B012DBC29A8AE3E0088363C /* AlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewControllerTests.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				3B012D1C29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift */,
 				3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */,
 				3B012D7029A605C00088363C /* ButtonTappedTests.swift */,
+				3B012DBC29A8AE3E0088363C /* AlertTests.swift */,
 			);
 			path = RideTogetherTests;
 			sourceTree = "<group>";
@@ -1114,6 +1117,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B012DBD29A8AE3E0088363C /* AlertTests.swift in Sources */,
 				3B012D1D29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift in Sources */,
 				3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */,
 				3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */,

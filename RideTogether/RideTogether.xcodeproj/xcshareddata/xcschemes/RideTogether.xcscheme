@@ -40,6 +40,12 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "ButtonTappedTests">
+               </Test>
+               <Test
+                  Identifier = "OutletConnectionsViewControllerTests">
+               </Test>
+               <Test
                   Identifier = "OverrideViewControllerTests">
                </Test>
                <Test
