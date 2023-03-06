@@ -156,8 +156,8 @@ class RouteSelectionViewController: UIViewController {
         inputContainerView.cornerRadius = 30
     }
     
-    private lazy var cloudsLottieView: AnimationView = {
-        let view = AnimationView(name: "cloud")
+    private lazy var cloudsLottieView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "cloud")
         view.loopMode = .loop
         view.frame = CGRect(x: -30, y: -150, width: 400, height: 400)
         view.contentMode = .scaleAspectFit
@@ -166,8 +166,8 @@ class RouteSelectionViewController: UIViewController {
         return view
     }()
     
-    private lazy var rainLottieView: AnimationView = {
-        let view = AnimationView(name: "rain")
+    private lazy var rainLottieView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "rain")
         view.loopMode = .loop
         view.frame = CGRect(x: UIScreen.width / 2 - 100, y: -25, width: 200, height: 200)
         view.contentMode = .scaleAspectFit
@@ -176,8 +176,8 @@ class RouteSelectionViewController: UIViewController {
         return view
     }()
     
-    private lazy var sunLottieView: AnimationView = {
-        let view = AnimationView(name: "sun")
+    private lazy var sunLottieView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "sun")
         view.loopMode = .loop
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         view.contentMode = .scaleAspectFit
@@ -186,8 +186,8 @@ class RouteSelectionViewController: UIViewController {
         return view
     }()
     
-    private lazy var otherLottieView: AnimationView = {
-        let view = AnimationView(name: "otherweather")
+    private lazy var otherLottieView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "otherweather")
         view.loopMode = .loop
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         view.contentMode = .scaleAspectFit

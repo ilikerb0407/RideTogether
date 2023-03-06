@@ -231,9 +231,9 @@ class SignUpViewController: BaseViewController {
     
     func lottie() {
         
-        var waveLottieView: AnimationView = {
+        var waveLottieView: LottieAnimationView = {
             
-            let view = AnimationView(name: "49908-bike-ride")
+            let view = LottieAnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
 //            view.frame = CGRect(x: UIScreen.width / 4, y: UIScreen.height / 10 , width: 250 , height: 250)
             self.view.addSubview(view)

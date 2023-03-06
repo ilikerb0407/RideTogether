@@ -341,11 +341,11 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.2)
-  - IQKeyboardManagerSwift (6.5.10)
+  - IQKeyboardManagerSwift (6.5.11)
   - JGProgressHUD (2.2)
-  - Kingfisher (7.4.1)
+  - Kingfisher (7.6.2)
   - leveldb-library (1.22.1)
-  - lottie-ios (3.5.0)
+  - lottie-ios (4.1.3)
   - MASegmentedControl (0.0.5)
   - MJRefresh (3.7.5)
   - nanopb (1.30906.0):
@@ -356,7 +356,7 @@ PODS:
   - PromisesObjC (1.2.12)
   - RSKPlaceholderTextView (6.1.0)
   - SwiftAlgorithms (1.0.0)
-  - SwiftLint (0.49.1)
+  - SwiftLint (0.50.3)
 
 DEPENDENCIES:
   - Charts
@@ -436,18 +436,18 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
-  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
+  lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
   MASegmentedControl: 9b58f9ba3a562a739b63b29e4ca2b9dc4d9c62cb
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RSKPlaceholderTextView: 52f26e643b6f9bbf16f45cd2bbe2181b6dfe090c
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
-  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
+  SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
 
 PODFILE CHECKSUM: 4fc47bf291e8914e3d68e7f6bd59eaf3a85a1272
 

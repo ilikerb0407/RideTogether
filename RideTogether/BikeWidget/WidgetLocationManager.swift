@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
+internal class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = WidgetLocationManager()
     private let manager = CLLocationManager()
     private var completionHandler: ((CLLocation) -> Void)?
@@ -20,7 +20,7 @@ class WidgetLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private var isAuthorized: Bool {
-        return manager.isAuthorizedForWidgetUpdates
+        manager.isAuthorizedForWidgetUpdates
     }
     
     func fetchLocation(handler: @escaping (CLLocation) -> Void) {

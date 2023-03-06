@@ -212,8 +212,8 @@ class RecommendViewController: BaseViewController {
         waitlottie.isHidden = true
     }
     
-    private lazy var waitlottie: AnimationView = {
-        let view = AnimationView(name: "waiting-pigeon")
+    private lazy var waitlottie: LottieAnimationView = {
+        let view = LottieAnimationView(name: "waiting-pigeon")
         view.loopMode = .loop
         view.frame = CGRect(x: UIScreen.width / 8, y: UIScreen.height / 6, width: 300, height: 300)
         view.cornerRadius = 20
