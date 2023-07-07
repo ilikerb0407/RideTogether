@@ -1,0 +1,26 @@
+--swiftversion 5.7
+--redundanttype explicit
+--extensionacl on-declarations
+--emptybraces spaced
+--header ignore
+--self remove
+--selfrequired
+--funcattributes prev-line
+--wrapcollections before-first
+
+# open option
+--enable wrapConditionalBodies
+--enable wrapSwitchCases
+--enable blankLineAfterImports
+--enable blankLinesBetweenImports
+--enable blockComments
+--enable wrapEnumCases
+
+# close default
+--disable andOperator
+--disable blankLinesAroundMark
+--disable linebreakAtEndOfFile
+--disable redundantSelf
+--disable strongifiedSelf
+--disable wrapMultilineStatementBraces
+--disable preferKeyPath
