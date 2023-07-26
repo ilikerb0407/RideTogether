@@ -27,17 +27,16 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         self.locationManager.requestAlwaysAuthorization()
         
-        BikeManager.getBikeAPI { [ weak self ] result in
-            
+        BikeManager.shared.getTPBikeData { [ weak self ] result  in
             LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
-            
-        self?.bikeData = result
-            
+
+        self?.bikeData.append(contentsOf: result)
+        
         self?.layOutTaipeiBike()
-            
+
         }
         
-        BikeManager.getTCAPI { [weak self] result in
+        BikeManager.getTCBikeData { [weak self] result in
             
             LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             

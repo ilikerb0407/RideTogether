@@ -22,7 +22,9 @@ class UserManager {
     
     static let shared = UserManager()
     
-    private init() { }
+    private init() {
+
+    }
     
     lazy var storageRef = Storage.storage().reference()
     
@@ -36,7 +38,7 @@ class UserManager {
     
     let groupsCollection = Collection.groups.rawValue
     
-    func deleteUserInfo (uid: String) {
+    func deleteUserInfo(uid: String) {
         
         let uid = userInfo.uid
         
@@ -81,7 +83,7 @@ class UserManager {
         
     }
     
-    func deleteUserRequests (uid: String) {
+    func deleteUserRequests(uid: String) {
     
         let uid = userInfo.uid
       
@@ -104,7 +106,7 @@ class UserManager {
         }
     }
     
-    func deleteUserSharemaps (uid: String) {
+    func deleteUserSharemaps(uid: String) {
         
         let document = dataBase.collection(shareCollection).whereField("uid", isEqualTo: uid)
             
@@ -144,7 +146,7 @@ class UserManager {
         
         completion(.success("Success"))
     }
-//    
+
     func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         
         let docRef = dataBase.collection(usersCollection).document(uid)
@@ -172,7 +174,7 @@ class UserManager {
             }
         }
     }
-//    
+
     func uploadUserPicture(imageData: Data, completion: @escaping (Result<URL, Error>) -> Void) {
 
         let userId = userInfo.uid

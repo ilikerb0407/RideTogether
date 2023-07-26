@@ -11,35 +11,24 @@ import MapKit
 
 final class BikeManager {
     
-    var bikes: [Bike] = []
-    
-    class func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
-      
-        let urlString = URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")
-        
-        guard let urlString = urlString else { return }
-        let url = URLRequest(url: urlString)
-        
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
+    private var bikes: [Bike]
+
+    static let shared = BikeManager()
+
+    init() {
+        bikes = []
+    }
+
+    func getTPBikeData(completion: @escaping ([Bike]) -> Void) {
+        let apiLoader = APIRequestLoader(apiRequest: BikeRequest())
+
+        apiLoader.loadAPIRequest(requestData: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json") { data, _ in
             guard let data = data else { return }
-            let decoder = JSONDecoder()
-            do {
-                
-                let bikeData = try decoder.decode(Array<Bike>.self, from: data)
-                
-                completion(bikeData)
-                
-                LKProgressHUD.showSuccess(text: "讀取成功")
-               
-            } catch {
-                print(error)
-                LKProgressHUD.showFailure(text: "目前僅提供台北市的資料，陸續增加中")
-            }
-            
-        }) .resume()
+            completion(data)
+        }
     }
     
-    class func getTCAPI(completion: @escaping (TaichungBike) -> Void) {
+    class func getTCBikeData(completion: @escaping (TaichungBike) -> Void) {
         
         let urlString = URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")
         
@@ -54,11 +43,7 @@ final class BikeManager {
                 let tBikeData = try decoder.decode(TaichungBike.self, from: data)
                 
                 completion(tBikeData)
-                
-//                for count in 0..<20 {
-//                    bikes.append(bikeData[count]) }
-//                completion(bikes)
-                print("\(tBikeData)")
+
                 LKProgressHUD.showSuccess(text: "讀取成功")
                
             } catch {
@@ -69,5 +54,51 @@ final class BikeManager {
         }) .resume()
         
     }
-    
 }
+
+internal enum RequestError: Error {
+    case invalidUrl
+}
+
+class APIRequestLoader<T:APIRequest> {
+    let apiRequest: T
+    let urlSession: URLSession
+
+    init(apiRequest: T, urlSession: URLSession = .shared) {
+        self.apiRequest = apiRequest
+        self.urlSession = urlSession
+    }
+
+    func loadAPIRequest(requestData: T.RequestDataType, completionHandler: @escaping (T.ResponseDataType?, Error?) -> Void) {
+        do {
+            let urlRequest = try apiRequest.makeRequest(from: requestData)
+            URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
+                guard let data = data else { return completionHandler(nil, error) }
+                do {
+                    let parseResponse = try self.apiRequest.parseResponse(data: data)
+                    completionHandler(parseResponse, nil)
+                } catch {
+                    completionHandler(nil, error)
+                }
+            }).resume()
+        } catch {
+            completionHandler(nil, error)
+        }
+    }
+}
+
+struct BikeRequest: APIRequest {
+    // part one's method
+    func makeRequest(from stringUrl: String) throws -> URLRequest {
+        guard let url = URL(string: stringUrl) else {
+            throw RequestError.invalidUrl
+        }
+        return URLRequest(url: url)
+    }
+
+    // part two's method
+    func parseResponse(data: Data) throws -> [Bike] {
+        return try JSONDecoder().decode([Bike].self, from: data)
+    }
+}
+
