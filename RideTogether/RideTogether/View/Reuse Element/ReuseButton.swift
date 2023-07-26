@@ -105,8 +105,8 @@ class BottomButton: UIButton {
         self.backgroundColor = .B2?.withAlphaComponent(0.75)
         self.layer.cornerRadius = 24
         NSLayoutConstraint.activate([
-        self.heightAnchor.constraint(equalToConstant: 50), self.widthAnchor.constraint(equalToConstant: 50)])
-        
+            self.heightAnchor.constraint(equalToConstant: 50),
+            self.widthAnchor.constraint(equalToConstant: 50)])
     }
     
     required init?(coder aDecoder: NSCoder) {

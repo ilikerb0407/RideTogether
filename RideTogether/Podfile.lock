@@ -341,11 +341,11 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.2)
-  - IQKeyboardManagerSwift (6.5.11)
+  - IQKeyboardManagerSwift (6.5.12)
   - JGProgressHUD (2.2)
-  - Kingfisher (7.6.2)
-  - leveldb-library (1.22.1)
-  - lottie-ios (4.1.3)
+  - Kingfisher (7.8.1)
+  - leveldb-library (1.22.2)
+  - lottie-ios (4.2.0)
   - MASegmentedControl (0.0.5)
   - MJRefresh (3.7.5)
   - nanopb (1.30906.0):
@@ -356,7 +356,7 @@ PODS:
   - PromisesObjC (1.2.12)
   - RSKPlaceholderTextView (6.1.0)
   - SwiftAlgorithms (1.0.0)
-  - SwiftLint (0.50.3)
+  - SwiftLint (0.52.4)
 
 DEPENDENCIES:
   - Charts
@@ -417,7 +417,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
@@ -436,19 +436,19 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
-  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
-  leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
+  Kingfisher: 63f677311d36a3473f6b978584f8a3845d023dc5
+  leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
+  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   MASegmentedControl: 9b58f9ba3a562a739b63b29e4ca2b9dc4d9c62cb
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RSKPlaceholderTextView: 52f26e643b6f9bbf16f45cd2bbe2181b6dfe090c
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
-  SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
+  SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
 
 PODFILE CHECKSUM: 4fc47bf291e8914e3d68e7f6bd59eaf3a85a1272
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

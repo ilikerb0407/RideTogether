@@ -19,16 +19,19 @@ open class DistanceLabel: UILabel {
         self.distance = 0.00
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+        self.textAlignment = .right
+        self.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        self.textColor = UIColor.B5
+        self.distance = 0.00
     }
     
-    private var _distance = 0.0
+    private var _distance: Double = 0.0
 
     open var distance: CLLocationDistance {
         get {
-            return _distance
+            _distance
         }
         set {
             _distance = newValue

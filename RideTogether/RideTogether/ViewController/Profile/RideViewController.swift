@@ -138,7 +138,6 @@ class RideViewController: BaseViewController {
     }()
         
     private lazy var followUserButton: UIButton = {
-        
         let button = BottomButton()
         let image = UIImage(systemName: "location.fill",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
@@ -153,7 +152,6 @@ class RideViewController: BaseViewController {
     }()
     
     private lazy var buttonStackView: UIStackView = {
- 
         let view = UIStackView(arrangedSubviews: [followUserButton, sendSMSButton, showBikeButton])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
