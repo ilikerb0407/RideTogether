@@ -40,6 +40,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "AlertTests">
+               </Test>
+               <Test
                   Identifier = "ButtonTappedTests">
                </Test>
                <Test

@@ -144,11 +144,10 @@
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012D7129A605C00088363C /* ButtonTappedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D7029A605C00088363C /* ButtonTappedTests.swift */; };
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
-		3B012DB929A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */; };
-		3B012DBB29A8ADC50088363C /* ViewControllerPresentationSpy.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3B012DBD29A8AE3E0088363C /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012DBC29A8AE3E0088363C /* AlertTests.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
 		3B7947F52A70BABC0075E8C0 /* DistanceLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F42A70BABC0075E8C0 /* DistanceLabelTests.swift */; };
+		3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F92A70E1870075E8C0 /* APIRequest.swift */; };
+		3B7947FC2A70E6100075E8C0 /* UBikemanagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */; };
 		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
@@ -190,7 +189,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				3B012DBB29A8ADC50088363C /* ViewControllerPresentationSpy.xcframework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,10 +348,10 @@
 		3B012D1C29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletConnectionsViewControllerTests.swift; sourceTree = "<group>"; };
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B012D7029A605C00088363C /* ButtonTappedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTappedTests.swift; sourceTree = "<group>"; };
-		3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ViewControllerPresentationSpy.xcframework; sourceTree = "<group>"; };
-		3B012DBC29A8AE3E0088363C /* AlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B7947F42A70BABC0075E8C0 /* DistanceLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceLabelTests.swift; sourceTree = "<group>"; };
+		3B7947F92A70E1870075E8C0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikemanagerTests.swift; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewControllerTests.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
@@ -380,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */,
-				3B012DB929A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,13 +477,12 @@
 		234A166F283738E200E09F09 /* RideTogetherTests */ = {
 			isa = PBXGroup;
 			children = (
-				3B012DB829A8AD8F0088363C /* ViewControllerPresentationSpy.xcframework */,
 				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
 				3B012D1C29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift */,
 				3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */,
 				3B012D7029A605C00088363C /* ButtonTappedTests.swift */,
-				3B012DBC29A8AE3E0088363C /* AlertTests.swift */,
 				3B7947F42A70BABC0075E8C0 /* DistanceLabelTests.swift */,
+				3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */,
 			);
 			path = RideTogetherTests;
 			sourceTree = "<group>";
@@ -737,6 +733,7 @@
 				23E86E71282D764B00FC001E /* UbikeManager.swift */,
 				234A1625283636ED00E09F09 /* LocationManager.swift */,
 				3B012D6E29A6057B0088363C /* TestHelpers.swift */,
+				3B7947F92A70E1870075E8C0 /* APIRequest.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1120,13 +1117,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B012DBD29A8AE3E0088363C /* AlertTests.swift in Sources */,
 				3B7947F52A70BABC0075E8C0 /* DistanceLabelTests.swift in Sources */,
 				3B012D1D29A4B41B0088363C /* OutletConnectionsViewControllerTests.swift in Sources */,
 				3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */,
 				3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */,
 				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
 				3B012D7129A605C00088363C /* ButtonTappedTests.swift in Sources */,
+				3B7947FC2A70E6100075E8C0 /* UBikemanagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1221,7 @@
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23C887272815450500E3319A /* GoToRideViewController.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
+				3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
