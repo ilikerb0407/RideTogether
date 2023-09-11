@@ -133,7 +133,7 @@ class HomeViewController: BaseViewController, Reload {
     }
     
     func fetchTrailData() {
-        
+        //////Test
         MapsManager.shared.fetchRoutes { result in
             
             switch result {
