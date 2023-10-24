@@ -10,6 +10,9 @@ internal class KFJourneyViewController: UIViewController {
     
 	var viewModel: KFJourneyViewModel
 
+    // UI Properties
+    
+
 	init() {
 		viewModel = .init()
 		super.init(nibName: nil, bundle: nil)
