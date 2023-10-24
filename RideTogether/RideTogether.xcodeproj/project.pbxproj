@@ -148,6 +148,8 @@
 		3B7947F52A70BABC0075E8C0 /* DistanceLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F42A70BABC0075E8C0 /* DistanceLabelTests.swift */; };
 		3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F92A70E1870075E8C0 /* APIRequest.swift */; };
 		3B7947FC2A70E6100075E8C0 /* UBikemanagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */; };
+		3B9612182AE8345A00196AB3 /* KFJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9612162AE8345A00196AB3 /* KFJourneyViewController.swift */; };
+		3B9612192AE8345A00196AB3 /* KFJourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9612172AE8345A00196AB3 /* KFJourneyViewModel.swift */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */; };
 		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
@@ -352,6 +354,8 @@
 		3B7947F42A70BABC0075E8C0 /* DistanceLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceLabelTests.swift; sourceTree = "<group>"; };
 		3B7947F92A70E1870075E8C0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikemanagerTests.swift; sourceTree = "<group>"; };
+		3B9612162AE8345A00196AB3 /* KFJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewController.swift; sourceTree = "<group>"; };
+		3B9612172AE8345A00196AB3 /* KFJourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewModel.swift; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewControllerTests.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
@@ -741,6 +745,8 @@
 		23D1B7912800B08D000EDA70 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
+				3B9612162AE8345A00196AB3 /* KFJourneyViewController.swift */,
+				3B9612172AE8345A00196AB3 /* KFJourneyViewModel.swift */,
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
 				23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */,
 				23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */,
@@ -1199,6 +1205,7 @@
 				23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */,
 				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
+				3B9612182AE8345A00196AB3 /* KFJourneyViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
@@ -1231,6 +1238,7 @@
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
+				3B9612192AE8345A00196AB3 /* KFJourneyViewModel.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,
 				C51FADE129135E2900264854 /* MapWidgetEntryView.swift in Sources */,
 				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,
