@@ -218,13 +218,10 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - Charts (4.1.0):
-    - Charts/Core (= 4.1.0)
-  - Charts/Core (4.1.0):
-    - SwiftAlgorithms (~> 1.0)
   - CoreGPX (0.9.0)
-  - Firebase (6.34.0):
-    - Firebase/Core (= 6.34.0)
+  - DGCharts (5.0.0):
+    - DGCharts/Core (= 5.0.0)
+  - DGCharts/Core (5.0.0)
   - Firebase/Auth (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.9.2)
@@ -287,8 +284,6 @@ PODS:
   - FirebaseStorage (3.9.1):
     - FirebaseCore (~> 6.10)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseStorageSwift (0.1.0):
-    - FirebaseStorage (~> 3.6)
   - GoogleAppMeasurement (6.9.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/MethodSwizzler (~> 6.7)
@@ -355,20 +350,17 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
   - RSKPlaceholderTextView (6.1.0)
-  - SwiftAlgorithms (1.0.0)
   - SwiftLint (0.52.4)
 
 DEPENDENCIES:
-  - Charts
   - CoreGPX
-  - Firebase
+  - DGCharts
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Crashlytics
   - FirebaseFirestore
   - FirebaseFirestoreSwift
   - FirebaseStorage
-  - FirebaseStorageSwift
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher
@@ -382,8 +374,8 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
-    - Charts
     - CoreGPX
+    - DGCharts
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -394,7 +386,6 @@ SPEC REPOS:
     - FirebaseFirestoreSwift
     - FirebaseInstallations
     - FirebaseStorage
-    - FirebaseStorageSwift
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -411,14 +402,13 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - RSKPlaceholderTextView
-    - SwiftAlgorithms
     - SwiftLint
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
+  DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
@@ -429,7 +419,6 @@ SPEC CHECKSUMS:
   FirebaseFirestoreSwift: 2c46dbc1156db97dc4f6dd798d4f5b57b9c7fab6
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseStorage: 15e0f15ef3c7fec3d1899d68623e47d4447066b4
-  FirebaseStorageSwift: c7aee26b04ce4cfc16120f091313caa1ad5be723
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -446,9 +435,8 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RSKPlaceholderTextView: 52f26e643b6f9bbf16f45cd2bbe2181b6dfe090c
-  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
 
-PODFILE CHECKSUM: 4fc47bf291e8914e3d68e7f6bd59eaf3a85a1272
+PODFILE CHECKSUM: fa02b1473cba2bddd7d6b6f56af50bcb28efafc9
 
 COCOAPODS: 1.12.1

@@ -1,5 +1,8 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '14.0'
+
+# Suppress the warning about unused master specs repo
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
 
 target 'RideTogether' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -12,27 +15,21 @@ target 'RideTogether' do
   pod 'FirebaseFirestore'
   pod 'FirebaseFirestoreSwift'
   pod 'FirebaseStorage'
-  pod 'FirebaseStorageSwift'
+  pod 'FirebaseStorage'
   pod 'Firebase/Auth'
   pod 'MJRefresh'
   pod 'MASegmentedControl'
   pod 'Kingfisher'
   pod 'CoreGPX'
-  pod 'Charts'
+  pod 'DGCharts'
   pod 'RSKPlaceholderTextView'
   pod 'lottie-ios'
   pod 'JGProgressHUD'
   pod 'Firebase/Crashlytics'
-
-  target 'RideTogetherTests' do
-        inherit! :search_paths
-        pod 'Firebase'
-    end
-
 end
 
 post_install do |installer|   
-      installer.pods_project.build_configurations.each do |config|
-        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-      end
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  end
 end
