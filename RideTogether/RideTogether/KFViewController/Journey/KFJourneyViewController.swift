@@ -1,6 +1,6 @@
-/// 導航頁面
+/// <#Brief Description#> 
 ///
-/// Created by TWINB00591630 on 2023/10/25.
+/// Created by TWINB00591630 on 2023/10/27.
 /// Copyright © 2023 Cathay United Bank. All rights reserved.
 
 import UIKit
@@ -9,9 +9,6 @@ import Combine
 internal class KFJourneyViewController: UIViewController {    
     
 	var viewModel: KFJourneyViewModel
-
-    // UI Properties
-    
 
 	init() {
 		viewModel = .init()

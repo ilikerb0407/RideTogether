@@ -142,8 +142,24 @@
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
 		3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F92A70E1870075E8C0 /* APIRequest.swift */; };
-		3B9612182AE8345A00196AB3 /* KFJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9612162AE8345A00196AB3 /* KFJourneyViewController.swift */; };
-		3B9612192AE8345A00196AB3 /* KFJourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9612172AE8345A00196AB3 /* KFJourneyViewModel.swift */; };
+		3B903E4F2AEC12A6009D1B14 /* KFBaseViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E4D2AEC12A6009D1B14 /* KFBaseViewControllerViewModel.swift */; };
+		3B903E502AEC12A6009D1B14 /* KFBaseViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E4E2AEC12A6009D1B14 /* KFBaseViewControllerViewController.swift */; };
+		3B903E552AEC12F2009D1B14 /* KFTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E532AEC12F2009D1B14 /* KFTabBarControllerViewController.swift */; };
+		3B903E562AEC12F2009D1B14 /* KFTabBarControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E542AEC12F2009D1B14 /* KFTabBarControllerViewModel.swift */; };
+		3B903E5A2AEC1341009D1B14 /* KFLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E582AEC1341009D1B14 /* KFLoginViewController.swift */; };
+		3B903E5B2AEC1341009D1B14 /* KFLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E592AEC1341009D1B14 /* KFLoginViewModel.swift */; };
+		3B903E5E2AEC134B009D1B14 /* KFSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E5C2AEC134B009D1B14 /* KFSignUpViewController.swift */; };
+		3B903E5F2AEC134B009D1B14 /* KFSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E5D2AEC134B009D1B14 /* KFSignUpViewModel.swift */; };
+		3B903E622AEC1358009D1B14 /* KFPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E602AEC1358009D1B14 /* KFPolicyViewController.swift */; };
+		3B903E632AEC1358009D1B14 /* KFPolicyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E612AEC1358009D1B14 /* KFPolicyViewModel.swift */; };
+		3B903E672AEC1392009D1B14 /* KFJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E652AEC1392009D1B14 /* KFJourneyViewController.swift */; };
+		3B903E682AEC1392009D1B14 /* KFJourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E662AEC1392009D1B14 /* KFJourneyViewModel.swift */; };
+		3B903E6E2AEC13BA009D1B14 /* KFHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E6C2AEC13BA009D1B14 /* KFHomeViewController.swift */; };
+		3B903E6F2AEC13BA009D1B14 /* KFHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E6D2AEC13BA009D1B14 /* KFHomeViewModel.swift */; };
+		3B903E722AEC13C4009D1B14 /* KFGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E702AEC13C4009D1B14 /* KFGroupViewController.swift */; };
+		3B903E732AEC13C4009D1B14 /* KFGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E712AEC13C4009D1B14 /* KFGroupViewModel.swift */; };
+		3B903E762AEC13D3009D1B14 /* KFProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E742AEC13D3009D1B14 /* KFProfileViewController.swift */; };
+		3B903E772AEC13D3009D1B14 /* KFProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E752AEC13D3009D1B14 /* KFProfileViewModel.swift */; };
 		3B9612212AE8352D00196AB3 /* RideTogetherUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9612202AE8352D00196AB3 /* RideTogetherUnitTests.swift */; };
 		3B96122E2AE8353F00196AB3 /* RideTogetherSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B96122D2AE8353E00196AB3 /* RideTogetherSnapshotTests.swift */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
@@ -340,8 +356,24 @@
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B7947F92A70E1870075E8C0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
-		3B9612162AE8345A00196AB3 /* KFJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewController.swift; sourceTree = "<group>"; };
-		3B9612172AE8345A00196AB3 /* KFJourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewModel.swift; sourceTree = "<group>"; };
+		3B903E4D2AEC12A6009D1B14 /* KFBaseViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KFBaseViewControllerViewModel.swift; sourceTree = "<group>"; };
+		3B903E4E2AEC12A6009D1B14 /* KFBaseViewControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KFBaseViewControllerViewController.swift; sourceTree = "<group>"; };
+		3B903E532AEC12F2009D1B14 /* KFTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFTabBarControllerViewController.swift; sourceTree = "<group>"; };
+		3B903E542AEC12F2009D1B14 /* KFTabBarControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFTabBarControllerViewModel.swift; sourceTree = "<group>"; };
+		3B903E582AEC1341009D1B14 /* KFLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFLoginViewController.swift; sourceTree = "<group>"; };
+		3B903E592AEC1341009D1B14 /* KFLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFLoginViewModel.swift; sourceTree = "<group>"; };
+		3B903E5C2AEC134B009D1B14 /* KFSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFSignUpViewController.swift; sourceTree = "<group>"; };
+		3B903E5D2AEC134B009D1B14 /* KFSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFSignUpViewModel.swift; sourceTree = "<group>"; };
+		3B903E602AEC1358009D1B14 /* KFPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFPolicyViewController.swift; sourceTree = "<group>"; };
+		3B903E612AEC1358009D1B14 /* KFPolicyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFPolicyViewModel.swift; sourceTree = "<group>"; };
+		3B903E652AEC1392009D1B14 /* KFJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewController.swift; sourceTree = "<group>"; };
+		3B903E662AEC1392009D1B14 /* KFJourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewModel.swift; sourceTree = "<group>"; };
+		3B903E6C2AEC13BA009D1B14 /* KFHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFHomeViewController.swift; sourceTree = "<group>"; };
+		3B903E6D2AEC13BA009D1B14 /* KFHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFHomeViewModel.swift; sourceTree = "<group>"; };
+		3B903E702AEC13C4009D1B14 /* KFGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFGroupViewController.swift; sourceTree = "<group>"; };
+		3B903E712AEC13C4009D1B14 /* KFGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFGroupViewModel.swift; sourceTree = "<group>"; };
+		3B903E742AEC13D3009D1B14 /* KFProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFProfileViewController.swift; sourceTree = "<group>"; };
+		3B903E752AEC13D3009D1B14 /* KFProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFProfileViewModel.swift; sourceTree = "<group>"; };
 		3B96121E2AE8352D00196AB3 /* RideTogetherUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B9612202AE8352D00196AB3 /* RideTogetherUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherUnitTests.swift; sourceTree = "<group>"; };
 		3B96122B2AE8353E00196AB3 /* RideTogetherSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -599,6 +631,9 @@
 				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				3B903E4C2AEC12A6009D1B14 /* KFViewController */,
+				3B903E522AEC12BD009D1B14 /* KFViewModel */,
+				3B903E512AEC12B3009D1B14 /* KFModel */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B767280060E0000EDA70 /* View */,
 				23D1B74A28005CF1000EDA70 /* ViewController */,
@@ -729,8 +764,6 @@
 		23D1B7912800B08D000EDA70 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
-				3B9612162AE8345A00196AB3 /* KFJourneyViewController.swift */,
-				3B9612172AE8345A00196AB3 /* KFJourneyViewModel.swift */,
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
 				23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */,
 				23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */,
@@ -791,6 +824,85 @@
 				C51FAD2C2909368B00264854 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B903E4C2AEC12A6009D1B14 /* KFViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3B903E4E2AEC12A6009D1B14 /* KFBaseViewControllerViewController.swift */,
+				3B903E4D2AEC12A6009D1B14 /* KFBaseViewControllerViewModel.swift */,
+				3B903E532AEC12F2009D1B14 /* KFTabBarControllerViewController.swift */,
+				3B903E542AEC12F2009D1B14 /* KFTabBarControllerViewModel.swift */,
+				3B903E6B2AEC13A8009D1B14 /* Profile */,
+				3B903E6A2AEC13A3009D1B14 /* Group */,
+				3B903E692AEC139E009D1B14 /* Home */,
+				3B903E642AEC135D009D1B14 /* Journey */,
+				3B903E572AEC1323009D1B14 /* Login */,
+			);
+			path = KFViewController;
+			sourceTree = "<group>";
+		};
+		3B903E512AEC12B3009D1B14 /* KFModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KFModel;
+			sourceTree = "<group>";
+		};
+		3B903E522AEC12BD009D1B14 /* KFViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KFViewModel;
+			sourceTree = "<group>";
+		};
+		3B903E572AEC1323009D1B14 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3B903E582AEC1341009D1B14 /* KFLoginViewController.swift */,
+				3B903E592AEC1341009D1B14 /* KFLoginViewModel.swift */,
+				3B903E5C2AEC134B009D1B14 /* KFSignUpViewController.swift */,
+				3B903E5D2AEC134B009D1B14 /* KFSignUpViewModel.swift */,
+				3B903E602AEC1358009D1B14 /* KFPolicyViewController.swift */,
+				3B903E612AEC1358009D1B14 /* KFPolicyViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3B903E642AEC135D009D1B14 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				3B903E652AEC1392009D1B14 /* KFJourneyViewController.swift */,
+				3B903E662AEC1392009D1B14 /* KFJourneyViewModel.swift */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
+		3B903E692AEC139E009D1B14 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3B903E6C2AEC13BA009D1B14 /* KFHomeViewController.swift */,
+				3B903E6D2AEC13BA009D1B14 /* KFHomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3B903E6A2AEC13A3009D1B14 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				3B903E702AEC13C4009D1B14 /* KFGroupViewController.swift */,
+				3B903E712AEC13C4009D1B14 /* KFGroupViewModel.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		3B903E6B2AEC13A8009D1B14 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3B903E742AEC13D3009D1B14 /* KFProfileViewController.swift */,
+				3B903E752AEC13D3009D1B14 /* KFProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		3B96121F2AE8352D00196AB3 /* RideTogetherUnitTests */ = {
@@ -1121,9 +1233,11 @@
 				237A279D28181A60004F039F /* SignUpViewController.swift in Sources */,
 				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
+				3B903E632AEC1358009D1B14 /* KFPolicyViewModel.swift in Sources */,
 				23C0C41F281E9C810020237C /* HomeHeaderTableViewCell.swift in Sources */,
 				3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
+				3B903E4F2AEC12A6009D1B14 /* KFBaseViewControllerViewModel.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
@@ -1132,14 +1246,21 @@
 				234A1626283636ED00E09F09 /* LocationManager.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */,
+				3B903E5F2AEC134B009D1B14 /* KFSignUpViewModel.swift in Sources */,
 				C51FADDE29134EED00264854 /* Station.swift in Sources */,
 				23CB74BC2816DB5800DED822 /* GroupDetailViewController.swift in Sources */,
+				3B903E5B2AEC1341009D1B14 /* KFLoginViewModel.swift in Sources */,
+				3B903E562AEC12F2009D1B14 /* KFTabBarControllerViewModel.swift in Sources */,
+				3B903E502AEC12A6009D1B14 /* KFBaseViewControllerViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */,
+				3B903E5E2AEC134B009D1B14 /* KFSignUpViewController.swift in Sources */,
 				237A27AB281AEC82004F039F /* MemberTableViewCell.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
+				3B903E672AEC1392009D1B14 /* KFJourneyViewController.swift in Sources */,
 				23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */,
 				23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */,
+				3B903E732AEC13C4009D1B14 /* KFGroupViewModel.swift in Sources */,
 				23A84A752811AE2300DD8D39 /* GroupInfoTableViewCell.swift in Sources */,
 				23C8871B28142BC400E3319A /* RoutesType.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
@@ -1150,6 +1271,9 @@
 				2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
+				3B903E722AEC13C4009D1B14 /* KFGroupViewController.swift in Sources */,
+				3B903E6F2AEC13BA009D1B14 /* KFHomeViewModel.swift in Sources */,
+				3B903E772AEC13D3009D1B14 /* KFProfileViewModel.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
 				23C0C422281EA4870020237C /* Notification.swift in Sources */,
@@ -1158,6 +1282,7 @@
 				23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */,
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
+				3B903E552AEC12F2009D1B14 /* KFTabBarControllerViewController.swift in Sources */,
 				23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
@@ -1179,7 +1304,6 @@
 				23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */,
 				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
-				3B9612182AE8345A00196AB3 /* KFJourneyViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
@@ -1189,6 +1313,7 @@
 				23C8872228149ECC00E3319A /* RoutesCollectionViewCell.swift in Sources */,
 				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
+				3B903E622AEC1358009D1B14 /* KFPolicyViewController.swift in Sources */,
 				23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B783280062E9000EDA70 /* MapPin.swift in Sources */,
@@ -1196,6 +1321,7 @@
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
 				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
+				3B903E762AEC13D3009D1B14 /* KFProfileViewController.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23395D28282E447A00192563 /* Ubike2.0.swift in Sources */,
@@ -1203,6 +1329,7 @@
 				23C887272815450500E3319A /* GoToRideViewController.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
 				3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */,
+				3B903E682AEC1392009D1B14 /* KFJourneyViewModel.swift in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
@@ -1211,11 +1338,12 @@
 				C51FAD3D290939FF00264854 /* BikeModel.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
+				3B903E6E2AEC13BA009D1B14 /* KFHomeViewController.swift in Sources */,
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
-				3B9612192AE8345A00196AB3 /* KFJourneyViewModel.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,
 				C51FADE129135E2900264854 /* MapWidgetEntryView.swift in Sources */,
 				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,
+				3B903E5A2AEC1341009D1B14 /* KFLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
