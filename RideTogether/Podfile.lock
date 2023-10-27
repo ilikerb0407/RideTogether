@@ -1,12 +1,8 @@
 PODS:
   - CoreGPX (0.9.0)
-  - DGCharts (5.0.0):
-    - DGCharts/Core (= 5.0.0)
-  - DGCharts/Core (5.0.0)
   - IQKeyboardManagerSwift (6.5.16)
   - JGProgressHUD (2.2)
   - Kingfisher (7.8.1)
-  - lottie-ios (4.2.0)
   - MASegmentedControl (0.0.5)
   - MJRefresh (3.7.5)
   - RSKPlaceholderTextView (6.1.0)
@@ -14,11 +10,9 @@ PODS:
 
 DEPENDENCIES:
   - CoreGPX
-  - DGCharts
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher
-  - lottie-ios
   - MASegmentedControl
   - MJRefresh
   - RSKPlaceholderTextView
@@ -27,11 +21,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CoreGPX
-    - DGCharts
     - IQKeyboardManagerSwift
     - JGProgressHUD
     - Kingfisher
-    - lottie-ios
     - MASegmentedControl
     - MJRefresh
     - RSKPlaceholderTextView
@@ -39,16 +31,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
-  DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: 63f677311d36a3473f6b978584f8a3845d023dc5
-  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   MASegmentedControl: 9b58f9ba3a562a739b63b29e4ca2b9dc4d9c62cb
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   RSKPlaceholderTextView: 52f26e643b6f9bbf16f45cd2bbe2181b6dfe090c
   SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
 
-PODFILE CHECKSUM: 138fd9ba8d750babb7016d899400d493ac0975d4
+PODFILE CHECKSUM: 69c4e2e4aedbe3da0a9a5e5bec5ee8f3356edfac
 
 COCOAPODS: 1.12.1

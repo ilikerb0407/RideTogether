@@ -30,7 +30,5 @@ target 'RideTogether' do
   pod 'MASegmentedControl'
   pod 'Kingfisher'
   pod 'CoreGPX'
-  pod 'DGCharts'
   pod 'RSKPlaceholderTextView'
-  pod 'lottie-ios'
 end
