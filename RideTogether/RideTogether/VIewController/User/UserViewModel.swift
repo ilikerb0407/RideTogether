@@ -6,6 +6,6 @@
 import Foundation
 import Combine
 
-internal class KFJourneyViewModel {
+internal class UserViewModel {
 
 }

@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = .init(windowScene: windowScene)
 
         // TODO: rootViewController
-//        window?.rootViewController =
+        window?.rootViewController = MapViewController()
 
         window?.makeKeyAndVisible()
     }

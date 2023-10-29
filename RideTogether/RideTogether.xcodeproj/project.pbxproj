@@ -19,14 +19,14 @@
 		3B903E5F2AEC134B009D1B14 /* KFSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E5D2AEC134B009D1B14 /* KFSignUpViewModel.swift */; };
 		3B903E622AEC1358009D1B14 /* KFPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E602AEC1358009D1B14 /* KFPolicyViewController.swift */; };
 		3B903E632AEC1358009D1B14 /* KFPolicyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E612AEC1358009D1B14 /* KFPolicyViewModel.swift */; };
-		3B903E672AEC1392009D1B14 /* KFJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E652AEC1392009D1B14 /* KFJourneyViewController.swift */; };
-		3B903E682AEC1392009D1B14 /* KFJourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E662AEC1392009D1B14 /* KFJourneyViewModel.swift */; };
-		3B903E6E2AEC13BA009D1B14 /* KFHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E6C2AEC13BA009D1B14 /* KFHomeViewController.swift */; };
-		3B903E6F2AEC13BA009D1B14 /* KFHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E6D2AEC13BA009D1B14 /* KFHomeViewModel.swift */; };
-		3B903E722AEC13C4009D1B14 /* KFGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E702AEC13C4009D1B14 /* KFGroupViewController.swift */; };
-		3B903E732AEC13C4009D1B14 /* KFGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E712AEC13C4009D1B14 /* KFGroupViewModel.swift */; };
-		3B903E762AEC13D3009D1B14 /* KFProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E742AEC13D3009D1B14 /* KFProfileViewController.swift */; };
-		3B903E772AEC13D3009D1B14 /* KFProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E752AEC13D3009D1B14 /* KFProfileViewModel.swift */; };
+		3B903E672AEC1392009D1B14 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E652AEC1392009D1B14 /* ExploreViewController.swift */; };
+		3B903E682AEC1392009D1B14 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E662AEC1392009D1B14 /* ExploreViewModel.swift */; };
+		3B903E6E2AEC13BA009D1B14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E6C2AEC13BA009D1B14 /* MapViewController.swift */; };
+		3B903E6F2AEC13BA009D1B14 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E6D2AEC13BA009D1B14 /* MapViewModel.swift */; };
+		3B903E722AEC13C4009D1B14 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E702AEC13C4009D1B14 /* GroupViewController.swift */; };
+		3B903E732AEC13C4009D1B14 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E712AEC13C4009D1B14 /* GroupViewModel.swift */; };
+		3B903E762AEC13D3009D1B14 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E742AEC13D3009D1B14 /* UserViewController.swift */; };
+		3B903E772AEC13D3009D1B14 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B903E752AEC13D3009D1B14 /* UserViewModel.swift */; };
 		3B903E802AEC2802009D1B14 /* NotoSansTC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B903E792AEC2802009D1B14 /* NotoSansTC-Regular.otf */; };
 		3B903E812AEC2802009D1B14 /* NotoSansTC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B903E7A2AEC2802009D1B14 /* NotoSansTC-Bold.otf */; };
 		3B903E822AEC2802009D1B14 /* NotoSansTC-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B903E7B2AEC2802009D1B14 /* NotoSansTC-Thin.otf */; };
@@ -36,6 +36,7 @@
 		3B903E862AEC2802009D1B14 /* NotoSansTC-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B903E7F2AEC2802009D1B14 /* NotoSansTC-Black.otf */; };
 		3B9612212AE8352D00196AB3 /* RideTogetherUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9612202AE8352D00196AB3 /* RideTogetherUnitTests.swift */; };
 		3B96122E2AE8353F00196AB3 /* RideTogetherSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B96122D2AE8353E00196AB3 /* RideTogetherSnapshotTests.swift */; };
+		3BC56D3A2AEEB144003D8190 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC56D392AEEB144003D8190 /* TabBarController.swift */; };
 		C51FADDE29134EED00264854 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FADDD29134EED00264854 /* Station.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,14 +74,14 @@
 		3B903E5D2AEC134B009D1B14 /* KFSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFSignUpViewModel.swift; sourceTree = "<group>"; };
 		3B903E602AEC1358009D1B14 /* KFPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFPolicyViewController.swift; sourceTree = "<group>"; };
 		3B903E612AEC1358009D1B14 /* KFPolicyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFPolicyViewModel.swift; sourceTree = "<group>"; };
-		3B903E652AEC1392009D1B14 /* KFJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewController.swift; sourceTree = "<group>"; };
-		3B903E662AEC1392009D1B14 /* KFJourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFJourneyViewModel.swift; sourceTree = "<group>"; };
-		3B903E6C2AEC13BA009D1B14 /* KFHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFHomeViewController.swift; sourceTree = "<group>"; };
-		3B903E6D2AEC13BA009D1B14 /* KFHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFHomeViewModel.swift; sourceTree = "<group>"; };
-		3B903E702AEC13C4009D1B14 /* KFGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFGroupViewController.swift; sourceTree = "<group>"; };
-		3B903E712AEC13C4009D1B14 /* KFGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFGroupViewModel.swift; sourceTree = "<group>"; };
-		3B903E742AEC13D3009D1B14 /* KFProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFProfileViewController.swift; sourceTree = "<group>"; };
-		3B903E752AEC13D3009D1B14 /* KFProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFProfileViewModel.swift; sourceTree = "<group>"; };
+		3B903E652AEC1392009D1B14 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		3B903E662AEC1392009D1B14 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		3B903E6C2AEC13BA009D1B14 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3B903E6D2AEC13BA009D1B14 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		3B903E702AEC13C4009D1B14 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		3B903E712AEC13C4009D1B14 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		3B903E742AEC13D3009D1B14 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		3B903E752AEC13D3009D1B14 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		3B903E792AEC2802009D1B14 /* NotoSansTC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansTC-Regular.otf"; sourceTree = "<group>"; };
 		3B903E7A2AEC2802009D1B14 /* NotoSansTC-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansTC-Bold.otf"; sourceTree = "<group>"; };
 		3B903E7B2AEC2802009D1B14 /* NotoSansTC-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansTC-Thin.otf"; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		3B9612202AE8352D00196AB3 /* RideTogetherUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherUnitTests.swift; sourceTree = "<group>"; };
 		3B96122B2AE8353E00196AB3 /* RideTogetherSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B96122D2AE8353E00196AB3 /* RideTogetherSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherSnapshotTests.swift; sourceTree = "<group>"; };
+		3BC56D392AEEB144003D8190 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
 		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,9 +213,10 @@
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				3BC56D392AEEB144003D8190 /* TabBarController.swift */,
 				3B903E782AEC2802009D1B14 /* Noto_Sans_TC */,
 				23CE42A5280E5F0A00C4C9F1 /* Reuse Element */,
-				3B903E4C2AEC12A6009D1B14 /* KFViewController */,
+				3B903E4C2AEC12A6009D1B14 /* VIewController */,
 				3B903E522AEC12BD009D1B14 /* KFViewModel */,
 				3B903E512AEC12B3009D1B14 /* KFModel */,
 				23D1B767280060E0000EDA70 /* View */,
@@ -292,16 +295,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3B903E4C2AEC12A6009D1B14 /* KFViewController */ = {
+		3B903E4C2AEC12A6009D1B14 /* VIewController */ = {
 			isa = PBXGroup;
 			children = (
-				3B903E6B2AEC13A8009D1B14 /* Profile */,
+				3B903E692AEC139E009D1B14 /* Map */,
+				3B903E6B2AEC13A8009D1B14 /* User */,
 				3B903E6A2AEC13A3009D1B14 /* Group */,
-				3B903E692AEC139E009D1B14 /* Home */,
-				3B903E642AEC135D009D1B14 /* Journey */,
+				3B903E642AEC135D009D1B14 /* Explore */,
 				3B903E572AEC1323009D1B14 /* Login */,
 			);
-			path = KFViewController;
+			path = VIewController;
 			sourceTree = "<group>";
 		};
 		3B903E512AEC12B3009D1B14 /* KFModel */ = {
@@ -335,40 +338,40 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		3B903E642AEC135D009D1B14 /* Journey */ = {
+		3B903E642AEC135D009D1B14 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				3B903E652AEC1392009D1B14 /* KFJourneyViewController.swift */,
-				3B903E662AEC1392009D1B14 /* KFJourneyViewModel.swift */,
+				3B903E652AEC1392009D1B14 /* ExploreViewController.swift */,
+				3B903E662AEC1392009D1B14 /* ExploreViewModel.swift */,
 			);
-			path = Journey;
+			path = Explore;
 			sourceTree = "<group>";
 		};
-		3B903E692AEC139E009D1B14 /* Home */ = {
+		3B903E692AEC139E009D1B14 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				3B903E6C2AEC13BA009D1B14 /* KFHomeViewController.swift */,
-				3B903E6D2AEC13BA009D1B14 /* KFHomeViewModel.swift */,
+				3B903E6C2AEC13BA009D1B14 /* MapViewController.swift */,
+				3B903E6D2AEC13BA009D1B14 /* MapViewModel.swift */,
 			);
-			path = Home;
+			path = Map;
 			sourceTree = "<group>";
 		};
 		3B903E6A2AEC13A3009D1B14 /* Group */ = {
 			isa = PBXGroup;
 			children = (
-				3B903E702AEC13C4009D1B14 /* KFGroupViewController.swift */,
-				3B903E712AEC13C4009D1B14 /* KFGroupViewModel.swift */,
+				3B903E702AEC13C4009D1B14 /* GroupViewController.swift */,
+				3B903E712AEC13C4009D1B14 /* GroupViewModel.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
 		};
-		3B903E6B2AEC13A8009D1B14 /* Profile */ = {
+		3B903E6B2AEC13A8009D1B14 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				3B903E742AEC13D3009D1B14 /* KFProfileViewController.swift */,
-				3B903E752AEC13D3009D1B14 /* KFProfileViewModel.swift */,
+				3B903E742AEC13D3009D1B14 /* UserViewController.swift */,
+				3B903E752AEC13D3009D1B14 /* UserViewModel.swift */,
 			);
-			path = Profile;
+			path = User;
 			sourceTree = "<group>";
 		};
 		3B903E782AEC2802009D1B14 /* Noto_Sans_TC */ = {
@@ -489,7 +492,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					23D1B72A280033FB000EDA70 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -627,18 +630,19 @@
 				C51FADDE29134EED00264854 /* Station.swift in Sources */,
 				3B903E5B2AEC1341009D1B14 /* KFLoginViewModel.swift in Sources */,
 				3B903E5E2AEC134B009D1B14 /* KFSignUpViewController.swift in Sources */,
-				3B903E672AEC1392009D1B14 /* KFJourneyViewController.swift in Sources */,
-				3B903E732AEC13C4009D1B14 /* KFGroupViewModel.swift in Sources */,
+				3B903E672AEC1392009D1B14 /* ExploreViewController.swift in Sources */,
+				3B903E732AEC13C4009D1B14 /* GroupViewModel.swift in Sources */,
 				2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */,
-				3B903E722AEC13C4009D1B14 /* KFGroupViewController.swift in Sources */,
-				3B903E6F2AEC13BA009D1B14 /* KFHomeViewModel.swift in Sources */,
-				3B903E772AEC13D3009D1B14 /* KFProfileViewModel.swift in Sources */,
+				3B903E722AEC13C4009D1B14 /* GroupViewController.swift in Sources */,
+				3B903E6F2AEC13BA009D1B14 /* MapViewModel.swift in Sources */,
+				3BC56D3A2AEEB144003D8190 /* TabBarController.swift in Sources */,
+				3B903E772AEC13D3009D1B14 /* UserViewModel.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				3B903E622AEC1358009D1B14 /* KFPolicyViewController.swift in Sources */,
-				3B903E762AEC13D3009D1B14 /* KFProfileViewController.swift in Sources */,
-				3B903E682AEC1392009D1B14 /* KFJourneyViewModel.swift in Sources */,
-				3B903E6E2AEC13BA009D1B14 /* KFHomeViewController.swift in Sources */,
+				3B903E762AEC13D3009D1B14 /* UserViewController.swift in Sources */,
+				3B903E682AEC1392009D1B14 /* ExploreViewModel.swift in Sources */,
+				3B903E6E2AEC13BA009D1B14 /* MapViewController.swift in Sources */,
 				3B903E5A2AEC1341009D1B14 /* KFLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,6 +729,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -789,6 +794,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

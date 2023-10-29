@@ -6,9 +6,9 @@
 import UIKit
 import Combine
 
-internal class KFGroupViewController: UIViewController {    
+internal class GroupViewController: UIViewController {    
     
-	var viewModel: KFGroupViewModel
+	var viewModel: GroupViewModel
 
 	init() {
 		viewModel = .init()
@@ -21,6 +21,7 @@ internal class KFGroupViewController: UIViewController {
 						    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Group"
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -6,9 +6,9 @@
 import UIKit
 import Combine
 
-internal class KFJourneyViewController: UIViewController {    
+internal class UserViewController: UIViewController {    
     
-	var viewModel: KFJourneyViewModel
+	var viewModel: UserViewModel
 
 	init() {
 		viewModel = .init()
@@ -21,6 +21,7 @@ internal class KFJourneyViewController: UIViewController {
 						    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Profile"
     }
     
     override func viewWillAppear(_ animated: Bool) {

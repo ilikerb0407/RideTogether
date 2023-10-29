@@ -1,4 +1,4 @@
-/// <#Brief Description#> 
+/// 第一頁
 ///
 /// Created by TWINB00591630 on 2023/10/27.
 /// Copyright © 2023 Cathay United Bank. All rights reserved.
@@ -6,9 +6,9 @@
 import UIKit
 import Combine
 
-internal class KFProfileViewController: UIViewController {    
+internal class ExploreViewController: UIViewController {    
     
-	var viewModel: KFProfileViewModel
+	var viewModel: ExploreViewModel
 
 	init() {
 		viewModel = .init()
@@ -21,6 +21,7 @@ internal class KFProfileViewController: UIViewController {
 						    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Journey"
     }
     
     override func viewWillAppear(_ animated: Bool) {

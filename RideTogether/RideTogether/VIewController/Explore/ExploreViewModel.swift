@@ -6,6 +6,6 @@
 import Foundation
 import Combine
 
-internal class KFProfileViewModel {
+internal class ExploreViewModel {
 
 }

@@ -6,6 +6,6 @@
 import Foundation
 import Combine
 
-internal class KFHomeViewModel {
+internal class MapViewModel {
 
 }

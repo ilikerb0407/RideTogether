@@ -6,6 +6,6 @@
 import Foundation
 import Combine
 
-internal class KFGroupViewModel {
+internal class GroupViewModel {
 
 }
