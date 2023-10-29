@@ -1,4 +1,4 @@
-/// <#Brief Description#> 
+/// <#Brief Description#>
 ///
 /// Created by TWINB00591630 on 2023/10/30.
 /// Copyright © 2023 Cathay United Bank. All rights reserved.
@@ -16,5 +16,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) { }
+    func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {}
 }

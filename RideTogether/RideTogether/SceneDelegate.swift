@@ -1,4 +1,4 @@
-/// <#Brief Description#> 
+/// <#Brief Description#>
 ///
 /// Created by TWINB00591630 on 2023/10/30.
 /// Copyright © 2023 Cathay United Bank. All rights reserved.
@@ -14,18 +14,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window = .init(windowScene: windowScene)
 
-        window?.rootViewController = ViewController()
+        window?.rootViewController = KFMapViewController()
 
         window?.makeKeyAndVisible()
     }
 
-    func sceneDidDisconnect(_: UIScene) { }
+    func sceneDidDisconnect(_: UIScene) {}
 
-    func sceneDidBecomeActive(_: UIScene) { }
+    func sceneDidBecomeActive(_: UIScene) {}
 
-    func sceneWillResignActive(_: UIScene) { }
+    func sceneWillResignActive(_: UIScene) {}
 
-    func sceneWillEnterForeground(_: UIScene) { }
+    func sceneWillEnterForeground(_: UIScene) {}
 
-    func sceneDidEnterBackground(_: UIScene) { }
+    func sceneDidEnterBackground(_: UIScene) {}
 }

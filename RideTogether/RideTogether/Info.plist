@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>請允許 RideTogether Widget 每隔一個小時使用您的位置來更新可使用腳踏車</string>
+	<key>NSLocationUsageDescription</key>
+	<string>請允許&quot;RideTogether&quot;使用您的定位，進行紀錄自行車路線的功能</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
