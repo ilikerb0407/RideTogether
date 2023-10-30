@@ -17,6 +17,6 @@ internal class KFMapViewModel {
 
 enum Status {
     case start
-    case stop
+    case pause
     case restart
 }
