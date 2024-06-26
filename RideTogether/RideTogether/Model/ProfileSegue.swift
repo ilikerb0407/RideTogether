@@ -8,13 +8,11 @@
 import Foundation
 
 enum ProfileSegue: String, CaseIterable {
-    
     case record = "toRecord"
 
     case recommendMap = "toRecommend"
-    
+
     case account = "toAccount"
-    
+
     case savemaps = "toSavemaps"
-    
 }

@@ -8,25 +8,23 @@
 import MapKit
 
 class RouteAnnotation: NSObject {
-    
-  private let item: MKMapItem
+    private let item: MKMapItem
 
-  init(item: MKMapItem) {
-    self.item = item
+    init(item: MKMapItem) {
+        self.item = item
 
-    super.init()
-  }
+        super.init()
+    }
 }
 
 // MARK: - MKAnnotation
 
 extension RouteAnnotation: MKAnnotation {
-    
-  var coordinate: CLLocationCoordinate2D {
-    return item.placemark.coordinate
-  }
+    var coordinate: CLLocationCoordinate2D {
+        item.placemark.coordinate
+    }
 
-  var title: String? {
-    return item.name
-  }
+    var title: String? {
+        item.name
+    }
 }

@@ -9,19 +9,15 @@ import XCTest
 
 private class TestableOverrideViewController: TracksViewController {
     override func recordmanager() -> RecordManager {
-         RecordManager()
+        RecordManager()
     }
 }
 
-
 final class OverrideViewControllerTests: XCTestCase {
-
     func test_viewDidAppear() {
         let sut = TestableOverrideViewController()
         sut.loadViewIfNeeded()
 
         sut.viewDidAppear(false)
     }
-
-
 }

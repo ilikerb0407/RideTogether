@@ -60,7 +60,8 @@ struct Weather: Codable {
     let main, weatherDescription, icon: String
 
     enum CodingKeys: String, CodingKey {
-        case id, main
+        case id
+        case main
         case weatherDescription = "description"
         case icon
     }

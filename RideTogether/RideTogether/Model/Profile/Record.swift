@@ -5,11 +5,10 @@
 //  Created by Kai Fu Jhuang on 2022/4/8.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct Record: Codable, Hashable {
-    
     var uid: String
     var createdTime: Timestamp
     var recordId: String
@@ -17,10 +16,9 @@ struct Record: Codable, Hashable {
     var recordRef: String
     var pictureRef: String?
     var routeTypes: Int?
-    
+
     enum CodingKeys: String, CodingKey {
-        
-        case uid 
+        case uid
         case createdTime = "created_time"
         case recordId = "record_id"
         case recordName = "record_name"
@@ -28,7 +26,7 @@ struct Record: Codable, Hashable {
         case pictureRef = "picture_ref"
         case routeTypes = "route_types"
     }
-    
+
     init() {
         self.uid = ""
         self.createdTime = Timestamp()

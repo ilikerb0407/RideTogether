@@ -9,7 +9,6 @@ import XCTest
 
 // swiftlint:disable type_name
 final class OutletConnectionsViewControllerTests: XCTestCase {
-
 //    func test_outlet_shouldBeConnected() {
 //        let sut = JourneyViewController()
 //
@@ -17,6 +16,6 @@ final class OutletConnectionsViewControllerTests: XCTestCase {
 //
 //        XCTAssertNotNil(sut.mapView, "mapView")
 //    }
-
 }
+
 // swiftlint:enable type_name

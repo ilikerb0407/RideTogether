@@ -8,17 +8,15 @@
 import Foundation
 
 extension Notification.Name {
-    
     static let userInfoDidChanged = Notification.Name("userInfoDidChanged")
-    
+
     static let checkGroupDidTaped = Notification.Name("checkGroupDidTaped")
-    
+
     static let didUpdateBuyItemList = Notification.Name("didUpdateBuyItemList")
 }
 
 extension NSNotification {
-    
     public static let userInfoDidChanged = Notification.Name.userInfoDidChanged
-    
+
     public static let checkGroupDidTaped = Notification.Name.checkGroupDidTaped
 }

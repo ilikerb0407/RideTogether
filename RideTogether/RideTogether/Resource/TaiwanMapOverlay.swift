@@ -6,12 +6,11 @@
 import MapKit
 
 class ParkMapOverlay: NSObject, MKOverlay {
-  let coordinate: CLLocationCoordinate2D
-  let boundingMapRect: MKMapRect
+    let coordinate: CLLocationCoordinate2D
+    let boundingMapRect: MKMapRect
 
-  init(park: Park) {
-    coordinate = park.midCoordinate
-    boundingMapRect = park.overlayBoundingMapRect
-    
-  }
+    init(park: Park) {
+        coordinate = park.midCoordinate
+        boundingMapRect = park.overlayBoundingMapRect
+    }
 }

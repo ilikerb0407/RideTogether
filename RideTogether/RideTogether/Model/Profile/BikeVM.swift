@@ -8,11 +8,9 @@
 import MapKit
 
 class BikeAnnotationViewModel {
-    
     var bikeAnnotation: BikeAnnotation
-    
+
     init(model: BikeAnnotation) {
-        
         self.bikeAnnotation = model
     }
 }

@@ -8,7 +8,6 @@
 import XCTest
 
 final class ButtonTappedTests: XCTestCase {
-
     func test_tappingButton() {
         // name 要注意不要填錯
         let storyboard = UIStoryboard(name: "Login", bundle: nil)

@@ -6,20 +6,18 @@
 //
 
 import Foundation
-
-import UIKit
 import SwiftUI
+import UIKit
 
 enum RoutesTypeTest: CaseIterable {
-    
     case userOne
-    
+
     case recommendOne
-    
+
     case riverOne
-    
+
     case mountainOne
-    
+
     var title: String {
         switch self {
         case .userOne:
@@ -32,11 +30,11 @@ enum RoutesTypeTest: CaseIterable {
             return "爬山路線"
         }
     }
-    var backgroundColor: UIColor? { return .clear}
-    
+
+    var backgroundColor: UIColor? { .clear }
+
     var image: UIImage? {
         switch self {
-            
         case .userOne:
             return UIImage(named: "type0")
         case .recommendOne:
@@ -45,26 +43,21 @@ enum RoutesTypeTest: CaseIterable {
             return UIImage(named: "type2")
         case .mountainOne:
             return UIImage(named: "type3")
-        
         }
     }
-    
 }
 
 enum RoutesType: String, CaseIterable {
-    
     case userOne = "朋友路線"
-    
+
     case recommendOne = "推薦路線"
-    
+
     case riverOne = "河堤路線"
-    
+
     case mountainOne = "爬山路線"
-   
+
     var image: UIImage? {
-        
         switch self {
-            
         case .userOne:
             return UIImage(named: "type0")
         case .recommendOne:
@@ -73,8 +66,6 @@ enum RoutesType: String, CaseIterable {
             return UIImage(named: "type2")
         case .mountainOne:
             return UIImage(named: "type3")
-        
         }
     }
-    
 }
