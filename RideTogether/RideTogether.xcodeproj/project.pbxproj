@@ -40,6 +40,8 @@
 		234DBBEA2C2C38DC00E78118 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBE92C2C38DC00E78118 /* JGProgressHUD */; };
 		234DBBED2C2C399D00E78118 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBEC2C2C399D00E78118 /* IQKeyboardManagerSwift */; };
 		234DBBF02C2C3A4400E78118 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBEF2C2C3A4400E78118 /* DGCharts */; };
+		234DBBF22C2C3F8B00E78118 /* ProfileSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF12C2C3F8B00E78118 /* ProfileSegue.swift */; };
+		234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF32C2C3FA100E78118 /* Collection.swift */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
@@ -129,7 +131,7 @@
 		23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78528006346000EDA70 /* GPXFileManager.swift */; };
 		23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7872800637A000EDA70 /* RecordManager.swift */; };
 		23D1B78A28006396000EDA70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78928006396000EDA70 /* UserManager.swift */; };
-		23D1B78C28006663000EDA70 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* Constant.swift */; };
+		23D1B78C28006663000EDA70 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* SegueIdentifier.swift */; };
 		23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B78F2800AD0C000EDA70 /* Journey.storyboard */; };
 		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
 		23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7942800B0FD000EDA70 /* Profile.storyboard */; };
@@ -236,6 +238,8 @@
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
+		234DBBF12C2C3F8B00E78118 /* ProfileSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSegue.swift; sourceTree = "<group>"; };
+		234DBBF32C2C3FA100E78118 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C6772825562E00EF21D3 /* Policy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
@@ -329,7 +333,7 @@
 		23D1B78528006346000EDA70 /* GPXFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFileManager.swift; sourceTree = "<group>"; };
 		23D1B7872800637A000EDA70 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		23D1B78928006396000EDA70 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		23D1B78B28006663000EDA70 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		23D1B78B28006663000EDA70 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		23D1B78F2800AD0C000EDA70 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
 		23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		23D1B7942800B0FD000EDA70 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -654,7 +658,9 @@
 		23D1B74B28005D9B000EDA70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B78B28006663000EDA70 /* Constant.swift */,
+				23D1B78B28006663000EDA70 /* SegueIdentifier.swift */,
+				234DBBF12C2C3F8B00E78118 /* ProfileSegue.swift */,
+				234DBBF32C2C3FA100E78118 /* Collection.swift */,
 				C51FAD3C290939FF00264854 /* BikeModel.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23CB74B82816C7FE00DED822 /* Group */,
@@ -1121,6 +1127,7 @@
 				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
+				234DBBF22C2C3F8B00E78118 /* ProfileSegue.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
@@ -1137,7 +1144,7 @@
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
-				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
+				23D1B78C28006663000EDA70 /* SegueIdentifier.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				23C8872228149ECC00E3319A /* RoutesCollectionViewCell.swift in Sources */,
@@ -1161,6 +1168,7 @@
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
+				234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */,
 				C51FAD3D290939FF00264854 /* BikeModel.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
