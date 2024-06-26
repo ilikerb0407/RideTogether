@@ -6,6 +6,7 @@
 //
 
 import CoreGPX
+import Foundation
 
 class GPXFileManager {
     

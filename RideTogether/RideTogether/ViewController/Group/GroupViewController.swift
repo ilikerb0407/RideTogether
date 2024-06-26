@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 import MJRefresh
-import MASegmentedControl
 import FirebaseAuth
 import FirebaseFirestore
 import AVFoundation

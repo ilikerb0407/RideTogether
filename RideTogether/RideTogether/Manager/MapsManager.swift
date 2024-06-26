@@ -53,9 +53,9 @@ class MapsManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
-                            records.append(record)
-                        }
+                        let record = try document.data(as: Record.self, decoder: Firestore.Decoder())
+                        
+                        records.append(record)
                         
                     } catch {
                         completion(.failure(error))
@@ -81,9 +81,9 @@ class MapsManager {
                 var routes = [Route]()
                 for document in querySnapshot.documents {
                     do {
-                        if let route = try document.data(as: Route.self, decoder: Firestore.Decoder()) {
-                            routes.append(route)
-                        }
+                        let route = try document.data(as: Route.self, decoder: Firestore.Decoder())
+                        
+                        routes.append(route)
                         
                     } catch {
                         completion(.failure(error))
@@ -114,9 +114,10 @@ class MapsManager {
                         
                         for document in querySnapshot.documents {
                             do {
-                                if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
-                                    records.append(record)
-                                }
+                                let record = try document.data(as: Record.self, decoder: Firestore.Decoder())
+                                
+                                records.append(record)
+                                
                                 } catch {
                                 completion(.failure(error))
                             }

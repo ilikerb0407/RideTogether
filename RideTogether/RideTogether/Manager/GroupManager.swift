@@ -62,7 +62,7 @@ class GroupManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if var group = try document.data(as: Group.self, decoder: Firestore.Decoder()) {
+                        var group = try document.data(as: Group.self, decoder: Firestore.Decoder())
                             
                             if group.date.checkIsExpired() {
                                 
@@ -71,7 +71,7 @@ class GroupManager {
                                 group.isExpired = false
                             }
                             groups.append(group)
-                        }
+                        
                         
                     } catch {
                         completion(.failure(error))
@@ -99,10 +99,10 @@ class GroupManager {
                     
                     do {
                         
-                        if let request = try document.data(as: Request.self, decoder: Firestore.Decoder()) {
+                        let request = try document.data(as: Request.self, decoder: Firestore.Decoder())
                             
-                            requests.append(request)
-                        }
+                        requests.append(request)
+                        
                         
                     } catch {
                         
@@ -188,10 +188,10 @@ class GroupManager {
                         
                         do {
                             
-                            if let request = try document.data(as: Request.self, decoder: Firestore.Decoder()) {
+                            let request = try document.data(as: Request.self, decoder: Firestore.Decoder())
                                 
-                                requests.append(request)
-                            }
+                            requests.append(request)
+                            
                             
                         } catch {
                             

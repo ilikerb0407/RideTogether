@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseFirestore
-import RSKPlaceholderTextView
 
 class RequestTableViewCell: UITableViewCell, UITextFieldDelegate, UITextViewDelegate {
     

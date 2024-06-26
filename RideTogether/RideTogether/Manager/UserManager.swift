@@ -10,9 +10,8 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseStorageSwift
+import FirebaseStorage
 
-// MARK: 之後登入用得到
 
 class UserManager {
     
@@ -162,10 +161,8 @@ class UserManager {
             } else {
                 
                 do {
-                    if let userData = try document.data(as: UserInfo.self, decoder: Firestore.Decoder()) {
-                        
-                        completion(.success(userData))
-                    }
+                    let userData = try document.data(as: UserInfo.self, decoder: Firestore.Decoder())
+                    completion(.success(userData))
                     
                 } catch {
                     

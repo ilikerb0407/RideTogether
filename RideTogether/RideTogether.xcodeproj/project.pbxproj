@@ -28,6 +28,18 @@
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
+		234DBBD32C2C349A00E78118 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBD22C2C349A00E78118 /* FirebaseFirestore */; };
+		234DBBD52C2C352600E78118 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBD42C2C352600E78118 /* FirebaseAuth */; };
+		234DBBD72C2C354D00E78118 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBD62C2C354D00E78118 /* FirebaseFirestoreSwift */; };
+		234DBBD92C2C362B00E78118 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBD82C2C362B00E78118 /* FirebaseStorage */; };
+		234DBBDC2C2C36B900E78118 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBDB2C2C36B900E78118 /* CoreGPX */; };
+		234DBBE02C2C378600E78118 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBDF2C2C378600E78118 /* Lottie */; };
+		234DBBE22C2C378A00E78118 /* MJRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBE12C2C378A00E78118 /* MJRefresh */; };
+		234DBBE52C2C382B00E78118 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBE42C2C382B00E78118 /* Kingfisher */; };
+		234DBBE72C2C384E00E78118 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBE62C2C384E00E78118 /* FirebaseCrashlytics */; };
+		234DBBEA2C2C38DC00E78118 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBE92C2C38DC00E78118 /* JGProgressHUD */; };
+		234DBBED2C2C399D00E78118 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBEC2C2C399D00E78118 /* IQKeyboardManagerSwift */; };
+		234DBBF02C2C3A4400E78118 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBEF2C2C3A4400E78118 /* DGCharts */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360C6772825562E00EF21D3 /* Policy.storyboard */; };
@@ -70,7 +82,6 @@
 		23C887292815A18F00E3319A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887282815A18E00E3319A /* UICollectionView.swift */; };
 		23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */; };
 		23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */; };
-		23C8872E2815C05F00E3319A /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */; };
 		23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */; };
 		23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */; };
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
@@ -150,9 +161,6 @@
 		3B7947FC2A70E6100075E8C0 /* UBikemanagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		3BDF087D29A0C6CE00766110 /* OverrideViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */; };
-		6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */; };
-		C51FAD2B2909368B00264854 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2A2909368B00264854 /* WidgetKit.framework */; };
-		C51FAD2D2909368B00264854 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAD2C2909368B00264854 /* SwiftUI.framework */; };
 		C51FAD302909368C00264854 /* BikeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD2F2909368C00264854 /* BikeWidget.swift */; };
 		C51FAD322909368C00264854 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C51FAD312909368C00264854 /* Assets.xcassets */; };
 		C51FAD362909368C00264854 /* BikeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C51FAD292909368B00264854 /* BikeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -206,7 +214,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogetherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2304FF49280891AF00C6B1BF /* ReuseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseButton.swift; sourceTree = "<group>"; };
 		2304FF4B280895F200C6B1BF /* RideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewController.swift; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
@@ -354,13 +361,7 @@
 		3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikemanagerTests.swift; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		3BDF087C29A0C6CE00766110 /* OverrideViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideViewControllerTests.swift; sourceTree = "<group>"; };
-		406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.release.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.release.xcconfig"; sourceTree = "<group>"; };
-		6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogether.debug.xcconfig"; path = "Target Support Files/Pods-RideTogether/Pods-RideTogether.debug.xcconfig"; sourceTree = "<group>"; };
-		8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.release.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.release.xcconfig"; sourceTree = "<group>"; };
-		A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C51FAD292909368B00264854 /* BikeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		C51FAD2A2909368B00264854 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		C51FAD2C2909368B00264854 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C51FAD2F2909368C00264854 /* BikeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeWidget.swift; sourceTree = "<group>"; };
 		C51FAD312909368C00264854 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C51FAD332909368C00264854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -369,7 +370,6 @@
 		C51FAD4229093B3A00264854 /* BikeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeWidgetExtension.entitlements; sourceTree = "<group>"; };
 		C51FADDD29134EED00264854 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		C51FADE029135E2900264854 /* MapWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWidgetEntryView.swift; sourceTree = "<group>"; };
-		E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,7 +377,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3E731699731FAC82A191C8 /* Pods_RideTogetherTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +384,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23C8872E2815C05F00E3319A /* Pods_RideTogether.framework in Frameworks */,
+				234DBBD32C2C349A00E78118 /* FirebaseFirestore in Frameworks */,
+				234DBBDC2C2C36B900E78118 /* CoreGPX in Frameworks */,
+				234DBBE22C2C378A00E78118 /* MJRefresh in Frameworks */,
+				234DBBD92C2C362B00E78118 /* FirebaseStorage in Frameworks */,
+				234DBBF02C2C3A4400E78118 /* DGCharts in Frameworks */,
+				234DBBEA2C2C38DC00E78118 /* JGProgressHUD in Frameworks */,
+				234DBBE52C2C382B00E78118 /* Kingfisher in Frameworks */,
+				234DBBD52C2C352600E78118 /* FirebaseAuth in Frameworks */,
+				234DBBE72C2C384E00E78118 /* FirebaseCrashlytics in Frameworks */,
+				234DBBD72C2C354D00E78118 /* FirebaseFirestoreSwift in Frameworks */,
+				234DBBED2C2C399D00E78118 /* IQKeyboardManagerSwift in Frameworks */,
+				234DBBE02C2C378600E78118 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,8 +403,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C51FAD2D2909368B00264854 /* SwiftUI.framework in Frameworks */,
-				C51FAD2B2909368B00264854 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +493,13 @@
 				3B7947FB2A70E6100075E8C0 /* UBikemanagerTests.swift */,
 			);
 			path = RideTogetherTests;
+			sourceTree = "<group>";
+		};
+		234DBBD12C2C349A00E78118 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		237A27A8281A6948004F039F /* Login */ = {
@@ -586,8 +601,7 @@
 				234A166F283738E200E09F09 /* RideTogetherTests */,
 				C51FAD2E2909368C00264854 /* BikeWidget */,
 				23D1B72C280033FB000EDA70 /* Products */,
-				B8861B4BB71FEA4F16110C05 /* Pods */,
-				280213B7E321F791376F648A /* Frameworks */,
+				234DBBD12C2C349A00E78118 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -792,28 +806,6 @@
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
 		};
-		280213B7E321F791376F648A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E9F682B0A583FE5FB7AEF0F4 /* Pods_RideTogether.framework */,
-				1FCCF293E125C3D5CB1F040E /* Pods_RideTogetherTests.framework */,
-				C51FAD2A2909368B00264854 /* WidgetKit.framework */,
-				C51FAD2C2909368B00264854 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B8861B4BB71FEA4F16110C05 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */,
-				406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */,
-				A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */,
-				8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		C51FAD2E2909368C00264854 /* BikeWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,13 +847,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23D1B73F280033FC000EDA70 /* Build configuration list for PBXNativeTarget "RideTogether" */;
 			buildPhases = (
-				F574E762906D9DDDD3A80B66 /* [CP] Check Pods Manifest.lock */,
 				23D1B727280033FB000EDA70 /* Sources */,
 				23D1B728280033FB000EDA70 /* Frameworks */,
 				23D1B729280033FB000EDA70 /* Resources */,
-				A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */,
-				23D1B79D280195E3000EDA70 /* swift lint */,
-				2312FBA52828DF4A00F0F271 /* Run Script */,
 				C51FAD372909368D00264854 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -870,6 +858,20 @@
 				C51FAD352909368C00264854 /* PBXTargetDependency */,
 			);
 			name = RideTogether;
+			packageProductDependencies = (
+				234DBBD22C2C349A00E78118 /* FirebaseFirestore */,
+				234DBBD42C2C352600E78118 /* FirebaseAuth */,
+				234DBBD62C2C354D00E78118 /* FirebaseFirestoreSwift */,
+				234DBBD82C2C362B00E78118 /* FirebaseStorage */,
+				234DBBDB2C2C36B900E78118 /* CoreGPX */,
+				234DBBDF2C2C378600E78118 /* Lottie */,
+				234DBBE12C2C378A00E78118 /* MJRefresh */,
+				234DBBE42C2C382B00E78118 /* Kingfisher */,
+				234DBBE62C2C384E00E78118 /* FirebaseCrashlytics */,
+				234DBBE92C2C38DC00E78118 /* JGProgressHUD */,
+				234DBBEC2C2C399D00E78118 /* IQKeyboardManagerSwift */,
+				234DBBEF2C2C3A4400E78118 /* DGCharts */,
+			);
 			productName = RideTogether;
 			productReference = 23D1B72B280033FB000EDA70 /* RideTogether.app */;
 			productType = "com.apple.product-type.application";
@@ -922,6 +924,16 @@
 				Base,
 			);
 			mainGroup = 23D1B722280033FB000EDA70;
+			packageReferences = (
+				234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				234DBBDA2C2C36AB00E78118 /* XCRemoteSwiftPackageReference "CoreGPX" */,
+				234DBBDD2C2C373300E78118 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				234DBBDE2C2C377000E78118 /* XCRemoteSwiftPackageReference "MJRefresh" */,
+				234DBBE32C2C382100E78118 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				234DBBE82C2C38CB00E78118 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				234DBBEB2C2C399500E78118 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				234DBBEE2C2C3A3A00E78118 /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 23D1B72C280033FB000EDA70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -994,44 +1006,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2312FBA52828DF4A00F0F271 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
-		};
-		23D1B79D280195E3000EDA70 /* swift lint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "swift lint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
 		61F5865EDF66E42E3651D260 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1047,23 +1021,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A6E48172F7B9260A6AED8326 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F3E1A4C9CBC11DE417BE7CEC /* [CP] Check Pods Manifest.lock */ = {
@@ -1082,28 +1039,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-RideTogetherTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F574E762906D9DDDD3A80B66 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RideTogether-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1286,7 +1221,6 @@
 /* Begin XCBuildConfiguration section */
 		234A1674283738E200E09F09 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8A405A75EDA898C8E1FFBA5 /* Pods-RideTogetherTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1306,7 +1240,6 @@
 		};
 		234A1675283738E200E09F09 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E4AEEDC6A90D67F327A09A1 /* Pods-RideTogetherTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1445,7 +1378,6 @@
 		};
 		23D1B740280033FC000EDA70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A3ECC32346DF4249FA59FEE /* Pods-RideTogether.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1486,7 +1418,6 @@
 		};
 		23D1B741280033FC000EDA70 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 406981E8BFCC5EF341A4ADB0 /* Pods-RideTogether.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1626,6 +1557,136 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
+		234DBBDA2C2C36AB00E78118 /* XCRemoteSwiftPackageReference "CoreGPX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vincentneo/CoreGPX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+		234DBBDD2C2C373300E78118 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+		234DBBDE2C2C377000E78118 /* XCRemoteSwiftPackageReference "MJRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoderMJLee/MJRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.9;
+			};
+		};
+		234DBBE32C2C382100E78118 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		234DBBE82C2C38CB00E78118 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		234DBBEB2C2C399500E78118 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.3;
+			};
+		};
+		234DBBEE2C2C3A3A00E78118 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChartsOrg/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		234DBBD22C2C349A00E78118 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		234DBBD42C2C352600E78118 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		234DBBD62C2C354D00E78118 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		234DBBD82C2C362B00E78118 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		234DBBDB2C2C36B900E78118 /* CoreGPX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBDA2C2C36AB00E78118 /* XCRemoteSwiftPackageReference "CoreGPX" */;
+			productName = CoreGPX;
+		};
+		234DBBDF2C2C378600E78118 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBDD2C2C373300E78118 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+		234DBBE12C2C378A00E78118 /* MJRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBDE2C2C377000E78118 /* XCRemoteSwiftPackageReference "MJRefresh" */;
+			productName = MJRefresh;
+		};
+		234DBBE42C2C382B00E78118 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBE32C2C382100E78118 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		234DBBE62C2C384E00E78118 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBD02C2C347D00E78118 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		234DBBE92C2C38DC00E78118 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBE82C2C38CB00E78118 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		234DBBEC2C2C399D00E78118 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBEB2C2C399500E78118 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		234DBBEF2C2C3A4400E78118 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 234DBBEE2C2C3A3A00E78118 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23D1B723280033FB000EDA70 /* Project object */;
 }

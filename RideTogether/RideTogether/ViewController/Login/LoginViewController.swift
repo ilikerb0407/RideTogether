@@ -336,7 +336,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 if let error = error as? NSError {
                     
                     print(error)
-                    guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                    guard let errorCode = AuthErrorCode(_bridgedNSError: error) else {
                         print("登入錯誤，請稍後再試")
                         return
                     }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MASegmentedControl
 
 class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
         

@@ -126,9 +126,8 @@ internal class RecordManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
-                            records.append(record)
-                        }
+                        let record = try document.data(as: Record.self, decoder: Firestore.Decoder())
+                        records.append(record)
                         
                     } catch {
                         completion(.failure(error))
@@ -157,9 +156,10 @@ internal class RecordManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                        let record = try document.data(as: Record.self, decoder: Firestore.Decoder())
+                        
                             records.recordRef.append(record.recordRef)
-                        }
+                        
                         
                     } catch {
                         completion(.failure(error))

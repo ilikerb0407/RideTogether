@@ -11,7 +11,7 @@ import MapKit
 import Firebase
 import CoreGPX
 import CoreLocation
-import Charts
+import DGCharts
 
 // MARK: User Record detail
 
