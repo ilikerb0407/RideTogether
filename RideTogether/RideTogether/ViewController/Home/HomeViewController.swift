@@ -5,14 +5,11 @@
 //  Created by Kai Fu Jhuang on 2022/4/14.
 //
 
-import Lottie
 import QuartzCore
 import UIKit
 
-class HomeViewController: BaseViewController, Reload {
+class HomeViewController: BaseViewController {
     func reloadDetail() { }
-
-    func reload() { }
 
     var trackVC = TracksViewController()
 

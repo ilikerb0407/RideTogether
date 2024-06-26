@@ -10,19 +10,13 @@ import UIKit
 class HomeHeaderTableViewCell: UITableViewCell {
     var lengthStartValue: Double = 0.0
 
-//    var friendsStartValue: Int = 0
-
     var groupsStartValue: Int = 0
 
     var lengthEndValue: Double = 0.0
 
-//    var friendsEndValue: Int = 0
-
     var groupsEndValue: Int = 0
 
     var lengthDiff: Double = 0.0
-
-//    var friendsDiff: Int = 0
 
     var groupsDiff: Int = 0
 
@@ -39,13 +33,9 @@ class HomeHeaderTableViewCell: UITableViewCell {
 
         lengthEndValue = user.totalLength / 1000
 
-//        friendsEndValue = user.totalFriends
-
         groupsEndValue = user.totalGroups
 
         lengthDiff = lengthEndValue - lengthStartValue
-
-//        friendsDiff = friendsEndValue - friendsStartValue
 
         groupsDiff = groupsEndValue - groupsStartValue
 
@@ -68,20 +58,15 @@ class HomeHeaderTableViewCell: UITableViewCell {
 
         totalKms.text = "\(length)"
 
-//        totalFriends.text = "\(friendsStartValue)"
-
         totalGroups.text = "\(groupsStartValue)"
 
         lengthStartValue += 5
-//        friendsStartValue += 1
         groupsStartValue += 1
 
         if lengthStartValue > lengthEndValue {
             lengthStartValue = lengthEndValue
         }
-//        if friendsStartValue > friendsEndValue {
-//            friendsStartValue = friendsEndValue
-//        }
+
         if groupsStartValue > groupsEndValue {
             groupsStartValue = groupsEndValue
         }

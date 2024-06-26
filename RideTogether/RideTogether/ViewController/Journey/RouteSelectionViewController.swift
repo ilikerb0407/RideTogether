@@ -1,9 +1,11 @@
+
+
 import CoreLocation
 import Lottie
 import MapKit
 import UIKit
 
-class RouteSelectionViewController: UIViewController {
+class RouteSelectionViewController: BaseViewController {
     var weatherdata: ResponseBody?
 
     let weatherManger = WeatherManager()

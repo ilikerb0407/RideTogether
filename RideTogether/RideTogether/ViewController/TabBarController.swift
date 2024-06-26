@@ -20,6 +20,7 @@ private enum Tab {
         var controller: UIViewController
 
         switch self {
+        // TODO: 換成 Code-based ViewController
         case .home: controller = UIStoryboard.home.instantiateInitialViewController()!
 
         case .group: controller = UIStoryboard.group.instantiateInitialViewController()!

@@ -24,7 +24,6 @@
 		231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB60280739AD00DE2343 /* Taipei1.plist */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
-		233206C92826483D0017864C /* Noto_Sans_TC in Resources */ = {isa = PBXBuildFile; fileRef = 233206C82826483D0017864C /* Noto_Sans_TC */; };
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
@@ -233,7 +232,6 @@
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		233206C82826483D0017864C /* Noto_Sans_TC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Noto_Sans_TC; sourceTree = "<group>"; };
 		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -417,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				231BCB5028070BF500DE2343 /* Taiwan.swift */,
+				231BCB60280739AD00DE2343 /* Taipei1.plist */,
 				231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */,
 			);
 			path = Resource;
@@ -624,9 +623,8 @@
 			children = (
 				23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */,
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
-				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
-				231BCB60280739AD00DE2343 /* Taipei1.plist */,
+				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				23D1B74B28005D9B000EDA70 /* Model */,
@@ -634,7 +632,6 @@
 				23D1B74A28005CF1000EDA70 /* ViewController */,
 				23D1B76D28006187000EDA70 /* Extension */,
 				23CE42A0280E571700C4C9F1 /* Lottie */,
-				233206C82826483D0017864C /* Noto_Sans_TC */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				2309B8F72842255D0020D6FE /* Resource */,
 			);
@@ -979,7 +976,6 @@
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
 				23CB74CA281787B400DED822 /* Login.storyboard in Resources */,
 				2360C6782825562E00EF21D3 /* Policy.storyboard in Resources */,
-				233206C92826483D0017864C /* Noto_Sans_TC in Resources */,
 				2397D458281F14170018FC5E /* otherweather.json in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,

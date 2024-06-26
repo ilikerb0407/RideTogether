@@ -8,7 +8,6 @@
 import CoreGPX
 import CoreLocation
 import Firebase
-import Lottie
 import MapKit
 import MessageUI
 import UIKit

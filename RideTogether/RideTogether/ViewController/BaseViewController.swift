@@ -7,7 +7,6 @@
 
 import IQKeyboardManagerSwift
 import Kingfisher
-import Lottie
 import MessageUI
 import UIKit
 

@@ -10,7 +10,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 import Kingfisher
-import Lottie
 import MJRefresh
 import UIKit
 

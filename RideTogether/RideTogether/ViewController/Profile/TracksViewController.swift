@@ -16,8 +16,6 @@ import UIKit
 // MARK: User Record
 
 class TracksViewController: BaseViewController {
-    var delegate: Reload?
-
     lazy var storage = Storage.storage()
 
     lazy var storageRef = storage.reference()
@@ -190,8 +188,6 @@ extension TracksViewController: UITableViewDelegate {
 
                             self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url, userPhoto: userPhoto)
 
-                            delegate?.reload()
-                            //
                             LKProgressHUD.showSuccess(text: "分享成功")
 
                         case let .failure(error):

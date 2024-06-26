@@ -9,7 +9,6 @@ import CoreGPX
 import CoreLocation
 import Firebase
 import JGProgressHUD
-import Lottie
 import MapKit
 import MessageUI
 import SwiftUI
