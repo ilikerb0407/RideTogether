@@ -156,7 +156,7 @@ extension ProfileViewController: UITableViewDelegate {
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
 
-            showAlertAction(title: nil, message: nil, preferredStyle: .alert, actions: [logOut, removeAccount, cancel])
+            showAlert(provider: .init(title: "", message: "", preferredStyle: .alert, actions: [logOut, removeAccount, cancel]))
 
         case 3:
             push(withIdentifier: "SaveMapsViewController")

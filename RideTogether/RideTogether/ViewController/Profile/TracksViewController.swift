@@ -200,19 +200,7 @@ extension TracksViewController: UITableViewDelegate {
 
                 let cancelOption = UIAlertAction(title: "取消", style: .default) { _ in }
 
-                let sheet = showAlertAction(title: nil, message: nil, preferredStyle: .actionSheet, actions: [shareOption, cancelOption])
-
-                // iPad specific code
-
-                sheet.popoverPresentationController?.sourceView = self.view
-
-                let xOrigin = self.view.bounds.width / 2
-
-                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-
-                sheet.popoverPresentationController?.sourceRect = popoverRect
-
-                sheet.popoverPresentationController?.permittedArrowDirections = .up
+                showAlert(provider: .init(title: "", message: "", preferredStyle: .actionSheet, actions: [shareOption, cancelOption]))
             }
         }
     }

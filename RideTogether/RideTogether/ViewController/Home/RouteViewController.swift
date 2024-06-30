@@ -263,7 +263,7 @@ extension RouteViewController: UITableViewDelegate {
 
                 let cancelOption = UIAlertAction(title: "取消", style: .cancel) { _ in }
 
-                showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
+                showAlert(provider: .init(title: "", message: "", preferredStyle: .actionSheet, actions: [cancelOption, likeOption, blockOption]))
             }
         }
     }

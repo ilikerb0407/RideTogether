@@ -140,7 +140,8 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
         if group.date.checkIsExpired() {
             teamView.shake()
 
-            showAlertAction(title: "揪團時間錯誤", message: "請更改日期")
+            showAlert(provider: .init(title: "揪團時間錯誤", message: "請更改日期", preferredStyle: .alert, actions: []))
+            
 
         } else {
             GroupManager.shared.buildTeam(group: &group) { result in

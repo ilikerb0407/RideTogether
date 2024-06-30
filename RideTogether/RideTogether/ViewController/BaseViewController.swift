@@ -6,12 +6,11 @@
 //
 
 import IQKeyboardManagerSwift
-import Kingfisher
 import MessageUI
 import UIKit
 
+
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
-    let stopWatch = StopWatch()
 
     private var isDisplayingLocationServicesDenied: Bool = false
 
@@ -22,29 +21,17 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             }
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-
-        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
+        let alertProvider = AlertProvider(title: "無法讀取位置", message: "請開啟定位服務", preferredStyle: .alert, actions: [settingsAction, cancelAction])
+        showAlert(provider: alertProvider)
     }
 
     func displayLocationServicesDeniedAlert() {
-        if isDisplayingLocationServicesDenied {
-            return
-        }
-
-        let settingsAction = UIAlertAction(title: "設定",
-                                           style: .default) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url, options: [:])
-            }
-        }
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-
-        showAlertAction(title: "無法讀取位置", message: "請開啟定位服務", actions: [settingsAction, cancelAction])
-
+        guard !isDisplayingLocationServicesDenied else { return }
+        displayLocationServicesDisabledAlert()
         isDisplayingLocationServicesDenied = false
     }
 
-    func messageComposeViewController(_: MFMessageComposeViewController, didFinishWith _: MessageComposeResult) {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -61,41 +48,29 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if isHideNavigationBar {
-            navigationController?.setNavigationBarHidden(true, animated: false)
-        }
-
-        if !isEnableIQKeyboard {
-            IQKeyboardManager.shared.enable = false
-
-        } else {
-            IQKeyboardManager.shared.enable = true
-        }
-
-        self.setNeedsStatusBarAppearanceUpdate()
+        updateNavigationBarAndKeyboardState()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        updateNavigationBarAndKeyboardState()
+    }
 
+    private func updateNavigationBarAndKeyboardState() {
         if isHideNavigationBar {
+            navigationController?.setNavigationBarHidden(true, animated: false)
+        } else {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
-
-        if !isEnableIQKeyboard {
-            IQKeyboardManager.shared.enable = false
-
-        } else {
-            IQKeyboardManager.shared.enable = true
-        }
+        IQKeyboardManager.shared.enable = isEnableIQKeyboard
+        self.setNeedsStatusBarAppearanceUpdate()
     }
 
     @objc
@@ -109,87 +84,30 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
     }
 
     func showBlockAlertAction(uid: String) {
-        let controller = UIAlertController(title: "封鎖用戶", message: "您將無法看見該用戶的訊息及揪團", preferredStyle: .alert)
-
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
-
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
-
             UserManager.shared.blockUser(blockUserId: uid)
-
             UserManager.shared.userInfo.blockList?.append(uid)
         }
-
-        controller.addAction(cancelAction)
-
-        controller.addAction(blockAction)
-
-        self.present(controller, animated: true, completion: nil)
+        let alertProvider = AlertProvider(title: "封鎖用戶", message: "您將無法看見該用戶的訊息及揪團", preferredStyle: .alert, actions: [cancelAction, blockAction])
+        showAlert(provider: alertProvider)
     }
 
-    func showAlertAction(
-        title: String?,
-        message: String? = "",
-        preferredStyle: UIAlertController.Style = .alert,
-        actions: [UIAlertAction] = [UIAlertAction(title: "OK", style: .cancel)]
-    ) -> UIAlertController {
-        let controller = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-
-        for action in actions {
-            controller.addAction(action)
-        }
-
-        self.present(controller, animated: true, completion: nil)
-
-        // MARK: - iPad Present Code -
-
-        controller.popoverPresentationController?.sourceView = self.view
-
-        let xOrigin = self.view.bounds.width / 2
-
-        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-
-        controller.popoverPresentationController?.sourceRect = popoverRect
-
-        controller.popoverPresentationController?.permittedArrowDirections = .up
-
-        return controller
-    }
-
-    // 前一頁的button
+    
     func setNavigationBar(title: String) {
-        self.title = "\(title)"
-
+        self.title = title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-
         let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-
-        let image = UIImage(systemName: "chevron.left",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light))
-        // 改圖片
-        leftButton.backgroundColor = .B5
-
-        leftButton.tintColor = .B2
-
-        leftButton.setImage(image, for: .normal)
-
-        leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
-
-        self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
 
     @objc
     func showBikeViewController() {
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
             let navBar = UINavigationController(rootViewController: rootVC)
-            if #available(iOS 15.0, *) {
-                if let presentVc = navBar.sheetPresentationController {
-                    presentVc.detents = [.large()]
-                    self.navigationController?.present(navBar, animated: true, completion: .none)
-                }
-            } else {
-                LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
-            }
+            presentViewController(navBar)
+        } else {
+            LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
         }
     }
 
@@ -197,15 +115,17 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
     func presentRouteSelectionViewController() {
         if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
             let navBar = UINavigationController(rootViewController: rootVC)
-            if #available(iOS 15.0, *) {
-                if let presentVc = navBar.sheetPresentationController {
-                    presentVc.detents = [.medium(), .large()]
-                    self.navigationController?.present(navBar, animated: true, completion: .none)
-                }
-            } else {
-                LKProgressHUD.showFailure(text: "網路問題，無法跳出")
-            }
+            presentViewController(navBar)
+        } else {
+            LKProgressHUD.showFailure(text: "網路問題，無法跳出")
         }
+    }
+
+    private func presentViewController(_ navBar: UINavigationController) {
+        if #available(iOS 15.0, *) {
+            navBar.sheetPresentationController?.detents = [.large()]
+        }
+        self.navigationController?.present(navBar, animated: true, completion: nil)
     }
 
     func push(withIdentifier: String) {
@@ -214,3 +134,5 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         }
     }
 }
+
+
