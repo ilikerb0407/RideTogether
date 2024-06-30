@@ -12,7 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
-        print("willConnectTo")
 
         if Auth.auth().currentUser != nil {
             if let uid = Auth.auth().currentUser?.uid {

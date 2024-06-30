@@ -11,7 +11,7 @@ import SwiftUI
 import WidgetKit
 
 struct Provider: TimelineProvider {
-    static let emptyLocationSet = [Bike]()
+    static let emptyLocationSet = [BikeModel]()
 
     // TODO: This is just a failsafe in case location services are not updated on launch
 
@@ -75,7 +75,7 @@ struct Provider: TimelineProvider {
     }
 
     // MARK: Helpers
-    private func contentUpdate(context: TimelineProvider.Context, locations: [Bike], updatedUserLocation: CLLocation, completionHandler: @escaping (SimpleEntry) -> Void) {
+    private func contentUpdate(context: TimelineProvider.Context, locations: [BikeModel], updatedUserLocation: CLLocation, completionHandler: @escaping (SimpleEntry) -> Void) {
         let region = MKCoordinateRegion(center: updatedUserLocation.coordinate, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
         let mapSnapshotter = makeSnapshotter(for: region, with: context.displaySize)
 
@@ -112,7 +112,7 @@ struct Provider: TimelineProvider {
     }
 
     private func loadNearestLocations(userLocation: CLLocation,
-                                      completion: @escaping ([Bike]) -> Void) {
+                                      completion: @escaping ([BikeModel]) -> Void) {
         let urlString = URL(string: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json")
 
         guard let urlString else {
@@ -126,7 +126,7 @@ struct Provider: TimelineProvider {
             }
             let decoder = JSONDecoder()
             do {
-                let bikeData = try decoder.decode([Bike].self, from: data)
+                let bikeData = try decoder.decode([BikeModel].self, from: data)
 
                 let mappedResult = closestLocations(userLocation: userLocation, stationLocations: bikeData)
 
@@ -178,8 +178,8 @@ struct Provider: TimelineProvider {
         }
     }
 
-    private func closestLocations(userLocation: CLLocation, stationLocations: [Bike]) -> [Bike] {
-        var allDistancesToUser = [(Double, Bike)]()
+    private func closestLocations(userLocation: CLLocation, stationLocations: [BikeModel]) -> [BikeModel] {
+        var allDistancesToUser = [(Double, BikeModel)]()
 
         for location in stationLocations {
             let comparableLocation = CLLocation(latitude: location.lat,
@@ -193,9 +193,9 @@ struct Provider: TimelineProvider {
         }
 
         let closestStationDistancesToUser = allDistancesToUser.sorted(by: { $0.0 < $1.0 })
-        let closestStationsToUser = closestStationDistancesToUser.map { _, station -> Bike in
+        let closestStationsToUser = closestStationDistancesToUser.map { _, station -> BikeModel in
 
-            let updatedStationWithDistance = Bike(sno: station.sno,
+            let updatedStationWithDistance = BikeModel(sno: station.sno,
                                                   sna: station.sna, tot: station.tot, sbi: station.sbi,
                                                   sarea: station.sarea, mday: station.mday, lat: station.lat, lng: station.lng,
                                                   ar: station.ar, sareaen: station.sareaen, snaen: station.snaen,
@@ -212,7 +212,7 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let nearestStations: [Bike]
+    let nearestStations: [BikeModel]
     let userLocation: MKCoordinateRegion
     let image: UIImage
 }

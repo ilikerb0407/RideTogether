@@ -8,19 +8,10 @@
 import Foundation
 
 enum SegueIdentifier: String {
-    case route = "routeList"
-
-    case routeList = "toRouteList"
-
-    case trailInfo = "toTrailInfo"
 
     case requestList = "toRequestList"
 
     case groupChat = "toGroupChat"
 
-    case buildTeam = "toBuildTeam"
-
     case userRecord = "toUserRecord"
-
-    case recommendMaps = "toRecommendMaps"
 }

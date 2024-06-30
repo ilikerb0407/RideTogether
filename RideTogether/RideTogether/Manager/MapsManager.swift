@@ -27,15 +27,11 @@ class MapsManager {
 
     var savemaps: [String] { UserManager.shared.userInfo.saveMaps ?? [""] }
 
-    private let mapsCollection = Collection.maps.rawValue
-
     private let routeCollection = Collection.routes.rawValue // Home
 
     private let shareCollection = Collection.sharedmaps.rawValue // Profile
 
     private let saveCollection = Collection.savemaps.rawValue // Profile
-
-    private let userCollection = Collection.users.rawValue //
 
     func fetchRecords(completion: @escaping (Result<[Record], Error>) -> Void) {
         let collection = dataBase.collection(shareCollection)

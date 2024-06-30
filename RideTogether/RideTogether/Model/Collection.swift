@@ -10,7 +10,7 @@ import Foundation
 enum Collection: String {
     case groups = "Groups"
 
-    case messages = "Messages"
+    case messages = "Messages" // TODO: 聊天室
 
     case records = "Records"
 

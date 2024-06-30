@@ -39,7 +39,6 @@
 		234DBBEA2C2C38DC00E78118 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBE92C2C38DC00E78118 /* JGProgressHUD */; };
 		234DBBED2C2C399D00E78118 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBEC2C2C399D00E78118 /* IQKeyboardManagerSwift */; };
 		234DBBF02C2C3A4400E78118 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 234DBBEF2C2C3A4400E78118 /* DGCharts */; };
-		234DBBF22C2C3F8B00E78118 /* ProfileSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF12C2C3F8B00E78118 /* ProfileSegue.swift */; };
 		234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF32C2C3FA100E78118 /* Collection.swift */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
@@ -236,7 +235,6 @@
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
-		234DBBF12C2C3F8B00E78118 /* ProfileSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSegue.swift; sourceTree = "<group>"; };
 		234DBBF32C2C3FA100E78118 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
@@ -656,7 +654,6 @@
 			isa = PBXGroup;
 			children = (
 				23D1B78B28006663000EDA70 /* SegueIdentifier.swift */,
-				234DBBF12C2C3F8B00E78118 /* ProfileSegue.swift */,
 				234DBBF32C2C3FA100E78118 /* Collection.swift */,
 				C51FAD3C290939FF00264854 /* BikeModel.swift */,
 				231BCB6A280858D700DE2343 /* Home */,
@@ -1123,7 +1120,6 @@
 				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,
-				234DBBF22C2C3F8B00E78118 /* ProfileSegue.swift in Sources */,
 				231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
