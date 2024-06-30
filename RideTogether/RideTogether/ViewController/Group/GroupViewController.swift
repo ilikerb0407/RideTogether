@@ -178,7 +178,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
 
     func setBuildTeamButton() {
-        let button = CreatGroupButton()
+        let button = CreateGroupButton()
         button.addTarget(self, action: #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
