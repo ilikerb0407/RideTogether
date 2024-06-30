@@ -1,4 +1,4 @@
-/// <#Brief Description#> 
+/// <#Brief Description#>
 ///
 /// Created by TWINB00591630 on 2023/7/26.
 /// Copyright © 2023 Cathay United Bank. All rights reserved.
@@ -12,4 +12,3 @@ protocol APIRequest {
     func makeRequest(from data: RequestDataType) throws -> URLRequest
     func parseResponse(data: Data) throws -> ResponseDataType
 }
-

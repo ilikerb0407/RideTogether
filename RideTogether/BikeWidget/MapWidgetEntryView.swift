@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct NearbyBikesView: View {
-    @State var bike: Bike
-    
-    var body: some View {
+    @State var bike: BikeModel
 
+    var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 Image(systemName: "flag.fill")
@@ -34,11 +33,11 @@ struct NearbyBikesView: View {
                     .frame(width: 18.0)
                 Text("可還數量:\(bike.bemp)")
                     .font(.caption)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(/*@START_MENU_TOKEN@*/ .semibold/*@END_MENU_TOKEN@*/)
                     .padding(.leading, 10)
                 Text("可租數量 :\(bike.sbi)")
                     .font(.caption)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(/*@START_MENU_TOKEN@*/ .semibold/*@END_MENU_TOKEN@*/)
                     .padding(.leading, 5)
             }
         }

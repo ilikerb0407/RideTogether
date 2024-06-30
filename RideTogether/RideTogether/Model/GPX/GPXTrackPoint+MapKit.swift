@@ -5,13 +5,12 @@
 //  Created by Kai Fu Jhuang on 2022/4/8.
 //
 
-import Foundation
-import UIKit
-import MapKit
 import CoreGPX
+import Foundation
+import MapKit
+import UIKit
 
 extension GPXTrackPoint {
-
     convenience init(location: CLLocation) {
         self.init()
         self.latitude = location.coordinate.latitude

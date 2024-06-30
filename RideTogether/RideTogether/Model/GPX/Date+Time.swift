@@ -7,13 +7,12 @@
 import Foundation
 
 extension Date {
-  
     func timeAgo(numericDates: Bool) -> String {
         let calendar = Calendar.current
         let now = Date()
         let earliest = self < now ? self : now
-        let latest =  self > now ? self : now
-        
+        let latest = self > now ? self : now
+
         let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfMonth, .month, .year, .second]
         let components: DateComponents = calendar.dateComponents(unitFlags, from: earliest, to: latest)
         if let year = components.year {

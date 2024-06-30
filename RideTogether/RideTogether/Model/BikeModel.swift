@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - BikeElement
 
-struct Bike: Codable {
+struct BikeModel: Codable {
     let sno, sna: String
     let tot, sbi: Int
     let sarea, mday: String
@@ -20,13 +20,13 @@ struct Bike: Codable {
     let infoDate: String
 }
 
-struct TaichungBike: Codable {
+struct TaichungBikeModel: Codable {
     let retCode: Int
-    let retVal: [String: TBike]
+    let retVal: [String: RetVal]
 }
 
 // MARK: - RetVal
-struct TBike: Codable {
+struct RetVal: Codable {
     let sno, sna, tot, sbi: String
     let sarea, mday, lat, lng: String
     let ar, sareaen, snaen, aren: String

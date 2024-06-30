@@ -5,8 +5,8 @@
 //  Created by Kai Fu Jhuang on 2022/4/24.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct Request: Codable, Hashable {
     var groupId: String
@@ -14,7 +14,7 @@ struct Request: Codable, Hashable {
     var hostId: String
     var requestId: String
     var createdTime: Timestamp
-    
+
     enum CodingKeys: String, CodingKey {
         case requestId = "request_id"
         case groupId = "group_id"

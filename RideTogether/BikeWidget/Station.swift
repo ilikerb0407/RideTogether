@@ -5,9 +5,9 @@
 //  Created by 00591630 on 2022/11/3.
 //
 
-import SwiftUI
 import CoreLocation
 import MapKit
+import SwiftUI
 
 struct Station: Identifiable, Codable {
     let id: String
@@ -54,17 +54,16 @@ struct Station: Identifiable, Codable {
         let longitude = try container.decode(Double.self, forKey: .longitude)
         coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
-    
+
     public func encode(to encoder: Encoder) throws {
-      var container = encoder.container(keyedBy: CodingKeys.self)
-        
-      try container.encode(id, forKey: .id)
-      try container.encode(name, forKey: .name)
-      try container.encode(address, forKey: .address)
-      try container.encode(bikeCapacity, forKey: .bikeCapacity)
-      try container.encode(distance, forKey: .distance)
-      try container.encode(coordinates.latitude, forKey: .latitude)
-      try container.encode(coordinates.longitude, forKey: .longitude)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(address, forKey: .address)
+        try container.encode(bikeCapacity, forKey: .bikeCapacity)
+        try container.encode(distance, forKey: .distance)
+        try container.encode(coordinates.latitude, forKey: .latitude)
+        try container.encode(coordinates.longitude, forKey: .longitude)
     }
-    
 }

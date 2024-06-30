@@ -5,27 +5,26 @@
 //  Created by Kai Fu Jhuang on 2022/5/13.
 //
 
-import UIKit
 import CoreGPX
-import MapKit
 import CoreLocation
+import MapKit
+import UIKit
 
 class BikeView: NSObject, MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKind(of: MKUserLocation.self) {
+            return nil
+        }
 
-        if annotation.isKind(of: MKUserLocation.self) { return nil }
-        
         let annotationView = MKMarkerAnnotationView()
-        
+
         annotationView.canShowCallout = true
-       
+
         return annotationView
     }
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 
+    func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
-
             let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
 
             polyLineRenderer.alpha = 0.8
@@ -38,6 +37,5 @@ class BikeView: NSObject, MKMapViewDelegate {
         }
 
         return MKOverlayRenderer()
-
     }
 }

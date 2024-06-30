@@ -5,18 +5,16 @@
 //  Created by Kai Fu Jhuang on 2022/5/6.
 //
 
-import UIKit
 import JGProgressHUD
+import UIKit
 
 enum HUDType {
-
     case success(String)
 
     case failure(String)
 }
 
 class LKProgressHUD {
-
     static let shared = LKProgressHUD()
 
     private init() { }
@@ -24,30 +22,24 @@ class LKProgressHUD {
     let hud = JGProgressHUD(style: .dark)
 
     var view: UIView {
-        
         let viewController = UIApplication.shared.windows.first!.rootViewController
         return (viewController?.view)!
-        
     }
 
     static func show(type: HUDType) {
-
         switch type {
-
-        case .success(let text):
+        case let .success(text):
 
             showSuccess(text: text)
 
-        case .failure(let text):
+        case let .failure(text):
 
             showFailure(text: text)
         }
     }
 
     static func showSuccess(text: String = "success") {
-
         if !Thread.isMainThread {
-
             DispatchQueue.main.async {
                 showSuccess(text: text)
             }
@@ -65,9 +57,7 @@ class LKProgressHUD {
     }
 
     static func showFailure(text: String = "Failure") {
-
         if !Thread.isMainThread {
-
             DispatchQueue.main.async {
                 showFailure(text: text)
             }
@@ -85,9 +75,7 @@ class LKProgressHUD {
     }
 
     static func show() {
-
         if !Thread.isMainThread {
-
             DispatchQueue.main.async {
                 show()
             }
@@ -103,9 +91,7 @@ class LKProgressHUD {
     }
 
     static func dismiss() {
-
         if !Thread.isMainThread {
-
             DispatchQueue.main.async {
                 dismiss()
             }

@@ -1,15 +1,14 @@
 //
-//  RecommenMap.swift
+//  ShareMap.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/13.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct SharedMap: Codable, Hashable {
-    
     var uid: String
     var createdTime: Timestamp
     var recordId: String?
@@ -17,15 +16,13 @@ struct SharedMap: Codable, Hashable {
     var recordRef: String
 
     enum CodingKeys: String, CodingKey {
-        
         case uid
         case createdTime = "created_time"
         case recordId = "record_id"
         case recordName = "record_name"
         case recordRef = "record_ref"
-        
     }
-    
+
     init() {
         self.uid = ""
         self.createdTime = Timestamp()
@@ -33,5 +30,4 @@ struct SharedMap: Codable, Hashable {
         self.recordName = ""
         self.recordRef = ""
     }
-    
 }

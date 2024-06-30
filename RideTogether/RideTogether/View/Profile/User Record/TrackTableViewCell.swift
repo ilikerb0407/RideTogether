@@ -5,20 +5,19 @@
 //  Created by Kai Fu Jhuang on 2022/4/11.
 //
 
-import UIKit
 import FirebaseStorage
+import UIKit
 
 class TrackTableViewCell: UITableViewCell {
+    @IBOutlet var trackTitle: UILabel!
 
-    @IBOutlet weak var trackTitle: UILabel!
-    
-    @IBOutlet weak var trackTime: UILabel!
-    
+    @IBOutlet var trackTime: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        
+
         self.backgroundColor = .clear
 //        self.contentView.backgroundColor = .clear
     }
@@ -28,11 +27,9 @@ class TrackTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func setUpCell(model: Record) {
-        
         trackTitle.text = model.recordName
         trackTime.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }
-    
 }

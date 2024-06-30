@@ -5,11 +5,10 @@
 //  Created by Kai Fu Jhuang on 2022/4/20.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct Group: Codable {
-    
     var groupId: String
     var groupName: String
     var hostId: String
@@ -17,12 +16,11 @@ struct Group: Codable {
     var limit: Int
     var routeName: String
     var note: String
-    
+
     var userIds: [String]
     var isExpired: Bool?
-    
+
     enum CodingKeys: String, CodingKey {
-        
         case groupId = "group_id"
         case groupName = "group_name"
         case hostId = "host_id"
@@ -30,12 +28,11 @@ struct Group: Codable {
         case limit
         case routeName = "route_name"
         case note
-        
+
         case userIds = "user_ids"
         case isExpired = "is_expired"
-        
     }
-    
+
     init() {
         self.groupId = ""
         self.groupName = ""
@@ -47,5 +44,4 @@ struct Group: Codable {
         self.userIds = []
         self.isExpired = false
     }
-        
 }
