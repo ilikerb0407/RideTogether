@@ -228,9 +228,9 @@ struct BikeWidgetEntryView: View {
             Image(uiImage: entry.image)
 
             VStack {
-                if upperLimitOnNearbyStations > 0 {
-                    ForEach(0 ..< upperLimitOnNearbyStations) {
-                        NearbyBikesView(bike: entry.nearestStations[$0])
+                if !entry.nearestStations.isEmpty {
+                    ForEach(entry.nearestStations.indices.prefix(upperLimitOnNearbyStations), id: \.self) { index in
+                        NearbyBikesView(bike: entry.nearestStations[index])
                         Spacer()
                         Divider()
                     }

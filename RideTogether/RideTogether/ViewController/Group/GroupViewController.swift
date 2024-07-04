@@ -403,11 +403,11 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     // 查詢團名
     func filtGroupBySearchName(groups: [Group]) -> [Group] {
-        let fitledGroups = groups.filter {
-            $0.routeName.lowercased().prefix(searchText.count) == searchText.lowercased()
+        let filteredGroups = groups.filter { group in
+            group.routeName.lowercased().prefix(searchText.count) == searchText.lowercased()
         }
 
-        return fitledGroups
+        return filteredGroups
     }
 }
 
