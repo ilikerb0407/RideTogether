@@ -1,0 +1,13 @@
+version = 1
+
+[[analyzers]]
+name = "swift"
+enabled = true
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
+
+[[transformers]]
+name = "swiftformat"
+enabled = true
