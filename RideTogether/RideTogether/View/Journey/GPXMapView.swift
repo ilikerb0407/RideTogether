@@ -56,7 +56,7 @@ class GPXMapView: MKMapView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        if let compassView = subviews.filter({ $0.isKind(of: NSClassFromString("MKCompassView")!) }).first {
+        if let compassView = subviews.first(where: { $0.isKind(of: NSClassFromString("MKCompassView")!) }) {
             compassView.frame.origin = CGPoint(x: UIScreen.width / 2 - 18, y: 30)
         }
     }
