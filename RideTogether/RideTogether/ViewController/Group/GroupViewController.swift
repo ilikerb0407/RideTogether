@@ -337,11 +337,15 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     @objc
     func checkRequestList(_ sender: UIButton) {
-        if requests.count != 0 {
+        guard let groupHeaderCell else {
+            return
+        }
+
+        if !requests.isEmpty {
             performSegue(withIdentifier: SegueIdentifier.requestList.rawValue, sender: requests)
 
         } else {
-//            groupHeaderCell?.resquestsBell.shake()
+            groupHeaderCell.resquestsBell.shake()
         }
     }
 
@@ -350,7 +354,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
             return
         }
 
-        if requests.count == 0 {
+        if requests.isEmpty {
         } else {
             groupHeaderCell.resquestsBell.shake()
         }

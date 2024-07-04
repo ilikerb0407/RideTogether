@@ -197,7 +197,7 @@ class TrackInfoViewController: BaseViewController, ChartViewDelegate {
 
         var totalDrop: Double = 0.0
 
-        if elevation.count != 0 {
+        if !elevation.isEmpty {
             for index in 0 ..< elevation.count - 1 {
                 let diff = elevation[index + 1] - elevation[index]
 

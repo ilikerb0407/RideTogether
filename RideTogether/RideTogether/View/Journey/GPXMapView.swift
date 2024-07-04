@@ -70,7 +70,7 @@ class GPXMapView: MKMapView {
     }
 
     func startNewTrackSegment() {
-        if session.currentSegment.points.count > 0 {
+        if !session.currentSegment.points.isEmpty {
             session.startNewTrackSegment()
             currentSegmentOverlay = MKPolyline()
         }

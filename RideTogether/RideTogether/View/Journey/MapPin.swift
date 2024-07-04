@@ -85,7 +85,7 @@ class MapPin: NSObject, MKMapViewDelegate {
             geoCoder.reverseGeocodeLocation(location, preferredLocale: locale) { placeMarks, error in
                 if error == nil {
                     let placeMarks = placeMarks! as [CLPlacemark]
-                    if placeMarks.count > 0 {
+                    if !placeMarks.isEmpty {
                         let placeMark = placeMarks[0]
                         self.destination = placeMark
                     }

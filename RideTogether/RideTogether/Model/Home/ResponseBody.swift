@@ -22,7 +22,7 @@ struct ResponseBody: Codable {
     let name: String
     let cod: Int
 
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
         case coord
         case weather
         case base

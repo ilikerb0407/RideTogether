@@ -49,7 +49,7 @@ class GPXSession {
     }
 
     func startNewTrackSegment() {
-        if self.currentSegment.points.count > 0 {
+        if !self.currentSegment.points.isEmpty {
             self.trackSegments.append(self.currentSegment)
 
             self.currentSegment = GPXTrackSegment()
@@ -81,7 +81,7 @@ class GPXSession {
 
         track.add(trackSegments: self.trackSegments)
 
-        if self.currentSegment.points.count > 0 {
+        if !self.currentSegment.points.isEmpty {
             track.add(trackSegment: self.currentSegment)
         }
 

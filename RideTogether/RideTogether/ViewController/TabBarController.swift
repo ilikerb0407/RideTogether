@@ -39,7 +39,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         String(describing: self)
     }
 
-    private let tabs: [Tab] = [.journey, .home, .group, .profile]
+    private let tabs: [Tabs] = [.journey, .home, .group, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()
