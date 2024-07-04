@@ -21,84 +21,59 @@ class LKProgressHUD {
 
     let hud = JGProgressHUD(style: .dark)
 
-    var view: UIView {
-        let viewController = UIApplication.shared.windows.first!.rootViewController
-        return (viewController?.view)!
+    var view: UIView? {
+        UIApplication.shared.windows.first?.rootViewController?.view
     }
 
     static func show(type: HUDType) {
         switch type {
         case let .success(text):
-
             showSuccess(text: text)
-
         case let .failure(text):
-
             showFailure(text: text)
         }
     }
 
     static func showSuccess(text: String = "success") {
-        if !Thread.isMainThread {
-            DispatchQueue.main.async {
-                showSuccess(text: text)
-            }
-
-            return
+        showOnMainThread {
+            guard let view = shared.view else { return }
+            shared.hud.textLabel.text = text
+            shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+            shared.hud.show(in: view)
+            shared.hud.dismiss(afterDelay: 1.5)
         }
-
-        shared.hud.textLabel.text = text
-
-        shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-
-        shared.hud.show(in: shared.view)
-
-        shared.hud.dismiss(afterDelay: 1.5)
     }
 
     static func showFailure(text: String = "Failure") {
-        if !Thread.isMainThread {
-            DispatchQueue.main.async {
-                showFailure(text: text)
-            }
-
-            return
+        showOnMainThread {
+            guard let view = shared.view else { return }
+            shared.hud.textLabel.text = text
+            shared.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            shared.hud.show(in: view)
+            shared.hud.dismiss(afterDelay: 1.5)
         }
-
-        shared.hud.textLabel.text = text
-
-        shared.hud.indicatorView = JGProgressHUDErrorIndicatorView()
-
-        shared.hud.show(in: shared.view)
-
-        shared.hud.dismiss(afterDelay: 1.5)
     }
 
     static func show() {
-        if !Thread.isMainThread {
-            DispatchQueue.main.async {
-                show()
-            }
-
-            return
+        showOnMainThread {
+            guard let view = shared.view else { return }
+            shared.hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
+            shared.hud.textLabel.text = "Loading"
+            shared.hud.show(in: view)
         }
-
-        shared.hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
-
-        shared.hud.textLabel.text = "Loading"
-
-        shared.hud.show(in: shared.view)
     }
 
     static func dismiss() {
-        if !Thread.isMainThread {
-            DispatchQueue.main.async {
-                dismiss()
-            }
-
-            return
+        showOnMainThread {
+            shared.hud.dismiss()
         }
+    }
 
-        shared.hud.dismiss()
+    private static func showOnMainThread(_ action: @escaping () -> Void) {
+        if Thread.isMainThread {
+            action()
+        } else {
+            DispatchQueue.main.async(execute: action)
+        }
     }
 }

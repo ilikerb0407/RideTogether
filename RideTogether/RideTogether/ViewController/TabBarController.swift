@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum Tab {
+private enum Tabs {
     case home
 
     case group
