@@ -243,7 +243,7 @@ extension RecommendViewController: UITableViewDelegate {
                     self.waitlottie.isHidden = true
                 }
 
-                showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
+                showAlert(provider: .init(title: "", message: "", preferredStyle: .alert, actions: [likeOption, blockOption]))
             }
         }
     }

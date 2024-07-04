@@ -163,6 +163,8 @@
 		3B438B232C3156DE00AC05CF /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B222C3156DE00AC05CF /* DismissButton.swift */; };
 		3B438B252C3156F000AC05CF /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B242C3156F000AC05CF /* ImagePickerButton.swift */; };
 		3B438B272C3156F600AC05CF /* RequestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B262C3156F600AC05CF /* RequestButton.swift */; };
+		3B438B292C31601800AC05CF /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B282C31601800AC05CF /* AlertProvider.swift */; };
+		3B438B2B2C31617D00AC05CF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */; };
 		3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F92A70E1870075E8C0 /* APIRequest.swift */; };
 		3BDF087329A0692500766110 /* ResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF087229A0692500766110 /* ResponseBody.swift */; };
 		C51FAD302909368C00264854 /* BikeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51FAD2F2909368C00264854 /* BikeWidget.swift */; };
@@ -367,6 +369,8 @@
 		3B438B222C3156DE00AC05CF /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
 		3B438B242C3156F000AC05CF /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
 		3B438B262C3156F600AC05CF /* RequestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButton.swift; sourceTree = "<group>"; };
+		3B438B282C31601800AC05CF /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
+		3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3B7947F92A70E1870075E8C0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		3BDF087229A0692500766110 /* ResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBody.swift; sourceTree = "<group>"; };
 		C51FAD292909368B00264854 /* BikeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -637,6 +641,7 @@
 				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				3B438B282C31601800AC05CF /* AlertProvider.swift */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B767280060E0000EDA70 /* View */,
 				23D1B74A28005CF1000EDA70 /* ViewController */,
@@ -727,6 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				23CB74C72817824000DED822 /* UIStorybroad.swift */,
+				3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */,
 				23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */,
 				23D1B772280061D5000EDA70 /* Double+Measures.swift */,
 				23D1B774280061F2000EDA70 /* UIButtonExtension.swift */,
@@ -1089,6 +1095,7 @@
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
 				3B438B192C3156B200AC05CF /* CreateGroupButton.swift in Sources */,
+				3B438B292C31601800AC05CF /* AlertProvider.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				3B438B1F2C3156D000AC05CF /* TrackButton.swift in Sources */,
@@ -1124,6 +1131,7 @@
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
 				23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */,
+				3B438B2B2C31617D00AC05CF /* UIViewController+Extension.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,

@@ -13,6 +13,8 @@ import MessageUI
 import UIKit
 
 class JourneyViewController: BaseViewController {
+    private let stopWatch = StopWatch()
+
     @IBOutlet var mapView: GPXMapView!
 
     private var hasWaypoints: Bool = false

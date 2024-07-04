@@ -183,7 +183,8 @@ class GroupDetailViewController: BaseViewController {
             switch result {
             case .success:
 
-                showAlertAction(title: "已送出申請")
+                showAlert(provider: .init(title: "已送出申請", message: "", preferredStyle: .alert, actions: []))
+
 
             case let .failure(error):
 
@@ -218,7 +219,7 @@ class GroupDetailViewController: BaseViewController {
             self.leaveLottieView.play()
         }
 
-        showAlertAction(title: "確認退出", message: nil, actions: [cancelAction, leaveAction])
+        showAlert(provider: .init(title: "確認退出", message: "", preferredStyle: .alert, actions: [cancelAction, leaveAction]))
     }
 
     func setNavigationBar() {
