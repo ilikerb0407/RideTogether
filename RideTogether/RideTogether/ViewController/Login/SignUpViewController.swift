@@ -23,7 +23,7 @@ class SignUpViewController: BaseViewController {
 
     @objc
     func signUp() {
-        if self.signUpEmail.text == "" || self.signUpPassword.text == "" {
+        if self.signUpEmail.text.isEmpty || self.signUpPassword.text.isEmpty {
             let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
 
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -128,7 +128,7 @@ class SignUpViewController: BaseViewController {
 
     @objc
     func loginwithFB() {
-        if self.signUpEmail.text == "" || self.signUpPassword.text == "" {
+        if self.signUpEmail.text.isEmpty || self.signUpPassword.text.isEmpty {
             let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
 
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
