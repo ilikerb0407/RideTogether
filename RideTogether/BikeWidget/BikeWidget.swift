@@ -86,7 +86,7 @@ struct Provider: TimelineProvider {
             }
 
             let image = UIGraphicsImageRenderer(size: useableSnapShot.image.size).image { _ in
-                useableSnapShot.image.draw(at: CGPoint(x: 0, y: 0))
+                useableSnapShot.image.draw(at: CGPoint.zero)
 
                 let userLocationIconName = "person.crop.circle.fill"
                 let nearestStationIconName = "bicycle.circle.fill"

@@ -105,12 +105,12 @@ extension UIView {
             gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
 
         case .leftSkewed:
-            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+            gradientLayer.startPoint = CGPoint.zero
             gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
 
         case .rightSkewed:
             gradientLayer.startPoint = CGPoint(x: 1.0, y: 1.0)
-            gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
+            gradientLayer.endPoint = CGPoint.zero
         }
 
         self.layer.sublayers?.removeAll()
