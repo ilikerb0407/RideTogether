@@ -17,10 +17,26 @@ struct ResponseBody: Codable {
     let wind: Wind
     let clouds: Clouds
     let dt: Int
-    let sys: Sys
+    let sys: SunTime
     let timezone, id: Int
     let name: String
     let cod: Int
+
+    enum CodingKeys: CodingKey {
+        case coord
+        case weather
+        case base
+        case main
+        case visibility
+        case wind
+        case clouds
+        case dt
+        case sys = "Sys"
+        case timezone
+        case id
+        case name
+        case cod
+    }
 }
 
 // MARK: - Clouds
@@ -48,7 +64,7 @@ struct Main: Codable {
 }
 
 // MARK: - Sys
-struct Sys: Codable {
+struct SunTime: Codable {
     let type, id: Int
     let country: String
     let sunrise, sunset: Int

@@ -63,7 +63,7 @@
 		23A84A762811AE2300DD8D39 /* GroupInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A742811AE2300DD8D39 /* GroupInfoTableViewCell.xib */; };
 		23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A772812E63800DD8D39 /* JoinViewController.swift */; };
 		23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */; };
-		23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */; };
+		23A84A7F2812EFFE00DD8D39 /* RouteSelecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7B2812EFFE00DD8D39 /* RouteSelecViewController.swift */; };
 		23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */; };
 		23A84A8D2813FA9B00DD8D39 /* RouteTypesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A8B2813FA9B00DD8D39 /* RouteTypesTableViewCell.swift */; };
 		23A84A8E2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A8C2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib */; };
@@ -133,7 +133,7 @@
 		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
 		23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7942800B0FD000EDA70 /* Profile.storyboard */; };
 		23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E228041F67000EDA70 /* TracksViewController.swift */; };
-		23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */; };
+		23D1B7E528042027000EDA70 /* TrackInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E428042027000EDA70 /* TrackInfoViewController.swift */; };
 		23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E6280428B3000EDA70 /* ProfileItem.swift */; };
 		23D1B7EB28042CA6000EDA70 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */; };
 		23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */; };
@@ -265,7 +265,7 @@
 		23A84A742811AE2300DD8D39 /* GroupInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupInfoTableViewCell.xib; sourceTree = "<group>"; };
 		23A84A772812E63800DD8D39 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectionsViewController.xib; sourceTree = "<group>"; };
-		23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectionViewController.swift; sourceTree = "<group>"; };
+		23A84A7B2812EFFE00DD8D39 /* RouteSelecViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelecViewController.swift; sourceTree = "<group>"; };
 		23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		23A84A8B2813FA9B00DD8D39 /* RouteTypesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTypesTableViewCell.swift; sourceTree = "<group>"; };
 		23A84A8C2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTypesTableViewCell.xib; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 		23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		23D1B7942800B0FD000EDA70 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		23D1B7E228041F67000EDA70 /* TracksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
-		23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
+		23D1B7E428042027000EDA70 /* TrackInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfoViewController.swift; sourceTree = "<group>"; };
 		23D1B7E6280428B3000EDA70 /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		23D1B7E928042CA6000EDA70 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		23D1B7EA28042CA6000EDA70 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
@@ -775,7 +775,7 @@
 			children = (
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
 				23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */,
-				23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */,
+				23A84A7B2812EFFE00DD8D39 /* RouteSelecViewController.swift */,
 				23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */,
 			);
 			path = Journey;
@@ -786,7 +786,7 @@
 			children = (
 				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
-				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
+				23D1B7E428042027000EDA70 /* TrackInfoViewController.swift */,
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
 				23129C38281D11C7001DE91D /* SaveMapsViewController.swift */,
 				2304FF4B280895F200C6B1BF /* RideViewController.swift */,
@@ -1091,7 +1091,7 @@
 				23C0C41F281E9C810020237C /* HomeHeaderTableViewCell.swift in Sources */,
 				3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
-				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
+				23A84A7F2812EFFE00DD8D39 /* RouteSelecViewController.swift in Sources */,
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
 				3B438B192C3156B200AC05CF /* CreateGroupButton.swift in Sources */,
@@ -1147,7 +1147,7 @@
 				23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */,
 				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
-				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
+				23D1B7E528042027000EDA70 /* TrackInfoViewController.swift in Sources */,
 				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
 				3B438B1B2C3156C600AC05CF /* BottomButton.swift in Sources */,
 				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,

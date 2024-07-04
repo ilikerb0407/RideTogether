@@ -1,5 +1,5 @@
 //
-//  TrackDetailsViewController.swift
+//  TrackInfoViewController.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/11.
@@ -15,7 +15,7 @@ import UIKit
 
 // MARK: User Record detail
 
-class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
+class TrackInfoViewController: BaseViewController, ChartViewDelegate {
     @IBOutlet var map: GPXMapView!
 
     // MARK: recordInfoView

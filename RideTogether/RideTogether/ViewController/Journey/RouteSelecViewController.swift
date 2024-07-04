@@ -5,7 +5,7 @@ import Lottie
 import MapKit
 import UIKit
 
-class RouteSelectionViewController: BaseViewController {
+class RouteSelecViewController: BaseViewController {
     var weatherdata: ResponseBody?
 
     let weatherManger = WeatherManager()
@@ -437,7 +437,7 @@ class RouteSelectionViewController: BaseViewController {
 
 // MARK: - UITextFieldDelegate
 
-extension RouteSelectionViewController: UITextFieldDelegate {
+extension RouteSelecViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         hideSuggestionView(animated: true)
 
@@ -451,7 +451,7 @@ extension RouteSelectionViewController: UITextFieldDelegate {
 
 // MARK: - CLLocationManagerDelegate
 
-extension RouteSelectionViewController: CLLocationManagerDelegate {
+extension RouteSelecViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {
             return
@@ -491,7 +491,7 @@ extension RouteSelectionViewController: CLLocationManagerDelegate {
 
 // MARK: - MKLocalSearchCompleterDelegate
 
-extension RouteSelectionViewController: MKLocalSearchCompleterDelegate {
+extension RouteSelecViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         guard let firstResult = completer.results.first else {
             return

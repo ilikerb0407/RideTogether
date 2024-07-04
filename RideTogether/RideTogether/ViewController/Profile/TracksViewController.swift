@@ -311,7 +311,7 @@ extension TracksViewController: UITableViewDelegate {
     // MARK: 傳到Detail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.userRecord.rawValue {
-            if let nextVC = segue.destination as? TrackDetailsViewController {
+            if let nextVC = segue.destination as? TrackInfoViewController {
                 if let record = sender as? Record {
                     nextVC.record = record
                 }
