@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 
 final class BikeManager {
-    private var bikes: [BikeModel]
+    private var bikes: [TPBikeModel]
 
     static let shared = BikeManager()
 
@@ -18,7 +18,7 @@ final class BikeManager {
         bikes = []
     }
 
-    func getTPBikeData(completion: @escaping ([BikeModel]) -> Void) {
+    func getTPBikeData(completion: @escaping ([TPBikeModel]) -> Void) {
         let apiLoader = APIRequestLoader(apiRequest: BikeRequest())
 
         apiLoader.loadAPIRequest(requestData: "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json") { data, _ in
@@ -29,7 +29,7 @@ final class BikeManager {
         }
     }
 
-    class func getTCBikeData(completion: @escaping (TaichungBikeModel) -> Void) {
+    class func getTCBikeData(completion: @escaping (TCBikeModel) -> Void) {
         let urlString = URL(string: "https://datacenter.taichung.gov.tw/swagger/OpenData/34c2aa94-7924-40cc-96aa-b8d090f0ab69")
 
         guard let urlString else {
@@ -43,7 +43,7 @@ final class BikeManager {
             }
             let decoder = JSONDecoder()
             do {
-                let tBikeData = try decoder.decode(TaichungBikeModel.self, from: data)
+                let tBikeData = try decoder.decode(TCBikeModel.self, from: data)
 
                 completion(tBikeData)
 
@@ -101,7 +101,7 @@ struct BikeRequest: APIRequest {
     }
 
     // part two's method
-    func parseResponse(data: Data) throws -> [BikeModel] {
-        try JSONDecoder().decode([BikeModel].self, from: data)
+    func parseResponse(data: Data) throws -> [TPBikeModel] {
+        try JSONDecoder().decode([TPBikeModel].self, from: data)
     }
 }

@@ -11,9 +11,9 @@ import MapKit
 import UIKit
 
 class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
-    var bikeData: [BikeModel] = []
+    var bikeData: [TPBikeModel] = []
 
-    var taichungBikeData: TaichungBikeModel?
+    var taichungBikeData: TCBikeModel?
 
     @IBOutlet var bikeMapView: MKMapView!
 

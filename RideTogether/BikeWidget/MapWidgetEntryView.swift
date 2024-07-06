@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NearbyBikesView: View {
-    @State var bike: BikeModel
+    @State var bike: TPBikeModel
 
     var body: some View {
         VStack(alignment: .leading) {
