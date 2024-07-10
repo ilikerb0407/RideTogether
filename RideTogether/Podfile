@@ -1,0 +1,32 @@
+# Suppress warning about the master specs repo
+install! 'cocoapods', :warn_for_unused_master_specs_repo => false
+platform :ios, '13.0'
+
+def shared_pods
+  pod 'Firebase/Core'
+  pod 'FirebaseFirestore' 
+  pod 'IQKeyboardManagerSwift'
+  pod 'JGProgressHUD'
+  pod 'Kingfisher'
+  pod 'lottie-ios'
+  pod 'MJRefresh'
+end
+
+target 'RideTogether' do
+  use_frameworks!
+  # Pods for RideTogether
+  shared_pods
+
+  target 'RideTogetherTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+    end
+  end
+end
