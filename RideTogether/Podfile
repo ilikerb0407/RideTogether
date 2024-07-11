@@ -4,7 +4,11 @@ platform :ios, '13.0'
 
 def shared_pods
   pod 'Firebase/Core'
-  pod 'FirebaseFirestore' 
+  pod 'FirebaseStorage'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseAuth'
   pod 'IQKeyboardManagerSwift'
   pod 'JGProgressHUD'
   pod 'Kingfisher'
