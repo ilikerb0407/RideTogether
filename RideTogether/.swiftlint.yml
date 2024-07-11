@@ -1,26 +1,25 @@
+# SwiftLint 0.55.1
+
+# 要檢查路徑
+included:
+
+# 排除路徑
 excluded:
-  - Pods
+    - Pods
+    - RideTogetherTests
+# 關閉 default 的 rule
 disabled_rules:
-  - trailing_whitespace
-  - trailing_comma
-  - inclusive_language
-identifier_name:
-  excluded: # excluded via string array
-    - id
-    - URL
-    - url
-    - app
+   - trailing_comma
+   - inclusive_language
+
 # 開啟 option 的 rule
 opt_in_rules:
   - xct_specific_matcher
   - weak_delegate
-  - unused_import
-  - unused_declaration
   - untyped_error_in_catch
   - unowned_variable_capture
   - unneeded_parentheses_in_closure_argument
   - unavailable_function
-  - typesafe_array_init
   - toggle_bool
   - test_case_accessibility
   - static_operator
@@ -62,7 +61,6 @@ opt_in_rules:
   - empty_string
   - empty_collection_literal
   - discouraged_optional_boolean
-  - discouraged_object_literal
   - contains_over_range_nil_comparison
   - contains_over_first_not_nil
   - contains_over_filter_is_empty
@@ -71,7 +69,6 @@ opt_in_rules:
   - closure_spacing
   - closure_end_indentation
   - attributes
-  - anyobject_protocol
   - inert_defer
   - enum_case_associated_values_count
   - closure_body_length # 必須開啟設定的長度才會生效
@@ -85,6 +82,29 @@ opt_in_rules:
   - yoda_condition
   - missing_docs
   - switch_case_on_newline
+  - ibinspectable_in_extension
+  - let_var_whitespace
+  - operator_usage_whitespace
+  - pattern_matching_keywords
+  - discarded_notification_center_observer
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
+
+# 掃 build log, 執行速度慢且 Xcode 看不到
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+  - typesafe_array_init
+
+# 名稱
+identifier_name:
+  min_length:
+    warning: 2
+    error: 2
+  max_length:
+    warning: 40
+    error: 60
+  excluded: []
 
 # 檔案長度
 file_length:
@@ -137,7 +157,4 @@ computed_accessors_order:
 # Deployment Target 要配合專案的 Minimum Target -> 需配合專案更新
 deployment_target:
   iOS_deployment_target: 13
-
-anyobject_protocol:
-  severity: error
 
