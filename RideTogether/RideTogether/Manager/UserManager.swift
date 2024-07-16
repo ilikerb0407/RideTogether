@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import UIKit
 
-class UserManager {
+internal class UserManager {
     let userId = Auth.auth().currentUser?.uid
 
     var userInfo = UserInfo()
@@ -217,25 +217,38 @@ class UserManager {
     }
 
     func updateUserGroupRecords(numOfGroups: Int, numOfPartners: Int) {
-        userInfo.totalGroups = numOfGroups
-        userInfo.totalFriends = numOfPartners
+        guard let uid = Auth.auth().currentUser?.uid, !uid.isEmpty else {
+            print("Error: User ID is empty or nil")
+            return
+        }
 
-        let userId = userInfo.uid
+        let docRef = dataBase.collection(usersCollection).document(uid)
 
-        let post = [
-            UserInfo.CodingKeys.totalGroups.rawValue: numOfGroups,
-            UserInfo.CodingKeys.totalFriends.rawValue: numOfPartners,
+        let data: [String: Any] = [
+            "total_groups": numOfGroups,
+            "total_friends": numOfPartners
         ]
 
-        let docRef = dataBase.collection(usersCollection).document(userId)
-
-        docRef.updateData(post) { error in
-
-            if let error {
+        docRef.updateData(data) { error in
+            if let error = error {
                 print("Error updating document: \(error)")
-
+                if let firestoreError = error as? FirestoreErrorCode {
+                    switch firestoreError.code {
+                    case .notFound:
+                        print("Document not found. Creating a new one.")
+                        docRef.setData(data) { error in
+                            if let error = error {
+                                print("Error creating document: \(error)")
+                            } else {
+                                print("New document created successfully")
+                            }
+                        }
+                    default:
+                        print("Firestore error: \(firestoreError.localizedDescription)")
+                    }
+                }
             } else {
-                print("User name successfully updated")
+                print("User group records successfully updated")
             }
         }
     }

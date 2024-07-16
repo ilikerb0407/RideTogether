@@ -41,6 +41,8 @@ internal class TabBarController: UITabBarController, UITabBarControllerDelegate 
 
     private let tabs: [Tabs] = [.journey, .home, .group, .profile]
 
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

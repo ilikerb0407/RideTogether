@@ -20,8 +20,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
     private var handle: AuthStateDidChangeListenerHandle?
 
-    private var userInfo = UserManager.shared.userInfo
-
     private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
 
     var currentUser = Auth.auth().currentUser
@@ -226,13 +224,6 @@ private func randomNonceString(length: Int = 32) -> String {
 extension LoginViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller _: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
-//        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-//            let userId = credential.user
-//            let fullname = credential.fullName
-//            let email = credential.email
-//            let idToken = credential.identityToken
-//
-//        } else { }
 
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             userInfo.userName = appleIDCredential.fullName?.givenName

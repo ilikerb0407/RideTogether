@@ -186,23 +186,20 @@ internal class GroupViewController: BaseViewController, Reload, UISheetPresentat
     }
 
     func updateUserHistory() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("Error: No user is currently logged in")
+            return
+        }
+
         var numOfGroups = 0
         var numOfPartners = 0
 
-        for group in myGroups {
-            if group.isExpired == true {
-                numOfGroups += 1
-                numOfPartners += (group.userIds.count - 1) // -1 for self
-            }
+        for group in myGroups where group.isExpired == true {
+            numOfGroups += 1
+            numOfPartners += (group.userIds.count - 1) // -1 for self
         }
 
-        print("Updating user history: groups = \(numOfGroups), partners = \(numOfPartners)")
-
-        do {
-            try UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
-        } catch {
-            print("Error updating user group records: \(error)")
-        }
+        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
     }
 
     func rearrangeMyGroup(groups: [Group]) {

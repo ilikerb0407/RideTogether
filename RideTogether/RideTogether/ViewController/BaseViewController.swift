@@ -10,9 +10,12 @@ import MessageUI
 import UIKit
 
 
-class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
+internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
 
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
+    var userInfo: UserInfo {
+        get { UserManager.shared.userInfo }
+        set { newValue }
+    }
 
     private var isDisplayingLocationServicesDenied: Bool = false
 

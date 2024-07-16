@@ -8,8 +8,7 @@
 import QuartzCore
 import UIKit
 
-class HomeViewController: BaseViewController {
-    func reloadDetail() { }
+internal class HomeViewController: BaseViewController {
 
     var trackVC = TracksViewController()
 
@@ -116,9 +115,9 @@ class HomeViewController: BaseViewController {
     }
 
     func fetchTrailData() {
-        //////Test
+        
         MapsManager.shared.fetchRoutes { result in
-            ////
+
             switch result {
             case let .success(routes):
 

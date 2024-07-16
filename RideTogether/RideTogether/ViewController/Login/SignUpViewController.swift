@@ -19,8 +19,6 @@ class SignUpViewController: BaseViewController {
 
     @IBOutlet var loginButton: UIButton!
 
-    private var userInfo = UserManager.shared.userInfo
-
     @objc
     func signUp() {
         if let signUpEmail = self.signUpEmail.text, let signUpPassword = self.signUpPassword.text {

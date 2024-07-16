@@ -25,8 +25,6 @@ class GroupDetailViewController: BaseViewController {
         }
     }
 
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
-
     var groupInfo: Group?
 
     var cache = [String: UserInfo]()
