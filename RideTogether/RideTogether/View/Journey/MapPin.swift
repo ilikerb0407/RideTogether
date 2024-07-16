@@ -73,7 +73,7 @@ class MapPin: NSObject, MKMapViewDelegate {
                 self.route = self.directionsResponse.routes[0]
 
             } else {
-                LKProgressHUD.showFailure(text: "無法導航")
+                LKProgressHUD.show(.failure("無法導航"))
             }
         }
         let geoCoder: CLGeocoder = .init()
@@ -180,7 +180,7 @@ class MapPin: NSObject, MKMapViewDelegate {
                     self.route.polyline.title = "guide"
 
                     if polyLine == nil {
-                        LKProgressHUD.showFailure(text: "無法導航")
+                        LKProgressHUD.show(.failure("無法導航"))
                     } else {
                         map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
                     }
@@ -230,7 +230,7 @@ class MapPin: NSObject, MKMapViewDelegate {
                 self.waypointBeingEdited = waypoint
 
             default:
-                LKProgressHUD.showFailure(text: "網路問題，無法顯示")
+                LKProgressHUD.show(.failure("網路問題，無法顯示"))
             }
         }
     }

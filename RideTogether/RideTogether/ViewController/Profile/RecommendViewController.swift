@@ -108,11 +108,10 @@ class RecommendViewController: BaseViewController {
             try document.setData(from: record)
 
         } catch {
-            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
-            print("error")
+            LKProgressHUD.show(.failure("無法收藏，因為不是使用者提供的路線"))
         }
 
-        print("sucessfully")
+        LKProgressHUD.show(.success("收藏成功"))
     }
 
     func fetchRecords() {
@@ -227,7 +226,7 @@ extension RecommendViewController: UITableViewDelegate {
                 let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
 
                     if userId == records[indexPath.row].uid {
-                        LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
+                        LKProgressHUD.show(.failure("無法封鎖自己的分享紀錄"))
                     } else {
                         UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
 
@@ -253,7 +252,6 @@ extension RecommendViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        LKProgressHUD.show()
 
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
             navigationController?.pushViewController(nextViewController, animated: true)

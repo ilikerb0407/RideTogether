@@ -47,11 +47,9 @@ final class BikeManager {
 
                 completion(tBikeData)
 
-                LKProgressHUD.showSuccess(text: "讀取成功")
-
+                LKProgressHUD.show(.success("讀取成功"))
             } catch {
-                print(error)
-                LKProgressHUD.showFailure(text: "目前僅提供台北市的資料，陸續增加中")
+                LKProgressHUD.show(.failure("目前僅提供台北市的資料，陸續增加中"))
             }
 
         }).resume()

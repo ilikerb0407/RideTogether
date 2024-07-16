@@ -194,7 +194,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
                     self.navigationController?.present(navBar, animated: true, completion: .none)
                 }
             } else {
-                LKProgressHUD.showFailure(text: "無法創建活動")
+                LKProgressHUD.show(.failure("無法創建活動"))
             }
         }
     }
@@ -276,7 +276,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
                 print("fetchData.failure: \(error)")
 
-                LKProgressHUD.showFailure(text: "讀取資料失敗")
+                LKProgressHUD.show(.failure("讀取資料失敗"))
             }
         }
     }

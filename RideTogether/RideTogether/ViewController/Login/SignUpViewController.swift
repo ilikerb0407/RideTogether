@@ -123,7 +123,7 @@ class SignUpViewController: BaseViewController {
 
                 print("Fetch user info failure: \(error)")
 
-                LKProgressHUD.showFailure(text: "讀取使用者資料失敗")
+                LKProgressHUD.show(.failure( "讀取使用者資料失敗"))
             }
         }
     }

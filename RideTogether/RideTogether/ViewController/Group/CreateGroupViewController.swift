@@ -165,7 +165,7 @@ class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
 
                     print("build team failure: \(error)")
 
-                    LKProgressHUD.showFailure(text: "新增資料失敗")
+                    LKProgressHUD.show(.failure("新增資料失敗"))
                 }
             }
         }

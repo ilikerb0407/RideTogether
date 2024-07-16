@@ -39,14 +39,10 @@ class UserManager {
 
         do {
             document.delete { err in
-
                 if let err {
-                    print("Error removing document: \(err)")
-                    LKProgressHUD.showFailure(text: "刪除失敗")
-
+                    LKProgressHUD.show(.failure("刪除失敗"))
                 } else {
-                    LKProgressHUD.showSuccess(text: "刪除成功")
-                    print("delete uid=========\(uid)")
+                    LKProgressHUD.show(.success("刪除成功"))
                 }
             }
         }
@@ -60,7 +56,7 @@ class UserManager {
             }
 
             if error != nil {
-                LKProgressHUD.showFailure(text: "刪除失敗")
+                LKProgressHUD.show(.failure("刪除失敗"))
 
             } else {
                 for document in querySnapshot.documents {
@@ -82,7 +78,7 @@ class UserManager {
             }
 
             if error != nil {
-                LKProgressHUD.showFailure(text: "刪除失敗")
+                LKProgressHUD.show(.failure("刪除失敗"))
 
             } else {
                 for document in querySnapshot.documents {
@@ -277,11 +273,12 @@ class UserManager {
 
             if let error {
                 print("Error updating document: \(error)")
-                LKProgressHUD.showFailure(text: "無法封鎖，因為不是使用者提供的路線")
+
+                LKProgressHUD.show(.failure("無法封鎖，因為不是使用者提供的路線"))
 
             } else {
                 print("Block list successfully updated")
-                LKProgressHUD.showSuccess(text: "封鎖成功，請回到首頁")
+                LKProgressHUD.show(.success("封鎖成功，請回到首頁"))
             }
         }
     }

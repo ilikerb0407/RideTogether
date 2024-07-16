@@ -94,7 +94,7 @@ class TracksViewController: BaseViewController {
                 self?.records = records
                 self?.tableView.reloadData()
             case .failure:
-                LKProgressHUD.showFailure(text: "無法讀取資料")
+                LKProgressHUD.show(.failure("無法讀取資料"))
             }
         }
     }
@@ -183,17 +183,16 @@ extension TracksViewController: UITableViewDelegate {
                         switch result {
                         case let .success(url):
                             //                    completion(.success(url))
-                            print("\(url)")
+
                             self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
 
                             self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url, userPhoto: userPhoto)
 
-                            LKProgressHUD.showSuccess(text: "分享成功")
+                            LKProgressHUD.show(.success( "分享成功"))
 
                         case let .failure(error):
 //                            completion(.failure(error))
-                            print("\(error)")
-                            LKProgressHUD.showFailure(text: "網路不佳，分享失敗")
+                            LKProgressHUD.show(.failure( "網路不佳，分享失敗"))
                         }
                     }
                 }
@@ -222,10 +221,10 @@ extension TracksViewController: UITableViewDelegate {
 
                     self.tableView.deleteRows(at: [indexPath], with: .left)
 
-                    LKProgressHUD.showSuccess(text: "刪除成功")
+                    LKProgressHUD.show(.success("刪除成功"))
 
                 case let .failure(error):
-                    print("delete error: \(error)")
+                    LKProgressHUD.show(.failure("刪除失敗，失敗原因:\(error)"))
                 }
             }
         }
@@ -252,13 +251,10 @@ extension TracksViewController: UITableViewDelegate {
             try document.setData(from: record)
 
         } catch {
-            print("error")
-
-            LKProgressHUD.showSuccess(text: "新增資料失敗")
+            LKProgressHUD.show(.failure("新增資料失敗"))
         }
 
-        print("sucessfully")
-        LKProgressHUD.showSuccess(text: "新增資料成功")
+        LKProgressHUD.show(.success("新增資料成功"))
     }
 
     func uploadRecordToPopular(fileName: String, fileURL: URL, userPhoto: String) {
@@ -294,17 +290,14 @@ extension TracksViewController: UITableViewDelegate {
             try document.setData(from: route)
 
         } catch {
-            print("error")
-            LKProgressHUD.showFailure(text: "新增資料失敗")
+            LKProgressHUD.show(.failure("新增資料失敗"))
         }
 
-        print("sucessfully")
-        LKProgressHUD.showSuccess(text: "新增資料成功")
+        LKProgressHUD.show(.success("新增資料成功"))
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        LKProgressHUD.show()
-
+        
         performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
     }
 

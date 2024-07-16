@@ -37,10 +37,10 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
         if let user = Auth.auth().currentUser {
             print("\(user.uid) login")
-            LKProgressHUD.showSuccess(text: "已經登入")
+            LKProgressHUD.show(.success("已經登入"))
         } else {
             print("not login")
-            LKProgressHUD.showFailure(text: "未登入")
+            LKProgressHUD.show(.failure("未登入"))
         }
 
         Auth.auth().addStateDidChangeListener { _, user in
@@ -262,18 +262,19 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
-                LKProgressHUD.showFailure(text: "登入請求未送出")
+                LKProgressHUD.show(.failure("登入請求未送出"))
+
             }
 
             guard let appleIDToken = appleIDCredential.identityToken else {
                 print("Unable to fetch identity token")
-                LKProgressHUD.showFailure(text: "登入失敗")
+                LKProgressHUD.show(.failure("登入失敗"))
                 return
             }
 
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-                LKProgressHUD.showFailure(text: "登入失敗")
+                LKProgressHUD.show(.failure("登入失敗"))
                 return
             }
 
@@ -286,7 +287,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 if let isNewUser = authResult?.additionalUserInfo?.isNewUser,
 
                    let uid = authResult?.user.uid {
-                    LKProgressHUD.show()
+                    LKProgressHUD.show(.loading("Loading"))
 
                     if isNewUser {
                         self.userInfo.uid = uid
@@ -298,17 +299,18 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
                                 self.fetchUserInfo(uid: uid)
 
-                                LKProgressHUD.showSuccess(text: "註冊成功")
+                                LKProgressHUD.show(.success("註冊成功"))
 
                             case let .failure(error):
 
-                                LKProgressHUD.showFailure(text: "註冊失敗")
+                                LKProgressHUD.show(.failure("註冊失敗"))
+
                             }
                         }
 
                     } else {
                         self.fetchUserInfo(uid: uid)
-                        LKProgressHUD.showSuccess(text: "登入成功")
+                        LKProgressHUD.show(.success("登入成功"))
                     }
                 }
 
@@ -318,7 +320,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                         print("登入錯誤，請稍後再試")
                         return
                     }
-                    LKProgressHUD.showFailure(text: "登入失敗，請確定網路品質")
+                    LKProgressHUD.show(.failure("登入失敗，請確定網路品質"))
                 }
             }
         }
@@ -329,17 +331,17 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
         switch error {
         case ASAuthorizationError.canceled:
-            LKProgressHUD.showFailure(text: "取消登入")
+            LKProgressHUD.show(.failure("取消登入"))
         case ASAuthorizationError.failed:
-            LKProgressHUD.showFailure(text: "授權請求失敗")
+            LKProgressHUD.show(.failure( "授權請求失敗"))
         case ASAuthorizationError.invalidResponse:
-            LKProgressHUD.showFailure(text: "授權請求無回應")
+            LKProgressHUD.show(.failure("授權請求無回應"))
         case ASAuthorizationError.notHandled:
-            LKProgressHUD.showFailure(text: "授權請求未處理")
+            LKProgressHUD.show(.failure("授權請求未處理"))
         case ASAuthorizationError.unknown:
-            LKProgressHUD.showFailure(text: "網路連線不佳")
+            LKProgressHUD.show(.failure("網路連線不佳"))
         default:
-            LKProgressHUD.showFailure(text: "登入失敗，原因不明")
+            LKProgressHUD.show(.failure("登入失敗，原因不明"))
         }
     }
 
@@ -362,7 +364,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
             case let .failure(error):
 
-                LKProgressHUD.showFailure(text: "讀取資料失敗")
+                LKProgressHUD.show(.failure( "讀取資料失敗"))
             }
         }
     }

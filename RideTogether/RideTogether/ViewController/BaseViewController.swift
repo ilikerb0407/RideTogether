@@ -107,7 +107,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             let navBar = UINavigationController(rootViewController: rootVC)
             presentViewController(navBar)
         } else {
-            LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
+            LKProgressHUD.show(.failure("目前僅提供台北市Ubike"))
         }
     }
 
@@ -117,7 +117,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             let navBar = UINavigationController(rootViewController: rootVC)
             presentViewController(navBar)
         } else {
-            LKProgressHUD.showFailure(text: "網路問題，無法跳出")
+            LKProgressHUD.show(.failure("網路問題，無法跳出"))
         }
     }
 

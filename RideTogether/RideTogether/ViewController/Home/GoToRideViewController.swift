@@ -167,7 +167,7 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
     func setUpMap() {
         DispatchQueue.main.async {
             self.parseGPXFile()
-            LKProgressHUD.showSuccess(text: "下載成功")
+            LKProgressHUD.show(.success("下載成功"))
         }
 
         map3.delegate = mapViewDelegate
@@ -261,8 +261,6 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
 
     @objc
     func sendSMS() {
-        LKProgressHUD.show()
-
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
 
@@ -275,7 +273,7 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
         self.present(composeVC, animated: true, completion: nil)
         if !MFMessageComposeViewController.canSendText() {
             print("SMS services are not available")
-            LKProgressHUD.showFailure(text: "請開啟定位")
+            LKProgressHUD.show(.failure("請開啟定位"))
         } else {
             self.present(composeVC, animated: true, completion: nil)
             LKProgressHUD.dismiss()

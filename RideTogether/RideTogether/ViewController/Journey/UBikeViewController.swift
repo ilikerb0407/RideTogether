@@ -27,7 +27,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         self.locationManager.requestAlwaysAuthorization()
 
         BikeManager.shared.getTPBikeData { [weak self] result in
-            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
+            LKProgressHUD.show(.success("讀取UBike資料成功"))
 
             self?.bikeData.append(contentsOf: result)
 
@@ -36,7 +36,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
 
         BikeManager.getTCBikeData { [weak self] result in
 
-            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
+            LKProgressHUD.show(.success("讀取UBike資料成功"))
 
             self?.taichungBikeData = result
 

@@ -226,11 +226,8 @@ class RouteViewController: BaseViewController {
             try document.setData(from: record)
 
         } catch {
-            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
-            print("error")
+            LKProgressHUD.show(.failure("無法收藏，因為不是使用者提供的路線"))
         }
-
-        print("sucessfully")
     }
 
     var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
@@ -250,9 +247,9 @@ extension RouteViewController: UITableViewDelegate {
                 let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
 
                     if userId == routes[indexPath.row].uid {
-                        LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
+                        LKProgressHUD.show(.failure("無法封鎖自己的分享紀錄"))
                     } else if routes[indexPath.row].uid == nil {
-                        LKProgressHUD.showFailure(text: "無法封鎖預設的地圖")
+                        LKProgressHUD.show(.failure("無法封鎖預設的地圖"))
 
                     } else {
                         UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
@@ -296,8 +293,6 @@ extension RouteViewController: UITableViewDataSource {
 
     @objc
     func goToRide(_ sender: UIButton) {
-        print("time1:\(CFAbsoluteTimeGetCurrent())")
-        LKProgressHUD.show()
 
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
             nextViewController.routes = routes[sender.tag]

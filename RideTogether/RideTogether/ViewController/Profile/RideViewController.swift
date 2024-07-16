@@ -259,8 +259,6 @@ class RideViewController: BaseViewController {
 
     @objc
     func sendSMS() {
-        LKProgressHUD.show()
-
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
 
@@ -272,7 +270,7 @@ class RideViewController: BaseViewController {
         composeVC.body = "傳送我的位置 經度 : \(lng ?? 25.04), 緯度: \(lat ?? 121.56)"
         if !MFMessageComposeViewController.canSendText() {
             print("SMS services are not available")
-            LKProgressHUD.showFailure(text: "請開啟定位")
+            LKProgressHUD.show(.failure("請開啟定位"))
         } else {
             LKProgressHUD.dismiss()
             self.present(composeVC, animated: true, completion: nil)

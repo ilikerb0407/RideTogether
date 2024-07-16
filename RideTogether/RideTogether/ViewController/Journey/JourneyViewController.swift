@@ -348,10 +348,8 @@ class JourneyViewController: BaseViewController {
 
     @objc
     func sendSMS() {
-        LKProgressHUD.show()
         let msgViewController = MFMessageComposeViewController()
         msgViewController.messageComposeDelegate = self
-//        25.042393 121.56496
         msgViewController.recipients = ["請輸入電話號碼"]
         let lng = locationManager.location?.coordinate.longitude
         let lat = locationManager.location?.coordinate.latitude
@@ -359,7 +357,7 @@ class JourneyViewController: BaseViewController {
 
         if !MFMessageComposeViewController.canSendText() {
             print("SMS services are not available")
-            LKProgressHUD.showFailure(text: "請開啟定位")
+            LKProgressHUD.show(.failure("請開啟定位"))
         } else {
             LKProgressHUD.dismiss()
             self.present(msgViewController, animated: true, completion: nil)

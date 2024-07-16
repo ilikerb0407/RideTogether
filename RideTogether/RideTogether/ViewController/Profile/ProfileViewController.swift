@@ -101,12 +101,10 @@ class ProfileViewController: BaseViewController {
             switch result {
             case .success:
 
-                print("Upload user picture successfully")
-                LKProgressHUD.showSuccess(text: "更新資料成功")
+                LKProgressHUD.show(.success("更新資料成功"))
 
             case let .failure(error):
-
-                print("Upload failure: \(error)")
+                LKProgressHUD.show(.failure("更新資料失敗"))
             }
         }
     }

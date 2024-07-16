@@ -36,8 +36,7 @@ class GPXFileManager {
     }
 
     class func save(_ filename: String, gpxContents: String) {
-        LKProgressHUD.show()
-
+        
         let fileURL: URL = self.URLForFilename(filename)
 
         GPXFileManager.saveToURL(fileURL: fileURL, gpxContents: gpxContents)
@@ -53,7 +52,7 @@ class GPXFileManager {
 
                 GPXFileManager.removeFileFromURL(fileURL)
 
-                LKProgressHUD.showSuccess(text: "儲存成功")
+                LKProgressHUD.show(.success("儲存成功"))
 
             case let .failure(error):
 
