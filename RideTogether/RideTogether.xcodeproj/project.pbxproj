@@ -896,7 +896,8 @@
 				23D1B729280033FB000EDA70 /* Resources */,
 				C51FAD372909368D00264854 /* Embed Foundation Extensions */,
 				813DD992A444B96C6674053D /* [CP] Embed Pods Frameworks */,
-				3BC39BE82C3FDC3A002F23A2 /* ShellScript */,
+				3BC39BE82C3FDC3A002F23A2 /* FirebaseCrashlytics */,
+				3B6452252C46B61A00137D21 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1036,7 +1037,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3BC39BE82C3FDC3A002F23A2 /* ShellScript */ = {
+		3B6452252C46B61A00137D21 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		3BC39BE82C3FDC3A002F23A2 /* FirebaseCrashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1050,6 +1069,7 @@
 				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
 				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
+			name = FirebaseCrashlytics;
 			outputFileListPaths = (
 			);
 			outputPaths = (
