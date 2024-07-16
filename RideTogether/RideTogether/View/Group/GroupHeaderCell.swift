@@ -17,9 +17,7 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
     @IBOutlet var segment: UISegmentedControl! {
         didSet {
             segment.setTitle("活動中", forSegmentAt: 0)
-//            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white], for: .normal)
             segment.setTitle("個人活動", forSegmentAt: 1)
-//            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white ], for: .selected)
         }
     }
 

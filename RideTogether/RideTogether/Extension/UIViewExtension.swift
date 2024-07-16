@@ -89,7 +89,7 @@ extension UIView {
         case rightSkewed
     }
 
-    func applyGradient( // caution: removeAll is not available for UIStoryBoard VC
+    func applyGradient(
         colors: [UIColor?],
         locations: [NSNumber]? = [0.0, 1.0],
         direction: Direction = .topToBottom

@@ -16,8 +16,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         self.view.window!
     }
 
-    // MARK: - Class Properties -
-
     fileprivate var currentNonce: String?
 
     private var handle: AuthStateDidChangeListenerHandle?
@@ -36,20 +34,12 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         loginButtonFadeIn()
 
         if let user = Auth.auth().currentUser {
-            print("\(user.uid) login")
             LKProgressHUD.show(.success("已經登入"))
         } else {
-            print("not login")
             LKProgressHUD.show(.failure("未登入"))
         }
 
-        Auth.auth().addStateDidChangeListener { _, user in
-
-            if let user {
-                print("\(user.uid) login")
-            } else {
-                print("not login")
-            }
+        Auth.auth().addStateDidChangeListener { _, _ in
 
             self.currentUser = Auth.auth().currentUser
         }
@@ -94,8 +84,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         present(policyVC, animated: true, completion: nil)
     }
 
-//      https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269
-
     func setUpSignInButton() {
         view.addSubview(loginButton)
 
@@ -139,19 +127,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         request.nonce = sha256(nonce)
 
         currentNonce = nonce
-//
     }
 
-    //    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
-    //
-    //        let appleIDProvider = ASAuthorizationAppleIDProvider()
-    //
-    //        let request = appleIDProvider.createRequest()
-    //
-    //        request.requestedScopes = [.fullName, .email]
-    //
-    //        return request
-    //    }
 
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)

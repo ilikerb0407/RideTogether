@@ -13,14 +13,12 @@ import FirebaseFirestore
 import MJRefresh
 import UIKit
 
-class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
+internal class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
     func reload() {
         fetchGroupData()
 
         tableView.reloadData()
     }
-
-    var table: UITableView?
 
     var createdVC = CreateGroupViewController()
 
@@ -78,12 +76,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     private let header = MJRefreshNormalHeader()
 
-    private var tableView: UITableView! {
-        didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
-    }
+    private let tableView = UITableView()
 
     func tapAndDismiss() {
         let tap: UITapGestureRecognizer = .init(target: self, action: #selector(dismissKeyBoard))
@@ -100,6 +93,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTableView()
 
         fetchGroupData()
 
@@ -107,13 +101,9 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
         addRequestListener()
 
-        setUpTableView()
-
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
 
         tableView.mj_header = header
-
-        table?.delegate = self
 
         createdVC.delegate = self
 
@@ -201,18 +191,22 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     func updateUserHistory() {
         var numOfGroups = 0
-
         var numOfPartners = 0
 
         for group in myGroups {
             if group.isExpired == true {
                 numOfGroups += 1
-
                 numOfPartners += (group.userIds.count - 1) // -1 for self
             }
         }
 
-        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
+        print("Updating user history: groups = \(numOfGroups), partners = \(numOfPartners)")
+
+        do {
+            try UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
+        } catch {
+            print("Error updating user group records: \(error)")
+        }
     }
 
     func rearrangeMyGroup(groups: [Group]) {
@@ -252,19 +246,13 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
                 self.rearrangeMyGroup(groups: self.myGroups)
 
-//                self.inActivityGroup = filteredGroups.sorted { $0.date.seconds < $1.date.seconds  }
-
                 self.inActivityGroup = filteredGroups.filter { $0.isExpired == false }
 
                 self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
 
-//                self.inActivityGroup.sort { $0.date.seconds < $1.date.seconds }
-
                 for group in filteredGroups {
                     guard self.cache[group.hostId] != nil else {
                         self.fetchUserData(uid: group.hostId)
-
-//                        self.table?.reloadData()
 
                         continue
                     }
@@ -376,9 +364,12 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
 
     func setUpTableView() {
-        tableView = UITableView()
 
         tableView.backgroundColor = .clear
+
+        tableView.delegate = self
+
+        tableView.dataSource = self
 
         tableView.registerCellWithNib(identifier: GroupInfoTableViewCell.identifier, bundle: nil)
 

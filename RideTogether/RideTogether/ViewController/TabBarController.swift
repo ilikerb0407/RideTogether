@@ -34,7 +34,7 @@ private enum Tabs {
     }
 }
 
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+internal class TabBarController: UITabBarController, UITabBarControllerDelegate {
     static var identifier: String {
         String(describing: self)
     }
