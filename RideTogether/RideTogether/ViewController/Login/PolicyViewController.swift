@@ -25,6 +25,14 @@ enum PolicyType: String {
 class PolicyViewController: BaseViewController, WKNavigationDelegate {
     var policy: PolicyType?
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     private lazy var webView: WKWebView = {
         let website = WKWebView()
 
@@ -33,8 +41,6 @@ class PolicyViewController: BaseViewController, WKNavigationDelegate {
         return website
 
     }()
-
-    // MARK: - Methods -
 
     private func loadURL(type: PolicyType) {
         if let url = URL(string: type.url) {
@@ -64,17 +70,5 @@ class PolicyViewController: BaseViewController, WKNavigationDelegate {
         super.viewWillAppear(animated)
 
         tabBarController?.tabBar.isHidden = true
-    }
-
-    func webView(_: WKWebView, didFailProvisionalNavigation _: WKNavigation!, withError error: Error) {
-        print(error.localizedDescription)
-    }
-
-    func webView(_: WKWebView, didStartProvisionalNavigation _: WKNavigation!) {
-        print("Start to load")
-    }
-
-    func webView(_: WKWebView, didFinish _: WKNavigation!) {
-        print("finish to load")
     }
 }

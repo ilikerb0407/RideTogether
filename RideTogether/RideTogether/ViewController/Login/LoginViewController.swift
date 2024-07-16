@@ -60,10 +60,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
     @IBAction
     func goToPrivacyPage(_: UIButton) {
-        guard let policyVC = UIStoryboard.policy.instantiateViewController(
-            identifier: PolicyViewController.identifier) as? PolicyViewController else {
-            return
-        }
+        let policyVC = PolicyViewController()
 
         policyVC.policy = .privacy
 
@@ -72,10 +69,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
     @IBAction
     func goToEulaPage(_: Any) {
-        guard let policyVC = UIStoryboard.policy.instantiateViewController(
-            identifier: PolicyViewController.identifier) as? PolicyViewController else {
-            return
-        }
+
+        let policyVC = PolicyViewController()
 
         policyVC.policy = .eula
 
