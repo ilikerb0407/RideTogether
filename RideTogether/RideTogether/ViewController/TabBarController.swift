@@ -65,15 +65,12 @@ internal class TabBarController: UITabBarController, UITabBarControllerDelegate 
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-//                 appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#A2BDC6")
             appearance.backgroundColor = UIColor.white
 
             self.tabBar.standardAppearance = appearance
             self.tabBar.scrollEdgeAppearance = appearance
         }
     }
-
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
 
     private lazy var requests = [Request]()
 
@@ -97,7 +94,7 @@ internal class TabBarController: UITabBarController, UITabBarControllerDelegate 
 
             case let .failure(error):
 
-                print("fetchData.failure: \(error)")
+                LKProgressHUD.show(.failure("\(error)"))
             }
         }
     }

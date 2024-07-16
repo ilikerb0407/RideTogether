@@ -38,23 +38,12 @@ class RecommendViewController: BaseViewController {
 
     var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
 
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
-
-//    @objc var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
-
     lazy var storage = Storage.storage()
 
     lazy var storageRef = storage.reference()
 
     lazy var dataBase = Firestore.firestore()
 
-//    func setUpPhoto(userInfo: UserInfo) {
-//
-//        tableViewCell.userPhoto.loadImage(userInfo.pictureRef)
-//
-//        tableViewCell.userPhoto.cornerRadius = 25
-//
-//    }
 
     private var tableView: UITableView! {
         didSet {

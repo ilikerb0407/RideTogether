@@ -13,7 +13,6 @@ import Kingfisher
 import UIKit
 
 class ProfileViewController: BaseViewController {
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
 
     var userId: String { UserManager.shared.userInfo.uid }
 

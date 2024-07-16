@@ -15,8 +15,6 @@ class HomeViewController: BaseViewController {
 
     private var headerView: HomeHeaderTableViewCell?
 
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
-
     var routes = [Route]() {
         didSet {
             manageRouteData()

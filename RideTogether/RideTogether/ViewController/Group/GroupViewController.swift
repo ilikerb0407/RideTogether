@@ -46,10 +46,6 @@ internal class GroupViewController: BaseViewController, Reload, UISheetPresentat
         }
     }
 
-    // MARK: Class Properties
-
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
-
     private var inActivityGroup = [Group]()
 
     private var myGroups = [Group]() {

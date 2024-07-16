@@ -12,6 +12,8 @@ import UIKit
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
 
+    private var userInfo: UserInfo { UserManager.shared.userInfo }
+
     private var isDisplayingLocationServicesDenied: Bool = false
 
     func displayLocationServicesDisabledAlert() {
