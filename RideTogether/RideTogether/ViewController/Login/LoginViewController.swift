@@ -167,15 +167,12 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
         ])
 
-        //        self.agreementStackView.alpha = 0.0
-
         UIView.animate(withDuration: 0.5, delay: 2) {
             self.emailbtn.alpha = 1.0
         }
 
         UIView.animate(withDuration: 0.5, delay: 1.5) {
             self.loginButton.alpha = 1.0
-            //            self.agreementStackView.alpha = 1.0
         }
     }
 }
@@ -217,118 +214,92 @@ private func randomNonceString(length: Int = 32) -> String {
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
-    func authorizationController(controller _: ASAuthorizationController,
+    func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
+        guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
+              let nonce = currentNonce,
+              let appleIDToken = appleIDCredential.identityToken,
+              let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+            LKProgressHUD.show(.failure("登入失敗"))
+            return
+        }
 
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            userInfo.userName = appleIDCredential.fullName?.givenName
+        let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                  idToken: idTokenString,
+                                                  rawNonce: nonce)
 
-            guard let nonce = currentNonce else {
-                fatalError("Invalid state: A login callback was received, but no login request was sent.")
-                LKProgressHUD.show(.failure("登入請求未送出"))
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            guard let self = self else { return }
 
-            }
-
-            guard let appleIDToken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token")
-                LKProgressHUD.show(.failure("登入失敗"))
+            if let error = error {
+                print("Sign in error: \(error.localizedDescription)")
+                LKProgressHUD.show(.failure("登入失敗，請確定網路品質"))
                 return
             }
 
-            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-                LKProgressHUD.show(.failure("登入失敗"))
+            guard let authResult = authResult else {
+                LKProgressHUD.show(.failure("無法獲取用戶信息"))
                 return
             }
 
-            let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                      idToken: idTokenString,
-                                                      rawNonce: nonce)
+            let uid = authResult.user.uid
+            LKProgressHUD.show(.loading("Loading"))
 
-            Auth.auth().signIn(with: credential) { authResult, error in
-
-                if let isNewUser = authResult?.additionalUserInfo?.isNewUser,
-
-                   let uid = authResult?.user.uid {
-                    LKProgressHUD.show(.loading("Loading"))
-
-                    if isNewUser {
-                        self.userInfo.uid = uid
-
-                        UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
-
-                            switch result {
-                            case .success:
-
-                                self.fetchUserInfo(uid: uid)
-
-                                LKProgressHUD.show(.success("註冊成功"))
-
-                            case let .failure(error):
-
-                                LKProgressHUD.show(.failure("註冊失敗"))
-
-                            }
-                        }
-
-                    } else {
-                        self.fetchUserInfo(uid: uid)
-                        LKProgressHUD.show(.success("登入成功"))
-                    }
-                }
-
-                if let error = error as? NSError {
-                    print(error)
-                    guard let errorCode = AuthErrorCode(_bridgedNSError: error) else {
-                        print("登入錯誤，請稍後再試")
-                        return
-                    }
-                    LKProgressHUD.show(.failure("登入失敗，請確定網路品質"))
-                }
+            if authResult.additionalUserInfo?.isNewUser == true {
+                self.handleNewUser(uid: uid, appleIDCredential: appleIDCredential)
+            } else {
+                self.handleExistingUser(uid: uid)
             }
         }
     }
 
-    func authorizationController(controller _: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Sign in with Apple errored: \(error)")
+    private func handleNewUser(uid: String, appleIDCredential: ASAuthorizationAppleIDCredential) {
+        var userInfo = UserInfo()
+        userInfo.uid = uid
+        userInfo.userName = appleIDCredential.fullName?.givenName ?? "User"
+        userInfo.email = appleIDCredential.email
 
-        switch error {
-        case ASAuthorizationError.canceled:
-            LKProgressHUD.show(.failure("取消登入"))
-        case ASAuthorizationError.failed:
-            LKProgressHUD.show(.failure( "授權請求失敗"))
-        case ASAuthorizationError.invalidResponse:
-            LKProgressHUD.show(.failure("授權請求無回應"))
-        case ASAuthorizationError.notHandled:
-            LKProgressHUD.show(.failure("授權請求未處理"))
-        case ASAuthorizationError.unknown:
-            LKProgressHUD.show(.failure("網路連線不佳"))
-        default:
-            LKProgressHUD.show(.failure("登入失敗，原因不明"))
+        UserManager.shared.signUpUserInfo(userInfo: userInfo) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                LKProgressHUD.show(.success("註冊成功"))
+                self.fetchUserInfo(uid: uid)
+            case .failure(let error):
+                print("Sign up error: \(error.localizedDescription)")
+                LKProgressHUD.show(.failure("註冊失敗"))
+            }
         }
+    }
+
+    private func handleExistingUser(uid: String) {
+        self.fetchUserInfo(uid: uid)
+        LKProgressHUD.show(.success("登入成功"))
     }
 
     func fetchUserInfo(uid: String) {
-        UserManager.shared.fetchUserInfo(uid: uid) { result in
-
+        UserManager.shared.fetchUserInfo(uid: uid) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case let .success(userInfo):
-
+            case .success(let userInfo):
                 UserManager.shared.userInfo = userInfo
-
-                guard let tabBarVC = UIStoryboard.main.instantiateViewController(
-                    identifier: TabBarController.identifier) as? TabBarController else {
-                    return
+                DispatchQueue.main.async {
+                    self.navigateToMainApp()
                 }
-
-                tabBarVC.modalPresentationStyle = .fullScreen
-
-                self.present(tabBarVC, animated: true, completion: nil)
-
-            case let .failure(error):
-
-                LKProgressHUD.show(.failure( "讀取資料失敗"))
+            case .failure(let error):
+                print("Fetch user info error: \(error.localizedDescription)")
+                LKProgressHUD.show(.failure("讀取資料失敗"))
             }
         }
+    }
+
+    private func navigateToMainApp() {
+        guard let tabBarVC = UIStoryboard.main.instantiateViewController(
+            identifier: TabBarController.identifier) as? TabBarController else {
+            LKProgressHUD.show(.failure("無法載入主頁面"))
+            return
+        }
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true, completion: nil)
     }
 }

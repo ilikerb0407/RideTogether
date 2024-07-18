@@ -5,12 +5,12 @@
 
 import Foundation
 
+// MARK: 台中市腳踏車
 struct TCBikeModel: Codable {
     let retCode: Int
     let retVal: [String: RetVal]
 }
 
-// MARK: - RetVal
 struct RetVal: Codable {
     let sno, sna, tot, sbi: String
     let sarea, mday, lat, lng: String

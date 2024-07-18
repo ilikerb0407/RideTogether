@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - BikeElement
-
+// MARK: 台北市腳踏車
 struct TPBikeModel: Codable {
     let sno, sna: String
     let tot, sbi: Int

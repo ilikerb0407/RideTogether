@@ -639,7 +639,6 @@
 				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
-				3B438B282C31601800AC05CF /* AlertProvider.swift */,
 				3BB344272C37D507006EC03C /* Common */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B767280060E0000EDA70 /* View */,
@@ -669,7 +668,7 @@
 		23D1B74B28005D9B000EDA70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3BB3442A2C37D5F1006EC03C /* UBike */,
+				3BB3442A2C37D5F1006EC03C /* BikeModel */,
 				231BCB6A280858D700DE2343 /* Home */,
 				23CB74B82816C7FE00DED822 /* Group */,
 				231BCB69280858C800DE2343 /* Profile */,
@@ -823,19 +822,20 @@
 		3BB344272C37D507006EC03C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3B438B282C31601800AC05CF /* AlertProvider.swift */,
 				23D1B78B28006663000EDA70 /* SegueIdentifier.swift */,
 				234DBBF32C2C3FA100E78118 /* Collection.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		3BB3442A2C37D5F1006EC03C /* UBike */ = {
+		3BB3442A2C37D5F1006EC03C /* BikeModel */ = {
 			isa = PBXGroup;
 			children = (
 				C51FAD3C290939FF00264854 /* TPBikeModel.swift */,
 				3BB344282C37D5E1006EC03C /* TCBikeModel.swift */,
 			);
-			path = UBike;
+			path = BikeModel;
 			sourceTree = "<group>";
 		};
 		C26F577A76F360CEDABDCC82 /* Frameworks */ = {

@@ -10,6 +10,7 @@ import Foundation
 struct UserInfo: Codable {
     var uid: String
     var userName: String?
+    var email: String?
     var pictureRef: String?
     var totalLength: Double
     var totalFriends: Int
@@ -20,6 +21,7 @@ struct UserInfo: Codable {
     enum CodingKeys: String, CodingKey {
         case uid
         case userName = "user_name"
+        case email = "email"
         case pictureRef = "picture_ref"
         case totalLength = "total_length"
         case totalFriends = "total_friends"
@@ -31,6 +33,7 @@ struct UserInfo: Codable {
     init() {
         self.uid = ""
         self.userName = ""
+        self.email = ""
         self.pictureRef = ""
         self.totalLength = 0.0
         self.totalFriends = 0
