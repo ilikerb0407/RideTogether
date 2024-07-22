@@ -32,7 +32,7 @@ struct UserInfo: Codable {
 
     init() {
         self.uid = ""
-        self.userName = ""
+        self.userName = "破風手"
         self.email = ""
         self.pictureRef = ""
         self.totalLength = 0.0

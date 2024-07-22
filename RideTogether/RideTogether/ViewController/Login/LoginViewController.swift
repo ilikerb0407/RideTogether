@@ -11,7 +11,7 @@ import FirebaseAuth
 import Lottie
 import UIKit
 
-class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
+internal class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
 
 
     @IBAction
@@ -97,7 +97,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         }()
     }
 
-
     func setUpSignInButton() {
 
         view.addSubview(loginButton)
@@ -143,7 +142,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         request.nonce = sha256(nonce)
 
         currentNonce = nonce
-//
     }
 
     private func sha256(_ input: String) -> String {
@@ -160,8 +158,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     }
 
     @objc func popUpEmailSignIn() {
-
-        print(">>>> Button tapped ")
 
         if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
 
@@ -191,8 +187,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
         ])
 
-        //        self.agreementStackView.alpha = 0.0
-
         UIView.animate(withDuration: 0.5, delay: 2) {
             self.emailbtn.alpha = 1.0
         }
@@ -200,7 +194,6 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         UIView.animate(withDuration: 0.5, delay: 1.5) {
 
             self.loginButton.alpha = 1.0
-            //            self.agreementStackView.alpha = 1.0
         }
     }
 }
@@ -331,4 +324,3 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         self.present(tabBarVC, animated: true, completion: nil)
     }
 }
-

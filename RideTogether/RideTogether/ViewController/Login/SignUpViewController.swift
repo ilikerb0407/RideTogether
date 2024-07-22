@@ -41,44 +41,29 @@ class SignUpViewController: BaseViewController {
                     if let isNewUser = user?.additionalUserInfo?.isNewUser,
 
                         let uid = user?.user.uid {
-
+                        print("TTTTTTT:\(isNewUser)")
                         if isNewUser {
+                            var newUser: UserInfo = .init()
+                            newUser.uid = uid
+                            newUser.email = user?.user.email
+                            newUser.userName = "破風手"
+                            newUser.pictureRef = ""
+                            newUser.saveMaps = []
+                            newUser.blockList = []
+                            newUser.totalLength = 0.0
 
-                            self.userInfo.uid = uid
-
-                            self.userInfo.userName = "破風手"
-
-                            self.userInfo.pictureRef = ""
-
-                            self.userInfo.saveMaps = []
-
-                            self.userInfo.blockList = []
-
-                            self.userInfo.totalLength = 0.0
-
-                            UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
+                            UserManager.shared.signUpUserInfo(userInfo: newUser) { result in
 
                                 switch result {
 
                                 case .success:
+                                    self.userInfo = newUser
+                                    let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success", preferredStyle: .alert)
 
-                                    let semaphore = DispatchSemaphore(value: 1)
+                                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                    alertController.addAction(defaultAction)
 
-                                    let loadingQueue = DispatchQueue.global()
-
-                                    loadingQueue.async {
-                                        semaphore.wait()
-
-                                        semaphore.signal()
-                                        DispatchQueue.main.async {
-                                            let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success", preferredStyle: .alert)
-
-                                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                                            alertController.addAction(defaultAction)
-
-                                            self.present(alertController, animated: true, completion: nil)
-                                        }
-                                    }
+                                    self.present(alertController, animated: true, completion: nil)
 
                                 case .failure(let error):
 
@@ -94,6 +79,7 @@ class SignUpViewController: BaseViewController {
                     }
 
                 } else {
+                    
                         let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
 
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -113,11 +99,12 @@ class SignUpViewController: BaseViewController {
             switch result {
 
             case .success(let userInfo):
+                print("userInfo: \(userInfo)")
 
                 UserManager.shared.userInfo = userInfo
 
                 print("Fetch user info successfully")
-                
+
                 guard let tabbarVC = UIStoryboard.main.instantiateViewController(
                     identifier: TabBarController.identifier) as? TabBarController else { return }
 
@@ -166,21 +153,18 @@ class SignUpViewController: BaseViewController {
                             self.userInfo.blockList = []
 
                             UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
-
-                                switch result {
-
-                                case .success:
-
-                                    fetchUserInfo(uid: uid)
-
-                                    print("User Sign up successfully")
-
-                                case .failure(let error):
-
-                                    print("Sign up failure: \(error)")
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success:
+                                        let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success", preferredStyle: .alert)
+                                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                        alertController.addAction(defaultAction)
+                                        self.present(alertController, animated: true, completion: nil)
+                                    case .failure(let error):
+                                        print("Sign up failure: \(error)")
+                                    }
                                 }
                             }
-
                         } else {
 
                             UserManager.shared.fetchUserInfo(uid: uid) { result in
@@ -209,11 +193,8 @@ class SignUpViewController: BaseViewController {
 
                         }
                     }
-                    // Go to the HomeViewController if the login is sucessful
 
                 } else {
-
-                    // Tells the user that there is an error and then gets firebase to tell them the error
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
 
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -232,7 +213,7 @@ class SignUpViewController: BaseViewController {
 
             let view = LottieAnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
-//            view.frame = CGRect(x: UIScreen.width / 4, y: UIScreen.height / 10 , width: 250 , height: 250)
+
             self.view.addSubview(view)
 
             view.translatesAutoresizingMaskIntoConstraints = false

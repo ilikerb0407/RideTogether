@@ -12,7 +12,7 @@ import FirebaseCrashlytics
 import Kingfisher
 import UIKit
 
-class ProfileViewController: BaseViewController {
+internal class ProfileViewController: BaseViewController {
 
     var userId: String { UserManager.shared.userInfo.uid }
 
@@ -153,7 +153,7 @@ extension ProfileViewController: UITableViewDelegate {
             }
             let cancel = UIAlertAction(title: AccountActionSheet.allCases[2].rawValue, style: .cancel) { _ in }
 
-            showAlert(provider: .init(title: "", message: "", preferredStyle: .alert, actions: [logOut, removeAccount, cancel]))
+            showAlert(provider: .init(title: "請選擇", message: "", preferredStyle: .alert, actions: [logOut, removeAccount, cancel]))
 
         case 3:
             push(withIdentifier: "SaveMapsViewController")

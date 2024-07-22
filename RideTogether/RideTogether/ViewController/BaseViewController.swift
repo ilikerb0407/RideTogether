@@ -13,7 +13,7 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
 
     var userInfo: UserInfo {
         get { UserManager.shared.userInfo }
-        set { newValue }
+        set { UserManager.shared.userInfo = newValue }
     }
 
     private var isDisplayingLocationServicesDenied: Bool = false

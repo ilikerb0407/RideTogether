@@ -109,6 +109,11 @@ internal class UserManager {
     }
 
     func signUpUserInfo(userInfo: UserInfo, completion: @escaping (Result<String, Error>) -> Void) {
+        guard !userInfo.uid.isEmpty else {
+            completion(.failure(NSError(domain: "UserInfoError", code: 0, userInfo: [NSLocalizedDescriptionKey: "User ID is empty"])))
+            return
+        }
+        
         let uid = userInfo.uid
 
         let document = dataBase.collection(usersCollection).document(uid)
@@ -248,6 +253,7 @@ internal class UserManager {
                     }
                 }
             } else {
+                print(uid)
                 print("User group records successfully updated")
             }
         }

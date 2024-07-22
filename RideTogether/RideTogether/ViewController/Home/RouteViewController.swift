@@ -11,7 +11,7 @@ import FirebaseStorage
 import SwiftUI
 import UIKit
 
-class RouteViewController: BaseViewController {
+internal class RouteViewController: BaseViewController {
     @IBOutlet var gView: UIView! {
         didSet {
             gView.applyGradient(
@@ -21,20 +21,6 @@ class RouteViewController: BaseViewController {
             gView.alpha = 0.85
         }
     }
-
-    // MARK: - DataSource & DataSourceSnapshot typelias -
-
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Route>
-
-    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Route>
-
-    enum Section {
-        case section
-    }
-
-    private var dataSource: DataSource!
-
-    private var snapshot = DataSourceSnapshot()
 
     let routesCollectionCell = RoutesCollectionViewCell()
 
@@ -167,9 +153,9 @@ class RouteViewController: BaseViewController {
     }
 
     func setUpThemeTag() {
-        let view = UIView(frame: CGRect(x: -20, y: 80, width: UIScreen.width / 2 + 10, height: 40))
+        let view = UIView(frame: CGRect(x: -20, y: 100, width: UIScreen.width / 2 + 10, height: 40))
 
-        let label = UILabel(frame: CGRect(x: 20, y: 80, width: 120, height: 35))
+        let label = UILabel(frame: CGRect(x: 20, y: 100, width: 120, height: 35))
 
         view.backgroundColor = .B5
 
@@ -349,39 +335,5 @@ func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         )
 
         return section
-    }
-}
-
-// MARK: - CollectionView Diffable Data Source -
-
-extension RouteViewController {
-    func configureDataSource() {
-        dataSource = DataSource(
-            collectionView: collectionView,
-            cellProvider: { [self] collectionView, indexPath, model -> UICollectionViewCell? in
-
-                let cell: RoutesCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-
-                cell.setUpCell(model: model)
-
-//                cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
-
-                cell.rideButton.tag = indexPath.row
-
-//                cell.checkGroupButton.tag = indexPath.row
-
-//                cell.checkGroupButton.addTarget(self, action: #selector(self.toGroupPage), for: .touchUpInside)
-
-                return cell
-            }
-        )
-    }
-
-    func configureSnapshot() {
-        snapshot.appendSections([.section])
-
-        snapshot.appendItems(routes, toSection: .section)
-
-        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
