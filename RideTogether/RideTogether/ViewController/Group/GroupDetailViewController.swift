@@ -181,8 +181,7 @@ class GroupDetailViewController: BaseViewController {
             switch result {
             case .success:
 
-                showAlert(provider: .init(title: "已送出申請", message: "", preferredStyle: .alert, actions: []))
-
+                showAlert(provider: .init(title: "已送出申請", message: "", preferredStyle: .alert, actions: [.init(title: "確認", style: .default)]))
 
             case let .failure(error):
 

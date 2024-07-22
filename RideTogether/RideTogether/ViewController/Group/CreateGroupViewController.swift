@@ -16,7 +16,7 @@ protocol Reload {
     func reload()
 }
 
-class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
+internal class CreateGroupViewController: BaseViewController, UITextFieldDelegate {
     private var group = Group()
 
     var delegate: Reload?

@@ -41,7 +41,7 @@ class SignUpViewController: BaseViewController {
                     if let isNewUser = user?.additionalUserInfo?.isNewUser,
 
                         let uid = user?.user.uid {
-                        print("TTTTTTT:\(isNewUser)")
+
                         if isNewUser {
                             var newUser: UserInfo = .init()
                             newUser.uid = uid
@@ -71,11 +71,8 @@ class SignUpViewController: BaseViewController {
                                 }
                             }
                         } else {
-
                             self.fetchUserInfo(uid: uid)
-
                         }
-
                     }
 
                 } else {
