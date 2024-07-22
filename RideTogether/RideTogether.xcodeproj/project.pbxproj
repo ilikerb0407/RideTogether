@@ -1035,6 +1035,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3B6452252C46B61A00137D21 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1053,6 +1054,7 @@
 		};
 		3BC39BE82C3FDC3A002F23A2 /* FirebaseCrashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1076,6 +1078,7 @@
 		};
 		464E1A72F32C820039DD6DD2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1098,6 +1101,7 @@
 		};
 		813DD992A444B96C6674053D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1115,6 +1119,7 @@
 		};
 		F3E1A4C9CBC11DE417BE7CEC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

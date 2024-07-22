@@ -42,11 +42,11 @@ final class LKProgressHUD {
         }
     }
 
-    private static func showSuccess(text: String) {
+    static func showSuccess(text: String) {
         showHUD(text: text, indicatorView: JGProgressHUDSuccessIndicatorView())
     }
 
-    private static func showFailure(text: String) {
+    static func showFailure(text: String) {
         showHUD(text: text, indicatorView: JGProgressHUDErrorIndicatorView())
     }
 

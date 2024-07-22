@@ -19,73 +19,81 @@ class SignUpViewController: BaseViewController {
 
     @IBOutlet var loginButton: UIButton!
 
-    @objc
-    func signUp() {
-        if let signUpEmail = self.signUpEmail.text, let signUpPassword = self.signUpPassword.text {
-            if signUpEmail.isEmpty || signUpPassword.isEmpty {
-                let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
+    @objc func signUp() {
 
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
+        if self.signUpEmail.text == "" || self.signUpPassword.text == "" {
 
-                present(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
 
-            } else {
-                Auth.auth().createUser(withEmail: self.signUpEmail.text!, password: self.signUpPassword.text!) { user, error in
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
 
-                    if error == nil {
-                        print("You have successfully signed up")
+            present(alertController, animated: true, completion: nil)
 
-                        if let isNewUser = user?.additionalUserInfo?.isNewUser,
+        } else {
 
-                           let uid = user?.user.uid {
-                            if isNewUser {
-                                self.userInfo.uid = uid
+            Auth.auth().createUser(withEmail: self.signUpEmail.text!, password: self.signUpPassword.text!) { (user, error) in
 
-                                self.userInfo.userName = "破風手"
+                if error == nil {
 
-                                self.userInfo.pictureRef = ""
+                    print("You have successfully signed up")
 
-                                self.userInfo.saveMaps = []
+                    if let isNewUser = user?.additionalUserInfo?.isNewUser,
 
-                                self.userInfo.blockList = []
+                        let uid = user?.user.uid {
 
-                                self.userInfo.totalLength = 0.0
+                        if isNewUser {
 
-                                UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
+                            self.userInfo.uid = uid
 
-                                    switch result {
-                                    case .success:
+                            self.userInfo.userName = "破風手"
 
-                                        let semaphore = DispatchSemaphore(value: 1)
+                            self.userInfo.pictureRef = ""
 
-                                        let loadingQueue = DispatchQueue.global()
+                            self.userInfo.saveMaps = []
 
-                                        loadingQueue.async {
-                                            semaphore.wait()
+                            self.userInfo.blockList = []
 
-                                            semaphore.signal()
-                                            DispatchQueue.main.async {
-                                                let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success", preferredStyle: .alert)
+                            self.userInfo.totalLength = 0.0
 
-                                                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                                                alertController.addAction(defaultAction)
+                            UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
 
-                                                self.present(alertController, animated: true, completion: nil)
-                                            }
+                                switch result {
+
+                                case .success:
+
+                                    let semaphore = DispatchSemaphore(value: 1)
+
+                                    let loadingQueue = DispatchQueue.global()
+
+                                    loadingQueue.async {
+                                        semaphore.wait()
+
+                                        semaphore.signal()
+                                        DispatchQueue.main.async {
+                                            let alertController = UIAlertController(title: "Congratulations", message: "Sign Up Success", preferredStyle: .alert)
+
+                                            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                            alertController.addAction(defaultAction)
+
+                                            self.present(alertController, animated: true, completion: nil)
                                         }
-
-                                    case let .failure(error):
-
-                                        print("Sign up failure: \(error)")
                                     }
+
+                                case .failure(let error):
+
+                                    print("Sign up failure: \(error)")
                                 }
-                            } else {
-                                self.fetchUserInfo(uid: uid)
                             }
+                        } else {
+
+                            self.fetchUserInfo(uid: uid)
+
                         }
 
-                    } else {
+                    }
+
+                } else {
                         let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
 
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -93,127 +101,135 @@ class SignUpViewController: BaseViewController {
 
                         self.present(alertController, animated: true, completion: nil)
                     }
-                }
             }
         }
+
     }
 
-    func fetchUserInfo(uid: String) {
+    func fetchUserInfo (uid: String) {
+
         UserManager.shared.fetchUserInfo(uid: uid) { result in
 
             switch result {
-            case let .success(userInfo):
+
+            case .success(let userInfo):
 
                 UserManager.shared.userInfo = userInfo
 
                 print("Fetch user info successfully")
-                //
+                
                 guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-                    identifier: TabBarController.identifier) as? TabBarController else {
-                    return
-                }
+                    identifier: TabBarController.identifier) as? TabBarController else { return }
 
                 tabbarVC.modalPresentationStyle = .fullScreen
 
                 self.present(tabbarVC, animated: true, completion: nil)
 
-            case let .failure(error):
+            case .failure(let error):
 
                 print("Fetch user info failure: \(error)")
 
-                LKProgressHUD.show(.failure( "讀取使用者資料失敗"))
+                LKProgressHUD.showFailure(text: "讀取使用者資料失敗")
             }
         }
     }
 
-    @objc
-    func loginwithFB() {
+    @objc func loginwithFB() {
 
-        if let signUpEmail = self.signUpEmail.text, let signUpPassword = self.signUpPassword.text {
-            if signUpEmail.isEmpty || signUpPassword.isEmpty {
-                let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
+        if self.signUpEmail.text == "" || self.signUpPassword.text == "" {
 
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
+            let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
 
-                self.present(alertController, animated: true, completion: nil)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
 
-            } else {
-                Auth.auth().signIn(withEmail: signUpEmail, password: signUpPassword) { [self] user, error in
+            self.present(alertController, animated: true, completion: nil)
 
-                    if error == nil {
-                        // Print into the console if successfully logged in
-                        print("You have successfully logged in")
-                        if let isNewUser = user?.additionalUserInfo?.isNewUser,
+        } else {
 
-                           let uid = user?.user.uid {
-                            if isNewUser {
-                                self.userInfo.uid = uid
+            Auth.auth().signIn(withEmail: self.signUpEmail.text!, password: self.signUpPassword.text!) { [self] ( user, error) in
 
-                                self.userInfo.userName = "新使用者"
+                if error == nil {
 
-                                self.userInfo.blockList = []
+                    // Print into the console if successfully logged in
+                    print("You have successfully logged in")
+                    if let isNewUser = user?.additionalUserInfo?.isNewUser,
 
-                                UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
+                       let uid = user?.user.uid {
 
-                                    switch result {
-                                    case .success:
+                        if isNewUser {
 
-                                        self.fetchUserInfo(uid: uid)
+                            self.userInfo.uid = uid
 
-                                        print("User Sign up successfully")
+                            self.userInfo.userName = "新使用者"
 
-                                    case let .failure(error):
+                            self.userInfo.blockList = []
 
-                                        print("Sign up failure: \(error)")
-                                    }
+                            UserManager.shared.signUpUserInfo(userInfo: self.userInfo) { result in
+
+                                switch result {
+
+                                case .success:
+
+                                    fetchUserInfo(uid: uid)
+
+                                    print("User Sign up successfully")
+
+                                case .failure(let error):
+
+                                    print("Sign up failure: \(error)")
                                 }
-
-                            } else {
-                                UserManager.shared.fetchUserInfo(uid: uid) { result in
-                                    switch result {
-                                    case let .success(userInfo):
-
-                                        UserManager.shared.userInfo = userInfo
-
-                                        self.fetchUserInfo(uid: uid)
-
-                                        print("Fetch user info successfully")
-
-                                    case let .failure(error):
-
-                                        print("Fetch user info failure: \(error)")
-                                    }
-                                }
-
-                                guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-                                    identifier: TabBarController.identifier) as? TabBarController else {
-                                    return
-                                }
-
-                                tabbarVC.modalPresentationStyle = .fullScreen
-
-                                self.present(tabbarVC, animated: true, completion: nil)
                             }
+
+                        } else {
+
+                            UserManager.shared.fetchUserInfo(uid: uid) { result in
+                                switch result {
+
+                                case .success(let userInfo):
+
+                                    UserManager.shared.userInfo = userInfo
+
+                                    fetchUserInfo(uid: uid)
+
+                                    print("Fetch user info successfully")
+
+                                case .failure(let error):
+
+                                    print("Fetch user info failure: \(error)")
+                                }
+                            }
+
+                            guard let tabbarVC = UIStoryboard.main.instantiateViewController(
+                                identifier: TabBarController.identifier) as? TabBarController else { return }
+
+                            tabbarVC.modalPresentationStyle = .fullScreen
+
+                            self.present(tabbarVC, animated: true, completion: nil)
+
                         }
-                        // Go to the HomeViewController if the login is sucessful
-
-                    } else {
-                        // Tells the user that there is an error and then gets firebase to tell them the error
-                        let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(defaultAction)
-
-                        self.present(alertController, animated: true, completion: nil)
                     }
+                    // Go to the HomeViewController if the login is sucessful
+
+                } else {
+
+                    // Tells the user that there is an error and then gets firebase to tell them the error
+                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
+
         }
     }
 
     func lottie() {
+
         var waveLottieView: LottieAnimationView = {
+
             let view = LottieAnimationView(name: "49908-bike-ride")
             view.loopMode = .loop
 //            view.frame = CGRect(x: UIScreen.width / 4, y: UIScreen.height / 10 , width: 250 , height: 250)
@@ -222,6 +238,7 @@ class SignUpViewController: BaseViewController {
             view.translatesAutoresizingMaskIntoConstraints = false
 
             NSLayoutConstraint.activate([
+
                 view.heightAnchor.constraint(equalToConstant: 250),
 
                 view.widthAnchor.constraint(equalToConstant: 250),
@@ -230,13 +247,14 @@ class SignUpViewController: BaseViewController {
 
                 view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
 
-                view.centerYAnchor.constraint(equalTo: self.signUpEmail.topAnchor, constant: -120),
+                view.centerYAnchor.constraint(equalTo: self.signUpEmail.topAnchor, constant: -120)
             ])
             view.contentMode = .scaleAspectFit
             view.play()
 
             return view
         }()
+
     }
 
     override func viewDidLoad() {

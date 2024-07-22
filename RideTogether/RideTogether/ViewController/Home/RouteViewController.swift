@@ -93,18 +93,6 @@ class RouteViewController: BaseViewController {
         }
     }
 
-    func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 30, width: 40, height: 40))
-        button.backgroundColor = .B5
-        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-        view.addSubview(button)
-    }
-
-    @objc
-    func popToPreviosPage(_: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-
     func setUpTableView() {
         tableView = UITableView()
 
@@ -131,8 +119,6 @@ class RouteViewController: BaseViewController {
 
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-
-//        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
 
         collectionView.lk_registerCellWithNib(identifier: "RoutesCollectionViewCell", bundle: nil)
 

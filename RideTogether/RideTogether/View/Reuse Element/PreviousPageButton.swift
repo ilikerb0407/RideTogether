@@ -5,7 +5,7 @@
 
 import UIKit
 
-class PreviousPageButton: UIButton {
+internal class PreviousPageButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureButton(backgroundColor: .B5 ?? .white, tintColor: .B2 ?? .white, imageName: "chevron.left", pointSize: 40, weight: .light)

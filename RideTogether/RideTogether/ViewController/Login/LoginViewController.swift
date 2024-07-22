@@ -12,51 +12,7 @@ import Lottie
 import UIKit
 
 class LoginViewController: BaseViewController, ASAuthorizationControllerPresentationContextProviding {
-    func presentationAnchor(for _: ASAuthorizationController) -> ASPresentationAnchor {
-        self.view.window!
-    }
 
-    fileprivate var currentNonce: String?
-
-    private var handle: AuthStateDidChangeListenerHandle?
-
-    private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-
-    var currentUser = Auth.auth().currentUser
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setUpSignInButton()
-
-        loginButtonFadeIn()
-
-        if let user = Auth.auth().currentUser {
-            LKProgressHUD.show(.success("已經登入"))
-        } else {
-            LKProgressHUD.show(.failure("未登入"))
-        }
-
-        Auth.auth().addStateDidChangeListener { _, _ in
-
-            self.currentUser = Auth.auth().currentUser
-        }
-
-        showAnimation()
-    }
-
-    func showAnimation() {
-        var waveLottieView: LottieAnimationView = {
-            let view = LottieAnimationView(name: "49908-bike-ride")
-
-            view.loopMode = .loop
-            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200, width: 400, height: 350)
-            view.contentMode = .scaleAspectFit
-            view.play()
-            self.view.addSubview(view)
-            return view
-        }()
-    }
 
     @IBAction
     func goToPrivacyPage(_: UIButton) {
@@ -77,7 +33,73 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         present(policyVC, animated: true, completion: nil)
     }
 
+    // MARK: - Methods -
+
+    @IBOutlet private(set) var emailbtn: UIButton!
+
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+
+        return self.view.window!
+
+    }
+
+    // MARK: - Class Properties -
+
+    fileprivate var currentNonce: String?
+
+    private var handle: AuthStateDidChangeListenerHandle?
+
+    private lazy var loginButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+
+    var currentUser = Auth.auth().currentUser
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setUpSignInButton()
+
+        loginButtonFadeIn()
+
+        if let user = Auth.auth().currentUser {
+            print("\(user.uid) login")
+            LKProgressHUD.showSuccess(text: "已經登入")
+        } else {
+            print("not login")
+            LKProgressHUD.showFailure(text: "未登入")
+        }
+
+        Auth.auth().addStateDidChangeListener { _, user in
+
+            if let user = user {
+                print("\(user.uid) login")
+            } else {
+                print("not login")
+            }
+
+            self.currentUser = Auth.auth().currentUser
+        }
+
+        showAnimation()
+    }
+
+    func showAnimation() {
+
+      var waveLottieView: LottieAnimationView = {
+
+            let view = LottieAnimationView(name: "49908-bike-ride")
+
+            view.loopMode = .loop
+            view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200, width: 400, height: 350)
+            view.contentMode = .scaleAspectFit
+            view.play()
+            self.view.addSubview(view)
+            return view
+        }()
+    }
+
+
     func setUpSignInButton() {
+
         view.addSubview(loginButton)
 
         loginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -85,13 +107,14 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         loginButton.addTarget(self, action: #selector(self.handleSignInWithAppleTapped), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
+
             loginButton.heightAnchor.constraint(equalToConstant: 45),
 
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
 
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
 
-            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200),
+            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 200)
         ])
 
         loginButton.alpha = 0.0
@@ -99,8 +122,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
     // MARK: - Methods -
 
-    @objc
-    func handleSignInWithAppleTapped() {
+    @objc func handleSignInWithAppleTapped() {
+
         let provider = ASAuthorizationAppleIDProvider()
 
         let request = provider.createRequest()
@@ -120,35 +143,36 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         request.nonce = sha256(nonce)
 
         currentNonce = nonce
+//
     }
 
-
     private func sha256(_ input: String) -> String {
+
         let inputData = Data(input.utf8)
 
         let hashedData = SHA256.hash(data: inputData)
 
-        let hashString = hashedData.compactMap { byte in
-            String(format: "%02x", byte)
+        let hashString = hashedData.compactMap {
+            String(format: "%02x", $0)
         }.joined()
 
         return hashString
     }
 
-    @IBOutlet private(set) var emailbtn: UIButton!
+    @objc func popUpEmailSignIn() {
 
-    @objc
-    func popUpEmailSignIn() {
         print(">>>> Button tapped ")
 
         if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
+
             self.modalPresentationStyle = .fullScreen
 
             self.present(nextVC, animated: true, completion: .none)
         }
-    }
 
-    func loginButtonFadeIn() {
+    }
+    func loginButtonFadeIn () {
+
         self.loginButton.alpha = 0.0
         self.emailbtn.alpha = 0.0
         self.emailbtn.titleLabel?.font = .boldSystemFont(ofSize: 17.5)
@@ -163,16 +187,20 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
             emailbtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
 
-            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
+            emailbtn.centerYAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30)
 
         ])
+
+        //        self.agreementStackView.alpha = 0.0
 
         UIView.animate(withDuration: 0.5, delay: 2) {
             self.emailbtn.alpha = 1.0
         }
 
         UIView.animate(withDuration: 0.5, delay: 1.5) {
+
             self.loginButton.alpha = 1.0
+            //            self.agreementStackView.alpha = 1.0
         }
     }
 }
@@ -303,3 +331,4 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         self.present(tabBarVC, animated: true, completion: nil)
     }
 }
+

@@ -9,7 +9,6 @@ import IQKeyboardManagerSwift
 import MessageUI
 import UIKit
 
-
 internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
 
     var userInfo: UserInfo {
@@ -103,6 +102,7 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         self.title = title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
         navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
 
@@ -139,5 +139,3 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         }
     }
 }
-
-
