@@ -10,22 +10,35 @@ import FirebaseAuth
 
 internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-
-    func scene(_ scene: UIScene, _ session: UISceneSession, _ connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = scene as? UIWindowScene else { return }
-        window = UIWindow(windowScene: windowScene)
-
-        if let currentUser = Auth.auth().currentUser {
-            handleLoggedInUser(uid: currentUser.uid)
-        } else {
-            showLoginScreen()
+    
+    override init() {
+        super.init()
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            if user == nil {
+                self?.showLoginScreen()
+            }
         }
+    }
 
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        configureWindow(for: windowScene)
+    }
+}
+
+extension SceneDelegate {
+    private func configureWindow(for windowScene: UIWindowScene) {
+        window = UIWindow(windowScene: windowScene)
+        guard let currentUser = Auth.auth().currentUser else {
+            showLoginScreen()
+            return
+        }
+        
+        handleLoggedInUser(uid: currentUser.uid)
         window?.makeKeyAndVisible()
     }
 
     private func handleLoggedInUser(uid: String) {
-        print("----------Current User ID: \(uid)----------")
 
         UserManager.shared.fetchUserInfo(uid: uid) { [weak self] result in
             DispatchQueue.main.async {
@@ -42,28 +55,33 @@ internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func setupTabBarController(with userInfo: UserInfo) {
         UserManager.shared.userInfo = userInfo
 
-        guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-            identifier: TabBarController.identifier) as? TabBarController else {
-            print("Failed to instantiate TabBarController")
+        guard let tabbarVC = UIStoryboard(name: Constants.Storyboard.main, bundle: nil)
+                .instantiateViewController(identifier: Constants.ViewControllerID.tabBarController) as? TabBarController else {
+            presentErrorAlert(with: "Failed to instantiate TabBarController")
             return
         }
 
         window?.rootViewController = tabbarVC
-        print("Fetch user info successfully")
     }
-
+    
     private func handleFetchUserInfoError(_ error: Error) {
-        print("Fetch user info failure: \(error)")
         showLoginScreen()
+        presentErrorAlert(with: error.localizedDescription)
     }
 
     private func showLoginScreen() {
-        guard let loginVC = UIStoryboard.login.instantiateViewController(
-            identifier: LoginViewController.identifier) as? LoginViewController else {
-            print("Failed to instantiate LoginViewController")
-            return
+        if let loginVC = UIStoryboard(name: Constants.Storyboard.login, bundle: nil)
+                .instantiateViewController(identifier: Constants.ViewControllerID.loginViewController) as? LoginViewController {
+            window?.rootViewController = loginVC
+        } else {
+            presentErrorAlert(with: "Failed to instantiate LoginViewController")
         }
+    }
 
-        window?.rootViewController = loginVC
+    private func presentErrorAlert(with message: String) {
+        guard let rootVC = window?.rootViewController else { return }
+        let alert = UIAlertController(title: Constants.Alert.errorTitle, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.Alert.okActionTitle, style: .default, handler: nil))
+        rootVC.present(alert, animated: true)
     }
 }

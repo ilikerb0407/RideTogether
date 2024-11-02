@@ -130,6 +130,7 @@
 		23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */; };
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
+		23DEF12F2CD5ECA5004E4A3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEF12E2CD5ECA5004E4A3E /* Constants.swift */; };
 		23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E71282D764B00FC001E /* UbikeManager.swift */; };
 		23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E73282D84EA00FC001E /* BikeItems.swift */; };
 		23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E75282D87BC00FC001E /* BikeVM.swift */; };
@@ -343,6 +344,7 @@
 		23D1B7F8280561D3000EDA70 /* MJRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresher.swift; sourceTree = "<group>"; };
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
+		23DEF12E2CD5ECA5004E4A3E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		23E86E71282D764B00FC001E /* UbikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeManager.swift; sourceTree = "<group>"; };
 		23E86E73282D84EA00FC001E /* BikeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeItems.swift; sourceTree = "<group>"; };
 		23E86E75282D87BC00FC001E /* BikeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeVM.swift; sourceTree = "<group>"; };
@@ -825,6 +827,7 @@
 				3B438B282C31601800AC05CF /* AlertProvider.swift */,
 				23D1B78B28006663000EDA70 /* SegueIdentifier.swift */,
 				234DBBF32C2C3FA100E78118 /* Collection.swift */,
+				23DEF12E2CD5ECA5004E4A3E /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23395D28282E447A00192563 /* Ubike2.0.swift in Sources */,
+				23DEF12F2CD5ECA5004E4A3E /* Constants.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23C887272815450500E3319A /* GoToRideViewController.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,

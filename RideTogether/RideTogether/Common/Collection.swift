@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Collection: String {
+internal enum Collection: String {
     case groups = "Groups"
 
     case messages = "Messages" // TODO: 聊天室

@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct AlertProvider {
+internal struct AlertProvider {
     let title: String?
     let message: String?
     let preferredStyle: UIAlertController.Style

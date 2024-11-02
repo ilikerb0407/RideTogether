@@ -14,15 +14,14 @@ import IQKeyboardManagerSwift
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        setupFirebase()
-
-        setupKeyboardManager()
-
-        setupNavigationBarAppearance()
-
-        logCurrentUser()
-
+        setupInitialConfigurations()
         return true
+    }
+
+    private func setupInitialConfigurations() {
+        setupFirebase()
+        setupKeyboardManager()
+        setupNavigationBarAppearance()
     }
 
     private func setupFirebase() {
@@ -37,14 +36,5 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.B5
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.B5]
-    }
-
-    private func logCurrentUser() {
-        if let currentUser = Auth.auth().currentUser {
-            print("Current User UID: \(currentUser.uid)")
-            print("Current User Email: \(currentUser.email ?? "N/A")")
-        } else {
-            print("No user currently logged in")
-        }
     }
 }

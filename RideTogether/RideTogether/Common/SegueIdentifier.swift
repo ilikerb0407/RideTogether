@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SegueIdentifier: String {
+internal enum SegueIdentifier: String {
 
     case requestList = "toRequestList"
 
