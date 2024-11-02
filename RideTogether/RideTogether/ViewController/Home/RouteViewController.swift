@@ -10,8 +10,14 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import SwiftUI
 import UIKit
+import Combine
 
 internal class RouteViewController: BaseViewController {
+    
+    let viewModel: RouteViewModel = .init()
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     @IBOutlet var gView: UIView! {
         didSet {
             gView.applyGradient(
@@ -21,8 +27,6 @@ internal class RouteViewController: BaseViewController {
             gView.alpha = 0.85
         }
     }
-
-    let routesCollectionCell = RoutesCollectionViewCell()
 
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
@@ -34,42 +38,13 @@ internal class RouteViewController: BaseViewController {
 
     private var themeLabel = ""
 
-    var routes = [Route]() {
-        didSet {
-            setUpLabel()
-        }
-    }
-
-    func setUpLabel() {
-        if let label = routes.first?.routeTypes {
-            switch label {
-            case 0:
-
-                themeLabel = RoutesTypeTest.userOne.title
-
-            case 1:
-
-                themeLabel = RoutesTypeTest
-                    .recommendOne.title
-
-            case 2:
-
-                themeLabel = RoutesTypeTest.riverOne.title
-
-            case 3:
-
-                themeLabel = RoutesTypeTest.mountainOne.title
-
-            default:
-                return
-            }
-        }
-    }
-
-    private var collectionView: UICollectionView! {
-        didSet {
-            collectionView.delegate = self
-        }
+    private func bindViewModel() {
+        viewModel.themeLabel
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] title in
+                self?.themeLabel = title
+            })
+            .store(in: &cancellables)
     }
 
     private var tableView: UITableView! {
@@ -103,16 +78,6 @@ internal class RouteViewController: BaseViewController {
         ])
     }
 
-    private func setupCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-
-        collectionView.lk_registerCellWithNib(identifier: "RoutesCollectionViewCell", bundle: nil)
-
-        view.stickSubView(collectionView)
-
-        collectionView.backgroundColor = .clear
-    }
-
     @objc
     func showLongPressNotify() {
         let sheet = UIAlertController(title: nil, message: NSLocalizedString("長按可以收藏/封鎖", comment: "no comment"), preferredStyle: .alert)
@@ -138,6 +103,8 @@ internal class RouteViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bindViewModel()
 
         setUpTableView()
 
@@ -177,6 +144,7 @@ internal class RouteViewController: BaseViewController {
     }
 
     private let saveCollection = Collection.savemaps.rawValue // Profile
+    
     var userId: String { UserManager.shared.userInfo.uid }
 
     func uploadRecordToSavemaps(fileName: String, fileRef: String, userPhoto: String) {
@@ -213,20 +181,20 @@ extension RouteViewController: UITableViewDelegate {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
 
-                    self.uploadRecordToSavemaps(fileName: routes[indexPath.row].routeName, fileRef: routes[indexPath.row].routeMap, userPhoto: userPhoto)
+                    self.uploadRecordToSavemaps(fileName: viewModel.routes.value[indexPath.row].routeName, fileRef: viewModel.routes.value[indexPath.row].routeMap, userPhoto: userPhoto)
                 }
 
                 let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
 
-                    if userId == routes[indexPath.row].uid {
+                    if userId == viewModel.routes.value[indexPath.row].uid {
                         LKProgressHUD.show(.failure("無法封鎖自己的分享紀錄"))
-                    } else if routes[indexPath.row].uid == nil {
+                    } else if viewModel.routes.value[indexPath.row].uid == nil {
                         LKProgressHUD.show(.failure("無法封鎖預設的地圖"))
 
                     } else {
-                        UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
+                        UserManager.shared.blockUser(blockUserId: viewModel.routes.value[indexPath.row].uid!)
 
-                        UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
+                        UserManager.shared.userInfo.blockList?.append(viewModel.routes.value[indexPath.row].uid!)
                     }
                 }
 
@@ -248,13 +216,13 @@ extension RouteViewController: UITableViewDelegate {
 
 extension RouteViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        routes.count
+        viewModel.routes.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RoutesTableViewCell = tableView.dequeueCell(for: indexPath)
 
-        cell.setUpCell(model: self.routes[indexPath.row])
+        cell.setUpCell(model: self.viewModel.routes.value[indexPath.row])
 
         cell.rideBtn.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
 
@@ -267,73 +235,9 @@ extension RouteViewController: UITableViewDataSource {
     func goToRide(_ sender: UIButton) {
 
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
-            nextViewController.routes = routes[sender.tag]
+            nextViewController.routes = viewModel.routes.value[sender.tag]
 
             navigationController?.pushViewController(nextViewController, animated: true)
         }
-    }
-}
-
-extension RouteViewController: UICollectionViewDelegate {
-    func collectionView(_: UICollectionView, didSelectItemAt _: IndexPath) { }
-}
-
-// MARK: - CollectionView CompositionalLayout -
-
-func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
-    UICollectionViewCompositionalLayout { _, env -> NSCollectionLayoutSection? in
-
-        let inset: CGFloat = 8
-
-        let height: CGFloat = 230
-
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.5),
-            heightDimension: .fractionalHeight(1.0)
-        )
-
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        item.contentInsets = NSDirectionalEdgeInsets(
-            top: inset,
-            leading: inset,
-            bottom: inset,
-            trailing: inset
-        )
-
-        let groupLayoutSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(450)
-        )
-
-        let group = NSCollectionLayoutGroup.custom(
-            layoutSize: groupLayoutSize) { env -> [NSCollectionLayoutGroupCustomItem] in
-
-                let size = env.container.contentSize
-
-                let itemWidth = (size.width - inset * 4) / 2
-
-                return [
-                    // 右邊的 group item
-                    NSCollectionLayoutGroupCustomItem(
-                        frame: CGRect(x: itemWidth + inset * 2, y: 0, width: itemWidth, height: height)),
-                    // 左邊的 group item
-                    NSCollectionLayoutGroupCustomItem(
-                        frame: CGRect(x: 0, y: height / 2, width: itemWidth, height: height)),
-                ]
-            }
-
-        let section = NSCollectionLayoutSection(group: group)
-
-        section.interGroupSpacing = -180
-
-        section.contentInsets = NSDirectionalEdgeInsets(
-            top: inset,
-            leading: inset,
-            bottom: inset,
-            trailing: inset
-        )
-
-        return section
     }
 }

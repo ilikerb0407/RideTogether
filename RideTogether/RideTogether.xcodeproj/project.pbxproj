@@ -62,8 +62,6 @@
 		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
 		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
 		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
-		23C8872228149ECC00E3319A /* RoutesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872028149ECC00E3319A /* RoutesCollectionViewCell.swift */; };
-		23C8872328149ECC00E3319A /* RoutesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* RoutesCollectionViewCell.xib */; };
 		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
 		23C887272815450500E3319A /* GoToRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887262815450500E3319A /* GoToRideViewController.swift */; };
 		23C887292815A18F00E3319A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887282815A18E00E3319A /* UICollectionView.swift */; };
@@ -131,6 +129,7 @@
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
 		23DEF12F2CD5ECA5004E4A3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEF12E2CD5ECA5004E4A3E /* Constants.swift */; };
+		23DEF1312CD5FA53004E4A3E /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEF1302CD5FA53004E4A3E /* RouteViewModel.swift */; };
 		23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E71282D764B00FC001E /* UbikeManager.swift */; };
 		23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E73282D84EA00FC001E /* BikeItems.swift */; };
 		23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E75282D87BC00FC001E /* BikeVM.swift */; };
@@ -272,8 +271,6 @@
 		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
 		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
-		23C8872028149ECC00E3319A /* RoutesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesCollectionViewCell.swift; sourceTree = "<group>"; };
-		23C8872128149ECC00E3319A /* RoutesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesCollectionViewCell.xib; sourceTree = "<group>"; };
 		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		23C887262815450500E3319A /* GoToRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRideViewController.swift; sourceTree = "<group>"; };
 		23C887282815A18E00E3319A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
@@ -345,6 +342,7 @@
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
 		23DEF12E2CD5ECA5004E4A3E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		23DEF1302CD5FA53004E4A3E /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		23E86E71282D764B00FC001E /* UbikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeManager.swift; sourceTree = "<group>"; };
 		23E86E73282D84EA00FC001E /* BikeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeItems.swift; sourceTree = "<group>"; };
 		23E86E75282D87BC00FC001E /* BikeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeVM.swift; sourceTree = "<group>"; };
@@ -496,6 +494,7 @@
 			children = (
 				231BCB6728084B9E00DE2343 /* HomeViewController.swift */,
 				23C8871C281435EC00E3319A /* RouteViewController.swift */,
+				23DEF1302CD5FA53004E4A3E /* RouteViewModel.swift */,
 				23C887262815450500E3319A /* GoToRideViewController.swift */,
 			);
 			path = Home;
@@ -545,8 +544,6 @@
 				23A84A8C2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib */,
 				23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */,
 				23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */,
-				23C8872028149ECC00E3319A /* RoutesCollectionViewCell.swift */,
-				23C8872128149ECC00E3319A /* RoutesCollectionViewCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -997,7 +994,6 @@
 				23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */,
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
-				23C8872328149ECC00E3319A /* RoutesCollectionViewCell.xib in Resources */,
 				23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */,
 				2397D456281F106B0018FC5E /* sun.json in Resources */,
 				23EC046D2823F1230063523F /* circle.json in Resources */,
@@ -1239,12 +1235,12 @@
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
+				23DEF1312CD5FA53004E4A3E /* RouteViewModel.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
 				23D1B78C28006663000EDA70 /* SegueIdentifier.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				3B438B252C3156F000AC05CF /* ImagePickerButton.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
-				23C8872228149ECC00E3319A /* RoutesCollectionViewCell.swift in Sources */,
 				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				3BB344292C37D5E1006EC03C /* TCBikeModel.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,

@@ -179,12 +179,15 @@ extension HomeViewController: UITableViewDelegate {
 
     func push(sender: Any?) {
         if let routeViewController = storyboard?.instantiateViewController(withIdentifier: "RouteViewController") as? RouteViewController {
+
             if let routes = sender as? [Route] {
-                routeViewController.routes = routes
+                routeViewController.viewModel.setRoutes(routes) // 使用 ViewModel 的方法設置路由
             }
+
             navigationController?.pushViewController(routeViewController, animated: true)
         }
     }
+
 }
 
 // MARK: - TableView Data Source -
@@ -198,8 +201,8 @@ extension HomeViewController: UITableViewDataSource {
         let cell: RouteTypesTableViewCell = tableView.dequeueCell(for: indexPath)
 
         cell.setUpCell(
-            routetitle: RoutesTypeTest.allCases[indexPath.row].title,
-            routephoto: RoutesTypeTest.allCases[indexPath.row].image ?? UIImage(named: "routesPhoto")!
+            routetitle: RoutesType.allCases[indexPath.row].title,
+            routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesPhoto")!
         )
 
         return cell
