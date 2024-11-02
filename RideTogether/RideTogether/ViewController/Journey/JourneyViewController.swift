@@ -101,7 +101,7 @@ class JourneyViewController: BaseViewController {
     }
 
     // MARK: - UIButton Setting -
-    //
+
     private(set) lazy var saveButton: UIButton = {
         let button = LeftButton()
         button.setTitle("儲存", for: .normal)
@@ -289,7 +289,7 @@ class JourneyViewController: BaseViewController {
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(onChange), for: .valueChanged)
         segmentControl.frame.size = CGSize(width: 150, height: 30)
-        segmentControl.center = CGPoint(x: 80, y: 65)
+        segmentControl.center = CGPoint(x: 80, y: 130)
         self.view.addSubview(segmentControl)
     }
 
@@ -407,7 +407,6 @@ class JourneyViewController: BaseViewController {
         let saveAction = UIAlertAction(title: "儲存",
                                        style: .default) { _ in
 
-            print(">>>>> 儲存")
             let gpxString = self.mapView.exportToGPXString()
 
             let fileName = alertController.textFields?[0].text
@@ -457,6 +456,18 @@ class JourneyViewController: BaseViewController {
     @objc
     func followButtonToggle() {
         self.followUser = !self.followUser
+
+        if followUser {
+            // 开始更新位置
+            locationManager.startUpdatingLocation()
+            // 立即更新到当前位置
+            if let currentLocation = locationManager.location?.coordinate {
+                mapView.setCenter(currentLocation, animated: true)
+            }
+        } else {
+            // 停止更新位置
+            locationManager.stopUpdatingLocation()
+        }
     }
 
     @objc
@@ -565,7 +576,11 @@ extension JourneyViewController: StopWatchDelegate {
 
 extension JourneyViewController: CLLocationManagerDelegate {
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let newLocation = locations.first!
+        guard let newLocation = locations.first else { return }
+
+        if followUser {
+            mapView.setCenter(newLocation.coordinate, animated: true)
+        }
 
         let altitude = newLocation.altitude.toAltitude()
 
