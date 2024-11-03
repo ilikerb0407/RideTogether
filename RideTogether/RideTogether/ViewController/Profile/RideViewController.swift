@@ -24,9 +24,16 @@ class RideViewController: BaseViewController {
     @IBOutlet var mapView: GPXMapView!
 
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 20, y: 200, width: 40, height: 40))
-        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-        view.addSubview(button)
+        let leftButton = ButtonFactory.build(backgroundColor: .B5 ?? .white,
+                                             tintColor: .B2 ?? .white,
+                                             cornerRadius: 20,
+                                             imageName: "chevron.left",
+                                             pointSize: 40,
+                                             weight: .light,
+                                             xPoint: 20,
+                                             yPoint: 200)
+        leftButton.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+        view.addSubview(leftButton)
     }
 
     @objc

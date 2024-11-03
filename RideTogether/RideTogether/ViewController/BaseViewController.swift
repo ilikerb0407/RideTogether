@@ -9,7 +9,7 @@ import IQKeyboardManagerSwift
 import MessageUI
 import UIKit
 
-internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessageComposeViewControllerDelegate {
+internal class BaseViewController: UIViewController {
 
     var userInfo: UserInfo {
         get { UserManager.shared.userInfo }
@@ -34,11 +34,7 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         displayLocationServicesDisabledAlert()
         isDisplayingLocationServicesDenied = false
     }
-
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
+    
     static var identifier: String {
         String(describing: self)
     }
@@ -82,11 +78,6 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         self.navigationController?.popViewController(animated: true)
     }
 
-    @objc
-    func dismissVC() {
-        dismiss(animated: true, completion: nil)
-    }
-
     func showBlockAlertAction(uid: String) {
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         let blockAction = UIAlertAction(title: "封鎖", style: .destructive) { _ in
@@ -101,7 +92,12 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
     func setNavigationBar(title: String) {
         self.title = title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        let leftButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let leftButton = ButtonFactory.build(backgroundColor: .B5 ?? .white,
+                                             tintColor: .B2 ?? .white,
+                                             cornerRadius: 20,
+                                             imageName: "chevron.left",
+                                             pointSize: 40,
+                                             weight: .light)
         leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
         navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
     }
@@ -137,5 +133,13 @@ internal class BaseViewController: UIViewController, UIGestureRecognizerDelegate
         if let viewController = storyboard?.instantiateViewController(withIdentifier: withIdentifier) {
             navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+}
+
+extension BaseViewController: UIGestureRecognizerDelegate {}
+
+extension BaseViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

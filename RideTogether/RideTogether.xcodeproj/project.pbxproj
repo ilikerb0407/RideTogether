@@ -144,7 +144,7 @@
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
-		3B438B152C31568B00AC05CF /* PreviousPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B142C31568B00AC05CF /* PreviousPageButton.swift */; };
+		3B438B152C31568B00AC05CF /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B142C31568B00AC05CF /* BackButton.swift */; };
 		3B438B172C3156A800AC05CF /* NextPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B162C3156A800AC05CF /* NextPageButton.swift */; };
 		3B438B192C3156B200AC05CF /* CreateGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B182C3156B200AC05CF /* CreateGroupButton.swift */; };
 		3B438B1B2C3156C600AC05CF /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B1A2C3156C600AC05CF /* BottomButton.swift */; };
@@ -354,7 +354,7 @@
 		2B583ADAE60063ED7EEF698A /* Pods-RideTogetherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideTogetherTests.debug.xcconfig"; path = "Target Support Files/Pods-RideTogetherTests/Pods-RideTogetherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3B438B142C31568B00AC05CF /* PreviousPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPageButton.swift; sourceTree = "<group>"; };
+		3B438B142C31568B00AC05CF /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		3B438B162C3156A800AC05CF /* NextPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPageButton.swift; sourceTree = "<group>"; };
 		3B438B182C3156B200AC05CF /* CreateGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupButton.swift; sourceTree = "<group>"; };
 		3B438B1A2C3156C600AC05CF /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
@@ -578,11 +578,11 @@
 		23CE42A5280E5F0A00C4C9F1 /* Reuse Element */ = {
 			isa = PBXGroup;
 			children = (
+				3B438B142C31568B00AC05CF /* BackButton.swift */,
 				3B438B262C3156F600AC05CF /* RequestButton.swift */,
 				3B438B222C3156DE00AC05CF /* DismissButton.swift */,
 				3B438B202C3156D700AC05CF /* UBikeButton.swift */,
 				3B438B1E2C3156D000AC05CF /* TrackButton.swift */,
-				3B438B142C31568B00AC05CF /* PreviousPageButton.swift */,
 				3B438B162C3156A800AC05CF /* NextPageButton.swift */,
 				3B438B182C3156B200AC05CF /* CreateGroupButton.swift */,
 				3B438B1A2C3156C600AC05CF /* BottomButton.swift */,
@@ -1213,7 +1213,7 @@
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
 				23129C3C281D30CF001DE91D /* SaveMapsTableViewCell.swift in Sources */,
-				3B438B152C31568B00AC05CF /* PreviousPageButton.swift in Sources */,
+				3B438B152C31568B00AC05CF /* BackButton.swift in Sources */,
 				23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B769280060EC000EDA70 /* DistanceLabel.swift in Sources */,

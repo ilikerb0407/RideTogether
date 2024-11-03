@@ -42,20 +42,14 @@ class JoinViewController: BaseViewController {
 
     private lazy var cache = [String: UserInfo]()
 
-    private var tableView: UITableView!
-
-    private lazy var dimmingView = UIView()
+    private let tableView: UITableView = .init()
 
     // MARK: - View Life Cycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        setUpDimmingView()
-
         setUpTableView()
-
-//        setUpDismissButton()
 
         configureDataSource()
 
@@ -104,11 +98,6 @@ class JoinViewController: BaseViewController {
         group.notify(queue: DispatchQueue.main) {
             self.tableView.reloadData()
         }
-    }
-
-    @objc
-    func handleTap(recognizer _: UITapGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
     }
 
     @objc
@@ -175,7 +164,6 @@ class JoinViewController: BaseViewController {
     // MARK: - UI Settings -
 
     func setUpTableView() {
-        tableView = UITableView()
 
         tableView.registerCellWithNib(identifier: MemberTableViewCell.identifier, bundle: nil)
 
@@ -194,26 +182,6 @@ class JoinViewController: BaseViewController {
 
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-    }
-
-    func setUpDismissButton() {
-        let button = DismissButton(frame: CGRect(x: UIScreen.width - 50, y: 30, width: 30, height: 30))
-
-        button.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-
-        button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
-
-//        view.addSubview(button)
-    }
-
-    func setUpDimmingView() {
-        view.stickSubView(dimmingView)
-
-        dimmingView.translatesAutoresizingMaskIntoConstraints = false
-
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
-
-        dimmingView.addGestureRecognizer(recognizer)
     }
 }
 

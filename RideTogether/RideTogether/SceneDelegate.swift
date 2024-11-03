@@ -57,7 +57,7 @@ extension SceneDelegate {
 
         guard let tabbarVC = UIStoryboard(name: Constants.Storyboard.main, bundle: nil)
                 .instantiateViewController(identifier: Constants.ViewControllerID.tabBarController) as? TabBarController else {
-            presentErrorAlert(with: "Failed to instantiate TabBarController")
+            LKProgressHUD.showFailure(text: "Failed to instantiate TabBarController")
             return
         }
 
@@ -66,7 +66,7 @@ extension SceneDelegate {
     
     private func handleFetchUserInfoError(_ error: Error) {
         showLoginScreen()
-        presentErrorAlert(with: error.localizedDescription)
+        LKProgressHUD.showFailure(text: error.localizedDescription)
     }
 
     private func showLoginScreen() {
@@ -74,14 +74,8 @@ extension SceneDelegate {
                 .instantiateViewController(identifier: Constants.ViewControllerID.loginViewController) as? LoginViewController {
             window?.rootViewController = loginVC
         } else {
-            presentErrorAlert(with: "Failed to instantiate LoginViewController")
+            LKProgressHUD.showFailure(text: "Failed to instantiate LoginViewController")
         }
     }
 
-    private func presentErrorAlert(with message: String) {
-        guard let rootVC = window?.rootViewController else { return }
-        let alert = UIAlertController(title: Constants.Alert.errorTitle, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Constants.Alert.okActionTitle, style: .default, handler: nil))
-        rootVC.present(alert, animated: true)
-    }
 }

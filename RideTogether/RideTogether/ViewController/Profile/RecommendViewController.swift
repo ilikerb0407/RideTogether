@@ -143,15 +143,12 @@ class RecommendViewController: BaseViewController {
     }
 
     func setNotify() {
-        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let infoButton = ButtonFactory.build(imageName: "info",
+                                              pointSize: 40)
 
-        let infoImage = UIImage(systemName: "info")
+        infoButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
 
-        rightButton.setImage(infoImage, for: .normal)
-
-        rightButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
-
-        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
+        self.navigationItem.setRightBarButton(UIBarButtonItem(customView: infoButton), animated: true)
     }
 
     override func viewDidLoad() {

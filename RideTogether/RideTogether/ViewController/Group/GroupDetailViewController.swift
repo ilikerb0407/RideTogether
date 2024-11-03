@@ -222,7 +222,12 @@ class GroupDetailViewController: BaseViewController {
     func setNavigationBar() {
         setNavigationBar(title: "\(groupInfo?.groupName ?? "揪團隊伍")")
 
-        let rightButton = PreviousPageButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let rightButton = ButtonFactory.build(backgroundColor: .B5 ?? .white,
+                                              tintColor: .B2 ?? .white,
+                                              cornerRadius: 20,
+                                              imageName: "chevron.left",
+                                              pointSize: 40,
+                                              weight: .light)
 
         let infoImage = UIImage(systemName: "info")
 

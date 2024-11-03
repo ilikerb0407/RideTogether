@@ -128,7 +128,14 @@ class TrackInfoViewController: BaseViewController, ChartViewDelegate {
     }
 
     func backButton() {
-        let button = PreviousPageButton(frame: CGRect(x: 15, y: 25, width: 40, height: 40))
+        let button = ButtonFactory.build(backgroundColor: .B5 ?? .white,
+                                             tintColor: .B2 ?? .white,
+                                             cornerRadius: 20,
+                                             imageName: "chevron.left",
+                                             pointSize: 40,
+                                             weight: .light, 
+                                             xPoint: 15,
+                                             yPoint: 25)
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
         view.addSubview(button)
     }
