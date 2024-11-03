@@ -43,6 +43,7 @@ internal class RouteViewController: BaseViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] title in
                 self?.themeLabel = title
+                self?.setUpThemeTag()
             })
             .store(in: &cancellables)
     }
@@ -109,8 +110,6 @@ internal class RouteViewController: BaseViewController {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
 
         tableView.addGestureRecognizer(longPress)
-
-        setUpThemeTag()
     }
 
     func setUpThemeTag() {
