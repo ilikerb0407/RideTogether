@@ -134,7 +134,7 @@ class JourneyViewController: BaseViewController {
     }()
 
     private lazy var showBike: UIButton = {
-        let button = UBikeButton()
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), cornerRadius: 12, imageName: "ubike2.0", pointSize: 10, weight: .medium)
         button.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
         return button
     }()
