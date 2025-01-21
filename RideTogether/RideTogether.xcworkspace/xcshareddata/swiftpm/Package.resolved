@@ -1,15 +1,6 @@
 {
-  "originHash" : "116a18f3c33d03dfa8d76bc96b39bdface1fa9840bf64c23cdb7a5370cb12224",
+  "originHash" : "f3534611ac88035618f9e58dfc846d681f492f38a60047af392b1ece8687eedb",
   "pins" : [
-    {
-      "identity" : "charts",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ChartsOrg/Charts.git",
-      "state" : {
-        "revision" : "dd9c72e3d7e751e769971092a6bd72d39198ae63",
-        "version" : "5.1.0"
-      }
-    },
     {
       "identity" : "coregpx",
       "kind" : "remoteSourceControl",

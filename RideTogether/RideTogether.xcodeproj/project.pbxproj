@@ -138,9 +138,6 @@
 		23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
-		23FCF3212C3F0B7D0023BB27 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 23FCF3202C3F0B7D0023BB27 /* DGCharts */; };
-		23FCF3232C3F0B7D0023BB27 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 23FCF3222C3F0B7D0023BB27 /* DGChartsDynamic */; };
-		23FCF3262C3F0B860023BB27 /* CoreGPX in Frameworks */ = {isa = PBXBuildFile; productRef = 23FCF3252C3F0B860023BB27 /* CoreGPX */; };
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
@@ -397,10 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23FCF3212C3F0B7D0023BB27 /* DGCharts in Frameworks */,
-				23FCF3232C3F0B7D0023BB27 /* DGChartsDynamic in Frameworks */,
 				9E0DE4A778AF6F54ABB9DE7A /* Pods_RideTogether.framework in Frameworks */,
-				23FCF3262C3F0B860023BB27 /* CoreGPX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,9 +897,6 @@
 			);
 			name = RideTogether;
 			packageProductDependencies = (
-				23FCF3202C3F0B7D0023BB27 /* DGCharts */,
-				23FCF3222C3F0B7D0023BB27 /* DGChartsDynamic */,
-				23FCF3252C3F0B860023BB27 /* CoreGPX */,
 			);
 			productName = RideTogether;
 			productReference = 23D1B72B280033FB000EDA70 /* RideTogether.app */;
@@ -960,8 +951,6 @@
 			);
 			mainGroup = 23D1B722280033FB000EDA70;
 			packageReferences = (
-				23FCF31F2C3F0B7D0023BB27 /* XCRemoteSwiftPackageReference "Charts" */,
-				23FCF3242C3F0B860023BB27 /* XCRemoteSwiftPackageReference "CoreGPX" */,
 			);
 			productRefGroup = 23D1B72C280033FB000EDA70 /* Products */;
 			projectDirPath = "";
@@ -1665,43 +1654,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		23FCF31F2C3F0B7D0023BB27 /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ChartsOrg/Charts.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.1.0;
-			};
-		};
-		23FCF3242C3F0B860023BB27 /* XCRemoteSwiftPackageReference "CoreGPX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vincentneo/CoreGPX.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.9.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		23FCF3202C3F0B7D0023BB27 /* DGCharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 23FCF31F2C3F0B7D0023BB27 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-		23FCF3222C3F0B7D0023BB27 /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 23FCF31F2C3F0B7D0023BB27 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
-		};
-		23FCF3252C3F0B860023BB27 /* CoreGPX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 23FCF3242C3F0B860023BB27 /* XCRemoteSwiftPackageReference "CoreGPX" */;
-			productName = CoreGPX;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23D1B723280033FB000EDA70 /* Project object */;
 }

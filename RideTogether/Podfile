@@ -18,6 +18,8 @@ def ui_pods
   pod 'Kingfisher'
   pod 'lottie-ios'
   pod 'MJRefresh'
+  pod 'CoreGPX'
+  pod 'DGCharts'
 end
 
 def shared_pods
