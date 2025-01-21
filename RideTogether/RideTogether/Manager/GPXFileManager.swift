@@ -9,59 +9,66 @@ import CoreGPX
 import Foundation
 
 class GPXFileManager {
-    class var GPXFilesFolderURL: URL {
-        let documentsUrl = FileManager.default.urls(
+    // 使用单例模式
+    static let shared = GPXFileManager()
+    private init() {}
+    
+    // 将类属性改为实例属性
+    var gpxFilesFolderURL: URL {
+        FileManager.default.urls(
             for: .documentDirectory,
             in: .userDomainMask
-        )[0] as URL
-
-        return documentsUrl
+        )[0]
     }
-
-    class func URLForFilename(_ filename: String) -> URL {
-        var fullURL = self.GPXFilesFolderURL.appendingPathComponent(filename)
-
-        fullURL = fullURL.appendingPathExtension("gpx")
-
-        return fullURL
+    
+    // 添加错误处理
+    enum GPXFileError: Error {
+        case saveError
+        case removeError
+        case parseError
     }
-
-    class func saveToURL(fileURL: URL, gpxContents: String) {
+    
+    // 重构方法为实例方法
+    func urlForFilename(_ filename: String) -> URL {
+        gpxFilesFolderURL
+            .appendingPathComponent(filename)
+            .appendingPathExtension("gpx")
+    }
+    
+    func saveToURL(fileURL: URL, gpxContents: String) throws {
         do {
-            try gpxContents.write(toFile: fileURL.path, atomically: true, encoding: String.Encoding.utf8)
-
+            try gpxContents.write(toFile: fileURL.path, atomically: true, encoding: .utf8)
         } catch {
-            print("can not save to URL")
+            throw GPXFileError.saveError
         }
     }
-
-    class func save(_ filename: String, gpxContents: String) {
+    
+    func save(_ filename: String, gpxContents: String) {
+        let fileURL = urlForFilename(filename)
         
-        let fileURL: URL = self.URLForFilename(filename)
-
-        GPXFileManager.saveToURL(fileURL: fileURL, gpxContents: gpxContents)
-
-        RecordManager.shared.uploadRecord(fileName: filename, fileURL: fileURL) { result in
-
-            switch result {
-            case .success:
-
-                uploadTrackLengthToDb(fileURL: fileURL)
-
-                print("save to Firebase successfully")
-
-                GPXFileManager.removeFileFromURL(fileURL)
-
-                LKProgressHUD.show(.success("儲存成功"))
-
-            case let .failure(error):
-
-                print("save to Firebase failure: \(error)")
+        do {
+            try saveToURL(fileURL: fileURL, gpxContents: gpxContents)
+            
+            RecordManager.shared.uploadRecord(fileName: filename, fileURL: fileURL) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success:
+                    self.uploadTrackLengthToDb(fileURL: fileURL)
+                    print("save to Firebase successfully")
+                    try? self.removeFileFromURL(fileURL)
+                    LKProgressHUD.show(.success("儲存成功"))
+                    
+                case let .failure(error):
+                    print("save to Firebase failure: \(error)")
+                }
             }
+        } catch {
+            print("Failed to save file: \(error)")
         }
     }
-
-    class func uploadTrackLengthToDb(fileURL: URL) {
+    
+    func uploadTrackLengthToDb(fileURL: URL) {
         let inputURL = fileURL
 
         guard let gpx = GPXParser(withURL: inputURL)?.parsedData() else {
@@ -73,7 +80,7 @@ class GPXFileManager {
         UserManager.shared.updateUserTrackLength(length: length)
     }
 
-    class func removeFileFromURL(_ fileURL: URL) {
+    func removeFileFromURL(_ fileURL: URL) {
         let defaultManager = FileManager.default
 
         do {
@@ -84,9 +91,9 @@ class GPXFileManager {
         }
     }
 
-    class func removeFile(_ filename: String) {
-        let fileURL: URL = self.URLForFilename(filename)
+    func removeFile(_ filename: String) {
+        let fileURL: URL = self.urlForFilename(filename)
 
-        GPXFileManager.removeFileFromURL(fileURL)
+        GPXFileManager.shared.removeFileFromURL(fileURL)
     }
 }

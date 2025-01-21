@@ -412,7 +412,7 @@ class JourneyViewController: BaseViewController {
             let fileName = alertController.textFields?[0].text
 
             if let fileName {
-                GPXFileManager.save(fileName, gpxContents: gpxString)
+                GPXFileManager.shared.save(fileName, gpxContents: gpxString)
             }
 
             if withReset {
