@@ -24,6 +24,8 @@
 		231BCB61280739AD00DE2343 /* Taipei1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB60280739AD00DE2343 /* Taipei1.plist */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
+		232AF1B02D3FB0E300624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
+		232AF1B12D3FB1B000624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
@@ -228,6 +230,7 @@
 		231BCB60280739AD00DE2343 /* Taipei1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Taipei1.plist; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		232AF1AF2D3FB0E300624041 /* BikeStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
 		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -828,6 +831,7 @@
 			children = (
 				C51FAD3C290939FF00264854 /* TPBikeModel.swift */,
 				3BB344282C37D5E1006EC03C /* TCBikeModel.swift */,
+				232AF1AF2D3FB0E300624041 /* BikeStation.swift */,
 			);
 			path = BikeModel;
 			sourceTree = "<group>";
@@ -1245,6 +1249,7 @@
 				23DEF12F2CD5ECA5004E4A3E /* Constants.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23C887272815450500E3319A /* GoToRideViewController.swift in Sources */,
+				232AF1B02D3FB0E300624041 /* BikeStation.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
 				3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
@@ -1269,6 +1274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51FAD3E29093A0200264854 /* TPBikeModel.swift in Sources */,
+				232AF1B12D3FB1B000624041 /* BikeStation.swift in Sources */,
 				C51FAD4129093AAD00264854 /* WidgetLocationManager.swift in Sources */,
 				C51FADDF29134EED00264854 /* Station.swift in Sources */,
 				3BB3442B2C37D62E006EC03C /* TCBikeModel.swift in Sources */,

@@ -60,7 +60,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
 
     func layOutTaipeiBike() {
         for bike in bikeData {
-            let coordinate = CLLocationCoordinate2D(latitude: bike.lat, longitude: bike.lng)
+            let coordinate = CLLocationCoordinate2D(latitude: bike.latitude, longitude: bike.longitude)
 
             let title = bike.sna
 
@@ -70,7 +70,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
 
             let usersCoordinate = CLLocation(latitude: bikeMapView.userLocation.coordinate.latitude, longitude: bikeMapView.userLocation.coordinate.longitude)
 
-            let bikeStopCoordinate = CLLocation(latitude: Double(bike.lat), longitude: Double(bike.lng))
+            let bikeStopCoordinate = CLLocation(latitude: Double(bike.latitude), longitude: Double(bike.longitude))
 
             let distance = usersCoordinate.distance(from: bikeStopCoordinate)
 
@@ -84,17 +84,17 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
 
     func layOutTaichungBike() {
         for bike in taichungBikeData!.retVal {
-            let coordinate = CLLocationCoordinate2D(latitude: Double(bike.value.lat) ?? 0.0, longitude: Double(bike.value.lng) ?? 0.0)
+            let coordinate = CLLocationCoordinate2D(latitude: Double(bike.value.latitude) ?? 0.0, longitude: Double(bike.value.longitude) ?? 0.0)
 
-            let title = bike.value.sna
+            let title = bike.value.stationName
 
-            let subtitle = "可還數量:\(bike.value.bemp), 可租數量 :\(bike.value.sbi)"
+            let subtitle = "可還數量:\(bike.value.emptyBikes), 可租數量 :\(bike.value.availableBikes)"
 
             let annotation = BikeAnnotation(title: title, subtitle: subtitle, coordinate: coordinate)
 
             let usersCoordinate = CLLocation(latitude: bikeMapView.userLocation.coordinate.latitude, longitude: bikeMapView.userLocation.coordinate.longitude)
 
-            let bikeStopCoordinate = CLLocation(latitude: Double(bike.value.lat) ?? 0.0, longitude: Double(bike.value.lng) ?? 0.0)
+            let bikeStopCoordinate = CLLocation(latitude: Double(bike.value.latitude) ?? 0.0, longitude: Double(bike.value.longitude) ?? 0.0)
 
             let distance = usersCoordinate.distance(from: bikeStopCoordinate)
 

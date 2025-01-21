@@ -200,7 +200,7 @@ struct Provider: TimelineProvider {
                                                   sarea: station.sarea, mday: station.mday, lat: station.lat, lng: station.lng,
                                                   ar: station.ar, sareaen: station.sareaen, snaen: station.snaen,
                                                   aren: station.aren, bemp: station.bemp, act: station.act,
-                                                  srcUpdateTime: station.srcUpdateTime, updateTime: station.updateTime,
+                                                         srcUpdateTime: station.srcUpdateTime,
                                                   infoTime: station.infoTime, infoDate: station.infoDate)
 
             return updatedStationWithDistance
