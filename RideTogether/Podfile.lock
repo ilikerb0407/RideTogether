@@ -1196,6 +1196,7 @@ PODS:
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
   - RecaptchaInterop (100.0.0)
+  - SnapKit (5.7.1)
 
 DEPENDENCIES:
   - CoreGPX
@@ -1211,6 +1212,7 @@ DEPENDENCIES:
   - Kingfisher
   - lottie-ios
   - MJRefresh
+  - SnapKit
 
 SPEC REPOS:
   trunk:
@@ -1251,6 +1253,7 @@ SPEC REPOS:
     - PromisesObjC
     - PromisesSwift
     - RecaptchaInterop
+    - SnapKit
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
@@ -1290,7 +1293,8 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: 45c5eca4dd22fdc0dcfbfb2a6024b4b0cdb3678f
+PODFILE CHECKSUM: 7bd93c2d9d594bc19ac5677d4d694bcc659e370e
 
 COCOAPODS: 1.15.2
