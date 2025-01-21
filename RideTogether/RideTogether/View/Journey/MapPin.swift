@@ -111,14 +111,14 @@ class MapPin: NSObject, MKMapViewDelegate {
 
         rightButton.tag = informationButtonTag
         annotationView.rightCalloutAccessoryView = rightButton
-        let leftButton: UIButton = .init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        leftButton.tintColor = .B5
+        let button: UIButton = .init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        button.tintColor = .B5
         let leftImg = UIImage(systemName: "pencil.circle",
                               withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light))
-        leftButton.setImage(leftImg, for: .normal)
+        button.setImage(leftImg, for: .normal)
 
-        leftButton.tag = editButtonTag
-        annotationView.leftCalloutAccessoryView = leftButton
+        button.tag = editButtonTag
+        annotationView.leftCalloutAccessoryView = button
 
         return annotationView
     }

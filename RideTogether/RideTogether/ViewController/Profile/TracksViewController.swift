@@ -46,7 +46,7 @@ class TracksViewController: BaseViewController {
     }
 
     func backButton() {
-        let button = ButtonFactory.build(pointSize: 40)
+        let button = ButtonFactory.build(alpha: 1, pointSize: 40)
         button.tintColor = .lightGray
         view.addSubview(button)
     }
@@ -118,7 +118,7 @@ class TracksViewController: BaseViewController {
 
     func setNotify() {
         let infoButton = ButtonFactory.build(imageName: "info",
-                                              pointSize: 40)
+                                             pointSize: 40)
 
         infoButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
 

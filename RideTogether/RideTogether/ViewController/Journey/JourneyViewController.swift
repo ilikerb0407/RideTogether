@@ -103,21 +103,35 @@ class JourneyViewController: BaseViewController {
     // MARK: - UIButton Setting -
 
     private(set) lazy var saveButton: UIButton = {
-        let button = LeftButton()
-        button.setTitle("儲存", for: .normal)
+        let button = ButtonFactory.build(backgroundColor: .B5,
+                                         tintColor: .B2,
+                                         alpha: 0.5,
+                                         cornerRadius: 25,
+                                         title: "儲存",
+                                         titleLabelFont: .systemFont(ofSize: 16) ,
+                                         pointSize: 50)
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private(set) lazy var trackerButton: UIButton = {
-        let button = TrackButton()
-        button.setTitle("開始", for: .normal)
+        let button = ButtonFactory.build(backgroundColor: .B5,
+                                         tintColor: .B2,
+                                         alpha: 0.5,
+                                         cornerRadius: 35,
+                                         title: "開始",
+                                         titleLabelFont: .systemFont(ofSize: 16),
+                                         imageName: nil)
         button.addTarget(self, action: #selector(trackerButtonTapped), for: .touchUpInside)
         return button
     }()
 
     private lazy var resetButton: UIButton = {
-        let button = LeftButton()
+        let button = ButtonFactory.build(backgroundColor: .B5, tintColor: .B2,
+                                         alpha: 0.5,
+                                         cornerRadius: 25,
+                                         titleLabelFont: .systemFont(ofSize: 16),
+                                         pointSize: 50)
         button.setTitle("重置", for: .normal)
         button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         return button
@@ -126,40 +140,36 @@ class JourneyViewController: BaseViewController {
     let imagePointSize = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
 
     private lazy var followUserButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "location.fill", withConfiguration: imagePointSize)
-        button.setImage(image, for: .normal)
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75),
+                                         tintColor: .B5,
+                                         cornerRadius: 24,
+                                         imageName: "location.fill",
+                                         weight: .medium,
+                                         pointSize: 30)
         button.addTarget(self, action: #selector(followButtonToggle), for: .touchUpInside)
         return button
     }()
 
     private lazy var showBike: UIButton = {
-        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), cornerRadius: 12, imageName: "ubike2.0", pointSize: 10, weight: .medium)
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), alpha: 1, cornerRadius: 12, imageName: "ubike2.0", weight: .medium, pointSize: 10)
         button.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
         return button
     }()
 
     private lazy var presentViewControllerButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "info.circle", withConfiguration: imagePointSize)
-        button.setImage(image, for: .normal)
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), tintColor: .B5, cornerRadius: 24, imageName: "info.circle", weight: .medium,  pointSize: 30)
         button.addTarget(self, action: #selector(presentRouteSelectionViewController), for: .touchUpInside)
         return button
     }()
 
     private lazy var sendSMSButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "message", withConfiguration: imagePointSize)
-        button.setImage(image, for: .normal)
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), tintColor: .B5, cornerRadius: 24, imageName: "message", weight: .medium,  pointSize: 30)
         button.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
         return button
     }()
 
     private lazy var pinButton: UIButton = {
-        let button = BottomButton()
-        let mappin = UIImage(systemName: "mappin.and.ellipse",
-                             withConfiguration: imagePointSize)
-        button.setImage(mappin, for: UIControl.State())
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), tintColor: .B5, cornerRadius: 24, imageName: "mappin.and.ellipse", weight: .medium,  pointSize: 30)
         button.addTarget(self, action: #selector(addPinAtMyLocation), for: .touchUpInside)
         return button
     }()
@@ -237,11 +247,11 @@ class JourneyViewController: BaseViewController {
 
     // MARK: - Label -
 
-    private var altitudeLabel = LeftLabel()
+    private var altitudeLabel = LabelFactory.build(text: "", font: .systemFont(ofSize: 20, weight: .regular), textColor: .B5, textAlignment: .left)
 
-    private var speedLabel = LeftLabel()
+    private var speedLabel = LabelFactory.build(text: "", font: .systemFont(ofSize: 20, weight: .regular), textColor: .B5, textAlignment: .left)
 
-    private var timeLabel = RightLabel()
+    private var timeLabel = LabelFactory.build(text: "00:00", font: .boldSystemFont(ofSize: 30), textColor: .B5, textAlignment: .right)
 
     private var totalTrackedDistanceLabel = DistanceLabel()
 
@@ -317,7 +327,6 @@ class JourneyViewController: BaseViewController {
     }
 
     // MARK: - Action -
-
     func setBeginningRegion() {
         // give default latitude & longtitude when user didn't accept tracking privacy
         let center = locationManager.location?.coordinate ??

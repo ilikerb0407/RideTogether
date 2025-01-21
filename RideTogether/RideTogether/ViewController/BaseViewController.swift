@@ -92,14 +92,13 @@ internal class BaseViewController: UIViewController {
     func setNavigationBar(title: String) {
         self.title = title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        let leftButton = ButtonFactory.build(backgroundColor: .B5 ?? .white,
+        let button = ButtonFactory.build(backgroundColor: .B5 ?? .white,
                                              tintColor: .B2 ?? .white,
                                              cornerRadius: 20,
                                              imageName: "chevron.left",
-                                             pointSize: 40,
-                                             weight: .light)
-        leftButton.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
-        navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
+                                             weight: .light, pointSize: 40)
+        button.addTarget(self, action: #selector(popToPreviousPage), for: .touchUpInside)
+        navigationItem.setLeftBarButton(UIBarButtonItem(customView: button), animated: true)
     }
 
     @objc

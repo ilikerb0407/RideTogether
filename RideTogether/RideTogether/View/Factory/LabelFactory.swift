@@ -8,9 +8,15 @@
 import UIKit
 
 internal enum LabelFactory {
-    static func build(text: String?, font: UIFont, backgroundColor: UIColor = .clear, textColor: UIColor = .placeholderText, textAlignment: NSTextAlignment = .center ) -> UILabel {
+    static func build(text: String?,
+                      numberOfLines: Int = 0,
+                      font: UIFont,
+                      backgroundColor: UIColor = .clear,
+                      textColor: UIColor? = .placeholderText,
+                      textAlignment: NSTextAlignment = .center) -> UILabel {
         let label = UILabel()
         label.text = text
+        label.numberOfLines = numberOfLines
         label.font = font
         label.backgroundColor = backgroundColor
         label.textColor = textColor

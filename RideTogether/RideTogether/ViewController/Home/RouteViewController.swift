@@ -86,8 +86,8 @@ internal class RouteViewController: BaseViewController {
     }
 
     func setNotify() {
-        let infoButton = ButtonFactory.build(imageName: "info",
-                                              pointSize: 40)
+        let infoButton = ButtonFactory.build(alpha: 1, imageName: "info",
+                                             pointSize: 40)
 
         infoButton.addTarget(self, action: #selector(showLongPressNotify), for: .touchUpInside)
 

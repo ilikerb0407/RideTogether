@@ -24,16 +24,15 @@ class RideViewController: BaseViewController {
     @IBOutlet var mapView: GPXMapView!
 
     func backButton() {
-        let leftButton = ButtonFactory.build(backgroundColor: .B5 ?? .white,
+        let button = ButtonFactory.build(backgroundColor: .B5 ?? .white,
                                              tintColor: .B2 ?? .white,
                                              cornerRadius: 20,
                                              imageName: "chevron.left",
-                                             pointSize: 40,
-                                             weight: .light,
+                                             weight: .light, pointSize: 40,
                                              xPoint: 20,
                                              yPoint: 200)
-        leftButton.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
-        view.addSubview(leftButton)
+        button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)
+        view.addSubview(button)
     }
 
     @objc
@@ -120,24 +119,32 @@ class RideViewController: BaseViewController {
     }
 
     private lazy var sendSMSButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "message",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
-
+        let button = ButtonFactory.build(backgroundColor:
+                .B2?.withAlphaComponent(0.75),
+                                         tintColor: .B5,
+                                         cornerRadius: 24,
+                                         imageName: "message",
+                                         weight: .medium,
+                                         pointSize: 30)
         return button
     }()
 
     private lazy var followUserButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "location.fill",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
-        button.setImage(image, for: .normal)
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75),
+                                         tintColor: .B5,
+                                         cornerRadius: 24,
+                                         imageName: "location.fill",
+                                         weight: .medium,
+                                         pointSize: 30)
         return button
     }()
 
     private lazy var showBikeButton: UIButton = {
-        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75), cornerRadius: 12, imageName: "ubike2.0", pointSize: 10, weight: .medium)
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75),
+                                         cornerRadius: 12,
+                                         imageName: "ubike2.0",
+                                         weight: .medium,
+                                         pointSize: 10)
         button.addTarget(self, action: #selector(showBikeViewController), for: .touchUpInside)
         return button
     }()

@@ -29,7 +29,6 @@
 		234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF32C2C3FA100E78118 /* Collection.swift */; };
 		235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */; };
 		235B58882D3FCDE40088CE45 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58872D3FCDE40088CE45 /* LabelFactory.swift */; };
-		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
@@ -142,12 +141,6 @@
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
-		3B438B172C3156A800AC05CF /* NextPageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B162C3156A800AC05CF /* NextPageButton.swift */; };
-		3B438B192C3156B200AC05CF /* CreateGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B182C3156B200AC05CF /* CreateGroupButton.swift */; };
-		3B438B1B2C3156C600AC05CF /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B1A2C3156C600AC05CF /* BottomButton.swift */; };
-		3B438B1D2C3156CB00AC05CF /* LeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B1C2C3156CB00AC05CF /* LeftButton.swift */; };
-		3B438B1F2C3156D000AC05CF /* TrackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B1E2C3156D000AC05CF /* TrackButton.swift */; };
-		3B438B252C3156F000AC05CF /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B242C3156F000AC05CF /* ImagePickerButton.swift */; };
 		3B438B292C31601800AC05CF /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B282C31601800AC05CF /* AlertProvider.swift */; };
 		3B438B2B2C31617D00AC05CF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */; };
 		3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7947F92A70E1870075E8C0 /* APIRequest.swift */; };
@@ -229,7 +222,6 @@
 		234DBBF32C2C3FA100E78118 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		235B58872D3FCDE40088CE45 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
-		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -346,12 +338,6 @@
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3B438B162C3156A800AC05CF /* NextPageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPageButton.swift; sourceTree = "<group>"; };
-		3B438B182C3156B200AC05CF /* CreateGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupButton.swift; sourceTree = "<group>"; };
-		3B438B1A2C3156C600AC05CF /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
-		3B438B1C2C3156CB00AC05CF /* LeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftButton.swift; sourceTree = "<group>"; };
-		3B438B1E2C3156D000AC05CF /* TrackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackButton.swift; sourceTree = "<group>"; };
-		3B438B242C3156F000AC05CF /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
 		3B438B282C31601800AC05CF /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
 		3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		3B7947F92A70E1870075E8C0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -410,13 +396,6 @@
 				FA6924D631EF788832987659 /* Pods-RideTogetherTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		2309B8F72842255D0020D6FE /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		2309B8F9284293C70020D6FE /* User Saved */ = {
@@ -492,6 +471,13 @@
 			path = RideTogetherTests;
 			sourceTree = "<group>";
 		};
+		235B588C2D3FE1EC0088CE45 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		237A27A8281A6948004F039F /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,20 +545,13 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
-		23CE42A5280E5F0A00C4C9F1 /* Reuse Element */ = {
+		23CE42A5280E5F0A00C4C9F1 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				235B58872D3FCDE40088CE45 /* LabelFactory.swift */,
 				235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */,
-				3B438B1E2C3156D000AC05CF /* TrackButton.swift */,
-				3B438B162C3156A800AC05CF /* NextPageButton.swift */,
-				3B438B182C3156B200AC05CF /* CreateGroupButton.swift */,
-				3B438B1A2C3156C600AC05CF /* BottomButton.swift */,
-				3B438B1C2C3156CB00AC05CF /* LeftButton.swift */,
-				235CB8E428354A1E0018101B /* ReuseLabel.swift */,
-				3B438B242C3156F000AC05CF /* ImagePickerButton.swift */,
 			);
-			path = "Reuse Element";
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		23CE42BE280FB74700C4C9F1 /* Group */ = {
@@ -620,6 +599,7 @@
 				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				235B588C2D3FE1EC0088CE45 /* ViewModel */,
 				3BB344272C37D507006EC03C /* Common */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B767280060E0000EDA70 /* View */,
@@ -627,7 +607,6 @@
 				23D1B76D28006187000EDA70 /* Extension */,
 				23CE42A0280E571700C4C9F1 /* Lottie */,
 				23D1B7842800632F000EDA70 /* Manager */,
-				2309B8F72842255D0020D6FE /* Resource */,
 			);
 			path = RideTogether;
 			sourceTree = "<group>";
@@ -686,7 +665,7 @@
 				23C887192814285A00E3319A /* Home */,
 				23A84A682811570600DD8D39 /* Group */,
 				23D1B7E828042C88000EDA70 /* Profile */,
-				23CE42A5280E5F0A00C4C9F1 /* Reuse Element */,
+				23CE42A5280E5F0A00C4C9F1 /* Factory */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1141,15 +1120,11 @@
 				23A84A7F2812EFFE00DD8D39 /* RouteSelecViewController.swift in Sources */,
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
-				3B438B192C3156B200AC05CF /* CreateGroupButton.swift in Sources */,
 				3B438B292C31601800AC05CF /* AlertProvider.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
-				3B438B1F2C3156D000AC05CF /* TrackButton.swift in Sources */,
-				3B438B1D2C3156CB00AC05CF /* LeftButton.swift in Sources */,
 				234A1626283636ED00E09F09 /* LocationManager.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
-				235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */,
 				C51FADDE29134EED00264854 /* Station.swift in Sources */,
 				235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */,
 				23CB74BC2816DB5800DED822 /* GroupDetailViewController.swift in Sources */,
@@ -1194,7 +1169,6 @@
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackInfoViewController.swift in Sources */,
 				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
-				3B438B1B2C3156C600AC05CF /* BottomButton.swift in Sources */,
 				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,
 				23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */,
 				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
@@ -1205,7 +1179,6 @@
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
 				23D1B78C28006663000EDA70 /* SegueIdentifier.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
-				3B438B252C3156F000AC05CF /* ImagePickerButton.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				3BB344292C37D5E1006EC03C /* TCBikeModel.swift in Sources */,
@@ -1226,7 +1199,6 @@
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
 				3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
-				3B438B172C3156A800AC05CF /* NextPageButton.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,

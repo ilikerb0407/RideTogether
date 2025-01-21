@@ -132,8 +132,7 @@ class TrackInfoViewController: BaseViewController, ChartViewDelegate {
                                              tintColor: .B2 ?? .white,
                                              cornerRadius: 20,
                                              imageName: "chevron.left",
-                                             pointSize: 40,
-                                             weight: .light, 
+                                         weight: .light, pointSize: 40, 
                                              xPoint: 15,
                                              yPoint: 25)
         button.addTarget(self, action: #selector(popToPreviosPage), for: .touchUpInside)

@@ -164,7 +164,14 @@ internal class GroupViewController: BaseViewController, Reload, UISheetPresentat
     }
 
     func setBuildTeamButton() {
-        let button = CreateGroupButton()
+        let button = ButtonFactory.build(backgroundColor: .B2?.withAlphaComponent(0.75),
+                                         cornerRadius: 25,
+                                         title: "揪團",
+                                         titleColor: .B5,
+                                         titleLabelFont: .systemFont(ofSize: 25, weight: .bold),
+                                         pointSize: 70,
+                                         xPoint: UIScreen.width * 0.8,
+                                         yPoint: UIScreen.height * 0.8)
         button.addTarget(self, action: #selector(creatGroup), for: .touchUpInside)
         view.addSubview(button)
     }
