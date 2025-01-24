@@ -167,7 +167,8 @@ internal class LoginViewController: BaseViewController, ASAuthorizationControlle
         }
 
     }
-    func loginButtonFadeIn () {
+    
+    func loginButtonFadeIn() {
 
         self.loginButton.alpha = 0.0
         self.emailbtn.alpha = 0.0

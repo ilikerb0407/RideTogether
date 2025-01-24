@@ -14,6 +14,7 @@
 		23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C38281D11C7001DE91D /* SaveMapsViewController.swift */; };
 		23129C3C281D30CF001DE91D /* SaveMapsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23129C3A281D30CF001DE91D /* SaveMapsTableViewCell.swift */; };
 		23129C3D281D30CF001DE91D /* SaveMapsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23129C3B281D30CF001DE91D /* SaveMapsTableViewCell.xib */; };
+		2316048E2D439BF4004F80AB /* CodeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316048D2D439BF4004F80AB /* CodeLoginViewController.swift */; };
 		231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* ShareMap.swift */; };
 		231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2F280671DE00DE2343 /* RecommendViewController.swift */; };
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
@@ -207,6 +208,7 @@
 		23129C38281D11C7001DE91D /* SaveMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMapsViewController.swift; sourceTree = "<group>"; };
 		23129C3A281D30CF001DE91D /* SaveMapsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMapsTableViewCell.swift; sourceTree = "<group>"; };
 		23129C3B281D30CF001DE91D /* SaveMapsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveMapsTableViewCell.xib; sourceTree = "<group>"; };
+		2316048D2D439BF4004F80AB /* CodeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLoginViewController.swift; sourceTree = "<group>"; };
 		231BCB2D28066C3B00DE2343 /* ShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMap.swift; sourceTree = "<group>"; };
 		231BCB2F280671DE00DE2343 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				23CB74BF28177CAC00DED822 /* LoginViewController.swift */,
+				2316048D2D439BF4004F80AB /* CodeLoginViewController.swift */,
 				237A279C28181A60004F039F /* SignUpViewController.swift */,
 				2360C67528254EA900EF21D3 /* PolicyViewController.swift */,
 			);
@@ -1135,6 +1138,7 @@
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */,
 				23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */,
+				2316048E2D439BF4004F80AB /* CodeLoginViewController.swift in Sources */,
 				23A84A752811AE2300DD8D39 /* GroupInfoTableViewCell.swift in Sources */,
 				23C8871B28142BC400E3319A /* RoutesType.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
