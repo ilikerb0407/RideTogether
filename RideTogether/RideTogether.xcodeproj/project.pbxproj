@@ -22,6 +22,7 @@
 		231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3828067DBD00DE2343 /* MapsManager.swift */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
 		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
+		231D7D062D43A48500FAFCFE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D7D052D43A48500FAFCFE /* String+Extension.swift */; };
 		232AF1B02D3FB0E300624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
 		232AF1B12D3FB1B000624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
@@ -216,6 +217,7 @@
 		231BCB3828067DBD00DE2343 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		231D7D052D43A48500FAFCFE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		232AF1AF2D3FB0E300624041 /* BikeStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
 		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 				23C887282815A18E00E3319A /* UICollectionView.swift */,
 				237A27A628199F2A004F039F /* UIImageView.swift */,
 				23C0C421281EA4870020237C /* Notification.swift */,
+				231D7D052D43A48500FAFCFE /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */,
 				23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */,
+				231D7D062D43A48500FAFCFE /* String+Extension.swift in Sources */,
 				2316048E2D439BF4004F80AB /* CodeLoginViewController.swift in Sources */,
 				23A84A752811AE2300DD8D39 /* GroupInfoTableViewCell.swift in Sources */,
 				23C8871B28142BC400E3319A /* RoutesType.swift in Sources */,
@@ -1452,7 +1456,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1494,7 +1498,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

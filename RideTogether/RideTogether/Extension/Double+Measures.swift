@@ -30,10 +30,6 @@ extension Double {
         } else {
             return toMeters() as String
         }
-//
-//        return toMeters()
-//        self > metersPerKilometer ? toMeters() as String : toMeters() as String
-//        return toMeters() as String
     }
 
     // MARK: transfer m/s to km/h

@@ -62,10 +62,10 @@ internal class LoginViewController: BaseViewController, ASAuthorizationControlle
 
         if let user = Auth.auth().currentUser {
             print("\(user.uid) login")
-            LKProgressHUD.showSuccess(text: "已經登入")
+            LKProgressHUD.showSuccess(text: "已經登入".localized)
         } else {
             print("not login")
-            LKProgressHUD.showFailure(text: "未登入")
+            LKProgressHUD.showFailure(text: "未登入".localized)
         }
 
         Auth.auth().addStateDidChangeListener { _, user in
