@@ -54,14 +54,7 @@ extension SceneDelegate {
 
     private func setupTabBarController(with userInfo: UserInfo) {
         UserManager.shared.userInfo = userInfo
-
-        guard let tabbarVC = UIStoryboard(name: Constants.Storyboard.main, bundle: nil)
-                .instantiateViewController(identifier: Constants.ViewControllerID.tabBarController) as? TabBarController else {
-            LKProgressHUD.showFailure(text: "Failed to instantiate TabBarController")
-            return
-        }
-
-        window?.rootViewController = tabbarVC
+        window?.rootViewController = TabBarController()
     }
 
     private func handleFetchUserInfoError(_ error: Error) {
