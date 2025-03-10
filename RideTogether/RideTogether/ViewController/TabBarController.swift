@@ -17,20 +17,20 @@ private enum Tabs {
     case profile
 
     func controller() -> UIViewController {
-        var controller: UIViewController
 
         switch self {
-        // TODO: 換成 Code-based ViewController
-        case .home: controller = UIStoryboard.home.instantiateInitialViewController()!
+        case .home:
+            return HomeViewController()
 
-        case .group: controller = UIStoryboard.group.instantiateInitialViewController()!
+        case .group:
+            return GroupViewController()
 
-        case .journey: controller = UIStoryboard.journey.instantiateInitialViewController()!
-
-        case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
+        case .journey:
+            return JourneyViewController()
+            
+        case .profile:
+            return ProfileViewController()
         }
-
-        return controller
     }
 }
 
