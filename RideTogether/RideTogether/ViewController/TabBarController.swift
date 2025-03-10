@@ -27,7 +27,7 @@ private enum Tabs {
 
         case .journey:
             return JourneyViewController()
-            
+
         case .profile:
             return ProfileViewController()
         }

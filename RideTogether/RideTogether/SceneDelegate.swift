@@ -10,7 +10,7 @@ import FirebaseAuth
 
 internal class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    
+
     override init() {
         super.init()
         Auth.auth().addStateDidChangeListener { [weak self] _, user in
@@ -33,7 +33,7 @@ extension SceneDelegate {
             showLoginScreen()
             return
         }
-        
+
         handleLoggedInUser(uid: currentUser.uid)
         window?.makeKeyAndVisible()
     }
@@ -63,19 +63,14 @@ extension SceneDelegate {
 
         window?.rootViewController = tabbarVC
     }
-    
+
     private func handleFetchUserInfoError(_ error: Error) {
         showLoginScreen()
         LKProgressHUD.showFailure(text: error.localizedDescription)
     }
 
     private func showLoginScreen() {
-        if let loginVC = UIStoryboard(name: Constants.Storyboard.login, bundle: nil)
-                .instantiateViewController(identifier: Constants.ViewControllerID.loginViewController) as? LoginViewController {
-            window?.rootViewController = loginVC
-        } else {
-            LKProgressHUD.showFailure(text: "Failed to instantiate LoginViewController")
-        }
+        window?.rootViewController = LoginViewController()
     }
 
 }
