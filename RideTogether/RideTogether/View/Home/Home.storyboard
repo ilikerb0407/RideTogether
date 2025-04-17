@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9ko-J6-rRR">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--探索-->
+        <scene sceneID="f0Z-Wu-YkW">
+            <objects>
+                <navigationController id="9ko-J6-rRR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="探索" image="magnifyingglass.circle" catalog="system" id="FL8-VV-mhN"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U0r-ac-xeW">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fkg-3r-rE9" kind="relationship" relationship="rootViewController" id="opj-d8-A4a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APU-zm-mMU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-690" y="53"/>
+        </scene>
+        <!--探索路線-->
+        <scene sceneID="Wwp-t3-4h5">
+            <objects>
+                <viewController id="fkg-3r-rE9" customClass="HomeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lJc-D8-mmk">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLN-Ba-dr0">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5WQ-FE-XOT"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XLN-Ba-dr0" firstAttribute="top" secondItem="lJc-D8-mmk" secondAttribute="top" id="PBm-Mg-YuL"/>
+                            <constraint firstItem="XLN-Ba-dr0" firstAttribute="leading" secondItem="5WQ-FE-XOT" secondAttribute="leading" id="SMw-PX-LSK"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="trailing" secondItem="XLN-Ba-dr0" secondAttribute="trailing" id="j1g-6R-xep"/>
+                            <constraint firstItem="5WQ-FE-XOT" firstAttribute="bottom" secondItem="XLN-Ba-dr0" secondAttribute="bottom" id="qb8-Xh-kes"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="探索路線" id="oG9-91-4Jy"/>
+                    <connections>
+                        <outlet property="gView" destination="XLN-Ba-dr0" id="Qf2-9A-wrL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBR-fS-vRe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218.84057971014494" y="52.901785714285715"/>
+        </scene>
+        <!--Route View Controller-->
+        <scene sceneID="ti2-y4-fho">
+            <objects>
+                <viewController storyboardIdentifier="RouteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nnY-XE-OqT" customClass="RouteViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QsF-sT-lgP">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-US-Wli">
+                                <rect key="frame" x="0.0" y="-81" width="428" height="973"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pa3-uj-87k"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mof-US-Wli" firstAttribute="leading" secondItem="pa3-uj-87k" secondAttribute="leading" id="O2X-Fh-x4d"/>
+                            <constraint firstItem="pa3-uj-87k" firstAttribute="trailing" secondItem="Mof-US-Wli" secondAttribute="trailing" id="ck4-PN-ihg"/>
+                            <constraint firstItem="pa3-uj-87k" firstAttribute="bottom" secondItem="Mof-US-Wli" secondAttribute="bottom" id="ssP-aT-cA1"/>
+                            <constraint firstItem="Mof-US-Wli" firstAttribute="top" secondItem="pa3-uj-87k" secondAttribute="top" constant="-125" id="uc7-wz-zVm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qeF-nq-U0u"/>
+                    <connections>
+                        <outlet property="gView" destination="Mof-US-Wli" id="rlF-Fi-CUt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOt-Fa-5T4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1211.5942028985507" y="67.633928571428569"/>
+        </scene>
+        <!--Go To Ride View Controller-->
+        <scene sceneID="XBk-i9-Odi">
+            <objects>
+                <viewController storyboardIdentifier="GoToRideViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ix-zW-c0i" customClass="GoToRideViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jIo-K7-egm">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLL-gu-c4f" customClass="GPXMapView" customModule="RideTogether" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c1r-xa-IaX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hLL-gu-c4f" firstAttribute="leading" secondItem="jIo-K7-egm" secondAttribute="leading" id="1E1-oO-ftd"/>
+                            <constraint firstItem="c1r-xa-IaX" firstAttribute="bottom" secondItem="hLL-gu-c4f" secondAttribute="bottom" id="1Jr-0N-IKf"/>
+                            <constraint firstItem="c1r-xa-IaX" firstAttribute="bottom" secondItem="hLL-gu-c4f" secondAttribute="bottom" id="QHa-1G-pi4"/>
+                            <constraint firstItem="hLL-gu-c4f" firstAttribute="top" secondItem="jIo-K7-egm" secondAttribute="top" id="SZe-Zd-AYt"/>
+                            <constraint firstItem="c1r-xa-IaX" firstAttribute="trailing" secondItem="hLL-gu-c4f" secondAttribute="trailing" id="XKX-hu-KNI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zTQ-aF-QCL"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="map3" destination="hLL-gu-c4f" id="4mu-1f-Rgp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="niL-H0-BHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2094" y="86"/>
+        </scene>
+        <!--Bike View Controller-->
+        <scene sceneID="zoB-jH-eXg">
+            <objects>
+                <viewController storyboardIdentifier="UBikeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mp1-VN-gNM" customClass="UBikeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTj-rK-98U">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-HP-r8V">
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FcP-Nm-Mki"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QOb-HP-r8V" firstAttribute="top" secondItem="FcP-Nm-Mki" secondAttribute="top" id="Usi-zv-yJf"/>
+                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="bottom" secondItem="QOb-HP-r8V" secondAttribute="bottom" id="Yev-Wa-QQS"/>
+                            <constraint firstItem="QOb-HP-r8V" firstAttribute="leading" secondItem="FcP-Nm-Mki" secondAttribute="leading" id="njB-Pq-PIR"/>
+                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="trailing" secondItem="QOb-HP-r8V" secondAttribute="trailing" id="uDv-IV-QAa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bikeMapView" destination="QOb-HP-r8V" id="ZyG-JO-pJo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TjM-vq-nDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1304" y="884"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
