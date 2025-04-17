@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		192AEF245304CEF4361B1A45 /* Pods_RideTogetherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF834CFCAA4D61256D660DB9 /* Pods_RideTogetherTests.framework */; };
+		230115A92DB123D8003520A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 230115A72DB123D8003520A0 /* Localizable.xcstrings */; };
 		2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304FF4B280895F200C6B1BF /* RideViewController.swift */; };
 		23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C30281CF43D001DE91D /* bike-city-rider.json */; };
 		23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C36281D0E60001DE91D /* waiting-pigeon.json */; };
@@ -202,6 +203,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		230115A72DB123D8003520A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2304FF4B280895F200C6B1BF /* RideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideViewController.swift; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
 		23129C36281D0E60001DE91D /* waiting-pigeon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waiting-pigeon.json"; sourceTree = "<group>"; };
@@ -398,6 +400,14 @@
 				FA6924D631EF788832987659 /* Pods-RideTogetherTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		230115A82DB123D8003520A0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				230115A72DB123D8003520A0 /* Localizable.xcstrings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2309B8F9284293C70020D6FE /* User Saved */ = {
@@ -602,6 +612,7 @@
 				23D1B76D28006187000EDA70 /* Extension */,
 				23CE42A0280E571700C4C9F1 /* Lottie */,
 				23D1B7842800632F000EDA70 /* Manager */,
+				230115A82DB123D8003520A0 /* Resources */,
 			);
 			path = RideTogether;
 			sourceTree = "<group>";
@@ -909,6 +920,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 23D1B722280033FB000EDA70;
 			productRefGroup = 23D1B72C280033FB000EDA70 /* Products */;
@@ -943,6 +955,7 @@
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */,
+				230115A92DB123D8003520A0 /* Localizable.xcstrings in Resources */,
 				2397D456281F106B0018FC5E /* sun.json in Resources */,
 				23EC046D2823F1230063523F /* circle.json in Resources */,
 				2383879028104D3800E9F4F4 /* bike-ride.json in Resources */,
