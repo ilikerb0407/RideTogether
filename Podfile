@@ -43,6 +43,12 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['SWIFT_VERSION'] = '5.0'
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+      
+      # 添加以下設置以解決並發相關問題
+      config.build_settings['SWIFT_STRICT_CONCURRENCY'] = 'complete'
+      config.build_settings['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] = '$(inherited) SWIFT_STRICT_CONCURRENCY=complete'
     end
     
     if target.name == 'BoringSSL-GRPC'
