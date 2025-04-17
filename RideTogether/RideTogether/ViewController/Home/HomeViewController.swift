@@ -10,54 +10,19 @@ import UIKit
 
 internal class HomeViewController: BaseViewController {
 
-    var trackVC = TracksViewController()
-
+    // MARK: - Properties
+    
+    private let viewModel: HomeViewModel
+    private var trackVC = TracksViewController()
     private var headerView: HomeHeaderTableViewCell?
-
-    var routes = [Route]() {
-        didSet {
-            manageRouteData()
-        }
-    }
-
-    var userOne = [Route]()
-
-    var recommendOne = [Route]()
-
-    var riverOne = [Route]()
-
-    var mountainOne = [Route]()
-
+    
     private var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateUserInfo),
-            name: NSNotification.userInfoDidChanged,
-            object: nil
-        )
-
-        setUpTableView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        fetchTrailData()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
+    
     @IBOutlet var gView: UIView! {
         didSet {
             gView.applyGradient(
@@ -67,144 +32,134 @@ internal class HomeViewController: BaseViewController {
             gView.alpha = 0.85
         }
     }
-
-    func setUpTableView() {
+    
+    // MARK: - Initialization
+    
+    init(viewModel: HomeViewModel = HomeViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.viewModel = HomeViewModel()
+        super.init(coder: coder)
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupViewModel()
+        setupNotifications()
+        setUpTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchTrailData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    // MARK: - Setup
+    
+    private func setupViewModel() {
+        viewModel.delegate = self
+    }
+    
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserInfo),
+            name: NSNotification.userInfoDidChanged,
+            object: nil
+        )
+    }
+    
+    private func setUpTableView() {
         tableView = UITableView(frame: .zero, style: .grouped)
-
         tableView.registerCellWithNib(identifier: RouteTypesTableViewCell.identifier, bundle: nil)
-
         view.stickSubView(tableView)
-
         tableView.backgroundColor = .clear
-
         tableView.separatorStyle = .none
     }
-
-    @objc
-    func updateUserInfo(notification _: Notification) {
-        guard let headerView else {
-            return
-        }
-
+    
+    // MARK: - Actions
+    
+    @objc func updateUserInfo(notification _: Notification) {
+        guard let headerView else { return }
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
     }
-
-    func manageRouteData() {
-        userOne = []
-
-        recommendOne = []
-
-        riverOne = []
-
-        mountainOne = []
-
-        for route in routes {
-            switch route.routeTypes {
-            case 0:
-                userOne.append(route)
-            case 1:
-                recommendOne.append(route)
-            case 2:
-                riverOne.append(route)
-            case 3:
-                mountainOne.append(route)
-            default:
-                return
+    
+    private func push(sender: Any?) {
+        if let routeViewController = storyboard?.instantiateViewController(withIdentifier: "RouteViewController") as? RouteViewController {
+            if let routes = sender as? [Route] {
+                routeViewController.viewModel.setRoutes(routes)
             }
-        }
-    }
-
-    func fetchTrailData() {
-        
-        MapsManager.shared.fetchRoutes { result in
-
-            switch result {
-            case let .success(routes):
-
-                var filterroutes = [Route]()
-
-                for maps in routes where self.userInfo.blockList?.contains(maps.uid ?? "") == false {
-                    filterroutes.append(maps)
-                }
-                self.routes = filterroutes
-
-                self.tableView.reloadData()
-
-            case let .failure(error):
-
-                print("fetchData.failure: \(error)")
-            }
+            navigationController?.pushViewController(routeViewController, animated: true)
         }
     }
 }
 
-// MARK: - TableView Delegate -
+// MARK: - HomeViewModelDelegate
+
+extension HomeViewController: HomeViewModelDelegate {
+    func didUpdateRoutes() {
+        tableView.reloadData()
+    }
+    
+    func didUpdateUserInfo() {
+        guard let headerView else { return }
+        headerView.updateUserInfo(user: UserManager.shared.userInfo)
+    }
+    
+    func didFailWithError(_ error: Error) {
+        print("fetchData.failure: \(error)")
+    }
+}
+
+// MARK: - UITableViewDelegate
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let headerView: HomeHeaderTableViewCell = .loadFromNib()
-
         self.headerView = headerView
-
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
-
         return self.headerView
     }
-
+    
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         270
     }
-
+    
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         200
     }
-
+    
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var sender = [Route]()
-
-        switch indexPath.row {
-        case 0:
-            sender = userOne
-        case 1:
-            sender = recommendOne
-        case 2:
-            sender = riverOne
-        case 3:
-            sender = mountainOne
-        default:
-            return
-        }
-        push(sender: sender)
+        let routes = viewModel.getRoutesForType(indexPath.row)
+        push(sender: routes)
     }
-
-    func push(sender: Any?) {
-        if let routeViewController = storyboard?.instantiateViewController(withIdentifier: "RouteViewController") as? RouteViewController {
-
-            if let routes = sender as? [Route] {
-                routeViewController.viewModel.setRoutes(routes) // 使用 ViewModel 的方法設置路由
-            }
-
-            navigationController?.pushViewController(routeViewController, animated: true)
-        }
-    }
-
 }
 
-// MARK: - TableView Data Source -
+// MARK: - UITableViewDataSource
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         RoutesType.allCases.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RouteTypesTableViewCell = tableView.dequeueCell(for: indexPath)
-
+        
         cell.setUpCell(
             routetitle: RoutesType.allCases[indexPath.row].title,
             routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesPhoto")!
         )
-
+        
         return cell
     }
 }

@@ -7,6 +7,7 @@
 --selfrequired
 --funcattributes prev-line
 --wrapcollections before-first
+--exclude Pods
 
 # open option
 --enable wrapConditionalBodies

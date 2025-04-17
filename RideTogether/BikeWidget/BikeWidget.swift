@@ -260,10 +260,3 @@ struct BikeWidget: Widget {
         .supportedFamilies([.systemLarge])
     }
 }
-
-struct BikeWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        BikeWidgetEntryView(entry: SimpleEntry(date: Date(), nearestStations: [], userLocation: .init(), image: .init()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}

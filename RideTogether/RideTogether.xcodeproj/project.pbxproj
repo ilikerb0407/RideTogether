@@ -27,7 +27,6 @@
 		232AF1B12D3FB1B000624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
 		23395D28282E447A00192563 /* Ubike2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23395D27282E447A00192563 /* Ubike2.0.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
-		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
 		234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF32C2C3FA100E78118 /* Collection.swift */; };
 		235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */; };
 		235B58882D3FCDE40088CE45 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58872D3FCDE40088CE45 /* LabelFactory.swift */; };
@@ -221,7 +220,6 @@
 		23395D27282E447A00192563 /* Ubike2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ubike2.0.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
 		234DBBF32C2C3FA100E78118 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		235B58872D3FCDE40088CE45 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
@@ -468,7 +466,6 @@
 		234A166F283738E200E09F09 /* RideTogetherTests */ = {
 			isa = PBXGroup;
 			children = (
-				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
 			);
 			path = RideTogetherTests;
 			sourceTree = "<group>";
@@ -1090,7 +1087,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */,
-				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
