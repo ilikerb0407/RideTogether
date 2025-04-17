@@ -86,7 +86,7 @@ internal class LoginViewController: BaseViewController, ASAuthorizationControlle
 
       var waveLottieView: LottieAnimationView = {
 
-            let view = LottieAnimationView(name: "49908-bike-ride")
+            let view = LottieAnimationView(name: "bike-ride")
 
             view.loopMode = .loop
             view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200, width: 400, height: 350)

@@ -69,7 +69,7 @@ internal class BaseViewController: UIViewController {
         } else {
             navigationController?.setNavigationBarHidden(false, animated: false)
         }
-        IQKeyboardManager.shared.enable = isEnableIQKeyboard
+        IQKeyboardManager.shared.isEnabled = isEnableIQKeyboard
         self.setNeedsStatusBarAppearanceUpdate()
     }
 

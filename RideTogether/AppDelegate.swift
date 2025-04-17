@@ -30,7 +30,7 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func setupKeyboardManager() {
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.isEnabled = true
     }
 
     private func setupNavigationBarAppearance() {

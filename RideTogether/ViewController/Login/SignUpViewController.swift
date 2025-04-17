@@ -208,7 +208,7 @@ class SignUpViewController: BaseViewController {
 
         var waveLottieView: LottieAnimationView = {
 
-            let view = LottieAnimationView(name: "49908-bike-ride")
+            let view = LottieAnimationView(name: "bike-ride")
             view.loopMode = .loop
 
             self.view.addSubview(view)
