@@ -352,11 +352,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
 
     private func navigateToMainApp() {
-        guard let tabBarVC = UIStoryboard.main.instantiateViewController(
-            identifier: TabBarController.identifier) as? TabBarController else {
-            LKProgressHUD.show(.failure("無法載入主頁面"))
-            return
-        }
+        let tabBarVC = TabBarController()
         tabBarVC.modalPresentationStyle = .fullScreen
         self.present(tabBarVC, animated: true, completion: nil)
     }

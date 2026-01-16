@@ -12,6 +12,7 @@ disabled_rules:
    - trailing_comma
    - inclusive_language
    - explicit_type_interface
+   - type_body_length
 
 # 開啟 option 的 rule
 opt_in_rules:

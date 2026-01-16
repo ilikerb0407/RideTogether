@@ -365,10 +365,7 @@ class SignUpViewController: BaseViewController {
     }
     
     private func navigateToMainApp() {
-        guard let tabbarVC = UIStoryboard.main.instantiateViewController(
-            identifier: TabBarController.identifier) as? TabBarController else {
-            return
-        }
+        let tabbarVC = TabBarController()
         tabbarVC.modalPresentationStyle = .fullScreen
         present(tabbarVC, animated: true, completion: nil)
     }

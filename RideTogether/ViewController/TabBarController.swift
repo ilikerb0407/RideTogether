@@ -26,6 +26,12 @@ private enum Tabs {
             return GroupViewController()
 
         case .journey:
+            // 从 Storyboard 加载以确保 outlet 正确连接
+            if let journeyVC = UIStoryboard.journey.instantiateViewController(
+                withIdentifier: "JourneyViewController") as? JourneyViewController {
+                return journeyVC
+            }
+            // 如果 Storyboard 加载失败，返回代码创建的实例（但 mapView 会是 nil）
             return JourneyViewController()
 
         case .profile:

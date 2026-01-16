@@ -285,6 +285,12 @@ class JourneyViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // 如果 mapView 在 viewDidLoad 时还未加载，现在再试一次
+        if mapView != nil && mapView.delegate == nil {
+            setUpMap()
+        }
+        
         if trackingStatus == .tracking {
             bikeLottieView.play()
             waveLottieView.play()
@@ -328,6 +334,12 @@ class JourneyViewController: BaseViewController {
 
     // MARK: - Action -
     func setBeginningRegion() {
+        // 检查 mapView 是否已加载
+        guard let mapView = mapView else {
+            print("Warning: mapView is not loaded yet")
+            return
+        }
+        
         // give default latitude & longtitude when user didn't accept tracking privacy
         let center = locationManager.location?.coordinate ??
             CLLocationCoordinate2D(latitude: 25.042393, longitude: 121.56496)
@@ -338,6 +350,12 @@ class JourneyViewController: BaseViewController {
     }
 
     func setUpMap() {
+        // 检查 mapView 是否已加载
+        guard let mapView = mapView else {
+            print("Warning: mapView is not loaded yet, will retry in viewDidAppear")
+            return
+        }
+        
         setBeginningRegion()
 
         mapView.delegate = mapPin

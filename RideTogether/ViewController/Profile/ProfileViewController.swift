@@ -181,13 +181,8 @@ extension ProfileViewController: UITableViewDelegate {
             }
         }
 
-        guard let loginVC = UIStoryboard.login.instantiateViewController(
-            identifier: LoginViewController.identifier) as? LoginViewController else {
-            return
-        }
-
+        let loginVC = LoginViewController()
         loginVC.modalPresentationStyle = .fullScreen
-
         present(loginVC, animated: true, completion: nil)
     }
 
@@ -204,10 +199,7 @@ extension ProfileViewController: UITableViewDelegate {
         }
 
         if Auth.auth().currentUser == nil {
-            guard let loginVC = UIStoryboard.login.instantiateViewController(
-                identifier: LoginViewController.identifier) as? LoginViewController else {
-                return
-            }
+            let loginVC = LoginViewController()
 
             loginVC.modalPresentationStyle = .fullScreen
 

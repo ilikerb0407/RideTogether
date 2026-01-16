@@ -77,7 +77,6 @@
 		23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74BF28177CAC00DED822 /* LoginViewController.swift */; };
 		23CB74C62817803300DED822 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C52817803300DED822 /* TabBarController.swift */; };
 		23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C72817824000DED822 /* UIStorybroad.swift */; };
-		23CB74CA281787B400DED822 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74C9281787B400DED822 /* Login.storyboard */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
@@ -273,7 +272,6 @@
 		23CB74BF28177CAC00DED822 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23CB74C52817803300DED822 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23CB74C72817824000DED822 /* UIStorybroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStorybroad.swift; sourceTree = "<group>"; };
-		23CB74C9281787B400DED822 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -664,7 +662,6 @@
 			isa = PBXGroup;
 			children = (
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
-				23CB74C9281787B400DED822 /* Login.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23C887192814285A00E3319A /* Home */,
@@ -960,7 +957,6 @@
 				23EC046D2823F1230063523F /* circle.json in Resources */,
 				2383879028104D3800E9F4F4 /* bike-ride.json in Resources */,
 				23A84A7E2812EFFE00DD8D39 /* DirectionsViewController.xib in Resources */,
-				23CB74CA281787B400DED822 /* Login.storyboard in Resources */,
 				2397D458281F14170018FC5E /* otherweather.json in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypesTableViewCell.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
@@ -1064,9 +1060,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RideTogether/Pods-RideTogether-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
