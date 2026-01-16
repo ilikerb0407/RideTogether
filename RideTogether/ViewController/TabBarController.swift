@@ -17,25 +17,18 @@ private enum Tabs {
     case profile
 
     func controller() -> UIViewController {
-
         switch self {
         case .home:
-            return HomeViewController()
+            return UINavigationController(rootViewController: HomeViewController())
 
         case .group:
-            return GroupViewController()
+            return UINavigationController(rootViewController: GroupViewController())
 
         case .journey:
-            // 从 Storyboard 加载以确保 outlet 正确连接
-            if let journeyVC = UIStoryboard.journey.instantiateViewController(
-                withIdentifier: "JourneyViewController") as? JourneyViewController {
-                return journeyVC
-            }
-            // 如果 Storyboard 加载失败，返回代码创建的实例（但 mapView 会是 nil）
             return JourneyViewController()
 
         case .profile:
-            return ProfileViewController()
+            return UINavigationController(rootViewController: ProfileViewController())
         }
     }
 }
@@ -52,7 +45,15 @@ internal class TabBarController: UITabBarController, UITabBarControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewControllers = customTabs.map { $0.controller() }
+        let controllers = customTabs.map { $0.controller() }
+        
+        // 确保所有视图控制器都有正确的 tabBarItem 设置
+        for (index, controller) in controllers.enumerated() {
+            let tab = customTabs[index]
+            configureTabBarItem(for: controller, tab: tab)
+        }
+        
+        viewControllers = controllers
 
         addRequestListener()
 
@@ -77,6 +78,43 @@ internal class TabBarController: UITabBarController, UITabBarControllerDelegate 
 
             self.tabBar.standardAppearance = appearance
             self.tabBar.scrollEdgeAppearance = appearance
+        }
+    }
+    
+    private func configureTabBarItem(for controller: UIViewController, tab: Tabs) {
+        // 获取实际的视图控制器（可能是 NavigationController 的 rootViewController）
+        let actualVC: UIViewController
+        if let navController = controller as? UINavigationController {
+            actualVC = navController.topViewController ?? navController
+        } else {
+            actualVC = controller
+        }
+        
+        switch tab {
+        case .home:
+            actualVC.tabBarItem = UITabBarItem(
+                title: "探索",
+                image: UIImage(systemName: "magnifyingglass.circle"),
+                selectedImage: UIImage(systemName: "magnifyingglass.circle.fill")
+            )
+        case .group:
+            actualVC.tabBarItem = UITabBarItem(
+                title: "群組",
+                image: UIImage(systemName: "rectangle.3.group.bubble.left"),
+                selectedImage: UIImage(systemName: "rectangle.3.group.bubble.left.fill")
+            )
+        case .journey:
+            actualVC.tabBarItem = UITabBarItem(
+                title: "地圖",
+                image: UIImage(systemName: "map"),
+                selectedImage: UIImage(systemName: "map.fill")
+            )
+        case .profile:
+            actualVC.tabBarItem = UITabBarItem(
+                title: "個人",
+                image: UIImage(systemName: "person.crop.circle"),
+                selectedImage: UIImage(systemName: "person.crop.circle.fill")
+            )
         }
     }
 

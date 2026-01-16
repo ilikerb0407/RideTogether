@@ -101,44 +101,12 @@ internal class BaseViewController: UIViewController {
         navigationItem.setLeftBarButton(UIBarButtonItem(customView: button), animated: true)
     }
 
-    @objc
-    func showBikeViewController() {
-        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "UBikeViewController") as? UBikeViewController {
-            let navBar = UINavigationController(rootViewController: rootVC)
-            presentViewController(navBar)
-        } else {
-            LKProgressHUD.show(.failure("目前僅提供台北市Ubike"))
-        }
-    }
-
-    @objc
-    func presentRouteSelectionViewController() {
-        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelecViewController {
-            let navBar = UINavigationController(rootViewController: rootVC)
-            presentViewController(navBar)
-        } else {
-            LKProgressHUD.show(.failure("網路問題，無法跳出"))
-        }
-    }
-
     private func presentViewController(_ navBar: UINavigationController) {
         if #available(iOS 15.0, *) {
             navBar.sheetPresentationController?.detents = [.large()]
         }
         self.navigationController?.present(navBar, animated: true, completion: nil)
     }
-
-    func push(withIdentifier: String) {
-        if let viewController = storyboard?.instantiateViewController(withIdentifier: withIdentifier) {
-            navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
 }
 
 extension BaseViewController: UIGestureRecognizerDelegate {}
-
-extension BaseViewController: MFMessageComposeViewControllerDelegate {
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        self.dismiss(animated: true, completion: nil)
-    }
-}
