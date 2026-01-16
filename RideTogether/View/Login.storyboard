@@ -87,9 +87,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-uj-7LK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-uj-7LK">
                                 <rect key="frame" x="39" y="744" width="337" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <state key="normal" title="Button"/>
@@ -118,6 +117,10 @@
                             <constraint firstItem="GD5-bl-Qfi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="qEb-6u-iuS"/>
                             <constraint firstItem="QOo-wi-bvo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="rVK-lV-7Hn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GD5-bl-Qfi" secondAttribute="trailing" constant="50" id="uvP-eO-uTQ"/>
+                            <constraint firstItem="MXd-uj-7LK" firstAttribute="height" constant="45" id="emailbtn-height"/>
+                            <constraint firstItem="MXd-uj-7LK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="emailbtn-leading"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MXd-uj-7LK" secondAttribute="trailing" constant="40" id="emailbtn-trailing"/>
+                            <constraint firstItem="MXd-uj-7LK" firstAttribute="bottom" secondItem="GD5-bl-Qfi" secondAttribute="top" constant="-30" id="emailbtn-bottom"/>
                         </constraints>
                     </view>
                     <connections>
