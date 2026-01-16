@@ -55,6 +55,7 @@ extension SceneDelegate {
     private func setupTabBarController(with userInfo: UserInfo) {
         UserManager.shared.userInfo = userInfo
         window?.rootViewController = TabBarController()
+        window?.makeKeyAndVisible()
     }
 
     private func handleFetchUserInfoError(_ error: Error) {
@@ -64,6 +65,7 @@ extension SceneDelegate {
 
     private func showLoginScreen() {
         window?.rootViewController = LoginViewController()
+        window?.makeKeyAndVisible()
     }
 
 }
