@@ -8,20 +8,6 @@
 import UIKit
 import WebKit
 
-enum PolicyType: String {
-    case privacy
-
-    case eula
-
-    var url: String {
-        switch self {
-        case .privacy: return "https://www.privacypolicies.com/live/38b065d0-5b0e-4b1d-a8e0-f51274f8d269"
-
-        case .eula: return "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-        }
-    }
-}
-
 class PolicyViewController: BaseViewController, WKNavigationDelegate {
     var policy: PolicyType?
 

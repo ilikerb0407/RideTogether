@@ -42,7 +42,6 @@
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
 		23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74BF28177CAC00DED822 /* LoginViewController.swift */; };
 		23CB74C62817803300DED822 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C52817803300DED822 /* TabBarController.swift */; };
-		23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C72817824000DED822 /* UIStorybroad.swift */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
@@ -91,6 +90,18 @@
 		23EC046F2823F41B0063523F /* leave.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046E2823F41B0063523F /* leave.json */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
+		23FFD3172F1AC0C600C34582 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3122F1AC0C600C34582 /* ProfileView.swift */; };
+		23FFD3182F1AC0C600C34582 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD30E2F1AC0C600C34582 /* SignUpView.swift */; };
+		23FFD3192F1AC0C600C34582 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3092F1AC0C600C34582 /* HomeView.swift */; };
+		23FFD31A2F1AC0C600C34582 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD30D2F1AC0C600C34582 /* LoginView.swift */; };
+		23FFD31B2F1AC0C600C34582 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD30B2F1AC0C600C34582 /* JourneyView.swift */; };
+		23FFD31C2F1AC0C600C34582 /* PolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3102F1AC0C600C34582 /* PolicyView.swift */; };
+		23FFD31D2F1AC0C600C34582 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3142F1AC0C600C34582 /* ContentView.swift */; };
+		23FFD31E2F1AC0C600C34582 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3072F1AC0C600C34582 /* GroupView.swift */; };
+		23FFD31F2F1AC0C600C34582 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3152F1AC0C600C34582 /* MainTabView.swift */; };
+		23FFD3242F1BDDAA00C34582 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3232F1BDDAA00C34582 /* Color+Extension.swift */; };
+		23FFD3272F1BDF6500C34582 /* AuthStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3252F1BDF6500C34582 /* AuthStateManager.swift */; };
+		23FFD3292F1BDF7F00C34582 /* RideTogetherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */; };
 		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
@@ -189,7 +200,6 @@
 		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
 		23CB74BF28177CAC00DED822 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23CB74C52817803300DED822 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		23CB74C72817824000DED822 /* UIStorybroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStorybroad.swift; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -242,6 +252,18 @@
 		23EC046E2823F41B0063523F /* leave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = leave.json; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
+		23FFD3072F1AC0C600C34582 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		23FFD3092F1AC0C600C34582 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		23FFD30B2F1AC0C600C34582 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
+		23FFD30D2F1AC0C600C34582 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		23FFD30E2F1AC0C600C34582 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		23FFD3102F1AC0C600C34582 /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
+		23FFD3122F1AC0C600C34582 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		23FFD3142F1AC0C600C34582 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		23FFD3152F1AC0C600C34582 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		23FFD3232F1BDDAA00C34582 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		23FFD3252F1BDF6500C34582 /* AuthStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateManager.swift; sourceTree = "<group>"; };
+		23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherApp.swift; sourceTree = "<group>"; };
 		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B438B282C31601800AC05CF /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
@@ -364,20 +386,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		23A84A682811570600DD8D39 /* Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Group;
-			sourceTree = "<group>";
-		};
-		23C887192814285A00E3319A /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		23CB74B82816C7FE00DED822 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,10 +457,13 @@
 		23D1B72D280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXGroup;
 			children = (
+				23FFD3262F1BDF6500C34582 /* Managers */,
+				23FFD3162F1AC0C600C34582 /* Views */,
 				23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */,
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
 				3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */,
+				23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
 				3BB344272C37D507006EC03C /* Common */,
@@ -515,27 +526,16 @@
 			children = (
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
-				23D1B76A28006116000EDA70 /* Journey */,
-				23C887192814285A00E3319A /* Home */,
-				23A84A682811570600DD8D39 /* Group */,
-				23D1B7E828042C88000EDA70 /* Profile */,
 				23CE42A5280E5F0A00C4C9F1 /* Factory */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		23D1B76A28006116000EDA70 /* Journey */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Journey;
-			sourceTree = "<group>";
-		};
 		23D1B76D28006187000EDA70 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				23CB74C72817824000DED822 /* UIStorybroad.swift */,
 				3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */,
+				23FFD3232F1BDDAA00C34582 /* Color+Extension.swift */,
 				23D1B76E280061A6000EDA70 /* UIScreen+Extension.swift */,
 				23D1B772280061D5000EDA70 /* Double+Measures.swift */,
 				23D1B774280061F2000EDA70 /* UIButtonExtension.swift */,
@@ -590,13 +590,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		23D1B7E828042C88000EDA70 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		23D1B7F7280561D3000EDA70 /* Third Party Wrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +597,78 @@
 				2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		23FFD3082F1AC0C600C34582 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD3072F1AC0C600C34582 /* GroupView.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		23FFD30A2F1AC0C600C34582 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD3092F1AC0C600C34582 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		23FFD30C2F1AC0C600C34582 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD30B2F1AC0C600C34582 /* JourneyView.swift */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
+		23FFD30F2F1AC0C600C34582 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD30D2F1AC0C600C34582 /* LoginView.swift */,
+				23FFD30E2F1AC0C600C34582 /* SignUpView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		23FFD3112F1AC0C600C34582 /* Policy */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD3102F1AC0C600C34582 /* PolicyView.swift */,
+			);
+			path = Policy;
+			sourceTree = "<group>";
+		};
+		23FFD3132F1AC0C600C34582 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD3122F1AC0C600C34582 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		23FFD3162F1AC0C600C34582 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD3082F1AC0C600C34582 /* Group */,
+				23FFD30A2F1AC0C600C34582 /* Home */,
+				23FFD30C2F1AC0C600C34582 /* Journey */,
+				23FFD30F2F1AC0C600C34582 /* Login */,
+				23FFD3112F1AC0C600C34582 /* Policy */,
+				23FFD3132F1AC0C600C34582 /* Profile */,
+				23FFD3142F1AC0C600C34582 /* ContentView.swift */,
+				23FFD3152F1AC0C600C34582 /* MainTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		23FFD3262F1BDF6500C34582 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				23FFD3252F1BDF6500C34582 /* AuthStateManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		3BB344272C37D507006EC03C /* Common */ = {
@@ -937,6 +1002,7 @@
 				234A1626283636ED00E09F09 /* LocationManager.swift in Sources */,
 				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				C51FADDE29134EED00264854 /* Station.swift in Sources */,
+				23FFD3242F1BDDAA00C34582 /* Color+Extension.swift in Sources */,
 				235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */,
 				235B58882D3FCDE40088CE45 /* LabelFactory.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
@@ -964,12 +1030,22 @@
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
+				23FFD3272F1BDF6500C34582 /* AuthStateManager.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
-				23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */,
 				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
+				23FFD3172F1AC0C600C34582 /* ProfileView.swift in Sources */,
+				23FFD3182F1AC0C600C34582 /* SignUpView.swift in Sources */,
+				23FFD3192F1AC0C600C34582 /* HomeView.swift in Sources */,
+				23FFD31A2F1AC0C600C34582 /* LoginView.swift in Sources */,
+				23FFD31B2F1AC0C600C34582 /* JourneyView.swift in Sources */,
+				23FFD31C2F1AC0C600C34582 /* PolicyView.swift in Sources */,
+				23FFD31D2F1AC0C600C34582 /* ContentView.swift in Sources */,
+				23FFD31E2F1AC0C600C34582 /* GroupView.swift in Sources */,
+				23FFD3292F1BDF7F00C34582 /* RideTogetherApp.swift in Sources */,
+				23FFD31F2F1AC0C600C34582 /* MainTabView.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
 				23D1B78C28006663000EDA70 /* SegueIdentifier.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
