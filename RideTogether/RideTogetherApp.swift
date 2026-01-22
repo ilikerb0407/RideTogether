@@ -17,16 +17,14 @@ struct RideTogetherApp: App {
     @StateObject private var repositories = RepositoryContainer.live()
 
     // Create AuthStateManager with UserRepository from container
-    @StateObject private var authState: AuthStateManager
+    @StateObject private var authState: AuthStateManager = .init()
 
     init() {
-
-        // Initialize AuthStateManager with repository
+        setupFirebase()
+//         Initialize AuthStateManager with repository
         let container = RepositoryContainer.live()
         _authState = StateObject(wrappedValue: AuthStateManager(userRepository: container.userRepository))
         _repositories = StateObject(wrappedValue: container)
-        
-        setupFirebase()
     }
 
     var body: some Scene {
@@ -44,4 +42,3 @@ struct RideTogetherApp: App {
         FirebaseApp.configure()
     }
 }
-
