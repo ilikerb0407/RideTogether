@@ -31,17 +31,15 @@ struct LoginView: View {
                     .font(.system(size: 30))
                     .foregroundColor(Color.B5)
                     .padding(.top, 100)
-                
-                Spacer()
-                
+
                 // Lottie Animation
                 LottieView(animation: .named("bike-ride"))
                     .playing(loopMode: .loop)
                     .frame(width: 400, height: 350)
-                    .offset(y: -150)
-                
+                    .padding(.top, -50)
+
                 Spacer()
-                
+
                 // Buttons
                 VStack(spacing: 30) {
                     // Apple Sign In Button
@@ -60,7 +58,7 @@ struct LoginView: View {
                     .cornerRadius(6)
                     .padding(.horizontal, 40)
                     .opacity(loginButtonOpacity)
-                    
+
                     // Email Sign In Button
                     Button(action: {
                         showSignUp = true
@@ -76,16 +74,14 @@ struct LoginView: View {
                     .padding(.horizontal, 40)
                     .opacity(emailButtonOpacity)
                 }
-                .offset(y: 200)
-                
-                Spacer()
-                
+                .padding(.bottom, 40)
+
                 // Terms and Privacy
                 VStack(spacing: 0) {
                     Text("點擊登入鍵，即代表您同意下列")
                         .font(.system(size: 11))
                         .foregroundColor(.black)
-                    
+
                     HStack(spacing: 5) {
                         Button(action: {
                             showPrivacy = true
@@ -93,10 +89,10 @@ struct LoginView: View {
                             UnderlinedText(text: "隱私權政策")
                                 .font(.system(size: 11))
                         }
-                        
+
                         Text("&")
                             .font(.system(size: 13))
-                        
+
                         Button(action: {
                             showEULA = true
                         }) {

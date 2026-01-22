@@ -11,17 +11,13 @@
 		230115A92DB123D8003520A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 230115A72DB123D8003520A0 /* Localizable.xcstrings */; };
 		23129C31281CF43D001DE91D /* bike-city-rider.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C30281CF43D001DE91D /* bike-city-rider.json */; };
 		23129C37281D0E60001DE91D /* waiting-pigeon.json in Resources */ = {isa = PBXBuildFile; fileRef = 23129C36281D0E60001DE91D /* waiting-pigeon.json */; };
-		2316048E2D439BF4004F80AB /* CodeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316048D2D439BF4004F80AB /* CodeLoginViewController.swift */; };
 		231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB2D28066C3B00DE2343 /* ShareMap.swift */; };
 		231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3828067DBD00DE2343 /* MapsManager.swift */; };
-		231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB6728084B9E00DE2343 /* HomeViewController.swift */; };
 		231D7D062D43A48500FAFCFE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D7D052D43A48500FAFCFE /* String+Extension.swift */; };
 		232AF1B02D3FB0E300624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
 		232AF1B12D3FB1B000624041 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232AF1AF2D3FB0E300624041 /* BikeStation.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF32C2C3FA100E78118 /* Collection.swift */; };
-		235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */; };
-		235B58882D3FCDE40088CE45 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58872D3FCDE40088CE45 /* LabelFactory.swift */; };
 		235F424F2F22844700EA2B59 /* RepositoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424B2F22844700EA2B59 /* RepositoryContainer.swift */; };
 		235F42502F22844700EA2B59 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424A2F22844700EA2B59 /* RecordRepository.swift */; };
 		235F42512F22844700EA2B59 /* FirestorePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42462F22844700EA2B59 /* FirestorePublisher.swift */; };
@@ -33,9 +29,10 @@
 		235F425B2F2286AD00EA2B59 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42592F2286AD00EA2B59 /* JourneyViewModel.swift */; };
 		235F425C2F2286AD00EA2B59 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42582F2286AD00EA2B59 /* HomeViewModel.swift */; };
 		235F425D2F2286AD00EA2B59 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42572F2286AD00EA2B59 /* GroupViewModel.swift */; };
-		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
+		235F425F2F22995B00EA2B59 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F425E2F22995B00EA2B59 /* ProfileViewModel.swift */; };
+		235F42612F22997100EA2B59 /* UBikeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42602F22997100EA2B59 /* UBikeRepository.swift */; };
+		235F42632F22997F00EA2B59 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42622F22997F00EA2B59 /* WeatherRepository.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
-		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
 		237A27A728199F2A004F039F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A628199F2A004F039F /* UIImageView.swift */; };
 		2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23838789280FCBFF00E9F4F4 /* GroupManager.swift */; };
 		2383878C280FCD9000E9F4F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878B280FCD9000E9F4F4 /* Group.swift */; };
@@ -51,8 +48,6 @@
 		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
 		23C887292815A18F00E3319A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887282815A18E00E3319A /* UICollectionView.swift */; };
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
-		23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74BF28177CAC00DED822 /* LoginViewController.swift */; };
-		23CB74C62817803300DED822 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C52817803300DED822 /* TabBarController.swift */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
@@ -60,13 +55,10 @@
 		23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */; };
 		23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */; };
 		23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */; };
-		23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B737280033FC000EDA70 /* Assets.xcassets */; };
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
-		23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74228004694000EDA70 /* JourneyViewController.swift */; };
-		23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74828005C16000EDA70 /* BaseViewController.swift */; };
 		23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74F28005E16000EDA70 /* GPXSession.swift */; };
 		23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75328005F45000EDA70 /* GPXExtentCoordinates.swift */; };
 		23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B75528005F62000EDA70 /* GPXRoot+length.swift */; };
@@ -89,7 +81,6 @@
 		23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7872800637A000EDA70 /* RecordManager.swift */; };
 		23D1B78A28006396000EDA70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78928006396000EDA70 /* UserManager.swift */; };
 		23D1B78C28006663000EDA70 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* SegueIdentifier.swift */; };
-		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
 		23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E6280428B3000EDA70 /* ProfileItem.swift */; };
 		23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7ED2804347B000EDA70 /* UITableView.swift */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
@@ -113,8 +104,6 @@
 		23FFD3242F1BDDAA00C34582 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3232F1BDDAA00C34582 /* Color+Extension.swift */; };
 		23FFD3272F1BDF6500C34582 /* AuthStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3252F1BDF6500C34582 /* AuthStateManager.swift */; };
 		23FFD3292F1BDF7F00C34582 /* RideTogetherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */; };
-		3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
-		3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B012D6E29A6057B0088363C /* TestHelpers.swift */; };
 		3B0F2F362999CB280064C6BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */; };
 		3B438B292C31601800AC05CF /* AlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B282C31601800AC05CF /* AlertProvider.swift */; };
 		3B438B2B2C31617D00AC05CF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */; };
@@ -179,17 +168,13 @@
 		230115A72DB123D8003520A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		23129C30281CF43D001DE91D /* bike-city-rider.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bike-city-rider.json"; sourceTree = "<group>"; };
 		23129C36281D0E60001DE91D /* waiting-pigeon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waiting-pigeon.json"; sourceTree = "<group>"; };
-		2316048D2D439BF4004F80AB /* CodeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLoginViewController.swift; sourceTree = "<group>"; };
 		231BCB2D28066C3B00DE2343 /* ShareMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMap.swift; sourceTree = "<group>"; };
 		231BCB3828067DBD00DE2343 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
-		231BCB6728084B9E00DE2343 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		231D7D052D43A48500FAFCFE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		232AF1AF2D3FB0E300624041 /* BikeStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234DBBF32C2C3FA100E78118 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
-		235B58872D3FCDE40088CE45 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		235F42462F22844700EA2B59 /* FirestorePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePublisher.swift; sourceTree = "<group>"; };
 		235F42472F22844700EA2B59 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		235F42482F22844700EA2B59 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
@@ -201,9 +186,10 @@
 		235F42572F2286AD00EA2B59 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		235F42582F2286AD00EA2B59 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		235F42592F2286AD00EA2B59 /* JourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewModel.swift; sourceTree = "<group>"; };
-		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
+		235F425E2F22995B00EA2B59 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		235F42602F22997100EA2B59 /* UBikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeRepository.swift; sourceTree = "<group>"; };
+		235F42622F22997F00EA2B59 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
-		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		237A27A628199F2A004F039F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		23838789280FCBFF00E9F4F4 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		2383878B280FCD9000E9F4F4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -220,8 +206,6 @@
 		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		23C887282815A18E00E3319A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
-		23CB74BF28177CAC00DED822 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		23CB74C52817803300DED822 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -230,15 +214,12 @@
 		23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
-		23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		23D1B737280033FC000EDA70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23D1B73A280033FC000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D1B73C280033FC000EDA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23D1B74228004694000EDA70 /* JourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewController.swift; sourceTree = "<group>"; };
-		23D1B74828005C16000EDA70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		23D1B74F28005E16000EDA70 /* GPXSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSession.swift; sourceTree = "<group>"; };
 		23D1B75328005F45000EDA70 /* GPXExtentCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXExtentCoordinates.swift; sourceTree = "<group>"; };
 		23D1B75528005F62000EDA70 /* GPXRoot+length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXRoot+length.swift"; sourceTree = "<group>"; };
@@ -261,7 +242,6 @@
 		23D1B7872800637A000EDA70 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
 		23D1B78928006396000EDA70 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		23D1B78B28006663000EDA70 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
-		23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		23D1B7E6280428B3000EDA70 /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		23D1B7ED2804347B000EDA70 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		23D1B7F8280561D3000EDA70 /* MJRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresher.swift; sourceTree = "<group>"; };
@@ -286,7 +266,6 @@
 		23FFD3232F1BDDAA00C34582 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		23FFD3252F1BDF6500C34582 /* AuthStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateManager.swift; sourceTree = "<group>"; };
 		23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherApp.swift; sourceTree = "<group>"; };
-		3B012D6E29A6057B0088363C /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		3B0F2F352999CB280064C6BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B438B282C31601800AC05CF /* AlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProvider.swift; sourceTree = "<group>"; };
 		3B438B2A2C31617D00AC05CF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -382,14 +361,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		231BCB6B2808593E00DE2343 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				231BCB6728084B9E00DE2343 /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		234A166F283738E200E09F09 /* RideTogetherTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +371,8 @@
 		235F424E2F22844700EA2B59 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				235F42622F22997F00EA2B59 /* WeatherRepository.swift */,
+				235F42602F22997100EA2B59 /* UBikeRepository.swift */,
 				235F42462F22844700EA2B59 /* FirestorePublisher.swift */,
 				235F42472F22844700EA2B59 /* GroupRepository.swift */,
 				235F42482F22844700EA2B59 /* LocationRepository.swift */,
@@ -418,19 +391,9 @@
 				235F42572F2286AD00EA2B59 /* GroupViewModel.swift */,
 				235F42582F2286AD00EA2B59 /* HomeViewModel.swift */,
 				235F42592F2286AD00EA2B59 /* JourneyViewModel.swift */,
+				235F425E2F22995B00EA2B59 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		237A27A8281A6948004F039F /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				23CB74BF28177CAC00DED822 /* LoginViewController.swift */,
-				2316048D2D439BF4004F80AB /* CodeLoginViewController.swift */,
-				237A279C28181A60004F039F /* SignUpViewController.swift */,
-				2360C67528254EA900EF21D3 /* PolicyViewController.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		23CB74B82816C7FE00DED822 /* Group */ = {
@@ -458,23 +421,6 @@
 				2397D45F28203F820018FC5E /* cloud.json */,
 			);
 			path = Lottie;
-			sourceTree = "<group>";
-		};
-		23CE42A5280E5F0A00C4C9F1 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				235B58872D3FCDE40088CE45 /* LabelFactory.swift */,
-				235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
-		23CE42BE280FB74700C4C9F1 /* Group */ = {
-			isa = PBXGroup;
-			children = (
-				23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */,
-			);
-			path = Group;
 			sourceTree = "<group>";
 		};
 		23D1B722280033FB000EDA70 = {
@@ -518,27 +464,12 @@
 				3BB344272C37D507006EC03C /* Common */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B767280060E0000EDA70 /* View */,
-				23D1B74A28005CF1000EDA70 /* ViewController */,
 				23D1B76D28006187000EDA70 /* Extension */,
 				23CE42A0280E571700C4C9F1 /* Lottie */,
 				23D1B7842800632F000EDA70 /* Manager */,
 				230115A82DB123D8003520A0 /* Resources */,
 			);
 			path = RideTogether;
-			sourceTree = "<group>";
-		};
-		23D1B74A28005CF1000EDA70 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				23D1B74828005C16000EDA70 /* BaseViewController.swift */,
-				23CB74C52817803300DED822 /* TabBarController.swift */,
-				237A27A8281A6948004F039F /* Login */,
-				23D1B7912800B08D000EDA70 /* Journey */,
-				231BCB6B2808593E00DE2343 /* Home */,
-				23CE42BE280FB74700C4C9F1 /* Group */,
-				23D1B7E12803C21E000EDA70 /* Profile */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		23D1B74B28005D9B000EDA70 /* Model */ = {
@@ -575,7 +506,6 @@
 			children = (
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
-				23CE42A5280E5F0A00C4C9F1 /* Factory */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -617,26 +547,9 @@
 				23C8871E281444B100E3319A /* WeatherManager.swift */,
 				23E86E71282D764B00FC001E /* UbikeManager.swift */,
 				234A1625283636ED00E09F09 /* LocationManager.swift */,
-				3B012D6E29A6057B0088363C /* TestHelpers.swift */,
 				3B7947F92A70E1870075E8C0 /* APIRequest.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		23D1B7912800B08D000EDA70 /* Journey */ = {
-			isa = PBXGroup;
-			children = (
-				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
-			);
-			path = Journey;
-			sourceTree = "<group>";
-		};
-		23D1B7E12803C21E000EDA70 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		23D1B7F7280561D3000EDA70 /* Third Party Wrapper */ = {
@@ -1024,7 +937,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B012D7229A605DA0088363C /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,28 +954,20 @@
 				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
 				23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */,
-				237A279D28181A60004F039F /* SignUpViewController.swift in Sources */,
 				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
-				3B012D6F29A6057B0088363C /* TestHelpers.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
-				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
 				3B438B292C31601800AC05CF /* AlertProvider.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				234A1626283636ED00E09F09 /* LocationManager.swift in Sources */,
-				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				C51FADDE29134EED00264854 /* Station.swift in Sources */,
 				23FFD3242F1BDDAA00C34582 /* Color+Extension.swift in Sources */,
-				235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */,
-				235B58882D3FCDE40088CE45 /* LabelFactory.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				231D7D062D43A48500FAFCFE /* String+Extension.swift in Sources */,
-				2316048E2D439BF4004F80AB /* CodeLoginViewController.swift in Sources */,
 				23C8871B28142BC400E3319A /* RoutesType.swift in Sources */,
 				23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */,
-				231BCB6828084B9E00DE2343 /* HomeViewController.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
 				2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
@@ -1073,24 +977,23 @@
 				23C0C422281EA4870020237C /* Notification.swift in Sources */,
 				2383878C280FCD9000E9F4F4 /* Group.swift in Sources */,
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
+				235F425F2F22995B00EA2B59 /* ProfileViewModel.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
 				23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */,
 				3B438B2B2C31617D00AC05CF /* UIViewController+Extension.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
-				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
 				23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */,
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
 				23FFD3272F1BDF6500C34582 /* AuthStateManager.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
-				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
-				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23FFD3172F1AC0C600C34582 /* ProfileView.swift in Sources */,
 				23FFD3182F1AC0C600C34582 /* SignUpView.swift in Sources */,
 				23FFD3192F1AC0C600C34582 /* HomeView.swift in Sources */,
+				235F42632F22997F00EA2B59 /* WeatherRepository.swift in Sources */,
 				235F424F2F22844700EA2B59 /* RepositoryContainer.swift in Sources */,
 				235F42502F22844700EA2B59 /* RecordRepository.swift in Sources */,
 				235F42512F22844700EA2B59 /* FirestorePublisher.swift in Sources */,
@@ -1100,6 +1003,7 @@
 				235F42552F22844700EA2B59 /* RepositoryError.swift in Sources */,
 				235F42562F22844700EA2B59 /* UserRepository.swift in Sources */,
 				23FFD31A2F1AC0C600C34582 /* LoginView.swift in Sources */,
+				235F42612F22997100EA2B59 /* UBikeRepository.swift in Sources */,
 				23FFD31B2F1AC0C600C34582 /* JourneyView.swift in Sources */,
 				23FFD31C2F1AC0C600C34582 /* PolicyView.swift in Sources */,
 				23FFD31D2F1AC0C600C34582 /* ContentView.swift in Sources */,
@@ -1120,10 +1024,8 @@
 				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23DEF12F2CD5ECA5004E4A3E /* Constants.swift in Sources */,
 				232AF1B02D3FB0E300624041 /* BikeStation.swift in Sources */,
-				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
 				3B7947FA2A70E1870075E8C0 /* APIRequest.swift in Sources */,
 				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
-				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
 				234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */,
@@ -1341,7 +1243,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CAACD878CC151C4897E632A /* Pods-RideTogether.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RideTogether/RideTogetherDebug.entitlements;
@@ -1381,7 +1282,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B79E8A216C8ED98FD5FFC62 /* Pods-RideTogether.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RideTogether/RideTogetherRelease.entitlements;

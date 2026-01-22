@@ -14,8 +14,8 @@ struct RideTogetherApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     // Create repository container and auth state manager
-    @StateObject private var repositories: RepositoryContainer
-    @StateObject private var authState: AuthStateManager
+    @StateObject private var repositories: RepositoryContainer = .init()
+    @StateObject private var authState: AuthStateManager = .init()
 
     init() {
         // Setup Firebase FIRST
