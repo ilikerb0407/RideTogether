@@ -11,7 +11,7 @@ import FirebaseAuth
 
 @main
 struct RideTogetherApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     // Create repository container first
     @StateObject private var repositories = RepositoryContainer.live()

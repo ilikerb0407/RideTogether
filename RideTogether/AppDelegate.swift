@@ -21,7 +21,6 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupInitialConfigurations() {
         setupFirebase()
         setupKeyboardManager()
-        setupNavigationBarAppearance()
     }
 
     private func setupFirebase() {
@@ -30,11 +29,5 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupKeyboardManager() {
         IQKeyboardManager.shared.isEnabled = true
-    }
-
-    private func setupNavigationBarAppearance() {
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = UIColor.B5
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.B5 ?? UIColor.red]
     }
 }
