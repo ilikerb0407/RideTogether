@@ -14,9 +14,13 @@ final class RepositoryContainer: ObservableObject {
     // MARK: - Phase 1 Repositories
     let userRepository: UserRepositoryProtocol
 
-    // MARK: - Phase 2+ Repositories (will be implemented later)
-    // let mapsRepository: MapsRepositoryProtocol
-    // let groupRepository: GroupRepositoryProtocol
+    // MARK: - Phase 2 Repositories
+    let mapsRepository: MapsRepositoryProtocol
+
+    // MARK: - Phase 3 Repositories
+    let groupRepository: GroupRepositoryProtocol
+
+    // MARK: - Phase 4+ Repositories (will be implemented later)
     // let recordRepository: RecordRepositoryProtocol
     // let locationRepository: LocationRepositoryProtocol
     // let weatherRepository: WeatherRepositoryProtocol
@@ -24,11 +28,15 @@ final class RepositoryContainer: ObservableObject {
 
     // MARK: - Init
     init(
-        userRepository: UserRepositoryProtocol? = nil
+        userRepository: UserRepositoryProtocol? = nil,
+        mapsRepository: MapsRepositoryProtocol? = nil,
+        groupRepository: GroupRepositoryProtocol? = nil
         // Add more repository parameters as they are implemented
     ) {
         // Use injected repository or create default
         self.userRepository = userRepository ?? UserRepository()
+        self.mapsRepository = mapsRepository ?? MapsRepository()
+        self.groupRepository = groupRepository ?? GroupRepository()
 
         // Initialize other repositories as they are implemented in future phases
     }
@@ -41,10 +49,14 @@ final class RepositoryContainer: ObservableObject {
     /// Create a container with mock repositories for testing
     #if DEBUG
     static func mock(
-        userRepository: UserRepositoryProtocol? = nil
+        userRepository: UserRepositoryProtocol? = nil,
+        mapsRepository: MapsRepositoryProtocol? = nil,
+        groupRepository: GroupRepositoryProtocol? = nil
     ) -> RepositoryContainer {
         RepositoryContainer(
-            userRepository: userRepository
+            userRepository: userRepository,
+            mapsRepository: mapsRepository,
+            groupRepository: groupRepository
         )
     }
     #endif
