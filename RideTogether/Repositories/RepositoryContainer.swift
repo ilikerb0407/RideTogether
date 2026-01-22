@@ -24,9 +24,9 @@ final class RepositoryContainer: ObservableObject {
     let locationRepository: LocationRepositoryProtocol
     let recordRepository: RecordRepositoryProtocol
 
-    // MARK: - Phase 5+ Repositories (will be implemented later)
-    // let weatherRepository: WeatherRepositoryProtocol
-    // let ubikeRepository: UBikeRepositoryProtocol
+    // MARK: - Phase 6 Repositories
+    let weatherRepository: WeatherRepositoryProtocol
+    let ubikeRepository: UBikeRepositoryProtocol
 
     // MARK: - Init
     init(
@@ -34,8 +34,9 @@ final class RepositoryContainer: ObservableObject {
         mapsRepository: MapsRepositoryProtocol? = nil,
         groupRepository: GroupRepositoryProtocol? = nil,
         locationRepository: LocationRepositoryProtocol? = nil,
-        recordRepository: RecordRepositoryProtocol? = nil
-        // Add more repository parameters as they are implemented
+        recordRepository: RecordRepositoryProtocol? = nil,
+        weatherRepository: WeatherRepositoryProtocol? = nil,
+        ubikeRepository: UBikeRepositoryProtocol? = nil
     ) {
         // Use injected repository or create default
         self.userRepository = userRepository ?? UserRepository()
@@ -43,8 +44,8 @@ final class RepositoryContainer: ObservableObject {
         self.groupRepository = groupRepository ?? GroupRepository()
         self.locationRepository = locationRepository ?? LocationRepository()
         self.recordRepository = recordRepository ?? RecordRepository()
-
-        // Initialize other repositories as they are implemented in future phases
+        self.weatherRepository = weatherRepository ?? WeatherRepository()
+        self.ubikeRepository = ubikeRepository ?? UBikeRepository()
     }
 
     /// Convenience initializer for production use
@@ -59,14 +60,18 @@ final class RepositoryContainer: ObservableObject {
         mapsRepository: MapsRepositoryProtocol? = nil,
         groupRepository: GroupRepositoryProtocol? = nil,
         locationRepository: LocationRepositoryProtocol? = nil,
-        recordRepository: RecordRepositoryProtocol? = nil
+        recordRepository: RecordRepositoryProtocol? = nil,
+        weatherRepository: WeatherRepositoryProtocol? = nil,
+        ubikeRepository: UBikeRepositoryProtocol? = nil
     ) -> RepositoryContainer {
         RepositoryContainer(
             userRepository: userRepository,
             mapsRepository: mapsRepository,
             groupRepository: groupRepository,
             locationRepository: locationRepository,
-            recordRepository: recordRepository
+            recordRepository: recordRepository,
+            weatherRepository: weatherRepository,
+            ubikeRepository: ubikeRepository
         )
     }
     #endif

@@ -13,18 +13,18 @@ import FirebaseAuth
 struct RideTogetherApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    // Create repository container first
-    @StateObject private var repositories = RepositoryContainer.live()
-
-    // Create AuthStateManager with UserRepository from container
-    @StateObject private var authState: AuthStateManager = .init()
+    // Create repository container and auth state manager
+    @StateObject private var repositories: RepositoryContainer
+    @StateObject private var authState: AuthStateManager
 
     init() {
+        // Setup Firebase FIRST
         setupFirebase()
-//         Initialize AuthStateManager with repository
+
+        // Initialize repositories and auth state manager
         let container = RepositoryContainer.live()
-        _authState = StateObject(wrappedValue: AuthStateManager(userRepository: container.userRepository))
         _repositories = StateObject(wrappedValue: container)
+        _authState = StateObject(wrappedValue: AuthStateManager(userRepository: container.userRepository))
     }
 
     var body: some Scene {

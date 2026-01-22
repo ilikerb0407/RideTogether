@@ -23,6 +23,9 @@ final class MapsRepository: MapsRepositoryProtocol {
     private let manager: MapsManager
     private let db: Firestore
 
+    // MARK: - Caching
+    private var sharedRoutesPublisher: AnyPublisher<[Route], Error>?
+
     // MARK: - Init
     init(
         manager: MapsManager = .shared,
@@ -45,8 +48,31 @@ final class MapsRepository: MapsRepositoryProtocol {
                 promise(result)
             }
         }
+        .retry(1) // Retry once on failure for network resilience
+        .catch { error -> AnyPublisher<[Route], Error> in
+            // Log error and return empty array as fallback
+            print("Failed to fetch routes: \(error.localizedDescription)")
+            return Just([])
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+        }
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
+    }
+
+    /// Optimized version with .share() for multiple subscribers
+    /// Use this when multiple components need the same routes data
+    func fetchRoutesShared() -> AnyPublisher<[Route], Error> {
+        if let sharedPublisher = sharedRoutesPublisher {
+            return sharedPublisher
+        }
+
+        let publisher = fetchRoutes()
+            .share() // Share single network request among multiple subscribers
+            .eraseToAnyPublisher()
+
+        sharedRoutesPublisher = publisher
+        return publisher
     }
 
     func fetchRecords() -> AnyPublisher<[Record], Error> {

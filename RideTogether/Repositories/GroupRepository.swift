@@ -60,6 +60,13 @@ final class GroupRepository: GroupRepositoryProtocol {
                 // Sort by creation time
                 requests.sorted { $0.createdTime.seconds > $1.createdTime.seconds }
             }
+            .catch { error -> AnyPublisher<[Request], Error> in
+                // On error, log and return empty array to keep UI functional
+                print("Error observing requests: \(error.localizedDescription)")
+                return Just([])
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            }
             .mapError { error in
                 RepositoryError.firestoreError(error)
             }
@@ -77,6 +84,14 @@ final class GroupRepository: GroupRepositoryProtocol {
             self.manager.fetchGroups { result in
                 promise(result)
             }
+        }
+        .retry(1) // Retry once on network failure
+        .catch { error -> AnyPublisher<[Group], Error> in
+            // Graceful degradation - return empty array on error
+            print("Failed to fetch groups: \(error.localizedDescription)")
+            return Just([])
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
         }
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()

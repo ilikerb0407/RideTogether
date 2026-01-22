@@ -145,6 +145,7 @@ class GroupManager {
         }
     }
 
+    @available(*, deprecated, message: "Use GroupRepository.observeRequests() instead. This method has a memory leak - ListenerRegistration is never cancelled.")
     func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) {
         dataBase.collection(requestsCollection)
             .whereField("host_id", isEqualTo: userId)

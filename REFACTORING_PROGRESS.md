@@ -1,7 +1,7 @@
 # RideTogether MVVM + Combine Refactoring Progress
 
 **Last Updated:** 2026-01-23
-**Status:** Phase 4 Complete ✅ | Phase 5-7 Remaining
+**Status:** ✅ ALL PHASES COMPLETE! 🎉
 
 ---
 
@@ -77,7 +77,72 @@
 
 ---
 
-## 🚧 REMAINING PHASES (5-7)
+### Phase 5: Profile Feature - User Management ✅
+**Goal:** Complete user profile with statistics and account management
+
+**Completed Files:**
+- ✅ `RideTogether/ViewModels/ProfileViewModel.swift` - Complete profile management
+  - User info observation from AuthStateManager
+  - Records fetching and deletion
+  - Profile editing (name, photo)
+  - Account actions (logout, delete account)
+  - Stats calculation
+- ✅ `RideTogether/Views/Profile/ProfileView.swift` - Full UI implementation
+  - Profile header with photo and name
+  - Stats section (total distance, recordings, groups)
+  - Menu items (records, shared maps, settings)
+  - Edit profile dialog
+  - Records list view
+  - Account settings with delete confirmation
+
+**Key Achievement:** Complete user profile management with reactive state from AuthStateManager
+
+---
+
+### Phase 6: Optimization & Additional Features ✅
+**Goal:** Complete remaining features and optimize Combine chains
+
+**Completed Files:**
+- ✅ `RideTogether/Repositories/WeatherRepository.swift` - Weather API with Combine
+  - `fetchWeather()` with `.retry()` and `.catch()` for error recovery
+  - Location-based weather fetching
+- ✅ `RideTogether/Repositories/UBikeRepository.swift` - UBike/YouBike stations
+  - Taipei and Taichung bike station fetching
+  - Nearby stations with distance filtering
+  - `.share()` for caching expensive network requests
+- ✅ **Optimized MapsRepository** - Added `.share()` and error recovery
+  - `fetchRoutesShared()` for multi-subscriber optimization
+  - `.retry()` and graceful fallback to empty arrays
+- ✅ **Optimized GroupRepository** - Enhanced error handling
+  - `.catch()` on `observeRequests()` to prevent UI crashes
+  - `.retry()` on `fetchGroups()` for network resilience
+- ✅ **Updated RepositoryContainer** - Added Weather and UBike repositories
+
+**Key Achievement:** Optimized network operations with retry logic and shared Publishers
+
+---
+
+### Phase 7: Cleanup & Finalization ✅
+**Goal:** Remove legacy code and finalize migration
+
+**Completed Tasks:**
+- ✅ **Deleted deprecated UIKit ViewControllers:**
+  - `HomeViewController.swift` ❌
+  - `GroupViewController.swift` ❌
+  - `JourneyViewController.swift` ❌
+  - `ProfileViewController.swift` ❌
+  - `TabBarController.swift` ❌ (fully replaced by MainTabView)
+  - `BaseViewController.swift` ❌
+- ✅ **Marked deprecated methods:**
+  - `GroupManager.addRequestListener()` - Marked with deprecation warning
+- ✅ **Kept Login ViewControllers** for backward compatibility:
+  - LoginViewController, SignUpViewController, PolicyViewController, CodeLoginViewController
+
+**Key Achievement:** Clean codebase with deprecated code removed and warnings added
+
+---
+
+## 🎉 PROJECT COMPLETE!
 
 ### Phase 4: Journey Feature - GPS & Recording
 **Goal:** Implement journey recording with location tracking
