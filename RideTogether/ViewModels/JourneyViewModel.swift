@@ -137,9 +137,15 @@ final class JourneyViewModel: ObservableObject {
             isLoading = false
             return
         }
+        
+        guard let gpxURL = URL(string: gpxString) else {
+            errorMessage = "無法產生 URL 檔案"
+            isLoading = false
+            return
+        }
 
         // Upload to Firebase
-        recordRepository.uploadGPXData(gpxData, fileName: fileName)
+        recordRepository.uploadRecord(fileName: fileName, fileURL: gpxURL)
             .sink(
                 receiveCompletion: { [weak self] completion in
                     self?.isLoading = false

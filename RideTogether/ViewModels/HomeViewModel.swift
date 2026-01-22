@@ -77,7 +77,7 @@ final class HomeViewModel: ObservableObject {
 
     /// Fetch routes for a specific type
     func fetchRoutes(forType routeType: RoutesType) {
-        repository.fetchRoutes(byType: routeType.rawValue)
+        repository.fetchRoutes()
             .sink(
                 receiveCompletion: { [weak self] completion in
                     if case .failure(let error) = completion {

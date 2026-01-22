@@ -25,8 +25,15 @@ struct JourneyView: View {
     var body: some View {
         ZStack {
             // Map
-            Map(coordinateRegion: $viewModel.mapRegion, showsUserLocation: true, annotationItems: []) { _ in
-                MapPin(coordinate: viewModel.mapRegion.center)
+            let points: [MapPoint] = [
+                MapPoint(coordinate: viewModel.mapRegion.center)
+            ]
+
+            Map(coordinateRegion: $viewModel.mapRegion,
+                showsUserLocation: true,
+                annotationItems: points
+            ) { point in
+                MapPin(coordinate: point.coordinate)
             }
             .ignoresSafeArea()
 
@@ -227,3 +234,7 @@ struct RecordingControls: View {
     }
 }
 
+struct MapPoint: Identifiable {
+    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
+}

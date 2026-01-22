@@ -55,7 +55,7 @@ final class GroupRepository: GroupRepositoryProtocol {
             .whereField("host_id", isEqualTo: userId)
 
         // Use FirestorePublisher which properly manages the snapshot listener
-        return FirestorePublisher<Request>(query: query)
+        return FirestorePublisher<[Request]>(query: query)
             .map { (requests: [Request]) in
                 // Sort by creation time
                 requests.sorted { $0.createdTime.seconds > $1.createdTime.seconds }

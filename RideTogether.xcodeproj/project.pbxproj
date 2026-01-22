@@ -30,6 +30,9 @@
 		235F42542F22844700EA2B59 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42472F22844700EA2B59 /* GroupRepository.swift */; };
 		235F42552F22844700EA2B59 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424C2F22844700EA2B59 /* RepositoryError.swift */; };
 		235F42562F22844700EA2B59 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424D2F22844700EA2B59 /* UserRepository.swift */; };
+		235F425B2F2286AD00EA2B59 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42592F2286AD00EA2B59 /* JourneyViewModel.swift */; };
+		235F425C2F2286AD00EA2B59 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42582F2286AD00EA2B59 /* HomeViewModel.swift */; };
+		235F425D2F2286AD00EA2B59 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42572F2286AD00EA2B59 /* GroupViewModel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
@@ -195,6 +198,9 @@
 		235F424B2F22844700EA2B59 /* RepositoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContainer.swift; sourceTree = "<group>"; };
 		235F424C2F22844700EA2B59 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		235F424D2F22844700EA2B59 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		235F42572F2286AD00EA2B59 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		235F42582F2286AD00EA2B59 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		235F42592F2286AD00EA2B59 /* JourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewModel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -406,6 +412,16 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		235F425A2F2286AD00EA2B59 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				235F42572F2286AD00EA2B59 /* GroupViewModel.swift */,
+				235F42582F2286AD00EA2B59 /* HomeViewModel.swift */,
+				235F42592F2286AD00EA2B59 /* JourneyViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		237A27A8281A6948004F039F /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +513,7 @@
 				23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				235F425A2F2286AD00EA2B59 /* ViewModels */,
 				235F424E2F22844700EA2B59 /* Repositories */,
 				3BB344272C37D507006EC03C /* Common */,
 				23D1B74B28005D9B000EDA70 /* Model */,
@@ -1015,6 +1032,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235F425B2F2286AD00EA2B59 /* JourneyViewModel.swift in Sources */,
+				235F425C2F2286AD00EA2B59 /* HomeViewModel.swift in Sources */,
+				235F425D2F2286AD00EA2B59 /* GroupViewModel.swift in Sources */,
 				3BDF087329A0692500766110 /* ResponseBody.swift in Sources */,
 				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
 				23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */,
