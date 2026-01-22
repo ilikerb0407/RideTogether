@@ -20,9 +20,11 @@ final class RepositoryContainer: ObservableObject {
     // MARK: - Phase 3 Repositories
     let groupRepository: GroupRepositoryProtocol
 
-    // MARK: - Phase 4+ Repositories (will be implemented later)
-    // let recordRepository: RecordRepositoryProtocol
-    // let locationRepository: LocationRepositoryProtocol
+    // MARK: - Phase 4 Repositories
+    let locationRepository: LocationRepositoryProtocol
+    let recordRepository: RecordRepositoryProtocol
+
+    // MARK: - Phase 5+ Repositories (will be implemented later)
     // let weatherRepository: WeatherRepositoryProtocol
     // let ubikeRepository: UBikeRepositoryProtocol
 
@@ -30,13 +32,17 @@ final class RepositoryContainer: ObservableObject {
     init(
         userRepository: UserRepositoryProtocol? = nil,
         mapsRepository: MapsRepositoryProtocol? = nil,
-        groupRepository: GroupRepositoryProtocol? = nil
+        groupRepository: GroupRepositoryProtocol? = nil,
+        locationRepository: LocationRepositoryProtocol? = nil,
+        recordRepository: RecordRepositoryProtocol? = nil
         // Add more repository parameters as they are implemented
     ) {
         // Use injected repository or create default
         self.userRepository = userRepository ?? UserRepository()
         self.mapsRepository = mapsRepository ?? MapsRepository()
         self.groupRepository = groupRepository ?? GroupRepository()
+        self.locationRepository = locationRepository ?? LocationRepository()
+        self.recordRepository = recordRepository ?? RecordRepository()
 
         // Initialize other repositories as they are implemented in future phases
     }
@@ -51,12 +57,16 @@ final class RepositoryContainer: ObservableObject {
     static func mock(
         userRepository: UserRepositoryProtocol? = nil,
         mapsRepository: MapsRepositoryProtocol? = nil,
-        groupRepository: GroupRepositoryProtocol? = nil
+        groupRepository: GroupRepositoryProtocol? = nil,
+        locationRepository: LocationRepositoryProtocol? = nil,
+        recordRepository: RecordRepositoryProtocol? = nil
     ) -> RepositoryContainer {
         RepositoryContainer(
             userRepository: userRepository,
             mapsRepository: mapsRepository,
-            groupRepository: groupRepository
+            groupRepository: groupRepository,
+            locationRepository: locationRepository,
+            recordRepository: recordRepository
         )
     }
     #endif

@@ -1,11 +1,11 @@
 # RideTogether MVVM + Combine Refactoring Progress
 
 **Last Updated:** 2026-01-23
-**Status:** Phase 3 Complete ✅ | Phase 4-7 Remaining
+**Status:** Phase 4 Complete ✅ | Phase 5-7 Remaining
 
 ---
 
-## ✅ COMPLETED PHASES (1-3)
+## ✅ COMPLETED PHASES (1-4)
 
 ### Phase 1: Foundation Infrastructure ✅
 **Goal:** Create core Combine infrastructure
@@ -48,7 +48,36 @@
 
 ---
 
-## 🚧 REMAINING PHASES (4-7)
+### Phase 4: Journey Feature - GPS & Recording ✅
+**Goal:** Implement journey recording with location tracking
+
+**Completed Files:**
+- ✅ `RideTogether/Repositories/LocationRepository.swift` - CLLocationManager wrapped with Combine
+  - `observeLocationUpdates()` - Real-time location publisher
+  - `observeAuthorizationStatus()` - Permission status publisher
+  - Proper delegation with PassthroughSubject
+- ✅ `RideTogether/Repositories/RecordRepository.swift` - Recording operations with Combine
+  - `uploadRecord()` - Upload GPX files to Firebase Storage
+  - `uploadGPXData()` - Direct data upload with metadata
+  - `deleteRecord()` - Delete from Storage and Firestore
+- ✅ `RideTogether/ViewModels/JourneyViewModel.swift` - Complete GPS tracking logic
+  - Real-time location tracking with Combine
+  - Distance, duration, speed calculations
+  - GPX file generation
+  - Recording state management (start/pause/stop)
+- ✅ `RideTogether/Views/Journey/JourneyView.swift` - Full UI implementation
+  - SwiftUI Map with user location
+  - Stats card (distance, time, average speed)
+  - Recording controls (start, pause, resume, stop)
+  - Current speed display
+  - Save dialog with filename input
+- ✅ `RideTogether/Repositories/RepositoryContainer.swift` - Updated with LocationRepository and RecordRepository
+
+**Key Achievement:** Complete GPS tracking and recording system with reactive Combine publishers
+
+---
+
+## 🚧 REMAINING PHASES (5-7)
 
 ### Phase 4: Journey Feature - GPS & Recording
 **Goal:** Implement journey recording with location tracking
