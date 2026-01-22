@@ -22,6 +22,14 @@
 		234DBBF42C2C3FA100E78118 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234DBBF32C2C3FA100E78118 /* Collection.swift */; };
 		235B58862D3FCDDD0088CE45 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */; };
 		235B58882D3FCDE40088CE45 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B58872D3FCDE40088CE45 /* LabelFactory.swift */; };
+		235F424F2F22844700EA2B59 /* RepositoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424B2F22844700EA2B59 /* RepositoryContainer.swift */; };
+		235F42502F22844700EA2B59 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424A2F22844700EA2B59 /* RecordRepository.swift */; };
+		235F42512F22844700EA2B59 /* FirestorePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42462F22844700EA2B59 /* FirestorePublisher.swift */; };
+		235F42522F22844700EA2B59 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42482F22844700EA2B59 /* LocationRepository.swift */; };
+		235F42532F22844700EA2B59 /* MapsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42492F22844700EA2B59 /* MapsRepository.swift */; };
+		235F42542F22844700EA2B59 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F42472F22844700EA2B59 /* GroupRepository.swift */; };
+		235F42552F22844700EA2B59 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424C2F22844700EA2B59 /* RepositoryError.swift */; };
+		235F42562F22844700EA2B59 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235F424D2F22844700EA2B59 /* UserRepository.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
 		237A279D28181A60004F039F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A279C28181A60004F039F /* SignUpViewController.swift */; };
@@ -179,6 +187,14 @@
 		234DBBF32C2C3FA100E78118 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		235B58852D3FCDDD0088CE45 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		235B58872D3FCDE40088CE45 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		235F42462F22844700EA2B59 /* FirestorePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestorePublisher.swift; sourceTree = "<group>"; };
+		235F42472F22844700EA2B59 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
+		235F42482F22844700EA2B59 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		235F42492F22844700EA2B59 /* MapsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsRepository.swift; sourceTree = "<group>"; };
+		235F424A2F22844700EA2B59 /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
+		235F424B2F22844700EA2B59 /* RepositoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryContainer.swift; sourceTree = "<group>"; };
+		235F424C2F22844700EA2B59 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
+		235F424D2F22844700EA2B59 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		237A279C28181A60004F039F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -375,6 +391,21 @@
 			path = RideTogetherTests;
 			sourceTree = "<group>";
 		};
+		235F424E2F22844700EA2B59 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				235F42462F22844700EA2B59 /* FirestorePublisher.swift */,
+				235F42472F22844700EA2B59 /* GroupRepository.swift */,
+				235F42482F22844700EA2B59 /* LocationRepository.swift */,
+				235F42492F22844700EA2B59 /* MapsRepository.swift */,
+				235F424A2F22844700EA2B59 /* RecordRepository.swift */,
+				235F424B2F22844700EA2B59 /* RepositoryContainer.swift */,
+				235F424C2F22844700EA2B59 /* RepositoryError.swift */,
+				235F424D2F22844700EA2B59 /* UserRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		237A27A8281A6948004F039F /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +497,7 @@
 				23FFD3282F1BDF7F00C34582 /* RideTogetherApp.swift */,
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
 				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				235F424E2F22844700EA2B59 /* Repositories */,
 				3BB344272C37D507006EC03C /* Common */,
 				23D1B74B28005D9B000EDA70 /* Model */,
 				23D1B767280060E0000EDA70 /* View */,
@@ -1039,6 +1071,14 @@
 				23FFD3172F1AC0C600C34582 /* ProfileView.swift in Sources */,
 				23FFD3182F1AC0C600C34582 /* SignUpView.swift in Sources */,
 				23FFD3192F1AC0C600C34582 /* HomeView.swift in Sources */,
+				235F424F2F22844700EA2B59 /* RepositoryContainer.swift in Sources */,
+				235F42502F22844700EA2B59 /* RecordRepository.swift in Sources */,
+				235F42512F22844700EA2B59 /* FirestorePublisher.swift in Sources */,
+				235F42522F22844700EA2B59 /* LocationRepository.swift in Sources */,
+				235F42532F22844700EA2B59 /* MapsRepository.swift in Sources */,
+				235F42542F22844700EA2B59 /* GroupRepository.swift in Sources */,
+				235F42552F22844700EA2B59 /* RepositoryError.swift in Sources */,
+				235F42562F22844700EA2B59 /* UserRepository.swift in Sources */,
 				23FFD31A2F1AC0C600C34582 /* LoginView.swift in Sources */,
 				23FFD31B2F1AC0C600C34582 /* JourneyView.swift in Sources */,
 				23FFD31C2F1AC0C600C34582 /* PolicyView.swift in Sources */,
