@@ -58,12 +58,15 @@ jobs:
           </plist>
           EOF
 
+      - name: Install xcpretty
+        run: gem install xcpretty
+
       - name: Build
         run: |
           xcodebuild \
-            -workspace RideTogether.xcworkspace \
-            -scheme RideTogether \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-            CODE_SIGNING_ALLOWED=NO \
-            build 2>&1 | grep -E "error:|warning:|BUILD FAILED|BUILD SUCCEEDED"
+          -workspace RideTogether.xcworkspace \
+          -scheme RideTogether \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+          CODE_SIGNING_ALLOWED=NO \
+          clean build | xcpretty
