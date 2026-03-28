@@ -29,6 +29,7 @@ jobs:
           -scheme RideTogether \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 16' \
+          CODE_SIGNING_ALLOWED=NO
           build
 
       # 4️⃣ Test
@@ -39,4 +40,5 @@ jobs:
           -scheme RideTogether \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 16' \
+          CODE_SIGNING_ALLOWED=NO
           test
