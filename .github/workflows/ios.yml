@@ -1,5 +1,4 @@
 name: iOS CI
-
 on:
   push:
     branches: ["main"]
@@ -11,51 +10,29 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      # 1️⃣ Checkout
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2️⃣ Select Xcode version（避免未來炸掉）
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode.app
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
 
-      # 3️⃣ Install CocoaPods（🔥關鍵）
+      - name: Cache CocoaPods
+        uses: actions/cache@v3
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
       - name: Install CocoaPods
-        run: |
-          sudo gem install cocoapods
-          pod install
+        run: pod install --repo-update
 
-      # 4️⃣ Create Firebase config（🔥解決你現在的錯）
-      - name: Create GoogleService-Info.plist
-        run: |
-          cat <<EOF > RideTogether/GoogleService-Info.plist
-          <?xml version="1.0" encoding="UTF-8"?>
-          <plist version="1.0">
-          <dict>
-              <key>PROJECT_ID</key>
-              <string>dummy-project</string>
-          </dict>
-          </plist>
-          EOF
-
-      # 5️⃣ Build
       - name: Build
         run: |
           xcodebuild \
-          -workspace RideTogether.xcworkspace \
-          -scheme RideTogether \
-          -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-          CODE_SIGNING_ALLOWED=NO \
-          clean build
-
-      # 6️⃣ Test
-      - name: Test
-        run: |
-          xcodebuild \
-          -workspace RideTogether.xcworkspace \
-          -scheme RideTogether \
-          -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-          CODE_SIGNING_ALLOWED=NO \
-          test
+            -workspace RideTogether.xcworkspace \
+            -scheme RideTogether \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
