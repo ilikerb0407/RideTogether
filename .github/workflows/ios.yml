@@ -2,9 +2,9 @@ name: iOS CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -15,30 +15,47 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2️⃣ Install CocoaPods（🔥關鍵）
+      # 2️⃣ Select Xcode version（避免未來炸掉）
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      # 3️⃣ Install CocoaPods（🔥關鍵）
       - name: Install CocoaPods
         run: |
           sudo gem install cocoapods
           pod install
 
-      # 3️⃣ Build
+      # 4️⃣ Create Firebase config（🔥解決你現在的錯）
+      - name: Create GoogleService-Info.plist
+        run: |
+          cat <<EOF > RideTogether/GoogleService-Info.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <plist version="1.0">
+          <dict>
+              <key>PROJECT_ID</key>
+              <string>dummy-project</string>
+          </dict>
+          </plist>
+          EOF
+
+      # 5️⃣ Build
       - name: Build
         run: |
           xcodebuild \
           -workspace RideTogether.xcworkspace \
           -scheme RideTogether \
           -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 16' \
-          CODE_SIGNING_ALLOWED=NO
-          build
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+          CODE_SIGNING_ALLOWED=NO \
+          clean build
 
-      # 4️⃣ Test
+      # 6️⃣ Test
       - name: Test
         run: |
           xcodebuild \
           -workspace RideTogether.xcworkspace \
           -scheme RideTogether \
           -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 16' \
-          CODE_SIGNING_ALLOWED=NO
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+          CODE_SIGNING_ALLOWED=NO \
           test
