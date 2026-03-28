@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 import SwiftUI
-import FirebaseFirestoreInternal
+import FirebaseFirestore
 
 /// ViewModel for Group feature following MVVM + Combine architecture
 /// Manages group list, requests, and real-time updates

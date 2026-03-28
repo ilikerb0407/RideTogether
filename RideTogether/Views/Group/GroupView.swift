@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseFirestoreInternal
+import FirebaseFirestore
 
 struct GroupView: View {
     @Environment(\.repositories) private var repositories
