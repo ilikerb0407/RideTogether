@@ -66,4 +66,4 @@ jobs:
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
             CODE_SIGNING_ALLOWED=NO \
-            clean build
+            build 2>&1 | grep -E "error:|warning:|BUILD FAILED|BUILD SUCCEEDED"
