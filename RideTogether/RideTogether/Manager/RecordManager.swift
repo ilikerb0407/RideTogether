@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseStorage
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 class RecordManager {
@@ -29,47 +29,47 @@ class RecordManager {
     private let recordsCollection = Collection.records.rawValue
     
     func uploadRecord(fileName: String, fileURL: URL, completion: @escaping (Result<URL, Error>) -> Void) {
-
+        
         do {
-
+            
             let data: Data = try Data(contentsOf: fileURL)
- 
+            
             let recordRef = storageRef.child("records").child(userId)
-
+            
             let spaceRef = recordRef.child(fileName)
-
+            
             spaceRef.putData(data, metadata: nil) { result in
-
+                
                 switch result {
-
+                    
                 case .success:
-
+                    
                     spaceRef.downloadURL { result in
-
+                        
                         switch result {
-
+                            
                         case .success(let url):
-
+                            
                             completion(.success(url))
-                  
+                            
                             self.uploadRecordToDb(fileName: fileName, fileURL: url)
-
+                            
                         case .failure(let error):
-
+                            
                             completion(.failure(error))
                         }
                     }
-
+                    
                 case .failure(let error):
-
+                    
                     completion(.failure(error))
                 }
             }
-
+            
         } catch {
-
+            
             print("Unable to upload data")
-
+            
         }
     }
     
@@ -117,7 +117,7 @@ class RecordManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: Record?.self, decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
                         
@@ -136,7 +136,7 @@ class RecordManager {
     func fetchOneRecord(completion: @escaping (Result<Record, Error>) -> Void) {
         
         let collection = dataBase.collection(recordsCollection).whereField("uid", isEqualTo: userId)
-
+        
         collection.getDocuments { (querySnapshot, error) in
             
             guard let querySnapshot = querySnapshot else { return }
@@ -149,7 +149,7 @@ class RecordManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: Record?.self, decoder: Firestore.Decoder()) {
                             records.recordRef.append(record.recordRef)
                         }
                         
@@ -164,7 +164,7 @@ class RecordManager {
         }
         
     }
-
+    
     func deleteStorageRecords(fileName: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         let recordRef = storageRef.child("records").child(userId)
@@ -209,5 +209,5 @@ class RecordManager {
             }
         }
     }
-
+    
 }

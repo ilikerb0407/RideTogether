@@ -294,9 +294,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 return
             }
             
-            let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                      idToken: idTokenString,
-                                                      rawNonce: nonce)
+            let credential = OAuthProvider.appleCredential(withIDToken:                 idTokenString,
+                                                           rawNonce: nonce,
+                                                           fullName: appleIDCredential.fullName)
             
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 

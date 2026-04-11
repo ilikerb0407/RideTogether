@@ -9,7 +9,7 @@ import UIKit
 import MJRefresh
 import SwiftUI
 import FirebaseStorage
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 import FirebaseFirestore
 import CoreGPX
 

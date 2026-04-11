@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 import FirebaseStorage
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 import FirebaseFirestore
 import Lottie
 

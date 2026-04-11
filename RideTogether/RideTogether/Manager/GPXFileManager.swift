@@ -11,12 +11,12 @@ class GPXFileManager {
     
     class var GPXFilesFolderURL: URL {
         
-         let documentsUrl =  FileManager.default.urls(
+        let documentsUrl =  FileManager.default.urls(
             for: .documentDirectory,
             in: .userDomainMask)[0] as URL
         
-         return documentsUrl
-     }
+        return documentsUrl
+    }
     
     class func URLForFilename(_ filename: String) -> URL {
         
@@ -72,10 +72,10 @@ class GPXFileManager {
         
         let inputURL = fileURL
         
-            guard let gpx = GPXParser(withURL: inputURL)?.parsedData() else { return }
+        guard let gpx = GPXParser(withURL: inputURL)?.parsedData() else { return }
         
         let length = gpx.tracksLength
-    
+        
         UserManager.shared.updateUserTrackLength(length: length)
     }
     

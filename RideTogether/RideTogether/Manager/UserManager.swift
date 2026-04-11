@@ -7,10 +7,10 @@
 
 import UIKit
 import FirebaseStorage
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseStorageSwift
+//import FirebaseStorageSwift
 
 // MARK: 之後登入用得到
 
@@ -160,7 +160,7 @@ class UserManager {
             } else {
                 
                 do {
-                    if let userData = try document.data(as: UserInfo.self, decoder: Firestore.Decoder()) {
+                    if let userData = try document.data(as: UserInfo?.self, decoder: Firestore.Decoder()) {
                         
                         completion(.success(userData))
                     }

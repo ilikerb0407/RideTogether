@@ -44,12 +44,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         return String(describing: self)
     }
      
-    private let tabs: [Tab] = [.journey, .home,.group, .profile]
+    private let appTabs: [Tab] = [.journey, .home,.group, .profile]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = tabs.map { $0.controller() }
+        viewControllers = appTabs.map { $0.controller() }
         
         addRequestListener()
         

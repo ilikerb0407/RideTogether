@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
         
-        if let userId = Auth.auth().currentUser {
-            
-            print("\(userId.uid) and \(String(describing: userId.email))")
-            
-        }
+//        if let userId = Auth.auth().currentUser {
+//            
+//            print("\(userId.uid) and \(String(describing: userId.email))")
+//            
+//        }
         
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.B5

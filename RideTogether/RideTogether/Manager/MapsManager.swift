@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseStorage
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 // MARK:  - Offline Map -
@@ -53,7 +53,7 @@ class MapsManager {
                 
                 for document in querySnapshot.documents {
                     do {
-                        if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                        if let record = try document.data(as: Record?.self, decoder: Firestore.Decoder()) {
                             records.append(record)
                         }
                         
@@ -82,7 +82,7 @@ class MapsManager {
                 var routes = [Route]()
                 for document in querySnapshot.documents {
                     do {
-                        if let route = try document.data(as: Route.self, decoder: Firestore.Decoder()) {
+                        if let route = try document.data(as: Route?.self, decoder: Firestore.Decoder()) {
                             routes.append(route)
                         }
                         
@@ -116,7 +116,7 @@ class MapsManager {
                         
                         for document in querySnapshot.documents {
                             do {
-                                if let record = try document.data(as: Record.self, decoder: Firestore.Decoder()) {
+                                if let record = try document.data(as: Record?.self, decoder: Firestore.Decoder()) {
                                     records.append(record)
                                 }
                                 }

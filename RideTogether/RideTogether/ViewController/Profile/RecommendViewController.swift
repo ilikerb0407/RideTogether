@@ -10,7 +10,7 @@ import MJRefresh
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
-import FirebaseFirestoreSwift
+//import FirebaseFirestoreSwift
 import Lottie
 import SwiftUI
 import Kingfisher
