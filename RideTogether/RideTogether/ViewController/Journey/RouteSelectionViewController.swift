@@ -9,15 +9,11 @@ protocol sendRouteSecond {
     func sendRouteTwice(map: DrawRoute)
 }
 
-class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherProvider {
-    
-    func provideWeather(weather: ResponseBody) {
-        weatherdata = weather
-    }
+class RouteSelectionViewController: UIViewController, sendRoutefirst {
     
     var weatherdata : ResponseBody?
     
-    let weatherManger = WeatherManager()
+    let weatherManger = WeatherManager.shared
     
     @IBOutlet weak var feelsLikeTempLabel: UILabel!
     
@@ -45,87 +41,83 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
             
             self?.weatherdata = result
             DispatchQueue.main.async {
-                showWeatherInfo()
+                self?.showWeatherInfo()
+            }
+        }
+    }
+    
+    private func showWeatherInfo(){
+        guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
+        feelsLikeTempLabel.text = "\(feelslike) °C"
+        guard let humiditydata = weatherdata?.main.humidity else { return }
+        humidityLabel.text = "\(humiditydata) %"
+        
+        guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
+        showtempLabel.text = "\(tempdata) °C"
+        
+        guard let ssunrise = weatherdata?.sys.sunrise else { return }
+        let epocTime = TimeInterval(ssunrise)
+        
+        sunriseLabel.text = "\(epocTime.sunrise()) AM"
+        
+        guard let ssunset = weatherdata?.sys.sunset else { return }
+        let sunsetTime = TimeInterval(ssunset)
+        
+        sunsetLabel.text = "\(sunsetTime.sunset()) PM"
+        
+        guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
+        windLabel.text = "\(swind) km/h"
+        
+        guard let weather = weatherdata?.weather[0].main else { return }
+        
+        if weather == "Rain" {
+            
+            rainLottieView.isHidden = false
+            rainLottieView.play()
+            let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
+            let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in
             }
             
+            sheet.addAction(okOption)
+            present(sheet, animated: true, completion: nil)
         }
         
-        func showWeatherInfo(){
+        if weather == "Clouds" {
+            cloudsLottieView.isHidden = false
+            cloudsLottieView.play()
             
-            guard let feelslike = weatherdata?.main.feelsLike.roundDouble() else { return }
-            feelsLikeTempLabel.text = "\(feelslike) °C"
-            guard let humiditydata = weatherdata?.main.humidity else { return }
-            humidityLabel.text = "\(humiditydata) %"
+            let sheet = UIAlertController(title: nil, message: "記得補充水分!", preferredStyle: .alert)
             
-            guard let tempdata = weatherdata?.main.tempMax.roundDouble() else { return }
-            showtempLabel.text = "\(tempdata) °C"
-            
-            guard let ssunrise = weatherdata?.sys.sunrise else { return }
-            let epocTime = TimeInterval(ssunrise)
-            
-            sunriseLabel.text = "\(epocTime.sunrise()) AM"
-            
-            guard let ssunset = weatherdata?.sys.sunset else { return }
-            let sunsetTime = TimeInterval(ssunset)
-            
-            sunsetLabel.text = "\(sunsetTime.sunset()) PM"
-            
-            guard let swind = weatherdata?.wind.speed.roundDouble() else { return }
-            windLabel.text = "\(swind) km/h"
-            
-            guard let weather = weatherdata?.weather[0].main else { return }
-            
-            if weather == "Rain" {
-                
-                rainLottieView.isHidden = false
-                rainLottieView.play()
-                let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in
-                }
-                
-                sheet.addAction(okOption)
-                present(sheet, animated: true, completion: nil)
-            }
-            
-            if weather == "Clouds" {
-                cloudsLottieView.isHidden = false
-                cloudsLottieView.play()
-                
-                let sheet = UIAlertController(title: nil, message: "記得補充水分!", preferredStyle: .alert)
-                
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
-                sheet.addAction(okOption)
-                present(sheet, animated: true, completion: nil)
-            }
-            
-            if weather == "Drizzle" {
-                
-                rainLottieView.isHidden = false
-                rainLottieView.play()
-                let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { [self] _ in
-                    rainLottieView.isHidden = true
-                }
-                sheet.addAction(okOption)
-                present(sheet, animated: true, completion: nil)
-            }
-            
-            if weather == "Sun" {
-               
-                sunLottieView.isHidden = false
-                sunLottieView.play()
-                
-                let sheet = UIAlertController(title: nil, message: "記得補充水分!", preferredStyle: .alert)
-                
-                let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in
-                    }
-                sheet.addAction(okOption)
-                present(sheet, animated: true, completion: nil)
-                }
-            
-            }
-    
+            let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in }
+            sheet.addAction(okOption)
+            present(sheet, animated: true, completion: nil)
         }
+        
+        if weather == "Drizzle" {
+            
+            rainLottieView.isHidden = false
+            rainLottieView.play()
+            let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
+            let okOption = UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
+                self?.rainLottieView.isHidden = true
+            }
+            sheet.addAction(okOption)
+            present(sheet, animated: true, completion: nil)
+        }
+        
+        if weather == "Sun" {
+           
+            sunLottieView.isHidden = false
+            sunLottieView.play()
+            
+            let sheet = UIAlertController(title: nil, message: "記得補充水分!", preferredStyle: .alert)
+            
+            let okOption = UIAlertAction(title: "OK", style: .cancel) { _ in
+            }
+            sheet.addAction(okOption)
+            present(sheet, animated: true, completion: nil)
+        }
+    }
         
     func sendRoute(map: DrawRoute) {
         mapdata = map
@@ -176,7 +168,6 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst, weatherPro
         hideSuggestionView(animated: false)
         
         directionsVC?.delegate = self
-        weatherManger.delegate = self
         
         weather()
         

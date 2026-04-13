@@ -10,14 +10,11 @@ import CoreGPX
 import MapKit
 import CoreLocation
 
-class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
+class MapPin: NSObject, MKMapViewDelegate {
     
-    func provideWeather(weather: ResponseBody) {
-        weatherData = weather
-    }
     var weatherData: ResponseBody?
     
-    let weatherManger = WeatherManager()
+    let weatherManger = WeatherManager.shared
 
     var waypointBeingEdited: GPXWaypoint = GPXWaypoint()
     
@@ -141,8 +138,6 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        weatherManger.delegate = self
-        
         guard let button = control as? UIButton else { return }
         
         guard let map = mapView as? GPXMapView else { return }
@@ -156,89 +151,89 @@ class MapPin: NSObject, MKMapViewDelegate, weatherProvider {
             self?.weatherData = result
             
             DispatchQueue.main.async {
-                markMarkers()
+                self?.markMarkers(buttonTag: button.tag, map: map, waypoint: waypoint, polyLine: polyLine)
             }
         }
-       
-        func markMarkers() {
-            
-            switch button.tag {
-                
-            case informationButtonTag:
-                
-                guard let weatherData = weatherData else { return }
-                
-                let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
-                let distance = "\(self.route.distance.toDistance())"
-                let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
-                let weather = "\(weatherData.weather[0].main)"
-                
-                let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
-                
-                let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
-                    map.removeWaypoint(waypoint)
-                    map.removeOverlays(map.overlays)
-                }
-                
-                let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
-                   
-                    self.route.polyline.title = "guide"
-                    
-                    if polyLine == nil {
-                        LKProgressHUD.showFailure(text: "無法導航")
-                    } else {
-                        map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
-                    }
-                    
-                }
-                
-                let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
-                
-                alertSheet.addAction(routeName)
-                alertSheet.addAction(removeOption)
-                alertSheet.addAction(cancelAction)
-               
-                
-                let lastVC = UIViewController.getLastPresentedViewController()
-                lastVC?.present(alertSheet, animated: true)
+    }
     
-                // iPad specific code
-                
-                alertSheet.popoverPresentationController?.sourceView = lastVC?.view
-
-                let xOrigin = (lastVC?.view.bounds.width)! / 2
-
-                let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-
-                alertSheet.popoverPresentationController?.sourceRect = popoverRect
-
-                alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
-                
-            case editButtonTag:
-                
-                let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
-                
-                alertController.addTextField { (textField) in
-                    textField.text = waypoint.title
-                    textField.clearButtonMode = .always
-                }
-                let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { _ in
-                    
-                    self.waypointBeingEdited.title = alertController.textFields?[0].text
-                }
-                let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
-                
-                alertController.addAction(saveAction)
-                alertController.addAction(cancelAction)
-                
-                let VC = UIViewController.getLastPresentedViewController()
-                VC?.present(alertController, animated: true)
-                
-                self.waypointBeingEdited = waypoint
-                
-            default:
-                LKProgressHUD.showFailure(text: "網路問題，無法顯示")
+    private func markMarkers(buttonTag: Int, map: GPXMapView, waypoint: GPXWaypoint, polyLine: MKPolyline) {
+        
+        switch buttonTag {
+            
+        case informationButtonTag:
+            
+            guard let weatherData = weatherData else { return }
+            
+            let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
+            let distance = "\(self.route.distance.toDistance())"
+            let time = "\((self.route.expectedTravelTime/3).tohmsTimeFormat())"
+            let weather = "\(weatherData.weather[0].main)"
+            
+            let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
+            
+            let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
+                map.removeWaypoint(waypoint)
+                map.removeOverlays(map.overlays)
             }
+            
+            let routeName = UIAlertAction(title: "導航至該地點", style: .default) {_ in
+               
+                self.route.polyline.title = "guide"
+                
+                if polyLine == nil {
+                    LKProgressHUD.showFailure(text: "無法導航")
+                } else {
+                    map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
+                }
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
+            
+            alertSheet.addAction(routeName)
+            alertSheet.addAction(removeOption)
+            alertSheet.addAction(cancelAction)
+           
+            
+            let lastVC = UIViewController.getLastPresentedViewController()
+            lastVC?.present(alertSheet, animated: true)
+
+            // iPad specific code
+            
+            alertSheet.popoverPresentationController?.sourceView = lastVC?.view
+
+            let xOrigin = (lastVC?.view.bounds.width)! / 2
+
+            let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+
+            alertSheet.popoverPresentationController?.sourceRect = popoverRect
+
+            alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
+            
+        case editButtonTag:
+            
+            let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
+            
+            alertController.addTextField { (textField) in
+                textField.text = waypoint.title
+                textField.clearButtonMode = .always
+            }
+            let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { _ in
+                
+                self.waypointBeingEdited.title = alertController.textFields?[0].text
+            }
+            let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
+            
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            
+            let VC = UIViewController.getLastPresentedViewController()
+            VC?.present(alertController, animated: true)
+            
+            self.waypointBeingEdited = waypoint
+            
+        default:
+            LKProgressHUD.showFailure(text: "網路問題，無法顯示")
         }
     }
     

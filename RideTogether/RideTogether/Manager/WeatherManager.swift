@@ -8,13 +8,8 @@
 import Foundation
 import CoreLocation
 
-protocol weatherProvider {
-    func provideWeather(weather: ResponseBody)
-}
-
 class WeatherManager {
-    
-    var delegate: weatherProvider?
+    static let shared = WeatherManager()
     
     func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (ResponseBody) -> Void) {
         
