@@ -33,7 +33,13 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
     
     
     var currentUser = Auth.auth().currentUser
-    
+
+    deinit {
+        if let handle = handle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,15 +55,15 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
             LKProgressHUD.showFailure(text: "未登入")
         }
         
-        Auth.auth().addStateDidChangeListener { auth, user in
-            
+        handle = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+
             if let user = user {
                 print("\(user.uid) login")
             } else {
                 print("not login")
             }
-            
-            self.currentUser = Auth.auth().currentUser
+
+            self?.currentUser = Auth.auth().currentUser
         }
         
         lottie()

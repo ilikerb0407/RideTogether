@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class JoinViewController: BaseViewController {
     
@@ -49,6 +50,11 @@ class JoinViewController: BaseViewController {
     private var tableView: UITableView!
     
     private lazy var dimmingView = UIView()
+    private var requestListenerRegistration: ListenerRegistration?
+
+    deinit {
+        requestListenerRegistration?.remove()
+    }
     
     // MARK: - View Life Cycle -
     
@@ -70,19 +76,21 @@ class JoinViewController: BaseViewController {
     // MARK: - Methods -
     
     func addRequestListener() {
-        
-        GroupManager.shared.addRequestListener { result in
-            
+
+        requestListenerRegistration = GroupManager.shared.addRequestListener { [weak self] result in
+
+            guard let self = self else { return }
+
             switch result {
-                
+
             case .success(let requests):
-                
+
                 self.requests = requests
-                
+
                 self.configureSnapshot()
-                
+
             case .failure(let error):
-                
+
                 print("fetchData.failure: \(error)")
             }
         }

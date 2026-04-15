@@ -169,9 +169,10 @@ class GroupManager {
         }
     }
     
-    func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) {
-        
-        dataBase.collection(requestsCollection)
+    @discardableResult
+    func addRequestListener(completion: @escaping (Result<[Request], Error>) -> Void) -> ListenerRegistration {
+
+        return dataBase.collection(requestsCollection)
             .whereField("host_id", isEqualTo: userId)
             .addSnapshotListener { (querySnapshot, error) in
                 

@@ -66,6 +66,11 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     }
     
     private var groupHeaderCell: GroupHeaderCell?
+    private var requestListenerRegistration: ListenerRegistration?
+
+    deinit {
+        requestListenerRegistration?.remove()
+    }
     
     private var searchGroups = [Group]()
     
@@ -136,34 +141,36 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     
   
     override func viewDidAppear(_ animated: Bool) {
-        
+
         super.viewDidAppear(animated)
-        addRequestListener()
-        
+        // Listener 已在 viewDidLoad 建立，不需重複呼叫
+
     }
     
     func addRequestListener() {
-        
-        GroupManager.shared.addRequestListener { result in
-            
+
+        requestListenerRegistration = GroupManager.shared.addRequestListener { [weak self] result in
+
+            guard let self = self else { return }
+
             switch result {
-                
+
             case .success(let requests):
-                
+
                 var filtedRequests = [Request]()
-                
+
                 for request in requests where self.userInfo.blockList?.contains(request.requestId) == false {
-                    
+
                     filtedRequests.append(request)
                 }
-                
+
                 self.requests = filtedRequests
-                
+
                 self.tabBarController?.tabBar.items?[2].badgeValue = "\(requests.count)"
                 self.tabBarController?.tabBar.items?[2].badgeColor = .red
-                
+
             case .failure(let error):
-                
+
                 print("fetchData.failure: \(error)")
             }
         }
