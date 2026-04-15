@@ -39,9 +39,12 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst {
         
         weatherManger.getGroupAPI(latitude: locationManager.location?.coordinate.latitude ?? 25.1, longitude: locationManager.location?.coordinate.longitude ?? 121.12) { [weak self] result in
             
-            self?.weatherdata = result
+            guard let self = self else { return }
+            
+            self.weatherdata = result
+            
             DispatchQueue.main.async {
-                self?.showWeatherInfo()
+                self.showWeatherInfo()
             }
         }
     }
@@ -99,7 +102,9 @@ class RouteSelectionViewController: UIViewController, sendRoutefirst {
             rainLottieView.play()
             let sheet = UIAlertController(title: nil, message: "下雨天騎車小心！", preferredStyle: .alert)
             let okOption = UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
-                self?.rainLottieView.isHidden = true
+                guard let self = self else { return }
+                
+                self.rainLottieView.isHidden = true
             }
             sheet.addAction(okOption)
             present(sheet, animated: true, completion: nil)

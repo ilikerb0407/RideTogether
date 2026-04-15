@@ -148,10 +148,12 @@ class MapPin: NSObject, MKMapViewDelegate {
         
         self.weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
             
-            self?.weatherData = result
+            guard let self = self else { return }
+            
+            self.weatherData = result
             
             DispatchQueue.main.async {
-                self?.markMarkers(buttonTag: button.tag, map: map, waypoint: waypoint, polyLine: polyLine)
+                self.markMarkers(buttonTag: button.tag, map: map, waypoint: waypoint, polyLine: polyLine)
             }
         }
     }

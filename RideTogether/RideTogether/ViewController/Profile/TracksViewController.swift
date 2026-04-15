@@ -100,12 +100,15 @@ class TracksViewController: BaseViewController {
     func fetchRecords() {
         
         RecordManager.shared.fetchRecords { [weak self] result in
+            
+            guard let self = self else { return }
+            
             switch result {
-            case .success(let records):
-                self?.records = records
-                self?.tableView.reloadData()
-            case .failure(_):
-                LKProgressHUD.showFailure(text: "無法讀取資料")
+                case .success(let records):
+                    self.records = records
+                    self.tableView.reloadData()
+                case .failure(_):
+                    LKProgressHUD.showFailure(text: "無法讀取資料")
             }
         }
     }

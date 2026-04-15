@@ -41,11 +41,13 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
         
         bikeManager.getTCAPI { [weak self] result in
             
+            guard let self = self else { return }
+            
             LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
-            self?.taichungBikeData = result
+            self.taichungBikeData = result
             
-            self?.layOutTaichungBike()
+            self.layOutTaichungBike()
 
         }
         

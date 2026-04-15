@@ -78,10 +78,15 @@ class SaveMapsViewController: BaseViewController {
     func fetchRecords() {
         
         MapsManager.shared.fetchSavemaps { [weak self] result  in
+            guard let self = self else { return }
+            
             switch result {
+                
             case .success(let records):
-                self?.records = records
-                self?.tableView.reloadData()
+                
+                self.records = records
+                self.tableView.reloadData()
+                
             case .failure(let error): print ("fetchData Failure: \(error)")
             }
         }

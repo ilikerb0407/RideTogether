@@ -129,20 +129,22 @@ class RecommendViewController: BaseViewController {
         
         MapsManager.shared.fetchRecords { [weak self] result in
             
+            guard let self = self else { return }
+            
             switch result {
                 
             case .success(let records):
                 
                 var filtermaps = [Record]()
                 
-                for maps in records where self?.userInfo.blockList?.contains(maps.uid) == false {
+                for maps in records where self.userInfo.blockList?.contains(maps.uid) == false {
                     
                     filtermaps.append(maps)
                 }
                 
-                self?.records = filtermaps
+                self.records = filtermaps
                 
-                self?.tableView.reloadData()
+                self.tableView.reloadData()
                 
             case .failure(let error): print ("fetchData Failure: \(error)")
             }
