@@ -33,22 +33,9 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
             
             LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
             
-        self?.bikeData = result
+            self?.bikeData = result
             
-        self?.layOutTaipeiBike()
-            
-        }
-        
-        bikeManager.getTCAPI { [weak self] result in
-            
-            guard let self = self else { return }
-            
-            LKProgressHUD.showSuccess(text: "讀取UBike資料成功")
-            
-            self.taichungBikeData = result
-            
-            self.layOutTaichungBike()
-
+            self?.layOutTaipeiBike()
         }
         
         let center = locationManager.location?.coordinate ??
@@ -85,10 +72,9 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
 
             let distance = usersCoordinate.distance(from: bikeStopCoordinate)
        
-                    if  distance < 1000 {
-                        bikeMapView.addAnnotation(annotation)
-                    }
-            
+            if  distance < 500 {
+                bikeMapView.addAnnotation(annotation)
+            }
         }
         
     }
