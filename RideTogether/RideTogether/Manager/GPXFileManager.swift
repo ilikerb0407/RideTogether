@@ -63,6 +63,8 @@ class GPXFileManager {
                 
             case .failure(let error):
                 
+                LKProgressHUD.showFailure(text: "儲存失敗")
+                
                 print("save to Firebase failure: \(error)")
             }
         }
