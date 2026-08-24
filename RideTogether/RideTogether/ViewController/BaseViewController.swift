@@ -216,7 +216,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
             let navBar = UINavigationController.init(rootViewController: rootVC)
             if #available(iOS 15.0, *) {
                 if let presentVc = navBar.sheetPresentationController {
-                    presentVc.detents = [ .medium(), .large()]
+                    presentVc.detents = [ .medium()]
                     self.navigationController?.present(navBar, animated: true, completion: .none)
                 }
             } else {

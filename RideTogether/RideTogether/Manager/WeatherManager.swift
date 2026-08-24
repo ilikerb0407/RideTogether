@@ -27,7 +27,7 @@ class WeatherManager {
                 completion(firstData)
                 
                 LKProgressHUD.showSuccess(text: "讀取成功")
-               
+                
             } catch {
                 LKProgressHUD.showFailure(text: "網路問題，無法讀取")
             }
