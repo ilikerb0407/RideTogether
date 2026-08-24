@@ -29,21 +29,53 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
    
         var lastGpxFilename: String = ""
     
-        func praseGPXFile() {
-            
-            if let inputUrl = URL(string: routes.routeMap) {
-                
-                print("FollowDetail=======:\(inputUrl)======")
-                
-                LKProgressHUD.show(type: .success("下載資料完成"))
-                guard let gpx = GPXParser(withURL: inputUrl)?.parsedData() else { return
-                    
+    func praseGPXFile() {
+        guard let url = URL(string: routes.routeMap) else { return }
+        print("FollowDetail=======:\(url)======")
+
+        // 在開始下載前顯示 HUD
+        DispatchQueue.main.async {
+            LKProgressHUD.show()
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                print("Download GPX failed: \(error)")
+                DispatchQueue.main.async {
+                    LKProgressHUD.showFailure(text: "下載失敗")
                 }
-                
-                didLoadGPXFile(gpxRoot: gpx)
-                
+                return
+            }
+
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    LKProgressHUD.showFailure(text: "沒有資料")
+                }
+                return
+            }
+
+            // 解析放背景
+            DispatchQueue.global(qos: .userInitiated).async {
+                let parser = GPXParser(withData: data)
+                guard let gpx = parser.parsedData() else {
+                    DispatchQueue.main.async {
+                        LKProgressHUD.showFailure(text: "解析失敗")
+                    }
+                    return
+                }
+
+                // 回主執行緒更新 UI 並關閉 HUD
+                DispatchQueue.main.async {
+                    self.didLoadGPXFile(gpxRoot: gpx)
+                    LKProgressHUD.dismiss()
+                }
             }
         }
+
+        task.resume()
+    }
         
         func didLoadGPXFile(gpxRoot: GPXRoot) {
             
