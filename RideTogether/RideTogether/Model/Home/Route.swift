@@ -5,11 +5,10 @@
 //  Created by Kai Fu Jhuang on 2022/4/15.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct Route: Codable, Hashable {
-    
     var uid: String? // for UGC
     var createdTime: Timestamp
     var pictureRef: String?
@@ -20,10 +19,9 @@ struct Route: Codable, Hashable {
     var routeInfo: String
     var routeMap: String
     // URL(String: record.reference)
-    
-    
+
     enum CodingKeys: String, CodingKey {
-        case uid   // for UGC
+        case uid // for UGC
         case createdTime = "created_time"
         case pictureRef = "picture_ref"
         case routeId = "route_id"
@@ -33,18 +31,16 @@ struct Route: Codable, Hashable {
         case routeInfo = "route_info"
         case routeMap = "route_map"
     }
-    
+
     init() {
-        
-        self.uid = "" // for UGC
-        self.createdTime = Timestamp()
-        self.pictureRef = ""
-        self.routeId = ""
-        self.routeName = ""
-        self.routeTypes = 0
-        self.routeLength = ""
-        self.routeInfo = ""
-        self.routeMap = ""
-        
+        uid = "" // for UGC
+        createdTime = Timestamp()
+        pictureRef = ""
+        routeId = ""
+        routeName = ""
+        routeTypes = 0
+        routeLength = ""
+        routeInfo = ""
+        routeMap = ""
     }
 }

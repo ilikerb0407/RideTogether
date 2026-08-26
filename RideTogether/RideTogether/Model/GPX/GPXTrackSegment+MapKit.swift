@@ -5,39 +5,37 @@
 //  Created by Kai Fu Jhuang on 2022/4/8.
 //
 
-import Foundation
-import UIKit
-import MapKit
 import CoreGPX
+import Foundation
+import MapKit
+import UIKit
 
-extension GPXTrackSegment {
-    
-    public var overlay: MKPolyline {
-        var coords: [CLLocationCoordinate2D] = self.trackPointsToCoordinates()
+public extension GPXTrackSegment {
+    var overlay: MKPolyline {
+        var coords: [CLLocationCoordinate2D] = trackPointsToCoordinates()
         let polyLine = MKPolyline(coordinates: &coords, count: coords.count)
         return polyLine
     }
 }
 
 extension GPXTrackSegment {
-  
     func trackPointsToCoordinates() -> [CLLocationCoordinate2D] {
         var coords: [CLLocationCoordinate2D] = []
-        for point in self.points {
+        for point in points {
             coords.append(point.coordinate)
         }
         return coords
     }
-    
+
     func length() -> CLLocationDistance {
         var length: CLLocationDistance = 0.0
         var distanceTwoPoints: CLLocationDistance
-        if self.points.count < 2 {
+        if points.count < 2 {
             return length
         }
         var prev: CLLocation?
-        for point in self.points {
-            let point: CLLocation = CLLocation(latitude: Double(point.latitude!), longitude: Double(point.longitude!) )
+        for point in points {
+            let point = CLLocation(latitude: Double(point.latitude!), longitude: Double(point.longitude!))
             if prev == nil {
                 prev = point
                 continue
@@ -48,17 +46,17 @@ extension GPXTrackSegment {
         }
         return length
     }
-    
+
     func distanceFromOrigin() -> [Double] {
-        var distanceFromOrigin: [Double] = [0.0]
-        var length: Double = 0.0
-        var interval: Double = 0.0
-        if self.points.count < 2 {
+        var distanceFromOrigin = [0.0]
+        var length = 0.0
+        var interval = 0.0
+        if points.count < 2 {
             return distanceFromOrigin
         }
         var prev: CLLocation?
-        for point in self.points {
-            let point: CLLocation = CLLocation(latitude: Double(point.latitude!), longitude: Double(point.longitude!) )
+        for point in points {
+            let point = CLLocation(latitude: Double(point.latitude!), longitude: Double(point.longitude!))
             if prev == nil {
                 prev = point
                 continue

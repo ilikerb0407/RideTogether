@@ -5,39 +5,38 @@
 //  Created by Kai Fu Jhuang on 2022/4/23.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 class WeatherManager {
     static let shared = WeatherManager()
-    
+
     func getGroupAPI(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (ResponseBody) -> Void) {
-        
         let urlString = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=d11fc33a5a4003b6bac4bb9d50f25d15&units=metric")
-        
+
         guard let urlString = urlString else { return }
         let url = URLRequest(url: urlString)
-        
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, _, _) in
-            
+
+        URLSession.shared.dataTask(with: url, completionHandler: { data, _, _ in
+
             guard let data = data else { return }
             let decoder = JSONDecoder()
             do {
                 let firstData = try decoder.decode(ResponseBody.self, from: data)
                 completion(firstData)
-                
+
                 LKProgressHUD.showSuccess(text: "讀取成功")
-                
+
             } catch {
                 LKProgressHUD.showFailure(text: "網路問題，無法讀取")
             }
-            
-        }) .resume()
+
+        }).resume()
     }
-    
 }
 
 // MARK: - Welcome
+
 struct ResponseBody: Codable {
     let coord: Coord
     let weather: [Weather]
@@ -54,16 +53,19 @@ struct ResponseBody: Codable {
 }
 
 // MARK: - Clouds
+
 struct Clouds: Codable {
     let all: Int
 }
 
 // MARK: - Coord
+
 struct Coord: Codable {
     let lon, lat: Double
 }
 
 // MARK: - Main
+
 struct Main: Codable {
     let temp, feelsLike, tempMin, tempMax: Double
     let pressure, humidity: Int
@@ -78,6 +80,7 @@ struct Main: Codable {
 }
 
 // MARK: - Sys
+
 struct Sys: Codable {
     let type, id: Int
     let country: String
@@ -85,6 +88,7 @@ struct Sys: Codable {
 }
 
 // MARK: - Weather
+
 struct Weather: Codable {
     let id: Int
     let main, weatherDescription, icon: String
@@ -97,6 +101,7 @@ struct Weather: Codable {
 }
 
 // MARK: - Wind
+
 struct Wind: Codable {
     let speed: Double
     let deg: Int

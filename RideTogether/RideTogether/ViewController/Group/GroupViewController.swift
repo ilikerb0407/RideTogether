@@ -5,24 +5,24 @@
 //  Created by Kai Fu Jhuang on 2022/4/20.
 //
 
-import UIKit
-import Firebase
-import MJRefresh
-import MASegmentedControl
-import FirebaseAuth
-import FirebaseFirestore
 import AVFoundation
+import Firebase
+import FirebaseAuth
 import FirebaseCrashlytics
+import FirebaseFirestore
+import MASegmentedControl
+import MJRefresh
+import UIKit
 
 class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
-
     // MARK: - Outlets
 
-    @IBOutlet weak var gView: UIView! {
+    @IBOutlet var gView: UIView! {
         didSet {
             gView.applyGradient(
                 colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed)
+                locations: [0.0, 1.0], direction: .leftSkewed
+            )
             gView.alpha = 0.85
         }
     }
@@ -98,14 +98,16 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.groupChat.rawValue,
            let chatRoomVC = segue.destination as? ChatRoomViewController,
-           let groupInfo = sender as? Group {
+           let groupInfo = sender as? Group
+        {
             chatRoomVC.groupInfo = groupInfo
             chatRoomVC.cache = cache
         }
 
         if segue.identifier == SegueIdentifier.requestList.rawValue,
            let requestVC = segue.destination as? JoinViewController,
-           let requests = sender as? [Request] {
+           let requests = sender as? [Request]
+        {
             requestVC.requests = requests
         }
     }
@@ -121,12 +123,11 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 // MARK: - Data
 
 extension GroupViewController {
-
     func fetchGroupData() {
         GroupManager.shared.fetchGroups { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let groups):
+            case let .success(groups):
                 let filtered = groups.filter { self.userInfo.blockList?.contains($0.hostId) == false }
                 self.myGroups = filtered.filter { $0.userIds.contains(self.userInfo.uid) }
                 self.rearrangeMyGroup(groups: self.myGroups)
@@ -137,7 +138,7 @@ extension GroupViewController {
                     self.fetchUserData(uid: group.hostId)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print("fetchData.failure: \(error)")
                 LKProgressHUD.showFailure(text: "讀取資料失敗")
             }
@@ -147,9 +148,9 @@ extension GroupViewController {
     func fetchUserData(uid: String) {
         UserManager.shared.fetchUserInfo(uid: uid) { [weak self] result in
             switch result {
-            case .success(let user):
+            case let .success(user):
                 self?.cache[uid] = user
-            case .failure(let error):
+            case let .failure(error):
                 print("fetchData.failure: \(error)")
             }
         }
@@ -164,7 +165,7 @@ extension GroupViewController {
 
     func rearrangeMyGroup(groups: [Group]) {
         let unexpired = groups.filter { !$0.isExpired! }.sorted { $0.date.seconds < $1.date.seconds }
-        let expired   = groups.filter {  $0.isExpired! }.sorted { $0.date.seconds < $1.date.seconds }
+        let expired = groups.filter { $0.isExpired! }.sorted { $0.date.seconds < $1.date.seconds }
         myGroups = unexpired + expired
     }
 }
@@ -172,19 +173,18 @@ extension GroupViewController {
 // MARK: - Listener
 
 extension GroupViewController {
-
     func addRequestListener() {
         requestListenerRegistration = GroupManager.shared.addRequestListener { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let requests):
+            case let .success(requests):
                 self.requests = requests.filter {
                     self.userInfo.blockList?.contains($0.requestId) == false
                 }
                 self.tabBarController?.tabBar.items?[2].badgeValue = "\(self.requests.count)"
                 self.tabBarController?.tabBar.items?[2].badgeColor = .red
 
-            case .failure(let error):
+            case let .failure(error):
                 print("fetchData.failure: \(error)")
             }
         }
@@ -194,7 +194,6 @@ extension GroupViewController {
 // MARK: - UI Setup
 
 extension GroupViewController {
-
     func setUpTableView() {
         tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -208,7 +207,7 @@ extension GroupViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 
@@ -224,7 +223,7 @@ extension GroupViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
             headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 80)
+            headerView.heightAnchor.constraint(equalToConstant: 80),
         ])
 
         headerView.resquestsBell.addTarget(self, action: #selector(checkRequestList), for: .touchUpInside)
@@ -246,7 +245,6 @@ extension GroupViewController {
 // MARK: - Actions
 
 extension GroupViewController {
-
     @objc func creatGroup() {
         guard let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController else { return }
         let navBar = UINavigationController(rootViewController: rootVC)
@@ -301,19 +299,18 @@ extension GroupViewController {
 // MARK: - TableView Delegate
 
 extension GroupViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 0
         UIView.animate(withDuration: 0.4, delay: 0.03 * Double(indexPath.row)) {
             cell.alpha = 1
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         200
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let groups = currentGroups()
         performSegue(withIdentifier: SegueIdentifier.groupChat.rawValue, sender: groups[indexPath.row])
     }
@@ -322,8 +319,7 @@ extension GroupViewController: UITableViewDelegate {
 // MARK: - TableView DataSource
 
 extension GroupViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         currentGroups().count
     }
 
@@ -338,8 +334,7 @@ extension GroupViewController: UITableViewDataSource {
 // MARK: - SearchBar Delegate
 
 extension GroupViewController: UISearchBarDelegate {
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_: UISearchBar, textDidChange searchText: String) {
         self.searchText = searchText
         let source = onlyUserGroup ? myGroups : inActivityGroup
         searchGroups = filtGroupBySearchName(groups: source)

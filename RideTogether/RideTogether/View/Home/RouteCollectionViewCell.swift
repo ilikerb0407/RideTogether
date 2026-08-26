@@ -6,12 +6,13 @@
 //
 
 import UIKit
-//import CarLensCollectionViewLayout
 
-//class RouteCollectionViewCell: CarLensCollectionViewCell {
-//    
+// import CarLensCollectionViewLayout
+
+// class RouteCollectionViewCell: CarLensCollectionViewCell {
+//
 //    static let identifier = "RouteCollectionViewCell"
-//    
+//
 //    private var upperView: UILabel = {
 //        var label = UILabel()
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +22,7 @@ import UIKit
 //        label.text = "CarLens"
 //        return label
 //    }()
-//    
+//
 //    private var bottomView: UIView = {
 //        var view = UIView()
 //        view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,15 +30,15 @@ import UIKit
 //        view.layer.cornerRadius = 10
 //        return view
 //    }()
-//    
+//
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
 //        configure(topView: upperView, cardView: bottomView)
 //    }
-//    
+//
 //    required init?(coder aDecoder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
 //    }
-//    
-//    
-//}
+//
+//
+// }

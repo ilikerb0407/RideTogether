@@ -5,18 +5,17 @@
 //  Created by Kai Fu Jhuang on 2022/4/8.
 //
 
-import UIKit
-import MapKit
 import CoreGPX
 import CoreLocation
 import Lottie
+import MapKit
 import MessageUI
+import UIKit
 
 class JourneyViewController: BaseViewController {
-
     // MARK: - Outlets
 
-    @IBOutlet weak var mapView: GPXMapView!
+    @IBOutlet var mapView: GPXMapView!
 
     // MARK: - Properties
 
@@ -159,7 +158,7 @@ class JourneyViewController: BaseViewController {
             view.widthAnchor.constraint(equalToConstant: 60),
             view.heightAnchor.constraint(equalToConstant: 60),
             view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45)
+            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45),
         ])
         view.contentMode = .scaleAspectFit
         view.play()
@@ -228,7 +227,6 @@ class JourneyViewController: BaseViewController {
 // MARK: - Map Setup
 
 extension JourneyViewController {
-
     func setUpMap() {
         setBeginningRegion()
         mapView.delegate = mapPin
@@ -277,7 +275,6 @@ extension JourneyViewController {
 // MARK: - UI Setup
 
 extension JourneyViewController {
-
     func setUpButtonsStackView() {
         view.addSubview(buttonStackView)
         view.addSubview(leftStackView)
@@ -291,7 +288,7 @@ extension JourneyViewController {
             leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
             leftStackView.widthAnchor.constraint(equalToConstant: 100),
             leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
-            leftStackView.heightAnchor.constraint(equalToConstant: 200)
+            leftStackView.heightAnchor.constraint(equalToConstant: 200),
         ])
     }
 
@@ -316,7 +313,6 @@ extension JourneyViewController {
 // MARK: - Actions
 
 extension JourneyViewController {
-
     @objc func trackerButtonTapped() {
         switch trackingStatus {
         case .notStarted:
@@ -336,7 +332,7 @@ extension JourneyViewController {
     }
 
     @objc func saveButtonTapped(withReset: Bool = false) {
-        if trackingStatus == .notStarted && !hasWaypoints { return }
+        if trackingStatus == .notStarted, !hasWaypoints { return }
 
         let alertController = UIAlertController(title: "儲存路線", message: "路線標題", preferredStyle: .alert)
         alertController.addTextField { textField in
@@ -379,7 +375,7 @@ extension JourneyViewController {
         followUser = !followUser
     }
 
-    @objc func stopFollowingUser(_ gesture: UIPanGestureRecognizer) {
+    @objc func stopFollowingUser(_: UIPanGestureRecognizer) {
         if followUser { followUser = false }
     }
 
@@ -426,8 +422,9 @@ extension JourneyViewController {
         }
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith _: UIGestureRecognizer) -> Bool
+    {
         return true
     }
 }
@@ -435,7 +432,7 @@ extension JourneyViewController {
 // MARK: - StopWatch Delegate
 
 extension JourneyViewController: StopWatchDelegate {
-    func stopWatch(_ stropWatch: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
+    func stopWatch(_: StopWatch, didUpdateElapsedTimeString elapsedTimeString: String) {
         timeLabel.text = elapsedTimeString
     }
 }
@@ -443,8 +440,7 @@ extension JourneyViewController: StopWatchDelegate {
 // MARK: - CLLocationManager Delegate
 
 extension JourneyViewController: CLLocationManagerDelegate {
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.first!
         altitudeLabel.text = "高度 : \(newLocation.altitude.toAltitude())"
         speedLabel.text = "時速 : \((newLocation.speed < 0) ? "0.00" : newLocation.speed.toSpeed())"
@@ -460,7 +456,7 @@ extension JourneyViewController: CLLocationManagerDelegate {
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+    func locationManager(_: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         mapView.heading = newHeading
         mapView.updateHeading()
     }

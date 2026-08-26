@@ -8,21 +8,18 @@
 import UIKit
 
 class SaveMaps: UITableViewCell {
-    
-    
-    @IBOutlet weak var title: UILabel!
-    
-    @IBOutlet weak var time: UILabel!
-    
-    @IBOutlet weak var userPhoto: UIImageView!
-    
+    @IBOutlet var title: UILabel!
+
+    @IBOutlet var time: UILabel!
+
+    @IBOutlet var userPhoto: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
-        
-        self.backgroundColor = .clear
-        
+
+        backgroundColor = .clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,12 +27,9 @@ class SaveMaps: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func setUpCell(model : Record) {
-        
+
+    func setUpCell(model: Record) {
         title.text = model.recordName
         time.text = TimeFormater.preciseTime.timestampToString(time: model.createdTime)
     }
-    
-    
 }

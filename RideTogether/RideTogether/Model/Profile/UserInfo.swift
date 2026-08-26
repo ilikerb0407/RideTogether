@@ -8,7 +8,6 @@
 import Foundation
 
 struct UserInfo: Codable {
-    
     var uid: String
     var userName: String?
     var pictureRef: String?
@@ -17,9 +16,8 @@ struct UserInfo: Codable {
     var totalGroups: Int
     var blockList: [String]?
     var saveMaps: [String]?
-    
+
     enum CodingKeys: String, CodingKey {
-        
         case uid
         case userName = "user_name"
         case pictureRef = "picture_ref"
@@ -29,16 +27,15 @@ struct UserInfo: Codable {
         case blockList = "block_list"
         case saveMaps = "save_maps"
     }
-    
+
     init() {
-        self.uid = ""
-        self.userName = ""
-        self.pictureRef = ""
-        self.totalLength = 0.0
-        self.totalFriends = 0
-        self.totalGroups = 0
-        self.blockList = []
-        self.saveMaps = []
+        uid = ""
+        userName = ""
+        pictureRef = ""
+        totalLength = 0.0
+        totalFriends = 0
+        totalGroups = 0
+        blockList = []
+        saveMaps = []
     }
-    
 }
