@@ -13,8 +13,8 @@
 	</array>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
 	<false/>
-	<key>Privacy - Location usage description</key>
-	<string>請允許"RideTogether"使用您的定位，進行紀錄自行車路線的功能</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>請允許 RideTogether 在背景持續使用定位，才能在您切出 App 或鎖螢幕時繼續記錄騎乘路線</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

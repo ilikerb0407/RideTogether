@@ -17,12 +17,14 @@ class LocationManager: CLLocationManager {
 
         requestAlwaysAuthorization()
 
-        desiredAccuracy = kCLLocationAccuracyBest
+        desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        
+        activityType = .fitness
 
         distanceFilter = 2 // meters
 
         pausesLocationUpdatesAutomatically = false
 
-        allowsBackgroundLocationUpdates = false
+        allowsBackgroundLocationUpdates = true
     }
 }
