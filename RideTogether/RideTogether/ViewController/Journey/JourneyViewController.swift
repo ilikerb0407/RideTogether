@@ -331,7 +331,7 @@ extension JourneyViewController {
         }
     }
 
-    @objc func saveButtonTapped(withReset: Bool = false) {
+    @objc func saveButtonTapped() {
         if trackingStatus == .notStarted, !hasWaypoints { return }
 
         let alertController = UIAlertController(title: "儲存路線", message: "路線標題", preferredStyle: .alert)
@@ -343,17 +343,41 @@ extension JourneyViewController {
         let saveAction = UIAlertAction(title: "儲存", style: .default) { [weak self] _ in
             guard let self = self else { return }
             let gpxString = self.mapView.exportToGPXString()
-            if let fileName = alertController.textFields?[0].text {
-                GPXFileManager.save(fileName, gpxContents: gpxString)
-            }
-            if withReset {
-                self.trackingStatus = .notStarted
+            guard let fileName = alertController.textFields?[0].text else { return }
+
+            GPXFileManager.save(fileName, gpxContents: gpxString) { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        self.presentClearRouteConfirmation()
+                    case .failure:
+                        // 存檔失敗，不清除任何資料，保留使用者的路線讓他可以重試
+                        break
+                    }
+                }
             }
         }
 
         alertController.addAction(saveAction)
         alertController.addAction(UIAlertAction(title: "取消", style: .cancel))
         present(alertController, animated: true)
+    }
+
+    private func presentClearRouteConfirmation() {
+        let alert = UIAlertController(
+            title: "儲存成功",
+            message: "要清除目前記錄的路線嗎？如果要繼續記錄同一趟路線可以選擇保留。",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "清除路線", style: .destructive) { [weak self] _ in
+            self?.trackingStatus = .notStarted
+        })
+
+        alert.addAction(UIAlertAction(title: "保留繼續記錄", style: .cancel))
+
+        present(alert, animated: true)
     }
 
     @objc func resetButtonTapped() {

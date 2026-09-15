@@ -34,7 +34,7 @@ class GPXFileManager {
         }
     }
 
-    class func save(_ filename: String, gpxContents: String) {
+    class func save(_ filename: String, gpxContents: String, completion: ((Result<Void, Error>) -> Void)? = nil) {
         LKProgressHUD.show()
 
         let fileURL: URL = URLForFilename(filename)
@@ -54,11 +54,15 @@ class GPXFileManager {
 
                 LKProgressHUD.showSuccess(text: "儲存成功")
 
+                completion?(.success(()))
+
             case let .failure(error):
 
                 LKProgressHUD.showFailure(text: "儲存失敗")
 
                 print("save to Firebase failure: \(error)")
+
+                completion?(.failure(error))
             }
         }
     }
