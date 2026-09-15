@@ -556,6 +556,7 @@
 		23D1B74E28005DE1000EDA70 /* GPX */ = {
 			isa = PBXGroup;
 			children = (
+				23D1B74428004768000EDA70 /* GPXMapView.swift */,
 				23D1B74F28005E16000EDA70 /* GPXSession.swift */,
 				23D1B75328005F45000EDA70 /* GPXExtentCoordinates.swift */,
 				23D1B75528005F62000EDA70 /* GPXRoot+length.swift */,
@@ -594,7 +595,6 @@
 			children = (
 				23A84A7A2812EFFE00DD8D39 /* DirectionsViewController.xib */,
 				23D1B78F2800AD0C000EDA70 /* Journey.storyboard */,
-				23D1B74428004768000EDA70 /* GPXMapView.swift */,
 				23D1B768280060EC000EDA70 /* DistanceLabel.swift */,
 			);
 			path = Journey;

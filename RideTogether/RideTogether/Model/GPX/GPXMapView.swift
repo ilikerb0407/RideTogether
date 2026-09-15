@@ -63,18 +63,45 @@ class GPXMapView: MKMapView {
         }
     }
 
-    func clearMap() {
+    /// Fully resets the map AND the underlying recording session: clears
+    /// tracked points, removes every overlay (including the user's
+    /// in-progress route), and removes every annotation. Use only when the
+    /// user is actually abandoning/restarting the recording — e.g. when
+    /// leaving the Journey screen or explicitly discarding a ride.
+    ///
+    /// This is intentionally the only place allowed to call
+    /// `removeAllOverlaysIncludingTrack()`.
+    func resetMapAndRecordingSession() {
         session.reset()
-        removeOverlays(overlays)
+        removeAllOverlaysIncludingTrack()
         removeAnnotations(annotations)
         extent = GPXExtentCoordinates()
     }
 
-    func clearOverlays() {
+    /// Removes every overlay on the map, including the user's in-progress
+    /// recorded route. This is a destructive operation — kept `private` so
+    /// UI actions like "remove pin" can't reach for it by mistake. Only
+    /// `resetMapAndRecordingSession()` should ever call this.
+    private func removeAllOverlaysIncludingTrack() {
         removeOverlays(overlays)
     }
-    
-    func removeAllOverlaysExceptCurrentTrack() {
+
+    /// Removes navigation/guide-related overlays (e.g. the walking
+    /// directions polyline shown after tapping a dropped pin) while
+    /// preserving the polyline that represents the user's in-progress
+    /// recorded route.
+    ///
+    /// UI actions like "remove pin" or "drop a new pin" should call this
+    /// instead of the destructive, private `removeAllOverlaysIncludingTrack()`,
+    /// which wipes the entire overlays collection indiscriminately —
+    /// including the route the user is actively recording. That was the
+    /// root cause of the route visibly disappearing until the next location
+    /// update silently rebuilt it (see `addPointToCurrentTrackSegmentAtLocation`).
+    ///
+    /// We identify the overlay to keep by object identity (`!==`) rather
+    /// than by `title` string comparison, so this stays correct even if a
+    /// future overlay type forgets to set its title.
+    func removeNavigationOverlays() {
         let overlaysToRemove = overlays.filter { $0 !== currentSegmentOverlay }
         removeOverlays(overlaysToRemove)
     }

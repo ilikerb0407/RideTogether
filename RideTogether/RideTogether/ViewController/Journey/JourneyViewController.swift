@@ -42,7 +42,7 @@ class JourneyViewController: BaseViewController {
                 waveLottieView.isHidden = true
                 bikeLottieView.isHidden = false
                 timeLabel.text = stopWatch.elapsedTimeString
-                mapView.clearMap()
+                mapView.resetMapAndRecordingSession()
                 totalTrackedDistanceLabel.distance = mapView.session.totalTrackedDistance
                 currentSegmentDistanceLabel.distance = mapView.session.currentSegmentDistance
 
@@ -391,7 +391,7 @@ extension JourneyViewController {
 
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            mapView.removeAllOverlaysExceptCurrentTrack()
+            mapView.removeNavigationOverlays()
             mapView.addWaypointAtViewPoint(gesture.location(in: mapView))
             hasWaypoints = true
         }

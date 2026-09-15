@@ -163,7 +163,7 @@ class MapPin: NSObject, MKMapViewDelegate {
 
             let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
                 map.removeWaypoint(waypoint)
-                map.removeAllOverlaysExceptCurrentTrack()
+                map.removeNavigationOverlays()
             }
 
             let routeName = UIAlertAction(title: "導航至該地點", style: .default) { _ in
