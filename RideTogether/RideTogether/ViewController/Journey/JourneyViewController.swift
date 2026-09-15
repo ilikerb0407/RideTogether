@@ -391,7 +391,7 @@ extension JourneyViewController {
 
     @objc func addPinAtTappedLocation(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            mapView.clearOverlays()
+            mapView.removeAllOverlaysExceptCurrentTrack()
             mapView.addWaypointAtViewPoint(gesture.location(in: mapView))
             hasWaypoints = true
         }

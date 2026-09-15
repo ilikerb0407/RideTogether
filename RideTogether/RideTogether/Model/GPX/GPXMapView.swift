@@ -73,6 +73,11 @@ class GPXMapView: MKMapView {
     func clearOverlays() {
         removeOverlays(overlays)
     }
+    
+    func removeAllOverlaysExceptCurrentTrack() {
+        let overlaysToRemove = overlays.filter { $0 !== currentSegmentOverlay }
+        removeOverlays(overlaysToRemove)
+    }
 
     func exportToGPXString() -> String {
         return session.exportToGPXString()
