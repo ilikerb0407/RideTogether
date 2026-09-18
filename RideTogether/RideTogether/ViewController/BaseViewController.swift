@@ -154,7 +154,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
         return controller
     }
 
-    // 前一頁的button
     func setNavigationBar(title: String) {
         self.title = "\(title)"
 
@@ -164,7 +163,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
 
         let image = UIImage(systemName: "chevron.left",
                             withConfiguration: UIImage.SymbolConfiguration(pointSize: 25, weight: .light))
-        // 改圖片
         leftButton.backgroundColor = .B5
 
         leftButton.tintColor = .B2
@@ -186,20 +184,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, MFMessa
                 }
             } else {
                 LKProgressHUD.showFailure(text: "目前僅提供台北市Ubike")
-            }
-        }
-    }
-
-    @objc func presentRouteSelectionViewController() {
-        if let rootVC = storyboard?.instantiateViewController(withIdentifier: "RouteSelectionViewController") as? RouteSelectionViewController {
-            let navBar = UINavigationController(rootViewController: rootVC)
-            if #available(iOS 15.0, *) {
-                if let presentVc = navBar.sheetPresentationController {
-                    presentVc.detents = [.medium()]
-                    self.navigationController?.present(navBar, animated: true, completion: .none)
-                }
-            } else {
-                LKProgressHUD.showFailure(text: "網路問題，無法跳出")
             }
         }
     }

@@ -40,7 +40,6 @@ class JourneyViewController: BaseViewController {
                 trackerButton.setTitle("開始", for: .normal)
                 stopWatch.reset()
                 waveLottieView.isHidden = true
-                bikeLottieView.isHidden = false
                 timeLabel.text = stopWatch.elapsedTimeString
                 mapView.resetMapAndRecordingSession()
                 totalTrackedDistanceLabel.distance = mapView.session.totalTrackedDistance
@@ -51,13 +50,11 @@ class JourneyViewController: BaseViewController {
                 stopWatch.start()
                 waveLottieView.isHidden = false
                 waveLottieView.play()
-                bikeLottieView.play()
 
             case .paused:
                 trackerButton.setTitle("繼續", for: .normal)
                 stopWatch.stop()
                 waveLottieView.isHidden = true
-                bikeLottieView.stop()
                 mapView.startNewTrackSegment()
             }
         }
@@ -113,22 +110,6 @@ class JourneyViewController: BaseViewController {
         return button
     }()
 
-    private lazy var presentViewControllerButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "info.circle", withConfiguration: imagePointSize)
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(presentRouteSelectionViewController), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var sendSMSButton: UIButton = {
-        let button = BottomButton()
-        let image = UIImage(systemName: "message", withConfiguration: imagePointSize)
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(sendSMS), for: .touchUpInside)
-        return button
-    }()
-
     private lazy var pinButton: UIButton = {
         let button = BottomButton()
         let mappin = UIImage(systemName: "mappin.and.ellipse", withConfiguration: imagePointSize)
@@ -149,25 +130,8 @@ class JourneyViewController: BaseViewController {
         return view
     }()
 
-    private lazy var bikeLottieView: AnimationView = {
-        let view = AnimationView(name: "49908-bike-ride")
-        view.loopMode = .loop
-        self.view.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 60),
-            view.heightAnchor.constraint(equalToConstant: 60),
-            view.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            view.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -45),
-        ])
-        view.contentMode = .scaleAspectFit
-        view.play()
-        return view
-    }()
-
-    // 底部橫排按鈕列
     private lazy var buttonStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, sendSMSButton, presentViewControllerButton, showBike])
+        let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, showBike])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 8
@@ -176,7 +140,6 @@ class JourneyViewController: BaseViewController {
         return view
     }()
 
-    // 左側垂直操作按鈕列
     private lazy var leftStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [saveButton, trackerButton, resetButton])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -188,12 +151,11 @@ class JourneyViewController: BaseViewController {
     }()
 
     // MARK: - Labels
-
-    private var altitudeLabel = LeftLabel()
-    private var speedLabel = LeftLabel()
-    private var timeLabel = RightLabel()
-    private var totalTrackedDistanceLabel = DistanceLabel()
-    private lazy var currentSegmentDistanceLabel = DistanceLabel()
+    private let altitudeLabel = LeftLabel()
+    private let speedLabel = LeftLabel()
+    private let timeLabel = RightLabel()
+    private let totalTrackedDistanceLabel = DistanceLabel()
+    private let currentSegmentDistanceLabel = DistanceLabel()
 
     // MARK: - View Life Cycle
 
@@ -217,7 +179,6 @@ class JourneyViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if trackingStatus == .tracking {
-            bikeLottieView.play()
             waveLottieView.play()
         }
     }
@@ -417,18 +378,6 @@ extension JourneyViewController {
             mapView.removeNavigationOverlays()
             mapView.addWaypointAtViewPoint(gesture.location(in: mapView))
             hasWaypoints = true
-        }
-    }
-
-    @objc func sendSMS() {
-        LKProgressHUD.show()
-        let msgViewController = MFMessageComposeViewController()
-        msgViewController.messageComposeDelegate = self
-        msgViewController.recipients = ["請輸入電話號碼"]
-        msgViewController.body = "傳送我的位置 經度 : \(locationManager.location!.coordinate.longitude), 緯度: \(locationManager.location!.coordinate.latitude)"
-        if MFMessageComposeViewController.canSendText() {
-            present(msgViewController, animated: true)
-            LKProgressHUD.dismiss()
         }
     }
 

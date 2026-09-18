@@ -132,8 +132,6 @@ class RouteViewController: BaseViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
 
-//        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
-
         collectionView.lk_registerCellWithNib(identifier: "RouteCollectionCell", bundle: nil)
 
         view.stickSubView(collectionView)
@@ -181,52 +179,6 @@ class RouteViewController: BaseViewController {
         super.viewDidAppear(animated)
         LKProgressHUD.dismiss()
     }
-
-//    func setUpThemeTag() {
-//        let container = UIView()
-//        container.translatesAutoresizingMaskIntoConstraints = false
-//        container.backgroundColor = .B5
-//        container.layer.cornerRadius = 20
-//        container.layer.masksToBounds = true
-//
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = themeLabel
-//        label.textColor = .B2
-//        label.textAlignment = .center
-//        label.font = UIFont.regular(size: 18)
-//
-//        view.addSubview(container)
-//        container.addSubview(label)
-//
-//        NSLayoutConstraint.activate([
-//            container.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-//            container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
-//            container.heightAnchor.constraint(equalToConstant: 40),
-//
-//            label.topAnchor.constraint(equalTo: container.topAnchor, constant: 6),
-//            label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -6),
-//            label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
-//            label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -14)
-//        ])
-//
-//        // If tableView exists, move it below the tag to avoid overlap
-//        if let tableView = self.value(forKey: "tableView") as? UITableView {
-//            // Remove existing top constraint if it anchors to safeArea top
-//            // Then add a new constraint to the container's bottom
-//            tableView.translatesAutoresizingMaskIntoConstraints = false
-//            // Deactivate constraints that pin tableView to safeArea top
-//            for c in view.constraints where (c.firstItem as? UIView) == tableView && c.firstAttribute == .top {
-//                c.isActive = false
-//            }
-//            for c in tableView.constraints where c.firstAttribute == .top {
-//                c.isActive = false
-//            }
-//            NSLayoutConstraint.activate([
-//                tableView.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 12)
-//            ])
-//        }
-//    }
 
     private let saveCollection = Collection.savemaps.rawValue // Profile
     var userId: String { UserManager.shared.userInfo.uid }
@@ -406,13 +358,7 @@ extension RouteViewController {
 
                 cell.setUpCell(model: model)
 
-//                cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
-
                 cell.rideButton.tag = indexPath.row
-
-//                cell.checkGroupButton.tag = indexPath.row
-
-//                cell.checkGroupButton.addTarget(self, action: #selector(self.toGroupPage), for: .touchUpInside)
 
                 return cell
             }
