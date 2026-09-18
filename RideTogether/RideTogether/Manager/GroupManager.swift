@@ -14,7 +14,7 @@ import Accelerate
 import Firebase
 import FirebaseFirestore
 
-class GroupManager {
+class GroupManager: GroupManaging {
     var userId: String { UserManager.shared.userInfo.uid }
 
     static let shared = GroupManager()

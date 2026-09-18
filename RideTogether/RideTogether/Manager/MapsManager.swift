@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 // MARK: - Offline Map -
 
-class MapsManager {
+class MapsManager: MapsManaging {
     lazy var storage = Storage.storage()
 
     static let shared = MapsManager()

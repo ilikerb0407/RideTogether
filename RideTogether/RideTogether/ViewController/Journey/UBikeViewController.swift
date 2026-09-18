@@ -15,7 +15,12 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
 
     var taichungBikeData: TaichungBike?
 
-    var bikeManager = BikeManager()
+    // Was `var bikeManager = BikeManager()`, which bypassed the `.shared`
+    // singleton and created its own separate instance — inconsistent with
+    // every other call site (e.g. `UbikeManager.swift` itself uses
+    // `.shared`). Typing this as `BikeManaging` also lets tests inject a
+    // mock instead of hitting the real network API.
+    var bikeManager: BikeManaging = BikeManager.shared
 
     @IBOutlet var bikeMapView: MKMapView!
 

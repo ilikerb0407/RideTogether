@@ -13,7 +13,7 @@ protocol bikeProvider {
     func provideBike(bike: Bike)
 }
 
-class BikeManager {
+class BikeManager: BikeManaging {
     static let shared = BikeManager()
 
     var bikes: [Bike] = []

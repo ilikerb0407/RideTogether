@@ -13,9 +13,17 @@ import Kingfisher
 import UIKit
 
 class ProfileViewController: BaseViewController {
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
+    // Injected as a mutable property (rather than through a custom `init`)
+    // because this ViewController is instantiated from Storyboard, which
+    // requires `init?(coder:)`. Defaulting to `.shared` keeps every
+    // existing call site working unchanged; unit tests can still assign a
+    // `MockUserManager` to this property right after instantiation, before
+    // `viewDidLoad` fires any network calls.
+    var userManager: UserManaging = UserManager.shared
 
-    var userId: String { UserManager.shared.userInfo.uid }
+    private var userInfo: UserInfo { userManager.userInfo }
+
+    var userId: String { userManager.userInfo.uid }
 
     private var textInTextfield: String = ""
 
@@ -90,11 +98,11 @@ class ProfileViewController: BaseViewController {
     }
 
     func updateUserInfo(name: String) {
-        UserManager.shared.updateUserName(name: name)
+        userManager.updateUserName(name: name)
     }
 
     func updateUserInfo(imageData: Data) {
-        UserManager.shared.uploadUserPicture(imageData: imageData) { result in
+        userManager.uploadUserPicture(imageData: imageData) { result in
 
             switch result {
             case .success:
@@ -178,10 +186,10 @@ extension ProfileViewController: UITableViewDelegate {
             } else {
                 print("delete success")
 
-                UserManager.shared.deleteUserInfo(uid: currentuser!.uid)
-                UserManager.shared.deleteUserSharemaps(uid: currentuser!.uid)
-                UserManager.shared.deleteUserRequests(uid: currentuser!.uid)
-                UserManager.shared.deleteUserFromGroup(uid: currentuser!.uid)
+                self.userManager.deleteUserInfo(uid: currentuser!.uid)
+                self.userManager.deleteUserSharemaps(uid: currentuser!.uid)
+                self.userManager.deleteUserRequests(uid: currentuser!.uid)
+                self.userManager.deleteUserFromGroup(uid: currentuser!.uid)
             }
         }
 

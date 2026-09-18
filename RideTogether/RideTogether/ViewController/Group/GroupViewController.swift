@@ -33,6 +33,14 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     var VC = CreateGroupViewController()
     var onlyUserGroup = false
 
+    // Injected as a mutable property (rather than through a custom `init`)
+    // because this ViewController is instantiated from Storyboard, which
+    // requires `init?(coder:)`. Defaulting to `.shared` keeps every
+    // existing call site working unchanged; unit tests can still assign a
+    // `MockGroupManager` to this property right after instantiation, before
+    // `viewDidLoad` fires any network calls.
+    var groupManager: GroupManaging = GroupManager.shared
+
     private var userInfo: UserInfo { UserManager.shared.userInfo }
     private var groupInfo: GroupInfo?
     private let header = MJRefreshNormalHeader()
@@ -124,7 +132,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
 extension GroupViewController {
     func fetchGroupData() {
-        GroupManager.shared.fetchGroups { [weak self] result in
+        groupManager.fetchGroups { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(groups):
@@ -174,7 +182,7 @@ extension GroupViewController {
 
 extension GroupViewController {
     func addRequestListener() {
-        requestListenerRegistration = GroupManager.shared.addRequestListener { [weak self] result in
+        requestListenerRegistration = groupManager.addRequestListener { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(requests):

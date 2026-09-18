@@ -11,7 +11,7 @@ import Foundation
 // import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-class RecordManager {
+class RecordManager: RecordManaging {
     var userId: String { UserManager.shared.userInfo.uid }
 
     var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }

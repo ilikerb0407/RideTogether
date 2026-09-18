@@ -17,7 +17,7 @@ import FirebaseFirestore
 
 // MARK: 之後登入用得到
 
-class UserManager {
+class UserManager: UserManaging {
     let userId = Auth.auth().currentUser?.uid
 
     var userInfo = UserInfo()
