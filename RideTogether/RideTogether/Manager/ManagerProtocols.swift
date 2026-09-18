@@ -5,7 +5,7 @@
 //  Protocol abstractions over the app's Manager singletons.
 //
 //  Why this file exists: every Manager (UserManager, GroupManager,
-//  RecordManager, BikeManager, MapsManager, WeatherManager) was previously a
+//  RecordManager, UbikeManager, MapsManager, WeatherManager) was previously a
 //  concrete class with a hardcoded `.shared` singleton, and ViewControllers
 //  called `XxxManager.shared.method()` directly. That made it impossible to
 //  unit test any ViewController logic without hitting real Firebase/network

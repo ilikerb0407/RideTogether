@@ -10,9 +10,12 @@ import CoreLocation
 import MapKit
 import UIKit
 
+// TODO: 我在想要不要把這個頁面拿掉，把搜尋腳踏車的功能，變成一個 toggle，然後可以顯示使用者滑動到的中心範圍方圓 1 公里以內的腳踏車，然後如果再按一次 toggle 就會取消顯示，這是我自己想到的功能，不過會不會很不符合邏輯？
+// TODO: 我想要讓 Pin 的圖片好看一點，不是原生的
 class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     var bikeData: [Bike] = []
 
+    // TODO: 移除掉，或是思考一下，有沒有一個寫一個統一的格式(model)，然後可以讓使用者可以搜尋全台灣的 UBike，因為台灣政府很奇怪的地方是，他們的 API 沒有統一格式，所以讓我在擴充的時候很麻煩
     var taichungBikeData: TaichungBike?
 
     // Was `var bikeManager = BikeManager()`, which bypassed the `.shared`
@@ -20,7 +23,7 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     // every other call site (e.g. `UbikeManager.swift` itself uses
     // `.shared`). Typing this as `BikeManaging` also lets tests inject a
     // mock instead of hitting the real network API.
-    var bikeManager: BikeManaging = BikeManager.shared
+    var bikeManager: BikeManaging = UbikeManager.shared
 
     @IBOutlet var bikeMapView: MKMapView!
 

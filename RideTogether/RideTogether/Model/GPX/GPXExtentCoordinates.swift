@@ -13,18 +13,41 @@ class GPXExtentCoordinates: NSObject {
 
     var bottomRightCoordinate = CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00)
 
+    // Was tracked implicitly via `topLeftCoordinate.latitude == 0.00` /
+    // `bottomRightCoordinate.longitude == 0.00` as an "unset" sentinel
+    // (see the old `extendAreaToIncludeLocation` below, kept here for
+    // reference):
+    //
+    //   if (topLeftCoordinate.latitude == 0.00) || (location.latitude < topLeftCoordinate.latitude) { ... }
+    //
+    // That breaks for any route whose very first recorded point sits
+    // exactly on the equator or the prime meridian (latitude or
+    // longitude == 0.0): a legitimately-recorded 0.0 is indistinguishable
+    // from "not set yet", so it gets silently overwritten by the next
+    // point instead of being treated as the initial bound. Tracked
+    // explicitly with this flag instead, so 0.0 is just a normal
+    // coordinate value like any other.
+    private var hasLocation = false
+
     func extendAreaToIncludeLocation(_ location: CLLocationCoordinate2D) {
-        if (topLeftCoordinate.latitude == 0.00) || (location.latitude < topLeftCoordinate.latitude) {
+        guard hasLocation else {
+            topLeftCoordinate = location
+            bottomRightCoordinate = location
+            hasLocation = true
+            return
+        }
+
+        if location.latitude < topLeftCoordinate.latitude {
             topLeftCoordinate.latitude = location.latitude
         }
-        if (bottomRightCoordinate.latitude == 0.00) || (location.latitude > bottomRightCoordinate.latitude) {
+        if location.latitude > bottomRightCoordinate.latitude {
             bottomRightCoordinate.latitude = location.latitude
         }
 
-        if (topLeftCoordinate.longitude == 0.00) || (location.longitude > topLeftCoordinate.longitude) {
+        if location.longitude > topLeftCoordinate.longitude {
             topLeftCoordinate.longitude = location.longitude
         }
-        if (bottomRightCoordinate.longitude == 0.00) || (location.longitude < bottomRightCoordinate.longitude) {
+        if location.longitude < bottomRightCoordinate.longitude {
             bottomRightCoordinate.longitude = location.longitude
         }
     }

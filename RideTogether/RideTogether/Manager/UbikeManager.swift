@@ -9,16 +9,22 @@ import CoreLocation
 import Foundation
 import MapKit
 
-protocol bikeProvider {
-    func provideBike(bike: Bike)
-}
-
-class BikeManager: BikeManaging {
-    static let shared = BikeManager()
+class UbikeManager: BikeManaging {
+    // Was `class BikeManager`, which didn't match this file's name
+    // (`UbikeManager.swift`) and was used inconsistently across the
+    // project — `UBikeViewController` used to bypass `.shared` entirely
+    // and create its own separate instance with `BikeManager()`. Both
+    // issues are fixed now: the class name matches the file name, and
+    // every call site goes through `.shared`.
+    static let shared = UbikeManager()
 
     var bikes: [Bike] = []
 
-    var delegate: bikeProvider?
+    // Was `protocol bikeProvider { func provideBike(bike: Bike) }` plus a
+    // `var delegate: bikeProvider?` property on this class. Neither was
+    // ever implemented or assigned anywhere in the project — dead code,
+    // removed. (The lowercase `bikeProvider` protocol name also didn't
+    // follow Swift's UpperCamelCase convention for types.)
 
     func getBikeAPI(completion: @escaping ([Bike]) -> Void) {
         // 1. 修正命名：清楚區分 String 與 URL 物件
