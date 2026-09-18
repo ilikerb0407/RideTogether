@@ -138,4 +138,27 @@ class MapsManager: MapsManaging {
             }
         }
     }
+
+    // Was `RecommendViewController.uploadRecordToSavemaps`, which held its
+    // own separate `lazy var dataBase = Firestore.firestore()` instance
+    // and wrote into this exact collection directly, bypassing MapsManager
+    // entirely even though MapsManager already owns reading from and
+    // deleting from it (`fetchSavemaps`, `deleteDbRecords` above).
+    func addToSavemaps(fileName: String, fileRef: String, userId: String, userPhoto: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let document = dataBase.collection(saveCollection).document()
+
+        var record = Record()
+        record.uid = userId
+        record.recordId = document.documentID
+        record.recordName = fileName
+        record.recordRef = fileRef
+        record.pictureRef = userPhoto
+
+        do {
+            try document.setData(from: record)
+            completion(.success(()))
+        } catch {
+            completion(.failure(error))
+        }
+    }
 }

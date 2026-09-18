@@ -91,6 +91,7 @@ protocol MapsManaging: AnyObject {
     func fetchRoutes(completion: @escaping (Result<[RouteModel], Error>) -> Void)
     func fetchSavemaps(completion: @escaping (Result<[Record], Error>) -> Void)
     func deleteDbRecords(recordId: String, completion: @escaping (Result<String, Error>) -> Void)
+    func addToSavemaps(fileName: String, fileRef: String, userId: String, userPhoto: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 // MARK: - WeatherManaging

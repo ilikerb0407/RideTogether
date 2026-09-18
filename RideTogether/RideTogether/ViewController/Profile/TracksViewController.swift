@@ -4,41 +4,30 @@
 //
 //  Created by Kai Fu Jhuang on 2022/4/11.
 //
+//  This used to also own its own Storage/Firestore instances and write
+//  directly into the "Sharemaps" and "Routes" Firestore collections when
+//  the user shared a record — bypassing RecordManager entirely and
+//  duplicating a connection MapsManager already owns for reading those
+//  same collections. All of that (fetching records, deleting one,
+//  sharing one) now lives in TracksViewModel; this ViewController only
+//  builds the table view, reacts to user actions, and reads
+//  viewModel.records for its table view data source. See
+//  TracksViewModel.swift for the full rationale.
 
-import FirebaseStorage
 import MJRefresh
-import SwiftUI
 import UIKit
-
-import CoreGPX
-
-// import FirebaseFirestoreSwift
-import FirebaseFirestore
 
 // MARK: User Record
 
 class TracksViewController: BaseViewController {
     var delegate: Reload?
 
-    lazy var storage = Storage.storage()
-
-    lazy var storageRef = storage.reference()
-
-    lazy var dataBase = Firestore.firestore()
-
-    private let sharedRecordsCollection = Collection.sharedmaps.rawValue
-
-    private let routeCollection = Collection.routes.rawValue // Home
+    // Injected with a default so existing instantiation sites (from
+    // Storyboard, via `init?(coder:)`) don't need to change, while tests
+    // can substitute a ViewModel wired with fakes for every dependency.
+    var viewModel = TracksViewModel()
 
     var indexOfRoute: Int = 0
-
-    var records = [Record]()
-
-    var userId: String { UserManager.shared.userInfo.uid }
-
-    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
-
-    var userName: String { UserManager.shared.userInfo.userName ?? "" }
 
     private let header = MJRefreshNormalHeader()
 
@@ -92,24 +81,22 @@ class TracksViewController: BaseViewController {
     }
 
     func fetchRecords() {
-        RecordManager.shared.fetchRecords { [weak self] result in
-
+        viewModel.fetchRecords { [weak self] result in
             guard let self = self else { return }
 
-            switch result {
-            case let .success(records):
-                self.records = records
-                self.tableView.reloadData()
-            case .failure:
-                LKProgressHUD.showFailure(text: "無法讀取資料")
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.tableView.reloadData()
+                case .failure:
+                    LKProgressHUD.showFailure(text: "無法讀取資料")
+                }
             }
         }
     }
 
     @objc func headerRefresh() {
         fetchRecords()
-
-        tableView.reloadData()
 
         tableView.mj_header?.endRefreshing()
     }
@@ -168,29 +155,20 @@ extension TracksViewController: UITableViewDelegate {
         if sender.state == .began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                let shareOption = UIAlertAction(title: "分享", style: .default) { [self] _ in
+                let shareOption = UIAlertAction(title: "分享", style: .default) { [weak self] _ in
+                    guard let self = self else { return }
 
-                    let recordRef = storageRef.child("records").child("\(userId)")
-                    //  gs://bikeproject-59c89.appspot.com/records
-                    let spaceRef = recordRef.child(records[indexPath.row].recordName)
+                    self.viewModel.shareRecord(at: indexPath.row) { [weak self] result in
+                        guard let self = self else { return }
 
-                    spaceRef.downloadURL { [self] result in
-                        switch result {
-                        case let .success(url):
-                            //                    completion(.success(url))
-                            print("\(url)")
-                            self.uploadRecordToDb(fileName: records[indexPath.row].recordName, fileURL: url)
-
-                            self.uploadRecordToPopular(fileName: records[indexPath.row].recordName, fileURL: url, userPhoto: userPhoto)
-
-                            delegate?.reload()
-                            //
-                            LKProgressHUD.showSuccess(text: "分享成功")
-
-                        case let .failure(error):
-//                            completion(.failure(error))
-                            print("\(error)")
-                            LKProgressHUD.showFailure(text: "網路不佳，分享失敗")
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success:
+                                self.delegate?.reload()
+                                LKProgressHUD.showSuccess(text: "分享成功")
+                            case .failure:
+                                LKProgressHUD.showFailure(text: "網路不佳，分享失敗")
+                            }
                         }
                     }
                 }
@@ -224,95 +202,27 @@ extension TracksViewController: UITableViewDelegate {
 
     func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            RecordManager.shared.deleteStorageRecords(fileName: records[indexPath.row].recordName) { result in
-                switch result {
-                case .success:
-                    self.records.remove(at: indexPath.row)
+            viewModel.deleteRecord(at: indexPath.row) { [weak self] result in
+                guard let self = self else { return }
 
-                    self.tableView.deleteRows(at: [indexPath], with: .left)
-
-                    LKProgressHUD.showSuccess(text: "刪除成功")
-
-                case let .failure(error):
-                    print("delete error: \(error)")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        self.tableView.deleteRows(at: [indexPath], with: .left)
+                        LKProgressHUD.showSuccess(text: "刪除成功")
+                    case let .failure(error):
+                        print("delete error: \(error)")
+                        LKProgressHUD.showFailure(text: "刪除失敗")
+                    }
                 }
             }
         }
     }
 
-    func uploadRecordToDb(fileName: String, fileURL: URL) {
-        let document = dataBase.collection(sharedRecordsCollection).document()
-
-        var record = Record()
-
-        record.uid = userId
-
-        record.recordId = document.documentID
-
-        record.recordName = fileName
-
-        record.recordRef = fileURL.absoluteString
-
-        record.pictureRef = userPhoto
-
-        record.routeTypes = 0
-
-        do {
-            try document.setData(from: record)
-
-        } catch {
-            print("error")
-
-            LKProgressHUD.showSuccess(text: "新增資料失敗")
-        }
-
-        print("sucessfully")
-        LKProgressHUD.showSuccess(text: "新增資料成功")
-    }
-
-    func uploadRecordToPopular(fileName: String, fileURL: URL, userPhoto: String) {
-        let document = dataBase.collection(routeCollection).document()
-
-        var route = RouteModel()
-
-        route.uid = userId
-
-        route.routeId = document.documentID
-
-        route.routeName = fileName
-
-        route.routeMap = fileURL.absoluteString
-
-        route.routeInfo = "\(userName) 分享了路線"
-
-        route.pictureRef = userPhoto
-
-        let inputURL = fileURL
-
-        guard let gpx = GPXParser(withURL: inputURL)?.parsedData() else { return }
-
-        let length = gpx.tracksLength
-
-        route.routeLength = "距離 : \(length.toDistance())"
-
-        route.routeTypes = 0
-
-        do {
-            try document.setData(from: route)
-
-        } catch {
-            print("error")
-            LKProgressHUD.showFailure(text: "新增資料失敗")
-        }
-
-        print("sucessfully")
-        LKProgressHUD.showSuccess(text: "新增資料成功")
-    }
-
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         LKProgressHUD.show()
 
-        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: records[indexPath.row])
+        performSegue(withIdentifier: SegueIdentifier.userRecord.rawValue, sender: viewModel.records[indexPath.row])
     }
 
     // MARK: 傳到Detail
@@ -330,13 +240,13 @@ extension TracksViewController: UITableViewDelegate {
 
 extension TracksViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        records.count
+        viewModel.records.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TrackTableViewCell = tableView.dequeueCell(for: indexPath)
 
-        cell.setUpCell(model: records[indexPath.row])
+        cell.setUpCell(model: viewModel.records[indexPath.row])
 
         return cell
     }

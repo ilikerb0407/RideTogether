@@ -4,18 +4,20 @@
 //
 //  Created by Kai Fu Jhuang on 2022/4/13.
 //
+//  This used to also own its own Storage/Firestore instances and write
+//  directly into the "Savemaps" Firestore collection when the user saved
+//  a shared record — bypassing MapsManager entirely, even though
+//  MapsManager already owns reading from and deleting from that same
+//  collection. Fetching records (with block-list filtering), saving one,
+//  and blocking its uploader now all live in RecommendViewModel; this
+//  ViewController only builds the table view, reacts to user actions,
+//  and reads viewModel.records for its table view data source. See
+//  RecommendViewModel.swift for the full rationale, including a
+//  block-list filtering bug fixed along the way.
 
-import FirebaseAuth
-import FirebaseFirestore
-import FirebaseStorage
+import Lottie
 import MJRefresh
 import UIKit
-
-import Kingfisher
-
-// import FirebaseFirestoreSwift
-import Lottie
-import SwiftUI
 
 class RecommendViewController: BaseViewController {
     @IBOutlet var gView: UIView! {
@@ -28,35 +30,14 @@ class RecommendViewController: BaseViewController {
         }
     }
 
-    var records = [Record]()
+    // Injected with a default so existing instantiation sites (from
+    // Storyboard, via `init?(coder:)`) don't need to change, while tests
+    // can substitute a ViewModel wired with fakes for every dependency.
+    var viewModel = RecommendViewModel()
 
     private let header = MJRefreshNormalHeader()
 
     private let tableViewCell = RecommendTableViewCell()
-
-    private let saveCollection = Collection.savemaps.rawValue // Profile
-
-    var userId: String { UserManager.shared.userInfo.uid }
-
-    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
-
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
-
-//    @objc var savemaps: [String] {UserManager.shared.userInfo.saveMaps ?? [""]}
-
-    lazy var storage = Storage.storage()
-
-    lazy var storageRef = storage.reference()
-
-    lazy var dataBase = Firestore.firestore()
-
-//    func setUpPhoto(userInfo: UserInfo) {
-//
-//        tableViewCell.userPhoto.loadImage(userInfo.pictureRef)
-//
-//        tableViewCell.userPhoto.cornerRadius = 25
-//
-//    }
 
     private var tableView: UITableView! {
         didSet {
@@ -91,59 +72,23 @@ class RecommendViewController: BaseViewController {
         ])
     }
 
-    func uploadRecordToSavemaps(fileName: String, fileRef: String, userPhoto: String) {
-        let document = dataBase.collection(saveCollection).document()
-
-        var record = Record()
-
-        record.uid = userId
-
-        record.recordId = document.documentID
-
-        record.recordName = fileName
-
-        record.recordRef = fileRef
-
-        record.pictureRef = userPhoto
-
-        do {
-            try document.setData(from: record)
-
-        } catch {
-            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
-            print("error")
-        }
-
-        print("sucessfully")
-    }
-
     func fetchRecords() {
-        MapsManager.shared.fetchRecords { [weak self] result in
-
+        viewModel.fetchRecords { [weak self] result in
             guard let self = self else { return }
 
-            switch result {
-            case let .success(records):
-
-                var filtermaps = [Record]()
-
-                for maps in records where self.userInfo.blockList?.contains(maps.uid) == false {
-                    filtermaps.append(maps)
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.tableView.reloadData()
+                case let .failure(error):
+                    print("fetchData Failure: \(error)")
                 }
-
-                self.records = filtermaps
-
-                self.tableView.reloadData()
-
-            case let .failure(error): print("fetchData Failure: \(error)")
             }
         }
     }
 
     @objc func headerRefresh() {
         fetchRecords()
-
-        tableView.reloadData()
 
         tableView.mj_header?.endRefreshing()
     }
@@ -183,8 +128,6 @@ class RecommendViewController: BaseViewController {
 
         tableView.addGestureRecognizer(longPress)
 
-//        showLongPressNotify()
-
         setNotify()
     }
 
@@ -218,30 +161,48 @@ extension RecommendViewController: UITableViewDelegate {
         if sender.state == .began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
+                let likeOption = UIAlertAction(title: "收藏", style: .default) { [weak self] _ in
+                    guard let self = self else { return }
 
-                    self.uploadRecordToSavemaps(fileName: records[indexPath.row].recordName, fileRef: records[indexPath.row].recordRef, userPhoto: records[indexPath.row].pictureRef ?? "")
+                    self.viewModel.saveToSavemaps(at: indexPath.row) { [weak self] result in
+                        guard let self = self else { return }
 
-                    waitlottie.isHidden = true
-                }
+                        DispatchQueue.main.async {
+                            self.waitlottie.isHidden = true
 
-                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
-
-                    if userId == records[indexPath.row].uid {
-                        LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
-                    } else {
-                        UserManager.shared.blockUser(blockUserId: records[indexPath.row].uid)
-
-                        UserManager.shared.userInfo.blockList?.append(records[indexPath.row].uid)
-
-                        self.fetchRecords()
-
-                        self.waitlottie.isHidden = true
+                            switch result {
+                            case .success:
+                                LKProgressHUD.showSuccess(text: "收藏成功")
+                            case .failure:
+                                LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
+                            }
+                        }
                     }
                 }
 
-                let cancelOption = UIAlertAction(title: "取消", style: .cancel) { _ in
-                    self.waitlottie.isHidden = true
+                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [weak self] _ in
+                    guard let self = self else { return }
+
+                    self.viewModel.blockUploader(ofRecordAt: indexPath.row) { [weak self] result in
+                        guard let self = self else { return }
+
+                        DispatchQueue.main.async {
+                            self.waitlottie.isHidden = true
+
+                            switch result {
+                            case .success:
+                                self.fetchRecords()
+                            case .failure(RecommendViewModelError.cannotBlockSelf):
+                                LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
+                            case .failure:
+                                LKProgressHUD.showFailure(text: "封鎖失敗")
+                            }
+                        }
+                    }
+                }
+
+                let cancelOption = UIAlertAction(title: "取消", style: .cancel) { [weak self] _ in
+                    self?.waitlottie.isHidden = true
                 }
 
                 showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
@@ -258,22 +219,22 @@ extension RecommendViewController: UITableViewDelegate {
 
         if let nextViewController = storyboard?.instantiateViewController(withIdentifier: "RideViewController") as? RideViewController {
             navigationController?.pushViewController(nextViewController, animated: true)
-            nextViewController.record = records[indexPath.row]
+            nextViewController.record = viewModel.records[indexPath.row]
         }
     }
 }
 
 extension RecommendViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        records.count
+        viewModel.records.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecommendTableViewCell = tableView.dequeueCell(for: indexPath)
 
-        cell.setUpCell(model: records[indexPath.row])
+        cell.setUpCell(model: viewModel.records[indexPath.row])
 
-        cell.userPhoto.loadImage(records[indexPath.row].pictureRef)
+        cell.userPhoto.loadImage(viewModel.records[indexPath.row].pictureRef)
 
         cell.userPhoto.cornerRadius = 15
 
