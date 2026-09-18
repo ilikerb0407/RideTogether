@@ -4,6 +4,15 @@
 //
 //  Created by Kai Fu Jhuang on 2022/4/8.
 //
+//  This used to also contain the business logic for the info callout:
+//  calling MKDirections, CLGeocoder, and WeatherManager.shared directly,
+//  and caching their results in instance properties shared across every
+//  pin on the map (a real bug — see WaypointInfoViewModel's header comment
+//  for details). That logic now lives in WaypointInfoViewModel, injected
+//  below. MapPin itself is now only responsible for what an
+//  MKMapViewDelegate should be responsible for: rendering overlays,
+//  building annotation views, presenting the resulting UI, and mutating
+//  the map (add/remove overlay, waypoint).
 
 import CoreGPX
 import CoreLocation
@@ -11,15 +20,17 @@ import MapKit
 import UIKit
 
 class MapPin: NSObject, MKMapViewDelegate {
-    var weatherData: ResponseBody?
-
-    let weatherManger = WeatherManager.shared
+    // Injected with a default so existing call sites (`MapPin()`) don't
+    // need to change, while tests can substitute a ViewModel wired with
+    // fake DirectionsProviding / ReverseGeocoding / WeatherManaging.
+    let viewModel: WaypointInfoViewModel
 
     var waypointBeingEdited: GPXWaypoint = .init()
 
-    var directionsResponse = MKDirections.Response()
-
-    var route = MKRoute()
+    init(viewModel: WaypointInfoViewModel = WaypointInfoViewModel()) {
+        self.viewModel = viewModel
+        super.init()
+    }
 
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
@@ -42,54 +53,6 @@ class MapPin: NSObject, MKMapViewDelegate {
         }
 
         return MKOverlayRenderer()
-    }
-
-    var destination: CLPlacemark?
-
-    func guide(_: MKMapView, didSelect view: MKAnnotationView) {
-        let annotationView = MKPinAnnotationView()
-        guard let waypoint = view.annotation as? GPXWaypoint else { return }
-        let targetCoordinate = annotationView.annotation?.coordinate
-        let targetPlaceMark = MKPlacemark(coordinate: targetCoordinate ?? waypoint.coordinate)
-        let targetItem = MKMapItem(placemark: targetPlaceMark)
-        let userMapItem = MKMapItem.forCurrentLocation()
-
-        let request = MKDirections.Request()
-
-        request.source = userMapItem
-        request.destination = targetItem
-        request.transportType = .walking
-        request.requestsAlternateRoutes = true
-
-        let directions = MKDirections(request: request)
-
-        directions.calculate { [self] response, error in
-
-            if error == nil {
-                self.directionsResponse = response!
-
-                self.route = self.directionsResponse.routes[0]
-
-            } else {
-                LKProgressHUD.showFailure(text: "無法導航")
-            }
-        }
-        let geoCoder = CLGeocoder()
-
-        let location = CLLocation(latitude: targetPlaceMark.coordinate.latitude, longitude: targetPlaceMark.coordinate.longitude)
-
-        let locale = Locale(identifier: "zh_TW")
-        if #available(iOS 11.0, *) {
-            geoCoder.reverseGeocodeLocation(location, preferredLocale: locale) { placeMarks, error in
-                if error == nil {
-                    let placeMarks = placeMarks! as [CLPlacemark]
-                    if placeMarks.count > 0 {
-                        let placeMark = placeMarks[0]
-                        self.destination = placeMark
-                    }
-                }
-            }
-        }
     }
 
     func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -132,111 +95,105 @@ class MapPin: NSObject, MKMapViewDelegate {
 
         guard let map = mapView as? GPXMapView else { return }
 
-        guard let polyLine = route.polyline as? MKPolyline else { return }
-
         guard let waypoint = view.annotation as? GPXWaypoint else { return }
 
-        weatherManger.getGroupAPI(latitude: waypoint.latitude!, longitude: waypoint.longitude!) { [weak self] result in
-
-            guard let self = self else { return }
-
-            self.weatherData = result
-
-            DispatchQueue.main.async {
-                self.markMarkers(buttonTag: button.tag, map: map, waypoint: waypoint, polyLine: polyLine)
-            }
-        }
-    }
-
-    private func markMarkers(buttonTag: Int, map: GPXMapView, waypoint: GPXWaypoint, polyLine: MKPolyline) {
-        switch buttonTag {
+        switch button.tag {
         case informationButtonTag:
+            // Computed fresh for this specific waypoint every time — no
+            // shared mutable state between pins (see WaypointInfoViewModel).
+            viewModel.loadInfo(for: waypoint) { [weak self] result in
+                guard let self = self else { return }
 
-            guard let weatherData = weatherData else { return }
-
-            let destination = "\(destination?.thoroughfare ?? "鄉間小路")"
-            let distance = "\(route.distance.toDistance())"
-            let time = "\((route.expectedTravelTime / 3).tohmsTimeFormat())"
-            let weather = "\(weatherData.weather[0].main)"
-
-            let alertSheet = UIAlertController(title: "\(destination)", message: "距離 = \(distance), 時間 = \(time), 天氣 = \(weather) ", preferredStyle: .actionSheet)
-
-            let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
-                map.removeWaypoint(waypoint)
-                map.removeNavigationOverlays()
-            }
-
-            let routeName = UIAlertAction(title: "導航至該地點", style: .default) { _ in
-
-                self.route.polyline.title = "guide"
-
-                if polyLine == nil {
-                    LKProgressHUD.showFailure(text: "無法導航")
-                } else {
-                    map.addOverlay(polyLine, level: MKOverlayLevel.aboveRoads)
+                DispatchQueue.main.async {
+                    switch result {
+                    case let .success(data):
+                        self.presentInfoActionSheet(for: data, waypoint: waypoint, map: map)
+                    case .failure:
+                        LKProgressHUD.showFailure(text: "無法導航")
+                    }
                 }
             }
 
-            let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
-
-            alertSheet.addAction(routeName)
-            alertSheet.addAction(removeOption)
-            alertSheet.addAction(cancelAction)
-
-            let lastVC = UIViewController.getLastPresentedViewController()
-            lastVC?.present(alertSheet, animated: true)
-
-            // iPad specific code
-
-            alertSheet.popoverPresentationController?.sourceView = lastVC?.view
-
-            let xOrigin = (lastVC?.view.bounds.width)! / 2
-
-            let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
-
-            alertSheet.popoverPresentationController?.sourceRect = popoverRect
-
-            alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
-
         case editButtonTag:
-
-            let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
-
-            alertController.addTextField { textField in
-                textField.text = waypoint.title
-                textField.clearButtonMode = .always
-            }
-            let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { _ in
-
-                self.waypointBeingEdited.title = alertController.textFields?[0].text
-            }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
-
-            alertController.addAction(saveAction)
-            alertController.addAction(cancelAction)
-
-            let VC = UIViewController.getLastPresentedViewController()
-            VC?.present(alertController, animated: true)
-
-            waypointBeingEdited = waypoint
+            presentEditAlert(for: waypoint)
 
         default:
             LKProgressHUD.showFailure(text: "網路問題，無法顯示")
         }
     }
 
+    private func presentInfoActionSheet(for data: WaypointInfoDisplayData, waypoint: GPXWaypoint, map: GPXMapView) {
+        let alertSheet = UIAlertController(
+            title: data.destinationName,
+            message: "距離 = \(data.distanceText), 時間 = \(data.travelTimeText), 天氣 = \(data.weatherDescription) ",
+            preferredStyle: .actionSheet
+        )
+
+        let removeOption = UIAlertAction(title: NSLocalizedString("移除", comment: "no comment"), style: .destructive) { _ in
+            map.removeWaypoint(waypoint)
+            // Was `map.removeOverlays(map.overlays)`, which also wiped
+            // the user's in-progress recorded route (it briefly
+            // disappeared until the next location update rebuilt it).
+            // Only remove the guide/navigation overlay, keep the track.
+            map.removeNavigationOverlays()
+        }
+
+        let routeName = UIAlertAction(title: "導航至該地點", style: .default) { _ in
+            data.route.polyline.title = "guide"
+            map.addOverlay(data.route.polyline, level: MKOverlayLevel.aboveRoads)
+        }
+
+        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
+
+        alertSheet.addAction(routeName)
+        alertSheet.addAction(removeOption)
+        alertSheet.addAction(cancelAction)
+
+        let lastVC = UIViewController.getLastPresentedViewController()
+        lastVC?.present(alertSheet, animated: true)
+
+        // iPad specific code
+
+        alertSheet.popoverPresentationController?.sourceView = lastVC?.view
+
+        let xOrigin = (lastVC?.view.bounds.width ?? 0) / 2
+
+        let popoverRect = CGRect(x: xOrigin, y: 0, width: 1, height: 1)
+
+        alertSheet.popoverPresentationController?.sourceRect = popoverRect
+
+        alertSheet.popoverPresentationController?.permittedArrowDirections = .unknown
+    }
+
+    private func presentEditAlert(for waypoint: GPXWaypoint) {
+        let alertController = UIAlertController(title: "請輸入座標說明", message: nil, preferredStyle: .alert)
+
+        alertController.addTextField { textField in
+            textField.text = waypoint.title
+            textField.clearButtonMode = .always
+        }
+        let saveAction = UIAlertAction(title: NSLocalizedString("儲存", comment: "no comment"), style: .default) { [weak self] _ in
+            self?.waypointBeingEdited.title = alertController.textFields?[0].text
+        }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: "no comment"), style: .cancel) { _ in }
+
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+
+        let VC = UIViewController.getLastPresentedViewController()
+        VC?.present(alertController, animated: true)
+
+        waypointBeingEdited = waypoint
+    }
+
     // MARK: - userPin -
 
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        var num = 0
-
         guard let gpxMapView = mapView as? GPXMapView else { return }
 
         // adds the pins with an animation
         for object in views {
-            num += 1
             let annotationView = object as MKAnnotationView
-            guide(gpxMapView, didSelect: annotationView)
 
             // The only exception is the user location, we add to this the heading icon.
             if annotationView.annotation!.isKind(of: MKUserLocation.self) {

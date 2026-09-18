@@ -211,7 +211,6 @@ class JourneyViewController: BaseViewController {
         setUpButtonsStackView()
         addMapTypeSegment()
 
-        mapPin.route.polyline.title = "ride"
         navigationController?.isNavigationBarHidden = true
     }
 
