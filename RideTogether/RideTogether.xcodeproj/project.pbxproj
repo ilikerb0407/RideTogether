@@ -21,7 +21,6 @@
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
 		231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */; };
 		231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */; };
-		231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB3828067DBD00DE2343 /* MapsManager.swift */; };
 		231BCB5128070BF500DE2343 /* Taiwan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5028070BF500DE2343 /* Taiwan.swift */; };
 		231BCB5328070C0200DE2343 /* TaiwanMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */; };
 		231BCB6628084B3500DE2343 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB6528084B3300DE2343 /* Home.storyboard */; };
@@ -39,7 +38,6 @@
 		237A27A728199F2A004F039F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A628199F2A004F039F /* UIImageView.swift */; };
 		237A27AB281AEC82004F039F /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A27A9281AEC81004F039F /* Member.swift */; };
 		237A27AC281AEC82004F039F /* Member.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237A27AA281AEC81004F039F /* Member.xib */; };
-		2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23838789280FCBFF00E9F4F4 /* GroupManager.swift */; };
 		2383878C280FCD9000E9F4F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878B280FCD9000E9F4F4 /* Group.swift */; };
 		2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */; };
 		2383879028104D3800E9F4F4 /* 49908-bike-ride.json in Resources */ = {isa = PBXBuildFile; fileRef = 2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */; };
@@ -75,7 +73,6 @@
 		23C0C422281EA4870020237C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C421281EA4870020237C /* Notification.swift */; };
 		23C8871B28142BC400E3319A /* RoutesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871A28142BC400E3319A /* RoutesType.swift */; };
 		23C8871D281435EC00E3319A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871C281435EC00E3319A /* RouteViewController.swift */; };
-		23C8871F281444B100E3319A /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8871E281444B100E3319A /* WeatherManager.swift */; };
 		23C8872228149ECC00E3319A /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872028149ECC00E3319A /* Routes.swift */; };
 		23C8872328149ECC00E3319A /* Routes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* Routes.xib */; };
 		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
@@ -98,7 +95,6 @@
 		23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */; };
 		23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */; };
 		23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */; };
-		23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
 		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B736280033FB000EDA70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B734280033FB000EDA70 /* Main.storyboard */; };
@@ -126,13 +122,9 @@
 		23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77828006229000EDA70 /* UIViewExtension.swift */; };
 		23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77A28006243000EDA70 /* UIColor+Extension.swift */; };
 		23D1B77D28006259000EDA70 /* TimeFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B77C28006259000EDA70 /* TimeFormater.swift */; };
-		23D1B783280062E9000EDA70 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B782280062E9000EDA70 /* MapPin.swift */; };
 		23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78528006346000EDA70 /* GPXFileManager.swift */; };
-		23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7872800637A000EDA70 /* RecordManager.swift */; };
-		23D1B78A28006396000EDA70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78928006396000EDA70 /* UserManager.swift */; };
 		23D1B78C28006663000EDA70 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B78B28006663000EDA70 /* Constant.swift */; };
 		23D1B7902800AD0C000EDA70 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B78F2800AD0C000EDA70 /* Journey.storyboard */; };
-		23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */; };
 		23D1B7952800B0FD000EDA70 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7942800B0FD000EDA70 /* Profile.storyboard */; };
 		23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E228041F67000EDA70 /* TracksViewController.swift */; };
 		23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */; };
@@ -144,12 +136,24 @@
 		23D1B7F328045A72000EDA70 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B7F128045A72000EDA70 /* TrackTableViewCell.xib */; };
 		23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B8092805BED3000EDA70 /* Group.storyboard */; };
 		23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B80F2805D29E000EDA70 /* Date+Time.swift */; };
-		23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E71282D764B00FC001E /* UbikeManager.swift */; };
+		23D5EAF7305C7B600004BD80 /* ManagerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EAF6305C7B600004BD80 /* ManagerProtocols.swift */; };
+		23D5EAF9305C7B970004BD80 /* MockUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EAF8305C7B970004BD80 /* MockUserManager.swift */; };
+		23D5EAFB305C7C590004BD80 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EAFA305C7C590004BD80 /* UBikeViewController.swift */; };
+		23D5EAFF305C7CC20004BD80 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EAFE305C7CC20004BD80 /* GroupViewController.swift */; };
+		23D5EB01305C7CEA0004BD80 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB00305C7CEA0004BD80 /* ProfileViewController.swift */; };
+		23D5EB03305C7D480004BD80 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB02305C7D480004BD80 /* MapsManager.swift */; };
+		23D5EB05305C7D5E0004BD80 /* UbikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB04305C7D5E0004BD80 /* UbikeManager.swift */; };
+		23D5EB07305C7D640004BD80 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB06305C7D640004BD80 /* WeatherManager.swift */; };
+		23D5EB09305C7D850004BD80 /* GroupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB08305C7D850004BD80 /* GroupManager.swift */; };
+		23D5EB0B305C7D8C0004BD80 /* RecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB0A305C7D8C0004BD80 /* RecordManager.swift */; };
+		23D5EB0D305C7D920004BD80 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB0C305C7D920004BD80 /* UserManager.swift */; };
+		23D5EB10305D10EB0004BD80 /* WaypointInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB0F305D10EB0004BD80 /* WaypointInfoViewModel.swift */; };
+		23D5EB12305D11110004BD80 /* WaypointInfoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB11305D11110004BD80 /* WaypointInfoViewModelTests.swift */; };
+		23D5EB14305D11590004BD80 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D5EB13305D11590004BD80 /* MapPin.swift */; };
 		23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E73282D84EA00FC001E /* BikeItems.swift */; };
 		23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E86E75282D87BC00FC001E /* BikeVM.swift */; };
 		23EC046D2823F1230063523F /* circle.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046C2823F1230063523F /* circle.json */; };
 		23EC046F2823F41B0063523F /* leave.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EC046E2823F41B0063523F /* leave.json */; };
-		23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */; };
 		23FC48A02809B46400EAD314 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC489F2809B46400EAD314 /* Route.swift */; };
 		23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC48A3280AB8C200EAD314 /* TrackInfo.swift */; };
 		436DAC93FF4E1B02E43615FB /* Pods_RideTogether.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD570516C4ABDCC4656118E /* Pods_RideTogether.framework */; };
@@ -181,7 +185,6 @@
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = "<group>"; };
 		231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
-		231BCB3828067DBD00DE2343 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
 		231BCB5028070BF500DE2343 /* Taiwan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taiwan.swift; sourceTree = "<group>"; };
 		231BCB5228070C0200DE2343 /* TaiwanMapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanMapOverlay.swift; sourceTree = "<group>"; };
 		231BCB6528084B3300DE2343 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -200,7 +203,6 @@
 		237A27A628199F2A004F039F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		237A27A9281AEC81004F039F /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		237A27AA281AEC81004F039F /* Member.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Member.xib; sourceTree = "<group>"; };
-		23838789280FCBFF00E9F4F4 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
 		2383878B280FCD9000E9F4F4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		2383878F28104D3700E9F4F4 /* 49908-bike-ride.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "49908-bike-ride.json"; sourceTree = "<group>"; };
@@ -227,7 +229,6 @@
 		23C0C421281EA4870020237C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		23C8871A28142BC400E3319A /* RoutesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesType.swift; sourceTree = "<group>"; };
 		23C8871C281435EC00E3319A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
-		23C8871E281444B100E3319A /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		23C8872028149ECC00E3319A /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		23C8872128149ECC00E3319A /* Routes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Routes.xib; sourceTree = "<group>"; };
 		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -251,7 +252,6 @@
 		23CE42B2280EEC0D00C4C9F1 /* TimeInterval+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Additions.swift"; sourceTree = "<group>"; };
 		23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
-		23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,13 +281,9 @@
 		23D1B77828006229000EDA70 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		23D1B77A28006243000EDA70 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		23D1B77C28006259000EDA70 /* TimeFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormater.swift; sourceTree = "<group>"; };
-		23D1B782280062E9000EDA70 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		23D1B78528006346000EDA70 /* GPXFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXFileManager.swift; sourceTree = "<group>"; };
-		23D1B7872800637A000EDA70 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
-		23D1B78928006396000EDA70 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		23D1B78B28006663000EDA70 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		23D1B78F2800AD0C000EDA70 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
-		23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		23D1B7942800B0FD000EDA70 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		23D1B7E228041F67000EDA70 /* TracksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
 		23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
@@ -300,12 +296,24 @@
 		23D1B7F8280561D3000EDA70 /* MJRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefresher.swift; sourceTree = "<group>"; };
 		23D1B8092805BED3000EDA70 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		23D1B80F2805D29E000EDA70 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
-		23E86E71282D764B00FC001E /* UbikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeManager.swift; sourceTree = "<group>"; };
+		23D5EAF6305C7B600004BD80 /* ManagerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocols.swift; sourceTree = "<group>"; };
+		23D5EAF8305C7B970004BD80 /* MockUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserManager.swift; sourceTree = "<group>"; };
+		23D5EAFA305C7C590004BD80 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
+		23D5EAFE305C7CC20004BD80 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		23D5EB00305C7CEA0004BD80 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		23D5EB02305C7D480004BD80 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
+		23D5EB04305C7D5E0004BD80 /* UbikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeManager.swift; sourceTree = "<group>"; };
+		23D5EB06305C7D640004BD80 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		23D5EB08305C7D850004BD80 /* GroupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManager.swift; sourceTree = "<group>"; };
+		23D5EB0A305C7D8C0004BD80 /* RecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordManager.swift; sourceTree = "<group>"; };
+		23D5EB0C305C7D920004BD80 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		23D5EB0F305D10EB0004BD80 /* WaypointInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointInfoViewModel.swift; sourceTree = "<group>"; };
+		23D5EB11305D11110004BD80 /* WaypointInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointInfoViewModelTests.swift; sourceTree = "<group>"; };
+		23D5EB13305D11590004BD80 /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		23E86E73282D84EA00FC001E /* BikeItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeItems.swift; sourceTree = "<group>"; };
 		23E86E75282D87BC00FC001E /* BikeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeVM.swift; sourceTree = "<group>"; };
 		23EC046C2823F1230063523F /* circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = circle.json; sourceTree = "<group>"; };
 		23EC046E2823F41B0063523F /* leave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = leave.json; sourceTree = "<group>"; };
-		23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
 		23FC489F2809B46400EAD314 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		23FC48A3280AB8C200EAD314 /* TrackInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
 		4AD570516C4ABDCC4656118E /* Pods_RideTogether.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideTogether.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -388,7 +396,9 @@
 		234A166F283738E200E09F09 /* RideTogetherTests */ = {
 			isa = PBXGroup;
 			children = (
+				23D5EAF8305C7B970004BD80 /* MockUserManager.swift */,
 				234A1670283738E200E09F09 /* RideTogetherTests.swift */,
+				23D5EB11305D11110004BD80 /* WaypointInfoViewModelTests.swift */,
 			);
 			path = RideTogetherTests;
 			sourceTree = "<group>";
@@ -467,7 +477,7 @@
 		23CE42BE280FB74700C4C9F1 /* Group */ = {
 			isa = PBXGroup;
 			children = (
-				23CE42BC280FB2E600C4C9F1 /* GroupViewController.swift */,
+				23D5EAFE305C7CC20004BD80 /* GroupViewController.swift */,
 				2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */,
 				23CB74BB2816DB5800DED822 /* ChatRoomViewController.swift */,
 				2397D459281F938F0018FC5E /* GroupMemberViewController.swift */,
@@ -500,6 +510,7 @@
 		23D1B72D280033FB000EDA70 /* RideTogether */ = {
 			isa = PBXGroup;
 			children = (
+				23D5EB0E305D10D70004BD80 /* ViewModel */,
 				23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */,
 				23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */,
 				23D1B73C280033FC000EDA70 /* Info.plist */,
@@ -574,7 +585,6 @@
 		23D1B767280060E0000EDA70 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B782280062E9000EDA70 /* MapPin.swift */,
 				23395D27282E447A00192563 /* Ubike2.0.swift */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
@@ -586,6 +596,7 @@
 				23A84A682811570600DD8D39 /* Group */,
 				23D1B7E828042C88000EDA70 /* Profile */,
 				23CE42A5280E5F0A00C4C9F1 /* Reuse Element */,
+				23D5EB13305D11590004BD80 /* MapPin.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -626,15 +637,16 @@
 		23D1B7842800632F000EDA70 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				23D5EB06305C7D640004BD80 /* WeatherManager.swift */,
+				23D5EB08305C7D850004BD80 /* GroupManager.swift */,
+				23D5EB0C305C7D920004BD80 /* UserManager.swift */,
+				23D5EB04305C7D5E0004BD80 /* UbikeManager.swift */,
+				23D5EAF6305C7B600004BD80 /* ManagerProtocols.swift */,
+				23D5EB0A305C7D8C0004BD80 /* RecordManager.swift */,
 				23D1B78528006346000EDA70 /* GPXFileManager.swift */,
-				23D1B7872800637A000EDA70 /* RecordManager.swift */,
-				231BCB3828067DBD00DE2343 /* MapsManager.swift */,
 				23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */,
-				23D1B78928006396000EDA70 /* UserManager.swift */,
-				23838789280FCBFF00E9F4F4 /* GroupManager.swift */,
-				23C8871E281444B100E3319A /* WeatherManager.swift */,
-				23E86E71282D764B00FC001E /* UbikeManager.swift */,
 				234A1625283636ED00E09F09 /* LocationManager.swift */,
+				23D5EB02305C7D480004BD80 /* MapsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -642,8 +654,8 @@
 		23D1B7912800B08D000EDA70 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
+				23D5EAFA305C7C590004BD80 /* UBikeViewController.swift */,
 				23D1B74228004694000EDA70 /* JourneyViewController.swift */,
-				23FB56ED282FD7C1007DAB89 /* UBikeViewController.swift */,
 				23A84A7B2812EFFE00DD8D39 /* RouteSelectionViewController.swift */,
 				23A84A7C2812EFFE00DD8D39 /* DirectionsViewController.swift */,
 			);
@@ -653,13 +665,13 @@
 		23D1B7E12803C21E000EDA70 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				23D1B7922800B0B2000EDA70 /* ProfileViewController.swift */,
 				23D1B7E228041F67000EDA70 /* TracksViewController.swift */,
 				23D1B7E428042027000EDA70 /* TrackDetailsViewController.swift */,
 				231BCB2F280671DE00DE2343 /* RecommendViewController.swift */,
 				2304FF4B280895F200C6B1BF /* RideViewController.swift */,
 				23129C38281D11C7001DE91D /* SaveMapsViewController.swift */,
 				231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */,
+				23D5EB00305C7CEA0004BD80 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -696,6 +708,14 @@
 				2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		23D5EB0E305D10D70004BD80 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				23D5EB0F305D10EB0004BD80 /* WaypointInfoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B8861B4BB71FEA4F16110C05 /* Pods */ = {
@@ -938,6 +958,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D5EB12305D11110004BD80 /* WaypointInfoViewModelTests.swift in Sources */,
+				23D5EAF9305C7B970004BD80 /* MockUserManager.swift in Sources */,
 				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -948,22 +970,23 @@
 			files = (
 				23D1B75C28005FC9000EDA70 /* StopWatch.swift in Sources */,
 				23E86E76282D87BC00FC001E /* BikeVM.swift in Sources */,
+				23D5EB0D305C7D920004BD80 /* UserManager.swift in Sources */,
 				23D1B7622800601C000EDA70 /* GPXWaypoint+MKAnnotation.swift in Sources */,
 				23D1B766280060A6000EDA70 /* Record.swift in Sources */,
 				23D1B773280061D5000EDA70 /* Double+Measures.swift in Sources */,
 				23CE42B3280EEC0D00C4C9F1 /* TimeInterval+Additions.swift in Sources */,
 				237A279D28181A60004F039F /* SignUpViewController.swift in Sources */,
+				23D5EAFB305C7C590004BD80 /* UBikeViewController.swift in Sources */,
 				23FC48A02809B46400EAD314 /* Route.swift in Sources */,
 				23D1B76028006009000EDA70 /* GPXTrackSegment+MapKit.swift in Sources */,
 				23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */,
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
+				23D5EB10305D10EB0004BD80 /* WaypointInfoViewModel.swift in Sources */,
 				23A84A7F2812EFFE00DD8D39 /* RouteSelectionViewController.swift in Sources */,
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
-				2383878A280FCBFF00E9F4F4 /* GroupManager.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
 				231BCB30280671DE00DE2343 /* RecommendViewController.swift in Sources */,
 				234A1626283636ED00E09F09 /* LocationManager.swift in Sources */,
-				23D1B7932800B0B2000EDA70 /* ProfileViewController.swift in Sources */,
 				235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */,
 				23CB74BC2816DB5800DED822 /* ChatRoomViewController.swift in Sources */,
 				23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */,
@@ -971,6 +994,8 @@
 				237A27AB281AEC82004F039F /* Member.swift in Sources */,
 				23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */,
 				23A84A802812EFFE00DD8D39 /* DirectionsViewController.swift in Sources */,
+				23D5EB07305C7D640004BD80 /* WeatherManager.swift in Sources */,
+				23D5EB03305C7D480004BD80 /* MapsManager.swift in Sources */,
 				23129C39281D11C7001DE91D /* SaveMapsViewController.swift in Sources */,
 				23A84A752811AE2300DD8D39 /* GroupInfo.swift in Sources */,
 				23C8871B28142BC400E3319A /* RoutesType.swift in Sources */,
@@ -980,9 +1005,12 @@
 				23A84A6F2811584C00DD8D39 /* GroupHeaderCell.swift in Sources */,
 				23D1B775280061F2000EDA70 /* UIButtonExtension.swift in Sources */,
 				2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */,
+				23D5EAFF305C7CC20004BD80 /* GroupViewController.swift in Sources */,
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
+				23D5EB05305C7D5E0004BD80 /* UbikeManager.swift in Sources */,
+				23D5EB14305D11590004BD80 /* MapPin.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
 				23C0C422281EA4870020237C /* Notification.swift in Sources */,
 				2383878C280FCD9000E9F4F4 /* Group.swift in Sources */,
@@ -991,6 +1019,7 @@
 				23D1B75828005F8C000EDA70 /* GPXTrackPoint+MapKit.swift in Sources */,
 				23D1B7E7280428B3000EDA70 /* ProfileItem.swift in Sources */,
 				23FC48A4280AB8C200EAD314 /* TrackInfo.swift in Sources */,
+				23D5EB0B305C7D8C0004BD80 /* RecordManager.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
@@ -1002,44 +1031,39 @@
 				23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */,
 				23C887252815329800E3319A /* Request.swift in Sources */,
 				23CE42B1280EEBF600C4C9F1 /* CLPlacemark+Additions.swift in Sources */,
-				23FB56EE282FD7C1007DAB89 /* UBikeViewController.swift in Sources */,
 				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23129C43281D5BB8001DE91D /* RouteCollectionViewCell.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
 				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
+				23D5EB01305C7CEA0004BD80 /* ProfileViewController.swift in Sources */,
 				231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */,
 				2314F20E280AFC6500425F8A /* RecordInfo.swift in Sources */,
 				23D1B74528004768000EDA70 /* GPXMapView.swift in Sources */,
 				23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */,
-				23CE42BD280FB2E600C4C9F1 /* GroupViewController.swift in Sources */,
 				23D1B7E328041F68000EDA70 /* TracksViewController.swift in Sources */,
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
-				23D1B7882800637A000EDA70 /* RecordManager.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
+				23D5EB09305C7D850004BD80 /* GroupManager.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				23C8872228149ECC00E3319A /* Routes.swift in Sources */,
+				23D5EAF7305C7B600004BD80 /* ManagerProtocols.swift in Sources */,
 				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
 				23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
-				23D1B783280062E9000EDA70 /* MapPin.swift in Sources */,
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
-				23C8871F281444B100E3319A /* WeatherManager.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
-				23D1B78A28006396000EDA70 /* UserManager.swift in Sources */,
 				23395D28282E447A00192563 /* Ubike2.0.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23C887272815450500E3319A /* GoToRideViewController.swift in Sources */,
 				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
-				231BCB3928067DBD00DE2343 /* MapsManager.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
-				23E86E72282D764C00FC001E /* UbikeManager.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */,
 				23D1B75428005F45000EDA70 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
