@@ -18,19 +18,19 @@ class HomeViewController: BaseViewController, Reload {
 
     private var userInfo: UserInfo { UserManager.shared.userInfo }
 
-    var routes = [Route]() {
+    var routes = [RouteModel]() {
         didSet {
             manageRouteData()
         }
     }
 
-    var userOne = [Route]()
+    var userOne = [RouteModel]()
 
-    var recommendOne = [Route]()
+    var recommendOne = [RouteModel]()
 
-    var riverOne = [Route]()
+    var riverOne = [RouteModel]()
 
-    var mountainOne = [Route]()
+    var mountainOne = [RouteModel]()
 
     private var tableView: UITableView! {
         didSet {
@@ -71,7 +71,7 @@ class HomeViewController: BaseViewController, Reload {
     func setUpTableView() {
         tableView = UITableView(frame: .zero, style: .grouped)
 
-        tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: RouteTypeCell.identifier, bundle: nil)
 
         view.stickSubView(tableView)
 
@@ -117,7 +117,7 @@ class HomeViewController: BaseViewController, Reload {
             switch result {
             case let .success(routes):
 
-                var filterroutes = [Route]()
+                var filterroutes = [RouteModel]()
 
                 for maps in routes where self.userInfo.blockList?.contains(maps.uid ?? "") == false {
                     filterroutes.append(maps)
@@ -156,7 +156,7 @@ extension HomeViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var sender = [Route]()
+        var sender = [RouteModel]()
 
         switch indexPath.row {
         case 0:
@@ -176,7 +176,7 @@ extension HomeViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.route.rawValue {
             if let routeListVC = segue.destination as? RouteViewController {
-                if let routes = sender as? [Route] {
+                if let routes = sender as? [RouteModel] {
                     routeListVC.routes = routes
                 }
             }
@@ -188,15 +188,15 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        RoutesType.allCases.count
+        RouteCategory.allCases.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RouteTypes = tableView.dequeueCell(for: indexPath)
+        let cell: RouteTypeCell = tableView.dequeueCell(for: indexPath)
 
         cell.setUpCell(
-            routetitle: RoutesType.allCases[indexPath.row].rawValue,
-            routephoto: RoutesType.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!
+            routetitle: RouteCategory.allCases[indexPath.row].rawValue,
+            routephoto: RouteCategory.allCases[indexPath.row].image ?? UIImage(named: "routesphoto")!
         )
 
         return cell

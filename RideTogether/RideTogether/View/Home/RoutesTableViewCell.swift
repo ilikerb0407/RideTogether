@@ -32,7 +32,7 @@ class RoutesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setUpCell(model: Route) {
+    func setUpCell(model: RouteModel) {
         routeTitle.text = model.routeName
 
         routeType.text = model.routeInfo

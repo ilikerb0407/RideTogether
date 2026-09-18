@@ -1,5 +1,5 @@
 //
-//  RouteTypes.swift
+//  RouteTypeCell.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RouteTypes: UITableViewCell {
+class RouteTypeCell: UITableViewCell {
     @IBOutlet var routeTitle: UILabel!
 
     @IBOutlet var routePhoto: UIImageView!

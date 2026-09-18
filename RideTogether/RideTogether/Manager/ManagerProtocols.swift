@@ -88,7 +88,7 @@ protocol MapsManaging: AnyObject {
     var savemaps: [String] { get }
 
     func fetchRecords(completion: @escaping (Result<[Record], Error>) -> Void)
-    func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void)
+    func fetchRoutes(completion: @escaping (Result<[RouteModel], Error>) -> Void)
     func fetchSavemaps(completion: @escaping (Result<[Record], Error>) -> Void)
     func deleteDbRecords(recordId: String, completion: @escaping (Result<String, Error>) -> Void)
 }

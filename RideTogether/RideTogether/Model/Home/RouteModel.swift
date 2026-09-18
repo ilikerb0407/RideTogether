@@ -1,14 +1,21 @@
 //
-//  Route.swift
+//  RouteModel.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/15.
 //
+//  Renamed from `Route.swift` / `struct Route`. The original name was one
+//  of four near-identical names in this project (Route / RouteCollectionCell /
+//  RoutesType / RouteTypeCell) with completely different responsibilities —
+//  this one is the plain Codable data model that Firestore documents in
+//  the "routes" collection decode into. Renaming doesn't affect Firestore
+//  decoding, since `Codable` only looks at CodingKeys, not the Swift type
+//  name itself.
 
 import FirebaseFirestore
 import Foundation
 
-struct Route: Codable, Hashable {
+struct RouteModel: Codable, Hashable {
     var uid: String? // for UGC
     var createdTime: Timestamp
     var pictureRef: String?

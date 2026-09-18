@@ -1,16 +1,18 @@
 //
-//  RoutesType.swift
+//  RouteCategory.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/23.
 //
+//  Renamed from `RoutesType.swift` / `enum RoutesType`. Also dropped
+//  `import SwiftUI` — this file is pure UIKit (returns UIImage, not
+//  SwiftUI's Image), the import was unused.
 
 import Foundation
-
-import SwiftUI
 import UIKit
 
-enum RoutesType: String, CaseIterable {
+// TODO: 這個功能是 copy 別人的想法的ＸＤ，我之後會想要思考怎麼優化這個功能的的 business logic
+enum RouteCategory: String, CaseIterable {
     case userOne = "朋友路線"
 
     case recommendOne = "推薦路線"

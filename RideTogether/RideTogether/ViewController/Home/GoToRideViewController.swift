@@ -20,7 +20,7 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
 
     @IBOutlet var map3: GPXMapView!
 
-    var routes = Route()
+    var routes = RouteModel()
 
     private var isDisplayingLocationServicesDenied: Bool = false
 

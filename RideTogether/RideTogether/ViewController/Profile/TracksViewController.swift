@@ -273,7 +273,7 @@ extension TracksViewController: UITableViewDelegate {
     func uploadRecordToPopular(fileName: String, fileURL: URL, userPhoto: String) {
         let document = dataBase.collection(routeCollection).document()
 
-        var route = Route()
+        var route = RouteModel()
 
         route.uid = userId
 

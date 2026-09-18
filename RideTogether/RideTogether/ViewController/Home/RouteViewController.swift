@@ -26,9 +26,9 @@ class RouteViewController: BaseViewController {
 
     // MARK: - DataSource & DataSourceSnapshot typelias -
 
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Route>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, RouteModel>
 
-    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Route>
+    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, RouteModel>
 
     enum Section {
         case section
@@ -38,7 +38,7 @@ class RouteViewController: BaseViewController {
 
     private var snapshot = DataSourceSnapshot()
 
-    let routesCollectionCell = Routes()
+    let routesCollectionCell = RouteCollectionCell()
 
     lazy var storage = Storage.storage()
     lazy var storageRef = storage.reference()
@@ -50,7 +50,7 @@ class RouteViewController: BaseViewController {
 
     private var themeLabel = ""
 
-    var routes = [Route]() {
+    var routes = [RouteModel]() {
         didSet {
             setUpLabel()
         }
@@ -61,19 +61,19 @@ class RouteViewController: BaseViewController {
             switch label {
             case 0:
 
-                themeLabel = RoutesType.userOne.rawValue
+                themeLabel = RouteCategory.userOne.rawValue
 
             case 1:
 
-                themeLabel = RoutesType.recommendOne.rawValue
+                themeLabel = RouteCategory.recommendOne.rawValue
 
             case 2:
 
-                themeLabel = RoutesType.riverOne.rawValue
+                themeLabel = RouteCategory.riverOne.rawValue
 
             case 3:
 
-                themeLabel = RoutesType.mountainOne.rawValue
+                themeLabel = RouteCategory.mountainOne.rawValue
 
             default:
                 return
@@ -134,7 +134,7 @@ class RouteViewController: BaseViewController {
 
 //        collectionView.registerCellWithNib(reuseIdentifier: Routes.reuseIdentifier, bundle: nil)
 
-        collectionView.lk_registerCellWithNib(identifier: "Routes", bundle: nil)
+        collectionView.lk_registerCellWithNib(identifier: "RouteCollectionCell", bundle: nil)
 
         view.stickSubView(collectionView)
 
@@ -402,7 +402,7 @@ extension RouteViewController {
             collectionView: collectionView,
             cellProvider: { [self] collectionView, indexPath, model -> UICollectionViewCell? in
 
-                let cell: Routes = collectionView.dequeueCell(for: indexPath)
+                let cell: RouteCollectionCell = collectionView.dequeueCell(for: indexPath)
 
                 cell.setUpCell(model: model)
 

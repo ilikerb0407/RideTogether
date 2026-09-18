@@ -64,7 +64,7 @@ class MapsManager: MapsManaging {
         }
     }
 
-    func fetchRoutes(completion: @escaping (Result<[Route], Error>) -> Void) {
+    func fetchRoutes(completion: @escaping (Result<[RouteModel], Error>) -> Void) {
         let collection = dataBase.collection(routeCollection)
 
         collection.getDocuments { querySnapshot, error in
@@ -73,10 +73,10 @@ class MapsManager: MapsManaging {
             if let error = error {
                 completion(.failure(error))
             } else {
-                var routes = [Route]()
+                var routes = [RouteModel]()
                 for document in querySnapshot.documents {
                     do {
-                        if let route = try document.data(as: Route?.self, decoder: Firestore.Decoder()) {
+                        if let route = try document.data(as: RouteModel?.self, decoder: Firestore.Decoder()) {
                             routes.append(route)
                         }
                     } catch {

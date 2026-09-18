@@ -1,5 +1,5 @@
 //
-//  Routes.swift
+//  RouteCollectionCell.swift
 //  RideTogether
 //
 //  Created by Kai Fu Jhuang on 2022/4/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Routes: UICollectionViewCell {
+class RouteCollectionCell: UICollectionViewCell {
     @IBOutlet var routeName: UILabel!
 
     @IBOutlet var routeLength: UILabel!
@@ -25,7 +25,7 @@ class Routes: UICollectionViewCell {
         contentView.backgroundColor = .clear
     }
 
-    func setUpCell(model: Route) {
+    func setUpCell(model: RouteModel) {
         routeName.text = model.routeName
         routeLength.text = model.routeLength
         routeInfo.text = model.routeInfo

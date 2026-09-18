@@ -44,7 +44,7 @@ enum Collection: String {
 
     case records = "Records"
 
-    case routes = "Routes"
+    case routes = "RouteCollectionCell"
 
     case sharedmaps = "Sharemaps"
 
