@@ -17,20 +17,30 @@ import UIKit
 class GroupViewController: BaseViewController, Reload, UISheetPresentationControllerDelegate, UINavigationControllerDelegate {
     // MARK: - Outlets
 
-    @IBOutlet var gView: UIView! {
-        didSet {
-            gView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed
-            )
-            gView.alpha = 0.85
-        }
+    private lazy var gView: UIView = {
+        let gradientView = UIView()
+        gradientView.applyGradient(
+            colors: [.white, .B3],
+            locations: [0.0, 1.0], direction: .leftSkewed
+        )
+        gradientView.alpha = 0.85
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        return gradientView
+    }()
+
+    private func setUpGradientBackground() {
+        view.insertSubview(gView, at: 0)
+
+        NSLayoutConstraint.activate([
+            gView.topAnchor.constraint(equalTo: view.topAnchor),
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
 
-    // MARK: - Properties
-
     var table: UITableView?
-    var VC = CreateGroupViewController()
+    var CreateGroupVC = CreateGroupViewController()
     var onlyUserGroup = false
 
     // Injected as a mutable property (rather than through a custom `init`)
@@ -88,25 +98,15 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         setUpHeaderView()
         addRequestListener()
         setUpTableView()
+        setUpGradientBackground()
 
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         tableView.mj_header = header
         table?.delegate = self
-        VC.delegate = self
+        CreateGroupVC.delegate = self
 
         tapAndDismiss()
         checkRequestsNum()
-    }
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == SegueIdentifier.requestList.rawValue,
-           let requestVC = segue.destination as? JoinViewController,
-           let requests = sender as? [Request]
-        {
-            requestVC.requests = requests
-        }
     }
 
     // MARK: - Reload Protocol
@@ -243,7 +243,7 @@ extension GroupViewController {
 
 extension GroupViewController {
     @objc func creatGroup() {
-        guard let rootVC = storyboard?.instantiateViewController(withIdentifier: "CreateGroupViewController") as? CreateGroupViewController else { return }
+        let rootVC = CreateGroupViewController()
         let navBar = UINavigationController(rootViewController: rootVC)
         if #available(iOS 15.0, *), let sheet = navBar.sheetPresentationController {
             sheet.detents = [.large(), .medium()]
@@ -256,7 +256,10 @@ extension GroupViewController {
 
     @objc func checkRequestList(_ sender: UIButton) {
         guard requests.count > 0 else { return }
-        performSegue(withIdentifier: SegueIdentifier.requestList.rawValue, sender: requests)
+        
+        let vc = JoinViewController(requests: requests)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func headerRefresh() {
@@ -309,7 +312,11 @@ extension GroupViewController: UITableViewDelegate {
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let groups = currentGroups()
-        performSegue(withIdentifier: SegueIdentifier.groupChat.rawValue, sender: groups[indexPath.row])
+        let group = groups[indexPath.row]
+        
+        let vc = ChatRoomViewController(groupInfo: group, cache: cache)
+        
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 }
 

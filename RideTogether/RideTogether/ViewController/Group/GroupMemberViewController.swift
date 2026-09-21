@@ -9,7 +9,18 @@ import UIKit
 
 class GroupMemberViewController: BaseViewController {
     var cache: [String: UserInfo]?
-
+    
+    init(cache: [String : UserInfo]? = nil, groupInfo: Group? = nil) {
+        self.cache = cache
+        self.groupInfo = groupInfo
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+    }
+    
     var groupInfo: Group?
 
     private var tableView: UITableView! {
@@ -20,14 +31,26 @@ class GroupMemberViewController: BaseViewController {
         }
     }
 
-    @IBOutlet var gView: UIView! {
-        didSet {
-            gView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed
-            )
-            gView.alpha = 0.85
-        }
+    private lazy var gView: UIView = {
+        let gradientView = UIView()
+        gradientView.applyGradient(
+            colors: [.white, .B3],
+            locations: [0.0, 1.0], direction: .leftSkewed
+        )
+        gradientView.alpha = 0.85
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        return gradientView
+    }()
+
+    private func setUpGradientBackground() {
+        view.insertSubview(gView, at: 0)
+
+        NSLayoutConstraint.activate([
+            gView.topAnchor.constraint(equalTo: view.topAnchor),
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
 
     override func viewDidLoad() {
@@ -42,6 +65,8 @@ class GroupMemberViewController: BaseViewController {
         view.stickSubView(tableView)
 
         setNavigationBar(title: "\(groupInfo?.groupName ?? "揪團") - 成員")
+        
+        setUpGradientBackground()
     }
 }
 

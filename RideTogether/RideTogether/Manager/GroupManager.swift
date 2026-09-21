@@ -15,6 +15,7 @@ import Firebase
 import FirebaseFirestore
 
 class GroupManager: GroupManaging {
+    
     var userId: String { UserManager.shared.userInfo.uid }
 
     static let shared = GroupManager()
@@ -114,17 +115,30 @@ class GroupManager: GroupManaging {
         completion(.success("Success"))
     }
 
+//    func sendRequest(request: Request, completion: (Result<String, Error>) -> Void) {
+//        let document = dataBase.collection(requestsCollection).document()
+//
+//        do {
+//            try document.setData(from: request)
+//
+//        } catch {
+//            completion(.failure(error))
+//        }
+//
+//        completion(.success("Success"))
+//    }
+    
     func sendRequest(request: Request, completion: (Result<String, Error>) -> Void) {
-        let document = dataBase.collection(requestsCollection).document()
+        // 💡 關鍵點：用 groupId + requestId 作為固定 Document ID
+        let customDocId = "\(request.groupId)_\(request.requestId)"
+        let document = dataBase.collection(requestsCollection).document(customDocId)
 
         do {
             try document.setData(from: request)
-
+            completion(.success("Success"))
         } catch {
             completion(.failure(error))
         }
-
-        completion(.success("Success"))
     }
 
     func leaveGroup(groupId: String, completion _: @escaping (Result<String, Error>) -> Void) {

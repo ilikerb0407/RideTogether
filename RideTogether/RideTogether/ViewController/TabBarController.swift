@@ -36,7 +36,14 @@ private enum Tab {
             )
             return navigationController
 
-        case .group: return UIStoryboard.group.instantiateInitialViewController()!
+        case .group:
+            let navigationController = UINavigationController(rootViewController: GroupViewController())
+            navigationController.tabBarItem = UITabBarItem(
+                title: "群組",
+                image: UIImage(systemName: "rectangle.3.group.bubble"),
+                tag: 0
+            )
+            return navigationController
 
         case .journey: return UIStoryboard.journey.instantiateInitialViewController()!
 

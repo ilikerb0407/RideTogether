@@ -8,9 +8,6 @@
 import UIKit
 
 private enum StoryboardCategory {
-    static let home = "Home"
-
-    static let group = "Group"
 
     static let journey = "Journey"
 
@@ -20,9 +17,6 @@ private enum StoryboardCategory {
 }
 
 extension UIStoryboard {
-    static var home: UIStoryboard { return storyboard(name: StoryboardCategory.home) }
-
-    static var group: UIStoryboard { return storyboard(name: StoryboardCategory.group) }
 
     static var journey: UIStoryboard { return storyboard(name: StoryboardCategory.journey) }
 
