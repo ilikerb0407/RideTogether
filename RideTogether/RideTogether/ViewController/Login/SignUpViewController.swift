@@ -22,19 +22,109 @@ import Lottie
 import UIKit
 
 class SignUpViewController: BaseViewController {
-    @IBOutlet var signUpEmail: UITextField!
-
-    @IBOutlet var signUpPassword: UITextField!
-
-    @IBOutlet var signUpButton: UIButton!
-
-    @IBOutlet var loginButton: UIButton!
-
     // Injected with a default so existing instantiation sites (from
     // Storyboard, via `init?(coder:)`) don't need to change, while tests
     // can substitute a ViewModel wired with a fake AuthProviding and
     // MockUserManager.
     var viewModel = SignUpViewModel()
+
+    // MARK: - Views migrated from Login.storyboard's SignUpViewController
+    // scene. Reproduced 1:1 against the storyboard's recorded frames/
+    // constraints/fonts. Border-related userDefinedRuntimeAttributes with
+    // borderWidth=0 in the original are skipped below (a zero-width
+    // border is never visible, regardless of its color, so setting
+    // `layer.borderColor` would have had no visible effect there either).
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "RideTogether"
+        label.font = .systemFont(ofSize: 30)
+        label.textColor = .B5
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private var signUpEmail: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.font = .systemFont(ofSize: 14)
+        textField.textColor = .black
+        textField.layer.cornerRadius = 15
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private var signUpPassword: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.borderStyle = .roundedRect
+        textField.font = .systemFont(ofSize: 14)
+        textField.textColor = .black
+        textField.isSecureTextEntry = true
+        textField.layer.cornerRadius = 15
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private lazy var signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sign Up", for: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.layer.cornerRadius = 15
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.layer.cornerRadius = 15
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(logIn), for: .touchUpInside)
+        return button
+    }()
+
+    private func setUpStoryboardMigratedViews() {
+        view.backgroundColor = .B2
+
+        view.addSubview(titleLabel)
+        view.addSubview(signUpEmail)
+        view.addSubview(signUpPassword)
+        view.addSubview(signUpButton)
+        view.addSubview(loginButton)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+
+            signUpEmail.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            signUpEmail.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -80),
+            signUpEmail.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 250),
+            signUpEmail.heightAnchor.constraint(equalToConstant: 45),
+
+            signUpPassword.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            signUpPassword.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -80),
+            signUpPassword.topAnchor.constraint(equalTo: signUpEmail.bottomAnchor, constant: 30),
+            signUpPassword.heightAnchor.constraint(equalToConstant: 45),
+
+            signUpButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 80),
+            signUpButton.topAnchor.constraint(equalTo: signUpPassword.bottomAnchor, constant: 20),
+            signUpButton.widthAnchor.constraint(equalToConstant: 100),
+            signUpButton.heightAnchor.constraint(equalToConstant: 45),
+
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -80),
+            loginButton.topAnchor.constraint(equalTo: signUpPassword.bottomAnchor, constant: 20),
+            loginButton.widthAnchor.constraint(equalToConstant: 100),
+            loginButton.heightAnchor.constraint(equalToConstant: 45),
+        ])
+    }
 
     @objc func signUp() {
         viewModel.signUp(email: signUpEmail.text, password: signUpPassword.text) { [weak self] result in
@@ -120,8 +210,7 @@ class SignUpViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
+        setUpStoryboardMigratedViews()
 
         lottie()
     }

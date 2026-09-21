@@ -21,6 +21,9 @@
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
 		2355790230611CFD008181A7 /* bike-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2355790130611CE6008181A7 /* bike-animation.json */; };
+		23557904306128FD008181A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557903306128FD008181A7 /* SceneDelegate.swift */; };
+		23557907306129CC008181A7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557906306129CC008181A7 /* SignUpViewController.swift */; };
+		23557908306129CC008181A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557905306129CC008181A7 /* LoginViewController.swift */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
@@ -33,7 +36,6 @@
 		2389C50F3061167D0011AF0E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C50E3061167D0011AF0E /* SignUpViewModel.swift */; };
 		2389C5103061167D0011AF0E /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C50D3061167D0011AF0E /* RouteViewModel.swift */; };
 		2389C5123061169F0011AF0E /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C5113061169F0011AF0E /* RouteViewController.swift */; };
-		2389C514306116B50011AF0E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C513306116B50011AF0E /* SignUpViewController.swift */; };
 		2389C517306116C90011AF0E /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C516306116C90011AF0E /* SignUpViewModelTests.swift */; };
 		2389C518306116C90011AF0E /* RouteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C515306116C90011AF0E /* RouteViewModelTests.swift */; };
 		2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2397D459281F938F0018FC5E /* GroupMemberViewController.swift */; };
@@ -77,10 +79,8 @@
 		23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */; };
 		23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */; };
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
-		23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74BF28177CAC00DED822 /* LoginViewController.swift */; };
 		23CB74C62817803300DED822 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C52817803300DED822 /* TabBarController.swift */; };
 		23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C72817824000DED822 /* UIStorybroad.swift */; };
-		23CB74CA281787B400DED822 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74C9281787B400DED822 /* Login.storyboard */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
 		23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42AA280E952300C4C9F1 /* RouteBuilder.swift */; };
@@ -89,7 +89,6 @@
 		23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */; };
 		23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
-		23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B730280033FB000EDA70 /* SceneDelegate.swift */; };
 		23D1B736280033FB000EDA70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B734280033FB000EDA70 /* Main.storyboard */; };
 		23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B737280033FC000EDA70 /* Assets.xcassets */; };
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
@@ -178,6 +177,9 @@
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
 		2355790130611CE6008181A7 /* bike-animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "bike-animation.json"; sourceTree = "<group>"; };
+		23557903306128FD008181A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		23557905306129CC008181A7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		23557906306129CC008181A7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
@@ -190,7 +192,6 @@
 		2389C50D3061167D0011AF0E /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		2389C50E3061167D0011AF0E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		2389C5113061169F0011AF0E /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
-		2389C513306116B50011AF0E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2389C515306116C90011AF0E /* RouteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModelTests.swift; sourceTree = "<group>"; };
 		2389C516306116C90011AF0E /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelTests.swift; sourceTree = "<group>"; };
 		2397D459281F938F0018FC5E /* GroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewController.swift; sourceTree = "<group>"; };
@@ -225,10 +226,8 @@
 		23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
-		23CB74BF28177CAC00DED822 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23CB74C52817803300DED822 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23CB74C72817824000DED822 /* UIStorybroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStorybroad.swift; sourceTree = "<group>"; };
-		23CB74C9281787B400DED822 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
 		23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
@@ -239,7 +238,6 @@
 		23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23D1B730280033FB000EDA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		23D1B735280033FB000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23D1B737280033FC000EDA70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23D1B73A280033FC000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -396,8 +394,8 @@
 		237A27A8281A6948004F039F /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				23CB74BF28177CAC00DED822 /* LoginViewController.swift */,
-				2389C513306116B50011AF0E /* SignUpViewController.swift */,
+				23557905306129CC008181A7 /* LoginViewController.swift */,
+				23557906306129CC008181A7 /* SignUpViewController.swift */,
 				2360C67528254EA900EF21D3 /* PolicyViewController.swift */,
 			);
 			path = Login;
@@ -457,7 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1B72E280033FB000EDA70 /* AppDelegate.swift */,
-				23D1B730280033FB000EDA70 /* SceneDelegate.swift */,
+				23557903306128FD008181A7 /* SceneDelegate.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -573,7 +571,6 @@
 				23D5EB13305D11590004BD80 /* MapPin.swift */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
 				23D1B734280033FB000EDA70 /* Main.storyboard */,
-				23CB74C9281787B400DED822 /* Login.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23C887192814285A00E3319A /* Home */,
@@ -821,7 +818,6 @@
 				23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */,
 				231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */,
 				23C8872328149ECC00E3319A /* RouteCollectionCell.xib in Resources */,
-				23CB74CA281787B400DED822 /* Login.storyboard in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypeCell.xib in Resources */,
 				231BCB6628084B3500DE2343 /* Home.storyboard in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
@@ -959,7 +955,6 @@
 				23D1B75028005E16000EDA70 /* GPXSession.swift in Sources */,
 				2389C50F3061167D0011AF0E /* SignUpViewModel.swift in Sources */,
 				2389C5103061167D0011AF0E /* RouteViewModel.swift in Sources */,
-				2389C514306116B50011AF0E /* SignUpViewController.swift in Sources */,
 				23D5EB10305D10EB0004BD80 /* WaypointInfoViewModel.swift in Sources */,
 				2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */,
 				23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */,
@@ -994,6 +989,8 @@
 				23D5EB0B305C7D8C0004BD80 /* RecordManager.swift in Sources */,
 				23B04D47305D346200D9C1F5 /* ManagerProtocols.swift in Sources */,
 				23B04D48305D346200D9C1F5 /* MapsManager.swift in Sources */,
+				23557907306129CC008181A7 /* SignUpViewController.swift in Sources */,
+				23557908306129CC008181A7 /* LoginViewController.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
 				23B04D36305D223F00D9C1F5 /* GoToRideViewController.swift in Sources */,
 				23B04D37305D223F00D9C1F5 /* HomeViewController.swift in Sources */,
@@ -1023,7 +1020,6 @@
 				23D1B75628005F62000EDA70 /* GPXRoot+length.swift in Sources */,
 				23CE42AB280E952300C4C9F1 /* RouteBuilder.swift in Sources */,
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
-				23D1B731280033FB000EDA70 /* SceneDelegate.swift in Sources */,
 				23D5EB09305C7D850004BD80 /* GroupManager.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
 				2389C5123061169F0011AF0E /* RouteViewController.swift in Sources */,
@@ -1038,10 +1034,10 @@
 				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
-				23CB74C028177CAC00DED822 /* LoginViewController.swift in Sources */,
 				23D1B74928005C16000EDA70 /* BaseViewController.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */,
+				23557904306128FD008181A7 /* SceneDelegate.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,

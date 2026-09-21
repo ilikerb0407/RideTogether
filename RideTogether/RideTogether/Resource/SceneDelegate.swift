@@ -10,66 +10,37 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-
+    
     func scene(_: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         if Auth.auth().currentUser != nil {
             if let uid = Auth.auth().currentUser?.uid {
                 print("----------Current User ID: \(uid)----------")
-
+                
                 UserManager.shared.fetchUserInfo(uid: uid) { result in
-
+                    
                     switch result {
                     case let .success(userInfo):
-
+                        
                         UserManager.shared.userInfo = userInfo
-
+                        
                         guard let tabbarVC = UIStoryboard.main.instantiateViewController(
                             identifier: TabBarController.identifier) as? TabBarController else { return }
-
+                        
                         self.window?.rootViewController = tabbarVC
-
+                        
                         print("Fetch user info successfully")
-
+                        
                     case let .failure(error):
-
+                        
                         print("Fetch user info failure: \(error)")
                     }
                 }
             }
-
+            
         } else {
-            guard let loginVC = UIStoryboard.login.instantiateViewController(
-                identifier: LoginViewController.identifier) as? LoginViewController else { return }
-
+            let loginVC = LoginViewController(nibName: nil, bundle: nil)
+            
             window?.rootViewController = loginVC
         }
-    }
-
-    func sceneDidDisconnect(_: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
-    func sceneDidBecomeActive(_: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
     }
 }

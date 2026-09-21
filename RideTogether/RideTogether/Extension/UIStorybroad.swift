@@ -12,8 +12,6 @@ private enum StoryboardCategory {
 
     static let group = "Group"
 
-    static let login = "Login"
-
     static let journey = "Journey"
 
     static let profile = "Profile"
@@ -25,8 +23,6 @@ extension UIStoryboard {
     static var home: UIStoryboard { return storyboard(name: StoryboardCategory.home) }
 
     static var group: UIStoryboard { return storyboard(name: StoryboardCategory.group) }
-
-    static var login: UIStoryboard { return storyboard(name: StoryboardCategory.login) }
 
     static var journey: UIStoryboard { return storyboard(name: StoryboardCategory.journey) }
 
