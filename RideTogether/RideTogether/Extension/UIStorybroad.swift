@@ -9,16 +9,12 @@ import UIKit
 
 private enum StoryboardCategory {
 
-    static let journey = "Journey"
-
     static let profile = "Profile"
 
     static let main = "Main"
 }
 
 extension UIStoryboard {
-
-    static var journey: UIStoryboard { return storyboard(name: StoryboardCategory.journey) }
 
     static var profile: UIStoryboard { return storyboard(name: StoryboardCategory.profile) }
 

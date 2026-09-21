@@ -45,7 +45,15 @@ private enum Tab {
             )
             return navigationController
 
-        case .journey: return UIStoryboard.journey.instantiateInitialViewController()!
+        case .journey:
+            let navigationController = UINavigationController(rootViewController: JourneyViewController())
+            navigationController.tabBarItem = UITabBarItem(
+                title: "騎乘",
+                image: UIImage(systemName: "bicycle"),
+                tag: 0
+            )
+            return navigationController
+            
 
         case .profile: return UIStoryboard.profile.instantiateInitialViewController()!
         }
@@ -83,7 +91,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-//                 appearance.backgroundColor = UIColor.hexStringToUIColor(hex: "#A2BDC6")
             appearance.backgroundColor = UIColor.white
 
             self.tabBar.standardAppearance = appearance

@@ -5,71 +5,20 @@
 //  Created by Kai Fu Jhuang on 2022/4/8.
 //
 
-import CoreGPX
 import CoreLocation
-import Lottie
 import MapKit
-import MessageUI
 import UIKit
+import CoreGPX
 
 class JourneyViewController: BaseViewController {
-    // MARK: - Outlets
-
-    @IBOutlet var mapView: GPXMapView!
-
-    // MARK: - Properties
-
-    private var hasWaypoints: Bool = false
-
-    private let mapPin = MapPin()
-
-    private let locationManager = LocationManager()
-
-    // MARK: - Tracking State Machine
-
-    enum GPXTrackingStatus {
-        case notStarted
-        case tracking
-        case paused
-    }
-
-    private var trackingStatus: GPXTrackingStatus = .notStarted {
-        didSet {
-            switch trackingStatus {
-            case .notStarted:
-                trackerButton.setTitle("開始", for: .normal)
-                stopWatch.reset()
-                timeLabel.text = stopWatch.elapsedTimeString
-                mapView.resetMapAndRecordingSession()
-                totalTrackedDistanceLabel.distance = mapView.session.totalTrackedDistance
-                currentSegmentDistanceLabel.distance = mapView.session.currentSegmentDistance
-
-            case .tracking:
-                trackerButton.setTitle("暫停", for: .normal)
-                stopWatch.start()
-
-            case .paused:
-                trackerButton.setTitle("繼續", for: .normal)
-                stopWatch.stop()
-                mapView.startNewTrackSegment()
-            }
-        }
-    }
-
-    private var followUser: Bool = true {
-        didSet {
-            let imageName = followUser ? "location.fill" : "location"
-            let image = UIImage(systemName: imageName, withConfiguration: imagePointSize)
-            followUserButton.setImage(image, for: .normal)
-            if followUser {
-                mapView.setCenter(mapView.userLocation.coordinate, animated: true)
-            }
-        }
-    }
-
+    
     // MARK: - UI Components
-
-    let imagePointSize = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
+    
+    private lazy var mapView: GPXMapView = {
+        let map = GPXMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        return map
+    }()
 
     private lazy var saveButton: UIButton = {
         let button = LeftButton()
@@ -135,11 +84,61 @@ class JourneyViewController: BaseViewController {
     }()
 
     // MARK: - Labels
+    
     private let altitudeLabel = LeftLabel()
     private let speedLabel = LeftLabel()
     private let timeLabel = RightLabel()
     private let totalTrackedDistanceLabel = DistanceLabel()
     private let currentSegmentDistanceLabel = DistanceLabel()
+
+    // MARK: - Properties
+
+    private var hasWaypoints: Bool = false
+    private let mapPin = MapPin()
+    private let locationManager = LocationManager()
+    let imagePointSize = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium)
+
+    // MARK: - Tracking State Machine
+
+    enum GPXTrackingStatus {
+        case notStarted
+        case tracking
+        case paused
+    }
+
+    private var trackingStatus: GPXTrackingStatus = .notStarted {
+        didSet {
+            switch trackingStatus {
+            case .notStarted:
+                trackerButton.setTitle("開始", for: .normal)
+                stopWatch.reset()
+                timeLabel.text = stopWatch.elapsedTimeString
+                mapView.resetMapAndRecordingSession()
+                totalTrackedDistanceLabel.distance = mapView.session.totalTrackedDistance
+                currentSegmentDistanceLabel.distance = mapView.session.currentSegmentDistance
+
+            case .tracking:
+                trackerButton.setTitle("暫停", for: .normal)
+                stopWatch.start()
+
+            case .paused:
+                trackerButton.setTitle("繼續", for: .normal)
+                stopWatch.stop()
+                mapView.startNewTrackSegment()
+            }
+        }
+    }
+
+    private var followUser: Bool = true {
+        didSet {
+            let imageName = followUser ? "location.fill" : "location"
+            let image = UIImage(systemName: imageName, withConfiguration: imagePointSize)
+            followUserButton.setImage(image, for: .normal)
+            if followUser {
+                mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+            }
+        }
+    }
 
     // MARK: - View Life Cycle
 
@@ -152,6 +151,7 @@ class JourneyViewController: BaseViewController {
         locationManager.setUpLocationManager()
         stopWatch.delegate = self
 
+        setUpMapView()
         setUpMap()
         setUpLabels()
         setUpButtonsStackView()
@@ -164,10 +164,25 @@ class JourneyViewController: BaseViewController {
 // MARK: - Map Setup
 
 extension JourneyViewController {
-    func setUpMap() {
-        setBeginningRegion()
+    
+    func setUpMapView() {
         mapView.delegate = mapPin
         mapView.showsUserLocation = true
+
+        // 將 mapView 加入目前 View 的最底層
+        view.insertSubview(mapView, at: 0)
+
+        // 開啟完整版的 Auto Layout 約束，全螢幕鋪滿
+        NSLayoutConstraint.activate([
+            mapView.topAnchor.constraint(equalTo: view.topAnchor),
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    func setUpMap() {
+        setBeginningRegion()
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(stopFollowingUser(_:)))
         panGesture.delegate = self
@@ -212,6 +227,7 @@ extension JourneyViewController {
 // MARK: - UI Setup
 
 extension JourneyViewController {
+    
     func setUpButtonsStackView() {
         view.addSubview(buttonStackView)
         view.addSubview(leftStackView)
@@ -224,7 +240,7 @@ extension JourneyViewController {
             leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
             leftStackView.widthAnchor.constraint(equalToConstant: 100),
             leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
-            leftStackView.heightAnchor.constraint(equalToConstant: 200),
+            leftStackView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 
@@ -249,6 +265,7 @@ extension JourneyViewController {
 // MARK: - Actions
 
 extension JourneyViewController {
+    
     @objc func trackerButtonTapped() {
         switch trackingStatus {
         case .notStarted:
@@ -288,7 +305,6 @@ extension JourneyViewController {
                     case .success:
                         self.presentClearRouteConfirmation()
                     case .failure:
-                        // 存檔失敗，不清除任何資料，保留使用者的路線讓他可以重試
                         break
                     }
                 }

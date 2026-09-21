@@ -25,7 +25,6 @@
 		23557908306129CC008181A7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557905306129CC008181A7 /* LoginViewController.swift */; };
 		2355790E30613370008181A7 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355790D30613370008181A7 /* UBikeViewController.swift */; };
 		2355791030613386008181A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355790F30613386008181A7 /* BaseViewController.swift */; };
-		23557912306133ED008181A7 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23557911306133ED008181A7 /* Journey.storyboard */; };
 		2355791830613481008181A7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2355791730613481008181A7 /* Profile.storyboard */; };
 		2355791C306137DF008181A7 /* GoToRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557919306137DF008181A7 /* GoToRideViewController.swift */; };
 		2355792330613D17008181A7 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355792230613D17008181A7 /* RouteViewController.swift */; };
@@ -180,7 +179,6 @@
 		23557906306129CC008181A7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2355790D30613370008181A7 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
 		2355790F30613386008181A7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		23557911306133ED008181A7 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
 		2355791730613481008181A7 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		23557919306137DF008181A7 /* GoToRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRideViewController.swift; sourceTree = "<group>"; };
 		2355792130613D17008181A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 		23D1B76A28006116000EDA70 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
-				23557911306133ED008181A7 /* Journey.storyboard */,
 				23D1B768280060EC000EDA70 /* DistanceLabel.swift */,
 			);
 			path = Journey;
@@ -816,7 +813,6 @@
 				23C8872328149ECC00E3319A /* RouteCollectionCell.xib in Resources */,
 				23A84A8E2813FA9B00DD8D39 /* RouteTypeCell.xib in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
-				23557912306133ED008181A7 /* Journey.storyboard in Resources */,
 				237A27AC281AEC82004F039F /* Member.xib in Resources */,
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				2355792930613D7D008181A7 /* Main.storyboard in Resources */,
