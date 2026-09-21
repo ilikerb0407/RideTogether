@@ -9,13 +9,13 @@ import CoreGPX
 import CoreLocation
 import MapKit
 import UIKit
-
 // TODO: 我在想要不要把這個頁面拿掉，把搜尋腳踏車的功能，變成一個 toggle，然後可以顯示使用者滑動到的中心範圍方圓 1 公里以內的腳踏車，然後如果再按一次 toggle 就會取消顯示，這是我自己想到的功能，不過會不會很不符合邏輯？
 // TODO: 我想要讓 Pin 的圖片好看一點，不是原生的
+// TODO: 移除掉，或是思考一下，有沒有一個寫一個統一的格式(model)，然後可以讓使用者可以搜尋全台灣的 UBike，因為台灣政府很奇怪的地方是，他們的 API 沒有統一格式，所以讓我在擴充的時候很麻煩
+
 class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     var bikeData: [Bike] = []
 
-    // TODO: 移除掉，或是思考一下，有沒有一個寫一個統一的格式(model)，然後可以讓使用者可以搜尋全台灣的 UBike，因為台灣政府很奇怪的地方是，他們的 API 沒有統一格式，所以讓我在擴充的時候很麻煩
     var taichungBikeData: TaichungBike?
 
     // Was `var bikeManager = BikeManager()`, which bypassed the `.shared`
@@ -25,12 +25,36 @@ class UBikeViewController: BaseViewController, CLLocationManagerDelegate {
     // mock instead of hitting the real network API.
     var bikeManager: BikeManaging = UbikeManager.shared
 
-    @IBOutlet var bikeMapView: MKMapView!
+    // Was `@IBOutlet var bikeMapView: MKMapView!`. This scene used to be
+    // duplicated byte-for-byte across THREE separate storyboards (Home,
+    // Profile, Journey) — the same empty MKMapView + full-bleed
+    // constraints, copy-pasted three times — purely to work around
+    // `storyboard?.instantiateViewController(withIdentifier:)` resolving
+    // to "whichever storyboard the calling screen happens to belong to".
+    // Building it here in code means every caller (RideViewController,
+    // GoToRideViewController, JourneyViewController) reaches the exact
+    // same implementation, and none of those three storyboard copies are
+    // needed anymore.
+    private lazy var bikeMapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.showsUserLocation = true
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        return mapView
+    }()
 
     private let locationManager = LocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.addSubview(bikeMapView)
+
+        NSLayoutConstraint.activate([
+            bikeMapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            bikeMapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bikeMapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bikeMapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
 
         locationManager.delegate = self
 

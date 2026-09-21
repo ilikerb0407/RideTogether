@@ -149,35 +149,6 @@
             </objects>
             <point key="canvasLocation" x="2094" y="86"/>
         </scene>
-        <!--Bike View Controller-->
-        <scene sceneID="zoB-jH-eXg">
-            <objects>
-                <viewController storyboardIdentifier="UBikeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mp1-VN-gNM" customClass="UBikeViewController" customModule="RideTogether" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oTj-rK-98U">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-HP-r8V">
-                                <rect key="frame" x="0.0" y="24" width="1024" height="1322"/>
-                            </mapView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="FcP-Nm-Mki"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="QOb-HP-r8V" firstAttribute="top" secondItem="FcP-Nm-Mki" secondAttribute="top" id="Usi-zv-yJf"/>
-                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="bottom" secondItem="QOb-HP-r8V" secondAttribute="bottom" id="Yev-Wa-QQS"/>
-                            <constraint firstItem="QOb-HP-r8V" firstAttribute="leading" secondItem="FcP-Nm-Mki" secondAttribute="leading" id="njB-Pq-PIR"/>
-                            <constraint firstItem="FcP-Nm-Mki" firstAttribute="trailing" secondItem="QOb-HP-r8V" secondAttribute="trailing" id="uDv-IV-QAa"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="bikeMapView" destination="QOb-HP-r8V" id="ZyG-JO-pJo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TjM-vq-nDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1304" y="884"/>
-        </scene>
     </scenes>
     <resources>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
