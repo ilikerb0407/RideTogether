@@ -42,6 +42,11 @@ class HomeViewController: BaseViewController, Reload {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Was set via Home.storyboard's <navigationItem title="探索路線">
+        // on this scene; now that HomeViewController is built in code,
+        // it needs to be set explicitly.
+        title = "探索路線"
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateUserInfo),
@@ -175,31 +180,29 @@ extension HomeViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var sender = [RouteModel]()
+        let routes: [RouteModel]
 
         switch indexPath.row {
         case 0:
-            sender = userOne
+            routes = userOne
         case 1:
-            sender = recommendOne
+            routes = recommendOne
         case 2:
-            sender = riverOne
+            routes = riverOne
         case 3:
-            sender = mountainOne
+            routes = mountainOne
         default:
             return
         }
-        performSegue(withIdentifier: SegueIdentifier.route.rawValue, sender: sender)
-    }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.route.rawValue {
-            if let routeListVC = segue.destination as? RouteViewController {
-                if let routes = sender as? [RouteModel] {
-                    routeListVC.routes = routes
-                }
-            }
-        }
+        // Was `performSegue(withIdentifier: SegueIdentifier.route.rawValue,
+        // sender: sender)` + `prepare(for:sender:)` reading the segue's
+        // destination. Now that RouteViewController isn't reached through
+        // a Storyboard segue, it's built and pushed directly.
+        let routeListVC = RouteViewController()
+        routeListVC.routes = routes
+
+        navigationController?.pushViewController(routeListVC, animated: true)
     }
 }
 

@@ -313,11 +313,13 @@ extension RouteViewController: UITableViewDataSource {
     }
 
     @objc func goToRide(_ sender: UIButton) {
-        if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
-            journeyViewController.routes = viewModel.routes[sender.tag]
+        // Was `storyboard?.instantiateViewController(withIdentifier:
+        // "GoToRideViewController")`, which depends on RouteViewController
+        // itself having been loaded from a Storyboard. Built directly now.
+        let journeyViewController = GoToRideViewController()
+        journeyViewController.routes = viewModel.routes[sender.tag]
 
-            navigationController?.pushViewController(journeyViewController, animated: true)
-        }
+        navigationController?.pushViewController(journeyViewController, animated: true)
     }
 }
 

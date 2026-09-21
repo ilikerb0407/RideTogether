@@ -18,19 +18,30 @@ private enum Tab {
     case profile
 
     func controller() -> UIViewController {
-        var controller: UIViewController
-
         switch self {
-        case .home: controller = UIStoryboard.home.instantiateInitialViewController()!
+        case .home:
+            // Was `UIStoryboard.home.instantiateInitialViewController()!`,
+            // which resolved Home.storyboard's UINavigationController
+            // scene (wrapping HomeViewController, with its tabBarItem set
+            // in Interface Builder to title "探索" + the
+            // magnifyingglass.circle system image). Built directly now
+            // that HomeViewController no longer needs to be loaded from a
+            // Storyboard; the tabBarItem is set explicitly below since
+            // nothing else supplies it anymore.
+            let navigationController = UINavigationController(rootViewController: HomeViewController())
+            navigationController.tabBarItem = UITabBarItem(
+                title: "探索",
+                image: UIImage(systemName: "magnifyingglass.circle"),
+                tag: 0
+            )
+            return navigationController
 
-        case .group: controller = UIStoryboard.group.instantiateInitialViewController()!
+        case .group: return UIStoryboard.group.instantiateInitialViewController()!
 
-        case .journey: controller = UIStoryboard.journey.instantiateInitialViewController()!
+        case .journey: return UIStoryboard.journey.instantiateInitialViewController()!
 
-        case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
+        case .profile: return UIStoryboard.profile.instantiateInitialViewController()!
         }
-
-        return controller
     }
 }
 

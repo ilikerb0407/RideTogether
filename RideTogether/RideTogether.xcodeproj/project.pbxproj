@@ -28,9 +28,10 @@
 		23557912306133ED008181A7 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23557911306133ED008181A7 /* Journey.storyboard */; };
 		2355791830613481008181A7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2355791730613481008181A7 /* Profile.storyboard */; };
 		2355791C306137DF008181A7 /* GoToRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557919306137DF008181A7 /* GoToRideViewController.swift */; };
-		2355791D306137DF008181A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355791A306137DF008181A7 /* HomeViewController.swift */; };
-		2355791E306137DF008181A7 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355791B306137DF008181A7 /* RouteViewController.swift */; };
-		23557920306137FA008181A7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2355791F306137FA008181A7 /* Home.storyboard */; };
+		2355792330613D17008181A7 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355792230613D17008181A7 /* RouteViewController.swift */; };
+		2355792430613D17008181A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355792130613D17008181A7 /* HomeViewController.swift */; };
+		2355792630613D23008181A7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355792530613D23008181A7 /* TabBarController.swift */; };
+		2355792930613D7D008181A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2355792730613D7D008181A7 /* Main.storyboard */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
@@ -83,7 +84,6 @@
 		23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */; };
 		23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */; };
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
-		23CB74C62817803300DED822 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C52817803300DED822 /* TabBarController.swift */; };
 		23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C72817824000DED822 /* UIStorybroad.swift */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
 		23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A8280E7DCC00C4C9F1 /* RouteAnnotation.swift */; };
@@ -93,7 +93,6 @@
 		23CE42B5280EED4F00C4C9F1 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B4280EED4F00C4C9F1 /* UIImage+Additions.swift */; };
 		23CE42B7280EED7D00C4C9F1 /* UITextField+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */; };
 		23D1B72F280033FB000EDA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B72E280033FB000EDA70 /* AppDelegate.swift */; };
-		23D1B736280033FB000EDA70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B734280033FB000EDA70 /* Main.storyboard */; };
 		23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B737280033FC000EDA70 /* Assets.xcassets */; };
 		23D1B73B280033FC000EDA70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */; };
 		23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1B74228004694000EDA70 /* JourneyViewController.swift */; };
@@ -184,9 +183,10 @@
 		23557911306133ED008181A7 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
 		2355791730613481008181A7 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		23557919306137DF008181A7 /* GoToRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRideViewController.swift; sourceTree = "<group>"; };
-		2355791A306137DF008181A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		2355791B306137DF008181A7 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
-		2355791F306137FA008181A7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		2355792130613D17008181A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2355792230613D17008181A7 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		2355792530613D23008181A7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		2355792830613D7D008181A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
@@ -230,7 +230,6 @@
 		23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
-		23CB74C52817803300DED822 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		23CB74C72817824000DED822 /* UIStorybroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStorybroad.swift; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
 		23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawRoute.swift; sourceTree = "<group>"; };
@@ -242,7 +241,6 @@
 		23CE42B6280EED7D00C4C9F1 /* UITextField+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Additions.swift"; sourceTree = "<group>"; };
 		23D1B72B280033FB000EDA70 /* RideTogether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideTogether.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23D1B72E280033FB000EDA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23D1B735280033FB000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23D1B737280033FC000EDA70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23D1B73A280033FC000EDA70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D1B73C280033FC000EDA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -368,9 +366,9 @@
 		231BCB6B2808593E00DE2343 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2355792130613D17008181A7 /* HomeViewController.swift */,
+				2355792230613D17008181A7 /* RouteViewController.swift */,
 				23557919306137DF008181A7 /* GoToRideViewController.swift */,
-				2355791A306137DF008181A7 /* HomeViewController.swift */,
-				2355791B306137DF008181A7 /* RouteViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -428,7 +426,6 @@
 		23C887192814285A00E3319A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2355791F306137FA008181A7 /* Home.storyboard */,
 				23C0C41D281E9C810020237C /* HomeHeader.swift */,
 				23C0C41E281E9C810020237C /* HomeHeader.xib */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypeCell.swift */,
@@ -524,7 +521,7 @@
 			isa = PBXGroup;
 			children = (
 				2355790F30613386008181A7 /* BaseViewController.swift */,
-				23CB74C52817803300DED822 /* TabBarController.swift */,
+				2355792530613D23008181A7 /* TabBarController.swift */,
 				237A27A8281A6948004F039F /* Login */,
 				23D1B7912800B08D000EDA70 /* Journey */,
 				231BCB6B2808593E00DE2343 /* Home */,
@@ -567,10 +564,10 @@
 		23D1B767280060E0000EDA70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2355792730613D7D008181A7 /* Main.storyboard */,
 				23D5EB15305D14530004BD80 /* BikeView.swift */,
 				23D5EB13305D11590004BD80 /* MapPin.swift */,
 				23D1B739280033FC000EDA70 /* LaunchScreen.storyboard */,
-				23D1B734280033FB000EDA70 /* Main.storyboard */,
 				23D1B737280033FC000EDA70 /* Assets.xcassets */,
 				23D1B76A28006116000EDA70 /* Journey */,
 				23C887192814285A00E3319A /* Home */,
@@ -811,7 +808,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23557920306137FA008181A7 /* Home.storyboard in Resources */,
 				23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */,
 				2355790230611CFD008181A7 /* bike-animation.json in Resources */,
 				23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */,
@@ -823,10 +819,10 @@
 				23557912306133ED008181A7 /* Journey.storyboard in Resources */,
 				237A27AC281AEC82004F039F /* Member.xib in Resources */,
 				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
+				2355792930613D7D008181A7 /* Main.storyboard in Resources */,
 				2355791830613481008181A7 /* Profile.storyboard in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
 				23C0C420281E9C810020237C /* HomeHeader.xib in Resources */,
-				23D1B736280033FB000EDA70 /* Main.storyboard in Resources */,
 				239C57E82F88295F008F01BC /* GoogleService-Info.plist in Resources */,
 				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23D1B80A2805BED3000EDA70 /* Group.storyboard in Resources */,
@@ -978,6 +974,8 @@
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
 				23D5EB14305D11590004BD80 /* MapPin.swift in Sources */,
+				2355792330613D17008181A7 /* RouteViewController.swift in Sources */,
+				2355792430613D17008181A7 /* HomeViewController.swift in Sources */,
 				23D1B76428006092000EDA70 /* UserInfo.swift in Sources */,
 				23C0C422281EA4870020237C /* Notification.swift in Sources */,
 				2383878C280FCD9000E9F4F4 /* Group.swift in Sources */,
@@ -1004,7 +1002,6 @@
 				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
-				23CB74C62817803300DED822 /* TabBarController.swift in Sources */,
 				23D5EB01305C7CEA0004BD80 /* ProfileViewController.swift in Sources */,
 				23D5EB23305D1C740004BD80 /* RouteModel.swift in Sources */,
 				23D5EB24305D1C740004BD80 /* RouteCategory.swift in Sources */,
@@ -1031,11 +1028,10 @@
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
 				2355791C306137DF008181A7 /* GoToRideViewController.swift in Sources */,
-				2355791D306137DF008181A7 /* HomeViewController.swift in Sources */,
-				2355791E306137DF008181A7 /* RouteViewController.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
+				2355792630613D23008181A7 /* TabBarController.swift in Sources */,
 				2304FF4C280895F200C6B1BF /* RideViewController.swift in Sources */,
 				23557904306128FD008181A7 /* SceneDelegate.swift in Sources */,
 				23D1B77B28006243000EDA70 /* UIColor+Extension.swift in Sources */,
@@ -1056,10 +1052,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		23D1B734280033FB000EDA70 /* Main.storyboard */ = {
+		2355792730613D7D008181A7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				23D1B735280033FB000EDA70 /* Base */,
+				2355792830613D7D008181A7 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
