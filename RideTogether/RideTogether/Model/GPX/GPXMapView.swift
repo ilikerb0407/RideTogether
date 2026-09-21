@@ -40,6 +40,24 @@ class GPXMapView: MKMapView {
         isMultipleTouchEnabled = true
     }
 
+    // Added so GPXMapView can be built directly in code (e.g.
+    // `GPXMapView()`), not only loaded from a Storyboard/XIB via
+    // `init?(coder:)` above. Some screens (RideViewController and others
+    // still using customClass="GPXMapView" in Profile.storyboard /
+    // Journey.storyboard) still rely on the coder path, so that
+    // initializer is kept — this one is purely additive.
+    override init(frame: CGRect) {
+        var tmpCoords: [CLLocationCoordinate2D] = []
+
+        currentSegmentOverlay = MKPolyline(coordinates: &tmpCoords, count: 0)
+
+        super.init(frame: frame)
+
+        isUserInteractionEnabled = true
+
+        isMultipleTouchEnabled = true
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -189,3 +207,4 @@ class GPXMapView: MKMapView {
         session.waypoints.remove(at: index!)
     }
 }
+

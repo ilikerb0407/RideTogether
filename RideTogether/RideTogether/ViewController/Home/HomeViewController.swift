@@ -90,7 +90,7 @@ class HomeViewController: BaseViewController, Reload {
     func setUpTableView() {
         tableView = UITableView(frame: .zero, style: .grouped)
 
-        tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: RouteTypeCell.identifier, bundle: nil)
 
         view.stickSubView(tableView)
 
@@ -211,7 +211,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RouteTypes = tableView.dequeueCell(for: indexPath)
+        let cell: RouteTypeCell = tableView.dequeueCell(for: indexPath)
 
         cell.setUpCell(
             routetitle: RouteCategory.allCases[indexPath.row].rawValue,
