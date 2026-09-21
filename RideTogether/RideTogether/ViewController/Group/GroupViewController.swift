@@ -98,20 +98,9 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
         checkRequestsNum()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Listener 已在 viewDidLoad 建立，不需重複呼叫
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.groupChat.rawValue,
-           let chatRoomVC = segue.destination as? ChatRoomViewController,
-           let groupInfo = sender as? Group
-        {
-            chatRoomVC.groupInfo = groupInfo
-            chatRoomVC.cache = cache
-        }
-
+        
         if segue.identifier == SegueIdentifier.requestList.rawValue,
            let requestVC = segue.destination as? JoinViewController,
            let requests = sender as? [Request]

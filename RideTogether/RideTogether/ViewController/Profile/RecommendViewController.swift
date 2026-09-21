@@ -138,22 +138,6 @@ class RecommendViewController: BaseViewController {
 
         tabBarController?.tabBar.isHidden = false
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        waitlottie.isHidden = true
-    }
-
-    private lazy var waitlottie: AnimationView = {
-        let view = AnimationView(name: "waiting-pigeon")
-        view.loopMode = .loop
-        view.frame = CGRect(x: UIScreen.width / 8, y: UIScreen.height / 6, width: 300, height: 300)
-        view.cornerRadius = 20
-        view.contentMode = .scaleToFill
-        view.play()
-        self.view.addSubview(view)
-        return view
-    }()
 }
 
 extension RecommendViewController: UITableViewDelegate {
@@ -168,8 +152,6 @@ extension RecommendViewController: UITableViewDelegate {
                         guard let self = self else { return }
 
                         DispatchQueue.main.async {
-                            self.waitlottie.isHidden = true
-
                             switch result {
                             case .success:
                                 LKProgressHUD.showSuccess(text: "收藏成功")
@@ -187,7 +169,6 @@ extension RecommendViewController: UITableViewDelegate {
                         guard let self = self else { return }
 
                         DispatchQueue.main.async {
-                            self.waitlottie.isHidden = true
 
                             switch result {
                             case .success:
@@ -202,10 +183,8 @@ extension RecommendViewController: UITableViewDelegate {
                 }
 
                 let cancelOption = UIAlertAction(title: "取消", style: .cancel) { [weak self] _ in
-                    self?.waitlottie.isHidden = true
+                    
                 }
-
-                showAlertAction(title: nil, message: nil, actions: [cancelOption, likeOption, blockOption])
             }
         }
     }

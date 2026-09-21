@@ -39,7 +39,6 @@ class JourneyViewController: BaseViewController {
             case .notStarted:
                 trackerButton.setTitle("開始", for: .normal)
                 stopWatch.reset()
-                waveLottieView.isHidden = true
                 timeLabel.text = stopWatch.elapsedTimeString
                 mapView.resetMapAndRecordingSession()
                 totalTrackedDistanceLabel.distance = mapView.session.totalTrackedDistance
@@ -48,13 +47,10 @@ class JourneyViewController: BaseViewController {
             case .tracking:
                 trackerButton.setTitle("暫停", for: .normal)
                 stopWatch.start()
-                waveLottieView.isHidden = false
-                waveLottieView.play()
 
             case .paused:
                 trackerButton.setTitle("繼續", for: .normal)
                 stopWatch.stop()
-                waveLottieView.isHidden = true
                 mapView.startNewTrackSegment()
             }
         }
@@ -118,18 +114,6 @@ class JourneyViewController: BaseViewController {
         return button
     }()
 
-    private lazy var waveLottieView: AnimationView = {
-        let view = AnimationView(name: "circle")
-        view.loopMode = .loop
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        view.center = leftStackView.center
-        view.contentMode = .scaleAspectFit
-        view.play()
-        self.view.addSubview(view)
-        self.view.bringSubviewToFront(leftStackView)
-        return view
-    }()
-
     private lazy var buttonStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [followUserButton, pinButton, showBike])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -174,13 +158,6 @@ class JourneyViewController: BaseViewController {
         addMapTypeSegment()
 
         navigationController?.isNavigationBarHidden = true
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if trackingStatus == .tracking {
-            waveLottieView.play()
-        }
     }
 }
 
@@ -240,9 +217,8 @@ extension JourneyViewController {
         view.addSubview(leftStackView)
 
         NSLayoutConstraint.activate([
-            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 150),
-            buttonStackView.widthAnchor.constraint(equalToConstant: 280),
-            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
+            buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             buttonStackView.heightAnchor.constraint(equalToConstant: 80),
 
             leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
