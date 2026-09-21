@@ -65,7 +65,7 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
 
     func lottie() {
         var waveLottieView: AnimationView = {
-            let view = AnimationView(name: "49908-bike-ride")
+            let view = AnimationView(name: "bike-animation")
 
             view.loopMode = .loop
             view.frame = CGRect(x: UIScreen.width / 2 - 200, y: UIScreen.height / 2 - 200, width: 400, height: 350)
@@ -138,19 +138,8 @@ class LoginViewController: BaseViewController, ASAuthorizationControllerPresenta
         request.nonce = sha256(nonce)
 
         currentNonce = nonce
-//
     }
 
-    //    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
-    //
-    //        let appleIDProvider = ASAuthorizationAppleIDProvider()
-    //
-    //        let request = appleIDProvider.createRequest()
-    //
-    //        request.requestedScopes = [.fullName, .email]
-    //
-    //        return request
-    //    }
 
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)

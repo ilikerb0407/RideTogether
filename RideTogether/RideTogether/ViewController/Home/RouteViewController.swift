@@ -4,14 +4,25 @@
 //
 //  Created by Kai Fu Jhuang on 2022/4/23.
 //
+//  This used to also own its own Storage/Firestore instances and write
+//  directly into the "Savemaps" Firestore collection via
+//  `uploadRecordToSavemaps` — the exact same issue fixed in
+//  RecommendViewController: bypassing MapsManager even though it already
+//  owns reading from and deleting from that collection. Saving a route,
+//  blocking its uploader, and computing the theme label now all live in
+//  RouteViewModel; this ViewController only builds the table/collection
+//  views, reacts to user actions, and reads viewModel.routes for its data
+//  sources. See RouteViewModel.swift for the full rationale.
+//
+//  Note: `themeLabel` (now `viewModel.themeLabel`) is computed but never
+//  actually displayed anywhere — the only code that would read it
+//  (`setUpThemeTag()`) is entirely commented out below. Left in place in
+//  case that UI gets wired up later; flagging it here so it isn't
+//  mistaken for dead code that was missed.
 
 import FirebaseStorage
-import SwiftUI
-import UIKit
-
-// import FirebaseFirestoreSwift
-import FirebaseFirestore
 import Lottie
+import UIKit
 
 class RouteViewController: BaseViewController {
     @IBOutlet var gView: UIView! {
@@ -40,43 +51,23 @@ class RouteViewController: BaseViewController {
 
     let routesCollectionCell = RouteCollectionCell()
 
-    lazy var storage = Storage.storage()
-    lazy var storageRef = storage.reference()
-    lazy var dataBase = Firestore.firestore()
-
-    private let routeCollection = Collection.routes.rawValue
+    // Injected with a default so existing instantiation sites (from
+    // Storyboard, via `init?(coder:)`) don't need to change, while tests
+    // can substitute a ViewModel wired with fakes for every dependency.
+    var viewModel = RouteViewModel()
 
     var indexOfRoute: Int = 0
 
-    private var themeLabel = ""
-
-    var routes = [RouteModel]() {
-        didSet {
-            setUpLabel()
-        }
-    }
-
-    func setUpLabel() {
-        if let label = routes.first?.routeTypes {
-            switch label {
-            case 0:
-
-                themeLabel = RouteCategory.userOne.rawValue
-
-            case 1:
-
-                themeLabel = RouteCategory.recommendOne.rawValue
-
-            case 2:
-
-                themeLabel = RouteCategory.riverOne.rawValue
-
-            case 3:
-
-                themeLabel = RouteCategory.mountainOne.rawValue
-
-            default:
-                return
+    /// Setting this from outside (HomeViewController does, via
+    /// `prepare(for:sender:)`) forwards into the ViewModel and refreshes
+    /// the collection view — `routes` itself isn't the source of truth
+    /// anymore, `viewModel.routes` is.
+    var routes: [RouteModel] {
+        get { viewModel.routes }
+        set {
+            viewModel.updateRoutes(newValue)
+            if dataSource != nil {
+                configureSnapshot()
             }
         }
     }
@@ -180,36 +171,51 @@ class RouteViewController: BaseViewController {
         LKProgressHUD.dismiss()
     }
 
-    private let saveCollection = Collection.savemaps.rawValue // Profile
-    var userId: String { UserManager.shared.userInfo.uid }
-
-    func uploadRecordToSavemaps(fileName: String, fileRef: String, userPhoto: String) {
-        let document = dataBase.collection(saveCollection).document()
-
-        var record = Record()
-
-        record.uid = userId
-
-        record.recordId = document.documentID
-
-        record.recordName = fileName
-
-        record.recordRef = fileRef
-
-        record.pictureRef = userPhoto
-
-        do {
-            try document.setData(from: record)
-
-        } catch {
-            LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
-            print("error")
-        }
-
-        print("sucessfully")
-    }
-
-    var userPhoto: String { UserManager.shared.userInfo.pictureRef ?? "" }
+//    func setUpThemeTag() {
+//        let container = UIView()
+//        container.translatesAutoresizingMaskIntoConstraints = false
+//        container.backgroundColor = .B5
+//        container.layer.cornerRadius = 20
+//        container.layer.masksToBounds = true
+//
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = viewModel.themeLabel
+//        label.textColor = .B2
+//        label.textAlignment = .center
+//        label.font = UIFont.regular(size: 18)
+//
+//        view.addSubview(container)
+//        container.addSubview(label)
+//
+//        NSLayoutConstraint.activate([
+//            container.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+//            container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+//            container.heightAnchor.constraint(equalToConstant: 40),
+//
+//            label.topAnchor.constraint(equalTo: container.topAnchor, constant: 6),
+//            label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -6),
+//            label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 14),
+//            label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -14)
+//        ])
+//
+//        // If tableView exists, move it below the tag to avoid overlap
+//        if let tableView = self.value(forKey: "tableView") as? UITableView {
+//            // Remove existing top constraint if it anchors to safeArea top
+//            // Then add a new constraint to the container's bottom
+//            tableView.translatesAutoresizingMaskIntoConstraints = false
+//            // Deactivate constraints that pin tableView to safeArea top
+//            for c in view.constraints where (c.firstItem as? UIView) == tableView && c.firstAttribute == .top {
+//                c.isActive = false
+//            }
+//            for c in tableView.constraints where c.firstAttribute == .top {
+//                c.isActive = false
+//            }
+//            NSLayoutConstraint.activate([
+//                tableView.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 12)
+//            ])
+//        }
+//    }
 }
 
 extension RouteViewController: UITableViewDelegate {
@@ -217,22 +223,37 @@ extension RouteViewController: UITableViewDelegate {
         if sender.state == .began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                let likeOption = UIAlertAction(title: "收藏", style: .default) { [self] _ in
+                let likeOption = UIAlertAction(title: "收藏", style: .default) { [weak self] _ in
+                    guard let self = self else { return }
 
-                    self.uploadRecordToSavemaps(fileName: routes[indexPath.row].routeName, fileRef: routes[indexPath.row].routeMap, userPhoto: userPhoto)
+                    self.viewModel.saveToSavemaps(at: indexPath.row) { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success:
+                                LKProgressHUD.showSuccess(text: "收藏成功")
+                            case .failure:
+                                LKProgressHUD.showFailure(text: "無法收藏，因為不是使用者提供的路線")
+                            }
+                        }
+                    }
                 }
 
-                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [self] _ in
+                let blockOption = UIAlertAction(title: "封鎖", style: .destructive) { [weak self] _ in
+                    guard let self = self else { return }
 
-                    if userId == routes[indexPath.row].uid {
-                        LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
-                    } else if routes[indexPath.row].uid == nil {
-                        LKProgressHUD.showFailure(text: "無法封鎖預設的地圖")
-
-                    } else {
-                        UserManager.shared.blockUser(blockUserId: routes[indexPath.row].uid!)
-
-                        UserManager.shared.userInfo.blockList?.append(routes[indexPath.row].uid!)
+                    self.viewModel.blockUploader(ofRouteAt: indexPath.row) { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .failure(RouteViewModelError.cannotBlockSelf):
+                                LKProgressHUD.showFailure(text: "無法封鎖自己的分享紀錄")
+                            case .failure(RouteViewModelError.missingUploaderId):
+                                LKProgressHUD.showFailure(text: "無法封鎖預設的地圖")
+                            case .failure:
+                                LKProgressHUD.showFailure(text: "封鎖失敗")
+                            case .success:
+                                break
+                            }
+                        }
                     }
                 }
 
@@ -257,13 +278,13 @@ extension RouteViewController: UITableViewDelegate {
 //
 extension RouteViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        routes.count
+        viewModel.routes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RoutesTableViewCell = tableView.dequeueCell(for: indexPath)
 
-        cell.setUpCell(model: routes[indexPath.row])
+        cell.setUpCell(model: viewModel.routes[indexPath.row])
 
         cell.rideBtn.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
 
@@ -274,7 +295,7 @@ extension RouteViewController: UITableViewDataSource {
 
     @objc func goToRide(_ sender: UIButton) {
         if let journeyViewController = storyboard?.instantiateViewController(withIdentifier: "GoToRideViewController") as? GoToRideViewController {
-            journeyViewController.routes = routes[sender.tag]
+            journeyViewController.routes = viewModel.routes[sender.tag]
 
             navigationController?.pushViewController(journeyViewController, animated: true)
         }
@@ -358,7 +379,13 @@ extension RouteViewController {
 
                 cell.setUpCell(model: model)
 
+//                cell.rideButton.addTarget(self, action: #selector(goToRide), for: .touchUpInside)
+
                 cell.rideButton.tag = indexPath.row
+
+//                cell.checkGroupButton.tag = indexPath.row
+
+//                cell.checkGroupButton.addTarget(self, action: #selector(self.toGroupPage), for: .touchUpInside)
 
                 return cell
             }
@@ -366,9 +393,11 @@ extension RouteViewController {
     }
 
     func configureSnapshot() {
+        snapshot = DataSourceSnapshot()
+
         snapshot.appendSections([.section])
 
-        snapshot.appendItems(routes, toSection: .section)
+        snapshot.appendItems(viewModel.routes, toSection: .section)
 
         dataSource.apply(snapshot, animatingDifferences: false)
     }
