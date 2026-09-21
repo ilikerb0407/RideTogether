@@ -49,6 +49,8 @@ class HomeViewController: BaseViewController, Reload {
             object: nil
         )
 
+        setUpGradientBackground()
+
         setUpTableView()
     }
 
@@ -58,20 +60,37 @@ class HomeViewController: BaseViewController, Reload {
         fetchTrailData()
     }
 
-    @IBOutlet var gView: UIView! {
-        didSet {
-            gView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed
-            )
-            gView.alpha = 0.85
-        }
+    // Was `@IBOutlet var gView: UIView! { didSet { ... } }` — the storyboard
+    // provided an empty background view whose only job is a gradient
+    // fill, built in code here instead. Layout matches Home.storyboard's
+    // scene exactly: top pinned to the root view (bleeds behind the nav
+    // bar), leading/trailing/bottom pinned to the safe area.
+    private lazy var gView: UIView = {
+        let gradientView = UIView()
+        gradientView.applyGradient(
+            colors: [.white, .B3],
+            locations: [0.0, 1.0], direction: .leftSkewed
+        )
+        gradientView.alpha = 0.85
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        return gradientView
+    }()
+
+    private func setUpGradientBackground() {
+        view.insertSubview(gView, at: 0)
+
+        NSLayoutConstraint.activate([
+            gView.topAnchor.constraint(equalTo: view.topAnchor),
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
 
     func setUpTableView() {
         tableView = UITableView(frame: .zero, style: .grouped)
 
-        tableView.registerCellWithNib(identifier: RouteTypeCell.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: RouteTypes.identifier, bundle: nil)
 
         view.stickSubView(tableView)
 
@@ -192,7 +211,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: RouteTypeCell = tableView.dequeueCell(for: indexPath)
+        let cell: RouteTypes = tableView.dequeueCell(for: indexPath)
 
         cell.setUpCell(
             routetitle: RouteCategory.allCases[indexPath.row].rawValue,

@@ -18,7 +18,17 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
 
 //    var userName = Auth.auth().currentUser?.displayName
 
-    @IBOutlet var map3: GPXMapView!
+    // Was `@IBOutlet var map3: GPXMapView!`. Layout matches
+    // Home.storyboard's scene: top/leading pinned to the root view
+    // (bleeds full-bleed, ignoring the safe area on those two edges),
+    // bottom/trailing pinned to the safe area. (The storyboard had a
+    // duplicate bottom constraint — same relationship written twice —
+    // which is harmless but pointless; written once here.)
+    private lazy var map3: GPXMapView = {
+        let mapView = GPXMapView()
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        return mapView
+    }()
 
     var routes = RouteModel()
 
@@ -227,6 +237,13 @@ class GoToRideViewController: BaseViewController, CLLocationManagerDelegate {
 //                                                                   action: #selector(JourneyViewController.addPinAtTappedLocation(_:))))
 
         view.addSubview(map3)
+
+        NSLayoutConstraint.activate([
+            map3.topAnchor.constraint(equalTo: view.topAnchor),
+            map3.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            map3.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            map3.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
 
         praseGPXFile()
     }

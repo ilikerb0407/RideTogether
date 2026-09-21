@@ -25,14 +25,31 @@ import Lottie
 import UIKit
 
 class RouteViewController: BaseViewController {
-    @IBOutlet var gView: UIView! {
-        didSet {
-            gView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed
-            )
-            gView.alpha = 0.85
-        }
+    // Was `@IBOutlet var gView: UIView! { didSet { ... } }`. Layout
+    // matches Home.storyboard's scene exactly: leading/trailing/bottom
+    // pinned to the safe area, top pinned 125pt ABOVE the safe area's
+    // top — bleeding upward to cover behind the custom nav bar this
+    // screen sets via `setNavigationBar(title:)`.
+    private lazy var gView: UIView = {
+        let gradientView = UIView()
+        gradientView.applyGradient(
+            colors: [.white, .B3],
+            locations: [0.0, 1.0], direction: .leftSkewed
+        )
+        gradientView.alpha = 0.85
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        return gradientView
+    }()
+
+    private func setUpGradientBackground() {
+        view.insertSubview(gView, at: 0)
+
+        NSLayoutConstraint.activate([
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            gView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -125),
+        ])
     }
 
     // MARK: - DataSource & DataSourceSnapshot typelias -
@@ -154,6 +171,8 @@ class RouteViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setUpGradientBackground()
 
         setUpTableView()
 

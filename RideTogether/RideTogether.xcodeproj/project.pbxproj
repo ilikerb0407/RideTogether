@@ -26,8 +26,11 @@
 		2355790E30613370008181A7 /* UBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355790D30613370008181A7 /* UBikeViewController.swift */; };
 		2355791030613386008181A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355790F30613386008181A7 /* BaseViewController.swift */; };
 		23557912306133ED008181A7 /* Journey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23557911306133ED008181A7 /* Journey.storyboard */; };
-		235579163061345E008181A7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235579153061345E008181A7 /* Home.storyboard */; };
 		2355791830613481008181A7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2355791730613481008181A7 /* Profile.storyboard */; };
+		2355791C306137DF008181A7 /* GoToRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23557919306137DF008181A7 /* GoToRideViewController.swift */; };
+		2355791D306137DF008181A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355791A306137DF008181A7 /* HomeViewController.swift */; };
+		2355791E306137DF008181A7 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355791B306137DF008181A7 /* RouteViewController.swift */; };
+		23557920306137FA008181A7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2355791F306137FA008181A7 /* Home.storyboard */; };
 		235CB8E528354A1E0018101B /* ReuseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CB8E428354A1E0018101B /* ReuseLabel.swift */; };
 		2360C67628254EA900EF21D3 /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C67528254EA900EF21D3 /* PolicyViewController.swift */; };
 		2360C67A282558EB00EF21D3 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */; };
@@ -39,7 +42,6 @@
 		2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */; };
 		2389C50F3061167D0011AF0E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C50E3061167D0011AF0E /* SignUpViewModel.swift */; };
 		2389C5103061167D0011AF0E /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C50D3061167D0011AF0E /* RouteViewModel.swift */; };
-		2389C5123061169F0011AF0E /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C5113061169F0011AF0E /* RouteViewController.swift */; };
 		2389C517306116C90011AF0E /* SignUpViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C516306116C90011AF0E /* SignUpViewModelTests.swift */; };
 		2389C518306116C90011AF0E /* RouteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389C515306116C90011AF0E /* RouteViewModelTests.swift */; };
 		2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2397D459281F938F0018FC5E /* GroupMemberViewController.swift */; };
@@ -61,8 +63,6 @@
 		23A84A782812E63900DD8D39 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A772812E63800DD8D39 /* JoinViewController.swift */; };
 		23A84A8D2813FA9B00DD8D39 /* RouteTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A84A8B2813FA9B00DD8D39 /* RouteTypeCell.swift */; };
 		23A84A8E2813FA9B00DD8D39 /* RouteTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A84A8C2813FA9B00DD8D39 /* RouteTypeCell.xib */; };
-		23B04D36305D223F00D9C1F5 /* GoToRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D32305D223F00D9C1F5 /* GoToRideViewController.swift */; };
-		23B04D37305D223F00D9C1F5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D33305D223F00D9C1F5 /* HomeViewController.swift */; };
 		23B04D3B305D338600D9C1F5 /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D39305D338600D9C1F5 /* RecommendViewModel.swift */; };
 		23B04D3C305D338600D9C1F5 /* TracksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D3A305D338600D9C1F5 /* TracksViewModel.swift */; };
 		23B04D3F305D33A000D9C1F5 /* TracksViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D3E305D33A000D9C1F5 /* TracksViewModelTests.swift */; };
@@ -182,8 +182,11 @@
 		2355790D30613370008181A7 /* UBikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBikeViewController.swift; sourceTree = "<group>"; };
 		2355790F30613386008181A7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		23557911306133ED008181A7 /* Journey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Journey.storyboard; sourceTree = "<group>"; };
-		235579153061345E008181A7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2355791730613481008181A7 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		23557919306137DF008181A7 /* GoToRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRideViewController.swift; sourceTree = "<group>"; };
+		2355791A306137DF008181A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2355791B306137DF008181A7 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		2355791F306137FA008181A7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		235CB8E428354A1E0018101B /* ReuseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseLabel.swift; sourceTree = "<group>"; };
 		2360C67528254EA900EF21D3 /* PolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		2360C679282558EB00EF21D3 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
@@ -195,7 +198,6 @@
 		2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		2389C50D3061167D0011AF0E /* RouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		2389C50E3061167D0011AF0E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		2389C5113061169F0011AF0E /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		2389C515306116C90011AF0E /* RouteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewModelTests.swift; sourceTree = "<group>"; };
 		2389C516306116C90011AF0E /* SignUpViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelTests.swift; sourceTree = "<group>"; };
 		2397D459281F938F0018FC5E /* GroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewController.swift; sourceTree = "<group>"; };
@@ -208,8 +210,6 @@
 		23A84A8B2813FA9B00DD8D39 /* RouteTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTypeCell.swift; sourceTree = "<group>"; };
 		23A84A8C2813FA9B00DD8D39 /* RouteTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTypeCell.xib; sourceTree = "<group>"; };
 		23AD0C6E282A746B00180B79 /* RideTogetherRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherRelease.entitlements; sourceTree = "<group>"; };
-		23B04D32305D223F00D9C1F5 /* GoToRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRideViewController.swift; sourceTree = "<group>"; };
-		23B04D33305D223F00D9C1F5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B04D39305D338600D9C1F5 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		23B04D3A305D338600D9C1F5 /* TracksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksViewModel.swift; sourceTree = "<group>"; };
 		23B04D3D305D33A000D9C1F5 /* RecommendViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModelTests.swift; sourceTree = "<group>"; };
@@ -368,9 +368,9 @@
 		231BCB6B2808593E00DE2343 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2389C5113061169F0011AF0E /* RouteViewController.swift */,
-				23B04D32305D223F00D9C1F5 /* GoToRideViewController.swift */,
-				23B04D33305D223F00D9C1F5 /* HomeViewController.swift */,
+				23557919306137DF008181A7 /* GoToRideViewController.swift */,
+				2355791A306137DF008181A7 /* HomeViewController.swift */,
+				2355791B306137DF008181A7 /* RouteViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 		23C887192814285A00E3319A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				235579153061345E008181A7 /* Home.storyboard */,
+				2355791F306137FA008181A7 /* Home.storyboard */,
 				23C0C41D281E9C810020237C /* HomeHeader.swift */,
 				23C0C41E281E9C810020237C /* HomeHeader.xib */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypeCell.swift */,
@@ -811,7 +811,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				235579163061345E008181A7 /* Home.storyboard in Resources */,
+				23557920306137FA008181A7 /* Home.storyboard in Resources */,
 				23A84A702811584C00DD8D39 /* GroupHeaderCell.xib in Resources */,
 				2355790230611CFD008181A7 /* bike-animation.json in Resources */,
 				23129C3D281D30CF001DE91D /* SaveMaps.xib in Resources */,
@@ -992,8 +992,6 @@
 				23557907306129CC008181A7 /* SignUpViewController.swift in Sources */,
 				23557908306129CC008181A7 /* LoginViewController.swift in Sources */,
 				231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */,
-				23B04D36305D223F00D9C1F5 /* GoToRideViewController.swift in Sources */,
-				23B04D37305D223F00D9C1F5 /* HomeViewController.swift in Sources */,
 				23D1B77728006212000EDA70 /* UIFontExtension.swift in Sources */,
 				23D5EB1C305D17E70004BD80 /* GPXExtentCoordinates.swift in Sources */,
 				23D1B74328004694000EDA70 /* JourneyViewController.swift in Sources */,
@@ -1023,7 +1021,6 @@
 				23D1B78C28006663000EDA70 /* Constant.swift in Sources */,
 				23D5EB09305C7D850004BD80 /* GroupManager.swift in Sources */,
 				23C887292815A18F00E3319A /* UICollectionView.swift in Sources */,
-				2389C5123061169F0011AF0E /* RouteViewController.swift in Sources */,
 				23C8872228149ECC00E3319A /* RouteCollectionCell.swift in Sources */,
 				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
@@ -1033,6 +1030,9 @@
 				23D5EB16305D14530004BD80 /* BikeView.swift in Sources */,
 				23D1B7EE2804347C000EDA70 /* UITableView.swift in Sources */,
 				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
+				2355791C306137DF008181A7 /* GoToRideViewController.swift in Sources */,
+				2355791D306137DF008181A7 /* HomeViewController.swift in Sources */,
+				2355791E306137DF008181A7 /* RouteViewController.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
