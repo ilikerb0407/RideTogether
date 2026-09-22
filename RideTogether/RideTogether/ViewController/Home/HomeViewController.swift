@@ -65,11 +65,6 @@ class HomeViewController: BaseViewController, Reload {
         fetchTrailData()
     }
 
-    // Was `@IBOutlet var gView: UIView! { didSet { ... } }` — the storyboard
-    // provided an empty background view whose only job is a gradient
-    // fill, built in code here instead. Layout matches Home.storyboard's
-    // scene exactly: top pinned to the root view (bleeds behind the nav
-    // bar), leading/trailing/bottom pinned to the safe area.
     private lazy var gView: UIView = {
         let gradientView = UIView()
         gradientView.applyGradient(

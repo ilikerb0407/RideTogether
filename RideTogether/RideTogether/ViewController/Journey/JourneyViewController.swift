@@ -85,9 +85,9 @@ class JourneyViewController: BaseViewController {
 
     // MARK: - Labels
     
-    private let altitudeLabel = LeftLabel()
-    private let speedLabel = LeftLabel()
-    private let timeLabel = RightLabel()
+    private let altitudeLabel = RegularLabel()
+    private let speedLabel = RegularLabel()
+    private let timeLabel = TimeLabel()
     private let totalTrackedDistanceLabel = DistanceLabel()
     private let currentSegmentDistanceLabel = DistanceLabel()
 

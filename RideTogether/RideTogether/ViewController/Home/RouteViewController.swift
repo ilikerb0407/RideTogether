@@ -25,11 +25,7 @@ import Lottie
 import UIKit
 
 class RouteViewController: BaseViewController {
-    // Was `@IBOutlet var gView: UIView! { didSet { ... } }`. Layout
-    // matches Home.storyboard's scene exactly: leading/trailing/bottom
-    // pinned to the safe area, top pinned 125pt ABOVE the safe area's
-    // top — bleeding upward to cover behind the custom nav bar this
-    // screen sets via `setNavigationBar(title:)`.
+    
     private lazy var gView: UIView = {
         let gradientView = UIView()
         gradientView.applyGradient(

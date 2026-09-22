@@ -29,15 +29,27 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
             chartView.delegate = self
         }
     }
+    
+    private lazy var gView: UIView = {
+        let gradientView = UIView()
+        gradientView.applyGradient(
+            colors: [.white, .B3],
+            locations: [0.0, 1.0], direction: .leftSkewed
+        )
+        gradientView.alpha = 0.85
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        return gradientView
+    }()
 
-    @IBOutlet var gView: UIView! {
-        didSet {
-            gView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed
-            )
-            gView.alpha = 0.5
-        }
+    private func setUpGradientBackground() {
+        view.insertSubview(gView, at: 0)
+
+        NSLayoutConstraint.activate([
+            gView.topAnchor.constraint(equalTo: view.topAnchor),
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
 
     private let mapViewDelegate = MapPin()
@@ -237,6 +249,8 @@ class TrackDetailsViewController: BaseViewController, ChartViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpGradientBackground()
 
         setUp()
 

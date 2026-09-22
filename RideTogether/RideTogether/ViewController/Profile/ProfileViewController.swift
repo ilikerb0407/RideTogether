@@ -61,16 +61,27 @@ class ProfileViewController: BaseViewController {
     @IBAction func editPhoto(_: UIButton) {
         showPickerController()
     }
+    
+    private lazy var gView: UIView = {
+        let gradientView = UIView()
+        gradientView.applyGradient(
+            colors: [.white, .B3],
+            locations: [0.0, 1.0], direction: .leftSkewed
+        )
+        gradientView.alpha = 0.85
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        return gradientView
+    }()
 
-    @IBOutlet var gView: UIView! {
-        didSet {
-            gView.applyGradient(
-                colors: [.white, .B3],
-                locations: [0.0, 1.0], direction: .leftSkewed
-            )
+    private func setUpGradientBackground() {
+        view.insertSubview(gView, at: 0)
 
-            gView.alpha = 0.85
-        }
+        NSLayoutConstraint.activate([
+            gView.topAnchor.constraint(equalTo: view.topAnchor),
+            gView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            gView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            gView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
 
     @IBOutlet var tableView: UITableView! {
@@ -85,6 +96,8 @@ class ProfileViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpGradientBackground()
 
         tableView.registerCellWithNib(identifier: ProfileTableViewCell.identifier, bundle: nil)
 
