@@ -193,10 +193,6 @@ extension HomeViewController: UITableViewDelegate {
             return
         }
 
-        // Was `performSegue(withIdentifier: SegueIdentifier.route.rawValue,
-        // sender: sender)` + `prepare(for:sender:)` reading the segue's
-        // destination. Now that RouteViewController isn't reached through
-        // a Storyboard segue, it's built and pushed directly.
         let routeListVC = RouteViewController()
         routeListVC.routes = routes
 

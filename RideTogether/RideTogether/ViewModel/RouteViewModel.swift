@@ -25,7 +25,16 @@ enum RouteViewModelError: Error, Equatable {
 }
 
 class RouteViewModel {
-    private(set) var routes: [RouteModel]
+    
+    // MARK: - Binding
+    /// 當資料更新時通知 VC 刷新 UI
+    var onRoutesUpdated: (() -> Void)?
+    
+    private(set) var routes: [RouteModel] {
+        didSet {
+            onRoutesUpdated?()
+        }
+    }
 
     private let mapsManager: MapsManaging
     private let userManager: UserManaging
@@ -40,18 +49,23 @@ class RouteViewModel {
         self.userManager = userManager
     }
 
-    /// RouteViewController receives its route list after the ViewModel
-    /// already exists (assigned via `prepare(for:sender:)` from
-    /// HomeViewController, not at init time), so `routes` needs to be
-    /// settable after construction rather than purely init-only.
+    // MARK: - Data Source Helpers for View
+    
     func updateRoutes(_ routes: [RouteModel]) {
         self.routes = routes
     }
+    
+    var numberOfItems: Int {
+        routes.count
+    }
+    
+    func route(at index: Int) -> RouteModel? {
+        guard routes.indices.contains(index) else { return nil }
+        return routes[index]
+    }
 
     /// The label shown at the top of the list, derived from the category
-    /// of the first route (every route in one RouteViewController's list
-    /// shares the same category, since they're all filtered from the same
-    /// RouteCategory tapped on the home screen).
+    /// of the first route.
     var themeLabel: String {
         guard let category = routes.first?.routeTypes else { return "" }
 
@@ -64,9 +78,10 @@ class RouteViewModel {
         }
     }
 
+    // MARK: - Business Logic Operations
+    
     func saveToSavemaps(at index: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard routes.indices.contains(index) else { return }
-        let route = routes[index]
+        guard let route = route(at: index) else { return }
 
         mapsManager.addToSavemaps(
             fileName: route.routeName,
@@ -77,18 +92,17 @@ class RouteViewModel {
         )
     }
 
-    /// Blocks the uploader of route `index`. Checks self-block before the
-    /// missing-uploader case, matching the original's check order.
     func blockUploader(ofRouteAt index: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard routes.indices.contains(index) else { return }
-        let targetUserId = routes[index].uid
+        guard let route = route(at: index) else { return }
+        
+        // 修正順序：先確定是否有 uploader ID，再檢查是否為使用者本人
+        guard let targetUserId = route.uid, !targetUserId.isEmpty else {
+            completion(.failure(RouteViewModelError.missingUploaderId))
+            return
+        }
 
         if userManager.userInfo.uid == targetUserId {
             completion(.failure(RouteViewModelError.cannotBlockSelf))
-            return
-        }
-        guard let targetUserId = targetUserId else {
-            completion(.failure(RouteViewModelError.missingUploaderId))
             return
         }
 

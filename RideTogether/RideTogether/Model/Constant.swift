@@ -25,6 +25,7 @@ enum SegueIdentifier: String {
     case recommendMaps = "toRecommendMaps"
 }
 
+// TODO: remove 因為我要把 xib 都拿掉
 enum ProfileSegue: String, CaseIterable {
     case record = "toRecord"
 
@@ -44,7 +45,7 @@ enum Collection: String {
 
     case records = "Records"
 
-    case routes = "RouteCollectionCell"
+    case routes = "Routes"
 
     case sharedmaps = "Sharemaps"
 
