@@ -87,15 +87,17 @@ class HomeViewController: BaseViewController, Reload {
         ])
     }
 
+    // MARK: - TableView Setup
     func setUpTableView() {
         tableView = UITableView(frame: .zero, style: .grouped)
-
+        
         tableView.registerCellWithNib(identifier: RouteTypeCell.identifier, bundle: nil)
-
+        
+        tableView.register(HomeHeader.self, forHeaderFooterViewReuseIdentifier: HomeHeader.reuseIdentifier)
+        
         view.stickSubView(tableView)
-
+        
         tableView.backgroundColor = .clear
-
         tableView.separatorStyle = .none
     }
 
@@ -156,14 +158,15 @@ class HomeViewController: BaseViewController, Reload {
 // MARK: - TableView Delegate -
 
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
-        let headerView: HomeHeader = .loadFromNib()
-
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeHeader.reuseIdentifier) as? HomeHeader else {
+            return nil
+        }
+        
         self.headerView = headerView
-
         headerView.updateUserInfo(user: UserManager.shared.userInfo)
-
-        return self.headerView
+        
+        return headerView
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {

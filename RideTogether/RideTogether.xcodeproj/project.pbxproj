@@ -17,6 +17,10 @@
 		231BCB332806724A00DE2343 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */; };
 		231BCB342806724A00DE2343 /* RecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */; };
 		231BCB37280678E700DE2343 /* RecommendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */; };
+		2339F7333062D6EC00A9ED6D /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2339F7323062D6EC00A9ED6D /* GroupViewModel.swift */; };
+		2339F7353062D73000A9ED6D /* GroupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2339F7343062D73000A9ED6D /* GroupViewModelTests.swift */; };
+		2339F7373062DF9600A9ED6D /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2339F7363062DF9600A9ED6D /* RequestTableViewCell.swift */; };
+		2339F73B3062DFC900A9ED6D /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2339F73A3062DFC900A9ED6D /* ChatRoomViewController.swift */; };
 		234A1626283636ED00E09F09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1625283636ED00E09F09 /* LocationManager.swift */; };
 		234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A1670283738E200E09F09 /* RideTogetherTests.swift */; };
 		2355790230611CFD008181A7 /* bike-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 2355790130611CE6008181A7 /* bike-animation.json */; };
@@ -72,18 +76,14 @@
 		23B04D47305D346200D9C1F5 /* ManagerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D45305D346200D9C1F5 /* ManagerProtocols.swift */; };
 		23B04D48305D346200D9C1F5 /* MapsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B04D46305D346200D9C1F5 /* MapsManager.swift */; };
 		23C0C41F281E9C810020237C /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C41D281E9C810020237C /* HomeHeader.swift */; };
-		23C0C420281E9C810020237C /* HomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C0C41E281E9C810020237C /* HomeHeader.xib */; };
 		23C0C422281EA4870020237C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0C421281EA4870020237C /* Notification.swift */; };
 		23C828B33061706100F01A52 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C828B23061706100F01A52 /* GroupViewController.swift */; };
-		23C828B53061773700F01A52 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C828B43061773700F01A52 /* ChatRoomViewController.swift */; };
 		23C8872228149ECC00E3319A /* RouteCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872028149ECC00E3319A /* RouteCollectionCell.swift */; };
 		23C8872328149ECC00E3319A /* RouteCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872128149ECC00E3319A /* RouteCollectionCell.xib */; };
 		23C887252815329800E3319A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887242815329800E3319A /* Request.swift */; };
 		23C887292815A18F00E3319A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C887282815A18E00E3319A /* UICollectionView.swift */; };
 		23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */; };
 		23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */; };
-		23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */; };
-		23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */; };
 		23CB74BA2816C81E00DED822 /* GroupStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74B92816C81E00DED822 /* GroupStatus.swift */; };
 		23CB74C82817824000DED822 /* UIStorybroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CB74C72817824000DED822 /* UIStorybroad.swift */; };
 		23CE42A7280E7D6C00C4C9F1 /* DrawRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CE42A6280E7D6C00C4C9F1 /* DrawRoute.swift */; };
@@ -170,6 +170,10 @@
 		231BCB312806724A00DE2343 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		231BCB322806724A00DE2343 /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = "<group>"; };
 		231BCB36280678E700DE2343 /* RecommendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendDetailViewController.swift; sourceTree = "<group>"; };
+		2339F7323062D6EC00A9ED6D /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		2339F7343062D73000A9ED6D /* GroupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModelTests.swift; sourceTree = "<group>"; };
+		2339F7363062DF9600A9ED6D /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		2339F73A3062DFC900A9ED6D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		234A1625283636ED00E09F09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		234A166E283738E200E09F09 /* RideTogetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RideTogetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		234A1670283738E200E09F09 /* RideTogetherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTogetherTests.swift; sourceTree = "<group>"; };
@@ -217,18 +221,14 @@
 		23B04D45305D346200D9C1F5 /* ManagerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProtocols.swift; sourceTree = "<group>"; };
 		23B04D46305D346200D9C1F5 /* MapsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsManager.swift; sourceTree = "<group>"; };
 		23C0C41D281E9C810020237C /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
-		23C0C41E281E9C810020237C /* HomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeader.xib; sourceTree = "<group>"; };
 		23C0C421281EA4870020237C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		23C828B23061706100F01A52 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
-		23C828B43061773700F01A52 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		23C8872028149ECC00E3319A /* RouteCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollectionCell.swift; sourceTree = "<group>"; };
 		23C8872128149ECC00E3319A /* RouteCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCollectionCell.xib; sourceTree = "<group>"; };
 		23C887242815329800E3319A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		23C887282815A18E00E3319A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
 		23C8872B2815A7F400E3319A /* RoutesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutesTableViewCell.xib; sourceTree = "<group>"; };
-		23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
-		23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		23CB74B92816C81E00DED822 /* GroupStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStatus.swift; sourceTree = "<group>"; };
 		23CB74C72817824000DED822 /* UIStorybroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStorybroad.swift; sourceTree = "<group>"; };
 		23CB74CB2817897000DED822 /* RideTogetherDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RideTogetherDebug.entitlements; sourceTree = "<group>"; };
@@ -374,6 +374,7 @@
 		234A166F283738E200E09F09 /* RideTogetherTests */ = {
 			isa = PBXGroup;
 			children = (
+				2339F7343062D73000A9ED6D /* GroupViewModelTests.swift */,
 				2389C515306116C90011AF0E /* RouteViewModelTests.swift */,
 				2389C516306116C90011AF0E /* SignUpViewModelTests.swift */,
 				23B04D3D305D33A000D9C1F5 /* RecommendViewModelTests.swift */,
@@ -404,8 +405,7 @@
 				23A84A6E2811584C00DD8D39 /* GroupHeaderCell.xib */,
 				23A84A732811AE2300DD8D39 /* GroupInfo.swift */,
 				23A84A742811AE2300DD8D39 /* GroupInfo.xib */,
-				23CB74B428169B9A00DED822 /* RequestTableViewCell.swift */,
-				23CB74B528169B9A00DED822 /* RequestTableViewCell.xib */,
+				2339F7363062DF9600A9ED6D /* RequestTableViewCell.swift */,
 				237A27A9281AEC81004F039F /* Member.swift */,
 				237A27AA281AEC81004F039F /* Member.xib */,
 			);
@@ -424,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				23C0C41D281E9C810020237C /* HomeHeader.swift */,
-				23C0C41E281E9C810020237C /* HomeHeader.xib */,
 				23A84A8B2813FA9B00DD8D39 /* RouteTypeCell.swift */,
 				23A84A8C2813FA9B00DD8D39 /* RouteTypeCell.xib */,
 				23C8872A2815A7F400E3319A /* RoutesTableViewCell.swift */,
@@ -466,11 +465,11 @@
 		23CE42BE280FB74700C4C9F1 /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				2339F73A3062DFC900A9ED6D /* ChatRoomViewController.swift */,
 				23C828B23061706100F01A52 /* GroupViewController.swift */,
 				2383878D280FE1F300E9F4F4 /* CreateGroupViewController.swift */,
 				2397D459281F938F0018FC5E /* GroupMemberViewController.swift */,
 				23A84A772812E63800DD8D39 /* JoinViewController.swift */,
-				23C828B43061773700F01A52 /* ChatRoomViewController.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -684,6 +683,7 @@
 		23D5EB0E305D10D70004BD80 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2339F7323062D6EC00A9ED6D /* GroupViewModel.swift */,
 				2389C50D3061167D0011AF0E /* RouteViewModel.swift */,
 				2389C50E3061167D0011AF0E /* SignUpViewModel.swift */,
 				23D5EB0F305D10EB0004BD80 /* WaypointInfoViewModel.swift */,
@@ -814,11 +814,9 @@
 				23A84A8E2813FA9B00DD8D39 /* RouteTypeCell.xib in Resources */,
 				23D1B738280033FC000EDA70 /* Assets.xcassets in Resources */,
 				237A27AC281AEC82004F039F /* Member.xib in Resources */,
-				23CB74B728169B9A00DED822 /* RequestTableViewCell.xib in Resources */,
 				2355792930613D7D008181A7 /* Main.storyboard in Resources */,
 				2355791830613481008181A7 /* Profile.storyboard in Resources */,
 				23D1B7EC28042CA6000EDA70 /* ProfileTableViewCell.xib in Resources */,
-				23C0C420281E9C810020237C /* HomeHeader.xib in Resources */,
 				239C57E82F88295F008F01BC /* GoogleService-Info.plist in Resources */,
 				23C8872D2815A7F400E3319A /* RoutesTableViewCell.xib in Resources */,
 				23A84A762811AE2300DD8D39 /* GroupInfo.xib in Resources */,
@@ -921,6 +919,7 @@
 				23D5EAF9305C7B970004BD80 /* MockUserManager.swift in Sources */,
 				23D5EB1F305D17F90004BD80 /* GPXExtentCoordinatesTests.swift in Sources */,
 				23D5EB20305D17F90004BD80 /* GPXTrackSegmentTests.swift in Sources */,
+				2339F7353062D73000A9ED6D /* GroupViewModelTests.swift in Sources */,
 				2389C517306116C90011AF0E /* SignUpViewModelTests.swift in Sources */,
 				2389C518306116C90011AF0E /* RouteViewModelTests.swift in Sources */,
 				234A1671283738E200E09F09 /* RideTogetherTests.swift in Sources */,
@@ -968,7 +967,6 @@
 				23CE42A9280E7DCC00C4C9F1 /* RouteAnnotation.swift in Sources */,
 				231BCB2E28066C3B00DE2343 /* ShareMap.swift in Sources */,
 				237A27A728199F2A004F039F /* UIImageView.swift in Sources */,
-				23C828B53061773700F01A52 /* ChatRoomViewController.swift in Sources */,
 				23D5EB14305D11590004BD80 /* MapPin.swift in Sources */,
 				2355792330613D17008181A7 /* RouteViewController.swift in Sources */,
 				2355792430613D17008181A7 /* HomeViewController.swift in Sources */,
@@ -998,6 +996,7 @@
 				23C8872C2815A7F400E3319A /* RoutesTableViewCell.swift in Sources */,
 				23D1B75A28005FB0000EDA70 /* GPXTrack+length.swift in Sources */,
 				23D1B7E528042027000EDA70 /* TrackDetailsViewController.swift in Sources */,
+				2339F7373062DF9600A9ED6D /* RequestTableViewCell.swift in Sources */,
 				23D5EB01305C7CEA0004BD80 /* ProfileViewController.swift in Sources */,
 				23D5EB23305D1C740004BD80 /* RouteModel.swift in Sources */,
 				23D5EB24305D1C740004BD80 /* RouteCategory.swift in Sources */,
@@ -1017,7 +1016,6 @@
 				23C8872228149ECC00E3319A /* RouteCollectionCell.swift in Sources */,
 				23E86E74282D84EA00FC001E /* BikeItems.swift in Sources */,
 				2383878E280FE1F300E9F4F4 /* CreateGroupViewController.swift in Sources */,
-				23CB74B628169B9A00DED822 /* RequestTableViewCell.swift in Sources */,
 				23D1B75E28005FE1000EDA70 /* StopWatchDelegate.swift in Sources */,
 				23D1B78628006346000EDA70 /* GPXFileManager.swift in Sources */,
 				23D5EB16305D14530004BD80 /* BikeView.swift in Sources */,
@@ -1025,6 +1023,7 @@
 				2304FF4A280891AF00C6B1BF /* ReuseButton.swift in Sources */,
 				2355791C306137DF008181A7 /* GoToRideViewController.swift in Sources */,
 				23D1B8102805D29E000EDA70 /* Date+Time.swift in Sources */,
+				2339F7333062D6EC00A9ED6D /* GroupViewModel.swift in Sources */,
 				23D1B7F228045A72000EDA70 /* TrackTableViewCell.swift in Sources */,
 				23D1B77928006229000EDA70 /* UIViewExtension.swift in Sources */,
 				2355792630613D23008181A7 /* TabBarController.swift in Sources */,
@@ -1034,6 +1033,7 @@
 				2397D45A281F938F0018FC5E /* GroupMemberViewController.swift in Sources */,
 				237A27A328182FE4004F039F /* ProfileView.swift in Sources */,
 				23D1B76F280061A6000EDA70 /* UIScreen+Extension.swift in Sources */,
+				2339F73B3062DFC900A9ED6D /* ChatRoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
