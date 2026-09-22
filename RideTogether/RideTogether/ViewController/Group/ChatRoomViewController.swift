@@ -266,7 +266,12 @@ class ChatRoomViewController: BaseViewController {
 
 extension ChatRoomViewController: UITableViewDelegate {
     func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
-        let headerView: RequestTableViewCell = .loadFromNib()
+        // Was `let headerView: RequestTableViewCell = .loadFromNib()`,
+        // which loaded RequestTableViewCell.xib. RequestTableViewCell now
+        // builds its own view hierarchy in `init(style:reuseIdentifier:)`
+        // (see that file), so it's built directly here instead — no nib
+        // involved anymore.
+        let headerView = RequestTableViewCell(style: .default, reuseIdentifier: nil)
 
         self.headerView = headerView
 

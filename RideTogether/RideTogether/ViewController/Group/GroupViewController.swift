@@ -4,6 +4,13 @@
 //
 //  Created by Kai Fu Jhuang on 2022/4/20.
 //
+//  This used to call UserManager.shared directly (inconsistent with the
+//  already-injected groupManager), and had two separate block-list
+//  filtering bugs plus a force-unwrap crash risk — all fixed while
+//  extracting this logic into GroupViewModel. See that file's header
+//  comment for the full rationale. This ViewController now only builds
+//  the table/header views, reacts to user actions, and reads
+//  viewModel.currentGroups() / viewModel.requests for its data sources.
 
 import AVFoundation
 import Firebase
@@ -41,42 +48,14 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     var table: UITableView?
     var CreateGroupVC = CreateGroupViewController()
-    var onlyUserGroup = false
 
-    // Injected as a mutable property (rather than through a custom `init`)
-    // because this ViewController is instantiated from Storyboard, which
-    // requires `init?(coder:)`. Defaulting to `.shared` keeps every
-    // existing call site working unchanged; unit tests can still assign a
-    // `MockGroupManager` to this property right after instantiation, before
-    // `viewDidLoad` fires any network calls.
-    var groupManager: GroupManaging = GroupManager.shared
+    // Injected with a default so existing instantiation sites (from
+    // Storyboard, via `init?(coder:)`) don't need to change, while tests
+    // can substitute a ViewModel wired with fakes for every dependency.
+    var viewModel = GroupViewModel()
 
-    private var userInfo: UserInfo { UserManager.shared.userInfo }
-    private var groupInfo: GroupInfo?
     private let header = MJRefreshNormalHeader()
-
-    private lazy var cache = [String: UserInfo]() {
-        didSet { tableView.reloadData() }
-    }
-
-    private lazy var requests = [Request]() {
-        didSet { checkRequestsNum() }
-    }
-
-    private var inActivityGroup = [Group]()
-
-    private var myGroups = [Group]() {
-        didSet { updateUserHistory() }
-    }
-
     private var groupHeaderCell: GroupHeaderCell?
-    private var requestListenerRegistration: ListenerRegistration?
-
-    private var searchGroups = [Group]()
-    private var isSearching = false
-    private var searchText = "" {
-        didSet { isSearching = true }
-    }
 
     private var tableView: UITableView! {
         didSet {
@@ -87,16 +66,21 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
 
     // MARK: - Lifecycle
 
-    deinit {
-        requestListenerRegistration?.remove()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchGroupData()
+        viewModel.onGroupsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
+        viewModel.onRequestsUpdated = { [weak self] in
+            self?.checkRequestsNum()
+            self?.tabBarController?.tabBar.items?[2].badgeValue = "\(self?.viewModel.requests.count ?? 0)"
+            self?.tabBarController?.tabBar.items?[2].badgeColor = .red
+        }
+
+        viewModel.fetchGroupData()
         setUpHeaderView()
-        addRequestListener()
+        viewModel.addRequestListener()
         setUpTableView()
         setUpGradientBackground()
 
@@ -112,79 +96,7 @@ class GroupViewController: BaseViewController, Reload, UISheetPresentationContro
     // MARK: - Reload Protocol
 
     func reload() {
-        fetchGroupData()
-        tableView.reloadData()
-    }
-}
-
-// MARK: - Data
-
-extension GroupViewController {
-    func fetchGroupData() {
-        groupManager.fetchGroups { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .success(groups):
-                let filtered = groups.filter { self.userInfo.blockList?.contains($0.hostId) == false }
-                self.myGroups = filtered.filter { $0.userIds.contains(self.userInfo.uid) }
-                self.rearrangeMyGroup(groups: self.myGroups)
-                self.inActivityGroup = filtered.filter { $0.isExpired == false }
-                    .sorted { $0.date.seconds < $1.date.seconds }
-                filtered.forEach { group in
-                    guard self.cache[group.hostId] == nil else { return }
-                    self.fetchUserData(uid: group.hostId)
-                }
-
-            case let .failure(error):
-                print("fetchData.failure: \(error)")
-                LKProgressHUD.showFailure(text: "讀取資料失敗")
-            }
-        }
-    }
-
-    func fetchUserData(uid: String) {
-        UserManager.shared.fetchUserInfo(uid: uid) { [weak self] result in
-            switch result {
-            case let .success(user):
-                self?.cache[uid] = user
-            case let .failure(error):
-                print("fetchData.failure: \(error)")
-            }
-        }
-    }
-
-    func updateUserHistory() {
-        let expired = myGroups.filter { $0.isExpired == true }
-        let numOfGroups = expired.count
-        let numOfPartners = expired.reduce(0) { $0 + ($1.userIds.count - 1) }
-        UserManager.shared.updateUserGroupRecords(numOfGroups: numOfGroups, numOfPartners: numOfPartners)
-    }
-
-    func rearrangeMyGroup(groups: [Group]) {
-        let unexpired = groups.filter { !$0.isExpired! }.sorted { $0.date.seconds < $1.date.seconds }
-        let expired = groups.filter { $0.isExpired! }.sorted { $0.date.seconds < $1.date.seconds }
-        myGroups = unexpired + expired
-    }
-}
-
-// MARK: - Listener
-
-extension GroupViewController {
-    func addRequestListener() {
-        requestListenerRegistration = groupManager.addRequestListener { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .success(requests):
-                self.requests = requests.filter {
-                    self.userInfo.blockList?.contains($0.requestId) == false
-                }
-                self.tabBarController?.tabBar.items?[2].badgeValue = "\(self.requests.count)"
-                self.tabBarController?.tabBar.items?[2].badgeColor = .red
-
-            case let .failure(error):
-                print("fetchData.failure: \(error)")
-            }
-        }
+        viewModel.fetchGroupData()
     }
 }
 
@@ -212,7 +124,7 @@ extension GroupViewController {
         let headerView: GroupHeaderCell = .loadFromNib()
         groupHeaderCell = headerView
         headerView.searchBar.delegate = self
-        headerView.searchBar.searchTextField.text = searchText
+        headerView.searchBar.searchTextField.text = viewModel.searchText
         headerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
 
@@ -234,7 +146,7 @@ extension GroupViewController {
     }
 
     func checkRequestsNum() {
-        guard let groupHeaderCell = groupHeaderCell, requests.count > 0 else { return }
+        guard let groupHeaderCell = groupHeaderCell, viewModel.requests.count > 0 else { return }
         groupHeaderCell.resquestsBell.shake()
     }
 }
@@ -255,21 +167,20 @@ extension GroupViewController {
     }
 
     @objc func checkRequestList(_ sender: UIButton) {
-        guard requests.count > 0 else { return }
-        
-        let vc = JoinViewController(requests: requests)
-        
+        guard viewModel.requests.count > 0 else { return }
+
+        let vc = JoinViewController(requests: viewModel.requests)
+
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func headerRefresh() {
-        fetchGroupData()
-        tableView.reloadData()
+        viewModel.fetchGroupData()
         tableView.mj_header?.endRefreshing()
     }
 
     @objc func segmentValueChanged(_ sender: UISegmentedControl) {
-        onlyUserGroup = sender.selectedSegmentIndex == 1
+        viewModel.onlyUserGroup = sender.selectedSegmentIndex == 1
         tableView.reloadData()
     }
 
@@ -282,17 +193,6 @@ extension GroupViewController {
 
     @objc func dismissKeyBoard() {
         groupHeaderCell?.searchBar.resignFirstResponder()
-    }
-
-    private func currentGroups() -> [Group] {
-        if isSearching { return searchGroups }
-        return onlyUserGroup ? myGroups : inActivityGroup
-    }
-
-    private func filtGroupBySearchName(groups: [Group]) -> [Group] {
-        groups.filter {
-            $0.routeName.lowercased().prefix(searchText.count) == searchText.lowercased()
-        }
     }
 }
 
@@ -311,11 +211,11 @@ extension GroupViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let groups = currentGroups()
+        let groups = viewModel.currentGroups()
         let group = groups[indexPath.row]
-        
-        let vc = ChatRoomViewController(groupInfo: group, cache: cache)
-        
+
+        let vc = ChatRoomViewController(groupInfo: group, cache: viewModel.hostCache)
+
         self.navigationController?.pushViewController(vc, animated: false)
     }
 }
@@ -324,13 +224,13 @@ extension GroupViewController: UITableViewDelegate {
 
 extension GroupViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        currentGroups().count
+        viewModel.currentGroups().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GroupInfo = tableView.dequeueCell(for: indexPath)
-        let group = currentGroups()[indexPath.row]
-        cell.setUpCell(group: group, hostname: cache[group.hostId]?.userName ?? "使用者")
+        let group = viewModel.currentGroups()[indexPath.row]
+        cell.setUpCell(group: group, hostname: viewModel.hostCache[group.hostId]?.userName ?? "使用者")
         return cell
     }
 }
@@ -339,15 +239,12 @@ extension GroupViewController: UITableViewDataSource {
 
 extension GroupViewController: UISearchBarDelegate {
     func searchBar(_: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
-        let source = onlyUserGroup ? myGroups : inActivityGroup
-        searchGroups = filtGroupBySearchName(groups: source)
-        isSearching = true
+        viewModel.updateSearch(text: searchText)
         tableView.reloadData()
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        isSearching = false
+        viewModel.endSearch()
         searchBar.resignFirstResponder()
     }
 
@@ -355,3 +252,4 @@ extension GroupViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 }
+

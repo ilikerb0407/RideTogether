@@ -98,6 +98,24 @@ class JourneyViewController: BaseViewController {
     private let timeLabel = TimeLabel()
     private let totalTrackedDistanceLabel = DistanceLabel()
     private let currentSegmentDistanceLabel = DistanceLabel()
+    
+    private lazy var leftLabelsStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [altitudeLabel, speedLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .leading
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+    private lazy var rightLabelsStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [timeLabel, totalTrackedDistanceLabel, currentSegmentDistanceLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .trailing
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
 
     // MARK: - Properties
 
@@ -166,6 +184,42 @@ class JourneyViewController: BaseViewController {
         addMapTypeSegment()
 
         navigationController?.isNavigationBarHidden = true
+
+    }
+    
+    
+    func setUpButtonsStackView() {
+        view.addSubview(buttonStackView)
+        view.addSubview(leftStackView)
+
+        NSLayoutConstraint.activate([
+            buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
+
+            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            leftStackView.widthAnchor.constraint(equalToConstant: 100),
+            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
+            leftStackView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+
+    func setUpLabels() {
+        view.addSubview(leftLabelsStackView)
+        view.addSubview(rightLabelsStackView)
+
+        NSLayoutConstraint.activate([
+            // Pinned below the map-type segment control (which sits at
+            // safeArea.top + 10, height 30) with a 10pt gap, so the two
+            // can never overlap regardless of device size.
+            leftLabelsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            leftLabelsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            leftLabelsStackView.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+
+            rightLabelsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            rightLabelsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            rightLabelsStackView.widthAnchor.constraint(lessThanOrEqualToConstant: 120),
+        ])
     }
 }
 
@@ -235,72 +289,6 @@ extension JourneyViewController {
         default:
             mapView.mapType = .standard
         }
-    }
-}
-
-// MARK: - UI Setup
-
-extension JourneyViewController {
-    
-    func setUpButtonsStackView() {
-        view.addSubview(buttonStackView)
-        view.addSubview(leftStackView)
-
-        NSLayoutConstraint.activate([
-            buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            buttonStackView.heightAnchor.constraint(equalToConstant: 80),
-
-            leftStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
-            leftStackView.widthAnchor.constraint(equalToConstant: 100),
-            leftStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
-            leftStackView.heightAnchor.constraint(equalToConstant: 200)
-        ])
-    }
-
-    // Was `mapView.addSubview(altitudeLabel)` + a hardcoded `.frame`,
-    // repeated for every label below. This was the actual bug you saw:
-    // altitudeLabel/speedLabel's coordinates (x:10, y:50-180) sat almost
-    // exactly on top of the "一般/衛星" map-type segment control (added
-    // separately, directly to `view`, so it rendered in front of and
-    // completely covered these two labels — they weren't missing, just
-    // hidden behind it). Rebuilt with two vertical UIStackViews and full
-    // AutoLayout: the left stack (altitude, speed) is now explicitly
-    // positioned *below* the segment control instead of overlapping it.
-    private lazy var leftLabelsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [altitudeLabel, speedLabel])
-        stack.axis = .vertical
-        stack.spacing = 4
-        stack.alignment = .leading
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-
-    private lazy var rightLabelsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [timeLabel, totalTrackedDistanceLabel, currentSegmentDistanceLabel])
-        stack.axis = .vertical
-        stack.spacing = 4
-        stack.alignment = .trailing
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-
-    func setUpLabels() {
-        view.addSubview(leftLabelsStackView)
-        view.addSubview(rightLabelsStackView)
-
-        NSLayoutConstraint.activate([
-            // Pinned below the map-type segment control (which sits at
-            // safeArea.top + 10, height 30) with a 10pt gap, so the two
-            // can never overlap regardless of device size.
-            leftLabelsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            leftLabelsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            leftLabelsStackView.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
-
-            rightLabelsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            rightLabelsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            rightLabelsStackView.widthAnchor.constraint(lessThanOrEqualToConstant: 120),
-        ])
     }
 }
 

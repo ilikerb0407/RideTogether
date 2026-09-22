@@ -18,9 +18,9 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
     @IBOutlet var segment: UISegmentedControl! {
         didSet {
             segment.setTitle("活動中", forSegmentAt: 0)
-//            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white], for: .normal)
+
             segment.setTitle("個人活動", forSegmentAt: 1)
-//            segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white ], for: .selected)
+
         }
     }
 
@@ -29,22 +29,8 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
             searchBar.searchTextField.font = UIFont.regular(size: 20)
 
             searchBar.placeholder = "查詢路線"
-
-//            self.searchBar.showsCancelButton = true
-//
-//            self.searchBar.endEditing(true)
         }
     }
-
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.resignFirstResponder()
-//    }
-//
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.text = ""
-//        self.searchBar.resignFirstResponder()
-//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -69,7 +55,7 @@ class GroupHeaderCell: UITableViewCell, UISearchBarDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        segment.setTitleTextAttributes([.foregroundColor: UIColor.B2], for: .normal)
+        segment.setTitleTextAttributes([.foregroundColor: UIColor.B2 ?? UIColor.white], for: .normal)
 
         segment.setTitleTextAttributes([.foregroundColor: UIColor.B5 ?? UIColor.white], for: .selected)
     }

@@ -273,7 +273,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距離(公里)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmX-Q9-cqd">
-                                        <rect key="frame" x="306.33333333333326" y="206.33333333333337" width="81.666666666666742" height="20.333333333333371"/>
+                                        <rect key="frame" x="306.33333333333331" y="206.33333333333337" width="81.666666666666686" height="20.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -322,7 +322,6 @@
                     <connections>
                         <outlet property="avgSpeed" destination="khF-RV-TcL" id="Yp1-6a-vRH"/>
                         <outlet property="chartView" destination="tyF-2L-WcT" id="OsU-wm-xyZ"/>
-                        <outlet property="gView" destination="G62-vk-MyL" id="IaG-ei-k4u"/>
                         <outlet property="map" destination="CY4-04-0aW" id="bcf-xw-fxc"/>
                         <outlet property="totalDistance" destination="n0k-TM-9Qi" id="u3Q-75-ib6"/>
                         <outlet property="totalTime" destination="9XN-CP-ull" id="M9C-Yg-860"/>
