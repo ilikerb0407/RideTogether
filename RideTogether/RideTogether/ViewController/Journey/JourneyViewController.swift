@@ -84,9 +84,17 @@ class JourneyViewController: BaseViewController {
     }()
 
     // MARK: - Labels
-    
-    private let altitudeLabel = RegularLabel()
-    private let speedLabel = RegularLabel()
+    private let altitudeLabel: RegularLabel = {
+        let label = RegularLabel()
+        label.text = "高度 : --"
+        return label
+    }()
+
+    private let speedLabel: RegularLabel = {
+        let label = RegularLabel()
+        label.text = "時速 : --"
+        return label
+    }()
     private let timeLabel = TimeLabel()
     private let totalTrackedDistanceLabel = DistanceLabel()
     private let currentSegmentDistanceLabel = DistanceLabel()
@@ -205,9 +213,15 @@ extension JourneyViewController {
         segment.backgroundColor = UIColor.B5
         segment.selectedSegmentIndex = 0
         segment.addTarget(self, action: #selector(onMapTypeChanged), for: .valueChanged)
-        segment.frame.size = CGSize(width: 150, height: 30)
-        segment.center = CGPoint(x: 80, y: 65)
+        segment.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segment)
+
+        NSLayoutConstraint.activate([
+            segment.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            segment.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            segment.widthAnchor.constraint(equalToConstant: 150),
+            segment.heightAnchor.constraint(equalToConstant: 30),
+        ])
     }
 
     @objc func onMapTypeChanged(sender: UISegmentedControl) {
@@ -244,21 +258,49 @@ extension JourneyViewController {
         ])
     }
 
+    // Was `mapView.addSubview(altitudeLabel)` + a hardcoded `.frame`,
+    // repeated for every label below. This was the actual bug you saw:
+    // altitudeLabel/speedLabel's coordinates (x:10, y:50-180) sat almost
+    // exactly on top of the "一般/衛星" map-type segment control (added
+    // separately, directly to `view`, so it rendered in front of and
+    // completely covered these two labels — they weren't missing, just
+    // hidden behind it). Rebuilt with two vertical UIStackViews and full
+    // AutoLayout: the left stack (altitude, speed) is now explicitly
+    // positioned *below* the segment control instead of overlapping it.
+    private lazy var leftLabelsStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [altitudeLabel, speedLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .leading
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
+    private lazy var rightLabelsStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [timeLabel, totalTrackedDistanceLabel, currentSegmentDistanceLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .trailing
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
     func setUpLabels() {
-        mapView.addSubview(altitudeLabel)
-        altitudeLabel.frame = CGRect(x: 10, y: 80, width: 200, height: 100)
+        view.addSubview(leftLabelsStackView)
+        view.addSubview(rightLabelsStackView)
 
-        mapView.addSubview(speedLabel)
-        speedLabel.frame = CGRect(x: 10, y: 50, width: 200, height: 100)
+        NSLayoutConstraint.activate([
+            // Pinned below the map-type segment control (which sits at
+            // safeArea.top + 10, height 30) with a 10pt gap, so the two
+            // can never overlap regardless of device size.
+            leftLabelsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            leftLabelsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            leftLabelsStackView.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
 
-        mapView.addSubview(timeLabel)
-        timeLabel.frame = CGRect(x: UIScreen.width - 110, y: 30, width: 100, height: 80)
-
-        mapView.addSubview(totalTrackedDistanceLabel)
-        totalTrackedDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 90, width: 100, height: 30)
-
-        mapView.addSubview(currentSegmentDistanceLabel)
-        currentSegmentDistanceLabel.frame = CGRect(x: UIScreen.width - 110, y: 120, width: 100, height: 30)
+            rightLabelsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            rightLabelsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            rightLabelsStackView.widthAnchor.constraint(lessThanOrEqualToConstant: 120),
+        ])
     }
 }
 

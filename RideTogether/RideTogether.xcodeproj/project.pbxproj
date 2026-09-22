@@ -1238,7 +1238,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "請允許 RideTogether 在背景持續使用定位，才能在您切出 App 或鎖螢幕時繼續記錄騎乘路線";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "請允許\"RideTogether\"使用您的定位，進行紀錄自行車路線的功能";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1278,7 +1278,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RideTogether/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "請允許 RideTogether 在背景持續使用定位，才能在您切出 App 或鎖螢幕時繼續記錄騎乘路線";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "請允許\"RideTogether\"使用您的定位，進行紀錄自行車路線的功能";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "請允許\"RideTogether\"使用您的相片，您的相片將會用於個人資訊/ 分享地圖頁面";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
